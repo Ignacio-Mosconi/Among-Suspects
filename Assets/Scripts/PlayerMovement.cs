@@ -3,7 +3,7 @@
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] [Range(5f, 10f)] float movementSpeed = 5f;
+    [SerializeField] [Range(2f, 5f)] float movementSpeed = 3f;
 
     CharacterController characterController;
 
