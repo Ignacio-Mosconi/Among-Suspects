@@ -1,61 +1,80 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerLoookingEvent : UnityEvent<bool> {}
-
 public abstract class Interactable : MonoBehaviour
 {
-    [SerializeField] [Range(3f, 5f)] float interactionRadius;
+    [SerializeField] [Range(1f, 5f)] float interactionRadius;
     
-    Transform player;
-    Transform fpsCamera;
-    bool isPlayerLooking = false;
+    Transform cameraTransform;
+    FirstPersonCamera firstPersonCamera;
+    bool isPlayerLookingAt = false;
 
-    PlayerLoookingEvent onPlayerToggleLooking = new PlayerLoookingEvent();
+    UnityEvent onStartLookingAt = new UnityEvent();
+    UnityEvent onStopLookingAt = new UnityEvent();
+    UnityEvent onInteraction = new UnityEvent();
 
     virtual protected void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        fpsCamera = player.GetComponentInChildren<Camera>().transform;
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+
+        cameraTransform = playerObject.GetComponentInChildren<Camera>().transform;
+        firstPersonCamera = playerObject.GetComponent<FirstPersonCamera>();
     }
 
     void Update()
     {
-        Vector3 distance = player.position - transform.position;
+        Vector3 diff = transform.position - firstPersonCamera.transform.position;
 
-        if (distance.sqrMagnitude < interactionRadius * interactionRadius)
+        if (diff.sqrMagnitude < interactionRadius * interactionRadius)
         {
-            if (Physics.Raycast(fpsCamera.position, fpsCamera.forward, interactionRadius))
+            if (Vector3.Angle(cameraTransform.forward, diff.normalized) < firstPersonCamera.InteractionFOV * 0.5f)
             {
-                if (!isPlayerLooking)
-                    StartLooking();
+                if (!isPlayerLookingAt)
+                    StartLookingAt();
                 if (Input.GetButtonDown("Interact"))
+                {
+                    isPlayerLookingAt = false;
                     Interact();
+                    onInteraction.Invoke();
+                }
             }
             else
             {
-                if (isPlayerLooking)
-                    StopLooking();
+                if (isPlayerLookingAt)
+                    StopLookingAt();
             }
         }
+        else
+            if (isPlayerLookingAt)
+                StopLookingAt();
     }
 
-    void StartLooking()
+    void StartLookingAt()
     {
-        isPlayerLooking = true;
-        onPlayerToggleLooking.Invoke(true);
+        isPlayerLookingAt = true;
+        onStartLookingAt.Invoke();
     }
 
-    void StopLooking()
+    void StopLookingAt()
     {
-        isPlayerLooking = false;
-        onPlayerToggleLooking.Invoke(false);
+        isPlayerLookingAt = false;
+        onStopLookingAt.Invoke();
     }
 
     protected abstract void Interact();
 
-    public PlayerLoookingEvent OnPlayerToggleLooking
+    public UnityEvent OnStartLookingAt
     {
-        get { return onPlayerToggleLooking; }
+        get { return onStartLookingAt; }
+    }
+
+    public UnityEvent OnStopLookingAt
+    {
+        get { return onStopLookingAt; }
+    }
+
+    public UnityEvent OnInteraction
+    {
+        get { return onInteraction; }
     }
 }
