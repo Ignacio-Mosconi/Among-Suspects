@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+using TMPro;
 
 struct Player
 {
@@ -34,8 +36,14 @@ public class DialogueSystem : MonoBehaviour
     #endregion
 
     [SerializeField] GameObject dialogueArea;
+    [SerializeField] TextMeshProUGUI speakerText;
+    [SerializeField] TextMeshProUGUI speechText;
 
     Player player;
+    DialogueInfo currentDialogueInfo;
+    Coroutine speakingRoutine;
+    string currentTargetSpeech;
+    int currentSpeechIndex;
 
     void Start()
     {
@@ -47,8 +55,22 @@ public class DialogueSystem : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Submit"))
-            SetDialogueAreaAvailability(false);
+        if (Input.GetButtonDown("Continue"))
+        {
+            if (speakingRoutine != null)
+                StopSpeaking();
+            else
+            {
+                currentSpeechIndex++;
+                if (currentSpeechIndex < currentDialogueInfo.speech.Length)
+                    SayDialogue(currentDialogueInfo.speech[currentSpeechIndex]);
+                else
+                {
+                    currentSpeechIndex = 0;
+                    SetDialogueAreaAvailability(false);
+                }
+            }
+        }
     }
 
     void SetDialogueAreaAvailability(bool enableDialogueArea)
@@ -61,8 +83,40 @@ public class DialogueSystem : MonoBehaviour
         this.enabled = enableDialogueArea;
     }
 
-    public void EnableDialogueArea()
+    void SayDialogue(string speech)
+    {
+        speakingRoutine = StartCoroutine(Speak(speech));
+    }
+
+    void StopSpeaking()
+    {
+        StopCoroutine(speakingRoutine);
+        speechText.text = currentTargetSpeech;
+        speakingRoutine = null;
+    }
+
+    IEnumerator Speak(string speech)
+    {
+        speechText.text = "";
+
+        while (speechText.text != speech)
+        {
+            speechText.text += speech[speechText.text.Length];           
+            yield return new WaitForEndOfFrame();
+        }
+        speakingRoutine = null;
+    }
+
+    public void EnableDialogueArea(DialogueInfo dialogueInfo)
     {
         SetDialogueAreaAvailability(true);
+        ChangeSpeaker(dialogueInfo);
+    }
+
+    public void ChangeSpeaker(DialogueInfo dialogueInfo)
+    {
+        currentDialogueInfo = dialogueInfo;
+        speakerText.text = dialogueInfo.speakerName;
+        SayDialogue(dialogueInfo.speech[0]);
     }
 }

@@ -2,8 +2,10 @@
 
 public class NpcController : Interactable
 {
+    [SerializeField] DialogueInfo dialogue;
+
     protected override void Interact()
     {
-        DialogueSystem.Instance.EnableDialogueArea();
+        DialogueSystem.Instance.EnableDialogueArea(dialogue);
     }
 }
