@@ -1,5 +1,11 @@
 ﻿using UnityEngine;
 
+struct Player
+{
+    public FirstPersonCamera firstPersonCamera;
+    public PlayerMovement playerMovement;
+}
+
 public class DialogueSystem : MonoBehaviour
 {
     #region Singleton
@@ -29,9 +35,34 @@ public class DialogueSystem : MonoBehaviour
 
     [SerializeField] GameObject dialogueArea;
 
+    Player player;
+
+    void Start()
+    {
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+
+        player.firstPersonCamera = playerObject.GetComponent<FirstPersonCamera>();
+        player.playerMovement = playerObject.GetComponent<PlayerMovement>();
+    }
+
+    void Update()
+    {
+        if (Input.GetButtonDown("Submit"))
+            SetDialogueAreaAvailability(false);
+    }
+
+    void SetDialogueAreaAvailability(bool enableDialogueArea)
+    {
+        HUD.Instance.SetVisibility(!enableDialogueArea);
+        player.playerMovement.enabled = !enableDialogueArea;
+        player.firstPersonCamera.enabled = !enableDialogueArea;
+        
+        dialogueArea.SetActive(enableDialogueArea);
+        this.enabled = enableDialogueArea;
+    }
+
     public void EnableDialogueArea()
     {
-        HUD.Instance.SetVisibility(false);
-        dialogueArea.SetActive(true);
+        SetDialogueAreaAvailability(true);
     }
 }

@@ -36,12 +36,21 @@ public class HUD : MonoBehaviour
         Interactable[] interactables = FindObjectsOfType<Interactable>();
 
         foreach (Interactable interactable in interactables)
-            interactable.OnPlayerToggleLooking.AddListener(ToggleInteractTextPanel);
+        {
+            interactable.OnStartLookingAt.AddListener(ShowInteractTextPanel);
+            interactable.OnStopLookingAt.AddListener(HideInteractTextPanel);
+            interactable.OnInteraction.AddListener(HideInteractTextPanel);
+        }
     }
 
-    void ToggleInteractTextPanel(bool activate)
+    void ShowInteractTextPanel()
     {
-        interactTextPanel.SetActive(activate);
+        interactTextPanel.SetActive(true);
+    }
+
+    void HideInteractTextPanel()
+    {
+        interactTextPanel.SetActive(false);
     }
 
     public void SetVisibility(bool visible)
