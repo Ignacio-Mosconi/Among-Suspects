@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4815144321455028110}
   - component: {fileID: 8805839269057086630}
   m_Layer: 0
-  m_Name: Brick Wall (5)
+  m_Name: Brick Wall Corner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -378,10 +378,10 @@ MonoBehaviour:
   - {x: 0.25, y: 0, z: 0}
   - {x: 0, y: 0, z: 0.25}
   - {x: 0.25, y: 0, z: 0.25}
-  - {x: -5.25, y: 5, z: 0}
-  - {x: -5.25, y: 0, z: 0}
-  - {x: -5.25, y: 5, z: 0.25}
-  - {x: -5.25, y: 0, z: 0.25}
+  - {x: -5, y: 5, z: 0}
+  - {x: -5, y: 0, z: 0}
+  - {x: -5, y: 5, z: 0.25}
+  - {x: -5, y: 0, z: 0.25}
   - {x: 0.25, y: 0, z: 0}
   - {x: 0.25, y: 5, z: 0}
   - {x: 0.25, y: 0, z: 0.25}
@@ -392,20 +392,20 @@ MonoBehaviour:
   - {x: 0, y: 5, z: 0.25}
   - {x: 0, y: 5, z: 0}
   - {x: 0, y: 0, z: 0}
-  - {x: -5.25, y: 5, z: 0}
-  - {x: -5.25, y: 0, z: 0}
+  - {x: -5, y: 5, z: 0}
+  - {x: -5, y: 0, z: 0}
   - {x: 0, y: 5, z: 0.25}
   - {x: 0, y: 5, z: 0}
-  - {x: -5.25, y: 5, z: 0.25}
-  - {x: -5.25, y: 5, z: 0}
+  - {x: -5, y: 5, z: 0.25}
+  - {x: -5, y: 5, z: 0}
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0.25}
-  - {x: -5.25, y: 0, z: 0}
-  - {x: -5.25, y: 0, z: 0.25}
+  - {x: -5, y: 0, z: 0}
+  - {x: -5, y: 0, z: 0.25}
   - {x: 0, y: 0, z: 0.25}
   - {x: 0, y: 5, z: 0.25}
-  - {x: -5.25, y: 0, z: 0.25}
-  - {x: -5.25, y: 5, z: 0.25}
+  - {x: -5, y: 0, z: 0.25}
+  - {x: -5, y: 5, z: 0.25}
   m_Textures0:
   - {x: 0, y: 0}
   - {x: -0.25, y: 0}
@@ -449,20 +449,20 @@ MonoBehaviour:
   - {x: 0, y: 0.25}
   - {x: 0, y: 5}
   - {x: 0, y: 0}
-  - {x: -5.25, y: 5}
-  - {x: -5.25, y: 0}
+  - {x: -5, y: 5}
+  - {x: -5, y: 0}
   - {x: 0, y: 0.25}
   - {x: 0, y: 0}
-  - {x: -5.25, y: 0.25}
-  - {x: -5.25, y: 0}
+  - {x: -5, y: 0.25}
+  - {x: -5, y: 0}
   - {x: 0, y: 0}
   - {x: 0, y: 0.25}
-  - {x: 5.25, y: 0}
-  - {x: 5.25, y: 0.25}
+  - {x: 5, y: 0}
+  - {x: 5, y: 0.25}
   - {x: 0, y: 0}
   - {x: 0, y: 5}
-  - {x: 5.25, y: 0}
-  - {x: 5.25, y: 5}
+  - {x: 5, y: 0}
+  - {x: 5, y: 5}
   m_Textures2: []
   m_Textures3: []
   m_Tangents:
@@ -531,9 +531,17 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_IsSelectable: 1
-  m_SelectedFaces: 
-  m_SelectedEdges: []
-  m_SelectedVertices: 
+  m_SelectedFaces: 02000000
+  m_SelectedEdges:
+  - a: 8
+    b: 9
+  - a: 10
+    b: 8
+  - a: 9
+    b: 11
+  - a: 11
+    b: 10
+  m_SelectedVertices: 08000000090000000a0000000b000000
 --- !u!64 &8805839269057086630
 MeshCollider:
   m_ObjectHideFlags: 0
