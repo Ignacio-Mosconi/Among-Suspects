@@ -63,6 +63,8 @@ public abstract class Interactable : MonoBehaviour
 
     protected abstract void Interact();
 
+    #region Getters & Setters
+    
     public UnityEvent OnStartLookingAt
     {
         get { return onStartLookingAt; }
@@ -77,4 +79,6 @@ public abstract class Interactable : MonoBehaviour
     {
         get { return onInteraction; }
     }
+    
+    #endregion
 }

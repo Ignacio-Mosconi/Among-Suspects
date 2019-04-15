@@ -32,8 +32,12 @@ public class FirstPersonCamera : MonoBehaviour
         fpsCamera.localEulerAngles = new Vector3(verAngle, fpsCamera.rotation.y, fpsCamera.rotation.z);
     }
 
+    #region Getters & Setters
+    
     public float InteractionFOV
     {
         get { return interactionFOV; }
     }
+    
+    #endregion
 }

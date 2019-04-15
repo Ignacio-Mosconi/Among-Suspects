@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using TMPro;
 
 struct Player
@@ -8,10 +9,11 @@ struct Player
     public PlayerMovement playerMovement;
 }
 
-public class DialogueSystem : MonoBehaviour
+public class DialogueManager : MonoBehaviour
 {
     #region Singleton
-    static DialogueSystem instance;
+    
+    static DialogueManager instance;
 
     void Awake()
     {
@@ -19,20 +21,21 @@ public class DialogueSystem : MonoBehaviour
             Destroy(gameObject);
     }
 
-    public static DialogueSystem Instance
+    public static DialogueManager Instance
     {
         get
         {
             if (!instance)
             {
-                instance = FindObjectOfType<DialogueSystem>();
+                instance = FindObjectOfType<DialogueManager>();
                 if (!instance)
-                    Debug.LogError("There is no 'DialogueSystem' in the scene");
+                    Debug.LogError("There is no 'DialogueManager' in the scene");
             }
 
             return instance;
         }
     }
+
     #endregion
 
     [SerializeField] GameObject dialogueArea;
@@ -42,8 +45,13 @@ public class DialogueSystem : MonoBehaviour
     Player player;
     DialogueInfo currentDialogueInfo;
     Coroutine speakingRoutine;
+    float characterShowIntervals;
+    float textSpeedMultiplier;
     string currentTargetSpeech;
     int currentSpeechIndex;
+
+    UnityEvent onDialogueAreaEnable = new UnityEvent();
+    UnityEvent onDialogueAreaDisable = new UnityEvent();
 
     void Start()
     {
@@ -51,6 +59,9 @@ public class DialogueSystem : MonoBehaviour
 
         player.firstPersonCamera = playerObject.GetComponent<FirstPersonCamera>();
         player.playerMovement = playerObject.GetComponent<PlayerMovement>();
+
+        characterShowIntervals = 1f / GameManager.Instance.TargetFrameRate;
+        textSpeedMultiplier = 1f / GameManager.Instance.TextSpeedMultiplier;
     }
 
     void Update()
@@ -75,7 +86,11 @@ public class DialogueSystem : MonoBehaviour
 
     void SetDialogueAreaAvailability(bool enableDialogueArea)
     {
-        HUD.Instance.SetVisibility(!enableDialogueArea);
+        if (enableDialogueArea)
+            onDialogueAreaEnable.Invoke();
+        else
+            onDialogueAreaDisable.Invoke();
+
         player.playerMovement.enabled = !enableDialogueArea;
         player.firstPersonCamera.enabled = !enableDialogueArea;
         
@@ -98,12 +113,14 @@ public class DialogueSystem : MonoBehaviour
     IEnumerator Speak(string speech)
     {
         speechText.text = "";
+        currentTargetSpeech = speech;
 
-        while (speechText.text != speech)
+        while (speechText.text != currentTargetSpeech)
         {
-            speechText.text += speech[speechText.text.Length];           
-            yield return new WaitForEndOfFrame();
+            speechText.text += currentTargetSpeech[speechText.text.Length];           
+            yield return new WaitForSecondsRealtime(characterShowIntervals * textSpeedMultiplier);
         }
+
         speakingRoutine = null;
     }
 
@@ -119,4 +136,18 @@ public class DialogueSystem : MonoBehaviour
         speakerText.text = dialogueInfo.speakerName;
         SayDialogue(dialogueInfo.speech[0]);
     }
+
+    #region Getters & Setters
+
+    public UnityEvent OnDialogueAreaEnable
+    {
+        get { return onDialogueAreaEnable; }
+    }
+
+    public UnityEvent OnDialogueAreaDisable
+    {
+        get { return onDialogueAreaDisable; }
+    }
+
+    #endregion
 }

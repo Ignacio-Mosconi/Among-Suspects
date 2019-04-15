@@ -3,31 +3,6 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
-    #region Singleton
-    static HUD instance;
-
-    void Awake()
-    {
-        if (Instance != this)
-            Destroy(gameObject);
-    }
-
-    public static HUD Instance
-    {
-        get
-        {
-            if (!instance)
-            {
-                instance = FindObjectOfType<HUD>();
-                if (!instance)
-                    Debug.LogError("There is no 'HUD' in the scene");
-            }
-
-            return instance;
-        }
-    }
-    #endregion
-
     [SerializeField] GameObject hudArea;
     [SerializeField] GameObject interactTextPanel;
 
@@ -41,6 +16,19 @@ public class HUD : MonoBehaviour
             interactable.OnStopLookingAt.AddListener(HideInteractTextPanel);
             interactable.OnInteraction.AddListener(HideInteractTextPanel);
         }
+
+        DialogueManager.Instance.OnDialogueAreaEnable.AddListener(HideHUD);
+        DialogueManager.Instance.OnDialogueAreaDisable.AddListener(ShowHUD);
+    }
+
+    void ShowHUD()
+    {
+        hudArea.SetActive(true);
+    }
+
+    void HideHUD()
+    {
+        hudArea.SetActive(false);
     }
 
     void ShowInteractTextPanel()
@@ -51,10 +39,5 @@ public class HUD : MonoBehaviour
     void HideInteractTextPanel()
     {
         interactTextPanel.SetActive(false);
-    }
-
-    public void SetVisibility(bool visible)
-    {
-        hudArea.SetActive(visible);
     }
 }
