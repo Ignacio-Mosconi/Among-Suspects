@@ -12,8 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9345bdb6d41302b4997bfaa46be947a2, type: 3}
   m_Name: Test Dialogue
   m_EditorClassIdentifier: 
-  speakerName: Charles
-  speech:
-  - Hello, there.
-  - My name is Charles, and I'm pleased to meet you.
-  - How are you doing?
+  lines:
+  - speakerName: Byakuya
+    speech: How dare you approach me like that?
+    characterEmotion: 0
+  - speakerName: Byakuya
+    speech: You do not have even the slightest idea of whom you are talking to, correct?
+    characterEmotion: 2
+  - speakerName: Byakuya
+    speech: Mind your own business, as I do not posses the time - nor the patience
+      - to be around insignificant people like you.
+    characterEmotion: 6
+  - speakerName: Byakuya
+    speech: Get out of my sight immediately!
+    characterEmotion: 4

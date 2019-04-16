@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 using TMPro;
 
@@ -41,14 +42,15 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] GameObject dialogueArea;
     [SerializeField] TextMeshProUGUI speakerText;
     [SerializeField] TextMeshProUGUI speechText;
+    [SerializeField] Image speakerImage;
 
     Player player;
     DialogueInfo currentDialogueInfo;
     Coroutine speakingRoutine;
     float characterShowIntervals;
     float textSpeedMultiplier;
-    string currentTargetSpeech;
-    int currentSpeechIndex;
+    string targetSpeech;
+    int lineIndex;
 
     UnityEvent onDialogueAreaEnable = new UnityEvent();
     UnityEvent onDialogueAreaDisable = new UnityEvent();
@@ -72,12 +74,14 @@ public class DialogueManager : MonoBehaviour
                 StopSpeaking();
             else
             {
-                currentSpeechIndex++;
-                if (currentSpeechIndex < currentDialogueInfo.speech.Length)
-                    SayDialogue(currentDialogueInfo.speech[currentSpeechIndex]);
+                lineIndex++;
+                if (lineIndex < currentDialogueInfo.lines.Length)
+                    SayDialogue(currentDialogueInfo.lines[lineIndex].speech, 
+                                currentDialogueInfo.lines[lineIndex].speakerName,
+                                currentDialogueInfo.lines[lineIndex].characterEmotion);
                 else
                 {
-                    currentSpeechIndex = 0;
+                    lineIndex = 0;
                     SetDialogueAreaAvailability(false);
                 }
             }
@@ -98,26 +102,30 @@ public class DialogueManager : MonoBehaviour
         this.enabled = enableDialogueArea;
     }
 
-    void SayDialogue(string speech)
+    void SayDialogue(string speech, string speakerName = "", CharacterEmotion speakerEmotion = CharacterEmotion.Normal)
     {
-        speakingRoutine = StartCoroutine(Speak(speech));
+        NonPlayableCharacter speaker = CharacterManager.Instance.GetCharacter(speakerName);
+        
+        speechText.text = "";
+        speakerText.text = speakerName;
+        speakerImage.sprite = speaker.GetSprite(speakerEmotion);
+        targetSpeech = speech;
+
+        speakingRoutine = StartCoroutine(Speak());
     }
 
     void StopSpeaking()
     {
         StopCoroutine(speakingRoutine);
-        speechText.text = currentTargetSpeech;
+        speechText.text = targetSpeech;
         speakingRoutine = null;
     }
 
-    IEnumerator Speak(string speech)
+    IEnumerator Speak()
     {
-        speechText.text = "";
-        currentTargetSpeech = speech;
-
-        while (speechText.text != currentTargetSpeech)
+        while (speechText.text != targetSpeech)
         {
-            speechText.text += currentTargetSpeech[speechText.text.Length];           
+            speechText.text += targetSpeech[speechText.text.Length];           
             yield return new WaitForSecondsRealtime(characterShowIntervals * textSpeedMultiplier);
         }
 
@@ -126,15 +134,12 @@ public class DialogueManager : MonoBehaviour
 
     public void EnableDialogueArea(DialogueInfo dialogueInfo)
     {
-        SetDialogueAreaAvailability(true);
-        ChangeSpeaker(dialogueInfo);
-    }
-
-    public void ChangeSpeaker(DialogueInfo dialogueInfo)
-    {
         currentDialogueInfo = dialogueInfo;
-        speakerText.text = dialogueInfo.speakerName;
-        SayDialogue(dialogueInfo.speech[0]);
+        
+        SetDialogueAreaAvailability(enableDialogueArea: true);
+        SayDialogue(dialogueInfo.lines[0].speech, 
+                    dialogueInfo.lines[0].speakerName,
+                    dialogueInfo.lines[0].characterEmotion);
     }
 
     #region Getters & Setters
