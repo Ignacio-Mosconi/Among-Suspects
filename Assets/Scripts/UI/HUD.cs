@@ -8,8 +8,6 @@ public class HUD : MonoBehaviour
 
     void Start()
     {
-        HideInteractTextPanel();
-
         Interactable[] interactables = FindObjectsOfType<Interactable>();
 
         foreach (Interactable interactable in interactables)
