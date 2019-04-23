@@ -20,10 +20,10 @@ public class PlayerMovement : MonoBehaviour
         Vector3 movement = Vector3.zero;
         float horMovement = 0.0f;
         float forMovement = 0.0f;
-        if (Input.GetAxisRaw("Horizontal") == 1){
+        if (Input.GetButton("Horizontal")){
              horMovement = Input.GetAxis("Horizontal");
         }
-        if (Input.GetAxisRaw("Vertical") == 1){
+        if (Input.GetButton("Vertical")){
             forMovement = Input.GetAxis("Vertical");
         }
 
