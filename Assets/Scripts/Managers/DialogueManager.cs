@@ -49,7 +49,7 @@ public class DialogueManager : MonoBehaviour
     Coroutine speakingRoutine;
     float characterShowIntervals;
     float textSpeedMultiplier;
-    string targetSpeech;
+    int targetSpeechCharAmount;
     int lineIndex;
 
     UnityEvent onDialogueAreaEnable = new UnityEvent();
@@ -105,11 +105,12 @@ public class DialogueManager : MonoBehaviour
     void SayDialogue(string speech, string speakerName = "", CharacterEmotion speakerEmotion = CharacterEmotion.Normal)
     {
         NonPlayableCharacter speaker = CharacterManager.Instance.GetCharacter(speakerName);
-        
-        speechText.text = "";
+
+        speechText.maxVisibleCharacters = 0;
+        speechText.text = speech;
         speakerText.text = speakerName;
         speakerImage.sprite = speaker.GetSprite(speakerEmotion);
-        targetSpeech = speech;
+        targetSpeechCharAmount = speech.Length;
 
         speakingRoutine = StartCoroutine(Speak());
     }
@@ -117,15 +118,15 @@ public class DialogueManager : MonoBehaviour
     void StopSpeaking()
     {
         StopCoroutine(speakingRoutine);
-        speechText.text = targetSpeech;
+        speechText.maxVisibleCharacters = targetSpeechCharAmount;
         speakingRoutine = null;
     }
 
     IEnumerator Speak()
     {
-        while (speechText.text != targetSpeech)
+        while (speechText.maxVisibleCharacters != targetSpeechCharAmount)
         {
-            speechText.text += targetSpeech[speechText.text.Length];           
+            speechText.maxVisibleCharacters++;          
             yield return new WaitForSecondsRealtime(characterShowIntervals * textSpeedMultiplier);
         }
 
