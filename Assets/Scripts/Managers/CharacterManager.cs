@@ -30,18 +30,28 @@ public class CharacterManager : MonoBehaviour
 
     #endregion
 
-    Dictionary<string, NonPlayableCharacter> characters = new Dictionary<string, NonPlayableCharacter>();
+    List<NonPlayableCharacter> characters = new List<NonPlayableCharacter>();
 
     void Start()
     {
         NonPlayableCharacter[] npcs = FindObjectsOfType<NonPlayableCharacter>();
 
         foreach (NonPlayableCharacter npc in npcs)
-            characters.Add(npc.CharacterName, npc);
+        {
+            if (!characters.Find(c => c.CharacterName == npc.CharacterName)) 
+                characters.Add(npc);
+            else
+                Debug.LogError("There are duplicate caracters in the scene.", npc.gameObject);
+        }
     }
 
     public NonPlayableCharacter GetCharacter(string characterName)
     {
-        return characters[characterName];
+        NonPlayableCharacter character = characters.Find(c => c.CharacterName == characterName);
+        
+        if (!character)
+            Debug.LogError("There are no characters named '" + characterName + "' in the scene.", gameObject);
+        
+        return character;
     }
 }
