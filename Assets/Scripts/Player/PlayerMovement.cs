@@ -18,8 +18,14 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 inputVector;
         Vector3 movement = Vector3.zero;
-        float horMovement = Input.GetAxis("Horizontal");
-        float forMovement = Input.GetAxis("Vertical");
+        float horMovement = 0.0f;
+        float forMovement = 0.0f;
+        if (Input.GetAxisRaw("Horizontal") == 1){
+             horMovement = Input.GetAxis("Horizontal");
+        }
+        if (Input.GetAxisRaw("Vertical") == 1){
+            forMovement = Input.GetAxis("Vertical");
+        }
 
         inputVector = new Vector3(horMovement, 0f, forMovement).normalized;
         if (Input.GetAxisRaw("Run") == 1){
