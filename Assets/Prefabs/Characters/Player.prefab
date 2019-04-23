@@ -157,6 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 100
   verticalRange: 80
+  interactionFOV: 90
 --- !u!114 &40652816043208626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,4 +170,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a98c8fd3de6d7f74992c4746ff6b7e2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 2.5
+  movementSpeed: 3
+  runMultiplier: 2
