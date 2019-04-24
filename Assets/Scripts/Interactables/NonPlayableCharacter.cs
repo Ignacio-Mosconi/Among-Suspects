@@ -17,22 +17,24 @@ public class NonPlayableCharacter : Interactable
     {
         base.Start();
         
-        DialogueManager.Instance.OnDialogueAreaDisable.AddListener(EnableMeshObject);
+        DialogueManager.Instance.OnDialogueAreaDisable.AddListener(EnableInteraction);
     }
 
     protected override void Interact()
     {
-        DisableMeshObject();
+        DisableInteraction();
         DialogueManager.Instance.EnableDialogueArea(dialogueInfo);
     }
 
-    void EnableMeshObject()
+    void EnableInteraction()
     {
+        base.enabled = true;
         characterMesh.SetActive(true);
     }
 
-    void DisableMeshObject()
+    void DisableInteraction()
     {
+        base.enabled = false;
         characterMesh.SetActive(false);
     }
     
