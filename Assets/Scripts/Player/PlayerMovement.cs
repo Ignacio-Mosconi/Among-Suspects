@@ -22,7 +22,9 @@ public class PlayerMovement : MonoBehaviour
         float horMovement = Input.GetAxis("Horizontal");
         float forMovement = Input.GetAxis("Vertical");
 
-        inputVector = new Vector3(horMovement, 0f, forMovement).normalized;
+        inputVector = new Vector3(horMovement, 0f, forMovement);
+        if (inputVector.sqrMagnitude > 1f)
+            inputVector.Normalize();
         currentRunMultiplier = (Input.GetButton("Run")) ? runMultiplier : 1f;
         movement += (transform.right * inputVector.x + transform.forward * inputVector.z) * movementSpeed * currentRunMultiplier;
         characterController.Move(movement * Time.deltaTime);
