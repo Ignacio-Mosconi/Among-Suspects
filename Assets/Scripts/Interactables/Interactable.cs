@@ -28,7 +28,11 @@ public abstract class Interactable : MonoBehaviour
 
         if (diff.sqrMagnitude < interactionRadius * interactionRadius)
         {
-            if (Vector3.Angle(cameraTransform.forward, diff) < firstPersonCamera.InteractionFOV * 0.5f)
+            float angleBetweenObjs = Vector3.Angle(cameraTransform.forward, diff);
+            float viewRange = firstPersonCamera.InteractionFOV * 0.5f / diff.magnitude;
+            float interactableFwdOrient = firstPersonCamera.transform.InverseTransformDirection(transform.forward).z;
+
+            if (angleBetweenObjs < viewRange && interactableFwdOrient < -0.5f)
             {
                 if (!isPlayerLookingAt)
                     StartLookingAt();
