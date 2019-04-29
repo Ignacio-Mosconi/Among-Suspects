@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 public abstract class Interactable : MonoBehaviour
@@ -7,6 +7,7 @@ public abstract class Interactable : MonoBehaviour
     [SerializeField] [Range(1f, 5f)] float interactionRadius;
 
     FirstPersonCamera firstPersonCamera;
+    Transform cameraTransform;
     bool isPlayerLookingAt = false;
 
     UnityEvent onStartLookingAt = new UnityEvent();
@@ -17,17 +18,17 @@ public abstract class Interactable : MonoBehaviour
     {
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
 
-        cameraTransform = playerObject.GetComponentInChildren<Camera>().transform;
         firstPersonCamera = playerObject.GetComponent<FirstPersonCamera>();
+        cameraTransform = firstPersonCamera.GetComponentInChildren<Camera>().transform;
     }
 
     void Update()
     {
-        Vector3 diff = interactionPoint.position - firstPersonCamera.transform.position;
+        Vector3 diff = interactionPoint.position - cameraTransform.position;
 
         if (diff.sqrMagnitude < interactionRadius * interactionRadius)
         {
-            if (Vector3.Angle(firstPersonCamera.transform.forward, diff.normalized) < firstPersonCamera.InteractionFOV * 0.5f)
+            if (Vector3.Angle(cameraTransform.forward, diff) < firstPersonCamera.InteractionFOV * 0.5f)
             {
                 if (!isPlayerLookingAt)
                     StartLookingAt();
