@@ -5,13 +5,7 @@ public class NonPlayableCharacter : Interactable
     [SerializeField] string characterName;
     [SerializeField] Sprite[] characterSprites;
     [SerializeField] DialogueInfo dialogueInfo;
-
-    GameObject characterMesh;
-
-    void Awake()
-    {
-        characterMesh = transform.GetChild(0).gameObject;
-    }
+    [SerializeField] GameObject characterMesh;
 
     protected override void Start()
     {
@@ -21,9 +15,9 @@ public class NonPlayableCharacter : Interactable
     }
 
     protected override void Interact()
-    {
+    {   
         DisableInteraction();
-        DialogueManager.Instance.EnableDialogueArea(dialogueInfo);
+        DialogueManager.Instance.EnableDialogueArea(dialogueInfo, interactionPoint.position);
     }
 
     void EnableInteraction()

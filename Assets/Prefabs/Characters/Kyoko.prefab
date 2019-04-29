@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 4198609149982289995}
   - component: {fileID: 6876476030069449325}
   m_Layer: 0
-  m_Name: Mesh
+  m_Name: Character Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -290,7 +290,7 @@ Transform:
   - {fileID: 7257083712401003511}
   - {fileID: 8853570021289923312}
   m_Father: {fileID: 945961929337047379}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4198609149982289995
 Animator:
@@ -324,7 +324,7 @@ CapsuleCollider:
   m_Radius: 0.23846608
   m_Height: 1.8553696
   m_Direction: 1
-  m_Center: {x: 0, y: 0.898355, z: -0.002331823}
+  m_Center: {x: 0, y: 0.898355, z: 0}
 --- !u!1 &1267086923370262270
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,14 +533,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1888587235165197866}
-  m_LocalRotation: {x: -0, y: 0.96708095, z: -0, w: -0.2544691}
-  m_LocalPosition: {x: 10.23, y: 0.25, z: 4.438768}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 2677569305224437982}
   - {fileID: 2820929774240532443}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 209.484, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6291093646610862610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -553,6 +554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65137fe2336f8b346beb98d493728be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionPoint: {fileID: 2677569305224437982}
   interactionRadius: 2
   characterName: Kyoko
   characterSprites:
@@ -565,6 +567,7 @@ MonoBehaviour:
   - {fileID: 21300012, guid: 1ec77ddd2c56a6b418ec56927f820105, type: 3}
   - {fileID: 21300014, guid: 1ec77ddd2c56a6b418ec56927f820105, type: 3}
   dialogueInfo: {fileID: 11400000, guid: 0259e0c2e97f63341b4d9d43ea9a184e, type: 2}
+  characterMesh: {fileID: 1010974328041096265}
 --- !u!1 &2100860031760614811
 GameObject:
   m_ObjectHideFlags: 0
@@ -1774,6 +1777,36 @@ Transform:
   - {fileID: 8289736874273470809}
   m_Father: {fileID: 2956659392056612273}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6203396563862330878
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2677569305224437982}
+  m_Layer: 0
+  m_Name: Interaction Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2677569305224437982
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6203396563862330878}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 945961929337047379}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6452848379732092816
 GameObject:

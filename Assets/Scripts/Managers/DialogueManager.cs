@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
@@ -135,9 +135,11 @@ public class DialogueManager : MonoBehaviour
         speakingRoutine = null;
     }
 
-    public void EnableDialogueArea(DialogueInfo dialogueInfo)
+    public void EnableDialogueArea(DialogueInfo dialogueInfo, Vector3 characterPosition)
     {
         currentDialogueInfo = dialogueInfo;
+        
+        player.firstPersonCamera.FocusOnObject(characterPosition);
         
         SetDialogueAreaAvailability(enableDialogueArea: true);
         SayDialogue(dialogueInfo.lines[0].speech, 
