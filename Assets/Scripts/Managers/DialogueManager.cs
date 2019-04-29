@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
@@ -64,6 +64,8 @@ public class DialogueManager : MonoBehaviour
 
         characterShowIntervals = 1f / GameManager.Instance.TargetFrameRate;
         textSpeedMultiplier = 1f / GameManager.Instance.TextSpeedMultiplier;
+
+        enabled = false;
     }
 
     void Update()
@@ -99,7 +101,7 @@ public class DialogueManager : MonoBehaviour
         player.firstPersonCamera.enabled = !enableDialogueArea;
         
         dialogueArea.SetActive(enableDialogueArea);
-        this.enabled = enableDialogueArea;
+        enabled = enableDialogueArea;
     }
 
     void SayDialogue(string speech, string speakerName = "", CharacterEmotion speakerEmotion = CharacterEmotion.Normal)
