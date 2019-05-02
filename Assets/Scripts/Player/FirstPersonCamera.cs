@@ -31,22 +31,38 @@ public class FirstPersonCamera : MonoBehaviour
         verAngle = Mathf.Clamp(verAngle, -verticalRange, verticalRange);
 
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, horAngle, transform.eulerAngles.z);
-        fpsCamera.localEulerAngles = new Vector3(verAngle, fpsCamera.localEulerAngles.y, fpsCamera.localEulerAngles.z);
+        fpsCamera.eulerAngles = new Vector3(verAngle, fpsCamera.eulerAngles.y, fpsCamera.eulerAngles.z);
     }
 
     IEnumerator RotateViewProgressively(Vector3 targetPosition)
     {
-        Vector3 horTargetPos = new Vector3(targetPosition.x, transform.position.y, targetPosition.z);
-        Quaternion targetHorRotation = Quaternion.LookRotation(horTargetPos - transform.position);
+        Vector3 horDiff = targetPosition - transform.position;
+        Vector3 verDiff = targetPosition - fpsCamera.position;
 
-        while (transform.rotation != targetHorRotation)
+        Vector3 targetDir = new Vector3(horDiff.x, transform.forward.y, horDiff.z).normalized;
+        Vector3 localForward = transform.InverseTransformDirection(transform.forward);
+        Vector3 localTargetDir = transform.InverseTransformDirection(targetDir);
+        float angleBetweenDirs = Vector3.Angle(transform.forward, targetDir);
+        float targetHorAngle = (localTargetDir.x > localForward.x) ? horAngle + angleBetweenDirs : horAngle - angleBetweenDirs;
+        
+        Vector3 targetCameraDir = new Vector3(fpsCamera.forward.x, verDiff.y, fpsCamera.forward.z).normalized;
+        float angleBetweenCamDirs = Vector3.Angle(fpsCamera.forward, targetCameraDir);
+        float targetVerAngle = (targetCameraDir.y > fpsCamera.forward.y) ? verAngle - angleBetweenCamDirs : verAngle + angleBetweenCamDirs;
+
+        float angleSum = angleBetweenDirs + angleBetweenCamDirs;
+        float horSpeed = Mathf.Lerp(0f, focusSpeed, angleBetweenDirs / angleSum);
+        float verSpeed = Mathf.Lerp(0f, focusSpeed, angleBetweenCamDirs / angleSum);
+
+        while (horAngle != targetHorAngle || verAngle != targetVerAngle)
         {
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetHorRotation, focusSpeed * Time.deltaTime);
+            horAngle = Mathf.MoveTowardsAngle(horAngle, targetHorAngle, horSpeed * Time.deltaTime);
+            verAngle = Mathf.MoveTowardsAngle(verAngle, targetVerAngle, verSpeed * Time.deltaTime);
+            
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, horAngle, transform.eulerAngles.z);
+            fpsCamera.eulerAngles = new Vector3(verAngle, fpsCamera.eulerAngles.y, fpsCamera.eulerAngles.z);
 
             yield return new WaitForEndOfFrame();
         }
-        
-        horAngle = transform.eulerAngles.y;
     }
 
     public void FocusOnObject(Vector3 position)
