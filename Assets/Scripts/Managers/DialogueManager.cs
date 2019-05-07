@@ -40,6 +40,8 @@ public class DialogueManager : MonoBehaviour
     #endregion
 
     [SerializeField] string playerName;
+    [SerializeField] Color playerSpeakingTextColor;
+    [SerializeField] Color npcSpeakingTextColor;
     [SerializeField] GameObject dialogueArea;
     [SerializeField] TextMeshProUGUI speakerText;
     [SerializeField] TextMeshProUGUI speechText;
@@ -132,6 +134,14 @@ public class DialogueManager : MonoBehaviour
 
             if (speakerEmotion != CharacterEmotion.Listening)
                 speakerImage.sprite = speaker.GetSprite(speakerEmotion);
+            
+            if (speechText.color != npcSpeakingTextColor)
+                speechText.color = npcSpeakingTextColor;
+        }
+        else
+        {
+            if (speechText.color != playerSpeakingTextColor)
+                speechText.color = playerSpeakingTextColor;
         }
 
         speakingRoutine = StartCoroutine(Speak());
@@ -161,7 +171,6 @@ public class DialogueManager : MonoBehaviour
         enabled = false;
 
         GameManager.Instance.SetCursorAvailability(enable: true);
-        optionsPanel.SetActive(true);
 
         for (int i = 0; i < currentDialogueInfo.interactiveConversation.Length; i++)
         {
@@ -175,10 +184,11 @@ public class DialogueManager : MonoBehaviour
     public void SelectDialogueOption(int option)
     {       
         GameManager.Instance.SetCursorAvailability(enable: false);
-        optionsPanel.SetActive(false);
-        
         enabled = true;
         
+        for (int i = 0; i < currentDialogueInfo.interactiveConversation.Length; i++)
+            optionsButtons[i].gameObject.SetActive(false);
+             
         currentLines = currentDialogueInfo.interactiveConversation[option].dialogue;
         currentDialogueInfo.niceWithPlayer = currentDialogueInfo.interactiveConversation[option].triggerNiceImpression;
         currentDialogueInfo.interactionOptionSelected = true;

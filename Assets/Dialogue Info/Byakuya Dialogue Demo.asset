@@ -31,7 +31,7 @@ MonoBehaviour:
     incognito: 0
   - speakerName: Byakuya
     speech: Mind your own business, as I do not posses the time - nor the patience
-      to be around insignificant people like you.
+      - to be around insignificant people like you.
     characterEmotion: 6
     incognito: 1
   - speakerName: Byakuya
@@ -98,7 +98,7 @@ MonoBehaviour:
         I think you are someone worth to know my identity.'
       characterEmotion: 2
       incognito: 0
-    triggerNiceImpression: 0
+    triggerNiceImpression: 1
   niceComment:
   - speakerName: Byakuya
     speech: What?
@@ -122,6 +122,6 @@ MonoBehaviour:
     speech: GET OUT OF HERE!
     characterEmotion: 5
     incognito: 1
-  introRead: 1
-  interactionOptionSelected: 1
+  introRead: 0
+  interactionOptionSelected: 0
   niceWithPlayer: 0
