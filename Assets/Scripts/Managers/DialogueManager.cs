@@ -91,9 +91,11 @@ public class DialogueManager : MonoBehaviour
                 else
                 {
                     lineIndex = 0;
+                    
                     if (currentLines == currentDialogueInfo.introLines)
                         currentDialogueInfo.introRead = true;
-                    if (currentDialogueInfo.interactiveConversation[0].playerOption != null)
+                    
+                    if (!currentDialogueInfo.interactionOptionSelected)
                         ShowOptionsMenu();
                     else
                         SetDialogueAreaAvailability(false);
@@ -178,6 +180,8 @@ public class DialogueManager : MonoBehaviour
         enabled = true;
         
         currentLines = currentDialogueInfo.interactiveConversation[option].dialogue;
+        currentDialogueInfo.niceWithPlayer = currentDialogueInfo.interactiveConversation[option].triggerNiceImpression;
+        currentDialogueInfo.interactionOptionSelected = true;
 
         SayDialogue(currentLines[0].speech, 
                     currentLines[0].speakerName, 
@@ -194,13 +198,15 @@ public class DialogueManager : MonoBehaviour
         SetDialogueAreaAvailability(enableDialogueArea: true);
 
         if (!dialogueInfo.introRead)
-        {
             currentLines = currentDialogueInfo.introLines;
-            SayDialogue(currentLines[0].speech, 
-                        currentLines[0].speakerName, 
-                        currentLines[0].characterEmotion,
-                        currentLines[0].incognito);
-        }
+        else
+            currentLines = (currentDialogueInfo.niceWithPlayer) ? currentDialogueInfo.niceComment : 
+                                                                    currentDialogueInfo.rudeComment;
+
+        SayDialogue(currentLines[0].speech,
+            currentLines[0].speakerName,
+            currentLines[0].characterEmotion,
+            currentLines[0].incognito);
     }
 
     #region Getters & Setters

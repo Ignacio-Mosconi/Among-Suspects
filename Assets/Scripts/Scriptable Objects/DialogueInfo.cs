@@ -21,6 +21,7 @@ public struct InteractiveDialogue
 {
     public string playerOption;
     public Dialogue[] dialogue;
+    public bool triggerNiceImpression;
 }
 
 [CreateAssetMenu(fileName = "New Dialogue Info", menuName = "Dialogue Info", order = 1)]
@@ -30,6 +31,11 @@ public class DialogueInfo : ScriptableObject
     public Dialogue[] introLines;
     [Header("Interactive Dialogue")]
     public InteractiveDialogue[] interactiveConversation;
+    [Header("'Already Interacted' Dialogue")]
+    public Dialogue[] niceComment;
+    public Dialogue[] rudeComment;
 
     [HideInInspector] public bool introRead = false;
+    [HideInInspector] public bool interactionOptionSelected = false;
+    [HideInInspector] public bool niceWithPlayer = false;
 }

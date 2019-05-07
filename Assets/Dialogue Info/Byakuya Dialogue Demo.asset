@@ -30,8 +30,8 @@ MonoBehaviour:
     characterEmotion: 8
     incognito: 0
   - speakerName: Byakuya
-    speech: "Mind your own business, as I do not posses the time - nor the patience
-      - to be\r\naround insignificant people like you."
+    speech: Mind your own business, as I do not posses the time - nor the patience
+      to be around insignificant people like you.
     characterEmotion: 6
     incognito: 1
   - speakerName: Byakuya
@@ -58,6 +58,7 @@ MonoBehaviour:
       speech: GET LOST!
       characterEmotion: 5
       incognito: 1
+    triggerNiceImpression: 0
   - playerOption: Do you think you are better than me? (challenging).
     dialogue:
     - speakerName: Player
@@ -69,6 +70,10 @@ MonoBehaviour:
         place.'
       characterEmotion: 8
       incognito: 0
+    - speakerName: Byakuya
+      speech: Huh?
+      characterEmotion: 1
+      incognito: 1
     - speakerName: Player
       speech: I don't care about how important you think you are; your identity means
         nothing to me.
@@ -85,7 +90,7 @@ MonoBehaviour:
       incognito: 1
     - speakerName: Byakuya
       speech: You need guts to talk to someone such as myself like that. I like it.
-      characterEmotion: 1
+      characterEmotion: 0
       incognito: 1
     - speakerName: Byakuya
       speech: 'My name is Byakuya Togami, by the way.
@@ -93,4 +98,30 @@ MonoBehaviour:
         I think you are someone worth to know my identity.'
       characterEmotion: 2
       incognito: 0
-  introRead: 0
+    triggerNiceImpression: 0
+  niceComment:
+  - speakerName: Byakuya
+    speech: What?
+    characterEmotion: 1
+    incognito: 0
+  - speakerName: Byakuya
+    speech: You are not expecting me to hug you, are you?
+    characterEmotion: 0
+    incognito: 0
+  - speakerName: Byakuya
+    speech: I told you my name, and you gained my respect, but that doesn't mean we're
+      friends.
+    characterEmotion: 2
+    incognito: 0
+  rudeComment:
+  - speakerName: Byakuya
+    speech: How many times do I have to tell you?
+    characterEmotion: 1
+    incognito: 1
+  - speakerName: Byakuya
+    speech: GET OUT OF HERE!
+    characterEmotion: 5
+    incognito: 1
+  introRead: 1
+  interactionOptionSelected: 1
+  niceWithPlayer: 0

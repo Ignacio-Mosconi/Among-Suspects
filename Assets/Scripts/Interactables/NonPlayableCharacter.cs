@@ -10,6 +10,7 @@ public class NonPlayableCharacter : Interactable
     void Awake()
     {
         dialogueInfo.introRead = false;
+        dialogueInfo.interactionOptionSelected = false;
     }
     protected override void Start()
     {
