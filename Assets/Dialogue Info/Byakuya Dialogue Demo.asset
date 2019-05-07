@@ -16,65 +16,81 @@ MonoBehaviour:
   - speakerName: Byakuya
     speech: How dare you approach me like that?
     characterEmotion: 1
+    incognito: 1
   - speakerName: Player
     speech: Why are you so aggresive? Who do you think you are?
     characterEmotion: 8
+    incognito: 0
   - speakerName: Byakuya
     speech: You don't have even the slightest idea of whom you are talking to, correct?
     characterEmotion: 2
+    incognito: 1
   - speakerName: Player
     speech: Actually, I don't. Would you like to fill me in?
     characterEmotion: 8
+    incognito: 0
   - speakerName: Byakuya
     speech: "Mind your own business, as I do not posses the time - nor the patience
       - to be\r\naround insignificant people like you."
     characterEmotion: 6
+    incognito: 1
   - speakerName: Byakuya
     speech: Get out of my sight immediately!
     characterEmotion: 4
+    incognito: 1
   interactiveConversation:
   - playerOption: Come on; tell me your name (friendly).
     dialogue:
     - speakerName: Player
-      speech: Come on; let's be nice to each other.
+      speech: Come on; let's be nice to each other. We are all trapped together here,
+        aren't we?
       characterEmotion: 8
+      incognito: 0
     - speakerName: Player
-      speech: 'We are all trapped together here, aren''t we?
-
-        What''s your name?'
+      speech: I'm Makoto Naegi. What's your name?
       characterEmotion: 8
+      incognito: 0
     - speakerName: Byakuya
       speech: Haven't you heard me before? Are you deaf?
       characterEmotion: 1
+      incognito: 1
     - speakerName: Byakuya
       speech: GET LOST!
       characterEmotion: 5
+      incognito: 1
   - playerOption: Do you think you are better than me? (challenging).
     dialogue:
     - speakerName: Player
       speech: You have such a high opinion of yourself, now don't you?
       characterEmotion: 8
+      incognito: 0
     - speakerName: Player
       speech: 'Just to be clear: I was never interested in talking to you in the first
         place.'
       characterEmotion: 8
+      incognito: 0
     - speakerName: Player
       speech: I don't care about how important you think you are; your identity means
         nothing to me.
       characterEmotion: 8
+      incognito: 0
     - speakerName: Byakuya
       speech: '...'
       characterEmotion: 3
+      incognito: 1
     - speakerName: Byakuya
       speech: The liitle rat turned out to be an elocuent and interesting person after
         all...
       characterEmotion: 2
+      incognito: 1
     - speakerName: Byakuya
       speech: You need guts to talk to someone such as myself like that. I like it.
       characterEmotion: 1
+      incognito: 1
     - speakerName: Byakuya
       speech: 'My name is Byakuya Togami, by the way.
 
         I think you are someone worth to know my identity.'
       characterEmotion: 2
+      incognito: 0
   introRead: 0

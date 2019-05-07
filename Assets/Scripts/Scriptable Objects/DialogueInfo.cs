@@ -13,6 +13,7 @@ public struct Dialogue
     public string speakerName;
     [TextArea(3, 10)] public string speech;
     public CharacterEmotion characterEmotion;
+    public bool incognito;
 }
 
 [System.Serializable]

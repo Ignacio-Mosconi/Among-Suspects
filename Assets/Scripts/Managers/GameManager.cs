@@ -35,6 +35,14 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = targetFrameRate;
+
+        SetCursorAvailability(enable: false);
+    }
+
+    public void SetCursorAvailability(bool enable)
+    {   
+        Cursor.lockState = (enable) ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = enable;
     }
 
     #region Getters & Setters

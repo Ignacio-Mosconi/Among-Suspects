@@ -15,9 +15,6 @@ public class FirstPersonCamera : MonoBehaviour
     void Awake()
     {
         fpsCamera = GetComponentInChildren<Camera>().transform;
-
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
 
     void Update()

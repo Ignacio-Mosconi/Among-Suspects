@@ -39,6 +39,7 @@ public class DialogueManager : MonoBehaviour
 
     #endregion
 
+    [SerializeField] string playerName;
     [SerializeField] GameObject dialogueArea;
     [SerializeField] TextMeshProUGUI speakerText;
     [SerializeField] TextMeshProUGUI speechText;
@@ -85,7 +86,8 @@ public class DialogueManager : MonoBehaviour
                 if (lineIndex < currentLines.Length)
                     SayDialogue(currentLines[lineIndex].speech, 
                                 currentLines[lineIndex].speakerName,
-                                currentLines[lineIndex].characterEmotion);
+                                currentLines[lineIndex].characterEmotion,
+                                currentLines[lineIndex].incognito);
                 else
                 {
                     lineIndex = 0;
@@ -114,14 +116,15 @@ public class DialogueManager : MonoBehaviour
         enabled = enableDialogueArea;
     }
 
-    void SayDialogue(string speech, string speakerName = "", CharacterEmotion speakerEmotion = CharacterEmotion.Listening)
+    void SayDialogue(string speech, string speakerName = "", 
+                    CharacterEmotion speakerEmotion = CharacterEmotion.Listening, bool incognito = false)
     {
         speechText.maxVisibleCharacters = 0;
         speechText.text = speech;
-        speakerText.text = speakerName;
+        speakerText.text = (!incognito) ? speakerName : "???";
         targetSpeechCharAmount = speech.Length;
         
-        if (speakerName != "Player")
+        if (speakerName != playerName)
         {
             NonPlayableCharacter speaker = CharacterManager.Instance.GetCharacter(speakerName);
 
@@ -155,9 +158,7 @@ public class DialogueManager : MonoBehaviour
     {
         enabled = false;
 
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-
+        GameManager.Instance.SetCursorAvailability(enable: true);
         optionsPanel.SetActive(true);
 
         for (int i = 0; i < currentDialogueInfo.interactiveConversation.Length; i++)
@@ -170,15 +171,18 @@ public class DialogueManager : MonoBehaviour
     }
 
     public void SelectDialogueOption(int option)
-    {
-        for (int i = 0; i < currentDialogueInfo.interactiveConversation.Length; i++)
-            optionsButtons[i].gameObject.SetActive(false);
-
-        currentLines = currentDialogueInfo.interactiveConversation[option].dialogue;
-
-        SayDialogue(currentLines[0].speech, currentLines[0].speakerName, currentLines[0].characterEmotion);
+    {       
+        GameManager.Instance.SetCursorAvailability(enable: false);
+        optionsPanel.SetActive(false);
         
         enabled = true;
+        
+        currentLines = currentDialogueInfo.interactiveConversation[option].dialogue;
+
+        SayDialogue(currentLines[0].speech, 
+                    currentLines[0].speakerName, 
+                    currentLines[0].characterEmotion,
+                    currentLines[0].incognito);
     }
 
     public void EnableDialogueArea(DialogueInfo dialogueInfo, Vector3 characterPosition)
@@ -192,7 +196,10 @@ public class DialogueManager : MonoBehaviour
         if (!dialogueInfo.introRead)
         {
             currentLines = currentDialogueInfo.introLines;
-            SayDialogue(currentLines[0].speech, currentLines[0].speakerName, currentLines[0].characterEmotion);
+            SayDialogue(currentLines[0].speech, 
+                        currentLines[0].speakerName, 
+                        currentLines[0].characterEmotion,
+                        currentLines[0].incognito);
         }
     }
 
