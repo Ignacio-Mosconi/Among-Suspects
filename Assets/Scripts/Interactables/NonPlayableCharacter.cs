@@ -7,6 +7,10 @@ public class NonPlayableCharacter : Interactable
     [SerializeField] DialogueInfo dialogueInfo;
     [SerializeField] GameObject characterMesh;
 
+    void Awake()
+    {
+        dialogueInfo.introRead = false;
+    }
     protected override void Start()
     {
         base.Start();

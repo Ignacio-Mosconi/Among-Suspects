@@ -43,10 +43,13 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI speakerText;
     [SerializeField] TextMeshProUGUI speechText;
     [SerializeField] Image speakerImage;
+    [SerializeField] GameObject optionsPanel;
 
     Player player;
     DialogueInfo currentDialogueInfo;
+    Dialogue[] currentLines;
     Coroutine speakingRoutine;
+    Button[] optionsButtons;
     float characterShowIntervals;
     float textSpeedMultiplier;
     int targetSpeechCharAmount;
@@ -65,6 +68,8 @@ public class DialogueManager : MonoBehaviour
         characterShowIntervals = 1f / GameManager.Instance.TargetFrameRate;
         textSpeedMultiplier = 1f / GameManager.Instance.TextSpeedMultiplier;
 
+        optionsButtons = optionsPanel.GetComponentsInChildren<Button>(includeInactive: true);
+
         enabled = false;
     }
 
@@ -77,14 +82,19 @@ public class DialogueManager : MonoBehaviour
             else
             {
                 lineIndex++;
-                if (lineIndex < currentDialogueInfo.lines.Length)
-                    SayDialogue(currentDialogueInfo.lines[lineIndex].speech, 
-                                currentDialogueInfo.lines[lineIndex].speakerName,
-                                currentDialogueInfo.lines[lineIndex].characterEmotion);
+                if (lineIndex < currentLines.Length)
+                    SayDialogue(currentLines[lineIndex].speech, 
+                                currentLines[lineIndex].speakerName,
+                                currentLines[lineIndex].characterEmotion);
                 else
                 {
                     lineIndex = 0;
-                    SetDialogueAreaAvailability(false);
+                    if (currentLines == currentDialogueInfo.introLines)
+                        currentDialogueInfo.introRead = true;
+                    if (currentDialogueInfo.interactiveConversation[0].playerOption != null)
+                        ShowOptionsMenu();
+                    else
+                        SetDialogueAreaAvailability(false);
                 }
             }
         }
@@ -104,22 +114,28 @@ public class DialogueManager : MonoBehaviour
         enabled = enableDialogueArea;
     }
 
-    void SayDialogue(string speech, string speakerName = "", CharacterEmotion speakerEmotion = CharacterEmotion.Normal)
+    void SayDialogue(string speech, string speakerName = "", CharacterEmotion speakerEmotion = CharacterEmotion.Listening)
     {
-        NonPlayableCharacter speaker = CharacterManager.Instance.GetCharacter(speakerName);
-
         speechText.maxVisibleCharacters = 0;
         speechText.text = speech;
         speakerText.text = speakerName;
-        speakerImage.sprite = speaker.GetSprite(speakerEmotion);
         targetSpeechCharAmount = speech.Length;
+        
+        if (speakerName != "Player")
+        {
+            NonPlayableCharacter speaker = CharacterManager.Instance.GetCharacter(speakerName);
+
+            if (speakerEmotion != CharacterEmotion.Listening)
+                speakerImage.sprite = speaker.GetSprite(speakerEmotion);
+        }
 
         speakingRoutine = StartCoroutine(Speak());
     }
 
     void StopSpeaking()
     {
-        StopCoroutine(speakingRoutine);
+        if (speakingRoutine != null)
+            StopCoroutine(speakingRoutine);
         speechText.maxVisibleCharacters = targetSpeechCharAmount;
         speakingRoutine = null;
     }
@@ -135,6 +151,36 @@ public class DialogueManager : MonoBehaviour
         speakingRoutine = null;
     }
 
+    void ShowOptionsMenu()
+    {
+        enabled = false;
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        optionsPanel.SetActive(true);
+
+        for (int i = 0; i < currentDialogueInfo.interactiveConversation.Length; i++)
+        {
+            optionsButtons[i].gameObject.SetActive(true);
+            
+            TextMeshProUGUI optionText = optionsButtons[i].gameObject.GetComponentInChildren<TextMeshProUGUI>();
+            optionText.text = currentDialogueInfo.interactiveConversation[i].playerOption;
+        }
+    }
+
+    public void SelectDialogueOption(int option)
+    {
+        for (int i = 0; i < currentDialogueInfo.interactiveConversation.Length; i++)
+            optionsButtons[i].gameObject.SetActive(false);
+
+        currentLines = currentDialogueInfo.interactiveConversation[option].dialogue;
+
+        SayDialogue(currentLines[0].speech, currentLines[0].speakerName, currentLines[0].characterEmotion);
+        
+        enabled = true;
+    }
+
     public void EnableDialogueArea(DialogueInfo dialogueInfo, Vector3 characterPosition)
     {
         currentDialogueInfo = dialogueInfo;
@@ -142,9 +188,12 @@ public class DialogueManager : MonoBehaviour
         player.firstPersonCamera.FocusOnObject(characterPosition);
         
         SetDialogueAreaAvailability(enableDialogueArea: true);
-        SayDialogue(dialogueInfo.lines[0].speech, 
-                    dialogueInfo.lines[0].speakerName,
-                    dialogueInfo.lines[0].characterEmotion);
+
+        if (!dialogueInfo.introRead)
+        {
+            currentLines = currentDialogueInfo.introLines;
+            SayDialogue(currentLines[0].speech, currentLines[0].speakerName, currentLines[0].characterEmotion);
+        }
     }
 
     #region Getters & Setters
