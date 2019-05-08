@@ -176,9 +176,12 @@ public class DialogueManager : MonoBehaviour
         {
             optionsButtons[i].gameObject.SetActive(true);
             
-            TextMeshProUGUI optionText = optionsButtons[i].gameObject.GetComponentInChildren<TextMeshProUGUI>();
-            optionText.text = currentDialogueInfo.interactiveConversation[i].playerOption;
+            TextMeshProUGUI[] optionTexts = optionsButtons[i].gameObject.GetComponentsInChildren<TextMeshProUGUI>();
+            optionTexts[0].text = currentDialogueInfo.interactiveConversation[i].playerOption.option;
+            optionTexts[1].text = currentDialogueInfo.interactiveConversation[i].playerOption.description;
         }
+
+        
     }
 
     public void SelectDialogueOption(int option)

@@ -17,9 +17,16 @@ public struct Dialogue
 }
 
 [System.Serializable]
+public struct DialogueOption
+{
+    public string option;
+    public string description;
+}
+
+[System.Serializable]
 public struct InteractiveDialogue
 {
-    public string playerOption;
+    public DialogueOption playerOption;
     public Dialogue[] dialogue;
     public bool triggerNiceImpression;
 }
