@@ -46,7 +46,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI speakerText;
     [SerializeField] TextMeshProUGUI speechText;
     [SerializeField] Image speakerImage;
-    [SerializeField] GameObject optionsPanel;
+    [SerializeField] VerticalLayoutGroup optionsLayout;
 
     Player player;
     DialogueInfo currentDialogueInfo;
@@ -57,6 +57,8 @@ public class DialogueManager : MonoBehaviour
     float textSpeedMultiplier;
     int targetSpeechCharAmount;
     int lineIndex;
+    int[] regularOptionsLayoutPadding = { 0, 0 };
+    float regularOptionsLayoutSpacing = 0f;
 
     UnityEvent onDialogueAreaEnable = new UnityEvent();
     UnityEvent onDialogueAreaDisable = new UnityEvent();
@@ -71,7 +73,11 @@ public class DialogueManager : MonoBehaviour
         characterShowIntervals = 1f / GameManager.Instance.TargetFrameRate;
         textSpeedMultiplier = 1f / GameManager.Instance.TextSpeedMultiplier;
 
-        optionsButtons = optionsPanel.GetComponentsInChildren<Button>(includeInactive: true);
+        optionsButtons = optionsLayout.GetComponentsInChildren<Button>(includeInactive: true);
+        
+        regularOptionsLayoutPadding[0] = optionsLayout.padding.top;
+        regularOptionsLayoutPadding[1] = optionsLayout.padding.bottom;
+        regularOptionsLayoutSpacing = optionsLayout.spacing;
 
         enabled = false;
     }
@@ -172,7 +178,9 @@ public class DialogueManager : MonoBehaviour
 
         GameManager.Instance.SetCursorAvailability(enable: true);
 
-        for (int i = 0; i < currentDialogueInfo.interactiveConversation.Length; i++)
+        int i = 0;
+
+        for (i = 0; i < currentDialogueInfo.interactiveConversation.Length; i++)
         {
             optionsButtons[i].gameObject.SetActive(true);
             
@@ -181,7 +189,12 @@ public class DialogueManager : MonoBehaviour
             optionTexts[1].text = currentDialogueInfo.interactiveConversation[i].playerOption.description;
         }
 
-        
+        int optionsLayoutPaddingMult = optionsButtons.Length - i;
+        int addtionalPadding = (int)optionsButtons[0].GetComponent<Image>().rectTransform.sizeDelta.y / optionsButtons.Length;
+
+        optionsLayout.padding.top = regularOptionsLayoutPadding[0] + (addtionalPadding * optionsLayoutPaddingMult);
+        optionsLayout.padding.bottom = regularOptionsLayoutPadding[1] + (addtionalPadding * optionsLayoutPaddingMult);
+        optionsLayout.spacing = regularOptionsLayoutSpacing + (addtionalPadding * optionsLayoutPaddingMult);
     }
 
     public void SelectDialogueOption(int option)
@@ -191,6 +204,10 @@ public class DialogueManager : MonoBehaviour
         
         for (int i = 0; i < currentDialogueInfo.interactiveConversation.Length; i++)
             optionsButtons[i].gameObject.SetActive(false);
+
+        optionsLayout.padding.top = regularOptionsLayoutPadding[0];
+        optionsLayout.padding.bottom = regularOptionsLayoutPadding[1];
+        optionsLayout.spacing = regularOptionsLayoutSpacing;
              
         currentLines = currentDialogueInfo.interactiveConversation[option].dialogue;
         currentDialogueInfo.niceWithPlayer = currentDialogueInfo.interactiveConversation[option].triggerNiceImpression;
