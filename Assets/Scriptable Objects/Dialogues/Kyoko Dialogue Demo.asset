@@ -1,0 +1,124 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9345bdb6d41302b4997bfaa46be947a2, type: 3}
+  m_Name: Kyoko Dialogue Demo
+  m_EditorClassIdentifier: 
+  introLines:
+  - speakerName: Kyoko
+    speech: '...'
+    characterEmotion: 0
+    clueInfo: {fileID: 0}
+    incognito: 1
+    playerThought: 0
+  - speakerName: Player
+    speech: Hi, there. My name's Makoto. What's yours?
+    characterEmotion: 8
+    clueInfo: {fileID: 0}
+    incognito: 1
+    playerThought: 0
+  - speakerName: Kyoko
+    speech: You shouldn't be so open to the others, you know.
+    characterEmotion: 1
+    clueInfo: {fileID: 0}
+    incognito: 1
+    playerThought: 0
+  - speakerName: Kyoko
+    speech: You never know what their intentions might be.
+    characterEmotion: 0
+    clueInfo: {fileID: 0}
+    incognito: 1
+    playerThought: 0
+  interactiveConversation:
+  - playerOption:
+      option: Angry
+      description: '''I was just trying to be nice!'''
+    dialogue:
+    - speakerName: Player
+      speech: I was just trying to be nice with you, you know.
+      characterEmotion: 8
+      clueInfo: {fileID: 0}
+      incognito: 0
+      playerThought: 0
+    - speakerName: Player
+      speech: You didn't have to be so rude!
+      characterEmotion: 8
+      clueInfo: {fileID: 0}
+      incognito: 0
+      playerThought: 0
+    - speakerName: Kyoko
+      speech: There you go again; you let your emotions rule your behavior...
+      characterEmotion: 2
+      clueInfo: {fileID: 0}
+      incognito: 1
+      playerThought: 0
+    triggerNiceImpression: 0
+  - playerOption:
+      option: Calm
+      description: '''What if I just lied to you?'''
+    dialogue:
+    - speakerName: Player
+      speech: How can you be sure that I've just told you my real name?
+      characterEmotion: 8
+      clueInfo: {fileID: 0}
+      incognito: 0
+      playerThought: 0
+    - speakerName: Kyoko
+      speech: '...'
+      characterEmotion: 3
+      clueInfo: {fileID: 0}
+      incognito: 0
+      playerThought: 0
+    - speakerName: Player
+      speech: What if I was just pretending to be nice just to get some information
+        from you?
+      characterEmotion: 8
+      clueInfo: {fileID: 0}
+      incognito: 0
+      playerThought: 0
+    - speakerName: Kyoko
+      speech: You have a point there. I guess I could have missjudged you, after all.
+      characterEmotion: 1
+      clueInfo: {fileID: 0}
+      incognito: 0
+      playerThought: 0
+    - speakerName: Kyoko
+      speech: You surprised me, but I can tell that 'Makoto' is indeed your real name.
+      characterEmotion: 0
+      clueInfo: {fileID: 0}
+      incognito: 0
+      playerThought: 0
+    - speakerName: Kyoko
+      speech: 'However, I''m willing to let you know mine...
+
+        I''m Kyoko.'
+      characterEmotion: 2
+      clueInfo: {fileID: 0}
+      incognito: 0
+      playerThought: 0
+    triggerNiceImpression: 1
+  niceComment:
+  - speakerName: Kyoko
+    speech: It's nice to see you, but we don't have time to talk.
+    characterEmotion: 1
+    clueInfo: {fileID: 0}
+    incognito: 0
+    playerThought: 0
+  rudeComment:
+  - speakerName: Kyoko
+    speech: '...'
+    characterEmotion: 0
+    clueInfo: {fileID: 0}
+    incognito: 1
+    playerThought: 0
+  introRead: 1
+  interactionOptionSelected: 1
+  niceWithPlayer: 0

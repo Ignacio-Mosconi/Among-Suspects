@@ -12,29 +12,23 @@ public class NonPlayableCharacter : Interactable
         dialogueInfo.introRead = false;
         dialogueInfo.interactionOptionSelected = false;
     }
-    protected override void Start()
+
+    protected override void EnableInteraction()
     {
-        base.Start();
-        
-        DialogueManager.Instance.OnDialogueAreaDisable.AddListener(EnableInteraction);
+        base.EnableInteraction();
+        characterMesh.SetActive(true);
+    }
+
+    protected override void DisableInteraction()
+    {
+        base.DisableInteraction();
+        characterMesh.SetActive(false);
     }
 
     protected override void Interact()
     {   
         DisableInteraction();
         DialogueManager.Instance.EnableDialogueArea(dialogueInfo, interactionPoint.position);
-    }
-
-    void EnableInteraction()
-    {
-        base.enabled = true;
-        characterMesh.SetActive(true);
-    }
-
-    void DisableInteraction()
-    {
-        base.enabled = false;
-        characterMesh.SetActive(false);
     }
     
     public Sprite GetSprite(CharacterEmotion characterEmotion)

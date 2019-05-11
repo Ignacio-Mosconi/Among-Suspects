@@ -41,6 +41,7 @@ public class DialogueManager : MonoBehaviour
 
     [SerializeField] string playerName;
     [SerializeField] Color playerSpeakingTextColor;
+    [SerializeField] Color playerThinkingTextColor;
     [SerializeField] Color npcSpeakingTextColor;
     [SerializeField] GameObject dialogueArea;
     [SerializeField] TextMeshProUGUI speakerText;
@@ -95,18 +96,27 @@ public class DialogueManager : MonoBehaviour
                     SayDialogue(currentLines[lineIndex].speech, 
                                 currentLines[lineIndex].speakerName,
                                 currentLines[lineIndex].characterEmotion,
-                                currentLines[lineIndex].incognito);
+                                currentLines[lineIndex].incognito,
+                                currentLines[lineIndex].playerThought);
                 else
                 {
                     lineIndex = 0;
-                    
-                    if (currentLines == currentDialogueInfo.introLines)
-                        currentDialogueInfo.introRead = true;
-                    
-                    if (!currentDialogueInfo.interactionOptionSelected)
-                        ShowOptionsMenu();
+
+                    if (currentDialogueInfo != null)
+                    {
+                        if (currentLines == currentDialogueInfo.introLines)
+                            currentDialogueInfo.introRead = true;
+                        
+                        if (!currentDialogueInfo.interactionOptionSelected)
+                            ShowOptionsMenu();
+                        else
+                        {
+                            speakerImage.gameObject.SetActive(false);
+                            SetDialogueAreaAvailability(enableDialogueArea: false);
+                        }
+                    }
                     else
-                        SetDialogueAreaAvailability(false);
+                        SetDialogueAreaAvailability(enableDialogueArea: false);              
                 }
             }
         }
@@ -121,13 +131,19 @@ public class DialogueManager : MonoBehaviour
 
         player.playerMovement.enabled = !enableDialogueArea;
         player.firstPersonCamera.enabled = !enableDialogueArea;
+
+        if (!enableDialogueArea)
+        {
+            currentDialogueInfo = null;
+            currentLines = null;
+        }
         
         dialogueArea.SetActive(enableDialogueArea);
         enabled = enableDialogueArea;
     }
 
     void SayDialogue(string speech, string speakerName = "", 
-                    CharacterEmotion speakerEmotion = CharacterEmotion.Listening, bool incognito = false)
+                    CharacterEmotion speakerEmotion = CharacterEmotion.Listening, bool incognito = false, bool playerThought = false)
     {
         speechText.maxVisibleCharacters = 0;
         speechText.text = speech;
@@ -146,8 +162,16 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-            if (speechText.color != playerSpeakingTextColor)
-                speechText.color = playerSpeakingTextColor;
+            if (!playerThought)
+            {
+                if (speechText.color != playerSpeakingTextColor)
+                    speechText.color = playerSpeakingTextColor;
+            }
+            else
+            {
+                if (speechText.color != playerThinkingTextColor)
+                    speechText.color = playerThinkingTextColor;
+            }       
         }
 
         speakingRoutine = StartCoroutine(Speak());
@@ -216,7 +240,8 @@ public class DialogueManager : MonoBehaviour
         SayDialogue(currentLines[0].speech, 
                     currentLines[0].speakerName, 
                     currentLines[0].characterEmotion,
-                    currentLines[0].incognito);
+                    currentLines[0].incognito,
+                    currentLines[0].playerThought);
     }
 
     public void EnableDialogueArea(DialogueInfo dialogueInfo, Vector3 characterPosition)
@@ -224,6 +249,8 @@ public class DialogueManager : MonoBehaviour
         currentDialogueInfo = dialogueInfo;
         
         player.firstPersonCamera.FocusOnObject(characterPosition);
+
+        speakerImage.gameObject.SetActive(true);
         
         SetDialogueAreaAvailability(enableDialogueArea: true);
 
@@ -234,9 +261,25 @@ public class DialogueManager : MonoBehaviour
                                                                     currentDialogueInfo.rudeComment;
 
         SayDialogue(currentLines[0].speech,
-            currentLines[0].speakerName,
-            currentLines[0].characterEmotion,
-            currentLines[0].incognito);
+                    currentLines[0].speakerName,
+                    currentLines[0].characterEmotion,
+                    currentLines[0].incognito,
+                    currentLines[0].playerThought);
+    }
+
+    public void EnableDialogueArea(Dialogue[] comments, Vector3 objectPosition)
+    {
+        player.firstPersonCamera.FocusOnObject(objectPosition);
+        
+        SetDialogueAreaAvailability(enableDialogueArea: true);
+
+        currentLines = comments;
+
+        SayDialogue(currentLines[0].speech,
+                    currentLines[0].speakerName,
+                    currentLines[0].characterEmotion,
+                    currentLines[0].incognito,
+                    currentLines[0].playerThought);
     }
 
     #region Getters & Setters

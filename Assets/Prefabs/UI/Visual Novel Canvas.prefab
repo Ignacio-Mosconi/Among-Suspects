@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &995658275608595083
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1159,6 +1159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerName: Player
   playerSpeakingTextColor: {r: 0.35705453, g: 0.6792453, b: 0, a: 1}
+  playerThinkingTextColor: {r: 0.7830189, g: 0.7577694, b: 0, a: 1}
   npcSpeakingTextColor: {r: 1, g: 1, b: 1, a: 1}
   dialogueArea: {fileID: 1760805069758245826}
   speakerText: {fileID: 6437505108356912175}
