@@ -62,7 +62,7 @@ public class FirstPersonCamera : MonoBehaviour
         }
     }
 
-    public void FocusOnObject(Vector3 position)
+    public void FocusOnPosition(ref Vector3 position)
     {
         StartCoroutine(RotateViewProgressively(position));
     }

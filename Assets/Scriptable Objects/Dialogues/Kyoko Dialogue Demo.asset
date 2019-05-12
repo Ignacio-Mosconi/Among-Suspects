@@ -20,7 +20,7 @@ MonoBehaviour:
     incognito: 1
     playerThought: 0
   - speakerName: Player
-    speech: Hi, there. My name's Makoto. What's yours?
+    speech: Hi, there. My name's <color=orange>Makoto</color>. What's yours?
     characterEmotion: 8
     clueInfo: {fileID: 0}
     incognito: 1
@@ -91,7 +91,8 @@ MonoBehaviour:
       incognito: 0
       playerThought: 0
     - speakerName: Kyoko
-      speech: You surprised me, but I can tell that 'Makoto' is indeed your real name.
+      speech: You surprised me, but I can tell that <color=orange>'Makoto'</color>
+        is indeed your real name.
       characterEmotion: 0
       clueInfo: {fileID: 0}
       incognito: 0
@@ -99,7 +100,7 @@ MonoBehaviour:
     - speakerName: Kyoko
       speech: 'However, I''m willing to let you know mine...
 
-        I''m Kyoko.'
+        I''m <color=orange>Kyoko</color>.'
       characterEmotion: 2
       clueInfo: {fileID: 0}
       incognito: 0
@@ -131,6 +132,6 @@ MonoBehaviour:
     clueInfo: {fileID: 0}
     incognito: 1
     playerThought: 0
-  introRead: 0
-  interactionOptionSelected: 0
-  niceWithPlayer: 0
+  introRead: 1
+  interactionOptionSelected: 1
+  niceWithPlayer: 1

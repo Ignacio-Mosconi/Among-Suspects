@@ -4,12 +4,6 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using TMPro;
 
-struct Player
-{
-    public FirstPersonCamera firstPersonCamera;
-    public PlayerMovement playerMovement;
-}
-
 public class DialogueManager : MonoBehaviour
 {
     #region Singleton
@@ -39,7 +33,6 @@ public class DialogueManager : MonoBehaviour
 
     #endregion
 
-    [SerializeField] string playerName;
     [SerializeField] Color playerSpeakingTextColor;
     [SerializeField] Color playerThinkingTextColor;
     [SerializeField] Color npcSpeakingTextColor;
@@ -50,7 +43,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] Image objectImage;
     [SerializeField] VerticalLayoutGroup optionsLayout;
 
-    Player player;
+    PlayerController playerController;
     DialogueInfo currentDialogueInfo;
     Dialogue[] currentLines;
     Coroutine speakingRoutine;
@@ -69,8 +62,7 @@ public class DialogueManager : MonoBehaviour
     {
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
 
-        player.firstPersonCamera = playerObject.GetComponent<FirstPersonCamera>();
-        player.playerMovement = playerObject.GetComponent<PlayerMovement>();
+        playerController = playerObject.GetComponent<PlayerController>();
 
         characterShowIntervals = 1f / GameManager.Instance.TargetFrameRate;
         textSpeedMultiplier = 1f / GameManager.Instance.TextSpeedMultiplier;
@@ -127,14 +119,13 @@ public class DialogueManager : MonoBehaviour
         else
             onDialogueAreaDisable.Invoke();
 
-        player.playerMovement.enabled = !enableDialogueArea;
-        player.firstPersonCamera.enabled = !enableDialogueArea;
+        playerController.SetMovemeventAvailability(enableMovement: !enableDialogueArea);
 
         if (!enableDialogueArea)
         {
             currentDialogueInfo = null;
             currentLines = null;
-            
+
             objectImage.gameObject.SetActive(false);
             speakerImage.gameObject.SetActive(false);
         }
@@ -144,15 +135,14 @@ public class DialogueManager : MonoBehaviour
         enabled = enableDialogueArea;
     }
 
-    void SayDialogue(string speech, string speakerName = "", 
-                    CharacterEmotion speakerEmotion = CharacterEmotion.Listening, bool incognito = false, bool playerThought = false)
+    void SayDialogue(string speech, string speakerName, CharacterEmotion speakerEmotion, bool incognito, bool playerThought)
     {
         speechText.maxVisibleCharacters = 0;
         speechText.text = speech;
         speakerText.text = (!incognito) ? speakerName : "???";
         targetSpeechCharAmount = speech.Length;
         
-        if (speakerName != playerName)
+        if (speakerName != playerController.PlayerName)
         {
             NonPlayableCharacter speaker = CharacterManager.Instance.GetCharacter(speakerName);
 
@@ -250,7 +240,7 @@ public class DialogueManager : MonoBehaviour
     {
         currentDialogueInfo = dialogueInfo;
         
-        player.firstPersonCamera.FocusOnObject(characterPosition);
+        playerController.FocusOnPosition(characterPosition);
 
         speakerImage.gameObject.SetActive(true);
         
@@ -271,7 +261,7 @@ public class DialogueManager : MonoBehaviour
 
     public void EnableDialogueArea(Dialogue[] thoughts, Vector3 objectPosition, Sprite objectSprite = null, bool enableImage = false)
     {
-        player.firstPersonCamera.FocusOnObject(objectPosition);
+        playerController.FocusOnPosition(objectPosition);
 
         if (enableImage)
         {
