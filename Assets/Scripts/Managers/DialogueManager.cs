@@ -60,9 +60,7 @@ public class DialogueManager : MonoBehaviour
 
     void Start()
     {
-        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
-
-        playerController = playerObject.GetComponent<PlayerController>();
+        playerController = FindObjectOfType<PlayerController>();
 
         characterShowIntervals = 1f / GameManager.Instance.TargetFrameRate;
         textSpeedMultiplier = 1f / GameManager.Instance.TextSpeedMultiplier;
@@ -90,7 +88,8 @@ public class DialogueManager : MonoBehaviour
                                 currentLines[lineIndex].speakerName,
                                 currentLines[lineIndex].characterEmotion,
                                 currentLines[lineIndex].incognito,
-                                currentLines[lineIndex].playerThought);
+                                currentLines[lineIndex].playerThought,
+                                currentLines[lineIndex].clueInfo);
                 else
                 {
                     lineIndex = 0;
@@ -135,12 +134,16 @@ public class DialogueManager : MonoBehaviour
         enabled = enableDialogueArea;
     }
 
-    void SayDialogue(string speech, string speakerName, CharacterEmotion speakerEmotion, bool incognito, bool playerThought)
+    void SayDialogue(string speech, string speakerName, CharacterEmotion speakerEmotion, 
+                        bool incognito, bool playerThought, ClueInfo clueInfo)
     {
         speechText.maxVisibleCharacters = 0;
         speechText.text = speech;
         speakerText.text = (!incognito) ? speakerName : "???";
         targetSpeechCharAmount = speech.Length;
+
+        if (clueInfo)
+            playerController.AddClue(clueInfo);
         
         if (speakerName != playerController.PlayerName)
         {
@@ -233,7 +236,8 @@ public class DialogueManager : MonoBehaviour
                     currentLines[0].speakerName, 
                     currentLines[0].characterEmotion,
                     currentLines[0].incognito,
-                    currentLines[0].playerThought);
+                    currentLines[0].playerThought,
+                    currentLines[0].clueInfo);
     }
 
     public void EnableDialogueArea(DialogueInfo dialogueInfo, Vector3 characterPosition)
@@ -256,7 +260,8 @@ public class DialogueManager : MonoBehaviour
                     currentLines[0].speakerName,
                     currentLines[0].characterEmotion,
                     currentLines[0].incognito,
-                    currentLines[0].playerThought);
+                    currentLines[0].playerThought,
+                    currentLines[0].clueInfo);
     }
 
     public void EnableDialogueArea(Dialogue[] thoughts, Vector3 objectPosition, Sprite objectSprite = null, bool enableImage = false)
@@ -277,7 +282,8 @@ public class DialogueManager : MonoBehaviour
                     currentLines[0].speakerName,
                     currentLines[0].characterEmotion,
                     currentLines[0].incognito,
-                    currentLines[0].playerThought);
+                    currentLines[0].playerThought,
+                    currentLines[0].clueInfo);
     }
 
     #region Getters & Setters

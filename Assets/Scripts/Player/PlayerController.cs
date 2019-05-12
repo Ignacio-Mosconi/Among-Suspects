@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(FirstPersonCamera))]
@@ -32,6 +33,11 @@ public class PlayerController : MonoBehaviour
     {
         if (!cluesGathered.Contains(clueInfo))
             cluesGathered.Add(clueInfo);
+    }
+
+    public bool HasClue(ref ClueInfo clueInfo)
+    {    
+        return (cluesGathered.Contains(clueInfo));
     }
 
     #region Getters & Setters

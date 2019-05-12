@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class PauseMenu : Menu
 {
     [SerializeField] GameObject menuArea;
 
     bool isPaused;
+
+    UnityEvent onPaused = new UnityEvent();
+    UnityEvent onResume = new UnityEvent();
 
     void Update()
     {
@@ -35,4 +39,18 @@ public class PauseMenu : Menu
         ResetMenuState();
         GameManager.Instance.SetCursorAvailability(enable: false);
     }
+
+    #region Getters & Setters
+
+    public UnityEvent OnPaused
+    {
+        get { return onPaused; }
+    }
+
+    public UnityEvent OnResume
+    {
+        get { return onResume; }
+    }
+
+    #endregion
 }

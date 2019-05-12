@@ -17,6 +17,10 @@ public class HUD : MonoBehaviour
             interactable.OnInteraction.AddListener(HideInteractTextPanel);
         }
 
+        PauseMenu pauseMenu = FindObjectOfType<PauseMenu>();
+        pauseMenu.OnPaused.AddListener(HideHUD);
+        pauseMenu.OnResume.AddListener(ShowHUD);
+
         DialogueManager.Instance.OnDialogueAreaEnable.AddListener(HideHUD);
         DialogueManager.Instance.OnDialogueAreaDisable.AddListener(ShowHUD);
     }
