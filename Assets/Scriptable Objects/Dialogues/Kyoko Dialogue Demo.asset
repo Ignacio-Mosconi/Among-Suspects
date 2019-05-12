@@ -78,8 +78,8 @@ MonoBehaviour:
       incognito: 0
       playerThought: 0
     - speakerName: Player
-      speech: What if I was just pretending to be nice just to get some information
-        from you?
+      speech: What if I was pretending to be nice just to get some information from
+        you?
       characterEmotion: 8
       clueInfo: {fileID: 0}
       incognito: 0
@@ -119,6 +119,18 @@ MonoBehaviour:
     clueInfo: {fileID: 0}
     incognito: 1
     playerThought: 0
-  introRead: 1
-  interactionOptionSelected: 1
+  - speakerName: Player
+    speech: Aren't you going to say anything?
+    characterEmotion: 8
+    clueInfo: {fileID: 0}
+    incognito: 1
+    playerThought: 0
+  - speakerName: Kyoko
+    speech: I'm not willing to talk to someone like you, as I can't trust you...
+    characterEmotion: 1
+    clueInfo: {fileID: 0}
+    incognito: 1
+    playerThought: 0
+  introRead: 0
+  interactionOptionSelected: 0
   niceWithPlayer: 0

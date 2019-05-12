@@ -47,6 +47,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI speakerText;
     [SerializeField] TextMeshProUGUI speechText;
     [SerializeField] Image speakerImage;
+    [SerializeField] Image objectImage;
     [SerializeField] VerticalLayoutGroup optionsLayout;
 
     Player player;
@@ -110,10 +111,7 @@ public class DialogueManager : MonoBehaviour
                         if (!currentDialogueInfo.interactionOptionSelected)
                             ShowOptionsMenu();
                         else
-                        {
-                            speakerImage.gameObject.SetActive(false);
                             SetDialogueAreaAvailability(enableDialogueArea: false);
-                        }
                     }
                     else
                         SetDialogueAreaAvailability(enableDialogueArea: false);              
@@ -136,7 +134,11 @@ public class DialogueManager : MonoBehaviour
         {
             currentDialogueInfo = null;
             currentLines = null;
+            
+            objectImage.gameObject.SetActive(false);
+            speakerImage.gameObject.SetActive(false);
         }
+
         
         dialogueArea.SetActive(enableDialogueArea);
         enabled = enableDialogueArea;
@@ -267,13 +269,19 @@ public class DialogueManager : MonoBehaviour
                     currentLines[0].playerThought);
     }
 
-    public void EnableDialogueArea(Dialogue[] comments, Vector3 objectPosition)
+    public void EnableDialogueArea(Dialogue[] thoughts, Vector3 objectPosition, Sprite objectSprite = null, bool enableImage = false)
     {
         player.firstPersonCamera.FocusOnObject(objectPosition);
-        
+
+        if (enableImage)
+        {
+            objectImage.sprite = objectSprite;
+            objectImage.gameObject.SetActive(true);
+        }
+
         SetDialogueAreaAvailability(enableDialogueArea: true);
 
-        currentLines = comments;
+        currentLines = thoughts;
 
         SayDialogue(currentLines[0].speech,
                     currentLines[0].speakerName,
