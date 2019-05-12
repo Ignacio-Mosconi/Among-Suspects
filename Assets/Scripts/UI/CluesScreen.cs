@@ -4,22 +4,24 @@ using TMPro;
 
 public class CluesScreen : MonoBehaviour
 {
-    [SerializeField] GameObject cluesPanel;
+    [SerializeField] GameObject cluesButtonsPanel;
+    [SerializeField] GameObject cluesDescriptionArea;
     [SerializeField] TextMeshProUGUI clueTitleText;
     [SerializeField] TextMeshProUGUI clueDescriptionText;
+    [SerializeField] Image clueImage;
 
     Button[] cluesButtons;
     PlayerController playerController;
 
     void Awake()
     {
-        cluesButtons = cluesPanel.GetComponentsInChildren<Button>();
+        cluesButtons = cluesButtonsPanel.GetComponentsInChildren<Button>();
         playerController = FindObjectOfType<PlayerController>();
     }
 
     void OnEnable()
     {
-        bool isFirstClue = true;
+        bool firstClueFound = false;
 
         for (int i = 0; i < cluesButtons.Length; i++)
         {
@@ -32,16 +34,19 @@ public class CluesScreen : MonoBehaviour
             {
                 buttonText.text = clueInfo.clueName;
 
-                if (isFirstClue)
+                if (!firstClueFound)
                 {
                     clueTitleText.text = clueInfo.clueName;
                     clueDescriptionText.text = clueInfo.description;
-                    isFirstClue = false;
+                    clueImage.sprite = clueInfo.clueSprite;
+                    firstClueFound = true;
                 }
             }
             else
                 buttonText.text = "???";
         }
+
+        cluesDescriptionArea.SetActive(firstClueFound);
     }
 
     public void SelectClue(int clueIndex)
@@ -50,5 +55,6 @@ public class CluesScreen : MonoBehaviour
         
         clueTitleText.text = (clueInfo) ? clueInfo.clueName : "???" ;
         clueDescriptionText.text = (clueInfo) ? clueInfo.description : "";
+        clueImage.sprite = clueInfo.clueSprite;
     }
 }

@@ -5,4 +5,5 @@ public class ClueInfo : ScriptableObject
 {
     public string clueName;
     [TextArea(3, 10)] public string description;
+    public Sprite clueSprite;
 }

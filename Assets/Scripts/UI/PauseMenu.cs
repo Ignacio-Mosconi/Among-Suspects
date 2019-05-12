@@ -28,6 +28,7 @@ public class PauseMenu : Menu
         menuArea.SetActive(true);
 
         GameManager.Instance.SetCursorAvailability(enable: true);
+        onPaused.Invoke();
     }
 
     public void Resume()
@@ -38,6 +39,7 @@ public class PauseMenu : Menu
 
         ResetMenuState();
         GameManager.Instance.SetCursorAvailability(enable: false);
+        onResume.Invoke();
     }
 
     #region Getters & Setters

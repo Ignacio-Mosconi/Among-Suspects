@@ -18,14 +18,19 @@ public class Menu : MonoBehaviour
 
     void Start()
     {
-        ResetMenuState();
+        currentScreen = Array.Find(menuScreens, ms => ms.screen == mainScreen);
     }
 
     protected void ResetMenuState()
     {
-        currentScreen = Array.Find(menuScreens, ms => ms.screen == mainScreen);
-        previousScreen.screen = null;
-        previousScreen.previousScreen = null;
+        if (currentScreen.screen != mainScreen)
+        {
+            currentScreen.screen.SetActive(false);
+            currentScreen = Array.Find(menuScreens, ms => ms.screen == mainScreen);
+            currentScreen.screen.SetActive(true);
+            previousScreen.screen = null;
+            previousScreen.previousScreen = null;
+        }
     }
 
     public void MoveToNextScreen(GameObject nextScreen)
