@@ -7,7 +7,8 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] [Range(2f, 3f)] float runMultiplier = 2f;
 
     CharacterController characterController;
-    float currentRunMultiplier = 1f;
+    float currentRunMul = 1f;
+    float verticalSpeed = 0f;
 
     void Awake()
     {
@@ -25,8 +26,15 @@ public class PlayerMovement : MonoBehaviour
         inputVector = new Vector3(horMovement, 0f, forMovement);
         if (inputVector.sqrMagnitude > 1f)
             inputVector.Normalize();
-        currentRunMultiplier = (Input.GetButton("Run")) ? runMultiplier : 1f;
-        movement += (transform.right * inputVector.x + transform.forward * inputVector.z) * movementSpeed * currentRunMultiplier;
+        currentRunMul = (Input.GetButton("Run")) ? runMultiplier : 1f;
+        verticalSpeed += Physics.gravity.y * Time.deltaTime;
+        
+        movement += (transform.right * inputVector.x + transform.forward * inputVector.z) * movementSpeed * currentRunMul;
+        movement += Vector3.up * verticalSpeed;
+
         characterController.Move(movement * Time.deltaTime);
+             
+        if (characterController.isGrounded || (characterController.collisionFlags & CollisionFlags.Above) != 0)
+            verticalSpeed = 0f;
     }
 }
