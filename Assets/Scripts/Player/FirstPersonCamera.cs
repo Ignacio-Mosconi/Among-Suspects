@@ -9,6 +9,7 @@ public class FirstPersonCamera : MonoBehaviour
     [SerializeField] [Range(60f, 90f)] float focusSpeed = 75f;
 
     Transform fpsCamera;
+    Coroutine focusing;
     float horAngle = 0f;
     float verAngle = 0f;
 
@@ -62,9 +63,11 @@ public class FirstPersonCamera : MonoBehaviour
         }
     }
 
-    public void FocusOnPosition(ref Vector3 position)
+    public void FocusOnPosition(Vector3 position)
     {
-        StartCoroutine(RotateViewProgressively(position));
+        if (focusing != null)
+            StopCoroutine(focusing);
+        focusing = StartCoroutine(RotateViewProgressively(position));
     }
 
     #region Getters & Setters

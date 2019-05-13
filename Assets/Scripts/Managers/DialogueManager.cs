@@ -48,6 +48,8 @@ public class DialogueManager : MonoBehaviour
     Dialogue[] currentLines;
     Coroutine speakingRoutine;
     Button[] optionsButtons;
+    NonPlayableCharacter mainSpeaker;
+    NonPlayableCharacter previousSpeaker;
     float characterShowIntervals;
     float textSpeedMultiplier;
     int targetSpeechCharAmount;
@@ -98,17 +100,34 @@ public class DialogueManager : MonoBehaviour
                     {
                         if (currentLines == currentDialogueInfo.introLines)
                             currentDialogueInfo.introRead = true;
-                        
+
                         if (!currentDialogueInfo.interactionOptionSelected)
                             ShowOptionsMenu();
                         else
-                            SetDialogueAreaAvailability(enableDialogueArea: false);
+                        {
+                            if (!currentDialogueInfo.groupDialogueRead)
+                                StartGroupDialogue();
+                            else
+                                SetDialogueAreaAvailability(enableDialogueArea: false);             
+                        }
                     }
                     else
                         SetDialogueAreaAvailability(enableDialogueArea: false);              
                 }
             }
         }
+    }
+
+    void StartGroupDialogue()
+    {
+        currentDialogueInfo.groupDialogueRead = true;
+        currentLines = currentDialogueInfo.groupDialogue.dialogue;
+        SayDialogue(currentLines[0].speech,
+                    currentLines[0].speakerName,
+                    currentLines[0].characterEmotion,
+                    currentLines[0].incognito,
+                    currentLines[0].playerThought,
+                    currentLines[0].clueInfo);
     }
 
     void SetDialogueAreaAvailability(bool enableDialogueArea)
@@ -147,13 +166,31 @@ public class DialogueManager : MonoBehaviour
         
         if (speakerName != playerController.PlayerName)
         {
-            NonPlayableCharacter speaker = CharacterManager.Instance.GetCharacter(speakerName);
+            NonPlayableCharacter currentSpeaker;
+            
+            if (!previousSpeaker || speakerName != previousSpeaker.CharacterName)
+            {
+                currentSpeaker = CharacterManager.Instance.GetCharacter(speakerName);
+                if (currentSpeaker == mainSpeaker)
+                    playerController.FocusOnPosition(mainSpeaker.InteractionPosition);
+                else
+                {
+                    if (currentSpeaker.CharacterName == currentDialogueInfo.groupDialogue.leftSpeaker)
+                        playerController.FocusOnPosition(mainSpeaker.LeftSpeakerPosition);
+                    else
+                        playerController.FocusOnPosition(mainSpeaker.RightSpeakerPosition);
+                }
+            }
+            else
+                currentSpeaker = previousSpeaker;
 
             if (speakerEmotion != CharacterEmotion.Listening)
-                speakerImage.sprite = speaker.GetSprite(speakerEmotion);
+                speakerImage.sprite = currentSpeaker.GetSprite(speakerEmotion);
             
             if (speechText.color != npcSpeakingTextColor)
                 speechText.color = npcSpeakingTextColor;
+
+            previousSpeaker = currentSpeaker;
         }
         else
         {
@@ -240,11 +277,12 @@ public class DialogueManager : MonoBehaviour
                     currentLines[0].clueInfo);
     }
 
-    public void EnableDialogueArea(DialogueInfo dialogueInfo, Vector3 characterPosition)
+    public void EnableDialogueArea(DialogueInfo dialogueInfo, NonPlayableCharacter npc)
     {
         currentDialogueInfo = dialogueInfo;
         
-        playerController.FocusOnPosition(characterPosition);
+        mainSpeaker = npc;
+        playerController.FocusOnPosition(npc.InteractionPosition);
 
         speakerImage.gameObject.SetActive(true);
         

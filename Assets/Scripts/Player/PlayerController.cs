@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
 
     public void FocusOnPosition(Vector3 position)
     {
-        firstPersonCamera.FocusOnPosition(ref position);
+        firstPersonCamera.FocusOnPosition(position);
     }
 
     public void AddClue(ClueInfo clueInfo)

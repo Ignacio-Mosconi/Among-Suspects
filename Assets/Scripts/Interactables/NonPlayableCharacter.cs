@@ -6,11 +6,14 @@ public class NonPlayableCharacter : Interactable
     [SerializeField] Sprite[] characterSprites;
     [SerializeField] DialogueInfo dialogueInfo;
     [SerializeField] GameObject characterMesh;
+    [SerializeField] Transform leftSpeaker;
+    [SerializeField] Transform rightSpeaker;
 
     void Awake()
     {
         dialogueInfo.introRead = false;
         dialogueInfo.interactionOptionSelected = false;
+        dialogueInfo.groupDialogueRead = false;
     }
 
     protected override void EnableInteraction()
@@ -28,7 +31,7 @@ public class NonPlayableCharacter : Interactable
     protected override void Interact()
     {   
         DisableInteraction();
-        DialogueManager.Instance.EnableDialogueArea(dialogueInfo, interactionPoint.position);
+        DialogueManager.Instance.EnableDialogueArea(dialogueInfo, this);
     }
     
     public Sprite GetSprite(CharacterEmotion characterEmotion)
@@ -41,6 +44,16 @@ public class NonPlayableCharacter : Interactable
     public string CharacterName
     {
         get { return characterName; }
+    }
+
+    public Vector3 LeftSpeakerPosition
+    {
+        get { return leftSpeaker.position; }
+    }
+
+    public Vector3 RightSpeakerPosition
+    {
+        get { return rightSpeaker.position; }
     }
 
     #endregion

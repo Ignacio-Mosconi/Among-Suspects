@@ -172,6 +172,47 @@ MonoBehaviour:
     clueInfo: {fileID: 0}
     incognito: 1
     playerThought: 0
-  introRead: 1
-  interactionOptionSelected: 1
+  groupDialogue:
+    leftSpeaker: Kyoko
+    rightSpeaker: 
+    dialogue:
+    - speakerName: Byakuya
+      speech: This is a group dialogue!
+      characterEmotion: 0
+      clueInfo: {fileID: 0}
+      incognito: 0
+      playerThought: 0
+    - speakerName: Kyoko
+      speech: Yes, indeed.
+      characterEmotion: 2
+      clueInfo: {fileID: 0}
+      incognito: 0
+      playerThought: 0
+    - speakerName: Player
+      speech: This is so exciting!
+      characterEmotion: 8
+      clueInfo: {fileID: 0}
+      incognito: 0
+      playerThought: 0
+    - speakerName: Byakuya
+      speech: You're right! Hahaha!
+      characterEmotion: 2
+      clueInfo: {fileID: 0}
+      incognito: 0
+      playerThought: 0
+    - speakerName: Kyoko
+      speech: Sure...
+      characterEmotion: 8
+      clueInfo: {fileID: 0}
+      incognito: 0
+      playerThought: 0
+    - speakerName: Player
+      speech: They'll try to kill me for sure...
+      characterEmotion: 0
+      clueInfo: {fileID: 0}
+      incognito: 0
+      playerThought: 1
+  introRead: 0
+  interactionOptionSelected: 0
   niceWithPlayer: 1
+  groupDialogueRead: 0

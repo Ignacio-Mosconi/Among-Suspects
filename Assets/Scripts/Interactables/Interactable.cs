@@ -82,7 +82,12 @@ public abstract class Interactable : MonoBehaviour
     protected abstract void Interact();
 
     #region Getters & Setters
-    
+
+    public Vector3 InteractionPosition
+    {
+        get { return interactionPoint.position; }
+    }
+
     public UnityEvent OnStartLookingAt
     {
         get { return onStartLookingAt; }

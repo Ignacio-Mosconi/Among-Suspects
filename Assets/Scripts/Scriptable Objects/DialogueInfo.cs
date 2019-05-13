@@ -33,6 +33,14 @@ public struct InteractiveDialogue
     public bool triggerNiceImpression;
 }
 
+[System.Serializable]
+public struct GroupDialogue
+{
+    public string leftSpeaker;
+    public string rightSpeaker;
+    public Dialogue[] dialogue;
+}
+
 [CreateAssetMenu(fileName = "New Dialogue Info", menuName = "Dialogue Info", order = 1)]
 public class DialogueInfo : ScriptableObject
 {
@@ -43,8 +51,11 @@ public class DialogueInfo : ScriptableObject
     [Header("'Already Interacted' Dialogue")]
     public Dialogue[] niceComment;
     public Dialogue[] rudeComment;
+    [Header("Group Dialogue")]
+    public GroupDialogue groupDialogue;
 
     [HideInInspector] public bool introRead = false;
     [HideInInspector] public bool interactionOptionSelected = false;
     [HideInInspector] public bool niceWithPlayer = false;
+    [HideInInspector] public bool groupDialogueRead = false;
 }
