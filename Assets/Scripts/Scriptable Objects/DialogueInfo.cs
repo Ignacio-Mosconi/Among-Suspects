@@ -58,4 +58,19 @@ public class DialogueInfo : ScriptableObject
     [HideInInspector] public bool interactionOptionSelected = false;
     [HideInInspector] public bool niceWithPlayer = false;
     [HideInInspector] public bool groupDialogueRead = false;
+
+    public bool HasIntroLines()
+    {
+        return (introLines.Length > 0);
+    }
+    
+    public bool HasInteractiveDialogue()
+    {
+        return (interactiveConversation.Length > 0);
+    }
+
+    public bool HasGroupDialogue()
+    {
+        return (groupDialogue.dialogue.Length > 0);
+    }
 }

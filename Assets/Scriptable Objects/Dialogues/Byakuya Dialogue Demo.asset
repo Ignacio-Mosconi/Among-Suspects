@@ -173,8 +173,8 @@ MonoBehaviour:
     incognito: 1
     playerThought: 0
   groupDialogue:
-    leftSpeaker: Kyoko
-    rightSpeaker: 
+    leftSpeaker: 
+    rightSpeaker: Kyoko
     dialogue:
     - speakerName: Byakuya
       speech: This is a group dialogue!
@@ -202,17 +202,17 @@ MonoBehaviour:
       playerThought: 0
     - speakerName: Kyoko
       speech: Sure...
-      characterEmotion: 8
+      characterEmotion: 2
       clueInfo: {fileID: 0}
       incognito: 0
       playerThought: 0
     - speakerName: Player
       speech: They'll try to kill me for sure...
-      characterEmotion: 0
+      characterEmotion: 8
       clueInfo: {fileID: 0}
       incognito: 0
       playerThought: 1
-  introRead: 0
-  interactionOptionSelected: 0
-  niceWithPlayer: 1
-  groupDialogueRead: 0
+  introRead: 1
+  interactionOptionSelected: 1
+  niceWithPlayer: 0
+  groupDialogueRead: 1

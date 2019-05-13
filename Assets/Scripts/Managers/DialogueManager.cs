@@ -100,34 +100,19 @@ public class DialogueManager : MonoBehaviour
                     {
                         if (currentLines == currentDialogueInfo.introLines)
                             currentDialogueInfo.introRead = true;
+                        if (currentLines == currentDialogueInfo.groupDialogue.dialogue)
+                            currentDialogueInfo.groupDialogueRead = true;
 
-                        if (!currentDialogueInfo.interactionOptionSelected)
+                        if (currentDialogueInfo.HasInteractiveDialogue() && !currentDialogueInfo.interactionOptionSelected)
                             ShowOptionsMenu();
                         else
-                        {
-                            if (!currentDialogueInfo.groupDialogueRead)
-                                StartGroupDialogue();
-                            else
-                                SetDialogueAreaAvailability(enableDialogueArea: false);             
-                        }
+                            SetDialogueAreaAvailability(enableDialogueArea: false);             
                     }
                     else
                         SetDialogueAreaAvailability(enableDialogueArea: false);              
                 }
             }
         }
-    }
-
-    void StartGroupDialogue()
-    {
-        currentDialogueInfo.groupDialogueRead = true;
-        currentLines = currentDialogueInfo.groupDialogue.dialogue;
-        SayDialogue(currentLines[0].speech,
-                    currentLines[0].speakerName,
-                    currentLines[0].characterEmotion,
-                    currentLines[0].incognito,
-                    currentLines[0].playerThought,
-                    currentLines[0].clueInfo);
     }
 
     void SetDialogueAreaAvailability(bool enableDialogueArea)
@@ -288,11 +273,16 @@ public class DialogueManager : MonoBehaviour
         
         SetDialogueAreaAvailability(enableDialogueArea: true);
 
-        if (!dialogueInfo.introRead)
+        if (currentDialogueInfo.HasIntroLines() && !currentDialogueInfo.introRead)
             currentLines = currentDialogueInfo.introLines;
         else
-            currentLines = (currentDialogueInfo.niceWithPlayer) ? currentDialogueInfo.niceComment : 
-                                                                    currentDialogueInfo.rudeComment;
+        {
+            if (currentDialogueInfo.HasGroupDialogue() && !currentDialogueInfo.groupDialogueRead)
+                currentLines = currentDialogueInfo.groupDialogue.dialogue;
+            else
+                currentLines = (currentDialogueInfo.niceWithPlayer) ? currentDialogueInfo.niceComment : 
+                                                                        currentDialogueInfo.rudeComment;
+        }
 
         SayDialogue(currentLines[0].speech,
                     currentLines[0].speakerName,
