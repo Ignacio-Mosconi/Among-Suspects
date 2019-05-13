@@ -1,6 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum CharacterName
+{
+    Player,
+    Byakuya,
+    Kyoko,
+    None
+}
+
 public class CharacterManager : MonoBehaviour
 {
     #region Singleton
@@ -41,11 +49,11 @@ public class CharacterManager : MonoBehaviour
             if (!characters.Find(c => c.CharacterName == npc.CharacterName)) 
                 characters.Add(npc);
             else
-                Debug.LogError("There are duplicate caracters in the scene.", npc.gameObject);
+                Debug.LogError("There are duplicate characters in the scene.", npc.gameObject);
         }
     }
 
-    public NonPlayableCharacter GetCharacter(string characterName)
+    public NonPlayableCharacter GetCharacter(CharacterName characterName)
     {
         NonPlayableCharacter character = characters.Find(c => c.CharacterName == characterName);
         

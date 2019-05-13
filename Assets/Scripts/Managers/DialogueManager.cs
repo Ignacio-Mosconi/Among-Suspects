@@ -89,7 +89,7 @@ public class DialogueManager : MonoBehaviour
                     SayDialogue(currentLines[lineIndex].speech, 
                                 currentLines[lineIndex].speakerName,
                                 currentLines[lineIndex].characterEmotion,
-                                currentLines[lineIndex].incognito,
+                                currentLines[lineIndex].revealName,
                                 currentLines[lineIndex].playerThought,
                                 currentLines[lineIndex].clueInfo);
                 else
@@ -138,12 +138,11 @@ public class DialogueManager : MonoBehaviour
         enabled = enableDialogueArea;
     }
 
-    void SayDialogue(string speech, string speakerName, CharacterEmotion speakerEmotion, 
-                        bool incognito, bool playerThought, ClueInfo clueInfo)
+    void SayDialogue(string speech, CharacterName speakerName, CharacterEmotion speakerEmotion, 
+                        bool revealName, bool playerThought, ClueInfo clueInfo)
     {
         speechText.maxVisibleCharacters = 0;
         speechText.text = speech;
-        speakerText.text = (!incognito) ? speakerName : "???";
         targetSpeechCharAmount = speech.Length;
 
         if (clueInfo)
@@ -156,6 +155,7 @@ public class DialogueManager : MonoBehaviour
             if (!previousSpeaker || speakerName != previousSpeaker.CharacterName)
             {
                 currentSpeaker = CharacterManager.Instance.GetCharacter(speakerName);
+                
                 if (currentSpeaker == mainSpeaker)
                     playerController.FocusOnPosition(mainSpeaker.InteractionPosition);
                 else
@@ -169,6 +169,11 @@ public class DialogueManager : MonoBehaviour
             else
                 currentSpeaker = previousSpeaker;
 
+            if (revealName)
+                currentSpeaker.NameRevealed = true;
+
+            speakerText.text = (currentSpeaker.NameRevealed) ? speakerName.ToString() : "???";
+
             if (speakerEmotion != CharacterEmotion.Listening)
                 speakerImage.sprite = currentSpeaker.GetSprite(speakerEmotion);
             
@@ -179,6 +184,8 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
+            speakerText.text = speakerName.ToString();
+            
             if (!playerThought)
             {
                 if (speechText.color != playerSpeakingTextColor)
@@ -257,7 +264,7 @@ public class DialogueManager : MonoBehaviour
         SayDialogue(currentLines[0].speech, 
                     currentLines[0].speakerName, 
                     currentLines[0].characterEmotion,
-                    currentLines[0].incognito,
+                    currentLines[0].revealName,
                     currentLines[0].playerThought,
                     currentLines[0].clueInfo);
     }
@@ -287,7 +294,7 @@ public class DialogueManager : MonoBehaviour
         SayDialogue(currentLines[0].speech,
                     currentLines[0].speakerName,
                     currentLines[0].characterEmotion,
-                    currentLines[0].incognito,
+                    currentLines[0].revealName,
                     currentLines[0].playerThought,
                     currentLines[0].clueInfo);
     }
@@ -309,7 +316,7 @@ public class DialogueManager : MonoBehaviour
         SayDialogue(currentLines[0].speech,
                     currentLines[0].speakerName,
                     currentLines[0].characterEmotion,
-                    currentLines[0].incognito,
+                    currentLines[0].revealName,
                     currentLines[0].playerThought,
                     currentLines[0].clueInfo);
     }

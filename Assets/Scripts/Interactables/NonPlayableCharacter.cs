@@ -2,12 +2,14 @@
 
 public class NonPlayableCharacter : Interactable
 {
-    [SerializeField] string characterName;
+    [SerializeField] CharacterName characterName;
     [SerializeField] Sprite[] characterSprites;
     [SerializeField] DialogueInfo dialogueInfo;
     [SerializeField] GameObject characterMesh;
     [SerializeField] Transform leftSpeaker;
     [SerializeField] Transform rightSpeaker;
+
+    bool nameRevealed = false;
 
     void Awake()
     {
@@ -41,9 +43,15 @@ public class NonPlayableCharacter : Interactable
 
     #region Getters & Setters
 
-    public string CharacterName
+    public CharacterName CharacterName
     {
         get { return characterName; }
+    }
+
+    public bool NameRevealed
+    {
+        get { return nameRevealed; }
+        set { nameRevealed = value; }
     }
 
     public Vector3 LeftSpeakerPosition

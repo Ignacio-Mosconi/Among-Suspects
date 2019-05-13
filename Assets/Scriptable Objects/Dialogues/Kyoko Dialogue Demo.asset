@@ -13,125 +13,187 @@ MonoBehaviour:
   m_Name: Kyoko Dialogue Demo
   m_EditorClassIdentifier: 
   introLines:
-  - speakerName: Kyoko
+  - speakerName: 2
     speech: '...'
     characterEmotion: 0
     clueInfo: {fileID: 0}
-    incognito: 1
+    revealName: 0
     playerThought: 0
-  - speakerName: Player
+  - speakerName: 0
     speech: Hi, there. My name's <color=orange>Makoto</color>. What's yours?
     characterEmotion: 8
     clueInfo: {fileID: 0}
-    incognito: 1
+    revealName: 0
     playerThought: 0
-  - speakerName: Kyoko
+  - speakerName: 2
     speech: You shouldn't be so open to the others, you know.
     characterEmotion: 1
     clueInfo: {fileID: 0}
-    incognito: 1
+    revealName: 0
     playerThought: 0
-  - speakerName: Kyoko
+  - speakerName: 2
     speech: You never know what their intentions might be.
     characterEmotion: 0
     clueInfo: {fileID: 0}
-    incognito: 1
+    revealName: 0
     playerThought: 0
   interactiveConversation:
   - playerOption:
       option: Angry
       description: '''I was just trying to be nice!'''
     dialogue:
-    - speakerName: Player
+    - speakerName: 0
       speech: I was just trying to be nice with you, you know.
       characterEmotion: 8
       clueInfo: {fileID: 0}
-      incognito: 0
+      revealName: 0
       playerThought: 0
-    - speakerName: Player
+    - speakerName: 0
       speech: You didn't have to be so rude!
       characterEmotion: 8
       clueInfo: {fileID: 0}
-      incognito: 0
+      revealName: 0
       playerThought: 0
-    - speakerName: Kyoko
+    - speakerName: 2
       speech: There you go again; you let your emotions rule your behavior...
       characterEmotion: 2
       clueInfo: {fileID: 0}
-      incognito: 1
+      revealName: 0
       playerThought: 0
     triggerNiceImpression: 0
   - playerOption:
       option: Calm
       description: '''What if I just lied to you?'''
     dialogue:
-    - speakerName: Player
+    - speakerName: 0
       speech: How can you be sure that I've just told you my real name?
       characterEmotion: 8
       clueInfo: {fileID: 0}
-      incognito: 0
+      revealName: 0
       playerThought: 0
-    - speakerName: Kyoko
+    - speakerName: 2
       speech: '...'
       characterEmotion: 3
       clueInfo: {fileID: 0}
-      incognito: 0
+      revealName: 0
       playerThought: 0
-    - speakerName: Player
+    - speakerName: 0
       speech: What if I was pretending to be nice just to get some information from
         you?
       characterEmotion: 8
       clueInfo: {fileID: 0}
-      incognito: 0
+      revealName: 0
       playerThought: 0
-    - speakerName: Kyoko
+    - speakerName: 2
       speech: You have a point there. I guess I could have missjudged you, after all.
       characterEmotion: 1
       clueInfo: {fileID: 0}
-      incognito: 0
+      revealName: 0
       playerThought: 0
-    - speakerName: Kyoko
+    - speakerName: 2
       speech: You surprised me, but I can tell that <color=orange>'Makoto'</color>
         is indeed your real name.
       characterEmotion: 0
       clueInfo: {fileID: 0}
-      incognito: 0
+      revealName: 0
       playerThought: 0
-    - speakerName: Kyoko
+    - speakerName: 2
       speech: 'However, I''m willing to let you know mine...
 
         I''m <color=orange>Kyoko</color>.'
       characterEmotion: 2
       clueInfo: {fileID: 0}
-      incognito: 0
+      revealName: 1
       playerThought: 0
     triggerNiceImpression: 1
   niceComment:
-  - speakerName: Kyoko
+  - speakerName: 2
     speech: It's nice to see you, but we don't have time to talk.
     characterEmotion: 1
     clueInfo: {fileID: 0}
-    incognito: 0
+    revealName: 0
     playerThought: 0
   rudeComment:
-  - speakerName: Kyoko
+  - speakerName: 2
     speech: '...'
     characterEmotion: 0
     clueInfo: {fileID: 0}
-    incognito: 1
+    revealName: 0
     playerThought: 0
-  - speakerName: Player
+  - speakerName: 0
     speech: Aren't you going to say anything?
     characterEmotion: 8
     clueInfo: {fileID: 0}
-    incognito: 1
+    revealName: 0
     playerThought: 0
-  - speakerName: Kyoko
+  - speakerName: 2
     speech: I'm not willing to talk to someone like you, as I can't trust you...
     characterEmotion: 1
     clueInfo: {fileID: 0}
-    incognito: 1
+    revealName: 0
     playerThought: 0
+  groupDialogue:
+    leftSpeaker: 1
+    rightSpeaker: 0
+    dialogue:
+    - speakerName: 0
+      speech: Hello, there. Any ideas about who could be the killer?
+      characterEmotion: 8
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+    - speakerName: 2
+      speech: You should look for clues everywere, even in the places that you least
+        expect to find something...
+      characterEmotion: 1
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+    - speakerName: 0
+      speech: What do you mean?
+      characterEmotion: 8
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+    - speakerName: 1
+      speech: She wants you to look for clues everywhere, fool.
+      characterEmotion: 1
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+    - speakerName: 1
+      speech: Even in the most obvious places...
+      characterEmotion: 0
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+    - speakerName: 1
+      speech: Like the trash bin, for instance...
+      characterEmotion: 2
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+    - speakerName: 2
+      speech: 'But be careful: clues might not tell you the truth at the first glimpse
+        - they might be there to deceive you.'
+      characterEmotion: 6
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+    - speakerName: 1
+      speech: '...'
+      characterEmotion: 0
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+    - speakerName: 0
+      speech: What's up between them? It seems like they are talking to each other
+        indirectly.
+      characterEmotion: 8
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 1
   introRead: 1
   interactionOptionSelected: 1
   niceWithPlayer: 1
+  groupDialogueRead: 1

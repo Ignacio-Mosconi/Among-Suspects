@@ -10,11 +10,11 @@ public enum CharacterEmotion
 [System.Serializable]
 public struct Dialogue
 {
-    public string speakerName;
+    public CharacterName speakerName;
     [TextArea(3, 10)] public string speech;
     public CharacterEmotion characterEmotion;
     public ClueInfo clueInfo;
-    public bool incognito;
+    public bool revealName;
     public bool playerThought;
 }
 
@@ -36,8 +36,8 @@ public struct InteractiveDialogue
 [System.Serializable]
 public struct GroupDialogue
 {
-    public string leftSpeaker;
-    public string rightSpeaker;
+    public CharacterName leftSpeaker;
+    public CharacterName rightSpeaker;
     public Dialogue[] dialogue;
 }
 
@@ -63,7 +63,7 @@ public class DialogueInfo : ScriptableObject
     {
         return (introLines.Length > 0);
     }
-    
+
     public bool HasInteractiveDialogue()
     {
         return (interactiveConversation.Length > 0);

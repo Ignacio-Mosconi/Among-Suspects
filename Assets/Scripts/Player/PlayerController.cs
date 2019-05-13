@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerMovement))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] string playerName;
+    [SerializeField] CharacterName playerName;
 
     FirstPersonCamera firstPersonCamera;
     PlayerMovement playerMovement;
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
     #region Getters & Setters
 
-    public string PlayerName
+    public CharacterName PlayerName
     {
         get { return playerName; }
     }

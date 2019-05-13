@@ -290,7 +290,7 @@ Transform:
   - {fileID: 7257083712401003511}
   - {fileID: 8853570021289923312}
   m_Father: {fileID: 945961929337047379}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4198609149982289995
 Animator:
@@ -538,6 +538,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2677569305224437982}
+  - {fileID: 6941992956955135982}
+  - {fileID: 4252049998187959297}
   - {fileID: 2820929774240532443}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -557,7 +559,7 @@ MonoBehaviour:
   interactionPoint: {fileID: 2677569305224437982}
   interactionRadius: 2
   hasToBeFaced: 1
-  characterName: Kyoko
+  characterName: 2
   characterSprites:
   - {fileID: 21300000, guid: 1ec77ddd2c56a6b418ec56927f820105, type: 3}
   - {fileID: 21300002, guid: 1ec77ddd2c56a6b418ec56927f820105, type: 3}
@@ -569,6 +571,8 @@ MonoBehaviour:
   - {fileID: 21300014, guid: 1ec77ddd2c56a6b418ec56927f820105, type: 3}
   dialogueInfo: {fileID: 11400000, guid: 0259e0c2e97f63341b4d9d43ea9a184e, type: 2}
   characterMesh: {fileID: 1010974328041096265}
+  leftSpeaker: {fileID: 6941992956955135982}
+  rightSpeaker: {fileID: 4252049998187959297}
 --- !u!1 &2100860031760614811
 GameObject:
   m_ObjectHideFlags: 0
@@ -1809,6 +1813,36 @@ Transform:
   m_Father: {fileID: 945961929337047379}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6322842211101122192
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6941992956955135982}
+  m_Layer: 0
+  m_Name: Left Speaker Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6941992956955135982
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6322842211101122192}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.5, y: 1.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 945961929337047379}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6452848379732092816
 GameObject:
   m_ObjectHideFlags: 0
@@ -2474,6 +2508,36 @@ Transform:
   - {fileID: 4502054549841924510}
   m_Father: {fileID: 4559560844212244704}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8292508237535668137
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4252049998187959297}
+  m_Layer: 0
+  m_Name: Right Speaker Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4252049998187959297
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8292508237535668137}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.5, y: 1.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 945961929337047379}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8459170147369704039
 GameObject:
