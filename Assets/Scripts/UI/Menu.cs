@@ -16,7 +16,7 @@ public class Menu : MonoBehaviour
     MenuScreen currentScreen;
     MenuScreen previousScreen;
 
-    void Start()
+    protected virtual void Start()
     {
         currentScreen = Array.Find(menuScreens, ms => ms.screen == mainScreen);
     }

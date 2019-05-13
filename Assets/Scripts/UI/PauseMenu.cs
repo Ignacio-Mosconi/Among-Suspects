@@ -5,10 +5,17 @@ public class PauseMenu : Menu
 {
     [SerializeField] GameObject menuArea;
 
+    PlayerController playerController;
     bool isPaused;
 
     UnityEvent onPaused = new UnityEvent();
     UnityEvent onResume = new UnityEvent();
+
+    protected override void Start()
+    {
+        base.Start();
+        playerController = FindObjectOfType<PlayerController>();
+    }
 
     void Update()
     {
@@ -27,6 +34,7 @@ public class PauseMenu : Menu
         Time.timeScale = 0f;
         menuArea.SetActive(true);
 
+        playerController.SetAvailability(enable: false);
         GameManager.Instance.SetCursorAvailability(enable: true);
         onPaused.Invoke();
     }
@@ -38,6 +46,7 @@ public class PauseMenu : Menu
         menuArea.SetActive(false);
 
         ResetMenuState();
+        playerController.SetAvailability(enable: true);
         GameManager.Instance.SetCursorAvailability(enable: false);
         onResume.Invoke();
     }

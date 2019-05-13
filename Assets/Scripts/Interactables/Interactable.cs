@@ -7,7 +7,7 @@ public abstract class Interactable : MonoBehaviour
     [SerializeField] [Range(1f, 5f)] float interactionRadius;
     [SerializeField] bool hasToBeFaced = false;
 
-    FirstPersonCamera firstPersonCamera;
+    PlayerController playerController;
     Transform cameraTransform;
     bool isPlayerLookingAt = false;
 
@@ -17,23 +17,24 @@ public abstract class Interactable : MonoBehaviour
 
     void Start()
     {
-        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
-
-        firstPersonCamera = playerObject.GetComponent<FirstPersonCamera>();
-        cameraTransform = firstPersonCamera.GetComponentInChildren<Camera>().transform;
+        playerController = FindObjectOfType<PlayerController>();
+        cameraTransform = playerController.GetComponentInChildren<Camera>().transform;
 
         DialogueManager.Instance.OnDialogueAreaDisable.AddListener(EnableInteraction);
     }
 
     void Update()
     {
+        if (!playerController.CanInteract)
+            return;
+
         Vector3 diff = interactionPoint.position - cameraTransform.position;
 
         if (diff.sqrMagnitude < interactionRadius * interactionRadius)
         {
             float angleBetweenObjs = Vector3.Angle(cameraTransform.forward, diff);
-            float viewRange = firstPersonCamera.InteractionFOV * 0.5f / diff.magnitude;
-            float interactableFwdOrient = firstPersonCamera.transform.InverseTransformDirection(transform.forward).z;
+            float viewRange = playerController.FirstPersonCamera.InteractionFOV * 0.5f / diff.magnitude;
+            float interactableFwdOrient = playerController.transform.InverseTransformDirection(transform.forward).z;
 
             if (angleBetweenObjs < viewRange && (!hasToBeFaced || interactableFwdOrient < -0.5f))
             {

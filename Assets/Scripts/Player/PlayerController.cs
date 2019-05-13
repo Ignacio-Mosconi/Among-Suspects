@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     FirstPersonCamera firstPersonCamera;
     PlayerMovement playerMovement;
     List<ClueInfo> cluesGathered = new List<ClueInfo>();
+    bool canInteract = true;
 
     void Awake()
     {
@@ -18,15 +19,11 @@ public class PlayerController : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
     }
 
-    public void SetMovemeventAvailability(bool enableMovement)
+    public void SetAvailability(bool enable)
     {
-        firstPersonCamera.enabled = enableMovement;
-        playerMovement.enabled = enableMovement;
-    }
-
-    public void FocusOnPosition(Vector3 position)
-    {
-        firstPersonCamera.FocusOnPosition(position);
+        firstPersonCamera.enabled = enable;
+        playerMovement.enabled = enable;
+        canInteract = enable;
     }
 
     public void AddClue(ClueInfo clueInfo)
@@ -45,6 +42,16 @@ public class PlayerController : MonoBehaviour
     public CharacterName PlayerName
     {
         get { return playerName; }
+    }
+
+    public FirstPersonCamera FirstPersonCamera
+    {
+        get { return firstPersonCamera; }
+    }
+
+    public bool CanInteract
+    {
+        get { return canInteract; }
     }
     
     #endregion

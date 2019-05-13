@@ -122,7 +122,7 @@ public class DialogueManager : MonoBehaviour
         else
             onDialogueAreaDisable.Invoke();
 
-        playerController.SetMovemeventAvailability(enableMovement: !enableDialogueArea);
+        playerController.SetAvailability(enable: !enableDialogueArea);
 
         if (!enableDialogueArea)
         {
@@ -157,13 +157,13 @@ public class DialogueManager : MonoBehaviour
                 currentSpeaker = CharacterManager.Instance.GetCharacter(speakerName);
                 
                 if (currentSpeaker == mainSpeaker)
-                    playerController.FocusOnPosition(mainSpeaker.InteractionPosition);
+                    playerController.FirstPersonCamera.FocusOnPosition(mainSpeaker.InteractionPosition);
                 else
                 {
                     if (currentSpeaker.CharacterName == currentDialogueInfo.groupDialogue.leftSpeaker)
-                        playerController.FocusOnPosition(mainSpeaker.LeftSpeakerPosition);
+                        playerController.FirstPersonCamera.FocusOnPosition(mainSpeaker.LeftSpeakerPosition);
                     else
-                        playerController.FocusOnPosition(mainSpeaker.RightSpeakerPosition);
+                        playerController.FirstPersonCamera.FocusOnPosition(mainSpeaker.RightSpeakerPosition);
                 }
             }
             else
@@ -274,7 +274,7 @@ public class DialogueManager : MonoBehaviour
         currentDialogueInfo = dialogueInfo;
         
         mainSpeaker = npc;
-        playerController.FocusOnPosition(npc.InteractionPosition);
+        playerController.FirstPersonCamera.FocusOnPosition(npc.InteractionPosition);
 
         speakerImage.gameObject.SetActive(true);
         
@@ -301,7 +301,7 @@ public class DialogueManager : MonoBehaviour
 
     public void EnableDialogueArea(Dialogue[] thoughts, Vector3 objectPosition, Sprite objectSprite = null, bool enableImage = false)
     {
-        playerController.FocusOnPosition(objectPosition);
+        playerController.FirstPersonCamera.FocusOnPosition(objectPosition);
 
         if (enableImage)
         {
