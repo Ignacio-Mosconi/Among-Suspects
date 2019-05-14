@@ -140,7 +140,7 @@ CharacterController:
   m_Height: 1.7
   m_Radius: 0.5
   m_SlopeLimit: 40
-  m_StepOffset: 0.2
+  m_StepOffset: 0.15
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 479dc68a0537568498951fd32acfc606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: Player
+  playerName: 0
 --- !u!114 &306136508311427889
 MonoBehaviour:
   m_ObjectHideFlags: 0
