@@ -5,6 +5,9 @@ public class HUD : MonoBehaviour
 {
     [SerializeField] GameObject hudArea;
     [SerializeField] GameObject interactTextPanel;
+    [SerializeField] GameObject debateStartPrompt;
+
+    DebateController debateController;
 
     void Start()
     {
@@ -16,6 +19,9 @@ public class HUD : MonoBehaviour
             interactable.OnStopLookingAt.AddListener(HideInteractTextPanel);
             interactable.OnInteraction.AddListener(HideInteractTextPanel);
         }
+
+        debateController = FindObjectOfType<DebateController>();
+        debateController.OnInteraction.AddListener(ShowDebateStartPrompt);
 
         PauseMenu pauseMenu = FindObjectOfType<PauseMenu>();
         pauseMenu.OnPaused.AddListener(HideHUD);
@@ -43,5 +49,27 @@ public class HUD : MonoBehaviour
     void HideInteractTextPanel()
     {
         interactTextPanel.SetActive(false);
+    }
+
+    void ShowDebateStartPrompt()
+    {
+        debateStartPrompt.SetActive(true);
+    }
+
+    void HideDebateStartPrompt()
+    {
+        debateStartPrompt.SetActive(false);
+    }
+
+    public void ConfirmDebateStart()
+    {
+        HideDebateStartPrompt();
+        debateController.StartDebate();
+    }
+
+    public void CancelDebateStart()
+    {
+        HideDebateStartPrompt();
+        debateController.CancelDebate();
     }
 }

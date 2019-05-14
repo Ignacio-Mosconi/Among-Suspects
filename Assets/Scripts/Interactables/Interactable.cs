@@ -7,7 +7,8 @@ public abstract class Interactable : MonoBehaviour
     [SerializeField] [Range(1f, 5f)] float interactionRadius;
     [SerializeField] bool hasToBeFaced = false;
 
-    PlayerController playerController;
+    protected PlayerController playerController;
+    
     Transform cameraTransform;
     bool isPlayerLookingAt = false;
 

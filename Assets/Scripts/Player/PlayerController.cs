@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 
     FirstPersonCamera firstPersonCamera;
     PlayerMovement playerMovement;
+    Camera camera;
     List<ClueInfo> cluesGathered = new List<ClueInfo>();
     bool canInteract = true;
 
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     {
         firstPersonCamera = GetComponent<FirstPersonCamera>();
         playerMovement = GetComponent<PlayerMovement>();
+        camera = GetComponentInChildren<Camera>();
     }
 
     public void SetAvailability(bool enable)
@@ -24,6 +26,11 @@ public class PlayerController : MonoBehaviour
         firstPersonCamera.enabled = enable;
         playerMovement.enabled = enable;
         canInteract = enable;
+    }
+
+    public void SetCameraAvailability(bool enable)
+    {
+        camera.gameObject.SetActive(enable);
     }
 
     public void AddClue(ClueInfo clueInfo)
