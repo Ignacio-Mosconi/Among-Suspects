@@ -77,6 +77,36 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &1666835468536471616
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3363558399793656494}
+  m_Layer: 10
+  m_Name: Interaction Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3363558399793656494
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666835468536471616}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 150, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 65352497049006419}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2772211002370834708
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,7 +138,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 65352497049006419}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4873576892246012893
 MeshFilter:
@@ -180,6 +210,7 @@ GameObject:
   - component: {fileID: 6198269401133909151}
   - component: {fileID: 8432658721479751031}
   - component: {fileID: 910660262792151379}
+  - component: {fileID: 5041317423565128373}
   m_Layer: 10
   m_Name: Mueble1
   m_TagString: Untagged
@@ -198,6 +229,7 @@ Transform:
   m_LocalPosition: {x: 14.625, y: 0.25, z: 2.417224}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children:
+  - {fileID: 3363558399793656494}
   - {fileID: 5001368421120861699}
   - {fileID: 3300677076377180656}
   - {fileID: 7511018029962451666}
@@ -262,6 +294,41 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 83.77742, y: 285.2034, z: 189.16911}
   m_Center: {x: 0, y: 142.6017, z: 0}
+--- !u!114 &5041317423565128373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4026852678807005030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 056bd17588c3297489d1b0d54d17550d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionPoint: {fileID: 3363558399793656494}
+  interactionRadius: 2
+  hasToBeFaced: 0
+  thoughts:
+  - speakerName: 0
+    speech: More and more antique furniture...
+    characterEmotion: 0
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 1
+  - speakerName: 0
+    speech: It's all over the place!
+    characterEmotion: 0
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 1
+  - speakerName: 0
+    speech: There's nothing important inside, though.
+    characterEmotion: 0
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 1
+  objectSprite: {fileID: 21300000, guid: 6adaab2705538df4bb4867854b05a816, type: 3}
 --- !u!1 &6710826751157144573
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,7 +361,7 @@ Transform:
   m_Children:
   - {fileID: 5306512370528837211}
   m_Father: {fileID: 65352497049006419}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &9216557288967540967
 MeshFilter:
@@ -463,7 +530,7 @@ Transform:
   m_Children:
   - {fileID: 2014902376501982185}
   m_Father: {fileID: 65352497049006419}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4927803099418955405
 MeshFilter:

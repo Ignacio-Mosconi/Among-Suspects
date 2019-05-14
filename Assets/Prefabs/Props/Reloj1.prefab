@@ -187,7 +187,7 @@ Transform:
   - {fileID: 8623597017624149512}
   - {fileID: 8828571902547954080}
   m_Father: {fileID: 1533672316969422598}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2507086673548649182
 MeshFilter:
@@ -246,6 +246,7 @@ GameObject:
   - component: {fileID: 3476943863830105032}
   - component: {fileID: 1378100457959946826}
   - component: {fileID: 4457803518240280375}
+  - component: {fileID: 6326331989172632519}
   m_Layer: 10
   m_Name: Reloj1
   m_TagString: Untagged
@@ -264,6 +265,7 @@ Transform:
   m_LocalPosition: {x: 0.375, y: 0.25, z: 1.9066558}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children:
+  - {fileID: 2989556561419027198}
   - {fileID: 3803419479949773348}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -326,6 +328,78 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 71.37655, y: 291.9629, z: 71.37655}
   m_Center: {x: 0, y: 145.98145, z: 0}
+--- !u!114 &6326331989172632519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5068829693230123436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 056bd17588c3297489d1b0d54d17550d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionPoint: {fileID: 2989556561419027198}
+  interactionRadius: 2
+  hasToBeFaced: 0
+  thoughts:
+  - speakerName: 0
+    speech: What an old clock...
+    characterEmotion: 0
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 1
+  - speakerName: 0
+    speech: This mansion is really starting to creep me out...
+    characterEmotion: 0
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 1
+  - speakerName: 0
+    speech: Not only are we trapped inside this hideous place, but someone is murdering
+      us as well!
+    characterEmotion: 0
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 1
+  - speakerName: 0
+    speech: We have to get out here before it's too late!
+    characterEmotion: 0
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 1
+  objectSprite: {fileID: 21300000, guid: f4ccf2bed94a1cb4c8a639502223d348, type: 3}
+--- !u!1 &5122152133644803559
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2989556561419027198}
+  m_Layer: 10
+  m_Name: Interaction Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2989556561419027198
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5122152133644803559}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 200, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1533672316969422598}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6139490137536883946
 GameObject:
   m_ObjectHideFlags: 0
