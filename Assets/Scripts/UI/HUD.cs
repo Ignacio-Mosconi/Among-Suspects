@@ -7,7 +7,7 @@ public class HUD : MonoBehaviour
     [SerializeField] GameObject interactTextPanel;
     [SerializeField] GameObject debateStartPrompt;
 
-    DebateController debateController;
+    DebateInitializer debateInitializer;
 
     void Start()
     {
@@ -20,8 +20,8 @@ public class HUD : MonoBehaviour
             interactable.OnInteraction.AddListener(HideInteractTextPanel);
         }
 
-        debateController = FindObjectOfType<DebateController>();
-        debateController.OnInteraction.AddListener(ShowDebateStartPrompt);
+        debateInitializer = FindObjectOfType<DebateInitializer>();
+        debateInitializer.OnInteraction.AddListener(ShowDebateStartPrompt);
 
         PauseMenu pauseMenu = FindObjectOfType<PauseMenu>();
         pauseMenu.OnPaused.AddListener(HideHUD);
@@ -64,12 +64,12 @@ public class HUD : MonoBehaviour
     public void ConfirmDebateStart()
     {
         HideDebateStartPrompt();
-        debateController.StartDebate();
+        debateInitializer.StartDebate();
     }
 
     public void CancelDebateStart()
     {
         HideDebateStartPrompt();
-        debateController.CancelDebate();
+        debateInitializer.CancelDebate();
     }
 }

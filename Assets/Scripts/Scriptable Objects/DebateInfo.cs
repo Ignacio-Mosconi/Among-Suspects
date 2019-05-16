@@ -2,26 +2,27 @@
 
 public enum DebateReaction
 {
-    Trust, Doubt, Disagree, Accuse
+    Agree, Disagree
 }
 
+[System.Serializable]
 public struct DebateDialogue
 {
     public CharacterName speakerName;
-    [TextArea(3, 10)] public string speech;
+    [TextArea(3, 10)] public string argument;
     public CharacterEmotion characterEmotion;
-    public bool playerThought;
 }
 
+[System.Serializable]
 public struct Argument
 {
-    DebateDialogue[] debateDialogue;
-    DebateReaction correctReaction;
-    ClueInfo correctEvidence;
+    public DebateDialogue[] debateDialogue;
+    public DebateReaction correctReaction;
+    public ClueInfo correctEvidence;
 }
 
 [CreateAssetMenu(fileName = "New Debate Info", menuName = "Debate Info", order = 3)]
 public class DebateInfo : ScriptableObject
 {
-    Argument[] arguments;
+    public Argument[] arguments;
 }
