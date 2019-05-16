@@ -15,10 +15,10 @@ MonoBehaviour:
   arguments:
   - debateDialogue:
     - speakerName: 2
+      argument: I swear I'm telling the truth!
+      characterEmotion: 7
+    - speakerName: 2
       argument: I didn't kill the fucking bastard!
       characterEmotion: 5
-    correctReaction: 0
-    correctEvidence: {fileID: 0}
-  - debateDialogue: []
-    correctReaction: 0
-    correctEvidence: {fileID: 0}
+    correctReaction: 1
+    correctEvidence: {fileID: 11400000, guid: 59e96a5be429f1b4fbe27861c09bcd8a, type: 2}

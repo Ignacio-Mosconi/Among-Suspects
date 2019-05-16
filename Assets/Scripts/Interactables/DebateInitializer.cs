@@ -10,6 +10,7 @@ public struct DebateCharacterSprite
 
 public class DebateInitializer : Interactable
 {
+    [SerializeField] DebateInfo debateInfo;
     [SerializeField] GameObject debateSpritesContainer;
     [SerializeField] DebateCharacterSprite[] debateCharactersSprites;
 
@@ -32,7 +33,7 @@ public class DebateInitializer : Interactable
         playerController.SetCameraAvailability(enable: false);
 
         debateSpritesContainer.SetActive(true);
-        DebateManager.Instance.EnableDebateArea(this);
+        DebateManager.Instance.EnableDebateArea(this, playerController.CluesGathered);
     }
 
     public void CancelDebate()
@@ -52,5 +53,10 @@ public class DebateInitializer : Interactable
     public Camera DebateCamera
     {
         get { return debateCamera; }
+    }
+
+    public DebateInfo DebateInfo
+    {
+        get { return debateInfo; }
     }
 }
