@@ -31,6 +31,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] [Range(24, 60)] int targetFrameRate = 60;
     [SerializeField] [Range(0.5f, 2f)] float textSpeedMultiplier = 1f;
+    [SerializeField] Color playerSpeakingTextColor;
+    [SerializeField] Color playerThinkingTextColor;
+    [SerializeField] Color npcSpeakingTextColor;
 
     void Start()
     {
@@ -55,6 +58,21 @@ public class GameManager : MonoBehaviour
     public float TextSpeedMultiplier
     {
         get { return textSpeedMultiplier; }
+    }
+
+    public Color PlayerSpeakingTextColor
+    {
+        get { return playerSpeakingTextColor; }
+    }
+
+    public Color PlayerThinkingTextColor
+    {
+        get { return playerThinkingTextColor; }
+    }
+
+    public Color NpcSpeakingTextColor
+    {
+        get { return npcSpeakingTextColor; }
     }
 
     #endregion

@@ -14,13 +14,6 @@ public class DebateInitializer : Interactable
     [SerializeField] GameObject debateSpritesContainer;
     [SerializeField] DebateCharacterSprite[] debateCharactersSprites;
 
-    Camera debateCamera;
-
-    void Awake()
-    {
-        debateCamera = GetComponentInChildren<Camera>(includeInactive: true);
-    }
-
     protected override void Interact()
     {
         DisableInteraction();
@@ -31,9 +24,10 @@ public class DebateInitializer : Interactable
     public void StartDebate()
     {
         playerController.SetCameraAvailability(enable: false);
+        GameManager.Instance.SetCursorAvailability(enable: false);
 
         debateSpritesContainer.SetActive(true);
-        DebateManager.Instance.EnableDebateArea(this, playerController.CluesGathered);
+        DebateManager.Instance.InitializeDebate(debateInfo, playerController.CluesGathered);
     }
 
     public void CancelDebate()
@@ -43,20 +37,8 @@ public class DebateInitializer : Interactable
         GameManager.Instance.SetCursorAvailability(enable: false);
     }
 
-    public SpriteRenderer GetCharacterSpriteRenderer(CharacterName characterName)
+    public DebateCharacterSprite[] DebateCharactersSprites
     {
-        DebateCharacterSprite charSprite = Array.Find(debateCharactersSprites, cs => cs.characterName == characterName);
-
-        return charSprite.spriteRenderer;
-    } 
-
-    public Camera DebateCamera
-    {
-        get { return debateCamera; }
-    }
-
-    public DebateInfo DebateInfo
-    {
-        get { return debateInfo; }
+        get { return debateCharactersSprites; }
     }
 }

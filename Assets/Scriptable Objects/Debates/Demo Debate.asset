@@ -13,7 +13,26 @@ MonoBehaviour:
   m_Name: Demo Debate
   m_EditorClassIdentifier: 
   arguments:
-  - debateDialogue:
+  - argumentIntroDialogue:
+    - speakerName: 0
+      speech: Let's to talk about who the murderer might be...
+      characterEmotion: 1
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+    - speakerName: 1
+      speech: I think that's what we are all here for...
+      characterEmotion: 1
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+    - speakerName: 1
+      speech: And I think we have enough evidence to accuse her!
+      characterEmotion: 6
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+    debateDialogue:
     - speakerName: 2
       argument: I swear I'm telling the truth!
       characterEmotion: 7
@@ -22,3 +41,5 @@ MonoBehaviour:
       characterEmotion: 5
     correctReaction: 1
     correctEvidence: {fileID: 11400000, guid: 59e96a5be429f1b4fbe27861c09bcd8a, type: 2}
+    trustDialogue: []
+    refuteDialogue: []

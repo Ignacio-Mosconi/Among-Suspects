@@ -16,9 +16,12 @@ public struct DebateDialogue
 [System.Serializable]
 public struct Argument
 {
+    public Dialogue[] argumentIntroDialogue;
     public DebateDialogue[] debateDialogue;
     public DebateReaction correctReaction;
     public ClueInfo correctEvidence;
+    public Dialogue[] trustDialogue;
+    public Dialogue[] refuteDialogue;
 }
 
 [CreateAssetMenu(fileName = "New Debate Info", menuName = "Debate Info", order = 3)]

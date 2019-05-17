@@ -35,26 +35,36 @@ public class DebateManager : MonoBehaviour
 
     #endregion
 
+    [Header("UI Elements")]
+    [Header("Areas")]
     [SerializeField] GameObject debateArea;
     [SerializeField] GameObject speakerArea;
-    [SerializeField] GameObject argumentArea;
+    [SerializeField] GameObject argumentAndSpeechArea;
+    [Header("Panels")]
     [SerializeField] GameObject argumentPanel;
+    [SerializeField] GameObject speechPanel;
     [SerializeField] GameObject debateOptionsPanel;
     [SerializeField] GameObject clueOptionsPanel;
+    [Header("Layouts, Buttons & Texts")]
     [SerializeField] VerticalLayoutGroup clueOptionsLayout;
     [SerializeField] Button clueOptionsBackButton;
     [SerializeField] TextMeshProUGUI speakerText;
     [SerializeField] TextMeshProUGUI argumentText;
+    [SerializeField] TextMeshProUGUI speechText;
+    [Header("Debate Properties")]
     [SerializeField] [Range(30f, 60f)] float cameraRotSpeed = 60f;
     [SerializeField] [Range(1f, 2f)] float argumentPanelExpandScale = 2f;
     [SerializeField] [Range(0.5f, 1.5f)] float argumentPanelScaleDur = 1f;
     
-    DebateInitializer debateInitializer;
+    Camera debateCamera;
+    DebateCharacterSprite[] debateCharactersSprites;
     DebateInfo currentDebateInfo;
     Argument currentArgument;
-    DebateDialogue[] currentLines;
+    Dialogue[] currentDialogueLines;
+    DebateDialogue[] currentArgumentLines;
     Coroutine focusingRoutine;
     Coroutine expandindArgumentRoutine;
+    Coroutine speakingRoutine;
     Quaternion currentCamTargetRot;
     CharacterName previousSpeaker = CharacterName.None;
     List<ClueInfo> caseClues;
@@ -62,16 +72,28 @@ public class DebateManager : MonoBehaviour
     int[] regularCluesLayoutPadding = { 0, 0 };
     float regularCluesLayoutSpacing = 0f;
     float regularClueButtonHeight = 0f;
+    float characterShowIntervals;
+    float textSpeedMultiplier;
+    int targetSpeechCharAmount;
+    bool areInArgueingPhase = false;
 
 
     void Start()
     {
+        DebateInitializer debateInitializer = FindObjectOfType<DebateInitializer>();
+        
+        debateCamera = debateInitializer.GetComponentInChildren<Camera>(includeInactive: true);
+        debateCharactersSprites = debateInitializer.DebateCharactersSprites;
+
         regularCluesLayoutPadding[0] = clueOptionsLayout.padding.top;
         regularCluesLayoutPadding[1] = clueOptionsLayout.padding.bottom;
         regularCluesLayoutSpacing = clueOptionsLayout.spacing;
 
         Button clueOption = clueOptionsLayout.GetComponentInChildren<Button>(includeInactive: true);
         regularClueButtonHeight = clueOption.GetComponent<RectTransform>().rect.height;
+
+        characterShowIntervals = 1f / GameManager.Instance.TargetFrameRate;
+        textSpeedMultiplier = 1f / GameManager.Instance.TextSpeedMultiplier;
 
         enabled = false;
     }
@@ -92,11 +114,35 @@ public class DebateManager : MonoBehaviour
                 return;
             }
 
-            lineIndex++;
-            if (lineIndex < currentLines.Length)
+            if (speakingRoutine != null)
             {
-                ResetDebatePanelsStatuses();
-                Argue(currentLines[lineIndex].speakerName, currentLines[lineIndex].argument, currentLines[lineIndex].characterEmotion);
+                StopSpeaking();
+                return;
+            }
+
+            lineIndex++;
+            if (areInArgueingPhase)
+            {
+                if (lineIndex < currentArgumentLines.Length)
+                {
+                    ResetDebatePanelsStatuses();
+                    Argue(currentArgumentLines[lineIndex].speakerName, 
+                            currentArgumentLines[lineIndex].argument, 
+                            currentArgumentLines[lineIndex].characterEmotion);
+                }
+            }
+            else
+            {
+                if (lineIndex < currentDialogueLines.Length)
+                {
+                    ResetDebatePanelsStatuses();
+                    Dialogue(currentDialogueLines[lineIndex].speakerName,
+                            currentDialogueLines[lineIndex].speech,
+                            currentDialogueLines[lineIndex].characterEmotion,
+                            currentDialogueLines[lineIndex].playerThought);
+                }
+                else
+                    StartArgumentPhase();
             }
         }
     }
@@ -110,20 +156,30 @@ public class DebateManager : MonoBehaviour
     void ResetDebatePanelsStatuses()
     {
         speakerArea.SetActive(false);
-        argumentArea.SetActive(false);
+        argumentAndSpeechArea.SetActive(false);
 
         argumentPanel.transform.localScale = new Vector3(1f, 1f, 1f);
     }
 
     void ShowDebateOptions()
     {
+        lineIndex = 0;
         enabled = false;
         debateOptionsPanel.SetActive(true);
+        GameManager.Instance.SetCursorAvailability(enable: true);
+    }
+
+    void StartArgumentPhase()
+    {
+        lineIndex = 0;
+        speechPanel.SetActive(false);
+        areInArgueingPhase = true;
+        Argue(currentArgumentLines[0].speakerName, currentArgumentLines[0].argument, currentArgumentLines[0].characterEmotion);
     }
 
     void Argue(CharacterName speaker, string argument, CharacterEmotion speakerEmotion)
     {
-        SpriteRenderer characterRenderer = debateInitializer.GetCharacterSpriteRenderer(speaker);
+        SpriteRenderer characterRenderer = Array.Find(debateCharactersSprites, cs => cs.characterName == speaker).spriteRenderer;
 
         if (speaker != previousSpeaker)
         {
@@ -140,12 +196,50 @@ public class DebateManager : MonoBehaviour
         characterRenderer.sprite = CharacterManager.Instance.GetCharacter(speaker).GetSprite(speakerEmotion);
     }
 
+    void Dialogue(CharacterName speaker, string speech, CharacterEmotion speakerEmotion, bool playerThought)
+    {
+        SpriteRenderer characterRenderer = Array.Find(debateCharactersSprites, cs => cs.characterName == speaker).spriteRenderer;
+
+        speechText.maxVisibleCharacters = 0;
+        speechText.text = speech;
+        targetSpeechCharAmount = speech.Length;
+        // Temporary hack!
+        if (speaker != CharacterName.Player)
+            characterRenderer.sprite = CharacterManager.Instance.GetCharacter(speaker).GetSprite(speakerEmotion);
+
+        if (speaker != previousSpeaker)
+        {
+            Vector3 charPosition = characterRenderer.transform.position;
+
+            focusingRoutine = StartCoroutine(FocusOnCharacter(charPosition));
+            speakerText.text = speaker.ToString();
+            previousSpeaker = speaker;
+
+            if (playerThought)
+                speechText.color = GameManager.Instance.PlayerThinkingTextColor;
+            else
+                speechText.color = GameManager.Instance.NpcSpeakingTextColor;
+        }
+        else
+            SayDialogue();
+    }
+
     void SayArgument()
     {
         speakerArea.SetActive(true);
-        argumentArea.SetActive(true);
+        argumentAndSpeechArea.SetActive(true);
+        argumentPanel.SetActive(true);
 
         expandindArgumentRoutine = StartCoroutine(ExpandArgumentPanel());
+    }
+
+    void SayDialogue()
+    {
+        speakerArea.SetActive(true);
+        argumentAndSpeechArea.SetActive(true);
+        speechPanel.SetActive(true);
+
+        speakingRoutine = StartCoroutine(Speak());
     }
 
     void FinishFocus()
@@ -153,8 +247,11 @@ public class DebateManager : MonoBehaviour
         if (focusingRoutine != null)
         {
             StopCoroutine(focusingRoutine);
-            debateInitializer.DebateCamera.transform.rotation = currentCamTargetRot;
-            SayArgument();
+            debateCamera.transform.rotation = currentCamTargetRot;
+            if (areInArgueingPhase)
+                SayArgument();
+            else
+                SayDialogue();
             focusingRoutine = null;
         }
     }
@@ -167,39 +264,50 @@ public class DebateManager : MonoBehaviour
             argumentPanel.transform.localScale = new Vector3(argumentPanelExpandScale, argumentPanelExpandScale, argumentPanelExpandScale);
             expandindArgumentRoutine = null;
 
-            if (lineIndex == currentLines.Length - 1)
-            {
-                lineIndex = 0;
+            if (lineIndex == currentArgumentLines.Length - 1)
                 ShowDebateOptions();
-            }
         }
     }
 
+    void StopSpeaking()
+    {
+        if (speakingRoutine != null)
+        {
+            StopCoroutine(speakingRoutine);
+            speechText.maxVisibleCharacters = targetSpeechCharAmount;
+            speakingRoutine = null;
+        }
+    } 
+
     IEnumerator FocusOnCharacter(Vector3 characterPosition)
     {
-        Vector3 diff = characterPosition - debateInitializer.DebateCamera.transform.position;
+        Vector3 diff = characterPosition - debateCamera.transform.position;
 
-        Vector3 fromDir = debateInitializer.DebateCamera.transform.forward;
-        Vector3 targetDir = new Vector3(diff.x, debateInitializer.DebateCamera.transform.forward.y, diff.z);
-        Quaternion fromRot = debateInitializer.DebateCamera.transform.rotation;
+        Vector3 targetDir = new Vector3(diff.x, debateCamera.transform.forward.y, diff.z);
+        Quaternion fromRot = debateCamera.transform.rotation;
+
+        Debug.DrawRay(debateCamera.transform.position, targetDir.normalized * 5f, Color.blue, 5f);
         
-        currentCamTargetRot = Quaternion.FromToRotation(fromDir, targetDir);
+        currentCamTargetRot = Quaternion.LookRotation(targetDir, debateArea.transform.up);
 
         float timer = 0f;
         float angleBetweenRots = Quaternion.Angle(fromRot, currentCamTargetRot);
         float rotDuration = angleBetweenRots / cameraRotSpeed;
 
-        while (debateInitializer.DebateCamera.transform.rotation != currentCamTargetRot)
+        while (debateCamera.transform.rotation != currentCamTargetRot)
         {
             timer += Time.deltaTime;
-            debateInitializer.DebateCamera.transform.rotation = Quaternion.Slerp(fromRot, currentCamTargetRot, timer / rotDuration);
+            debateCamera.transform.rotation = Quaternion.Slerp(fromRot, currentCamTargetRot, timer / rotDuration);
 
             yield return new WaitForEndOfFrame();
         }
 
         focusingRoutine = null;
 
-        SayArgument();
+        if (areInArgueingPhase)
+            SayArgument();
+        else
+            SayDialogue();
     }
 
     IEnumerator ExpandArgumentPanel()
@@ -217,13 +325,21 @@ public class DebateManager : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
-        if (lineIndex == currentLines.Length - 1)
-        {
-            lineIndex = 0;
+        if (lineIndex == currentArgumentLines.Length - 1)
             ShowDebateOptions();
-        }
 
         expandindArgumentRoutine = null;
+    }
+
+    IEnumerator Speak()
+    {
+        while (speechText.maxVisibleCharacters != targetSpeechCharAmount)
+        {
+            speechText.maxVisibleCharacters++;
+            yield return new WaitForSecondsRealtime(characterShowIntervals * textSpeedMultiplier);
+        }
+
+        speakingRoutine = null;
     }
 
     public void TrustComment()
@@ -241,7 +357,7 @@ public class DebateManager : MonoBehaviour
     {
         debateOptionsPanel.SetActive(false);
         speakerArea.SetActive(false);
-        argumentArea.SetActive(false);
+        argumentAndSpeechArea.SetActive(false);
         clueOptionsPanel.gameObject.SetActive(true);
     }
 
@@ -268,18 +384,18 @@ public class DebateManager : MonoBehaviour
     {
         debateOptionsPanel.SetActive(true);
         speakerArea.SetActive(true);
-        argumentArea.SetActive(true);
+        argumentAndSpeechArea.SetActive(true);
         clueOptionsPanel.SetActive(false);
     }
 
-    public void EnableDebateArea(DebateInitializer initializer, List<ClueInfo> playerClues)
+    public void InitializeDebate(DebateInfo debateInfo, List<ClueInfo> playerClues)
     {
-        debateInitializer = initializer;
-        initializer.DebateCamera.gameObject.SetActive(true);
+        debateCamera.gameObject.SetActive(true);
 
-        currentDebateInfo = initializer.DebateInfo;
+        currentDebateInfo = debateInfo;
         currentArgument = currentDebateInfo.arguments[0];
-        currentLines = currentArgument.debateDialogue;
+        currentDialogueLines = currentArgument.argumentIntroDialogue;
+        currentArgumentLines = currentArgument.debateDialogue;
 
         Button[] clueOptions = clueOptionsLayout.GetComponentsInChildren<Button>(includeInactive: true);
                 
@@ -303,6 +419,9 @@ public class DebateManager : MonoBehaviour
 
         SetDebateAreaAvailability(enableDebateArea: true);
 
-        Argue(currentLines[0].speakerName, currentLines[0].argument, currentLines[0].characterEmotion);
+        Dialogue(currentDialogueLines[0].speakerName, 
+                    currentDialogueLines[0].speech, 
+                    currentDialogueLines[0].characterEmotion, 
+                    currentDialogueLines[0].playerThought);
     }  
 }

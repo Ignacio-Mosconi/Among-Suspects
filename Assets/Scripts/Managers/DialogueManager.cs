@@ -33,9 +33,9 @@ public class DialogueManager : MonoBehaviour
 
     #endregion
 
-    [SerializeField] Color playerSpeakingTextColor;
-    [SerializeField] Color playerThinkingTextColor;
-    [SerializeField] Color npcSpeakingTextColor;
+    // [SerializeField] Color playerSpeakingTextColor;
+    // [SerializeField] Color playerThinkingTextColor;
+    // [SerializeField] Color npcSpeakingTextColor;
     [SerializeField] GameObject dialogueArea;
     [SerializeField] TextMeshProUGUI speakerText;
     [SerializeField] TextMeshProUGUI speechText;
@@ -132,10 +132,14 @@ public class DialogueManager : MonoBehaviour
             objectImage.gameObject.SetActive(false);
             speakerImage.gameObject.SetActive(false);
         }
-
         
         dialogueArea.SetActive(enableDialogueArea);
         enabled = enableDialogueArea;
+    }
+
+    void SetDialogueAreaAvailabilityForDebate(bool enableForDebate)
+    {
+        dialogueArea.SetActive(enableForDebate);
     }
 
     void SayDialogue(string speech, CharacterName speakerName, CharacterEmotion speakerEmotion, 
@@ -177,8 +181,8 @@ public class DialogueManager : MonoBehaviour
             if (speakerEmotion != CharacterEmotion.Listening)
                 speakerImage.sprite = currentSpeaker.GetSprite(speakerEmotion);
             
-            if (speechText.color != npcSpeakingTextColor)
-                speechText.color = npcSpeakingTextColor;
+            if (speechText.color != GameManager.Instance.NpcSpeakingTextColor)
+                speechText.color = GameManager.Instance.NpcSpeakingTextColor;
 
             previousSpeaker = currentSpeaker;
         }
@@ -188,13 +192,13 @@ public class DialogueManager : MonoBehaviour
             
             if (!playerThought)
             {
-                if (speechText.color != playerSpeakingTextColor)
-                    speechText.color = playerSpeakingTextColor;
+                if (speechText.color != GameManager.Instance.PlayerSpeakingTextColor)
+                    speechText.color = GameManager.Instance.PlayerSpeakingTextColor;
             }
             else
             {
-                if (speechText.color != playerThinkingTextColor)
-                    speechText.color = playerThinkingTextColor;
+                if (speechText.color != GameManager.Instance.PlayerThinkingTextColor)
+                    speechText.color = GameManager.Instance.PlayerThinkingTextColor;
             }       
         }
 
