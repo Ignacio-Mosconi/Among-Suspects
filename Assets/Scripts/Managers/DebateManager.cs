@@ -36,8 +36,9 @@ public class DebateManager : MonoBehaviour
     #endregion
 
     [SerializeField] GameObject debateArea;
-    [SerializeField] GameObject speakerTextPanel;
-    [SerializeField] GameObject argumentTextPanel;
+    [SerializeField] GameObject speakerArea;
+    [SerializeField] GameObject argumentArea;
+    [SerializeField] GameObject argumentPanel;
     [SerializeField] GameObject debateOptionsPanel;
     [SerializeField] GameObject clueOptionsPanel;
     [SerializeField] VerticalLayoutGroup clueOptionsLayout;
@@ -60,12 +61,17 @@ public class DebateManager : MonoBehaviour
     int lineIndex = 0;
     int[] regularCluesLayoutPadding = { 0, 0 };
     float regularCluesLayoutSpacing = 0f;
+    float regularClueButtonHeight = 0f;
+
 
     void Start()
     {
         regularCluesLayoutPadding[0] = clueOptionsLayout.padding.top;
         regularCluesLayoutPadding[1] = clueOptionsLayout.padding.bottom;
         regularCluesLayoutSpacing = clueOptionsLayout.spacing;
+
+        Button clueOption = clueOptionsLayout.GetComponentInChildren<Button>(includeInactive: true);
+        regularClueButtonHeight = clueOption.GetComponent<RectTransform>().rect.height;
 
         enabled = false;
     }
@@ -86,15 +92,11 @@ public class DebateManager : MonoBehaviour
                 return;
             }
 
-            ResetDebatePanelsStatuses();
-
             lineIndex++;
-            if (lineIndex < currentLines.Length) 
-                Argue(currentLines[lineIndex].speakerName, currentLines[lineIndex].argument, currentLines[lineIndex].characterEmotion);
-            else
+            if (lineIndex < currentLines.Length)
             {
-                lineIndex = 0;
-                ShowDebateOptions();
+                ResetDebatePanelsStatuses();
+                Argue(currentLines[lineIndex].speakerName, currentLines[lineIndex].argument, currentLines[lineIndex].characterEmotion);
             }
         }
     }
@@ -107,10 +109,10 @@ public class DebateManager : MonoBehaviour
 
     void ResetDebatePanelsStatuses()
     {
-        speakerTextPanel.SetActive(false);
-        argumentTextPanel.SetActive(false);
+        speakerArea.SetActive(false);
+        argumentArea.SetActive(false);
 
-        argumentTextPanel.transform.localScale = new Vector3(1f, 1f, 1f);
+        argumentPanel.transform.localScale = new Vector3(1f, 1f, 1f);
     }
 
     void ShowDebateOptions()
@@ -140,8 +142,8 @@ public class DebateManager : MonoBehaviour
 
     void SayArgument()
     {
-        speakerTextPanel.SetActive(true);
-        argumentTextPanel.SetActive(true);
+        speakerArea.SetActive(true);
+        argumentArea.SetActive(true);
 
         expandindArgumentRoutine = StartCoroutine(ExpandArgumentPanel());
     }
@@ -162,9 +164,15 @@ public class DebateManager : MonoBehaviour
         if (expandindArgumentRoutine != null)
         {
             StopCoroutine(expandindArgumentRoutine);
-            argumentTextPanel.transform.localScale = new Vector3(argumentPanelExpandScale, argumentPanelExpandScale, argumentPanelExpandScale);
+            argumentPanel.transform.localScale = new Vector3(argumentPanelExpandScale, argumentPanelExpandScale, argumentPanelExpandScale);
             expandindArgumentRoutine = null;
-        }    
+
+            if (lineIndex == currentLines.Length - 1)
+            {
+                lineIndex = 0;
+                ShowDebateOptions();
+            }
+        }
     }
 
     IEnumerator FocusOnCharacter(Vector3 characterPosition)
@@ -196,23 +204,29 @@ public class DebateManager : MonoBehaviour
 
     IEnumerator ExpandArgumentPanel()
     {
-        Vector3 initialScale = argumentTextPanel.transform.localScale;
-        Vector3 targetScale = argumentTextPanel.transform.localScale * argumentPanelExpandScale;
+        Vector3 initialScale = argumentPanel.transform.localScale;
+        Vector3 targetScale = argumentPanel.transform.localScale * argumentPanelExpandScale;
 
         float timer = 0f;
 
-        while (argumentTextPanel.transform.localScale != targetScale)
+        while (argumentPanel.transform.localScale != targetScale)
         {
             timer += Time.deltaTime;
-            argumentTextPanel.transform.localScale = Vector3.Lerp(initialScale, targetScale, timer / argumentPanelScaleDur);
+            argumentPanel.transform.localScale = Vector3.Lerp(initialScale, targetScale, timer / argumentPanelScaleDur);
 
             yield return new WaitForEndOfFrame();
+        }
+
+        if (lineIndex == currentLines.Length - 1)
+        {
+            lineIndex = 0;
+            ShowDebateOptions();
         }
 
         expandindArgumentRoutine = null;
     }
 
-    public void AgreeToComment()
+    public void TrustComment()
     {
         debateOptionsPanel.SetActive(false);
         Debug.Log("I Agree.");
@@ -223,9 +237,11 @@ public class DebateManager : MonoBehaviour
             Debug.Log("You didn't select the correct option.");
     }
 
-    public void DisagreeToComment()
+    public void RefuteComment()
     {
         debateOptionsPanel.SetActive(false);
+        speakerArea.SetActive(false);
+        argumentArea.SetActive(false);
         clueOptionsPanel.gameObject.SetActive(true);
     }
 
@@ -251,6 +267,8 @@ public class DebateManager : MonoBehaviour
     public void ReturnToDebateOptions()
     {
         debateOptionsPanel.SetActive(true);
+        speakerArea.SetActive(true);
+        argumentArea.SetActive(true);
         clueOptionsPanel.SetActive(false);
     }
 
@@ -264,11 +282,10 @@ public class DebateManager : MonoBehaviour
         currentLines = currentArgument.debateDialogue;
 
         Button[] clueOptions = clueOptionsLayout.GetComponentsInChildren<Button>(includeInactive: true);
-        
+                
         caseClues = playerClues;
 
         int i = 0;
-        int normalButtonHeight = (int)clueOptions[0].GetComponent<RectTransform>().rect.height;
 
         for (i = 0; i < caseClues.Count; i++)
         {
@@ -278,12 +295,11 @@ public class DebateManager : MonoBehaviour
             clueText.text = caseClues[i].clueName;
         }
 
-        int cluesLayoutPaddingMult = clueOptions.Length - i;
-        int addtionalPadding = (i > 1) ? normalButtonHeight / 3 * cluesLayoutPaddingMult : normalButtonHeight / 2 * cluesLayoutPaddingMult;
+        int paddMult = clueOptions.Length - i;
+        float addPadding = (regularClueButtonHeight + regularCluesLayoutSpacing) * paddMult * 0.5f;
 
-        clueOptionsLayout.padding.top = regularCluesLayoutPadding[0] + addtionalPadding;
-        clueOptionsLayout.padding.bottom = regularCluesLayoutPadding[1] + addtionalPadding;
-        clueOptionsLayout.spacing = regularCluesLayoutSpacing + addtionalPadding;
+        clueOptionsLayout.padding.top = regularCluesLayoutPadding[0] + (int)addPadding;
+        clueOptionsLayout.padding.bottom = regularCluesLayoutPadding[1] + (int)addPadding;
 
         SetDebateAreaAvailability(enableDebateArea: true);
 
