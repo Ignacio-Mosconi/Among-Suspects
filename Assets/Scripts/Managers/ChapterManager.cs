@@ -31,6 +31,7 @@ public class ChapterManager : MonoBehaviour
 
     [SerializeField] GameObject endScreenArea;
     [SerializeField] GameObject debateRetryArea;
+    [SerializeField] GameObject chapterWonArea;
     [SerializeField] ClueInfo[] chapterClues;
 
     DebateInitializer debateInitializer;
@@ -50,10 +51,14 @@ public class ChapterManager : MonoBehaviour
         return clueInfo;
     }
 
-    public void ShowDebateRetryScreen()
+    public void ShowDebateEndScreen(bool hasWon)
     {
+        if (hasWon)
+            chapterWonArea.SetActive(true);
+        else
+            debateRetryArea.SetActive(true);
+        
         endScreenArea.SetActive(true);
-        debateRetryArea.SetActive(true);
         GameManager.Instance.SetCursorAvailability(enable: true);
     }
 

@@ -213,13 +213,8 @@ public class DebateManager : MonoBehaviour
                     }
                     else
                     {
+                        ChapterManager.Instance.ShowDebateEndScreen(caseWon);              
                         SetDebateAreaAvailability(enableDebateArea: false);
-                        if (caseWon)
-                        {
-                            //ChapterManager.Instance.ShowWinChapterScreen();
-                        }
-                        else
-                            ChapterManager.Instance.ShowDebateRetryScreen();              
                     }
 
                     break;
