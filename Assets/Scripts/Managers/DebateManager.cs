@@ -58,12 +58,18 @@ public class DebateManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI argumentText;
     [SerializeField] TextMeshProUGUI speechText;
     [SerializeField] Image credibilityBar;
+    [SerializeField] Image credibilityIcon;
     [Header("Debate Properties")]
     [SerializeField] [Range(30f, 60f)] float cameraRotSpeed = 60f;
     [SerializeField] [Range(1f, 2f)] float argumentPanelExpandScale = 2f;
     [SerializeField] [Range(0.5f, 1.5f)] float argumentPanelScaleDur = 1f;
     [SerializeField] [Range(0.5f, 1.5f)] float credibilityBarFillDur = 1f;
-    [SerializeField] [Range(0.5f, 1.5f)] float credibilityBarIdleDur = 1f;
+    [SerializeField] [Range(2f, 4f)] float credibilityBarIdleDur = 3f;
+    [Header("Other UI Properties")]
+    [SerializeField] Color credibilityBarColorPositive = Color.green;
+    [SerializeField] Color credibilityBarColorNeutral = Color.yellow;
+    [SerializeField] Color credibilityBarColorNegative = Color.red;
+    [SerializeField] Sprite[] credibilitySprites;
     
     Camera debateCamera;
     PlayerController playerController;
@@ -114,6 +120,7 @@ public class DebateManager : MonoBehaviour
         textSpeedMultiplier = 1f / GameManager.Instance.TextSpeedMultiplier;
 
         credibilityBar.fillAmount = credibilityPerc / 100f;
+        credibilityBar.color = credibilityBarColorNeutral;
 
         enabled = false;
     }
@@ -179,8 +186,7 @@ public class DebateManager : MonoBehaviour
                     }
                     else
                     {
-                        credibilityPanel.SetActive(false);
-                        
+
                         if (ShouldLoseCase())
                             EndCase(lose: true);
                         else
@@ -230,6 +236,11 @@ public class DebateManager : MonoBehaviour
     void ResetArgumentPanelScale()
     {
         argumentPanel.transform.localScale = new Vector3(1f, 1f, 1f);
+    }
+
+    void ResetCredibilityPanel()
+    {
+        credibilityPanel.SetActive(false);
     }
 
     void ResetMainUIVisibility()
@@ -466,10 +477,40 @@ public class DebateManager : MonoBehaviour
         float currentFill = credibilityBar.fillAmount;
         float targetFill = credibilityPerc / 100f;
 
+        credibilityPanel.SetActive(true);
+        Invoke("ResetCredibilityPanel", credibilityBarIdleDur);
+
         while (currentFill != targetFill)
         {
             timer += Time.deltaTime;
             credibilityBar.fillAmount = Mathf.Lerp(currentFill, targetFill, timer / credibilityBarFillDur);
+
+            Color newColor = credibilityBar.color;
+
+            if (credibilityBar.fillAmount * 100f >= MinCredibilityPercRequired && credibilityBar.color != credibilityBarColorPositive)
+            {
+                newColor = credibilityBarColorPositive;
+                credibilityIcon.sprite = credibilitySprites[0];
+            }
+            
+            if (credibilityBar.fillAmount * 100f < MinCredibilityPercRequired && !ShouldLoseCase() &&
+                credibilityBar.color != credibilityBarColorNeutral)
+            {
+                newColor = credibilityBarColorNeutral;
+                credibilityIcon.sprite = credibilitySprites[1];
+            }
+            
+            if (ShouldLoseCase() && credibilityBar.color != credibilityBarColorNegative)
+            {
+                newColor = credibilityBarColorNegative;
+                credibilityIcon.sprite = credibilitySprites[2];
+            }
+
+            if (newColor != credibilityBar.color)
+            {
+                newColor.a = credibilityBar.color.a;
+                credibilityBar.color = newColor;
+            }
 
             yield return new WaitForEndOfFrame();
         }
@@ -495,8 +536,6 @@ public class DebateManager : MonoBehaviour
 
         if (fillingBarRoutine != null)
             StopFillingCredibilityBar();
-
-        credibilityPanel.SetActive(true);
         fillingBarRoutine = StartCoroutine(ChangeCredibilityBarFill());
 
         enabled = true;
@@ -540,8 +579,6 @@ public class DebateManager : MonoBehaviour
 
         if (fillingBarRoutine != null)
             StopFillingCredibilityBar();
-
-        credibilityPanel.SetActive(true);
         fillingBarRoutine = StartCoroutine(ChangeCredibilityBarFill());
 
         enabled = true;
