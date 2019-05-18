@@ -29,7 +29,16 @@ public class ChapterManager : MonoBehaviour
 
     #endregion
 
+    [SerializeField] GameObject endScreenArea;
+    [SerializeField] GameObject debateRetryArea;
     [SerializeField] ClueInfo[] chapterClues;
+
+    DebateInitializer debateInitializer;
+
+    void Start()
+    {
+        debateInitializer = FindObjectOfType<DebateInitializer>();
+    }
 
     public ClueInfo GetChapterClueInfo(int index)
     {
@@ -39,5 +48,19 @@ public class ChapterManager : MonoBehaviour
             clueInfo = chapterClues[index];
 
         return clueInfo;
+    }
+
+    public void ShowDebateRetryScreen()
+    {
+        endScreenArea.SetActive(true);
+        debateRetryArea.SetActive(true);
+        GameManager.Instance.SetCursorAvailability(enable: true);
+    }
+
+    public void RetryDebate()
+    {
+        endScreenArea.SetActive(false);
+        debateRetryArea.SetActive(false);
+        debateInitializer.StartDebate();
     }
 }

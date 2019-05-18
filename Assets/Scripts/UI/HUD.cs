@@ -6,6 +6,7 @@ public class HUD : MonoBehaviour
     [SerializeField] GameObject hudArea;
     [SerializeField] GameObject interactTextPanel;
     [SerializeField] GameObject debateStartPrompt;
+    [SerializeField] GameObject debateRetryPrompt;
 
     DebateInitializer debateInitializer;
 

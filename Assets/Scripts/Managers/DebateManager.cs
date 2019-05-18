@@ -86,6 +86,7 @@ public class DebateManager : MonoBehaviour
     CharacterName previousSpeaker = CharacterName.None;
     List<ClueInfo> caseClues;
     DebatePhase currentPhase = DebatePhase.Dialoguing;
+    bool caseWon = false;
     int lineIndex = 0;
     int argumentIndex = 0;
     int[] regularCluesLayoutPadding = { 0, 0 };
@@ -94,11 +95,12 @@ public class DebateManager : MonoBehaviour
     float characterShowIntervals;
     float textSpeedMultiplier;
     int targetSpeechCharAmount;
-    float credibilityPerc = 50f;
+    float credibilityPerc;
     float credibilityIncPerc;
     float credibilityDecPerc;
 
     const float MinCredibilityPercRequired = 70f;
+    const float InitialCredibilityPerc = 50f;
 
     void Start()
     {
@@ -119,6 +121,7 @@ public class DebateManager : MonoBehaviour
         characterShowIntervals = 1f / GameManager.Instance.TargetFrameRate;
         textSpeedMultiplier = 1f / GameManager.Instance.TextSpeedMultiplier;
 
+        credibilityPerc = InitialCredibilityPerc;
         credibilityBar.fillAmount = credibilityPerc / 100f;
         credibilityBar.color = credibilityBarColorNeutral;
 
@@ -209,7 +212,15 @@ public class DebateManager : MonoBehaviour
                                 currentDialogueLines[lineIndex].playerThought);
                     }
                     else
-                        enabled = false;
+                    {
+                        SetDebateAreaAvailability(enableDebateArea: false);
+                        if (caseWon)
+                        {
+                            //ChapterManager.Instance.ShowWinChapterScreen();
+                        }
+                        else
+                            ChapterManager.Instance.ShowDebateRetryScreen();              
+                    }
 
                     break;
             }
@@ -231,6 +242,34 @@ public class DebateManager : MonoBehaviour
     {
         debateArea.SetActive(enableDebateArea);
         enabled = enableDebateArea;
+
+        if (!enableDebateArea)
+        {
+            StopAllCoroutines();
+
+            focusingRoutine = null;
+            expandindArgumentRoutine = null;
+            speakingRoutine = null;
+            fillingBarRoutine = null;
+
+            currentDebateInfo = null;
+            currentDialogueLines = null;
+            currentArgumentLines = null;
+
+            currentPhase = DebatePhase.Dialoguing;
+            
+            credibilityPerc = InitialCredibilityPerc;
+            credibilityBar.fillAmount = credibilityPerc / 100f;
+            credibilityBar.color = credibilityBarColorNeutral;
+
+            caseWon = false;
+            lineIndex = 0;
+            argumentIndex = 0;
+
+            ResetArgumentPanelScale();
+            ResetCredibilityPanel();
+            ResetMainUIVisibility();
+        }
     }
 
     void ResetArgumentPanelScale()
@@ -283,7 +322,8 @@ public class DebateManager : MonoBehaviour
 
     void EndCase(bool lose = false)
     {
-        currentPhase = DebatePhase.SolvingCase; 
+        currentPhase = DebatePhase.SolvingCase;
+        caseWon = !lose;
         lineIndex = 0;
         currentDialogueLines = (!lose) ? currentDebateInfo.winDebateDialogue : currentDebateInfo.loseDebateDialogue;
 
@@ -635,5 +675,5 @@ public class DebateManager : MonoBehaviour
                     currentDialogueLines[0].speech, 
                     currentDialogueLines[0].characterEmotion, 
                     currentDialogueLines[0].playerThought);
-    }  
+    }
 }
