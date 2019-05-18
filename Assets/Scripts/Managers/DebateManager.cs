@@ -50,16 +50,20 @@ public class DebateManager : MonoBehaviour
     [SerializeField] GameObject speechPanel;
     [SerializeField] GameObject debateOptionsPanel;
     [SerializeField] GameObject clueOptionsPanel;
-    [Header("Layouts, Buttons & Texts")]
+    [SerializeField] GameObject credibilityPanel;
+    [Header("Layouts, Buttons, Images & Texts")]
     [SerializeField] VerticalLayoutGroup clueOptionsLayout;
     [SerializeField] Button clueOptionsBackButton;
     [SerializeField] TextMeshProUGUI speakerText;
     [SerializeField] TextMeshProUGUI argumentText;
     [SerializeField] TextMeshProUGUI speechText;
+    [SerializeField] Image credibilityBar;
     [Header("Debate Properties")]
     [SerializeField] [Range(30f, 60f)] float cameraRotSpeed = 60f;
     [SerializeField] [Range(1f, 2f)] float argumentPanelExpandScale = 2f;
     [SerializeField] [Range(0.5f, 1.5f)] float argumentPanelScaleDur = 1f;
+    [SerializeField] [Range(0.5f, 1.5f)] float credibilityBarFillDur = 1f;
+    [SerializeField] [Range(0.5f, 1.5f)] float credibilityBarIdleDur = 1f;
     
     Camera debateCamera;
     PlayerController playerController;
@@ -71,6 +75,7 @@ public class DebateManager : MonoBehaviour
     Coroutine focusingRoutine;
     Coroutine expandindArgumentRoutine;
     Coroutine speakingRoutine;
+    Coroutine fillingBarRoutine;
     Quaternion currentCamTargetRot;
     CharacterName previousSpeaker = CharacterName.None;
     List<ClueInfo> caseClues;
@@ -107,6 +112,8 @@ public class DebateManager : MonoBehaviour
 
         characterShowIntervals = 1f / GameManager.Instance.TargetFrameRate;
         textSpeedMultiplier = 1f / GameManager.Instance.TextSpeedMultiplier;
+
+        credibilityBar.fillAmount = credibilityPerc / 100f;
 
         enabled = false;
     }
@@ -172,6 +179,8 @@ public class DebateManager : MonoBehaviour
                     }
                     else
                     {
+                        credibilityPanel.SetActive(false);
+                        
                         if (ShouldLoseCase())
                             EndCase(lose: true);
                         else
@@ -377,7 +386,16 @@ public class DebateManager : MonoBehaviour
             speechText.maxVisibleCharacters = targetSpeechCharAmount;
             speakingRoutine = null;
         }
-    } 
+    }
+
+    void StopFillingCredibilityBar()
+    {
+        if (fillingBarRoutine != null)
+        {
+            StopCoroutine(fillingBarRoutine);
+            fillingBarRoutine = null;
+        }
+    }
 
     IEnumerator FocusOnCharacter(Vector3 characterPosition)
     {
@@ -442,6 +460,21 @@ public class DebateManager : MonoBehaviour
         speakingRoutine = null;
     }
 
+    IEnumerator ChangeCredibilityBarFill()
+    {
+        float timer = 0f;
+        float currentFill = credibilityBar.fillAmount;
+        float targetFill = credibilityPerc / 100f;
+
+        while (currentFill != targetFill)
+        {
+            timer += Time.deltaTime;
+            credibilityBar.fillAmount = Mathf.Lerp(currentFill, targetFill, timer / credibilityBarFillDur);
+
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
     public void TrustComment()
     {
         ResetArgumentPanelScale();
@@ -459,6 +492,12 @@ public class DebateManager : MonoBehaviour
             credibilityPerc += credibilityIncPerc;
         else
             credibilityPerc -= credibilityDecPerc;
+
+        if (fillingBarRoutine != null)
+            StopFillingCredibilityBar();
+
+        credibilityPanel.SetActive(true);
+        fillingBarRoutine = StartCoroutine(ChangeCredibilityBarFill());
 
         enabled = true;
 
@@ -498,6 +537,12 @@ public class DebateManager : MonoBehaviour
             currentDialogueLines = currentArgument.refuteIncorrectDialogue;
             credibilityPerc -= credibilityDecPerc;
         }
+
+        if (fillingBarRoutine != null)
+            StopFillingCredibilityBar();
+
+        credibilityPanel.SetActive(true);
+        fillingBarRoutine = StartCoroutine(ChangeCredibilityBarFill());
 
         enabled = true;
 
