@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     {
         if (Instance != this)
             Destroy(gameObject);
+        else
+            DontDestroyOnLoad(gameObject);
     }
 
     public static GameManager Instance
@@ -46,6 +48,11 @@ public class GameManager : MonoBehaviour
     {   
         Cursor.lockState = (enable) ? CursorLockMode.None : CursorLockMode.Locked;
         Cursor.visible = enable;
+    }
+
+    public bool IsCursorAvailable()
+    {
+        return (Cursor.visible);
     }
 
     #region Getters & Setters

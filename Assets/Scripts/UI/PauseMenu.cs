@@ -8,6 +8,9 @@ public class PauseMenu : Menu
     PlayerController playerController;
     bool isPaused;
 
+    bool playerMovementEnabledAtPause;
+    bool cursorEnabledAtPause;
+
     UnityEvent onPaused = new UnityEvent();
     UnityEvent onResume = new UnityEvent();
 
@@ -34,8 +37,14 @@ public class PauseMenu : Menu
         Time.timeScale = 0f;
         menuArea.SetActive(true);
 
+        playerMovementEnabledAtPause = playerController.IsMovementAvailable();
+        cursorEnabledAtPause = GameManager.Instance.IsCursorAvailable();
+
         playerController.SetAvailability(enable: false);
+        DialogueManager.Instance.SetUpdateEnable(enable: false);   
+        DebateManager.Instance.SetUpdateEnable(enable: false);
         GameManager.Instance.SetCursorAvailability(enable: true);
+        
         onPaused.Invoke();
     }
 
@@ -46,8 +55,12 @@ public class PauseMenu : Menu
         menuArea.SetActive(false);
 
         ResetMenuState();
-        playerController.SetAvailability(enable: true);
-        GameManager.Instance.SetCursorAvailability(enable: false);
+        
+        playerController.SetAvailability(enable: playerMovementEnabledAtPause);
+        DialogueManager.Instance.SetUpdateEnable(enable: true);
+        DebateManager.Instance.SetUpdateEnable(enable: true);
+        GameManager.Instance.SetCursorAvailability(enable: cursorEnabledAtPause);
+        
         onResume.Invoke();
     }
 

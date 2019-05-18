@@ -19,6 +19,7 @@ public class DebateInitializer : Interactable
         DisableInteraction();
         playerController.SetAvailability(enable: false);
         GameManager.Instance.SetCursorAvailability(enable: true);
+        ChapterManager.Instance.ShowDebateStartPrompt();
     }
 
     public void StartDebate()

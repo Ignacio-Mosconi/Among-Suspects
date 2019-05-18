@@ -44,6 +44,11 @@ public class PlayerController : MonoBehaviour
         return (cluesGathered.Contains(clueInfo));
     }
 
+    public bool IsMovementAvailable()
+    {
+        return playerMovement.enabled;
+    }
+
     #region Getters & Setters
 
     public CharacterName PlayerName

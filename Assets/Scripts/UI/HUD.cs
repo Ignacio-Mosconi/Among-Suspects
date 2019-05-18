@@ -8,7 +8,7 @@ public class HUD : MonoBehaviour
     [SerializeField] GameObject debateStartPrompt;
     [SerializeField] GameObject debateRetryPrompt;
 
-    DebateInitializer debateInitializer;
+    //DebateInitializer debateInitializer;
 
     void Start()
     {
@@ -21,8 +21,8 @@ public class HUD : MonoBehaviour
             interactable.OnInteraction.AddListener(HideInteractTextPanel);
         }
 
-        debateInitializer = FindObjectOfType<DebateInitializer>();
-        debateInitializer.OnInteraction.AddListener(ShowDebateStartPrompt);
+        // debateInitializer = FindObjectOfType<DebateInitializer>();
+        // debateInitializer.OnInteraction.AddListener(ShowDebateStartPrompt);
 
         PauseMenu pauseMenu = FindObjectOfType<PauseMenu>();
         pauseMenu.OnPaused.AddListener(HideHUD);
@@ -50,27 +50,5 @@ public class HUD : MonoBehaviour
     void HideInteractTextPanel()
     {
         interactTextPanel.SetActive(false);
-    }
-
-    void ShowDebateStartPrompt()
-    {
-        debateStartPrompt.SetActive(true);
-    }
-
-    void HideDebateStartPrompt()
-    {
-        debateStartPrompt.SetActive(false);
-    }
-
-    public void ConfirmDebateStart()
-    {
-        HideDebateStartPrompt();
-        debateInitializer.StartDebate();
-    }
-
-    public void CancelDebateStart()
-    {
-        HideDebateStartPrompt();
-        debateInitializer.CancelDebate();
     }
 }

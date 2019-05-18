@@ -671,4 +671,13 @@ public class DebateManager : MonoBehaviour
                     currentDialogueLines[0].characterEmotion, 
                     currentDialogueLines[0].playerThought);
     }
+
+    public void SetUpdateEnable(bool enable)
+    {
+        if (currentDebateInfo)
+        {
+            debateArea.SetActive(enable);
+            enabled = enable;
+        }
+    }
 }

@@ -33,10 +33,8 @@ public class DialogueManager : MonoBehaviour
 
     #endregion
 
-    // [SerializeField] Color playerSpeakingTextColor;
-    // [SerializeField] Color playerThinkingTextColor;
-    // [SerializeField] Color npcSpeakingTextColor;
     [SerializeField] GameObject dialogueArea;
+    [SerializeField] GameObject textArea;
     [SerializeField] TextMeshProUGUI speakerText;
     [SerializeField] TextMeshProUGUI speechText;
     [SerializeField] Image speakerImage;
@@ -137,11 +135,6 @@ public class DialogueManager : MonoBehaviour
         enabled = enableDialogueArea;
     }
 
-    void SetDialogueAreaAvailabilityForDebate(bool enableForDebate)
-    {
-        dialogueArea.SetActive(enableForDebate);
-    }
-
     void SayDialogue(string speech, CharacterName speakerName, CharacterEmotion speakerEmotion, 
                         bool revealName, bool playerThought, ClueInfo clueInfo)
     {
@@ -218,7 +211,7 @@ public class DialogueManager : MonoBehaviour
         while (speechText.maxVisibleCharacters != targetSpeechCharAmount)
         {
             speechText.maxVisibleCharacters++;          
-            yield return new WaitForSecondsRealtime(characterShowIntervals * textSpeedMultiplier);
+            yield return new WaitForSeconds(characterShowIntervals * textSpeedMultiplier);
         }
 
         speakingRoutine = null;
@@ -323,6 +316,15 @@ public class DialogueManager : MonoBehaviour
                     currentLines[0].revealName,
                     currentLines[0].playerThought,
                     currentLines[0].clueInfo);
+    }
+
+    public void SetUpdateEnable(bool enable)
+    {
+        if (currentLines != null)
+        {
+            textArea.SetActive(enable);
+            enabled = enable;
+        }
     }
 
     #region Getters & Setters
