@@ -27,19 +27,321 @@ MonoBehaviour:
       revealName: 0
       playerThought: 0
     - speakerName: 1
-      speech: And I think we have enough evidence to accuse her!
-      characterEmotion: 6
+      speech: And I also consider that we have enough evidence to accuse her...
+      characterEmotion: 2
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
     debateDialogue:
+    - speakerName: 1
+      argument: She's the killer!
+      speakerEmotion: 6
     - speakerName: 2
-      argument: I swear I'm telling the truth!
-      characterEmotion: 7
+      argument: What?!
+      speakerEmotion: 7
     - speakerName: 2
-      argument: I didn't kill the fucking bastard!
-      characterEmotion: 5
+      argument: Have you lost your mind?
+      speakerEmotion: 4
+    - speakerName: 2
+      argument: I didn't kill anybody!
+      speakerEmotion: 5
+    correctReaction: 0
+    correctEvidence: {fileID: 0}
+    trustDialogue:
+    - speakerName: 0
+      speech: I believe her...
+      characterEmotion: 0
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+    - speakerName: 0
+      speech: There's not enough evidence to say anything yet.
+      characterEmotion: 0
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+    - speakerName: 1
+      speech: Whatever you say...
+      characterEmotion: 0
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+    refuteCorrectDialogue: []
+    refuteIncorrectDialogue:
+    - speakerName: 2
+      speech: What are you talking about?
+      characterEmotion: 0
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+    - speakerName: 2
+      speech: That doesn't prove anything!
+      characterEmotion: 0
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+    - speakerName: 1
+      speech: I'm afraid she's right...
+      characterEmotion: 2
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+    - speakerName: 1
+      speech: Think harder, you fool!
+      characterEmotion: 6
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+    - speakerName: 0
+      speech: They're right! I have to focus...
+      characterEmotion: 6
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 1
+  - argumentIntroDialogue:
+    - speakerName: 2
+      speech: Shouldn't we discuss about the cause of death?
+      characterEmotion: 1
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+    - speakerName: 0
+      speech: That's true!
+      characterEmotion: 0
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+    - speakerName: 0
+      speech: So, what do you guys think?
+      characterEmotion: 1
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+    debateDialogue:
+    - speakerName: 1
+      argument: It's pretty obvious...
+      speakerEmotion: 2
+    - speakerName: 1
+      argument: There was a gun inside the trash bin...
+      speakerEmotion: 0
+    - speakerName: 1
+      argument: The victim must have been shot with it!
+      speakerEmotion: 6
     correctReaction: 1
     correctEvidence: {fileID: 11400000, guid: 59e96a5be429f1b4fbe27861c09bcd8a, type: 2}
-    trustDialogue: []
-    refuteDialogue: []
+    trustDialogue:
+    - speakerName: 0
+      speech: I think you might be right...
+      characterEmotion: 0
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+    - speakerName: 1
+      speech: Of course I am!
+      characterEmotion: 2
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+    - speakerName: 2
+      speech: I must disagree with you.
+      characterEmotion: 6
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+    - speakerName: 0
+      speech: What? Why?
+      characterEmotion: 3
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+    - speakerName: 2
+      speech: That gun looks brand new, it has all of its ammo inside...
+      characterEmotion: 1
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+    - speakerName: 2
+      speech: Hence, we can assume it was never fired!
+      characterEmotion: 6
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+    - speakerName: 0
+      speech: She's right! How did I miss that?
+      characterEmotion: 3
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 1
+    refuteCorrectDialogue:
+    - speakerName: 0
+      speech: I diagree!
+      characterEmotion: 6
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+    - speakerName: 1
+      speech: What? How dare you contradict me?
+      characterEmotion: 4
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+    - speakerName: 0
+      speech: 'That gun...
+
+        By the looks of it, that thing was never fired.'
+      characterEmotion: 4
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+    - speakerName: 2
+      speech: I agree with him. That weapon was placed there to distract us...
+      characterEmotion: 2
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+    refuteIncorrectDialogue:
+    - speakerName: 1
+      speech: What you are saying doesn't make even a little bit of sense.
+      characterEmotion: 2
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+    - speakerName: 1
+      speech: Leave the discusion to people who understand what they say!
+      characterEmotion: 6
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+    - speakerName: 2
+      speech: He's actually right. How could you think such thing?
+      characterEmotion: 6
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+    - speakerName: 0
+      speech: Damn it! I'm losing focus...
+      characterEmotion: 3
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 1
+  loseDebateDialogue:
+  - speakerName: 1
+    speech: I consider that our friend over here has been saying nonsense all throughout
+      the debate...
+    characterEmotion: 2
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 0
+  - speakerName: 1
+    speech: He must be the killer!
+    characterEmotion: 6
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 0
+  - speakerName: 0
+    speech: What?!
+    characterEmotion: 7
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 0
+  - speakerName: 1
+    speech: You were probably trying to distract us all along...
+    characterEmotion: 2
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 0
+  - speakerName: 0
+    speech: What? No! You got it all wrong!
+    characterEmotion: 7
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 0
+  - speakerName: 2
+    speech: I'm sorry, <color=orange>Makoto</color>, but due to the lack of evidence...
+    characterEmotion: 0
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 0
+  - speakerName: 2
+    speech: I'm inclined to believe that he's right...
+    characterEmotion: 1
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 0
+  - speakerName: 2
+    speech: If I have to choose someone as guilty...
+    characterEmotion: 1
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 0
+  - speakerName: 2
+    speech: I choose you!
+    characterEmotion: 6
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 0
+  - speakerName: 0
+    speech: 'No, you are all wrong!
+
+      I didn''t do it!'
+    characterEmotion: 6
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 0
+  - speakerName: 1
+    speech: The time is up, fool. We've already decided.
+    characterEmotion: 2
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 0
+  winDebateDialogue:
+  - speakerName: 0
+    speech: According to the evidence we've gathered so far...
+    characterEmotion: 0
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 0
+  - speakerName: 0
+    speech: We can infer that <color=orange>Byakuya</color=orange> is the murderer!
+    characterEmotion: 0
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 0
+  - speakerName: 2
+    speech: You are totally right.
+    characterEmotion: 0
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 0
+  - speakerName: 2
+    speech: You thought that you could place the gun there to guide us in the incorrect
+      direction, but you cannot fool us, <color=orange>Byakuya</color=orange>.
+    characterEmotion: 0
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 0
+  - speakerName: 0
+    speech: That's right, admit it!
+    characterEmotion: 6
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 0
+  - speakerName: 1
+    speech: I...
+    characterEmotion: 7
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 0
+  - speakerName: 1
+    speech: '...congratulate you. You found out after all. You''re smart indeed.'
+    characterEmotion: 2
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 0
+  - speakerName: 0
+    speech: Why the hell are you smiling? You do now what's going to happen to you,
+      right?
+    characterEmotion: 4
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 0

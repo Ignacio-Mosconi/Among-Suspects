@@ -6,6 +6,11 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using TMPro;
 
+public enum DebatePhase
+{
+    Dialoguing, Arguing, SolvingArgument, SolvingCase
+}
+
 public class DebateManager : MonoBehaviour
 {
     #region Singleton
@@ -68,15 +73,20 @@ public class DebateManager : MonoBehaviour
     Quaternion currentCamTargetRot;
     CharacterName previousSpeaker = CharacterName.None;
     List<ClueInfo> caseClues;
+    DebatePhase currentPhase = DebatePhase.Dialoguing;
     int lineIndex = 0;
+    int argumentIndex = 0;
     int[] regularCluesLayoutPadding = { 0, 0 };
     float regularCluesLayoutSpacing = 0f;
     float regularClueButtonHeight = 0f;
     float characterShowIntervals;
     float textSpeedMultiplier;
     int targetSpeechCharAmount;
-    bool areInArgueingPhase = false;
+    float credibilityPerc = 50f;
+    float credibilityIncPerc;
+    float credibilityDecPerc;
 
+    const float MinCredibilityPercRequired = 70f;
 
     void Start()
     {
@@ -121,14 +131,14 @@ public class DebateManager : MonoBehaviour
             }
 
             lineIndex++;
-            if (areInArgueingPhase)
+            if (currentPhase == DebatePhase.Arguing)
             {
                 if (lineIndex < currentArgumentLines.Length)
                 {
                     ResetDebatePanelsStatuses();
                     Argue(currentArgumentLines[lineIndex].speakerName, 
                             currentArgumentLines[lineIndex].argument, 
-                            currentArgumentLines[lineIndex].characterEmotion);
+                            currentArgumentLines[lineIndex].speakerEmotion);
                 }
             }
             else
@@ -142,7 +152,30 @@ public class DebateManager : MonoBehaviour
                             currentDialogueLines[lineIndex].playerThought);
                 }
                 else
-                    StartArgumentPhase();
+                {
+                    if (currentPhase == DebatePhase.SolvingCase)
+                    {
+                        enabled = false;
+                        return;
+                    }
+
+                    if (currentPhase != DebatePhase.SolvingArgument)
+                        StartArgumentPhase();
+                    else
+                    {
+                        int argumentsRemaining = currentDebateInfo.arguments.Length - argumentIndex;
+
+                        if (credibilityPerc + argumentsRemaining * credibilityIncPerc < MinCredibilityPercRequired)
+                            EndCase(lose: true);
+                        else
+                        {
+                            if (argumentIndex == currentDebateInfo.arguments.Length)
+                                EndCase();
+                            else
+                                StartNextArgument();    
+                        }
+                    }
+                }
             }
         }
     }
@@ -173,8 +206,34 @@ public class DebateManager : MonoBehaviour
     {
         lineIndex = 0;
         speechPanel.SetActive(false);
-        areInArgueingPhase = true;
-        Argue(currentArgumentLines[0].speakerName, currentArgumentLines[0].argument, currentArgumentLines[0].characterEmotion);
+        currentPhase = DebatePhase.Arguing;
+        Argue(currentArgumentLines[0].speakerName, currentArgumentLines[0].argument, currentArgumentLines[0].speakerEmotion);
+    }
+
+    void StartNextArgument()
+    {
+        currentArgument = currentDebateInfo.arguments[argumentIndex];
+        currentArgumentLines = currentArgument.debateDialogue;
+        currentDialogueLines = currentArgument.argumentIntroDialogue;
+        
+        currentPhase = DebatePhase.Dialoguing;
+
+        Dialogue(currentDialogueLines[0].speakerName,
+                currentDialogueLines[0].speech,
+                currentDialogueLines[0].characterEmotion,
+                currentDialogueLines[0].playerThought);
+    }
+
+    void EndCase(bool lose = false)
+    {
+        currentPhase = DebatePhase.SolvingCase; 
+        lineIndex = 0;
+        currentDialogueLines = (!lose) ? currentDebateInfo.winDebateDialogue : currentDebateInfo.loseDebateDialogue;
+
+        Dialogue(currentDialogueLines[0].speakerName,
+                currentDialogueLines[0].speech,
+                currentDialogueLines[0].characterEmotion,
+                currentDialogueLines[0].playerThought);
     }
 
     void Argue(CharacterName speaker, string argument, CharacterEmotion speakerEmotion)
@@ -248,7 +307,7 @@ public class DebateManager : MonoBehaviour
         {
             StopCoroutine(focusingRoutine);
             debateCamera.transform.rotation = currentCamTargetRot;
-            if (areInArgueingPhase)
+            if (currentPhase == DebatePhase.Arguing)
                 SayArgument();
             else
                 SayDialogue();
@@ -304,7 +363,7 @@ public class DebateManager : MonoBehaviour
 
         focusingRoutine = null;
 
-        if (areInArgueingPhase)
+        if (currentPhase == DebatePhase.Arguing)
             SayArgument();
         else
             SayDialogue();
@@ -345,12 +404,27 @@ public class DebateManager : MonoBehaviour
     public void TrustComment()
     {
         debateOptionsPanel.SetActive(false);
-        Debug.Log("I Agree.");
+        argumentPanel.SetActive(false);
+        GameManager.Instance.SetCursorAvailability(false);
+
+        currentDialogueLines = currentArgument.trustDialogue;
+        
+        currentPhase = DebatePhase.SolvingArgument;
+        argumentIndex++;
 
         if (currentArgument.correctReaction == DebateReaction.Agree)
-            Debug.Log("You selected the correct option.");
+            credibilityPerc += credibilityIncPerc;
         else
-            Debug.Log("You didn't select the correct option.");
+            credibilityPerc -= credibilityDecPerc;
+
+        Debug.Log(credibilityPerc);
+
+        enabled = true;
+
+        Dialogue(currentDialogueLines[0].speakerName,
+                currentDialogueLines[0].speech,
+                currentDialogueLines[0].characterEmotion,
+                currentDialogueLines[0].playerThought);
     }
 
     public void RefuteComment()
@@ -364,20 +438,32 @@ public class DebateManager : MonoBehaviour
     public void AccuseWithEvidence(int optionIndex)
     {
         clueOptionsPanel.SetActive(false);
+        argumentPanel.SetActive(false);
+        GameManager.Instance.SetCursorAvailability(false);
         
-        Debug.Log("That's wrong!");
-        
-        if (currentArgument.correctReaction == DebateReaction.Disagree)
+        currentPhase = DebatePhase.SolvingArgument;
+        argumentIndex++;
+
+        if (currentArgument.correctReaction == DebateReaction.Disagree && 
+            currentArgument.correctEvidence == caseClues[optionIndex])
         {
-            Debug.Log("You selected the correct option.");
-            
-            if (caseClues[optionIndex] == currentArgument.correctEvidence)
-                Debug.Log("That's the correct evidence.");
-            else
-                Debug.Log("That's not the correct evidence.");
+            currentDialogueLines = currentArgument.refuteCorrectDialogue;
+            credibilityPerc += credibilityIncPerc;
         }
         else
-            Debug.Log("You didn't select the correct option.");
+        {
+            currentDialogueLines = currentArgument.refuteIncorrectDialogue;
+            credibilityPerc -= credibilityDecPerc;
+        }
+
+        Debug.Log(credibilityPerc);
+
+        enabled = true;
+
+        Dialogue(currentDialogueLines[0].speakerName,
+                currentDialogueLines[0].speech,
+                currentDialogueLines[0].characterEmotion,
+                currentDialogueLines[0].playerThought);
     }
 
     public void ReturnToDebateOptions()
@@ -396,6 +482,9 @@ public class DebateManager : MonoBehaviour
         currentArgument = currentDebateInfo.arguments[0];
         currentDialogueLines = currentArgument.argumentIntroDialogue;
         currentArgumentLines = currentArgument.debateDialogue;
+
+        credibilityIncPerc = credibilityPerc / currentDebateInfo.arguments.Length;
+        credibilityDecPerc = credibilityIncPerc * 2f;
 
         Button[] clueOptions = clueOptionsLayout.GetComponentsInChildren<Button>(includeInactive: true);
                 
