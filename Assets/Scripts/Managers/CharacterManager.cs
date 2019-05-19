@@ -3,9 +3,8 @@ using UnityEngine;
 
 public enum CharacterName
 {
-    Player,
-    Byakuya,
-    Kyoko,
+    Player, Byakuya, Kyoko,
+    James, Monica, William, Gary,
     None
 }
 
