@@ -98,6 +98,7 @@ public class DebateManager : MonoBehaviour
     float credibilityPerc;
     float credibilityIncPerc;
     float credibilityDecPerc;
+    bool isSelectingOption;
 
     const float MinCredibilityPercRequired = 70f;
     const float InitialCredibilityPerc = 50f;
@@ -287,6 +288,7 @@ public class DebateManager : MonoBehaviour
     {
         lineIndex = 0;
         enabled = false;
+        isSelectingOption = true;
         debateOptionsPanel.SetActive(true);
         GameManager.Instance.SetCursorAvailability(enable: true);
     }
@@ -500,7 +502,7 @@ public class DebateManager : MonoBehaviour
         while (speechText.maxVisibleCharacters != targetSpeechCharAmount)
         {
             speechText.maxVisibleCharacters++;
-            yield return new WaitForSecondsRealtime(characterShowIntervals * textSpeedMultiplier);
+            yield return new WaitForSeconds(characterShowIntervals * textSpeedMultiplier);
         }
 
         speakingRoutine = null;
@@ -573,6 +575,7 @@ public class DebateManager : MonoBehaviour
             StopFillingCredibilityBar();
         fillingBarRoutine = StartCoroutine(ChangeCredibilityBarFill());
 
+        isSelectingOption = false;
         enabled = true;
 
         Dialogue(currentDialogueLines[0].speakerName,
@@ -616,6 +619,7 @@ public class DebateManager : MonoBehaviour
             StopFillingCredibilityBar();
         fillingBarRoutine = StartCoroutine(ChangeCredibilityBarFill());
 
+        isSelectingOption = false;
         enabled = true;
 
         Dialogue(currentDialogueLines[0].speakerName,
@@ -677,7 +681,8 @@ public class DebateManager : MonoBehaviour
         if (currentDebateInfo)
         {
             debateArea.SetActive(enable);
-            enabled = enable;
+            if (!isSelectingOption)
+                enabled = enable;
         }
     }
 }
