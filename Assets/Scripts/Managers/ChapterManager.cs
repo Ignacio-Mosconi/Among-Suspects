@@ -1,5 +1,10 @@
 ﻿using UnityEngine;
 
+public enum ChapterPhase
+{
+    Exploration, Investigation
+}
+
 public class ChapterManager : MonoBehaviour
 {
     #region Singleton
@@ -37,6 +42,7 @@ public class ChapterManager : MonoBehaviour
 
     DebateInitializer debateInitializer;
     PauseMenu pauseMenu;
+    ChapterPhase currentPhase = ChapterPhase.Exploration;
 
     void Start()
     {
@@ -98,5 +104,14 @@ public class ChapterManager : MonoBehaviour
         endScreenArea.SetActive(false);
         debateRetryArea.SetActive(false);
         debateInitializer.StartDebate();
+    }
+
+    public void TriggerNextPhase()
+    {
+        if (currentPhase == ChapterPhase.Exploration)
+        {
+            currentPhase = ChapterPhase.Investigation;
+            // Do more stuff!
+        }
     }
 }

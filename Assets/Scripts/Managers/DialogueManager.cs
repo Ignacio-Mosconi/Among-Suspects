@@ -124,8 +124,21 @@ public class DialogueManager : MonoBehaviour
 
         if (!enableDialogueArea)
         {
+            if (currentDialogueInfo)
+            {
+                bool introRead = (currentDialogueInfo.HasIntroLines()) ? currentDialogueInfo.introRead : true;
+                bool interactionOptionSelected = (currentDialogueInfo.HasInteractiveDialogue()) ? currentDialogueInfo.interactionOptionSelected : true;
+                bool groupDialogueRead = (currentDialogueInfo.HasGroupDialogue()) ? currentDialogueInfo.groupDialogueRead : true;
+
+                if (introRead && interactionOptionSelected && groupDialogueRead)
+                    CharacterManager.Instance.NotifyCharacterFullyInteracted(mainSpeaker.CharacterName);
+
+            }
+
             currentDialogueInfo = null;
             currentLines = null;
+            mainSpeaker = null;
+            previousSpeaker = null;
 
             objectImage.gameObject.SetActive(false);
             speakerImage.gameObject.SetActive(false);

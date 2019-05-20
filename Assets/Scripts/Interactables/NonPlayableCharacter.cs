@@ -69,5 +69,10 @@ public class NonPlayableCharacter : Interactable
         get { return rightSpeaker.position; }
     }
 
+    public DialogueInfo DialogueInfo
+    {
+        set { dialogueInfo = value; }
+    }
+
     #endregion
 }

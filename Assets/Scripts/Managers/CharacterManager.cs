@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum CharacterName
 {
@@ -38,21 +39,28 @@ public class CharacterManager : MonoBehaviour
     #endregion
 
     List<NonPlayableCharacter> characters = new List<NonPlayableCharacter>();
+    Dictionary<CharacterName, bool> interactionRecords = new Dictionary<CharacterName, bool>();
+
+    string dialoguesPath;
 
     void Start()
     {
+        dialoguesPath = "Dialogues/" + SceneManager.GetActiveScene().name + "/";
+
         NonPlayableCharacter[] npcs = FindObjectsOfType<NonPlayableCharacter>();
 
         foreach (NonPlayableCharacter npc in npcs)
         {
-            if (npc.CharacterName == CharacterName.Monica)
+            if (!characters.Find(c => c.CharacterName == npc.CharacterName))
             {
-                npc.NameRevealed = true;
-                npc.TriggerNiceReaction();
-            }
-
-            if (!characters.Find(c => c.CharacterName == npc.CharacterName)) 
+                if (npc.CharacterName == CharacterName.Monica)
+                {
+                    npc.NameRevealed = true;
+                    npc.TriggerNiceReaction();
+                }
                 characters.Add(npc);
+                interactionRecords.Add(npc.CharacterName, false);
+            }
             else
                 Debug.LogError("There are duplicate characters in the scene.", npc.gameObject);
         }
@@ -66,5 +74,21 @@ public class CharacterManager : MonoBehaviour
             Debug.LogError("There are no characters named '" + characterName + "' in the scene.", gameObject);
         
         return character;
+    }
+
+    public void NotifyCharacterFullyInteracted(CharacterName characterName)
+    {
+        if (interactionRecords.ContainsKey(characterName))
+        {
+            interactionRecords[characterName] = true;
+            if (!interactionRecords.ContainsValue(false))
+            {
+                ChapterManager.Instance.TriggerNextPhase();
+                foreach (NonPlayableCharacter npc in characters)
+                    npc.DialogueInfo = Resources.Load(dialoguesPath + npc.CharacterName.ToString() + " Investigation Phase") as DialogueInfo;
+            }
+        }
+        else
+            Debug.LogError("There are no characters named '" + characterName + "' in the scene.", gameObject);
     }
 }
