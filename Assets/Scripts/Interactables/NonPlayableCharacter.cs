@@ -41,6 +41,11 @@ public class NonPlayableCharacter : Interactable
         return characterSprites[(int)characterEmotion];
     }
 
+    public void TriggerNiceReaction()
+    {
+        dialogueInfo.niceWithPlayer = true;
+    }
+
     #region Getters & Setters
 
     public CharacterName CharacterName

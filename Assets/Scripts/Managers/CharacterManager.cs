@@ -45,6 +45,12 @@ public class CharacterManager : MonoBehaviour
 
         foreach (NonPlayableCharacter npc in npcs)
         {
+            if (npc.CharacterName == CharacterName.Monica)
+            {
+                npc.NameRevealed = true;
+                npc.TriggerNiceReaction();
+            }
+
             if (!characters.Find(c => c.CharacterName == npc.CharacterName)) 
                 characters.Add(npc);
             else

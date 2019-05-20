@@ -39,7 +39,7 @@ MonoBehaviour:
     playerThought: 0
   - speakerName: 3
     speech: That's my super-supportive girlfriend. Since I lost my memory in that
-      accident, she has always been there form me....
+      accident, she has always been there for me....
     characterEmotion: 8
     clueInfo: {fileID: 0}
     revealName: 0
@@ -120,13 +120,37 @@ MonoBehaviour:
     revealName: 0
     playerThought: 1
   interactiveConversation: []
-  niceComment: []
-  rudeComment: []
+  niceComment:
+  - speakerName: 4
+    speech: Why don't we talk to the others?
+    characterEmotion: 0
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 0
+  - speakerName: 4
+    speech: I'm super excited to meet your old classmates!
+    characterEmotion: 2
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 0
+  - speakerName: 3
+    speech: All right, all right...
+    characterEmotion: 8
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 0
+  rudeComment:
+  - speakerName: 0
+    speech: '...'
+    characterEmotion: 0
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 0
   groupDialogue:
     leftSpeaker: 0
     rightSpeaker: 0
     dialogue: []
-  introRead: 0
+  introRead: 1
   interactionOptionSelected: 0
   niceWithPlayer: 0
   groupDialogueRead: 0
