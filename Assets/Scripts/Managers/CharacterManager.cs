@@ -39,7 +39,6 @@ public class CharacterManager : MonoBehaviour
     #endregion
 
     List<NonPlayableCharacter> characters = new List<NonPlayableCharacter>();
-    //Dictionary<CharacterName, bool> interactionRecords = new Dictionary<CharacterName, bool>();
 
     string dialoguesPath;
 
@@ -56,10 +55,9 @@ public class CharacterManager : MonoBehaviour
                 if (npc.CharacterName == CharacterName.Monica)
                 {
                     npc.NameRevealed = true;
-                    npc.TriggerNiceReaction();
+                    npc.NiceWithPlayer = true;
                 }
                 characters.Add(npc);
-                //interactionRecords.Add(npc.CharacterName, false);
             }
             else
                 Debug.LogError("There are duplicate characters in the scene.", npc.gameObject);
@@ -79,22 +77,19 @@ public class CharacterManager : MonoBehaviour
     public void LoadInvestigationDialogues()
     {
         foreach (NonPlayableCharacter npc in characters)
+        {
             npc.DialogueInfo = Resources.Load(dialoguesPath + npc.CharacterName.ToString() + " Investigation Phase") as DialogueInfo;
+            npc.DialogueInfo.introRead = false;
+            npc.DialogueInfo.interactionOptionSelected = false;
+            npc.DialogueInfo.groupDialogueRead = false;
+        }
     }
 
-    // public void NotifyCharacterFullyInteracted(CharacterName characterName)
-    // {
-    //     if (interactionRecords.ContainsKey(characterName))
-    //     {
-    //         interactionRecords[characterName] = true;
-    //         if (!interactionRecords.ContainsValue(false))
-    //         {
-    //             ChapterManager.Instance.TriggerInvestigationPhase();
-    //             foreach (NonPlayableCharacter npc in characters)
-    //                 npc.DialogueInfo = Resources.Load(dialoguesPath + npc.CharacterName.ToString() + " Investigation Phase") as DialogueInfo;
-    //         }
-    //     }
-    //     else
-    //         Debug.LogError("There are no characters named '" + characterName + "' in the scene.", gameObject);
-    // }
+    public void CancelOtherGroupDialogues()
+    {
+        foreach (NonPlayableCharacter npc in characters)
+        {
+            npc.DialogueInfo.groupDialogueRead = true;
+        }
+    }
 }

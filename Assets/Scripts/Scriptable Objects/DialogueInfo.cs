@@ -39,6 +39,7 @@ public struct GroupDialogue
     public CharacterName leftSpeaker;
     public CharacterName rightSpeaker;
     public Dialogue[] dialogue;
+    public bool cancelOtherGroupDialogues;
 }
 
 [CreateAssetMenu(fileName = "New Dialogue Info", menuName = "Dialogue Info", order = 1)]
@@ -56,7 +57,7 @@ public class DialogueInfo : ScriptableObject
 
     [HideInInspector] public bool introRead = false;
     [HideInInspector] public bool interactionOptionSelected = false;
-    [HideInInspector] public bool niceWithPlayer = false;
+    //[HideInInspector] public bool niceWithPlayer = false;
     [HideInInspector] public bool groupDialogueRead = false;
 
     public bool HasIntroLines()

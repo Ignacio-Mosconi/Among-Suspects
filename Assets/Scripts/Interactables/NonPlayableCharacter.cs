@@ -10,6 +10,7 @@ public class NonPlayableCharacter : Interactable
     [SerializeField] Transform rightSpeaker;
 
     bool nameRevealed = false;
+    bool niceWithPlayer = false;
 
     void Awake()
     {
@@ -41,11 +42,6 @@ public class NonPlayableCharacter : Interactable
         return characterSprites[(int)characterEmotion];
     }
 
-    public void TriggerNiceReaction()
-    {
-        dialogueInfo.niceWithPlayer = true;
-    }
-
     #region Getters & Setters
 
     public CharacterName CharacterName
@@ -57,6 +53,12 @@ public class NonPlayableCharacter : Interactable
     {
         get { return nameRevealed; }
         set { nameRevealed = value; }
+    }
+
+    public bool NiceWithPlayer
+    {
+        get { return niceWithPlayer; }
+        set { niceWithPlayer = value; }
     }
 
     public Vector3 LeftSpeakerPosition
@@ -71,6 +73,7 @@ public class NonPlayableCharacter : Interactable
 
     public DialogueInfo DialogueInfo
     {
+        get { return dialogueInfo; }
         set { dialogueInfo = value; }
     }
 

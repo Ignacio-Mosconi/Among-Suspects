@@ -124,15 +124,9 @@ public class DialogueManager : MonoBehaviour
 
         if (!enableDialogueArea)
         {
-            // if (currentDialogueInfo)
-            // {
-            //     bool introRead = (currentDialogueInfo.HasIntroLines()) ? currentDialogueInfo.introRead : true;
-            //     bool interactionOptionSelected = (currentDialogueInfo.HasInteractiveDialogue()) ? currentDialogueInfo.interactionOptionSelected : true;
-            //     bool groupDialogueRead = (currentDialogueInfo.HasGroupDialogue()) ? currentDialogueInfo.groupDialogueRead : true;
-
-            //     if (introRead && interactionOptionSelected && groupDialogueRead)
-            //         CharacterManager.Instance.NotifyCharacterFullyInteracted(mainSpeaker.CharacterName);
-            // }
+            if (currentDialogueInfo && currentLines == currentDialogueInfo.groupDialogue.dialogue && 
+                currentDialogueInfo.groupDialogue.cancelOtherGroupDialogues)
+                CharacterManager.Instance.CancelOtherGroupDialogues();
 
             currentDialogueInfo = null;
             currentLines = null;
@@ -267,7 +261,9 @@ public class DialogueManager : MonoBehaviour
         optionsLayout.spacing = regularOptionsLayoutSpacing;
              
         currentLines = currentDialogueInfo.interactiveConversation[option].dialogue;
-        currentDialogueInfo.niceWithPlayer = currentDialogueInfo.interactiveConversation[option].triggerNiceImpression;
+        //currentDialogueInfo.niceWithPlayer = currentDialogueInfo.interactiveConversation[option].triggerNiceImpression;
+        mainSpeaker.NiceWithPlayer = currentDialogueInfo.interactiveConversation[option].triggerNiceImpression;
+
         currentDialogueInfo.interactionOptionSelected = true;
 
         SayDialogue(currentLines[0].speech, 
@@ -296,7 +292,7 @@ public class DialogueManager : MonoBehaviour
             if (currentDialogueInfo.HasGroupDialogue() && !currentDialogueInfo.groupDialogueRead)
                 currentLines = currentDialogueInfo.groupDialogue.dialogue;
             else
-                currentLines = (currentDialogueInfo.niceWithPlayer) ? currentDialogueInfo.niceComment : 
+                currentLines = (npc.NiceWithPlayer) ? currentDialogueInfo.niceComment : 
                                                                         currentDialogueInfo.rudeComment;
         }
 
