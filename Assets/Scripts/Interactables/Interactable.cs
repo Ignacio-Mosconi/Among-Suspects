@@ -71,12 +71,12 @@ public abstract class Interactable : MonoBehaviour
         onStopLookingAt.Invoke();
     }
 
-    protected virtual void EnableInteraction()
+    public virtual void EnableInteraction()
     {
         enabled = true;
     }
 
-    protected virtual void DisableInteraction()
+    public virtual void DisableInteraction()
     {
         enabled = false;
     }

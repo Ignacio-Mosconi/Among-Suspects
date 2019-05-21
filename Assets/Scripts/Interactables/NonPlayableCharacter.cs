@@ -19,13 +19,13 @@ public class NonPlayableCharacter : Interactable
         dialogueInfo.groupDialogueRead = false;
     }
 
-    protected override void EnableInteraction()
+    public override void EnableInteraction()
     {
         base.EnableInteraction();
         characterMesh.SetActive(true);
     }
 
-    protected override void DisableInteraction()
+    public override void DisableInteraction()
     {
         base.DisableInteraction();
         characterMesh.SetActive(false);

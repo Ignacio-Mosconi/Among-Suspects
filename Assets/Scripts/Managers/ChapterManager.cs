@@ -48,6 +48,8 @@ public class ChapterManager : MonoBehaviour
     {
         debateInitializer = FindObjectOfType<DebateInitializer>();
         pauseMenu = FindObjectOfType<PauseMenu>();
+
+        debateInitializer.DisableInteraction();
     }
 
     public ClueInfo GetChapterClueInfo(int index)
@@ -111,6 +113,7 @@ public class ChapterManager : MonoBehaviour
         if (currentPhase == ChapterPhase.Exploration)
         {
             currentPhase = ChapterPhase.Investigation;
+            debateInitializer.EnableInteraction();
             CharacterManager.Instance.LoadInvestigationDialogues();
         }
     }

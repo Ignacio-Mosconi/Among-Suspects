@@ -348,7 +348,8 @@ public class DebateManager : MonoBehaviour
             SayArgument();
 
         argumentText.text = argument;
-        characterRenderer.sprite = CharacterManager.Instance.GetCharacter(speaker).GetSprite(speakerEmotion);
+        if (speaker != playerController.PlayerName)
+            characterRenderer.sprite = CharacterManager.Instance.GetCharacter(speaker).GetSprite(speakerEmotion);
     }
 
     void Dialogue(CharacterName speaker, string speech, CharacterEmotion speakerEmotion, bool playerThought)
