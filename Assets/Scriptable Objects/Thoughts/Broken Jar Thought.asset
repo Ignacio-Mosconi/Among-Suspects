@@ -10,46 +10,45 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a7e9810d40ded54dadb89bfc66b24e3, type: 3}
-  m_Name: Fridge Thought
+  m_Name: Broken Jar Thought
   m_EditorClassIdentifier: 
   explorationThought:
   - speakerName: 3
-    speech: I'm kind of hungry, but the host of this party isn't offering us anything
-      to eat.
-    characterEmotion: 0
-    clueInfo: {fileID: 0}
-    revealName: 0
-    playerThought: 1
-  - speakerName: 3
-    speech: What kind of host does that?
-    characterEmotion: 0
-    clueInfo: {fileID: 0}
-    revealName: 0
-    playerThought: 1
-  - speakerName: 3
-    speech: Will I look too bad if I look for some food in the fridge myself?
-    characterEmotion: 0
-    clueInfo: {fileID: 0}
-    revealName: 0
-    playerThought: 1
-  - speakerName: 3
-    speech: Nah... That's just not fine. I guess I'll have to starve until someone
-      comes up with the idea of eating something...
+    speech: Wait, what's that thing right next to this broken jar?
     characterEmotion: 0
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 1
   investigationThought:
   - speakerName: 3
-    speech: A few hours ago, I was really hungry; now, I barely want to eat.
+    speech: A broken jar next to the corpse?
     characterEmotion: 0
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 1
   - speakerName: 3
-    speech: What I want is to get out of here as soon as possible!
+    speech: Was it used by the victim to defend himself?
     characterEmotion: 0
     clueInfo: {fileID: 0}
     revealName: 0
-    playerThought: 0
+    playerThought: 1
+  - speakerName: 3
+    speech: Mhh...
+    characterEmotion: 0
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 1
+  - speakerName: 3
+    speech: Wait, he couldn't have thrown it, as the shattered pieces are too close
+      to ech other...
+    characterEmotion: 0
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 1
+  - speakerName: 3
+    speech: This thing might have been dropped by accident...
+    characterEmotion: 0
+    clueInfo: {fileID: 11400000, guid: 9cfc2c8a48537574787858fc59e08b7e, type: 2}
+    revealName: 0
+    playerThought: 1
   triggerInvestigationPhase: 0

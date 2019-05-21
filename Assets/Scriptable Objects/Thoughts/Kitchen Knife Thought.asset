@@ -10,46 +10,59 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a7e9810d40ded54dadb89bfc66b24e3, type: 3}
-  m_Name: Fridge Thought
+  m_Name: Kitchen Knife Thought
   m_EditorClassIdentifier: 
   explorationThought:
   - speakerName: 3
-    speech: I'm kind of hungry, but the host of this party isn't offering us anything
-      to eat.
+    speech: This is just a regular kitchen knife.
     characterEmotion: 0
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 1
   - speakerName: 3
-    speech: What kind of host does that?
-    characterEmotion: 0
-    clueInfo: {fileID: 0}
-    revealName: 0
-    playerThought: 1
-  - speakerName: 3
-    speech: Will I look too bad if I look for some food in the fridge myself?
-    characterEmotion: 0
-    clueInfo: {fileID: 0}
-    revealName: 0
-    playerThought: 1
-  - speakerName: 3
-    speech: Nah... That's just not fine. I guess I'll have to starve until someone
-      comes up with the idea of eating something...
+    speech: It kind of bothers me that it isn't stored inside a cabinet, but I'm sort
+      of obsessive with that stuff...
     characterEmotion: 0
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 1
   investigationThought:
   - speakerName: 3
-    speech: A few hours ago, I was really hungry; now, I barely want to eat.
+    speech: There's a kitchen knife here...
     characterEmotion: 0
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 1
   - speakerName: 3
-    speech: What I want is to get out of here as soon as possible!
+    speech: Since the state of the body suggests that the victim was killed with a
+      sharp object like this...
     characterEmotion: 0
     clueInfo: {fileID: 0}
     revealName: 0
-    playerThought: 0
+    playerThought: 1
+  - speakerName: 3
+    speech: This knife could be the <color=red>murder weapon</color>.
+    characterEmotion: 0
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 1
+  - speakerName: 3
+    speech: But wait, this is too clean to have been used in that sort of stabbing.
+    characterEmotion: 0
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 1
+  - speakerName: 3
+    speech: Hold on a second... I can see a bit of blood on the tip!
+    characterEmotion: 0
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 1
+  - speakerName: 3
+    speech: That means the killer tried to dispose of the evidence by washing the
+      knife in the kitchen!
+    characterEmotion: 0
+    clueInfo: {fileID: 11400000, guid: 5309767f58951e343a540d34dded473b, type: 2}
+    revealName: 0
+    playerThought: 1
   triggerInvestigationPhase: 0
