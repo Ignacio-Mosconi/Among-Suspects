@@ -106,12 +106,17 @@ public class ChapterManager : MonoBehaviour
         debateInitializer.StartDebate();
     }
 
-    public void TriggerNextPhase()
+    public void TriggerInvestigationPhase()
     {
         if (currentPhase == ChapterPhase.Exploration)
         {
             currentPhase = ChapterPhase.Investigation;
-            // Do more stuff!
+            CharacterManager.Instance.LoadInvestigationDialogues();
         }
+    }
+
+    public ChapterPhase CurrentPhase
+    {
+        get { return currentPhase; }
     }
 }

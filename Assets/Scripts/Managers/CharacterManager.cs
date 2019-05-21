@@ -39,7 +39,7 @@ public class CharacterManager : MonoBehaviour
     #endregion
 
     List<NonPlayableCharacter> characters = new List<NonPlayableCharacter>();
-    Dictionary<CharacterName, bool> interactionRecords = new Dictionary<CharacterName, bool>();
+    //Dictionary<CharacterName, bool> interactionRecords = new Dictionary<CharacterName, bool>();
 
     string dialoguesPath;
 
@@ -59,7 +59,7 @@ public class CharacterManager : MonoBehaviour
                     npc.TriggerNiceReaction();
                 }
                 characters.Add(npc);
-                interactionRecords.Add(npc.CharacterName, false);
+                //interactionRecords.Add(npc.CharacterName, false);
             }
             else
                 Debug.LogError("There are duplicate characters in the scene.", npc.gameObject);
@@ -76,19 +76,25 @@ public class CharacterManager : MonoBehaviour
         return character;
     }
 
-    public void NotifyCharacterFullyInteracted(CharacterName characterName)
+    public void LoadInvestigationDialogues()
     {
-        if (interactionRecords.ContainsKey(characterName))
-        {
-            interactionRecords[characterName] = true;
-            if (!interactionRecords.ContainsValue(false))
-            {
-                ChapterManager.Instance.TriggerNextPhase();
-                foreach (NonPlayableCharacter npc in characters)
-                    npc.DialogueInfo = Resources.Load(dialoguesPath + npc.CharacterName.ToString() + " Investigation Phase") as DialogueInfo;
-            }
-        }
-        else
-            Debug.LogError("There are no characters named '" + characterName + "' in the scene.", gameObject);
+        foreach (NonPlayableCharacter npc in characters)
+            npc.DialogueInfo = Resources.Load(dialoguesPath + npc.CharacterName.ToString() + " Investigation Phase") as DialogueInfo;
     }
+
+    // public void NotifyCharacterFullyInteracted(CharacterName characterName)
+    // {
+    //     if (interactionRecords.ContainsKey(characterName))
+    //     {
+    //         interactionRecords[characterName] = true;
+    //         if (!interactionRecords.ContainsValue(false))
+    //         {
+    //             ChapterManager.Instance.TriggerInvestigationPhase();
+    //             foreach (NonPlayableCharacter npc in characters)
+    //                 npc.DialogueInfo = Resources.Load(dialoguesPath + npc.CharacterName.ToString() + " Investigation Phase") as DialogueInfo;
+    //         }
+    //     }
+    //     else
+    //         Debug.LogError("There are no characters named '" + characterName + "' in the scene.", gameObject);
+    // }
 }

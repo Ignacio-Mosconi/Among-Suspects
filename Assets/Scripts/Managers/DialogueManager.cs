@@ -124,16 +124,15 @@ public class DialogueManager : MonoBehaviour
 
         if (!enableDialogueArea)
         {
-            if (currentDialogueInfo)
-            {
-                bool introRead = (currentDialogueInfo.HasIntroLines()) ? currentDialogueInfo.introRead : true;
-                bool interactionOptionSelected = (currentDialogueInfo.HasInteractiveDialogue()) ? currentDialogueInfo.interactionOptionSelected : true;
-                bool groupDialogueRead = (currentDialogueInfo.HasGroupDialogue()) ? currentDialogueInfo.groupDialogueRead : true;
+            // if (currentDialogueInfo)
+            // {
+            //     bool introRead = (currentDialogueInfo.HasIntroLines()) ? currentDialogueInfo.introRead : true;
+            //     bool interactionOptionSelected = (currentDialogueInfo.HasInteractiveDialogue()) ? currentDialogueInfo.interactionOptionSelected : true;
+            //     bool groupDialogueRead = (currentDialogueInfo.HasGroupDialogue()) ? currentDialogueInfo.groupDialogueRead : true;
 
-                if (introRead && interactionOptionSelected && groupDialogueRead)
-                    CharacterManager.Instance.NotifyCharacterFullyInteracted(mainSpeaker.CharacterName);
-
-            }
+            //     if (introRead && interactionOptionSelected && groupDialogueRead)
+            //         CharacterManager.Instance.NotifyCharacterFullyInteracted(mainSpeaker.CharacterName);
+            // }
 
             currentDialogueInfo = null;
             currentLines = null;
@@ -309,7 +308,7 @@ public class DialogueManager : MonoBehaviour
                     currentLines[0].clueInfo);
     }
 
-    public void EnableDialogueArea(Dialogue[] thoughts, Vector3 objectPosition, Sprite objectSprite = null, bool enableImage = false)
+    public void EnableDialogueArea(ThoughtInfo thoughtInfo, Vector3 objectPosition, Sprite objectSprite = null, bool enableImage = false)
     {
         playerController.FirstPersonCamera.FocusOnPosition(objectPosition);
 
@@ -321,7 +320,11 @@ public class DialogueManager : MonoBehaviour
 
         SetDialogueAreaAvailability(enableDialogueArea: true);
 
-        currentLines = thoughts;
+        currentLines = (ChapterManager.Instance.CurrentPhase == ChapterPhase.Exploration) ? thoughtInfo.explorationThought : 
+                                                                                            thoughtInfo.investigationThought;
+
+        if (thoughtInfo.triggerInvestigationPhase)
+            ChapterManager.Instance.TriggerInvestigationPhase();
 
         SayDialogue(currentLines[0].speech,
                     currentLines[0].speakerName,

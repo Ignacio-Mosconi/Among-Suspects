@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a7e9810d40ded54dadb89bfc66b24e3, type: 3}
+  m_Name: Corpse Thought
+  m_EditorClassIdentifier: 
+  explorationThought:
+  - speakerName: 3
+    speech: Wh-what?
+    characterEmotion: 0
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 1
+  - speakerName: 3
+    speech: I-is tha-that a dead body?
+    characterEmotion: 0
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 1
+  - speakerName: 3
+    speech: Oh, jesus! Someone was murdered here!
+    characterEmotion: 0
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 1
+  - speakerName: 3
+    speech: Th-there is a co-corpse in here!
+    characterEmotion: 0
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 0
+  investigationThought:
+  - speakerName: 3
+    speech: The poor guy was brutally murderer...
+    characterEmotion: 0
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 1
+  - speakerName: 3
+    speech: It was one of the group, apparently.
+    characterEmotion: 0
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 1
+  - speakerName: 3
+    speech: I didn't have the chance to talk to him today, though, so he's a complete
+      stranger to me.
+    characterEmotion: 0
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 1
+  - speakerName: 3
+    speech: By the look of his wounds, those had to be made with a knife.
+    characterEmotion: 0
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 1
+  - speakerName: 3
+    speech: There is also a lot of blood, which means that our killer had to be a
+      maniac, or that there was some kind of struggle between them.
+    characterEmotion: 0
+    clueInfo: {fileID: 11400000, guid: 51c150ff211ae2642919afb1d4ed2ce4, type: 2}
+    revealName: 0
+    playerThought: 1
+  - speakerName: 3
+    speech: I have read way too many mystery novels to know that...
+    characterEmotion: 0
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 1
+  triggerInvestigationPhase: 1
