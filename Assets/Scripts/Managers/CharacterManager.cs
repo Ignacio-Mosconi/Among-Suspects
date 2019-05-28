@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 
 public enum CharacterName
 {
-    Player, Byakuya, Kyoko,
     James, Monica, William, Gary,
     None
 }
@@ -39,11 +38,14 @@ public class CharacterManager : MonoBehaviour
     #endregion
 
     List<NonPlayableCharacter> characters = new List<NonPlayableCharacter>();
+    PlayerController playerController = default;
 
     string dialoguesPath;
 
     void Start()
     {
+        playerController = FindObjectOfType<PlayerController>();
+
         dialoguesPath = "Dialogues/" + SceneManager.GetActiveScene().name + "/";
 
         NonPlayableCharacter[] npcs = FindObjectsOfType<NonPlayableCharacter>();
@@ -91,5 +93,10 @@ public class CharacterManager : MonoBehaviour
         {
             npc.DialogueInfo.groupDialogueRead = true;
         }
+    }
+
+    public PlayerController PlayerController
+    {
+        get { return playerController; }
     }
 }

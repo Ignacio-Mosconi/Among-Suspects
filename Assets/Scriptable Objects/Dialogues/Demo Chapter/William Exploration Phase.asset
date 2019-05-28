@@ -13,56 +13,56 @@ MonoBehaviour:
   m_Name: William Exploration Phase
   m_EditorClassIdentifier: 
   introLines:
-  - speakerName: 5
+  - speakerName: 2
     speech: Hey, there, bro. What's up?
     characterEmotion: 1
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
-  - speakerName: 3
+  - speakerName: 0
     speech: Hi... big guy...
     characterEmotion: 8
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
-  - speakerName: 3
+  - speakerName: 0
     speech: Well, I kind of lost my memory in an accident...
     characterEmotion: 8
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
-  - speakerName: 3
+  - speakerName: 0
     speech: Can you tell me your name? I actually... don't remember you...
     characterEmotion: 8
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
-  - speakerName: 5
+  - speakerName: 2
     speech: Really? Is that so?
     characterEmotion: 3
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
-  - speakerName: 5
+  - speakerName: 2
     speech: Ehm, okay, dude. You're talking to <color=orange>Wiliam Evans</color>,
       the super famous football player.
     characterEmotion: 0
     clueInfo: {fileID: 0}
     revealName: 1
     playerThought: 0
-  - speakerName: 3
+  - speakerName: 0
     speech: Are you famous?
     characterEmotion: 8
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
-  - speakerName: 5
+  - speakerName: 2
     speech: You bet I am! I'm gonna be the next legend of the sport!
     characterEmotion: 2
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
-  - speakerName: 3
+  - speakerName: 0
     speech: He seems pretty proud of himself, but why does he have to be so loud?
     characterEmotion: 8
     clueInfo: {fileID: 0}
@@ -70,127 +70,127 @@ MonoBehaviour:
     playerThought: 1
   interactiveConversation: []
   niceComment:
-  - speakerName: 5
+  - speakerName: 2
     speech: '...'
     characterEmotion: 0
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
   rudeComment:
-  - speakerName: 5
+  - speakerName: 2
     speech: You really don't remember me at all, dude?
     characterEmotion: 1
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
-  - speakerName: 3
+  - speakerName: 0
     speech: I'm sorry... I can't recall you...
     characterEmotion: 0
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
-  - speakerName: 5
+  - speakerName: 2
     speech: That's...
     characterEmotion: 0
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
-  - speakerName: 5
+  - speakerName: 2
     speech: '...all right. Never mind.'
     characterEmotion: 1
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
   groupDialogue:
-    leftSpeaker: 6
-    rightSpeaker: 4
+    leftSpeaker: 1
+    rightSpeaker: 3
     dialogue:
-    - speakerName: 4
+    - speakerName: 1
       speech: Really? Are you so popular?
       characterEmotion: 3
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 5
+    - speakerName: 2
       speech: Hell, yeah! I'm known all over the county!
       characterEmotion: 2
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 5
+    - speakerName: 2
       speech: I'm the most talented dude this town's ever seen...
       characterEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 4
+    - speakerName: 1
       speech: That's impressive!
       characterEmotion: 2
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 3
+    - speakerName: 0
       speech: I hope he's not trying to flirt with my girlfriend...
       characterEmotion: 8
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 1
-    - speakerName: 4
+    - speakerName: 1
       speech: Darling, you never told me about your famous sports friend...
       characterEmotion: 0
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 3
+    - speakerName: 0
       speech: Well... I really don't remember why I have never told you about him.
       characterEmotion: 8
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 6
+    - speakerName: 3
       speech: Mhh, that football star has always exaggerated and bragged about his
         actual talents.
       characterEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 6
+    - speakerName: 3
       speech: Maybe that's why you never told her about him...
       characterEmotion: 2
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 5
+    - speakerName: 2
       speech: What da fuck do you know, freak?!
       characterEmotion: 5
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 4
+    - speakerName: 1
       speech: '...'
       characterEmotion: 3
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 3
+    - speakerName: 0
       speech: I can sense a lot of tension between those two...
       characterEmotion: 8
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 1
-    - speakerName: 3
+    - speakerName: 0
       speech: Okay; let's just calm down, all right?
       characterEmotion: 8
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 3
+    - speakerName: 0
       speech: We are all here to have a nice party, aren't we?
       characterEmotion: 8
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+    cancelOtherGroupDialogues: 0
   introRead: 1
   interactionOptionSelected: 0
-  niceWithPlayer: 0
   groupDialogueRead: 1

@@ -20,46 +20,46 @@ MonoBehaviour:
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 3
+    - speakerName: 0
       speech: I know this isn't nice for anyone, but we have to discuss about where
         we all were when the body was found.
       characterEmotion: 0
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 3
-      speech: It's petty obvious that I was in the bedroom, since I was the one who
+    - speakerName: 0
+      speech: It's pretty obvious that I was in the bedroom, since I was the one who
         found the corpse.
-      characterEmotion: 0
+      characterEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 3
+    - speakerName: 0
       speech: Now, Monica. Where were you at that time?
       characterEmotion: 0
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
     debateDialogue:
-    - speakerName: 4
+    - speakerName: 1
       argument: I was inside the room in front of the bedroom...
       speakerEmotion: 1
-    - speakerName: 4
+    - speakerName: 1
       argument: I was just wandering around the place...
       speakerEmotion: 0
-    - speakerName: 4
+    - speakerName: 1
       argument: I didn't do anything!
       speakerEmotion: 3
     correctReaction: 0
     correctEvidence: {fileID: 0}
     trustDialogue:
-    - speakerName: 3
+    - speakerName: 0
       speech: Of course I believe you, <color=orange>Monica</color>.
       characterEmotion: 0
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 6
+    - speakerName: 3
       speech: We don't have evidence to accuse anyone yet, so calm her down, please.
       characterEmotion: 0
       clueInfo: {fileID: 0}
@@ -67,121 +67,121 @@ MonoBehaviour:
       playerThought: 0
     refuteCorrectDialogue: []
     refuteIncorrectDialogue:
-    - speakerName: 4
+    - speakerName: 1
       speech: What do you mean, <color=orange>James</color>?
       characterEmotion: 3
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 4
+    - speakerName: 1
       speech: That doesn't prove anything!
       characterEmotion: 4
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 3
+    - speakerName: 0
       speech: She's right. What am I doing?
       characterEmotion: 0
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 1
   - argumentIntroDialogue:
-    - speakerName: 6
+    - speakerName: 3
       speech: What about the big football star?
-      characterEmotion: 0
+      characterEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 6
+    - speakerName: 3
       speech: I'm interested in hearing his alibai...
       characterEmotion: 2
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
     debateDialogue:
-    - speakerName: 5
+    - speakerName: 2
       argument: You freak!
       speakerEmotion: 4
-    - speakerName: 5
+    - speakerName: 2
       argument: I ain't the killer!
       speakerEmotion: 5
-    - speakerName: 5
+    - speakerName: 2
       argument: I was watching the TV at that time...
       speakerEmotion: 1
     correctReaction: 0
     correctEvidence: {fileID: 0}
     trustDialogue:
-    - speakerName: 3
+    - speakerName: 0
       speech: All right, all right. Don't fight with each other!
-      characterEmotion: 0
+      characterEmotion: 6
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 3
+    - speakerName: 0
       speech: I think we have to believe in William's word for now.
-      characterEmotion: 0
+      characterEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
     refuteCorrectDialogue: []
     refuteIncorrectDialogue:
-    - speakerName: 5
+    - speakerName: 2
       speech: What are you saying, punk?
       characterEmotion: 4
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 5
+    - speakerName: 2
       speech: That ain't prove shit!
       characterEmotion: 5
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 3
+    - speakerName: 0
       speech: He's right. I'm losing my temper...
       characterEmotion: 0
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 1
   - argumentIntroDialogue:
-    - speakerName: 3
+    - speakerName: 0
       speech: So, where were you, <color=orange>Gary</color>?
       characterEmotion: 0
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 5
+    - speakerName: 2
       speech: Yeah, the little freak ain't told us where he was yet...
-      characterEmotion: 2
+      characterEmotion: 6
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
     debateDialogue:
-    - speakerName: 5
+    - speakerName: 2
       argument: The little freak must be guilty!
       speakerEmotion: 6
-    - speakerName: 6
+    - speakerName: 3
       argument: I was in the kitchen at the time...
       speakerEmotion: 0
-    - speakerName: 6
+    - speakerName: 3
       argument: What proof do you have against it?
       speakerEmotion: 2
     correctReaction: 0
     correctEvidence: {fileID: 0}
     trustDialogue:
-    - speakerName: 3
+    - speakerName: 0
       speech: I agree. We don't have evidence that contradicts his statement.
-      characterEmotion: 0
+      characterEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 4
+    - speakerName: 1
       speech: We all have to calm down!
       characterEmotion: 0
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 4
+    - speakerName: 1
       speech: We need to remain focused if we want to catch the culprit...
       characterEmotion: 1
       clueInfo: {fileID: 0}
@@ -189,58 +189,58 @@ MonoBehaviour:
       playerThought: 0
     refuteCorrectDialogue: []
     refuteIncorrectDialogue:
-    - speakerName: 6
+    - speakerName: 3
       speech: What kind of evidence is that?
       characterEmotion: 4
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 6
+    - speakerName: 3
       speech: That is simply unrelated.
       characterEmotion: 5
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 3
+    - speakerName: 0
       speech: He's right. I don't know what I'm doing...
       characterEmotion: 0
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 1
   - argumentIntroDialogue:
-    - speakerName: 3
+    - speakerName: 0
       speech: Let's discuss about the murder weapon....
-      characterEmotion: 0
+      characterEmotion: 4
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 3
+    - speakerName: 0
       speech: We found a knife, but we also have a broken jar at the scene of the
         crime.
-      characterEmotion: 0
+      characterEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
     debateDialogue:
-    - speakerName: 5
+    - speakerName: 2
       argument: The jar coulda been used by John to defend himself...
       speakerEmotion: 6
-    - speakerName: 4
+    - speakerName: 1
       argument: I don't think so...
       speakerEmotion: 0
-    - speakerName: 4
+    - speakerName: 1
       argument: If that was the case, one of us would be injured, right?
-      speakerEmotion: 2
+      speakerEmotion: 1
     correctReaction: 0
     correctEvidence: {fileID: 0}
     trustDialogue:
-    - speakerName: 3
+    - speakerName: 0
       speech: I agree. We all look fine, so the killer was not attacked with the jar.
       characterEmotion: 0
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 4
+    - speakerName: 1
       speech: That's right!
       characterEmotion: 6
       clueInfo: {fileID: 0}
@@ -248,350 +248,347 @@ MonoBehaviour:
       playerThought: 0
     refuteCorrectDialogue: []
     refuteIncorrectDialogue:
-    - speakerName: 4
+    - speakerName: 1
       speech: What are you doing?
       characterEmotion: 4
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 5
+    - speakerName: 2
       speech: That ain't helping us at all...
       characterEmotion: 4
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 3
+    - speakerName: 0
       speech: They're right. I'm not thinking straight...
       characterEmotion: 0
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 1
   - argumentIntroDialogue:
-    - speakerName: 3
+    - speakerName: 0
       speech: Why don't we start talking about where the killer could have been before
         the murder?
-      characterEmotion: 0
+      characterEmotion: 4
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 4
+    - speakerName: 1
       speech: If the killer was armed with a knife, wouldn't the victim have had a
         chance to react?
       characterEmotion: 0
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 3
+    - speakerName: 0
       speech: Maybe the killer was already inside, then...
       characterEmotion: 0
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
     debateDialogue:
-    - speakerName: 6
+    - speakerName: 3
       argument: That's simply impossible...
       speakerEmotion: 0
-    - speakerName: 4
+    - speakerName: 1
       argument: Are you sure?
-      speakerEmotion: 1
-    - speakerName: 6
+      speakerEmotion: 3
+    - speakerName: 3
       argument: John would have seen the killer inside...
       speakerEmotion: 1
-    - speakerName: 6
+    - speakerName: 3
       argument: There's no way the killer could've remain hidden inside!
       speakerEmotion: 6
     correctReaction: 1
     correctEvidence: {fileID: 11400000, guid: 90e5ca8000ffae343b0503cf69dd6ffd, type: 2}
     trustDialogue:
-    - speakerName: 3
+    - speakerName: 0
       speech: That seems correct to me. You're right.
-      characterEmotion: 0
+      characterEmotion: 2
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 4
+    - speakerName: 1
       speech: No, wait. What about the wardrobe inside the bedroom?
       characterEmotion: 6
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 4
+    - speakerName: 1
       speech: A person could fit inside that place without much trouble...
       characterEmotion: 6
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 3
+    - speakerName: 0
       speech: Damn it! I forgot about that detail. I have to remain focused...
       characterEmotion: 0
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 1
     refuteCorrectDialogue:
-    - speakerName: 3
+    - speakerName: 0
       speech: I disagree!
-      characterEmotion: 0
+      characterEmotion: 6
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 6
+    - speakerName: 3
       speech: What evidence suggests otherwise?
       characterEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 3
+    - speakerName: 0
       speech: The wardrobe inside the bedroom is big enough to fit a person inside.
       characterEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 3
+    - speakerName: 0
       speech: The killer could have been waiting there for the victim to enter!
-      characterEmotion: 1
+      characterEmotion: 6
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
     refuteIncorrectDialogue:
-    - speakerName: 6
+    - speakerName: 3
       speech: What?
       characterEmotion: 4
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 5
+    - speakerName: 3
       speech: That is nonsense!
       characterEmotion: 5
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 3
+    - speakerName: 0
       speech: Mhh. Maybe I'm wrong about that one...
-      characterEmotion: 0
+      characterEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 1
   - argumentIntroDialogue:
-    - speakerName: 6
+    - speakerName: 3
       speech: You are not seeing the big picture...
       characterEmotion: 0
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 6
+    - speakerName: 3
       speech: The killer must have entered after the victim, since there were signs
         of struggle at the scene.
-      characterEmotion: 0
-      clueInfo: {fileID: 0}
-      revealName: 0
-      playerThought: 0
-    - speakerName: 6
-      speech: John was not taken by surprise...
-      characterEmotion: 0
+      characterEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
     - speakerName: 3
+      speech: John was not taken by surprise...
+      characterEmotion: 2
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+    - speakerName: 0
       speech: What if he's right?
       characterEmotion: 0
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 1
     debateDialogue:
-    - speakerName: 6
+    - speakerName: 3
       argument: The victim was well aware of the killer...
       speakerEmotion: 0
-    - speakerName: 6
+    - speakerName: 3
       argument: Furthermore...
       speakerEmotion: 1
-    - speakerName: 6
+    - speakerName: 3
       argument: He even threw a jar at the killer in self defense!
-      speakerEmotion: 6
-    - speakerName: 6
-      argument: There's no way the killer could've remain hidden inside!
       speakerEmotion: 6
     correctReaction: 1
     correctEvidence: {fileID: 11400000, guid: 9cfc2c8a48537574787858fc59e08b7e, type: 2}
     trustDialogue:
-    - speakerName: 3
+    - speakerName: 0
       speech: That could be the case...
       characterEmotion: 0
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 6
+    - speakerName: 3
       speech: Of course it is, I'm telling you.
       characterEmotion: 2
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 4
+    - speakerName: 1
       speech: No, you're both wrong!
       characterEmotion: 6
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 3
+    - speakerName: 0
       speech: What? Why?
-      characterEmotion: 0
+      characterEmotion: 7
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 4
+    - speakerName: 1
       speech: The jar was not thrown because all of its pieces were gathered in one
         place...
-      characterEmotion: 0
+      characterEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 4
+    - speakerName: 1
       speech: The pieces would have scattered if it had been thrown!
-      characterEmotion: 0
+      characterEmotion: 6
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 3
+    - speakerName: 0
       speech: I didn't think about that detail! What was I thinking?
-      characterEmotion: 0
+      characterEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 1
     refuteCorrectDialogue:
-    - speakerName: 3
+    - speakerName: 0
       speech: That's wrong!
       characterEmotion: 6
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 6
+    - speakerName: 3
       speech: What do you have to say now?
       characterEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 3
+    - speakerName: 0
       speech: The broken jar was not thrown at all...
       characterEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 3
+    - speakerName: 0
       speech: If that had been the case, all of its pieces would have sparsed around
         the room.
       characterEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 3
+    - speakerName: 0
       speech: But the shards were right next to each other. Hence, it must have fallen
         from inside the wardrobe!
       characterEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 5
+    - speakerName: 1
       speech: That's true!
       characterEmotion: 3
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
     refuteIncorrectDialogue:
-    - speakerName: 6
+    - speakerName: 3
       speech: What is that?
       characterEmotion: 4
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 6
+    - speakerName: 3
       speech: That doesn't make sense!
       characterEmotion: 5
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 3
+    - speakerName: 0
       speech: Mhh. Maybe I'm wrong about that one...
-      characterEmotion: 0
+      characterEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 1
   - argumentIntroDialogue:
-    - speakerName: 4
+    - speakerName: 1
       speech: Okay, moving on...
       characterEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 4
+    - speakerName: 1
       speech: The victim was a male, and he seemed quite strong...
       characterEmotion: 0
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 4
+    - speakerName: 1
       speech: How did he get killed by some of us?
       characterEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 6
+    - speakerName: 3
       speech: The person he fought with must have been equally strong...
       characterEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 6
+    - speakerName: 3
       speech: Or even stronger... like a professional footballer...
       characterEmotion: 2
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 5
+    - speakerName: 2
       speech: Say what?!
       characterEmotion: 7
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
     debateDialogue:
-    - speakerName: 6
+    - speakerName: 3
       argument: I think <color=orange>William</color> is the killer!
       speakerEmotion: 6
-    - speakerName: 6
+    - speakerName: 3
       argument: He's the only one strong enough to deal with another man in a stuggle!
       speakerEmotion: 1
-    - speakerName: 5
+    - speakerName: 2
       argument: That ain't true!
       speakerEmotion: 4
-    - speakerName: 5
+    - speakerName: 2
       argument: We said the killer had to be inside the wardrobe!
       speakerEmotion: 4
-    - speakerName: 5
+    - speakerName: 2
       argument: That thing is not big enough for me!
       speakerEmotion: 6
-    - speakerName: 5
+    - speakerName: 2
       argument: I don't fit in there!
       speakerEmotion: 5
     correctReaction: 0
     correctEvidence: {fileID: 0}
     trustDialogue:
-    - speakerName: 3
+    - speakerName: 0
       speech: I agree with him!
       characterEmotion: 0
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 3
+    - speakerName: 0
       speech: That wardrobe can only fit a slim person inside!
-      characterEmotion: 0
+      characterEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 5
+    - speakerName: 2
       speech: See?
       characterEmotion: 2
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 5
+    - speakerName: 2
       speech: Thanks for that, dude...
       characterEmotion: 0
       clueInfo: {fileID: 0}
@@ -599,38 +596,38 @@ MonoBehaviour:
       playerThought: 0
     refuteCorrectDialogue: []
     refuteIncorrectDialogue:
-    - speakerName: 5
+    - speakerName: 2
       speech: What the heck?
       characterEmotion: 4
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 5
+    - speakerName: 2
       speech: That's bullshit!
       characterEmotion: 5
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 6
+    - speakerName: 1
       speech: He's right. Think harder, <color=orange>James</color>.
       characterEmotion: 0
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 3
+    - speakerName: 0
       speech: I missed the point there...
       characterEmotion: 0
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 1
   - argumentIntroDialogue:
-    - speakerName: 3
+    - speakerName: 0
       speech: We are running out of ideas...
       characterEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 5
+    - speakerName: 2
       speech: What if the knife was never used. I mean, it looked pretty clean to
         me...
       characterEmotion: 0
@@ -638,109 +635,109 @@ MonoBehaviour:
       revealName: 0
       playerThought: 0
     debateDialogue:
-    - speakerName: 5
+    - speakerName: 2
       argument: I think the knife was not used at all!
       speakerEmotion: 6
-    - speakerName: 5
+    - speakerName: 2
       argument: The victim could have been strangled or somethin'...
       speakerEmotion: 1
     correctReaction: 1
     correctEvidence: {fileID: 11400000, guid: 51c150ff211ae2642919afb1d4ed2ce4, type: 2}
     trustDialogue:
-    - speakerName: 3
+    - speakerName: 0
       speech: That could be a possibility...
       characterEmotion: 0
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 4
+    - speakerName: 1
       speech: What are you talking about, Jimmy?
       characterEmotion: 3
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 4
+    - speakerName: 1
       speech: The body was clearly stabbed with some sharp object, wasn't it?
       characterEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 6
+    - speakerName: 3
       speech: She's right, <color=orange>James</color>. What are you claiming?
       characterEmotion: 2
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 3
+    - speakerName: 0
       speech: I don't know what I'm saying anymore...
-      characterEmotion: 0
+      characterEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 1
     refuteCorrectDialogue:
-    - speakerName: 3
+    - speakerName: 0
       speech: Objection!
       characterEmotion: 6
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 5
+    - speakerName: 2
       speech: '...!'
       characterEmotion: 3
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 3
+    - speakerName: 0
       speech: The body clearly had wounds caused by a sharp object...
-      characterEmotion: 0
+      characterEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 3
+    - speakerName: 0
       speech: it's clear that the knife was used for that!
-      characterEmotion: 0
+      characterEmotion: 6
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
     refuteIncorrectDialogue:
-    - speakerName: 5
+    - speakerName: 2
       speech: What the heck?
       characterEmotion: 4
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 5
+    - speakerName: 2
       speech: That's bullshit!
       characterEmotion: 5
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 6
+    - speakerName: 1
       speech: He's right. Think harder, <color=orange>James</color>.
-      characterEmotion: 0
+      characterEmotion: 3
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 3
+    - speakerName: 0
       speech: I missed the point there...
-      characterEmotion: 0
+      characterEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 1
   - argumentIntroDialogue:
-    - speakerName: 4
+    - speakerName: 1
       speech: Since the knife was the murder weapon, where did the killer get it from?
       characterEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 4
+    - speakerName: 1
       speech: The only place I can think of is the kitchen...
       characterEmotion: 0
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 3
+    - speakerName: 0
       speech: 'Hold on a second...
 
         Weren''t you at the kitchen at that time, <color=orange>Gary</color>?'
@@ -748,163 +745,163 @@ MonoBehaviour:
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 5
+    - speakerName: 2
       speech: That's right..
-      characterEmotion: 6
+      characterEmotion: 0
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 6
+    - speakerName: 3
       speech: '...'
       characterEmotion: 7
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
     debateDialogue:
-    - speakerName: 6
+    - speakerName: 3
       argument: You are acussing me?
       speakerEmotion: 3
-    - speakerName: 6
+    - speakerName: 3
       argument: But I was at the kitchen during the incident!
       speakerEmotion: 4
-    - speakerName: 3
+    - speakerName: 0
       argument: And you didn't find the killer there?
       speakerEmotion: 2
-    - speakerName: 6
+    - speakerName: 3
       argument: What? No...
       speakerEmotion: 3
-    - speakerName: 6
+    - speakerName: 3
       argument: What would the killer be doing at the kitchen?
       speakerEmotion: 4
     correctReaction: 1
     correctEvidence: {fileID: 11400000, guid: 5309767f58951e343a540d34dded473b, type: 2}
     trustDialogue:
-    - speakerName: 3
+    - speakerName: 0
       speech: Well, you're off the hook, for now.
-      characterEmotion: 0
+      characterEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
     refuteCorrectDialogue:
-    - speakerName: 3
+    - speakerName: 0
       speech: I'll tell you!
       characterEmotion: 6
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 3
+    - speakerName: 0
       speech: The killer was washing the knife he used to murder the victim!
       characterEmotion: 6
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 3
+    - speakerName: 0
       speech: And if you were alone in the kitchen...
-      characterEmotion: 2
+      characterEmotion: 4
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 3
+    - speakerName: 0
       speech: That means that you are the culprit!
       characterEmotion: 6
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
     refuteIncorrectDialogue:
-    - speakerName: 6
+    - speakerName: 3
       speech: What is that garbish?
       characterEmotion: 4
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 6
+    - speakerName: 3
       speech: It's just stupid!
       characterEmotion: 5
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 4
+    - speakerName: 1
       speech: He's right, darling.
-      characterEmotion: 0
+      characterEmotion: 3
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 3
+    - speakerName: 0
       speech: I missed the point there...
       characterEmotion: 0
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 1
   loseDebateDialogue:
-  - speakerName: 6
+  - speakerName: 3
     speech: Since our friend who lost his memory has been guiding us in the wrong
       direction...
     characterEmotion: 2
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
-  - speakerName: 6
+  - speakerName: 3
     speech: I have my reasons to believe he's the culprit!
     characterEmotion: 6
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
-  - speakerName: 5
+  - speakerName: 2
     speech: That makes sense!
     characterEmotion: 4
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
-  - speakerName: 3
+  - speakerName: 0
     speech: No, you got it all wrong!
     characterEmotion: 7
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
-  - speakerName: 3
+  - speakerName: 0
     speech: I'm inocent! I swear!
     characterEmotion: 7
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
-  - speakerName: 6
+  - speakerName: 3
     speech: You thought you could deceive us, but you failed miserably...
     characterEmotion: 6
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
   winDebateDialogue:
-  - speakerName: 3
+  - speakerName: 0
     speech: Based on the evidence we have gathered...
     characterEmotion: 0
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
-  - speakerName: 3
+  - speakerName: 0
     speech: I accuse <color=orange>Gary</color> as the killer!
-    characterEmotion: 0
+    characterEmotion: 6
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
-  - speakerName: 4
+  - speakerName: 1
     speech: That makes sense!
-    characterEmotion: 0
+    characterEmotion: 4
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
-  - speakerName: 5
+  - speakerName: 2
     speech: What do you have to say, freak?
     characterEmotion: 6
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
-  - speakerName: 6
+  - speakerName: 3
     speech: I.. I...
     characterEmotion: 7
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
-  - speakerName: 6
+  - speakerName: 3
     speech: How did you find out?! It was supposed to be a flawless plan!
     characterEmotion: 5
     clueInfo: {fileID: 0}

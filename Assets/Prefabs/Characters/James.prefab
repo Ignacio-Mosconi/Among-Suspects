@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 984924569567180503}
   - component: {fileID: 7329557218065577264}
   m_Layer: 0
-  m_Name: Player
+  m_Name: James
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,7 +147,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 479dc68a0537568498951fd32acfc606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: 3
+  playerName: 0
+  characterSprites:
+  - {fileID: 21300000, guid: b82b21b209c48534cb112f0dc4541c7d, type: 3}
+  - {fileID: 21300002, guid: b82b21b209c48534cb112f0dc4541c7d, type: 3}
+  - {fileID: 21300004, guid: b82b21b209c48534cb112f0dc4541c7d, type: 3}
+  - {fileID: 21300006, guid: b82b21b209c48534cb112f0dc4541c7d, type: 3}
+  - {fileID: 21300008, guid: b82b21b209c48534cb112f0dc4541c7d, type: 3}
+  - {fileID: 21300010, guid: b82b21b209c48534cb112f0dc4541c7d, type: 3}
+  - {fileID: 21300012, guid: b82b21b209c48534cb112f0dc4541c7d, type: 3}
+  - {fileID: 21300014, guid: b82b21b209c48534cb112f0dc4541c7d, type: 3}
 --- !u!114 &984924569567180503
 MonoBehaviour:
   m_ObjectHideFlags: 0

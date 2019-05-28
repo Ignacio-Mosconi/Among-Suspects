@@ -71,7 +71,7 @@ public class DebateManager : MonoBehaviour
     [SerializeField] Sprite[] credibilitySprites = default;
     
     Camera debateCamera;
-    PlayerController playerController;
+    //PlayerController playerController;
     DebateCharacterSprite[] debateCharactersSprites;
     DebateInfo currentDebateInfo;
     Argument currentArgument;
@@ -106,7 +106,7 @@ public class DebateManager : MonoBehaviour
     {
         DebateInitializer debateInitializer = FindObjectOfType<DebateInitializer>();
         
-        playerController = FindObjectOfType<PlayerController>();
+        //playerController = FindObjectOfType<PlayerController>();
         
         debateCamera = debateInitializer.GetComponentInChildren<Camera>(includeInactive: true);
         debateCharactersSprites = debateInitializer.DebateCharactersSprites;
@@ -347,8 +347,10 @@ public class DebateManager : MonoBehaviour
             SayArgument();
 
         argumentText.text = argument;
-        if (speaker != playerController.PlayerName)
-            characterRenderer.sprite = CharacterManager.Instance.GetCharacter(speaker).GetSprite(speakerEmotion);
+        
+        characterRenderer.sprite = (speaker != CharacterManager.Instance.PlayerController.PlayerName) ? 
+                                    CharacterManager.Instance.GetCharacter(speaker).GetSprite(speakerEmotion) :
+                                    CharacterManager.Instance.PlayerController.GetSprite(speakerEmotion);
     }
 
     void Dialogue(CharacterName speaker, string speech, CharacterEmotion speakerEmotion, bool playerThought)
@@ -359,8 +361,9 @@ public class DebateManager : MonoBehaviour
         speechText.text = speech;
         targetSpeechCharAmount = speech.Length;
 
-        if (speaker != playerController.PlayerName)
-            characterRenderer.sprite = CharacterManager.Instance.GetCharacter(speaker).GetSprite(speakerEmotion);
+        characterRenderer.sprite = (speaker != CharacterManager.Instance.PlayerController.PlayerName) ?
+                                    CharacterManager.Instance.GetCharacter(speaker).GetSprite(speakerEmotion) :
+                                    CharacterManager.Instance.PlayerController.GetSprite(speakerEmotion);
 
         if (speaker != previousSpeaker)
         {

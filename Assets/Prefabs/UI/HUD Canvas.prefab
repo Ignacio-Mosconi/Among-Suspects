@@ -189,7 +189,7 @@ RectTransform:
   m_GameObject: {fileID: 5118334224963476155}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5118334225551136446}
   m_Father: {fileID: 0}
@@ -311,8 +311,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hudArea: {fileID: 8724572250603822043}
   interactTextPanel: {fileID: 5118334226335472951}
-  debateStartPrompt: {fileID: 0}
-  debateRetryPrompt: {fileID: 0}
 --- !u!1 &5118334225594090573
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,7 +454,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -729,7 +727,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}

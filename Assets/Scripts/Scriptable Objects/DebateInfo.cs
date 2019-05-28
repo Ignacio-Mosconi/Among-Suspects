@@ -16,10 +16,14 @@ public struct DebateDialogue
 [System.Serializable]
 public struct Argument
 {
+    [Header("Argument Intro")]
     public Dialogue[] argumentIntroDialogue;
+    [Header("Debate")]
     public DebateDialogue[] debateDialogue;
+    [Header("Correct Options")]
     public DebateReaction correctReaction;
     public ClueInfo correctEvidence;
+    [Header("Post-Selection Dialogue")]
     public Dialogue[] trustDialogue;
     public Dialogue[] refuteCorrectDialogue;
     public Dialogue[] refuteIncorrectDialogue;

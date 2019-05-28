@@ -7,6 +7,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] CharacterName playerName = default;
+    [SerializeField] Sprite[] characterSprites = default;
 
     FirstPersonCamera firstPersonCamera;
     PlayerMovement playerMovement;
@@ -47,6 +48,11 @@ public class PlayerController : MonoBehaviour
     public bool IsMovementAvailable()
     {
         return playerMovement.enabled;
+    }
+
+    public Sprite GetSprite(CharacterEmotion characterEmotion)
+    {
+        return characterSprites[(int)characterEmotion];
     }
 
     #region Getters & Setters
