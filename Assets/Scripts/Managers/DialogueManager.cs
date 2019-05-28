@@ -33,13 +33,13 @@ public class DialogueManager : MonoBehaviour
 
     #endregion
 
-    [SerializeField] GameObject dialogueArea;
-    [SerializeField] GameObject textArea;
-    [SerializeField] TextMeshProUGUI speakerText;
-    [SerializeField] TextMeshProUGUI speechText;
-    [SerializeField] Image speakerImage;
-    [SerializeField] Image objectImage;
-    [SerializeField] VerticalLayoutGroup optionsLayout;
+    [SerializeField] GameObject dialogueArea = default;
+    [SerializeField] GameObject textArea = default;
+    [SerializeField] TextMeshProUGUI speakerText = default;
+    [SerializeField] TextMeshProUGUI speechText = default;
+    [SerializeField] Image speakerImage = default;
+    [SerializeField] Image objectImage = default;
+    [SerializeField] VerticalLayoutGroup optionsLayout = default;
 
     PlayerController playerController;
     DialogueInfo currentDialogueInfo;

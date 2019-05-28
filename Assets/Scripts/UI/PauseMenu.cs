@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class PauseMenu : Menu
 {
-    [SerializeField] GameObject menuArea;
+    [SerializeField] GameObject menuArea = default;
 
     PlayerController playerController;
     bool isPaused;

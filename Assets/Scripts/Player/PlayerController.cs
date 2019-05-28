@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerMovement))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] CharacterName playerName;
+    [SerializeField] CharacterName playerName = default;
 
     FirstPersonCamera firstPersonCamera;
     PlayerMovement playerMovement;

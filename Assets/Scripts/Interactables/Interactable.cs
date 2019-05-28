@@ -3,8 +3,8 @@ using UnityEngine.Events;
 
 public abstract class Interactable : MonoBehaviour
 {
-    [SerializeField] protected Transform interactionPoint;
-    [SerializeField] [Range(1f, 5f)] float interactionRadius;
+    [SerializeField] protected Transform interactionPoint = default;
+    [SerializeField] [Range(1f, 5f)] float interactionRadius = default;
     [SerializeField] bool hasToBeFaced = false;
 
     protected PlayerController playerController;

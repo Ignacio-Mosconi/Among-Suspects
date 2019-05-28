@@ -42,23 +42,22 @@ public class DebateManager : MonoBehaviour
 
     [Header("UI Elements")]
     [Header("Areas")]
-    [SerializeField] GameObject debateArea;
-    [SerializeField] GameObject speakerArea;
-    [SerializeField] GameObject argumentAndSpeechArea;
+    [SerializeField] GameObject debateArea = default;
+    [SerializeField] GameObject speakerArea = default;
+    [SerializeField] GameObject argumentAndSpeechArea = default;
     [Header("Panels")]
-    [SerializeField] GameObject argumentPanel;
-    [SerializeField] GameObject speechPanel;
-    [SerializeField] GameObject debateOptionsPanel;
-    [SerializeField] GameObject clueOptionsPanel;
-    [SerializeField] GameObject credibilityPanel;
+    [SerializeField] GameObject argumentPanel = default;
+    [SerializeField] GameObject speechPanel = default;
+    [SerializeField] GameObject debateOptionsPanel = default;
+    [SerializeField] GameObject clueOptionsPanel = default;
+    [SerializeField] GameObject credibilityPanel = default;
     [Header("Layouts, Buttons, Images & Texts")]
-    [SerializeField] VerticalLayoutGroup clueOptionsLayout;
-    [SerializeField] Button clueOptionsBackButton;
-    [SerializeField] TextMeshProUGUI speakerText;
-    [SerializeField] TextMeshProUGUI argumentText;
-    [SerializeField] TextMeshProUGUI speechText;
-    [SerializeField] Image credibilityBar;
-    [SerializeField] Image credibilityIcon;
+    [SerializeField] VerticalLayoutGroup clueOptionsLayout = default;
+    [SerializeField] TextMeshProUGUI speakerText = default;
+    [SerializeField] TextMeshProUGUI argumentText = default;
+    [SerializeField] TextMeshProUGUI speechText = default;
+    [SerializeField] Image credibilityBar = default;
+    [SerializeField] Image credibilityIcon = default;
     [Header("Debate Properties")]
     [SerializeField] [Range(30f, 60f)] float cameraRotSpeed = 60f;
     [SerializeField] [Range(1f, 2f)] float argumentPanelExpandScale = 2f;
@@ -69,7 +68,7 @@ public class DebateManager : MonoBehaviour
     [SerializeField] Color credibilityBarColorPositive = Color.green;
     [SerializeField] Color credibilityBarColorNeutral = Color.yellow;
     [SerializeField] Color credibilityBarColorNegative = Color.red;
-    [SerializeField] Sprite[] credibilitySprites;
+    [SerializeField] Sprite[] credibilitySprites = default;
     
     Camera debateCamera;
     PlayerController playerController;

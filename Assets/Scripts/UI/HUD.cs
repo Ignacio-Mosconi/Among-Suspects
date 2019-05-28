@@ -3,12 +3,8 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
-    [SerializeField] GameObject hudArea;
-    [SerializeField] GameObject interactTextPanel;
-    [SerializeField] GameObject debateStartPrompt;
-    [SerializeField] GameObject debateRetryPrompt;
-
-    //DebateInitializer debateInitializer;
+    [SerializeField] GameObject hudArea = default;
+    [SerializeField] GameObject interactTextPanel = default;
 
     void Start()
     {
@@ -20,9 +16,6 @@ public class HUD : MonoBehaviour
             interactable.OnStopLookingAt.AddListener(HideInteractTextPanel);
             interactable.OnInteraction.AddListener(HideInteractTextPanel);
         }
-
-        // debateInitializer = FindObjectOfType<DebateInitializer>();
-        // debateInitializer.OnInteraction.AddListener(ShowDebateStartPrompt);
 
         PauseMenu pauseMenu = FindObjectOfType<PauseMenu>();
         pauseMenu.OnPaused.AddListener(HideHUD);

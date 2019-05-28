@@ -2,12 +2,12 @@
 
 public class NonPlayableCharacter : Interactable
 {
-    [SerializeField] CharacterName characterName;
-    [SerializeField] Sprite[] characterSprites;
-    [SerializeField] DialogueInfo dialogueInfo;
-    [SerializeField] GameObject characterMesh;
-    [SerializeField] Transform leftSpeaker;
-    [SerializeField] Transform rightSpeaker;
+    [SerializeField] CharacterName characterName = default;
+    [SerializeField] Sprite[] characterSprites = default;
+    [SerializeField] DialogueInfo dialogueInfo = default;
+    [SerializeField] GameObject characterMesh = default;
+    [SerializeField] Transform leftSpeaker = default;
+    [SerializeField] Transform rightSpeaker = default;
 
     bool nameRevealed = false;
     bool niceWithPlayer = false;

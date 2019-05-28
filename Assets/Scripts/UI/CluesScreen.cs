@@ -4,11 +4,11 @@ using TMPro;
 
 public class CluesScreen : MonoBehaviour
 {
-    [SerializeField] GameObject cluesButtonsPanel;
-    [SerializeField] GameObject cluesDescriptionArea;
-    [SerializeField] TextMeshProUGUI clueTitleText;
-    [SerializeField] TextMeshProUGUI clueDescriptionText;
-    [SerializeField] Image clueImage;
+    [SerializeField] GameObject cluesButtonsPanel = default;
+    [SerializeField] GameObject cluesDescriptionArea = default;
+    [SerializeField] TextMeshProUGUI clueTitleText = default;
+    [SerializeField] TextMeshProUGUI clueDescriptionText = default;
+    [SerializeField] Image clueImage = default;
 
     Button[] cluesButtons;
     PlayerController playerController;

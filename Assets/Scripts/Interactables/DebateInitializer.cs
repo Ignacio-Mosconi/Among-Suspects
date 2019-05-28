@@ -10,9 +10,9 @@ public struct DebateCharacterSprite
 
 public class DebateInitializer : Interactable
 {
-    [SerializeField] DebateInfo debateInfo;
-    [SerializeField] GameObject debateSpritesContainer;
-    [SerializeField] DebateCharacterSprite[] debateCharactersSprites;
+    [SerializeField] DebateInfo debateInfo = default;
+    [SerializeField] GameObject debateSpritesContainer = default;
+    [SerializeField] DebateCharacterSprite[] debateCharactersSprites = default;
 
     protected override void Interact()
     {

@@ -34,11 +34,11 @@ public class ChapterManager : MonoBehaviour
 
     #endregion
 
-    [SerializeField] GameObject endScreenArea;
-    [SerializeField] GameObject debateStartPromptArea;
-    [SerializeField] GameObject debateRetryArea;
-    [SerializeField] GameObject chapterWonArea;
-    [SerializeField] ClueInfo[] chapterClues;
+    [SerializeField] GameObject endScreenArea = default;
+    [SerializeField] GameObject debateStartPromptArea = default;
+    [SerializeField] GameObject debateRetryArea = default;
+    [SerializeField] GameObject chapterWonArea = default;
+    [SerializeField] ClueInfo[] chapterClues = default;
 
     DebateInitializer debateInitializer;
     PauseMenu pauseMenu;
