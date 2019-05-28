@@ -40,8 +40,6 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] Image speakerImage = default;
     [SerializeField] Image objectImage = default;
     [SerializeField] VerticalLayoutGroup optionsLayout = default;
-
-    PlayerController playerController;
     DialogueInfo currentDialogueInfo;
     Dialogue[] currentLines;
     Coroutine speakingRoutine;
@@ -60,8 +58,6 @@ public class DialogueManager : MonoBehaviour
 
     void Start()
     {
-        playerController = FindObjectOfType<PlayerController>();
-
         characterShowIntervals = 1f / GameManager.Instance.TargetFrameRate;
         textSpeedMultiplier = 1f / GameManager.Instance.TextSpeedMultiplier;
 
@@ -120,7 +116,7 @@ public class DialogueManager : MonoBehaviour
         else
             onDialogueAreaDisable.Invoke();
 
-        playerController.SetAvailability(enable: !enableDialogueArea);
+        CharacterManager.Instance.PlayerController.SetAvailability(enable: !enableDialogueArea);
 
         if (!enableDialogueArea)
         {
@@ -144,6 +140,8 @@ public class DialogueManager : MonoBehaviour
     void SayDialogue(string speech, CharacterName speakerName, CharacterEmotion speakerEmotion, 
                         bool revealName, bool playerThought, ClueInfo clueInfo)
     {
+        PlayerController playerController = CharacterManager.Instance.PlayerController;
+
         speechText.maxVisibleCharacters = 0;
         speechText.text = speech;
         targetSpeechCharAmount = speech.Length;
@@ -261,7 +259,6 @@ public class DialogueManager : MonoBehaviour
         optionsLayout.spacing = regularOptionsLayoutSpacing;
              
         currentLines = currentDialogueInfo.interactiveConversation[option].dialogue;
-        //currentDialogueInfo.niceWithPlayer = currentDialogueInfo.interactiveConversation[option].triggerNiceImpression;
         mainSpeaker.NiceWithPlayer = currentDialogueInfo.interactiveConversation[option].triggerNiceImpression;
 
         currentDialogueInfo.interactionOptionSelected = true;
@@ -279,7 +276,7 @@ public class DialogueManager : MonoBehaviour
         currentDialogueInfo = dialogueInfo;
         
         mainSpeaker = npc;
-        playerController.FirstPersonCamera.FocusOnPosition(npc.InteractionPosition);
+        CharacterManager.Instance.PlayerController.FirstPersonCamera.FocusOnPosition(npc.InteractionPosition);
 
         speakerImage.gameObject.SetActive(true);
         
@@ -306,7 +303,7 @@ public class DialogueManager : MonoBehaviour
 
     public void EnableDialogueArea(ThoughtInfo thoughtInfo, Vector3 objectPosition, Sprite objectSprite = null, bool enableImage = false)
     {
-        playerController.FirstPersonCamera.FocusOnPosition(objectPosition);
+        CharacterManager.Instance.PlayerController.FirstPersonCamera.FocusOnPosition(objectPosition);
 
         if (enableImage)
         {

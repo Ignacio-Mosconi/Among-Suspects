@@ -71,7 +71,6 @@ public class DebateManager : MonoBehaviour
     [SerializeField] Sprite[] credibilitySprites = default;
     
     Camera debateCamera;
-    //PlayerController playerController;
     DebateCharacterSprite[] debateCharactersSprites;
     DebateInfo currentDebateInfo;
     Argument currentArgument;
@@ -105,8 +104,6 @@ public class DebateManager : MonoBehaviour
     void Start()
     {
         DebateInitializer debateInitializer = FindObjectOfType<DebateInitializer>();
-        
-        //playerController = FindObjectOfType<PlayerController>();
         
         debateCamera = debateInitializer.GetComponentInChildren<Camera>(includeInactive: true);
         debateCharactersSprites = debateInitializer.DebateCharactersSprites;
@@ -302,6 +299,7 @@ public class DebateManager : MonoBehaviour
 
     void StartNextArgument()
     {
+        lineIndex = 0;
         argumentIndex++;
 
         currentArgument = currentDebateInfo.arguments[argumentIndex];

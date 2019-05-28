@@ -18,7 +18,7 @@ public abstract class Interactable : MonoBehaviour
 
     void Start()
     {
-        playerController = FindObjectOfType<PlayerController>();
+        playerController = CharacterManager.Instance.PlayerController;
         cameraTransform = playerController.GetComponentInChildren<Camera>().transform;
 
         DialogueManager.Instance.OnDialogueAreaDisable.AddListener(EnableInteraction);
