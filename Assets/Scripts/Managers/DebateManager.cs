@@ -186,7 +186,6 @@ public class DebateManager : MonoBehaviour
                     }
                     else
                     {
-
                         if (ShouldLoseCase())
                             EndCase(lose: true);
                         else
@@ -452,8 +451,6 @@ public class DebateManager : MonoBehaviour
 
         Vector3 targetDir = new Vector3(diff.x, debateCamera.transform.forward.y, diff.z);
         Quaternion fromRot = debateCamera.transform.rotation;
-
-        Debug.DrawRay(debateCamera.transform.position, targetDir.normalized * 5f, Color.blue, 5f);
         
         currentCamTargetRot = Quaternion.LookRotation(targetDir, debateArea.transform.up);
 
@@ -461,7 +458,7 @@ public class DebateManager : MonoBehaviour
         float angleBetweenRots = Quaternion.Angle(fromRot, currentCamTargetRot);
         float rotDuration = angleBetweenRots / cameraRotSpeed;
 
-        while (debateCamera.transform.rotation != currentCamTargetRot)
+        while (timer <= rotDuration)
         {
             timer += Time.deltaTime;
             debateCamera.transform.rotation = Quaternion.Slerp(fromRot, currentCamTargetRot, timer / rotDuration);
@@ -484,7 +481,7 @@ public class DebateManager : MonoBehaviour
 
         float timer = 0f;
 
-        while (argumentPanel.transform.localScale != targetScale)
+        while (timer <= argumentPanelScaleDur)
         {
             timer += Time.deltaTime;
             argumentPanel.transform.localScale = Vector3.Lerp(initialScale, targetScale, timer / argumentPanelScaleDur);
