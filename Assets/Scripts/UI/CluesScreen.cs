@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
@@ -10,51 +11,70 @@ public class CluesScreen : MonoBehaviour
     [SerializeField] TextMeshProUGUI clueDescriptionText = default;
     [SerializeField] Image clueImage = default;
 
-    Button[] cluesButtons;
-    PlayerController playerController;
+    List<Button> cluesButtons = new List<Button>();
+    GameObject clueButtonPrefab;
+
+    const string ClueButtonPrefabPath = "Menu Elements/Clue Button";
 
     void Awake()
     {
-        cluesButtons = cluesButtonsPanel.GetComponentsInChildren<Button>();
-        playerController = FindObjectOfType<PlayerController>();
+        RectTransform cluesButtonsPanelsRectTrans = cluesButtonsPanel.GetComponent<RectTransform>();
+        VerticalLayoutGroup cluesButtonsPanelVerLay = cluesButtonsPanel.GetComponent<VerticalLayoutGroup>();
+        
+        clueButtonPrefab = Resources.Load(ClueButtonPrefabPath) as GameObject;
+        cluesButtonsPanelsRectTrans.sizeDelta = new Vector2(cluesButtonsPanelsRectTrans.sizeDelta.x,
+                                                            cluesButtonsPanelVerLay.padding.top + cluesButtonsPanelVerLay.padding.bottom);
+
+        int cluesAmount = ChapterManager.Instance.CluesAmount;
+        float clueButtonHeight = clueButtonPrefab.GetComponent<RectTransform>().sizeDelta.y;
+        float addedPanelSize = clueButtonHeight + cluesButtonsPanelVerLay.spacing;
+
+        for (int i = 0; i < cluesAmount; i++)
+        {
+            cluesButtonsPanelsRectTrans.sizeDelta = new Vector2(cluesButtonsPanelsRectTrans.sizeDelta.x, 
+                                                                cluesButtonsPanelsRectTrans.sizeDelta.y + addedPanelSize);
+
+            GameObject clueButtonObject = Instantiate(clueButtonPrefab, cluesButtonsPanel.transform);
+            Button clueButton = clueButtonObject.GetComponent<Button>();
+            ClueInfo clueInfo = ChapterManager.Instance.GetChapterClueInfo(i);
+
+            clueButton.onClick.AddListener(() => SelectClue(clueInfo));
+            cluesButtons.Add(clueButton);
+        }
     }
 
     void OnEnable()
     {
-        bool firstClueFound = false;
+        bool oneClueFound = false;
 
-        for (int i = 0; i < cluesButtons.Length; i++)
+        for (int i = 0; i < cluesButtons.Count; i++)
         {
             ClueInfo clueInfo = ChapterManager.Instance.GetChapterClueInfo(i);
             TextMeshProUGUI buttonText = cluesButtons[i].GetComponentInChildren<TextMeshProUGUI>();
             
-            cluesButtons[i].interactable = playerController.HasClue(ref clueInfo);
+            cluesButtons[i].interactable = CharacterManager.Instance.PlayerController.HasClue(ref clueInfo);
 
             if (cluesButtons[i].IsInteractable())
             {
                 buttonText.text = clueInfo.clueName;
 
-                if (!firstClueFound)
+                if (!oneClueFound)
                 {
-                    clueTitleText.text = clueInfo.clueName;
-                    clueDescriptionText.text = clueInfo.description;
-                    clueImage.sprite = clueInfo.clueSprite;
-                    firstClueFound = true;
+                    SelectClue(clueInfo);
+                    oneClueFound = true;
                 }
             }
             else
                 buttonText.text = "???";
         }
 
-        cluesDescriptionArea.SetActive(firstClueFound);
+        cluesDescriptionArea.SetActive(oneClueFound);
     }
 
-    public void SelectClue(int clueIndex)
-    {
-        ClueInfo clueInfo = ChapterManager.Instance.GetChapterClueInfo(clueIndex);
-        
-        clueTitleText.text = (clueInfo) ? clueInfo.clueName : "???" ;
-        clueDescriptionText.text = (clueInfo) ? clueInfo.description : "";
+    void SelectClue(ClueInfo clueInfo)
+    {   
+        clueTitleText.text = clueInfo.clueName;
+        clueDescriptionText.text = clueInfo.description;
         clueImage.sprite = clueInfo.clueSprite;
     }
 }

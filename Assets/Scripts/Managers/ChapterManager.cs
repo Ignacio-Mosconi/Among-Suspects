@@ -118,8 +118,17 @@ public class ChapterManager : MonoBehaviour
         }
     }
 
+    #region Getters & Setters
+    
     public ChapterPhase CurrentPhase
     {
         get { return currentPhase; }
     }
+
+    public int CluesAmount
+    {
+        get { return chapterClues.Length; }
+    }
+
+    #endregion
 }

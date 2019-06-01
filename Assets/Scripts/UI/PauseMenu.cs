@@ -5,9 +5,7 @@ public class PauseMenu : Menu
 {
     [SerializeField] GameObject menuArea = default;
 
-    PlayerController playerController;
     bool isPaused;
-
     bool playerMovementEnabledAtPause;
     bool cursorEnabledAtPause;
 
@@ -17,7 +15,6 @@ public class PauseMenu : Menu
     protected override void Start()
     {
         base.Start();
-        playerController = FindObjectOfType<PlayerController>();
     }
 
     void Update()
@@ -37,10 +34,10 @@ public class PauseMenu : Menu
         Time.timeScale = 0f;
         menuArea.SetActive(true);
 
-        playerMovementEnabledAtPause = playerController.IsMovementAvailable();
+        playerMovementEnabledAtPause = CharacterManager.Instance.PlayerController.IsMovementAvailable();
         cursorEnabledAtPause = GameManager.Instance.IsCursorAvailable();
 
-        playerController.SetAvailability(enable: false);
+        CharacterManager.Instance.PlayerController.SetAvailability(enable: false);
         DialogueManager.Instance.SetUpdateEnable(enable: false);   
         DebateManager.Instance.SetUpdateEnable(enable: false);
         GameManager.Instance.SetCursorAvailability(enable: true);
@@ -55,8 +52,8 @@ public class PauseMenu : Menu
         menuArea.SetActive(false);
 
         ResetMenuState();
-        
-        playerController.SetAvailability(enable: playerMovementEnabledAtPause);
+
+        CharacterManager.Instance.PlayerController.SetAvailability(enable: playerMovementEnabledAtPause);
         DialogueManager.Instance.SetUpdateEnable(enable: true);
         DebateManager.Instance.SetUpdateEnable(enable: true);
         GameManager.Instance.SetCursorAvailability(enable: cursorEnabledAtPause);
