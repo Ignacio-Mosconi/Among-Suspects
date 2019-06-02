@@ -11,6 +11,7 @@ public enum DebatePhase
     Dialoguing, Arguing, SolvingArgument, SolvingCase
 }
 
+[RequireComponent(typeof(SpeechController))]
 public class DebateManager : MonoBehaviour
 {
     #region Singleton
@@ -70,6 +71,7 @@ public class DebateManager : MonoBehaviour
     [SerializeField] Color credibilityBarColorNegative = Color.red;
     [SerializeField] Sprite[] credibilitySprites = default;
     
+    SpeechController speechController;
     Camera debateCamera;
     DebateCharacterSprite[] debateCharactersSprites;
     DebateInfo currentDebateInfo;
@@ -78,7 +80,6 @@ public class DebateManager : MonoBehaviour
     DebateDialogue[] currentArgumentLines;
     Coroutine focusingRoutine;
     Coroutine expandindArgumentRoutine;
-    Coroutine speakingRoutine;
     Coroutine fillingBarRoutine;
     Quaternion currentCamTargetRot;
     CharacterName previousSpeaker = CharacterName.None;
@@ -102,6 +103,8 @@ public class DebateManager : MonoBehaviour
     void Start()
     {
         DebateInitializer debateInitializer = FindObjectOfType<DebateInitializer>();
+
+        speechController = GetComponent<SpeechController>();
         
         debateCamera = debateInitializer.GetComponentInChildren<Camera>(includeInactive: true);
         debateCharactersSprites = debateInitializer.DebateCharactersSprites;
@@ -136,9 +139,9 @@ public class DebateManager : MonoBehaviour
                 return;
             }
 
-            if (speakingRoutine != null)
+            if (speechController.IsSpeaking())
             {
-                StopSpeaking();
+                speechController.StopSpeaking();
                 return;
             }
 
@@ -235,7 +238,6 @@ public class DebateManager : MonoBehaviour
 
             focusingRoutine = null;
             expandindArgumentRoutine = null;
-            speakingRoutine = null;
             fillingBarRoutine = null;
 
             currentDebateInfo = null;
@@ -325,6 +327,11 @@ public class DebateManager : MonoBehaviour
     {
         SpriteRenderer characterRenderer = Array.Find(debateCharactersSprites, cs => cs.characterName == speaker).spriteRenderer;
 
+        argumentText.text = argument;
+
+        ICharacter character = CharacterManager.Instance.GetCharacter(speaker);
+        characterRenderer.sprite = character.GetSprite(speakerEmotion);
+
         if (speaker != previousSpeaker)
         {
             Vector3 charPosition = characterRenderer.transform.position;
@@ -337,11 +344,6 @@ public class DebateManager : MonoBehaviour
         }
         else
             SayArgument();
-
-        argumentText.text = argument;
-        
-        ICharacter character = CharacterManager.Instance.GetCharacter(speaker);
-        characterRenderer.sprite = character.GetSprite(speakerEmotion);
     }
 
     void Dialogue(CharacterName speaker, string speech, CharacterEmotion speakerEmotion, bool playerThought)
@@ -355,6 +357,17 @@ public class DebateManager : MonoBehaviour
         ICharacter character = CharacterManager.Instance.GetCharacter(speaker);
         characterRenderer.sprite = character.GetSprite(speakerEmotion);
 
+        if (playerThought)
+        {
+            if (speakerText.color != GameManager.Instance.PlayerThinkingTextColor)
+                speechText.color = GameManager.Instance.PlayerThinkingTextColor;
+        }
+        else
+        {
+            if (speechText.color != GameManager.Instance.NpcSpeakingTextColor)
+                speechText.color = GameManager.Instance.NpcSpeakingTextColor;
+        }
+
         if (speaker != previousSpeaker)
         {
             Vector3 charPosition = characterRenderer.transform.position;
@@ -364,14 +377,9 @@ public class DebateManager : MonoBehaviour
             focusingRoutine = StartCoroutine(FocusOnCharacter(charPosition));
             speakerText.text = speaker.ToString();
             previousSpeaker = speaker;
-
-            if (playerThought)
-                speechText.color = GameManager.Instance.PlayerThinkingTextColor;
-            else
-                speechText.color = GameManager.Instance.NpcSpeakingTextColor;
         }
         else
-            SayDialogue();
+            SayDialogue(speech);
     }
 
     void SayArgument()
@@ -383,13 +391,13 @@ public class DebateManager : MonoBehaviour
         expandindArgumentRoutine = StartCoroutine(ExpandArgumentPanel());
     }
 
-    void SayDialogue()
+    void SayDialogue(string speech)
     {
         speakerArea.SetActive(true);
         argumentAndSpeechArea.SetActive(true);
         speechPanel.SetActive(true);
 
-        speakingRoutine = StartCoroutine(Speak());
+        speechController.StartSpeaking(speech);
     }
 
     void FinishFocus()
@@ -401,7 +409,7 @@ public class DebateManager : MonoBehaviour
             if (currentPhase == DebatePhase.Arguing)
                 SayArgument();
             else
-                SayDialogue();
+                SayDialogue(currentDialogueLines[lineIndex].speech);
             focusingRoutine = null;
         }
     }
@@ -416,16 +424,6 @@ public class DebateManager : MonoBehaviour
 
             if (lineIndex == currentArgumentLines.Length - 1)
                 ShowDebateOptions();
-        }
-    }
-
-    void StopSpeaking()
-    {
-        if (speakingRoutine != null)
-        {
-            StopCoroutine(speakingRoutine);
-            speechText.maxVisibleCharacters = targetSpeechCharAmount;
-            speakingRoutine = null;
         }
     }
 
@@ -464,7 +462,7 @@ public class DebateManager : MonoBehaviour
         if (currentPhase == DebatePhase.Arguing)
             SayArgument();
         else
-            SayDialogue();
+            SayDialogue(currentDialogueLines[lineIndex].speech);
     }
 
     IEnumerator ExpandArgumentPanel()
@@ -486,17 +484,6 @@ public class DebateManager : MonoBehaviour
             ShowDebateOptions();
 
         expandindArgumentRoutine = null;
-    }
-
-    IEnumerator Speak()
-    {
-        while (speechText.maxVisibleCharacters != targetSpeechCharAmount)
-        {
-            speechText.maxVisibleCharacters++;
-            yield return new WaitForSeconds(GameManager.Instance.CharactersShowIntervals);
-        }
-
-        speakingRoutine = null;
     }
 
     IEnumerator ChangeCredibilityBarFill()

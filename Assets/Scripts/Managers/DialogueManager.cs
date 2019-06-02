@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using TMPro;
 
+[RequireComponent(typeof(SpeechController))]
 public class DialogueManager : MonoBehaviour
 {
     #region Singleton
@@ -41,9 +42,9 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] Image objectImage = default;
     [SerializeField] VerticalLayoutGroup optionsLayout = default;
     
+    SpeechController speechController;
     DialogueInfo currentDialogueInfo;
     Dialogue[] currentLines;
-    Coroutine speakingRoutine;
     Button[] optionsButtons;
     NPC mainSpeaker;
     NPC previousSpeaker;
@@ -57,6 +58,8 @@ public class DialogueManager : MonoBehaviour
 
     void Start()
     {
+        speechController = GetComponent<SpeechController>();
+
         optionsButtons = optionsLayout.GetComponentsInChildren<Button>(includeInactive: true);
         
         regularOptionsLayoutPadding[0] = optionsLayout.padding.top;
@@ -70,8 +73,8 @@ public class DialogueManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Continue"))
         {
-            if (speakingRoutine != null)
-                StopSpeaking();
+            if (speechController.IsSpeaking())
+                speechController.StopSpeaking();
             else
             {
                 lineIndex++;
@@ -138,10 +141,6 @@ public class DialogueManager : MonoBehaviour
     {
         PlayerController playerController = CharacterManager.Instance.PlayerController;
 
-        speechText.maxVisibleCharacters = 0;
-        speechText.text = speech;
-        targetSpeechCharAmount = speech.Length;
-
         if (clueInfo)
             playerController.AddClue(clueInfo);
         
@@ -194,26 +193,7 @@ public class DialogueManager : MonoBehaviour
             }       
         }
 
-        speakingRoutine = StartCoroutine(Speak());
-    }
-
-    void StopSpeaking()
-    {
-        if (speakingRoutine != null)
-            StopCoroutine(speakingRoutine);
-        speechText.maxVisibleCharacters = targetSpeechCharAmount;
-        speakingRoutine = null;
-    }
-
-    IEnumerator Speak()
-    {
-        while (speechText.maxVisibleCharacters != targetSpeechCharAmount)
-        {
-            speechText.maxVisibleCharacters++;          
-            yield return new WaitForSeconds(GameManager.Instance.CharactersShowIntervals);
-        }
-
-        speakingRoutine = null;
+        speechController.StartSpeaking(speech);
     }
 
     void ShowOptionsMenu()
@@ -285,7 +265,7 @@ public class DialogueManager : MonoBehaviour
                 currentLines = currentDialogueInfo.groupDialogue.dialogue;
             else
                 currentLines = (npc.NiceWithPlayer) ? currentDialogueInfo.niceComment : 
-                                                                        currentDialogueInfo.rudeComment;
+                                                        currentDialogueInfo.rudeComment;
         }
 
         SayDialogue(currentLines[0].speech,
