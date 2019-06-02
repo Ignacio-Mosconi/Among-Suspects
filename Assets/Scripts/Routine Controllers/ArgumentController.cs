@@ -47,7 +47,6 @@ public class ArgumentController : MonoBehaviour
             argumentPanel.transform.localScale = new Vector3(expandedScale, expandedScale, expandedScale);
             if (lastArgument)
                 onArgumentFinish.Invoke();
-
             expandingRoutine = null;
         }
     }

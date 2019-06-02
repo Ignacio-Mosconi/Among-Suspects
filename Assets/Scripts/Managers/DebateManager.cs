@@ -12,6 +12,7 @@ public enum DebatePhase
 
 [RequireComponent(typeof(SpeechController))]
 [RequireComponent(typeof(ArgumentController))]
+[RequireComponent(typeof(DebateCameraController))]
 public class DebateManager : MonoBehaviour
 {
     #region Singleton
@@ -60,7 +61,6 @@ public class DebateManager : MonoBehaviour
     [SerializeField] Image credibilityBar = default;
     [SerializeField] Image credibilityIcon = default;
     [Header("Debate Properties")]
-    [SerializeField] [Range(30f, 60f)] float cameraRotSpeed = 60f;
     [SerializeField] [Range(0.5f, 1.5f)] float credibilityBarFillDur = 1f;
     [SerializeField] [Range(2f, 4f)] float credibilityBarIdleDur = 3f;
     [Header("Other UI Properties")]
@@ -71,15 +71,13 @@ public class DebateManager : MonoBehaviour
     
     SpeechController speechController;
     ArgumentController argumentController;
-    Camera debateCamera;
+    DebateCameraController debateCameraController;
     DebateCharacterSprite[] debateCharactersSprites;
     DebateInfo currentDebateInfo;
     Argument currentArgument;
     Dialogue[] currentDialogueLines;
     DebateDialogue[] currentArgumentLines;
-    Coroutine focusingRoutine;
     Coroutine fillingBarRoutine;
-    Quaternion currentCamTargetRot;
     CharacterName previousSpeaker = CharacterName.None;
     List<ClueInfo> caseClues;
     DebatePhase currentPhase = DebatePhase.Dialoguing;
@@ -103,11 +101,15 @@ public class DebateManager : MonoBehaviour
 
         speechController = GetComponent<SpeechController>();
         argumentController = GetComponent<ArgumentController>();
+        debateCameraController = GetComponent<DebateCameraController>();
 
         argumentController.OnArgumentFinish.AddListener(ShowDebateOptions);
+        debateCameraController.OnFocusFinish.AddListener(ProceedAfterCameraFocus);
         
-        debateCamera = debateInitializer.GetComponentInChildren<Camera>(includeInactive: true);
         debateCharactersSprites = debateInitializer.DebateCharactersSprites;
+        
+        Camera debateCamera = debateInitializer.GetComponentInChildren<Camera>(includeInactive: true);
+        debateCameraController.SetUpDebateCamera(debateCamera);
 
         regularCluesLayoutPadding[0] = clueOptionsLayout.padding.top;
         regularCluesLayoutPadding[1] = clueOptionsLayout.padding.bottom;
@@ -127,15 +129,15 @@ public class DebateManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Continue"))
         {
-            if (focusingRoutine != null)
+            if (debateCameraController.IsFocusing())
             {
-                FinishFocus();
+                debateCameraController.StopFocusing();
                 return;
             }
 
             if (argumentController.IsExpanding())
             {
-                argumentController.StopExpanding(lastArgument: lineIndex == currentArgumentLines.Length - 1);
+                argumentController.StopExpanding(lineIndex == currentArgumentLines.Length - 1);
                 return;
             }
 
@@ -234,9 +236,6 @@ public class DebateManager : MonoBehaviour
 
         if (!enableDebateArea)
         {
-            StopAllCoroutines();
-
-            focusingRoutine = null;
             fillingBarRoutine = null;
 
             currentDebateInfo = null;
@@ -292,6 +291,14 @@ public class DebateManager : MonoBehaviour
         Argue(currentArgumentLines[0].speakerName, currentArgumentLines[0].argument, currentArgumentLines[0].speakerEmotion);
     }
 
+    void ProceedAfterCameraFocus()
+    {
+        if (currentPhase == DebatePhase.Arguing)
+            SayArgument(lineIndex == currentArgumentLines.Length - 1);
+        else
+            SayDialogue(currentDialogueLines[lineIndex].speech);
+    }
+
     void StartNextArgument()
     {
         lineIndex = 0;
@@ -337,12 +344,12 @@ public class DebateManager : MonoBehaviour
 
             ResetMainUIVisibility();
 
-            focusingRoutine = StartCoroutine(FocusOnCharacter(charPosition));     
+            debateCameraController.StartFocusing(charPosition);     
             speakerText.text = speaker.ToString();
             previousSpeaker = speaker;
         }
         else
-            SayArgument();
+            SayArgument(lineIndex == currentArgumentLines.Length - 1);
     }
 
     void Dialogue(CharacterName speaker, string speech, CharacterEmotion speakerEmotion, bool playerThought)
@@ -369,7 +376,7 @@ public class DebateManager : MonoBehaviour
 
             ResetMainUIVisibility();
 
-            focusingRoutine = StartCoroutine(FocusOnCharacter(charPosition));
+            debateCameraController.StartFocusing(charPosition);
             speakerText.text = speaker.ToString();
             previousSpeaker = speaker;
         }
@@ -377,13 +384,13 @@ public class DebateManager : MonoBehaviour
             SayDialogue(speech);
     }
 
-    void SayArgument()
+    void SayArgument(bool lastArgument)
     {
         speakerArea.SetActive(true);
         argumentAndSpeechArea.SetActive(true);
         argumentPanel.SetActive(true);
 
-        argumentController.StartExpanding(lastArgument: lineIndex == currentArgumentLines.Length - 1);
+        argumentController.StartExpanding(lastArgument);
     }
 
     void SayDialogue(string speech)
@@ -395,20 +402,6 @@ public class DebateManager : MonoBehaviour
         speechController.StartSpeaking(speech);
     }
 
-    void FinishFocus()
-    {
-        if (focusingRoutine != null)
-        {
-            StopCoroutine(focusingRoutine);
-            debateCamera.transform.rotation = currentCamTargetRot;
-            if (currentPhase == DebatePhase.Arguing)
-                SayArgument();
-            else
-                SayDialogue(currentDialogueLines[lineIndex].speech);
-            focusingRoutine = null;
-        }
-    }
-
     void StopFillingCredibilityBar()
     {
         if (fillingBarRoutine != null)
@@ -416,35 +409,6 @@ public class DebateManager : MonoBehaviour
             StopCoroutine(fillingBarRoutine);
             fillingBarRoutine = null;
         }
-    }
-
-    IEnumerator FocusOnCharacter(Vector3 characterPosition)
-    {
-        Vector3 diff = characterPosition - debateCamera.transform.position;
-
-        Vector3 targetDir = new Vector3(diff.x, debateCamera.transform.forward.y, diff.z);
-        Quaternion fromRot = debateCamera.transform.rotation;
-        
-        currentCamTargetRot = Quaternion.LookRotation(targetDir, debateArea.transform.up);
-
-        float timer = 0f;
-        float angleBetweenRots = Quaternion.Angle(fromRot, currentCamTargetRot);
-        float rotDuration = angleBetweenRots / cameraRotSpeed;
-
-        while (timer < rotDuration)
-        {
-            timer += Time.deltaTime;
-            debateCamera.transform.rotation = Quaternion.Slerp(fromRot, currentCamTargetRot, timer / rotDuration);
-
-            yield return new WaitForEndOfFrame();
-        }
-
-        focusingRoutine = null;
-
-        if (currentPhase == DebatePhase.Arguing)
-            SayArgument();
-        else
-            SayDialogue(currentDialogueLines[lineIndex].speech);
     }
 
     IEnumerator ChangeCredibilityBarFill()
@@ -577,7 +541,7 @@ public class DebateManager : MonoBehaviour
 
     public void InitializeDebate(DebateInfo debateInfo, List<ClueInfo> playerClues)
     {
-        debateCamera.gameObject.SetActive(true);
+        debateCameraController.SetDebateCameraAvailability(enable: true);
 
         currentDebateInfo = debateInfo;
         currentArgument = currentDebateInfo.arguments[0];

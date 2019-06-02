@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 3241548684262815229}
   - component: {fileID: 4623511815646656268}
   - component: {fileID: 2670801112757247028}
+  - component: {fileID: 7429143913371094039}
   m_Layer: 5
   m_Name: Deabate Manager
   m_TagString: Untagged
@@ -102,7 +103,6 @@ MonoBehaviour:
   speechText: {fileID: 3195444414909814513}
   credibilityBar: {fileID: 7291051576146925324}
   credibilityIcon: {fileID: 6632993151302062361}
-  cameraRotSpeed: 60
   credibilityBarFillDur: 1
   credibilityBarIdleDur: 4
   credibilityBarColorPositive: {r: 0, g: 0.5019608, b: 0, a: 1}
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 761603634855803439}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e888553a680393409e1e9fac9b02a8b, type: 3}
+  m_Script: {fileID: 11500000, guid: eb0a38f12bac26349b37316fea28af79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speechText: {fileID: 3195444414909814513}
@@ -134,12 +134,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 761603634855803439}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d37d63dcd75db304db4598b78d70c0af, type: 3}
+  m_Script: {fileID: 11500000, guid: 2cdadc6779ac29e48ae9c6fadacdd6dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   argumentPanel: {fileID: 761603635975782502}
   expandedScale: 2
   expansionDuration: 1
+--- !u!114 &7429143913371094039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761603634855803439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b665d2ad2e2bda842a0b1e44dfb472d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraRotSpeed: 75
 --- !u!1 &761603635704131043
 GameObject:
   m_ObjectHideFlags: 0
