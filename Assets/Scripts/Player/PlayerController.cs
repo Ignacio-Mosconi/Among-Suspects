@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(FirstPersonCamera))]
 [RequireComponent(typeof(PlayerMovement))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, ICharacter
 {
     [SerializeField] CharacterName playerName = default;
     [SerializeField] Sprite[] characterSprites = default;
@@ -50,17 +50,17 @@ public class PlayerController : MonoBehaviour
         return playerMovement.enabled;
     }
 
+    public CharacterName GetCharacterName()
+    {
+        return playerName;
+    }
+
     public Sprite GetSprite(CharacterEmotion characterEmotion)
     {
         return characterSprites[(int)characterEmotion];
     }
 
-    #region Getters & Setters
-
-    public CharacterName PlayerName
-    {
-        get { return playerName; }
-    }
+    #region Properties
 
     public FirstPersonCamera FirstPersonCamera
     {

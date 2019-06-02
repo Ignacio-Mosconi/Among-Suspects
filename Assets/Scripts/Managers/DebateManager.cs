@@ -90,8 +90,6 @@ public class DebateManager : MonoBehaviour
     int[] regularCluesLayoutPadding = { 0, 0 };
     float regularCluesLayoutSpacing = 0f;
     float regularClueButtonHeight = 0f;
-    float characterShowIntervals;
-    float textSpeedMultiplier;
     int targetSpeechCharAmount;
     float credibilityPerc;
     float credibilityIncPerc;
@@ -114,9 +112,6 @@ public class DebateManager : MonoBehaviour
 
         Button clueOption = clueOptionsLayout.GetComponentInChildren<Button>(includeInactive: true);
         regularClueButtonHeight = clueOption.GetComponent<RectTransform>().rect.height;
-
-        characterShowIntervals = 1f / GameManager.Instance.TargetFrameRate;
-        textSpeedMultiplier = 1f / GameManager.Instance.TextSpeedMultiplier;
 
         credibilityPerc = InitialCredibilityPerc;
         credibilityBar.fillAmount = credibilityPerc / 100f;
@@ -345,9 +340,8 @@ public class DebateManager : MonoBehaviour
 
         argumentText.text = argument;
         
-        characterRenderer.sprite = (speaker != CharacterManager.Instance.PlayerController.PlayerName) ? 
-                                    CharacterManager.Instance.GetCharacter(speaker).GetSprite(speakerEmotion) :
-                                    CharacterManager.Instance.PlayerController.GetSprite(speakerEmotion);
+        ICharacter character = CharacterManager.Instance.GetCharacter(speaker);
+        characterRenderer.sprite = character.GetSprite(speakerEmotion);
     }
 
     void Dialogue(CharacterName speaker, string speech, CharacterEmotion speakerEmotion, bool playerThought)
@@ -358,9 +352,8 @@ public class DebateManager : MonoBehaviour
         speechText.text = speech;
         targetSpeechCharAmount = speech.Length;
 
-        characterRenderer.sprite = (speaker != CharacterManager.Instance.PlayerController.PlayerName) ?
-                                    CharacterManager.Instance.GetCharacter(speaker).GetSprite(speakerEmotion) :
-                                    CharacterManager.Instance.PlayerController.GetSprite(speakerEmotion);
+        ICharacter character = CharacterManager.Instance.GetCharacter(speaker);
+        characterRenderer.sprite = character.GetSprite(speakerEmotion);
 
         if (speaker != previousSpeaker)
         {
@@ -500,7 +493,7 @@ public class DebateManager : MonoBehaviour
         while (speechText.maxVisibleCharacters != targetSpeechCharAmount)
         {
             speechText.maxVisibleCharacters++;
-            yield return new WaitForSeconds(characterShowIntervals * textSpeedMultiplier);
+            yield return new WaitForSeconds(GameManager.Instance.CharactersShowIntervals);
         }
 
         speakingRoutine = null;

@@ -70,7 +70,7 @@ public class FirstPersonCamera : MonoBehaviour
         focusing = StartCoroutine(RotateViewProgressively(position));
     }
 
-    #region Getters & Setters
+    #region Properties
     
     public float InteractionFOV
     {

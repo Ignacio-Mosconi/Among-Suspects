@@ -1,23 +1,19 @@
 ﻿using UnityEngine;
 
-public class NonPlayableCharacter : Interactable
+public class NPC : Interactable, ICharacter
 {
+    [Header("Main Data")]
     [SerializeField] CharacterName characterName = default;
     [SerializeField] Sprite[] characterSprites = default;
-    [SerializeField] DialogueInfo dialogueInfo = default;
+    [Header("Other Data")]
+    [SerializeField] bool nameRevealed = false;
+    [SerializeField] bool niceWithPlayer = false;
+    [Header("Other References")]
     [SerializeField] GameObject characterMesh = default;
     [SerializeField] Transform leftSpeaker = default;
     [SerializeField] Transform rightSpeaker = default;
 
-    bool nameRevealed = false;
-    bool niceWithPlayer = false;
-
-    void Awake()
-    {
-        dialogueInfo.introRead = false;
-        dialogueInfo.interactionOptionSelected = false;
-        dialogueInfo.groupDialogueRead = false;
-    }
+    DialogueInfo dialogueInfo;
 
     public override void EnableInteraction()
     {
@@ -37,17 +33,17 @@ public class NonPlayableCharacter : Interactable
         DialogueManager.Instance.EnableDialogueArea(dialogueInfo, this);
     }
     
+    public CharacterName GetCharacterName()
+    {
+        return characterName;
+    }
+
     public Sprite GetSprite(CharacterEmotion characterEmotion)
     {
         return characterSprites[(int)characterEmotion];
     }
 
-    #region Getters & Setters
-
-    public CharacterName CharacterName
-    {
-        get { return characterName; }
-    }
+    #region Properties
 
     public bool NameRevealed
     {

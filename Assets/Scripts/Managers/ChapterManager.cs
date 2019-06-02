@@ -114,11 +114,11 @@ public class ChapterManager : MonoBehaviour
         {
             currentPhase = ChapterPhase.Investigation;
             debateInitializer.EnableInteraction();
-            CharacterManager.Instance.LoadInvestigationDialogues();
+            CharacterManager.Instance.LoadDialogues(ChapterPhase.Investigation);
         }
     }
 
-    #region Getters & Setters
+    #region Properties
     
     public ChapterPhase CurrentPhase
     {

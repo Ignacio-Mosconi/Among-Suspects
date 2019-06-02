@@ -61,7 +61,7 @@ public class PauseMenu : Menu
         onResume.Invoke();
     }
 
-    #region Getters & Setters
+    #region Properties
 
     public UnityEvent OnPaused
     {

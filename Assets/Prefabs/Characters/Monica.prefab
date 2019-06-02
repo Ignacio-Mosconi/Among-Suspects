@@ -2946,11 +2946,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 9007622753176766991}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65137fe2336f8b346beb98d493728be9, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d4ca15d71da26b4c8a7a8883a623ede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   interactionPoint: {fileID: 9007622752252638249}
-  interactionRadius: 2
+  interactionRadius: 2.5
   hasToBeFaced: 1
   characterName: 1
   characterSprites:
@@ -2962,7 +2962,9 @@ MonoBehaviour:
   - {fileID: 21300010, guid: 6b32b14166e52ba4e8902e8bb312d285, type: 3}
   - {fileID: 21300012, guid: 6b32b14166e52ba4e8902e8bb312d285, type: 3}
   - {fileID: 21300014, guid: 6b32b14166e52ba4e8902e8bb312d285, type: 3}
-  dialogueInfo: {fileID: 11400000, guid: b3da4c8a88af48a49889a1b7860e2dae, type: 2}
+  dialogueInfo: {fileID: 0}
   characterMesh: {fileID: 8247258489615928505}
   leftSpeaker: {fileID: 9007622751466537085}
   rightSpeaker: {fileID: 9007622751475260872}
+  nameRevealed: 1
+  niceWithPlayer: 1

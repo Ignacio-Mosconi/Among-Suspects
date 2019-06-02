@@ -31,15 +31,19 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+    [Header("Application's Default Settings")]
     [SerializeField] [Range(24, 60)] int targetFrameRate = 60;
     [SerializeField] [Range(0.5f, 2f)] float textSpeedMultiplier = 1f;
     [SerializeField] Color playerSpeakingTextColor = default;
     [SerializeField] Color playerThinkingTextColor = default;
     [SerializeField] Color npcSpeakingTextColor = default;
 
+    float charactersShowIntervals;
+
     void Start()
     {
         Application.targetFrameRate = targetFrameRate;
+        charactersShowIntervals = 1f / (textSpeedMultiplier * targetFrameRate);
 
         SetCursorAvailability(enable: false);
     }
@@ -55,16 +59,11 @@ public class GameManager : MonoBehaviour
         return (Cursor.visible);
     }
 
-    #region Getters & Setters
+    #region Properties
     
-    public float TargetFrameRate
+    public float CharactersShowIntervals
     {
-        get { return targetFrameRate; }
-    }
-
-    public float TextSpeedMultiplier
-    {
-        get { return textSpeedMultiplier; }
+        get { return charactersShowIntervals; }
     }
 
     public Color PlayerSpeakingTextColor

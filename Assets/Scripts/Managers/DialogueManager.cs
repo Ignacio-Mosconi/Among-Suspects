@@ -40,14 +40,13 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] Image speakerImage = default;
     [SerializeField] Image objectImage = default;
     [SerializeField] VerticalLayoutGroup optionsLayout = default;
+    
     DialogueInfo currentDialogueInfo;
     Dialogue[] currentLines;
     Coroutine speakingRoutine;
     Button[] optionsButtons;
-    NonPlayableCharacter mainSpeaker;
-    NonPlayableCharacter previousSpeaker;
-    float characterShowIntervals;
-    float textSpeedMultiplier;
+    NPC mainSpeaker;
+    NPC previousSpeaker;
     int targetSpeechCharAmount;
     int lineIndex;
     int[] regularOptionsLayoutPadding = { 0, 0 };
@@ -58,9 +57,6 @@ public class DialogueManager : MonoBehaviour
 
     void Start()
     {
-        characterShowIntervals = 1f / GameManager.Instance.TargetFrameRate;
-        textSpeedMultiplier = 1f / GameManager.Instance.TextSpeedMultiplier;
-
         optionsButtons = optionsLayout.GetComponentsInChildren<Button>(includeInactive: true);
         
         regularOptionsLayoutPadding[0] = optionsLayout.padding.top;
@@ -149,23 +145,24 @@ public class DialogueManager : MonoBehaviour
         if (clueInfo)
             playerController.AddClue(clueInfo);
         
-        if (speakerName != playerController.PlayerName)
+        if (speakerName != playerController.GetCharacterName())
         {
-            NonPlayableCharacter currentSpeaker;
+            NPC currentSpeaker;
             
-            if (!previousSpeaker || speakerName != previousSpeaker.CharacterName)
+            if (!previousSpeaker || speakerName != previousSpeaker.GetCharacterName())
             {
-                currentSpeaker = CharacterManager.Instance.GetCharacter(speakerName);
+                currentSpeaker = (NPC)CharacterManager.Instance.GetCharacter(speakerName);
                 
                 if (currentSpeaker == mainSpeaker)
                     playerController.FirstPersonCamera.FocusOnPosition(mainSpeaker.InteractionPosition);
                 else
                 {
-                    if (currentSpeaker.CharacterName == currentDialogueInfo.groupDialogue.leftSpeaker)
+                    if (currentSpeaker.GetCharacterName() == currentDialogueInfo.groupDialogue.leftSpeaker)
                         playerController.FirstPersonCamera.FocusOnPosition(mainSpeaker.LeftSpeakerPosition);
                     else
                         playerController.FirstPersonCamera.FocusOnPosition(mainSpeaker.RightSpeakerPosition);
                 }
+                previousSpeaker = currentSpeaker;
             }
             else
                 currentSpeaker = previousSpeaker;
@@ -180,8 +177,6 @@ public class DialogueManager : MonoBehaviour
             
             if (speechText.color != GameManager.Instance.NpcSpeakingTextColor)
                 speechText.color = GameManager.Instance.NpcSpeakingTextColor;
-
-            previousSpeaker = currentSpeaker;
         }
         else
         {
@@ -215,7 +210,7 @@ public class DialogueManager : MonoBehaviour
         while (speechText.maxVisibleCharacters != targetSpeechCharAmount)
         {
             speechText.maxVisibleCharacters++;          
-            yield return new WaitForSeconds(characterShowIntervals * textSpeedMultiplier);
+            yield return new WaitForSeconds(GameManager.Instance.CharactersShowIntervals);
         }
 
         speakingRoutine = null;
@@ -271,7 +266,7 @@ public class DialogueManager : MonoBehaviour
                     currentLines[0].clueInfo);
     }
 
-    public void EnableDialogueArea(DialogueInfo dialogueInfo, NonPlayableCharacter npc)
+    public void EnableDialogueArea(DialogueInfo dialogueInfo, NPC npc)
     {
         currentDialogueInfo = dialogueInfo;
         
@@ -336,7 +331,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    #region Getters & Setters
+    #region Properties
 
     public UnityEvent OnDialogueAreaEnable
     {

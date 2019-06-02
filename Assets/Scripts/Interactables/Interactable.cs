@@ -83,7 +83,7 @@ public abstract class Interactable : MonoBehaviour
 
     protected abstract void Interact();
 
-    #region Getters & Setters
+    #region Properties
 
     public Vector3 InteractionPosition
     {
