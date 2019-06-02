@@ -51,6 +51,11 @@ public class ArgumentController : MonoBehaviour
         }
     }
 
+    public void ResetArgumentPanelScale()
+    {
+        argumentPanel.transform.localScale = new Vector3(1f, 1f, 1f);
+    }
+
     public bool IsExpanding()
     {
         return (expandingRoutine != null);

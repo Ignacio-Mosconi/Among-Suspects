@@ -50,6 +50,7 @@ GameObject:
   - component: {fileID: 4623511815646656268}
   - component: {fileID: 2670801112757247028}
   - component: {fileID: 7429143913371094039}
+  - component: {fileID: 6002513185739250597}
   m_Layer: 5
   m_Name: Deabate Manager
   m_TagString: Untagged
@@ -96,22 +97,10 @@ MonoBehaviour:
   speechPanel: {fileID: 6170737698435450236}
   debateOptionsPanel: {fileID: 1801679832460021641}
   clueOptionsPanel: {fileID: 4102656720875789619}
-  credibilityPanel: {fileID: 621336432036328361}
   clueOptionsLayout: {fileID: 2285350960324649202}
   speakerText: {fileID: 4457280893740812679}
   argumentText: {fileID: 761603636835373319}
   speechText: {fileID: 3195444414909814513}
-  credibilityBar: {fileID: 7291051576146925324}
-  credibilityIcon: {fileID: 6632993151302062361}
-  credibilityBarFillDur: 1
-  credibilityBarIdleDur: 4
-  credibilityBarColorPositive: {r: 0, g: 0.5019608, b: 0, a: 1}
-  credibilityBarColorNeutral: {r: 0.8679245, g: 0.8036604, b: 0.061409745, a: 1}
-  credibilityBarColorNegative: {r: 0.7921569, g: 0, b: 0, a: 1}
-  credibilitySprites:
-  - {fileID: 21300000, guid: d12407cdc4840ad4ba773611cd60459b, type: 3}
-  - {fileID: 21300000, guid: 3ac293cd8504e1240b22a866ba3c26ec, type: 3}
-  - {fileID: 21300000, guid: 70f0cc5cdecc7a24c9adeadbd753ef57, type: 3}
 --- !u!114 &4623511815646656268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,6 +142,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraRotSpeed: 75
+--- !u!114 &6002513185739250597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761603634855803439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6fc699b5b5a52e4e9265b4f8d0d8f86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  credibilityPanel: {fileID: 621336432036328361}
+  credibilityBar: {fileID: 7291051576146925324}
+  credibilityIcon: {fileID: 6632993151302062361}
+  fillBarDuration: 1
+  idleBarDuration: 3
+  colorPositive: {r: 0, g: 0.49056602, b: 0, a: 1}
+  colorNeutral: {r: 0.7169812, g: 0.66173756, b: 0.02367392, a: 1}
+  colorNegative: {r: 0.6698113, g: 0.041073352, b: 0.041073352, a: 1}
+  credibilitySprites:
+  - {fileID: 21300000, guid: d12407cdc4840ad4ba773611cd60459b, type: 3}
+  - {fileID: 21300000, guid: 3ac293cd8504e1240b22a866ba3c26ec, type: 3}
+  - {fileID: 21300000, guid: 70f0cc5cdecc7a24c9adeadbd753ef57, type: 3}
 --- !u!1 &761603635704131043
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ public enum DebatePhase
 [RequireComponent(typeof(SpeechController))]
 [RequireComponent(typeof(ArgumentController))]
 [RequireComponent(typeof(DebateCameraController))]
+[RequireComponent(typeof(CredibilityBarController))]
 public class DebateManager : MonoBehaviour
 {
     #region Singleton
@@ -52,32 +53,21 @@ public class DebateManager : MonoBehaviour
     [SerializeField] GameObject speechPanel = default;
     [SerializeField] GameObject debateOptionsPanel = default;
     [SerializeField] GameObject clueOptionsPanel = default;
-    [SerializeField] GameObject credibilityPanel = default;
     [Header("Layouts, Buttons, Images & Texts")]
     [SerializeField] VerticalLayoutGroup clueOptionsLayout = default;
     [SerializeField] TextMeshProUGUI speakerText = default;
     [SerializeField] TextMeshProUGUI argumentText = default;
     [SerializeField] TextMeshProUGUI speechText = default;
-    [SerializeField] Image credibilityBar = default;
-    [SerializeField] Image credibilityIcon = default;
-    [Header("Debate Properties")]
-    [SerializeField] [Range(0.5f, 1.5f)] float credibilityBarFillDur = 1f;
-    [SerializeField] [Range(2f, 4f)] float credibilityBarIdleDur = 3f;
-    [Header("Other UI Properties")]
-    [SerializeField] Color credibilityBarColorPositive = Color.green;
-    [SerializeField] Color credibilityBarColorNeutral = Color.yellow;
-    [SerializeField] Color credibilityBarColorNegative = Color.red;
-    [SerializeField] Sprite[] credibilitySprites = default;
     
     SpeechController speechController;
     ArgumentController argumentController;
     DebateCameraController debateCameraController;
+    CredibilityBarController credibilityBarController;
     DebateCharacterSprite[] debateCharactersSprites;
     DebateInfo currentDebateInfo;
     Argument currentArgument;
     Dialogue[] currentDialogueLines;
     DebateDialogue[] currentArgumentLines;
-    Coroutine fillingBarRoutine;
     CharacterName previousSpeaker = CharacterName.None;
     List<ClueInfo> caseClues;
     DebatePhase currentPhase = DebatePhase.Dialoguing;
@@ -102,6 +92,7 @@ public class DebateManager : MonoBehaviour
         speechController = GetComponent<SpeechController>();
         argumentController = GetComponent<ArgumentController>();
         debateCameraController = GetComponent<DebateCameraController>();
+        credibilityBarController = GetComponent<CredibilityBarController>();
 
         argumentController.OnArgumentFinish.AddListener(ShowDebateOptions);
         debateCameraController.OnFocusFinish.AddListener(ProceedAfterCameraFocus);
@@ -117,10 +108,6 @@ public class DebateManager : MonoBehaviour
 
         Button clueOption = clueOptionsLayout.GetComponentInChildren<Button>(includeInactive: true);
         regularClueButtonHeight = clueOption.GetComponent<RectTransform>().rect.height;
-
-        credibilityPerc = InitialCredibilityPerc;
-        credibilityBar.fillAmount = credibilityPerc / 100f;
-        credibilityBar.color = credibilityBarColorNeutral;
 
         enabled = false;
     }
@@ -166,7 +153,7 @@ public class DebateManager : MonoBehaviour
 
                 case DebatePhase.Arguing:
                     
-                    ResetArgumentPanelScale();
+                    argumentController.ResetArgumentPanelScale();
                     if (lineIndex < currentArgumentLines.Length)
                     {
                         Argue(currentArgumentLines[lineIndex].speakerName,
@@ -186,15 +173,15 @@ public class DebateManager : MonoBehaviour
                     }
                     else
                     {
-                        if (ShouldLoseCase())
-                            EndCase(lose: true);
-                        else
+                        if (!ShouldLoseCase())
                         {
                             if (argumentIndex == currentDebateInfo.arguments.Length - 1)
                                 EndCase();
                             else
                                 StartNextArgument();
                         }
+                        else
+                            EndCase(lose: true);
                     }
                     break;
 
@@ -224,7 +211,7 @@ public class DebateManager : MonoBehaviour
         int argumentsRemaining = currentDebateInfo.arguments.Length - argumentIndex - 1;
         float maxAchievableCredibility = credibilityPerc + argumentsRemaining * credibilityIncPerc;
 
-        shouldLose = (maxAchievableCredibility < MinCredibilityPercRequired) ? true : false;
+        shouldLose = (maxAchievableCredibility < MinCredibilityPercRequired);
         
         return shouldLose;
     }
@@ -236,8 +223,6 @@ public class DebateManager : MonoBehaviour
 
         if (!enableDebateArea)
         {
-            fillingBarRoutine = null;
-
             currentDebateInfo = null;
             currentDialogueLines = null;
             currentArgumentLines = null;
@@ -245,27 +230,15 @@ public class DebateManager : MonoBehaviour
             currentPhase = DebatePhase.Dialoguing;
             
             credibilityPerc = InitialCredibilityPerc;
-            credibilityBar.fillAmount = credibilityPerc / 100f;
-            credibilityBar.color = credibilityBarColorNeutral;
 
             caseWon = false;
             lineIndex = 0;
             argumentIndex = 0;
 
-            ResetArgumentPanelScale();
-            ResetCredibilityPanel();
+            argumentController.ResetArgumentPanelScale();
+            credibilityBarController.ResetCredibilityBar(InitialCredibilityPerc);
             ResetMainUIVisibility();
         }
-    }
-
-    void ResetArgumentPanelScale()
-    {
-        argumentPanel.transform.localScale = new Vector3(1f, 1f, 1f);
-    }
-
-    void ResetCredibilityPanel()
-    {
-        credibilityPanel.SetActive(false);
     }
 
     void ResetMainUIVisibility()
@@ -276,7 +249,6 @@ public class DebateManager : MonoBehaviour
 
     void ShowDebateOptions()
     {
-        lineIndex = 0;
         enabled = false;
         isSelectingOption = true;
         debateOptionsPanel.SetActive(true);
@@ -297,6 +269,33 @@ public class DebateManager : MonoBehaviour
             SayArgument(lineIndex == currentArgumentLines.Length - 1);
         else
             SayDialogue(currentDialogueLines[lineIndex].speech);
+    }
+
+    void ProceedAfterOptionSelection()
+    {
+        int argumentsRemaining = currentDebateInfo.arguments.Length - 1 - argumentIndex;
+        float percAtNextFail = credibilityPerc - credibilityDecPerc;
+        bool isCriticalPer = (percAtNextFail + credibilityIncPerc * argumentsRemaining < MinCredibilityPercRequired);
+
+        argumentController.ResetArgumentPanelScale();
+        ResetMainUIVisibility();
+
+        argumentPanel.SetActive(false);
+        GameManager.Instance.SetCursorAvailability(false);
+
+        if (credibilityBarController.IsFillingBar())
+            credibilityBarController.StopFillingBar();
+
+        credibilityBarController.StartFillingBar(credibilityPerc, MinCredibilityPercRequired, isCriticalPer);
+
+        lineIndex = 0;
+        isSelectingOption = false;
+        enabled = true;
+
+        Dialogue(currentDialogueLines[0].speakerName,
+                currentDialogueLines[0].speech,
+                currentDialogueLines[0].characterEmotion,
+                currentDialogueLines[0].playerThought);
     }
 
     void StartNextArgument()
@@ -402,69 +401,8 @@ public class DebateManager : MonoBehaviour
         speechController.StartSpeaking(speech);
     }
 
-    void StopFillingCredibilityBar()
-    {
-        if (fillingBarRoutine != null)
-        {
-            StopCoroutine(fillingBarRoutine);
-            fillingBarRoutine = null;
-        }
-    }
-
-    IEnumerator ChangeCredibilityBarFill()
-    {
-        float timer = 0f;
-        float currentFill = credibilityBar.fillAmount;
-        float targetFill = credibilityPerc / 100f;
-
-        credibilityPanel.SetActive(true);
-        Invoke("ResetCredibilityPanel", credibilityBarIdleDur);
-
-        while (currentFill != targetFill)
-        {
-            timer += Time.deltaTime;
-            credibilityBar.fillAmount = Mathf.Lerp(currentFill, targetFill, timer / credibilityBarFillDur);
-
-            Color newColor = credibilityBar.color;
-
-            if (credibilityBar.fillAmount * 100f >= MinCredibilityPercRequired && credibilityBar.color != credibilityBarColorPositive)
-            {
-                newColor = credibilityBarColorPositive;
-                credibilityIcon.sprite = credibilitySprites[0];
-            }
-            
-            if (credibilityBar.fillAmount * 100f < MinCredibilityPercRequired && !ShouldLoseCase() &&
-                credibilityBar.color != credibilityBarColorNeutral)
-            {
-                newColor = credibilityBarColorNeutral;
-                credibilityIcon.sprite = credibilitySprites[1];
-            }
-            
-            if (ShouldLoseCase() && credibilityBar.color != credibilityBarColorNegative)
-            {
-                newColor = credibilityBarColorNegative;
-                credibilityIcon.sprite = credibilitySprites[2];
-            }
-
-            if (newColor != credibilityBar.color)
-            {
-                newColor.a = credibilityBar.color.a;
-                credibilityBar.color = newColor;
-            }
-
-            yield return new WaitForEndOfFrame();
-        }
-    }
-
     public void TrustComment()
     {
-        ResetArgumentPanelScale();
-        ResetMainUIVisibility();  
-        
-        debateOptionsPanel.SetActive(false);
-        argumentPanel.SetActive(false);
-        GameManager.Instance.SetCursorAvailability(false);
-
         currentDialogueLines = currentArgument.trustDialogue;
         
         currentPhase = DebatePhase.SolvingArgument;
@@ -474,17 +412,9 @@ public class DebateManager : MonoBehaviour
         else
             credibilityPerc -= credibilityDecPerc;
 
-        if (fillingBarRoutine != null)
-            StopFillingCredibilityBar();
-        fillingBarRoutine = StartCoroutine(ChangeCredibilityBarFill());
+        debateOptionsPanel.SetActive(false);
 
-        isSelectingOption = false;
-        enabled = true;
-
-        Dialogue(currentDialogueLines[0].speakerName,
-                currentDialogueLines[0].speech,
-                currentDialogueLines[0].characterEmotion,
-                currentDialogueLines[0].playerThought);
+        ProceedAfterOptionSelection();
     }
 
     public void RefuteComment()
@@ -496,14 +426,7 @@ public class DebateManager : MonoBehaviour
     }
 
     public void AccuseWithEvidence(int optionIndex)
-    {
-        ResetArgumentPanelScale();
-        ResetMainUIVisibility();
-
-        clueOptionsPanel.SetActive(false);
-        argumentPanel.SetActive(false);
-        GameManager.Instance.SetCursorAvailability(false);
-        
+    {        
         currentPhase = DebatePhase.SolvingArgument;
 
         if (currentArgument.correctReaction == DebateReaction.Disagree && 
@@ -518,17 +441,9 @@ public class DebateManager : MonoBehaviour
             credibilityPerc -= credibilityDecPerc;
         }
 
-        if (fillingBarRoutine != null)
-            StopFillingCredibilityBar();
-        fillingBarRoutine = StartCoroutine(ChangeCredibilityBarFill());
+        clueOptionsPanel.SetActive(false);
 
-        isSelectingOption = false;
-        enabled = true;
-
-        Dialogue(currentDialogueLines[0].speakerName,
-                currentDialogueLines[0].speech,
-                currentDialogueLines[0].characterEmotion,
-                currentDialogueLines[0].playerThought);
+        ProceedAfterOptionSelection();
     }
 
     public void ReturnToDebateOptions()
@@ -548,8 +463,11 @@ public class DebateManager : MonoBehaviour
         currentDialogueLines = currentArgument.argumentIntroDialogue;
         currentArgumentLines = currentArgument.debateDialogue;
 
+        credibilityPerc = InitialCredibilityPerc;
         credibilityIncPerc = credibilityPerc / currentDebateInfo.arguments.Length;
         credibilityDecPerc = credibilityIncPerc * 2f;
+
+        credibilityBarController.ResetCredibilityBar(credibilityPerc);
 
         Button[] clueOptions = clueOptionsLayout.GetComponentsInChildren<Button>(includeInactive: true);
                 
