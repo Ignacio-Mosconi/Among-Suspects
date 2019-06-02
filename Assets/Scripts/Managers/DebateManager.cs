@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
 using TMPro;
 
 public enum DebatePhase
@@ -12,6 +11,7 @@ public enum DebatePhase
 }
 
 [RequireComponent(typeof(SpeechController))]
+[RequireComponent(typeof(ArgumentController))]
 public class DebateManager : MonoBehaviour
 {
     #region Singleton
@@ -61,8 +61,6 @@ public class DebateManager : MonoBehaviour
     [SerializeField] Image credibilityIcon = default;
     [Header("Debate Properties")]
     [SerializeField] [Range(30f, 60f)] float cameraRotSpeed = 60f;
-    [SerializeField] [Range(1f, 2f)] float argumentPanelExpandScale = 2f;
-    [SerializeField] [Range(0.5f, 1.5f)] float argumentPanelScaleDur = 1f;
     [SerializeField] [Range(0.5f, 1.5f)] float credibilityBarFillDur = 1f;
     [SerializeField] [Range(2f, 4f)] float credibilityBarIdleDur = 3f;
     [Header("Other UI Properties")]
@@ -72,6 +70,7 @@ public class DebateManager : MonoBehaviour
     [SerializeField] Sprite[] credibilitySprites = default;
     
     SpeechController speechController;
+    ArgumentController argumentController;
     Camera debateCamera;
     DebateCharacterSprite[] debateCharactersSprites;
     DebateInfo currentDebateInfo;
@@ -79,7 +78,6 @@ public class DebateManager : MonoBehaviour
     Dialogue[] currentDialogueLines;
     DebateDialogue[] currentArgumentLines;
     Coroutine focusingRoutine;
-    Coroutine expandindArgumentRoutine;
     Coroutine fillingBarRoutine;
     Quaternion currentCamTargetRot;
     CharacterName previousSpeaker = CharacterName.None;
@@ -91,7 +89,6 @@ public class DebateManager : MonoBehaviour
     int[] regularCluesLayoutPadding = { 0, 0 };
     float regularCluesLayoutSpacing = 0f;
     float regularClueButtonHeight = 0f;
-    int targetSpeechCharAmount;
     float credibilityPerc;
     float credibilityIncPerc;
     float credibilityDecPerc;
@@ -105,6 +102,9 @@ public class DebateManager : MonoBehaviour
         DebateInitializer debateInitializer = FindObjectOfType<DebateInitializer>();
 
         speechController = GetComponent<SpeechController>();
+        argumentController = GetComponent<ArgumentController>();
+
+        argumentController.OnArgumentFinish.AddListener(ShowDebateOptions);
         
         debateCamera = debateInitializer.GetComponentInChildren<Camera>(includeInactive: true);
         debateCharactersSprites = debateInitializer.DebateCharactersSprites;
@@ -133,9 +133,9 @@ public class DebateManager : MonoBehaviour
                 return;
             }
 
-            if (expandindArgumentRoutine != null)
+            if (argumentController.IsExpanding())
             {
-                FinishArgumentExpansion();
+                argumentController.StopExpanding(lastArgument: lineIndex == currentArgumentLines.Length - 1);
                 return;
             }
 
@@ -237,7 +237,6 @@ public class DebateManager : MonoBehaviour
             StopAllCoroutines();
 
             focusingRoutine = null;
-            expandindArgumentRoutine = null;
             fillingBarRoutine = null;
 
             currentDebateInfo = null;
@@ -350,10 +349,6 @@ public class DebateManager : MonoBehaviour
     {
         SpriteRenderer characterRenderer = Array.Find(debateCharactersSprites, cs => cs.characterName == speaker).spriteRenderer;
 
-        speechText.maxVisibleCharacters = 0;
-        speechText.text = speech;
-        targetSpeechCharAmount = speech.Length;
-
         ICharacter character = CharacterManager.Instance.GetCharacter(speaker);
         characterRenderer.sprite = character.GetSprite(speakerEmotion);
 
@@ -388,7 +383,7 @@ public class DebateManager : MonoBehaviour
         argumentAndSpeechArea.SetActive(true);
         argumentPanel.SetActive(true);
 
-        expandindArgumentRoutine = StartCoroutine(ExpandArgumentPanel());
+        argumentController.StartExpanding(lastArgument: lineIndex == currentArgumentLines.Length - 1);
     }
 
     void SayDialogue(string speech)
@@ -414,19 +409,6 @@ public class DebateManager : MonoBehaviour
         }
     }
 
-    void FinishArgumentExpansion()
-    {
-        if (expandindArgumentRoutine != null)
-        {
-            StopCoroutine(expandindArgumentRoutine);
-            argumentPanel.transform.localScale = new Vector3(argumentPanelExpandScale, argumentPanelExpandScale, argumentPanelExpandScale);
-            expandindArgumentRoutine = null;
-
-            if (lineIndex == currentArgumentLines.Length - 1)
-                ShowDebateOptions();
-        }
-    }
-
     void StopFillingCredibilityBar()
     {
         if (fillingBarRoutine != null)
@@ -449,7 +431,7 @@ public class DebateManager : MonoBehaviour
         float angleBetweenRots = Quaternion.Angle(fromRot, currentCamTargetRot);
         float rotDuration = angleBetweenRots / cameraRotSpeed;
 
-        while (timer <= rotDuration)
+        while (timer < rotDuration)
         {
             timer += Time.deltaTime;
             debateCamera.transform.rotation = Quaternion.Slerp(fromRot, currentCamTargetRot, timer / rotDuration);
@@ -463,27 +445,6 @@ public class DebateManager : MonoBehaviour
             SayArgument();
         else
             SayDialogue(currentDialogueLines[lineIndex].speech);
-    }
-
-    IEnumerator ExpandArgumentPanel()
-    {
-        Vector3 initialScale = argumentPanel.transform.localScale;
-        Vector3 targetScale = argumentPanel.transform.localScale * argumentPanelExpandScale;
-
-        float timer = 0f;
-
-        while (timer <= argumentPanelScaleDur)
-        {
-            timer += Time.deltaTime;
-            argumentPanel.transform.localScale = Vector3.Lerp(initialScale, targetScale, timer / argumentPanelScaleDur);
-
-            yield return new WaitForEndOfFrame();
-        }
-
-        if (lineIndex == currentArgumentLines.Length - 1)
-            ShowDebateOptions();
-
-        expandindArgumentRoutine = null;
     }
 
     IEnumerator ChangeCredibilityBarFill()
