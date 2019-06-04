@@ -53,8 +53,8 @@ public class DebateManager : MonoBehaviour
     [SerializeField] GameObject speechPanel = default;
     [SerializeField] GameObject debateOptionsPanel = default;
     [SerializeField] GameObject clueOptionsPanel = default;
-    [Header("Layouts, Buttons, Images & Texts")]
-    [SerializeField] VerticalLayoutGroup clueOptionsLayout = default;
+    [Header("Buttons & Texts")]
+    [SerializeField] Button useEvidenceButton = default;
     [SerializeField] TextMeshProUGUI speakerText = default;
     [SerializeField] TextMeshProUGUI argumentText = default;
     [SerializeField] TextMeshProUGUI speechText = default;
@@ -63,20 +63,18 @@ public class DebateManager : MonoBehaviour
     ArgumentController argumentController;
     DebateCameraController debateCameraController;
     CredibilityBarController credibilityBarController;
+    CluesScreen cluesScreen;
     DebateCharacterSprite[] debateCharactersSprites;
     DebateInfo currentDebateInfo;
     Argument currentArgument;
     Dialogue[] currentDialogueLines;
     DebateDialogue[] currentArgumentLines;
     CharacterName previousSpeaker = CharacterName.None;
-    List<ClueInfo> caseClues;
+    ClueInfo currentlySelectedEvidence;
     DebatePhase currentPhase = DebatePhase.Dialoguing;
     bool caseWon = false;
     int lineIndex = 0;
     int argumentIndex = 0;
-    int[] regularCluesLayoutPadding = { 0, 0 };
-    float regularCluesLayoutSpacing = 0f;
-    float regularClueButtonHeight = 0f;
     float credibilityPerc;
     float credibilityIncPerc;
     float credibilityDecPerc;
@@ -93,6 +91,8 @@ public class DebateManager : MonoBehaviour
         argumentController = GetComponent<ArgumentController>();
         debateCameraController = GetComponent<DebateCameraController>();
         credibilityBarController = GetComponent<CredibilityBarController>();
+        
+        cluesScreen = GetComponentInChildren<CluesScreen>(includeInactive: true);
 
         argumentController.OnArgumentFinish.AddListener(ShowDebateOptions);
         debateCameraController.OnFocusFinish.AddListener(ProceedAfterCameraFocus);
@@ -101,13 +101,6 @@ public class DebateManager : MonoBehaviour
         
         Camera debateCamera = debateInitializer.GetComponentInChildren<Camera>(includeInactive: true);
         debateCameraController.SetUpDebateCamera(debateCamera);
-
-        regularCluesLayoutPadding[0] = clueOptionsLayout.padding.top;
-        regularCluesLayoutPadding[1] = clueOptionsLayout.padding.bottom;
-        regularCluesLayoutSpacing = clueOptionsLayout.spacing;
-
-        Button clueOption = clueOptionsLayout.GetComponentInChildren<Button>(includeInactive: true);
-        regularClueButtonHeight = clueOption.GetComponent<RectTransform>().rect.height;
 
         enabled = false;
     }
@@ -401,6 +394,12 @@ public class DebateManager : MonoBehaviour
         speechController.StartSpeaking(speech);
     }
 
+    void ChangeCurrentlySelectedEvidence(ClueInfo clueInfo)
+    {
+        currentlySelectedEvidence = clueInfo;
+        useEvidenceButton.interactable = true;
+    }
+
     public void TrustComment()
     {
         currentDialogueLines = currentArgument.trustDialogue;
@@ -423,14 +422,22 @@ public class DebateManager : MonoBehaviour
         speakerArea.SetActive(false);
         argumentAndSpeechArea.SetActive(false);
         clueOptionsPanel.gameObject.SetActive(true);
+
+        Button[] cluesButtons = cluesScreen.CluesButtons.ToArray();
+
+        for (int i = 0; i < cluesButtons.Length; i++)
+        {
+            ClueInfo clueInfo = ChapterManager.Instance.GetChapterClueInfo(i);
+            cluesButtons[i].onClick.AddListener(() => ChangeCurrentlySelectedEvidence(clueInfo));
+        }
     }
 
-    public void AccuseWithEvidence(int optionIndex)
+    public void AccuseWithEvidence()
     {        
         currentPhase = DebatePhase.SolvingArgument;
 
         if (currentArgument.correctReaction == DebateReaction.Disagree && 
-            currentArgument.correctEvidence == caseClues[optionIndex])
+            currentArgument.correctEvidence == currentlySelectedEvidence)
         {
             currentDialogueLines = currentArgument.refuteCorrectDialogue;
             credibilityPerc += credibilityIncPerc;
@@ -442,6 +449,9 @@ public class DebateManager : MonoBehaviour
         }
 
         clueOptionsPanel.SetActive(false);
+        
+        useEvidenceButton.interactable = false;
+        currentlySelectedEvidence = null;
 
         ProceedAfterOptionSelection();
     }
@@ -468,26 +478,6 @@ public class DebateManager : MonoBehaviour
         credibilityDecPerc = credibilityIncPerc * 2f;
 
         credibilityBarController.ResetCredibilityBar(credibilityPerc);
-
-        Button[] clueOptions = clueOptionsLayout.GetComponentsInChildren<Button>(includeInactive: true);
-                
-        caseClues = playerClues;
-
-        int i = 0;
-
-        for (i = 0; i < caseClues.Count; i++)
-        {
-            clueOptions[i].gameObject.SetActive(true);
-
-            TextMeshProUGUI clueText = clueOptions[i].gameObject.GetComponentInChildren<TextMeshProUGUI>();
-            clueText.text = caseClues[i].clueName;
-        }
-
-        int paddMult = clueOptions.Length - i;
-        float addPadding = (regularClueButtonHeight + regularCluesLayoutSpacing) * paddMult * 0.5f;
-
-        clueOptionsLayout.padding.top = regularCluesLayoutPadding[0] + (int)addPadding;
-        clueOptionsLayout.padding.bottom = regularCluesLayoutPadding[1] + (int)addPadding;
 
         SetDebateAreaAvailability(enableDebateArea: true);
 

@@ -77,4 +77,13 @@ public class CluesScreen : MonoBehaviour
         clueDescriptionText.text = clueInfo.description;
         clueImage.sprite = clueInfo.clueSprite;
     }
+
+    #region Properties
+
+    public List<Button> CluesButtons
+    {
+        get { return cluesButtons; }
+    }
+
+    #endregion
 }
