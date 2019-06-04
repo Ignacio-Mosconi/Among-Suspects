@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public struct DebateCharacterSprite
@@ -10,9 +11,16 @@ public struct DebateCharacterSprite
 
 public class DebateInitializer : Interactable
 {
-    [SerializeField] DebateInfo debateInfo = default;
     [SerializeField] GameObject debateSpritesContainer = default;
     [SerializeField] DebateCharacterSprite[] debateCharactersSprites = default;
+    
+    DebateInfo debateInfo;
+
+    protected override void Start()
+    {
+        base.Start();
+        debateInfo = Resources.Load("Debates/" + SceneManager.GetActiveScene().name + " Debate") as DebateInfo;
+    }
 
     protected override void Interact()
     {

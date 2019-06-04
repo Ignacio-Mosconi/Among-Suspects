@@ -1,0 +1,21 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class InteractableObject : Interactable
+{
+    [SerializeField] Sprite objectSprite = default;
+
+    ThoughtInfo thoughtInfo;
+    
+    protected override void Start()
+    {
+        base.Start();
+        thoughtInfo = Resources.Load("Thoughts/" + SceneManager.GetActiveScene().name + "/" + gameObject.name + " Thought") as ThoughtInfo;
+    }
+
+    protected override void Interact()
+    {
+        DisableInteraction();
+        DialogueManager.Instance.EnableDialogueArea(thoughtInfo, interactionPoint.position, objectSprite, enableImage: true);
+    }
+}

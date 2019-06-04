@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum ChapterPhase
 {
@@ -38,14 +40,15 @@ public class ChapterManager : MonoBehaviour
     [SerializeField] GameObject debateStartPromptArea = default;
     [SerializeField] GameObject debateRetryArea = default;
     [SerializeField] GameObject chapterWonArea = default;
-    [SerializeField] ClueInfo[] chapterClues = default;
 
+    ClueInfo[] chapterClues;
     DebateInitializer debateInitializer;
     PauseMenu pauseMenu;
     ChapterPhase currentPhase = ChapterPhase.Exploration;
 
     void Start()
     {
+        chapterClues = Resources.LoadAll<ClueInfo>("Clues/" + SceneManager.GetActiveScene().name);
         debateInitializer = FindObjectOfType<DebateInitializer>();
         pauseMenu = FindObjectOfType<PauseMenu>();
 

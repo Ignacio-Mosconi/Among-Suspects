@@ -14,28 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explorationThought:
   - speakerName: 0
-    speech: This is a really nice furniture...
-    characterEmotion: 0
-    clueInfo: {fileID: 0}
-    revealName: 0
-    playerThought: 1
-  - speakerName: 0
-    speech: It looks pretty old as well...
+    speech: Wait, what's that thing right next to this wardrobe?
     characterEmotion: 0
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 1
   investigationThought:
   - speakerName: 0
-    speech: This wardrobe seems to be empty.
+    speech: This wardrobe seems to be large enought to fit a person inside...
     characterEmotion: 0
-    clueInfo: {fileID: 0}
-    revealName: 0
-    playerThought: 1
-  - speakerName: 0
-    speech: I guess it won't help us solve the case in any way...
-    characterEmotion: 0
-    clueInfo: {fileID: 0}
+    clueInfo: {fileID: 11400000, guid: 90e5ca8000ffae343b0503cf69dd6ffd, type: 2}
     revealName: 0
     playerThought: 1
   triggerInvestigationPhase: 0

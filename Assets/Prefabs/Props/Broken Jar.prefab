@@ -405,7 +405,7 @@ GameObject:
   - component: {fileID: 3920191719551355275}
   - component: {fileID: 6162895451453440527}
   m_Layer: 0
-  m_Name: JarronRoto_01
+  m_Name: Broken Jar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -435,13 +435,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3920191719551718827}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 056bd17588c3297489d1b0d54d17550d, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b5b85d74f0f35b4fba29aced6f2d13e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionPoint: {fileID: 3920191719551355275}
+  interactionPoint: {fileID: 3920191719551355273}
   interactionRadius: 2
   hasToBeFaced: 0
-  thoughtInfo: {fileID: 11400000, guid: 58b1cd91477109d42a6301841280aa19, type: 2}
   objectSprite: {fileID: 21300000, guid: 593ccbcaf3862cb45ab6e6a78c0acd35, type: 3}
 --- !u!1 &3920191719551718829
 GameObject:

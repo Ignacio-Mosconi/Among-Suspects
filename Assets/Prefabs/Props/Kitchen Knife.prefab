@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6553306702861907094}
   - component: {fileID: 8243602458088816084}
   m_Layer: 0
-  m_Name: CuchilloCocina_01
+  m_Name: Kitchen Knife
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,13 +41,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7509091698100278528}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 056bd17588c3297489d1b0d54d17550d, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b5b85d74f0f35b4fba29aced6f2d13e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   interactionPoint: {fileID: 4371242391790790476}
-  interactionRadius: 2
+  interactionRadius: 2.5
   hasToBeFaced: 0
-  thoughtInfo: {fileID: 11400000, guid: 53b968d4040b9ad4894a1c5e185b7732, type: 2}
   objectSprite: {fileID: 21300000, guid: 6403c9f7aaeb3834387378b9735400e0, type: 3}
 --- !u!1 &8434504108408101240
 GameObject:

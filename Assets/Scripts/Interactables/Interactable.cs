@@ -16,7 +16,7 @@ public abstract class Interactable : MonoBehaviour
     UnityEvent onStopLookingAt = new UnityEvent();
     UnityEvent onInteraction = new UnityEvent();
 
-    void Start()
+    protected virtual void Start()
     {
         playerController = CharacterManager.Instance.PlayerController;
         cameraTransform = playerController.GetComponentInChildren<Camera>().transform;

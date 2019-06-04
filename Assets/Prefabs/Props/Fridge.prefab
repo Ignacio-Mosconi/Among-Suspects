@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5212484959681465028}
-  m_Layer: 10
+  m_Layer: 14
   m_Name: Interaction Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 3349818672775079237}
   - component: {fileID: 4860044138894454821}
   - component: {fileID: 4212743633164546690}
-  m_Layer: 10
+  m_Layer: 14
   m_Name: Heladera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 8265114366556460818}
   - component: {fileID: 489713748402468320}
   - component: {fileID: 5861208278678165279}
-  m_Layer: 10
+  m_Layer: 14
   m_Name: Cajon_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 2963126437605573080}
   - component: {fileID: 7983557506214056588}
   - component: {fileID: 79853156574425535}
-  m_Layer: 10
+  m_Layer: 14
   m_Name: Cajon_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -290,7 +290,7 @@ GameObject:
   - component: {fileID: 3217372355018115660}
   - component: {fileID: 8666143910962200962}
   - component: {fileID: 6219472405017884575}
-  m_Layer: 10
+  m_Layer: 14
   m_Name: Puerta_I_Heladera1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -367,7 +367,7 @@ GameObject:
   - component: {fileID: 4099643552425738429}
   - component: {fileID: 2475919489365812684}
   - component: {fileID: 5082258014093227449}
-  m_Layer: 10
+  m_Layer: 14
   m_Name: Puerta_I_Heladera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -443,8 +443,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3087977261254039063}
   - component: {fileID: 1973110343924360584}
-  m_Layer: 10
-  m_Name: Heladera_01
+  m_Layer: 14
+  m_Name: Fridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -457,9 +457,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8053604500972788611}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.7498674, y: 0.25, z: 15.669672}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.010000018, y: 0.01, z: 0.010000018}
   m_Children:
   - {fileID: 5212484959681465028}
   - {fileID: 1251099524156790577}
@@ -475,11 +475,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8053604500972788611}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 056bd17588c3297489d1b0d54d17550d, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b5b85d74f0f35b4fba29aced6f2d13e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   interactionPoint: {fileID: 5212484959681465028}
   interactionRadius: 2
   hasToBeFaced: 0
-  thoughtInfo: {fileID: 11400000, guid: 22d2137b35e8cca43bd283c8cb88d2f4, type: 2}
   objectSprite: {fileID: 21300000, guid: e4518e95c9be9834398490df1291c461, type: 3}

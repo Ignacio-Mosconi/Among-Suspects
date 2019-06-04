@@ -146,15 +146,21 @@ public class DialogueManager : MonoBehaviour
             {
                 currentSpeaker = (NPC)CharacterManager.Instance.GetCharacter(speakerName);
                 
-                if (currentSpeaker == mainSpeaker)
-                    playerController.FirstPersonCamera.FocusOnPosition(mainSpeaker.InteractionPosition);
-                else
+                if (currentDialogueInfo)
                 {
-                    if (currentSpeaker.GetCharacterName() == currentDialogueInfo.groupDialogue.leftSpeaker)
-                        playerController.FirstPersonCamera.FocusOnPosition(mainSpeaker.LeftSpeakerPosition);
+                    if (currentSpeaker == mainSpeaker)
+                        playerController.FirstPersonCamera.FocusOnPosition(mainSpeaker.InteractionPosition);
                     else
-                        playerController.FirstPersonCamera.FocusOnPosition(mainSpeaker.RightSpeakerPosition);
+                    {
+                        if (currentSpeaker.GetCharacterName() == currentDialogueInfo.groupDialogue.leftSpeaker)
+                            playerController.FirstPersonCamera.FocusOnPosition(mainSpeaker.LeftSpeakerPosition);
+                        else
+                            playerController.FirstPersonCamera.FocusOnPosition(mainSpeaker.RightSpeakerPosition);
+                    }          
                 }
+                else
+                    speakerImage.gameObject.SetActive(true);
+
                 previousSpeaker = currentSpeaker;
             }
             else
@@ -174,6 +180,9 @@ public class DialogueManager : MonoBehaviour
         else
         {
             speakerText.text = speakerName.ToString();
+
+            if (!currentDialogueInfo)
+                speakerImage.gameObject.SetActive(false);
             
             if (!playerThought)
             {

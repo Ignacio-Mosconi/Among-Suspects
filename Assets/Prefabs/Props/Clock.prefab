@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6413532501811223865}
   - component: {fileID: 8372316567218997699}
   - component: {fileID: 7703847792398434353}
-  m_Layer: 10
+  m_Layer: 14
   m_Name: RelojAguja2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 4946476117190116919}
   - component: {fileID: 2328310350774337900}
   - component: {fileID: 8629178772402049838}
-  m_Layer: 10
+  m_Layer: 14
   m_Name: RelojAguja1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,8 +167,8 @@ GameObject:
   - component: {fileID: 1672926582121170357}
   - component: {fileID: 4827089332074171483}
   - component: {fileID: 5083208235634569114}
-  m_Layer: 10
-  m_Name: Reloj_01
+  m_Layer: 14
+  m_Name: Clock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -257,13 +257,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4193109301498341362}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 056bd17588c3297489d1b0d54d17550d, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b5b85d74f0f35b4fba29aced6f2d13e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   interactionPoint: {fileID: 769183949762092267}
   interactionRadius: 2
   hasToBeFaced: 0
-  thoughtInfo: {fileID: 11400000, guid: a97fef896407078488fba08693f1a8f9, type: 2}
   objectSprite: {fileID: 21300000, guid: f4ccf2bed94a1cb4c8a639502223d348, type: 3}
 --- !u!1 &5747467311828237321
 GameObject:
@@ -274,7 +273,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 769183949762092267}
-  m_Layer: 10
+  m_Layer: 14
   m_Name: Interaction Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -306,7 +305,7 @@ GameObject:
   - component: {fileID: 5976542355686880380}
   - component: {fileID: 8692096946554756262}
   - component: {fileID: 1264967789908557529}
-  m_Layer: 10
+  m_Layer: 14
   m_Name: RelojAguja3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -383,7 +382,7 @@ GameObject:
   - component: {fileID: 8846486385608766271}
   - component: {fileID: 3745667136864669547}
   - component: {fileID: 3600686802669075290}
-  m_Layer: 10
+  m_Layer: 14
   m_Name: Reloj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
