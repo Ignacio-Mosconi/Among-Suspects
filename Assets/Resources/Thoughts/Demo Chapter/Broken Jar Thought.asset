@@ -14,7 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explorationThought:
   - speakerName: 0
-    speech: Wait, what's that thing right next to this broken jar?
+    speech: This looks like a broken jar...
+    characterEmotion: 0
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 1
+  - speakerName: 0
+    speech: 'But more importantly: who''s that person lying next to it?!'
     characterEmotion: 0
     clueInfo: {fileID: 0}
     revealName: 0
@@ -40,7 +46,7 @@ MonoBehaviour:
     playerThought: 1
   - speakerName: 0
     speech: Wait, he couldn't have thrown it, as the shattered pieces are too close
-      to ech other...
+      to each other...
     characterEmotion: 0
     clueInfo: {fileID: 0}
     revealName: 0

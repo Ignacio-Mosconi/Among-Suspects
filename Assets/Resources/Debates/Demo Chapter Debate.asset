@@ -21,7 +21,7 @@ MonoBehaviour:
       revealName: 0
       playerThought: 0
     - speakerName: 0
-      speech: I know this isn't nice for anyone, but we have to discuss about where
+      speech: I know this isn't nice for anybody, but we have to discuss about where
         we all were when the body was found.
       characterEmotion: 0
       clueInfo: {fileID: 0}
@@ -152,7 +152,7 @@ MonoBehaviour:
       playerThought: 0
     - speakerName: 2
       speech: Yeah, the little freak ain't told us where he was yet...
-      characterEmotion: 6
+      characterEmotion: 4
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
@@ -209,7 +209,7 @@ MonoBehaviour:
       playerThought: 1
   - argumentIntroDialogue:
     - speakerName: 0
-      speech: Let's discuss about the murder weapon....
+      speech: Let's discuss about the murder weapon...
       characterEmotion: 4
       clueInfo: {fileID: 0}
       revealName: 0
@@ -224,7 +224,7 @@ MonoBehaviour:
     debateDialogue:
     - speakerName: 2
       argument: The jar coulda been used by John to defend himself...
-      speakerEmotion: 6
+      speakerEmotion: 0
     - speakerName: 1
       argument: I don't think so...
       speakerEmotion: 0
@@ -298,7 +298,7 @@ MonoBehaviour:
       argument: John would have seen the killer inside...
       speakerEmotion: 1
     - speakerName: 3
-      argument: There's no way the killer could've remain hidden inside!
+      argument: There's no way the killer could've remain hidden in the bedroom!
       speakerEmotion: 6
     correctReaction: 1
     correctEvidence: {fileID: 11400000, guid: 90e5ca8000ffae343b0503cf69dd6ffd, type: 2}
@@ -405,7 +405,7 @@ MonoBehaviour:
       argument: Furthermore...
       speakerEmotion: 1
     - speakerName: 3
-      argument: He even threw a jar at the killer in self defense!
+      argument: He even threw a jar at them in self defense!
       speakerEmotion: 6
     correctReaction: 1
     correctEvidence: {fileID: 11400000, guid: 9cfc2c8a48537574787858fc59e08b7e, type: 2}
@@ -525,7 +525,7 @@ MonoBehaviour:
       revealName: 0
       playerThought: 0
     - speakerName: 1
-      speech: How did he get killed by some of us?
+      speech: How did he get killed by one of us?
       characterEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
@@ -553,7 +553,7 @@ MonoBehaviour:
       argument: I think <color=orange>William</color> is the killer!
       speakerEmotion: 6
     - speakerName: 3
-      argument: He's the only one strong enough to deal with another man in a stuggle!
+      argument: He's the only one strong enough to deal with another man in a struggle!
       speakerEmotion: 1
     - speakerName: 2
       argument: That ain't true!
@@ -694,7 +694,7 @@ MonoBehaviour:
       revealName: 0
       playerThought: 0
     - speakerName: 0
-      speech: it's clear that the knife was used for that!
+      speech: It's clear that the knife was used for that!
       characterEmotion: 6
       clueInfo: {fileID: 0}
       revealName: 0
