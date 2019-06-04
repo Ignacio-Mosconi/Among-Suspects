@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using TMPro;
 
 [RequireComponent(typeof(SpeechController))]
+[RequireComponent(typeof(DialogueOptionsScreen))]
 public class DialogueManager : MonoBehaviour
 {
     #region Singleton
@@ -40,18 +41,15 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI speechText = default;
     [SerializeField] Image speakerImage = default;
     [SerializeField] Image objectImage = default;
-    [SerializeField] VerticalLayoutGroup optionsLayout = default;
     
     SpeechController speechController;
+    DialogueOptionsScreen dialogueOptionScreen;
     DialogueInfo currentDialogueInfo;
     Dialogue[] currentLines;
-    Button[] optionsButtons;
     NPC mainSpeaker;
     NPC previousSpeaker;
     int targetSpeechCharAmount;
     int lineIndex;
-    int[] regularOptionsLayoutPadding = { 0, 0 };
-    float regularOptionsLayoutSpacing = 0f;
 
     UnityEvent onDialogueAreaEnable = new UnityEvent();
     UnityEvent onDialogueAreaDisable = new UnityEvent();
@@ -59,13 +57,7 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         speechController = GetComponent<SpeechController>();
-
-        optionsButtons = optionsLayout.GetComponentsInChildren<Button>(includeInactive: true);
-        
-        regularOptionsLayoutPadding[0] = optionsLayout.padding.top;
-        regularOptionsLayoutPadding[1] = optionsLayout.padding.bottom;
-        regularOptionsLayoutSpacing = optionsLayout.spacing;
-
+        dialogueOptionScreen = GetComponent<DialogueOptionsScreen>();
         enabled = false;
     }
 
@@ -74,36 +66,38 @@ public class DialogueManager : MonoBehaviour
         if (Input.GetButtonDown("Continue"))
         {
             if (speechController.IsSpeaking())
+            {
                 speechController.StopSpeaking();
+                return;
+            }
+            
+            lineIndex++;
+            
+            if (lineIndex < currentLines.Length)
+                SayDialogue(currentLines[lineIndex].speech, 
+                            currentLines[lineIndex].speakerName,
+                            currentLines[lineIndex].characterEmotion,
+                            currentLines[lineIndex].revealName,
+                            currentLines[lineIndex].playerThought,
+                            currentLines[lineIndex].clueInfo);
             else
             {
-                lineIndex++;
-                if (lineIndex < currentLines.Length)
-                    SayDialogue(currentLines[lineIndex].speech, 
-                                currentLines[lineIndex].speakerName,
-                                currentLines[lineIndex].characterEmotion,
-                                currentLines[lineIndex].revealName,
-                                currentLines[lineIndex].playerThought,
-                                currentLines[lineIndex].clueInfo);
-                else
+                lineIndex = 0;
+
+                if (currentDialogueInfo != null)
                 {
-                    lineIndex = 0;
+                    if (currentLines == currentDialogueInfo.introLines)
+                        currentDialogueInfo.introRead = true;
+                    if (currentLines == currentDialogueInfo.groupDialogue.dialogue)
+                        currentDialogueInfo.groupDialogueRead = true;
 
-                    if (currentDialogueInfo != null)
-                    {
-                        if (currentLines == currentDialogueInfo.introLines)
-                            currentDialogueInfo.introRead = true;
-                        if (currentLines == currentDialogueInfo.groupDialogue.dialogue)
-                            currentDialogueInfo.groupDialogueRead = true;
-
-                        if (currentDialogueInfo.HasInteractiveDialogue() && !currentDialogueInfo.interactionOptionSelected)
-                            ShowOptionsMenu();
-                        else
-                            SetDialogueAreaAvailability(enableDialogueArea: false);             
-                    }
+                    if (currentDialogueInfo.HasInteractiveDialogue() && !currentDialogueInfo.interactionOptionSelected)
+                        ShowDialogueOptions();
                     else
-                        SetDialogueAreaAvailability(enableDialogueArea: false);              
+                        SetDialogueAreaAvailability(enableDialogueArea: false);             
                 }
+                else
+                    SetDialogueAreaAvailability(enableDialogueArea: false);              
             }
         }
     }
@@ -196,42 +190,15 @@ public class DialogueManager : MonoBehaviour
         speechController.StartSpeaking(speech);
     }
 
-    void ShowOptionsMenu()
+    void ShowDialogueOptions()
     {
         enabled = false;
-
-        GameManager.Instance.SetCursorAvailability(enable: true);
-
-        int i = 0;
-
-        for (i = 0; i < currentDialogueInfo.interactiveConversation.Length; i++)
-        {
-            optionsButtons[i].gameObject.SetActive(true);
-            
-            TextMeshProUGUI[] optionTexts = optionsButtons[i].gameObject.GetComponentsInChildren<TextMeshProUGUI>();
-            optionTexts[0].text = currentDialogueInfo.interactiveConversation[i].playerOption.option;
-            optionTexts[1].text = currentDialogueInfo.interactiveConversation[i].playerOption.description;
-        }
-
-        int optionsLayoutPaddingMult = optionsButtons.Length - i;
-        int addtionalPadding = (int)optionsButtons[0].GetComponent<Image>().rectTransform.sizeDelta.y / optionsButtons.Length;
-
-        optionsLayout.padding.top = regularOptionsLayoutPadding[0] + (addtionalPadding * optionsLayoutPaddingMult);
-        optionsLayout.padding.bottom = regularOptionsLayoutPadding[1] + (addtionalPadding * optionsLayoutPaddingMult);
-        optionsLayout.spacing = regularOptionsLayoutSpacing + (addtionalPadding * optionsLayoutPaddingMult);
+        dialogueOptionScreen.ShowOptionsScreen(currentDialogueInfo.interactiveConversation);
     }
 
-    public void SelectDialogueOption(int option)
+    public void ResumeInteractiveDialogue(int option)
     {       
-        GameManager.Instance.SetCursorAvailability(enable: false);
         enabled = true;
-        
-        for (int i = 0; i < currentDialogueInfo.interactiveConversation.Length; i++)
-            optionsButtons[i].gameObject.SetActive(false);
-
-        optionsLayout.padding.top = regularOptionsLayoutPadding[0];
-        optionsLayout.padding.bottom = regularOptionsLayoutPadding[1];
-        optionsLayout.spacing = regularOptionsLayoutSpacing;
              
         currentLines = currentDialogueInfo.interactiveConversation[option].dialogue;
         mainSpeaker.NiceWithPlayer = currentDialogueInfo.interactiveConversation[option].triggerNiceImpression;

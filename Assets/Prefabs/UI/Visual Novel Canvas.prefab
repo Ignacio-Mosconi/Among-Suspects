@@ -190,18 +190,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3253675414377998878}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 9167945567919098837}
-        m_MethodName: SelectDialogueOption
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &1162840863561514963
@@ -1119,6 +1108,7 @@ GameObject:
   - component: {fileID: 6437505107080250374}
   - component: {fileID: 9167945567919098837}
   - component: {fileID: 3161203964369622912}
+  - component: {fileID: 30101642736891579}
   m_Layer: 5
   m_Name: Dialogue Manager
   m_TagString: Untagged
@@ -1164,7 +1154,6 @@ MonoBehaviour:
   speechText: {fileID: 6437505108254535471}
   speakerImage: {fileID: 3707035913217989938}
   objectImage: {fileID: 7554373973921774043}
-  optionsLayout: {fileID: 124838045845784242}
 --- !u!114 &3161203964369622912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1178,6 +1167,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speechText: {fileID: 6437505108254535471}
+--- !u!114 &30101642736891579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6437505107080250375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2c3d5f46156326498859cee6c36bbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  optionsLayout: {fileID: 124838045845784242}
 --- !u!1 &6437505107173970335
 GameObject:
   m_ObjectHideFlags: 0
@@ -2150,18 +2152,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6030971052665433391}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 9167945567919098837}
-        m_MethodName: SelectDialogueOption
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &7869388207147163167
@@ -2354,17 +2345,6 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3394773042403999060}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 9167945567919098837}
-        m_MethodName: SelectDialogueOption
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
