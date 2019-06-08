@@ -4,10 +4,9 @@ using UnityEngine.UI;
 public class HUD : MonoBehaviour
 {
     [SerializeField] GameObject hudArea = default;
-    [SerializeField] GameObject interactTextPanel = default;
-    [SerializeField] GameObject clueFoundPrompt = default;
-    [SerializeField] GameObject investigationPhasePrompt = default;
-    [SerializeField] [Range(1.5f, 2.5f)] float promptsDuration = 2f;
+    [SerializeField] GameObject interactTextPrompt = default;
+    [SerializeField] UIPrompt clueFoundPrompt = default;
+    [SerializeField] UIPrompt investigationPhasePrompt = default;
 
     void Start()
     {
@@ -15,9 +14,9 @@ public class HUD : MonoBehaviour
 
         foreach (Interactable interactable in interactables)
         {
-            interactable.OnStartLookingAt.AddListener(ShowInteractTextPanel);
-            interactable.OnStopLookingAt.AddListener(HideInteractTextPanel);
-            interactable.OnInteraction.AddListener(HideInteractTextPanel);
+            interactable.OnStartLookingAt.AddListener(ShowInteractTextPrompt);
+            interactable.OnStopLookingAt.AddListener(HideInteractTextPrompt);
+            interactable.OnInteraction.AddListener(HideInteractTextPrompt);
         }
 
         PauseMenu pauseMenu = FindObjectOfType<PauseMenu>();
@@ -42,35 +41,23 @@ public class HUD : MonoBehaviour
         hudArea.SetActive(false);
     }
 
-    void ShowInteractTextPanel()
+    void ShowInteractTextPrompt()
     {
-        interactTextPanel.SetActive(true);
+        interactTextPrompt.SetActive(true);
     }
 
-    void HideInteractTextPanel()
+    void HideInteractTextPrompt()
     {
-        interactTextPanel.SetActive(false);
+        interactTextPrompt.SetActive(false);
     }
 
     void ShowClueFoundPrompt()
     {
-        clueFoundPrompt.SetActive(true);
-        Invoke("HideClueFoundPrompt", promptsDuration);
-    }
-
-    void HideClueFoundPrompt()
-    {
-        clueFoundPrompt.SetActive(false);
+        clueFoundPrompt.Display();
     }
 
     void ShowInvestigationPhasePrompt()
     {
-        investigationPhasePrompt.SetActive(true);
-        Invoke("HideInvestigationPhasePrompt", promptsDuration);
-    }
-
-    void HideInvestigationPhasePrompt()
-    {
-        investigationPhasePrompt.SetActive(false);
+        investigationPhasePrompt.Display();
     }
 }

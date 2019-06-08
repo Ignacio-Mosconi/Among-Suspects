@@ -94,14 +94,14 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 70
+  m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 20
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 514
+  m_textAlignment: 258
   m_isAlignmentEnumConverted: 1
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 2138411736997847202}
   - component: {fileID: 2531865776818274046}
   m_Layer: 5
-  m_Name: Clue Found Text
+  m_Name: Investigation Started Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -308,7 +308,7 @@ MonoBehaviour:
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -465,11 +465,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -793,10 +793,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hudArea: {fileID: 8724572250603822043}
-  interactTextPanel: {fileID: 5118334226335472951}
-  clueFoundPrompt: {fileID: 8531699086757702387}
-  investigationPhasePrompt: {fileID: 8821230843552984508}
-  promptsDuration: 2
+  interactTextPrompt: {fileID: 5118334226335472951}
+  clueFoundPrompt: {fileID: 1661687436802051765}
+  investigationPhasePrompt: {fileID: 2063236425631751846}
 --- !u!1 &5118334225594090573
 GameObject:
   m_ObjectHideFlags: 0
@@ -1043,7 +1042,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5118334226335472948}
   m_Layer: 5
-  m_Name: Interact Text Panel
+  m_Name: Interact Text Prompt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1242,6 +1241,8 @@ GameObject:
   - component: {fileID: 4383889661206853078}
   - component: {fileID: 2594297706458156194}
   - component: {fileID: 7733971924948810875}
+  - component: {fileID: 3309819560680466641}
+  - component: {fileID: 1661687436802051765}
   m_Layer: 5
   m_Name: Clue Found Prompt
   m_TagString: Untagged
@@ -1306,6 +1307,38 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!95 &3309819560680466641
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8531699086757702387}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 24886b86eefd48640947f06d3ade80c0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1661687436802051765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8531699086757702387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f950a905179da2d4bbd885cba9f8e78e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onScreenDuration: 1
 --- !u!1 &8724572250603822043
 GameObject:
   m_ObjectHideFlags: 0
@@ -1355,6 +1388,8 @@ GameObject:
   - component: {fileID: 5792827543524828155}
   - component: {fileID: 1982465694001332609}
   - component: {fileID: 3389859086990518186}
+  - component: {fileID: 3319360185940713356}
+  - component: {fileID: 2063236425631751846}
   m_Layer: 5
   m_Name: Investigation Phase Prompt
   m_TagString: Untagged
@@ -1420,3 +1455,35 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!95 &3319360185940713356
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8821230843552984508}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: a5a5bef5829107340921d477c38a079f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2063236425631751846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8821230843552984508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f950a905179da2d4bbd885cba9f8e78e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onScreenDuration: 1.5
