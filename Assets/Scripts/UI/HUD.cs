@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class HUD : MonoBehaviour
 {
     [SerializeField] GameObject hudArea = default;
-    [SerializeField] GameObject interactTextPrompt = default;
+    [SerializeField] UIPrompt interactTextPrompt = default;
     [SerializeField] UIPrompt clueFoundPrompt = default;
     [SerializeField] UIPrompt investigationPhasePrompt = default;
 
@@ -16,7 +16,7 @@ public class HUD : MonoBehaviour
         {
             interactable.OnStartLookingAt.AddListener(ShowInteractTextPrompt);
             interactable.OnStopLookingAt.AddListener(HideInteractTextPrompt);
-            interactable.OnInteraction.AddListener(HideInteractTextPrompt);
+            interactable.OnInteraction.AddListener(DeactivateInteractTextPrompt);
         }
 
         PauseMenu pauseMenu = FindObjectOfType<PauseMenu>();
@@ -43,21 +43,26 @@ public class HUD : MonoBehaviour
 
     void ShowInteractTextPrompt()
     {
-        interactTextPrompt.SetActive(true);
+        interactTextPrompt.Show();
     }
 
     void HideInteractTextPrompt()
     {
-        interactTextPrompt.SetActive(false);
+        interactTextPrompt.Hide();
+    }
+
+    void DeactivateInteractTextPrompt()
+    {
+        interactTextPrompt.Deactivate();
     }
 
     void ShowClueFoundPrompt()
     {
-        clueFoundPrompt.Display();
+        clueFoundPrompt.Show();
     }
 
     void ShowInvestigationPhasePrompt()
     {
-        investigationPhasePrompt.Display();
+        investigationPhasePrompt.Show();
     }
 }

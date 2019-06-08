@@ -4,6 +4,7 @@ using UnityEngine;
 public class UIPrompt : MonoBehaviour
 {
     [SerializeField] [Range(0f, 3f)] float onScreenDuration = 1.5f;
+    [SerializeField] bool keepOnScreen = false;
     
     Animator promptAnimator;
 
@@ -12,27 +13,25 @@ public class UIPrompt : MonoBehaviour
         promptAnimator = GetComponent<Animator>();
     }
 
-    void Show()
+    public void Show()
     {
         gameObject.SetActive(true);
-        float showAnimationDur = promptAnimator.GetCurrentAnimatorStateInfo(0).length;    
-        Invoke("Hide", onScreenDuration + showAnimationDur);
+        if (!keepOnScreen)
+        {
+            float showAnimationDur = promptAnimator.GetCurrentAnimatorStateInfo(0).length;    
+            Invoke("Hide", onScreenDuration + showAnimationDur);
+        }
     } 
 
-    void Hide()
+    public void Hide()
     {
         promptAnimator.SetTrigger("Hide");
         float hideAnimationDur = promptAnimator.GetCurrentAnimatorStateInfo(0).length;
         Invoke("Deactivate", hideAnimationDur);
     }
 
-    void Deactivate()
+    public void Deactivate()
     {
         gameObject.SetActive(false);
-    }
-
-    public void Display()
-    {
-        Show();
     }
 }
