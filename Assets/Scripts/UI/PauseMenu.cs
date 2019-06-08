@@ -34,13 +34,13 @@ public class PauseMenu : Menu
         Time.timeScale = 0f;
         menuArea.SetActive(true);
 
-        playerMovementEnabledAtPause = CharacterManager.Instance.PlayerController.IsMovementAvailable();
-        cursorEnabledAtPause = GameManager.Instance.IsCursorAvailable();
+        playerMovementEnabledAtPause = CharacterManager.Instance.PlayerController.IsMovementEnabled();
+        cursorEnabledAtPause = GameManager.Instance.IsCursorEnabled();
 
-        CharacterManager.Instance.PlayerController.SetAvailability(enable: false);
+        CharacterManager.Instance.PlayerController.Disable();
         DialogueManager.Instance.SetUpdateEnable(enable: false);   
         DebateManager.Instance.SetUpdateEnable(enable: false);
-        GameManager.Instance.SetCursorAvailability(enable: true);
+        GameManager.Instance.SetCursorEnable(enable: true);
         
         onPaused.Invoke();
     }
@@ -53,10 +53,11 @@ public class PauseMenu : Menu
 
         ResetMenuState();
 
-        CharacterManager.Instance.PlayerController.SetAvailability(enable: playerMovementEnabledAtPause);
+        if (playerMovementEnabledAtPause)
+            CharacterManager.Instance.PlayerController.Enable();
         DialogueManager.Instance.SetUpdateEnable(enable: true);
         DebateManager.Instance.SetUpdateEnable(enable: true);
-        GameManager.Instance.SetCursorAvailability(enable: cursorEnabledAtPause);
+        GameManager.Instance.SetCursorEnable(enable: cursorEnabledAtPause);
         
         onResume.Invoke();
     }

@@ -25,15 +25,15 @@ public class DebateInitializer : Interactable
     protected override void Interact()
     {
         DisableInteraction();
-        playerController.SetAvailability(enable: false);
-        GameManager.Instance.SetCursorAvailability(enable: true);
+        playerController.Disable();
+        GameManager.Instance.SetCursorEnable(enable: true);
         ChapterManager.Instance.ShowDebateStartPrompt();
     }
 
     public void StartDebate()
     {
-        playerController.SetCameraAvailability(enable: false);
-        GameManager.Instance.SetCursorAvailability(enable: false);
+        playerController.DeactivateCamera();
+        GameManager.Instance.SetCursorEnable(enable: false);
 
         debateSpritesContainer.SetActive(true);
         DebateManager.Instance.InitializeDebate(debateInfo, playerController.CluesGathered);
@@ -42,8 +42,8 @@ public class DebateInitializer : Interactable
     public void CancelDebate()
     {
         EnableInteraction();
-        playerController.SetAvailability(enable: true);
-        GameManager.Instance.SetCursorAvailability(enable: false);
+        playerController.Enable();
+        GameManager.Instance.SetCursorEnable(enable: false);
     }
 
     public DebateCharacterSprite[] DebateCharactersSprites

@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour, ICharacter
 {
     [SerializeField] CharacterName playerName = default;
     [SerializeField] Sprite[] characterSprites = default;
+    [SerializeField] [Range(0f, 3f)] float reEnableInteractionDelay = 2f;
 
     FirstPersonCamera firstPersonCamera;
     PlayerMovement playerMovement;
@@ -30,34 +31,56 @@ public class PlayerController : MonoBehaviour, ICharacter
 
     void Start()
     {
-        DialogueManager.Instance.OnDialogueAreaDisable.AddListener(CheckNotificationsDisplay);
+        DialogueManager.Instance.OnDialogueAreaEnable.AddListener(Disable);
+        DialogueManager.Instance.OnDialogueAreaDisable.AddListener(Enable);
     }
 
-    void CheckNotificationsDisplay()
+    bool CheckNotificationsDisplay()
     {
+        bool shouldDelayInteractionEnable = false;
+
         if (foundClueInLastDialogue)
         {
+            shouldDelayInteractionEnable = true;
             foundClueInLastDialogue = false;
             onClueFound.Invoke();
         }
 
         if (startedInvestigationInLastDialogue)
         {
+            shouldDelayInteractionEnable = true;
             startedInvestigationInLastDialogue = false;
             onStartedInvestigation.Invoke();
         }
+
+        return shouldDelayInteractionEnable;
     }
 
-    public void SetAvailability(bool enable)
+    void EnableInteraction()
     {
-        firstPersonCamera.enabled = enable;
-        playerMovement.enabled = enable;
-        canInteract = enable;
+        canInteract = true;
     }
 
-    public void SetCameraAvailability(bool enable)
+    public void Enable()
     {
-        playerCamera.gameObject.SetActive(enable);
+        firstPersonCamera.enabled = true;
+        playerMovement.enabled = true;
+
+        bool delayInteractionEnable = CheckNotificationsDisplay();
+        float interactionEnableDelay = (delayInteractionEnable) ? reEnableInteractionDelay : 0f;
+        Invoke("EnableInteraction", interactionEnableDelay);
+    }
+
+    public void Disable()
+    {
+        firstPersonCamera.enabled = false;
+        playerMovement.enabled = false;
+        canInteract = false;
+    }
+
+    public void DeactivateCamera()
+    {
+        playerCamera.gameObject.SetActive(false);
     }
 
     public void AddClue(ClueInfo clueInfo)
@@ -79,7 +102,7 @@ public class PlayerController : MonoBehaviour, ICharacter
         return (cluesGathered.Contains(clueInfo));
     }
 
-    public bool IsMovementAvailable()
+    public bool IsMovementEnabled()
     {
         return playerMovement.enabled;
     }

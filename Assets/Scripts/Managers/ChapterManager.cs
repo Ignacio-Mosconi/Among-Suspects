@@ -100,7 +100,7 @@ public class ChapterManager : MonoBehaviour
             debateRetryArea.SetActive(true);
         
         endScreenArea.SetActive(true);
-        GameManager.Instance.SetCursorAvailability(enable: true);
+        GameManager.Instance.SetCursorEnable(enable: true);
     }
 
     public void RetryDebate()

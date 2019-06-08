@@ -45,16 +45,16 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = targetFrameRate;
         charactersShowIntervals = 1f / (textSpeedMultiplier * targetFrameRate);
 
-        SetCursorAvailability(enable: false);
+        SetCursorEnable(enable: false);
     }
 
-    public void SetCursorAvailability(bool enable)
+    public void SetCursorEnable(bool enable)
     {   
         Cursor.lockState = (enable) ? CursorLockMode.None : CursorLockMode.Locked;
         Cursor.visible = enable;
     }
 
-    public bool IsCursorAvailable()
+    public bool IsCursorEnabled()
     {
         return (Cursor.visible);
     }

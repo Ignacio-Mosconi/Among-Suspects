@@ -245,7 +245,7 @@ public class DebateManager : MonoBehaviour
         enabled = false;
         isSelectingOption = true;
         debateOptionsPanel.SetActive(true);
-        GameManager.Instance.SetCursorAvailability(enable: true);
+        GameManager.Instance.SetCursorEnable(enable: true);
     }
 
     void StartArgumentPhase()
@@ -274,7 +274,7 @@ public class DebateManager : MonoBehaviour
         ResetMainUIVisibility();
 
         argumentPanel.SetActive(false);
-        GameManager.Instance.SetCursorAvailability(false);
+        GameManager.Instance.SetCursorEnable(false);
 
         if (credibilityBarController.IsFillingBar())
             credibilityBarController.StopFillingBar();

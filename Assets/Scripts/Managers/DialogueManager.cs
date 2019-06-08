@@ -109,8 +109,6 @@ public class DialogueManager : MonoBehaviour
         else
             onDialogueAreaDisable.Invoke();
 
-        CharacterManager.Instance.PlayerController.SetAvailability(enable: !enableDialogueArea);
-
         if (!enableDialogueArea)
         {
             if (currentDialogueInfo && currentLines == currentDialogueInfo.groupDialogue.dialogue && 
@@ -121,18 +119,6 @@ public class DialogueManager : MonoBehaviour
             currentLines = null;
             mainSpeaker = null;
             previousSpeaker = null;
-
-            // if (foundClueInDialogue)
-            // {
-            //     foundClueInDialogue = false;
-            //     onClueFound.Invoke();
-            // }
-
-            // if (triggeredInvestigationInDialogue)
-            // {
-            //     triggeredInvestigationInDialogue = false;
-            //     ChapterManager.Instance.TriggerInvestigationPhase();
-            // }
 
             objectImage.gameObject.SetActive(false);
             speakerImage.gameObject.SetActive(false);

@@ -27,7 +27,7 @@ class DialogueOptionsScreen : MonoBehaviour
 
     void SelectOption(int option)
     {
-        GameManager.Instance.SetCursorAvailability(enable: true);
+        GameManager.Instance.SetCursorEnable(enable: true);
 
         foreach (Button optionButton in optionsButtons)
             optionButton.gameObject.SetActive(false);
@@ -41,7 +41,7 @@ class DialogueOptionsScreen : MonoBehaviour
 
     public void ShowOptionsScreen(InteractiveDialogue[] interactiveConversation)
     {
-        GameManager.Instance.SetCursorAvailability(enable: true);
+        GameManager.Instance.SetCursorEnable(enable: true);
 
         int i = 0;
 
