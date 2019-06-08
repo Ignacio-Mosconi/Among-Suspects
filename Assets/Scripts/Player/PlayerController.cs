@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(FirstPersonCamera))]
 [RequireComponent(typeof(PlayerMovement))]
@@ -14,12 +15,37 @@ public class PlayerController : MonoBehaviour, ICharacter
     Camera playerCamera;
     List<ClueInfo> cluesGathered = new List<ClueInfo>();
     bool canInteract = true;
+    bool foundClueInLastDialogue;
+    bool startedInvestigationInLastDialogue;
+
+    UnityEvent onClueFound = new UnityEvent();
+    UnityEvent onStartedInvestigation = new UnityEvent();
 
     void Awake()
     {
         firstPersonCamera = GetComponent<FirstPersonCamera>();
         playerMovement = GetComponent<PlayerMovement>();
         playerCamera = GetComponentInChildren<Camera>();
+    }
+
+    void Start()
+    {
+        DialogueManager.Instance.OnDialogueAreaDisable.AddListener(CheckNotificationsDisplay);
+    }
+
+    void CheckNotificationsDisplay()
+    {
+        if (foundClueInLastDialogue)
+        {
+            foundClueInLastDialogue = false;
+            onClueFound.Invoke();
+        }
+
+        if (startedInvestigationInLastDialogue)
+        {
+            startedInvestigationInLastDialogue = false;
+            onStartedInvestigation.Invoke();
+        }
     }
 
     public void SetAvailability(bool enable)
@@ -37,7 +63,15 @@ public class PlayerController : MonoBehaviour, ICharacter
     public void AddClue(ClueInfo clueInfo)
     {
         if (!cluesGathered.Contains(clueInfo))
+        {
+            foundClueInLastDialogue = true;
             cluesGathered.Add(clueInfo);
+        }
+    }
+
+    public void StartInvestigation()
+    {
+        startedInvestigationInLastDialogue = true;
     }
 
     public bool HasClue(ref ClueInfo clueInfo)
@@ -75,6 +109,16 @@ public class PlayerController : MonoBehaviour, ICharacter
     public List<ClueInfo> CluesGathered
     {
         get { return cluesGathered; }
+    }
+
+    public UnityEvent OnClueFound
+    {
+        get { return onClueFound; }
+    }
+
+    public UnityEvent OnStartedInvestigation
+    {
+        get { return onStartedInvestigation; }
     }
     
     #endregion

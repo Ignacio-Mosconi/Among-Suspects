@@ -122,6 +122,18 @@ public class DialogueManager : MonoBehaviour
             mainSpeaker = null;
             previousSpeaker = null;
 
+            // if (foundClueInDialogue)
+            // {
+            //     foundClueInDialogue = false;
+            //     onClueFound.Invoke();
+            // }
+
+            // if (triggeredInvestigationInDialogue)
+            // {
+            //     triggeredInvestigationInDialogue = false;
+            //     ChapterManager.Instance.TriggerInvestigationPhase();
+            // }
+
             objectImage.gameObject.SetActive(false);
             speakerImage.gameObject.SetActive(false);
         }

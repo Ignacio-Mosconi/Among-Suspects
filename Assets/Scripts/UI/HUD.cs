@@ -5,6 +5,9 @@ public class HUD : MonoBehaviour
 {
     [SerializeField] GameObject hudArea = default;
     [SerializeField] GameObject interactTextPanel = default;
+    [SerializeField] GameObject clueFoundPrompt = default;
+    [SerializeField] GameObject investigationPhasePrompt = default;
+    [SerializeField] [Range(1.5f, 2.5f)] float promptsDuration = 2f;
 
     void Start()
     {
@@ -23,6 +26,10 @@ public class HUD : MonoBehaviour
 
         DialogueManager.Instance.OnDialogueAreaEnable.AddListener(HideHUD);
         DialogueManager.Instance.OnDialogueAreaDisable.AddListener(ShowHUD);
+        
+        PlayerController playerController = CharacterManager.Instance.PlayerController;
+        playerController.OnClueFound.AddListener(ShowClueFoundPrompt);
+        playerController.OnStartedInvestigation.AddListener(ShowInvestigationPhasePrompt);
     }
 
     void ShowHUD()
@@ -43,5 +50,27 @@ public class HUD : MonoBehaviour
     void HideInteractTextPanel()
     {
         interactTextPanel.SetActive(false);
+    }
+
+    void ShowClueFoundPrompt()
+    {
+        clueFoundPrompt.SetActive(true);
+        Invoke("HideClueFoundPrompt", promptsDuration);
+    }
+
+    void HideClueFoundPrompt()
+    {
+        clueFoundPrompt.SetActive(false);
+    }
+
+    void ShowInvestigationPhasePrompt()
+    {
+        investigationPhasePrompt.SetActive(true);
+        Invoke("HideInvestigationPhasePrompt", promptsDuration);
+    }
+
+    void HideInvestigationPhasePrompt()
+    {
+        investigationPhasePrompt.SetActive(false);
     }
 }

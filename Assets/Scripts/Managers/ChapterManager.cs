@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public enum ChapterPhase
@@ -118,6 +119,7 @@ public class ChapterManager : MonoBehaviour
             currentPhase = ChapterPhase.Investigation;
             debateInitializer.EnableInteraction();
             CharacterManager.Instance.LoadDialogues(ChapterPhase.Investigation);
+            CharacterManager.Instance.PlayerController.StartInvestigation();
         }
     }
 
