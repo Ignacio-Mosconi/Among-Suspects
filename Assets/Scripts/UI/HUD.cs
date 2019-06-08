@@ -59,10 +59,19 @@ public class HUD : MonoBehaviour
     void ShowClueFoundPrompt()
     {
         clueFoundPrompt.Show();
+        float animationsDur = clueFoundPrompt.ShowAnimationDuration + clueFoundPrompt.HideAnimationDuration;
+        Invoke("EnablePlayerInteractionAfterPrompt", animationsDur + clueFoundPrompt.OnScreenDuration);
     }
 
     void ShowInvestigationPhasePrompt()
     {
         investigationPhasePrompt.Show();
+        float animationsDur = investigationPhasePrompt.ShowAnimationDuration + investigationPhasePrompt.HideAnimationDuration;
+        Invoke("EnablePlayerInteractionAfterPrompt", animationsDur + investigationPhasePrompt.OnScreenDuration);
+    }
+
+    void EnablePlayerInteractionAfterPrompt()
+    {
+        CharacterManager.Instance.PlayerController.CanInteract = true;
     }
 }

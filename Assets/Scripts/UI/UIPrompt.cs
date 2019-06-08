@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
@@ -34,4 +35,35 @@ public class UIPrompt : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
+    #region Properties
+
+    public float OnScreenDuration
+    {
+        get { return onScreenDuration; }
+    }
+
+    public float ShowAnimationDuration
+    {
+        get 
+        { 
+             AnimationClip[] animations = promptAnimator.runtimeAnimatorController.animationClips;
+             AnimationClip showAnim = Array.Find(animations, a => a.name.Contains("Show"));
+
+             return showAnim.length;
+        }
+    }
+
+    public float HideAnimationDuration
+    {
+        get 
+        {
+            AnimationClip[] animations = promptAnimator.runtimeAnimatorController.animationClips;
+            AnimationClip hideAnim = Array.Find(animations, a => a.name.Contains("Hide"));
+
+            return hideAnim.length;
+        }
+    }
+
+    #endregion
 }
