@@ -12,7 +12,7 @@ public struct Dialogue
 {
     public CharacterName speakerName;
     [TextArea(3, 10)] public string speech;
-    public CharacterEmotion characterEmotion;
+    public CharacterEmotion speakerEmotion;
     public ClueInfo clueInfo;
     public bool revealName;
     public bool playerThought;

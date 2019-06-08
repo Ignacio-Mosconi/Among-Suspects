@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour, ICharacter
 {
     [SerializeField] CharacterName playerName = default;
     [SerializeField] Sprite[] characterSprites = default;
-    [SerializeField] [Range(0f, 3f)] float reEnableInteractionDelay = 2f;
 
     FirstPersonCamera firstPersonCamera;
     PlayerMovement playerMovement;
@@ -37,28 +36,23 @@ public class PlayerController : MonoBehaviour, ICharacter
 
     bool CheckNotificationsDisplay()
     {
-        bool shouldDelayInteractionEnable = false;
+        bool triggeredNotification = false;
 
         if (foundClueInLastDialogue)
         {
-            shouldDelayInteractionEnable = true;
+            triggeredNotification = true;
             foundClueInLastDialogue = false;
             onClueFound.Invoke();
         }
 
         if (startedInvestigationInLastDialogue)
         {
-            shouldDelayInteractionEnable = true;
+            triggeredNotification = true;
             startedInvestigationInLastDialogue = false;
             onStartedInvestigation.Invoke();
         }
 
-        return shouldDelayInteractionEnable;
-    }
-
-    void EnableInteraction()
-    {
-        canInteract = true;
+        return triggeredNotification;
     }
 
     public void Enable()
@@ -66,9 +60,8 @@ public class PlayerController : MonoBehaviour, ICharacter
         firstPersonCamera.enabled = true;
         playerMovement.enabled = true;
 
-        bool delayInteractionEnable = CheckNotificationsDisplay();
-        float interactionEnableDelay = (delayInteractionEnable) ? reEnableInteractionDelay : 0f;
-        Invoke("EnableInteraction", interactionEnableDelay);
+        bool triggeredNotification = CheckNotificationsDisplay();
+        canInteract = !triggeredNotification;
     }
 
     public void Disable()
@@ -127,6 +120,7 @@ public class PlayerController : MonoBehaviour, ICharacter
     public bool CanInteract
     {
         get { return canInteract; }
+        set { canInteract = value; }
     }
 
     public List<ClueInfo> CluesGathered

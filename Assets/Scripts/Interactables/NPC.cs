@@ -30,7 +30,7 @@ public class NPC : Interactable, ICharacter
     protected override void Interact()
     {   
         DisableInteraction();
-        DialogueManager.Instance.EnableDialogueArea(dialogueInfo, this);
+        DialogueManager.Instance.StartDialogue(dialogueInfo, this);
     }
     
     public CharacterName GetCharacterName()

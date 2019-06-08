@@ -74,12 +74,7 @@ public class DialogueManager : MonoBehaviour
             lineIndex++;
             
             if (lineIndex < currentLines.Length)
-                SayDialogue(currentLines[lineIndex].speech, 
-                            currentLines[lineIndex].speakerName,
-                            currentLines[lineIndex].characterEmotion,
-                            currentLines[lineIndex].revealName,
-                            currentLines[lineIndex].playerThought,
-                            currentLines[lineIndex].clueInfo);
+                SayDialogue(currentLines[lineIndex]);
             else
             {
                 lineIndex = 0;
@@ -128,21 +123,20 @@ public class DialogueManager : MonoBehaviour
         enabled = enableDialogueArea;
     }
 
-    void SayDialogue(string speech, CharacterName speakerName, CharacterEmotion speakerEmotion, 
-                        bool revealName, bool playerThought, ClueInfo clueInfo)
+    void SayDialogue(Dialogue dialogue)
     {
         PlayerController playerController = CharacterManager.Instance.PlayerController;
 
-        if (clueInfo)
-            playerController.AddClue(clueInfo);
+        if (dialogue.clueInfo)
+            playerController.AddClue(dialogue.clueInfo);
         
-        if (speakerName != playerController.GetCharacterName())
+        if (dialogue.speakerName != playerController.GetCharacterName())
         {
             NPC currentSpeaker;
             
-            if (!previousSpeaker || speakerName != previousSpeaker.GetCharacterName())
+            if (!previousSpeaker || dialogue.speakerName != previousSpeaker.GetCharacterName())
             {
-                currentSpeaker = (NPC)CharacterManager.Instance.GetCharacter(speakerName);
+                currentSpeaker = (NPC)CharacterManager.Instance.GetCharacter(dialogue.speakerName);
                 
                 if (currentDialogueInfo)
                 {
@@ -164,25 +158,25 @@ public class DialogueManager : MonoBehaviour
             else
                 currentSpeaker = previousSpeaker;
 
-            if (revealName)
+            if (dialogue.revealName)
                 currentSpeaker.NameRevealed = true;
 
-            speakerText.text = (currentSpeaker.NameRevealed) ? speakerName.ToString() : "???";
+            speakerText.text = (currentSpeaker.NameRevealed) ? dialogue.speakerName.ToString() : "???";
 
-            if (speakerEmotion != CharacterEmotion.Listening)
-                speakerImage.sprite = currentSpeaker.GetSprite(speakerEmotion);
+            if (dialogue.speakerEmotion != CharacterEmotion.Listening)
+                speakerImage.sprite = currentSpeaker.GetSprite(dialogue.speakerEmotion);
             
             if (speechText.color != GameManager.Instance.NpcSpeakingTextColor)
                 speechText.color = GameManager.Instance.NpcSpeakingTextColor;
         }
         else
         {
-            speakerText.text = speakerName.ToString();
+            speakerText.text = dialogue.speakerName.ToString();
 
             if (!currentDialogueInfo)
                 speakerImage.gameObject.SetActive(false);
             
-            if (!playerThought)
+            if (!dialogue.playerThought)
             {
                 if (speechText.color != GameManager.Instance.PlayerSpeakingTextColor)
                     speechText.color = GameManager.Instance.PlayerSpeakingTextColor;
@@ -194,7 +188,7 @@ public class DialogueManager : MonoBehaviour
             }       
         }
 
-        speechController.StartSpeaking(speech);
+        speechController.StartSpeaking(dialogue.speech);
     }
 
     void ShowDialogueOptions()
@@ -212,15 +206,10 @@ public class DialogueManager : MonoBehaviour
 
         currentDialogueInfo.interactionOptionSelected = true;
 
-        SayDialogue(currentLines[0].speech, 
-                    currentLines[0].speakerName, 
-                    currentLines[0].characterEmotion,
-                    currentLines[0].revealName,
-                    currentLines[0].playerThought,
-                    currentLines[0].clueInfo);
+        SayDialogue(currentLines[0]);
     }
 
-    public void EnableDialogueArea(DialogueInfo dialogueInfo, NPC npc)
+    public void StartDialogue(DialogueInfo dialogueInfo, NPC npc)
     {
         currentDialogueInfo = dialogueInfo;
         
@@ -242,15 +231,10 @@ public class DialogueManager : MonoBehaviour
                                                         currentDialogueInfo.rudeComment;
         }
 
-        SayDialogue(currentLines[0].speech,
-                    currentLines[0].speakerName,
-                    currentLines[0].characterEmotion,
-                    currentLines[0].revealName,
-                    currentLines[0].playerThought,
-                    currentLines[0].clueInfo);
+        SayDialogue(currentLines[0]);
     }
 
-    public void EnableDialogueArea(ThoughtInfo thoughtInfo, Vector3 objectPosition, Sprite objectSprite = null, bool enableImage = false)
+    public void StartDialogue(ThoughtInfo thoughtInfo, Vector3 objectPosition, Sprite objectSprite = null, bool enableImage = false)
     {
         CharacterManager.Instance.PlayerController.FirstPersonCamera.FocusOnPosition(objectPosition);
 
@@ -268,12 +252,7 @@ public class DialogueManager : MonoBehaviour
         if (thoughtInfo.triggerInvestigationPhase)
             ChapterManager.Instance.TriggerInvestigationPhase();
 
-        SayDialogue(currentLines[0].speech,
-                    currentLines[0].speakerName,
-                    currentLines[0].characterEmotion,
-                    currentLines[0].revealName,
-                    currentLines[0].playerThought,
-                    currentLines[0].clueInfo);
+        SayDialogue(currentLines[0]);
     }
 
     public void SetUpdateEnable(bool enable)

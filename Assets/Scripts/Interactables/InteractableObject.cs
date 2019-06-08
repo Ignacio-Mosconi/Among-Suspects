@@ -16,6 +16,6 @@ public class InteractableObject : Interactable
     protected override void Interact()
     {
         DisableInteraction();
-        DialogueManager.Instance.EnableDialogueArea(thoughtInfo, interactionPoint.position, objectSprite, enableImage: true);
+        DialogueManager.Instance.StartDialogue(thoughtInfo, interactionPoint.position, objectSprite, enableImage: true);
     }
 }
