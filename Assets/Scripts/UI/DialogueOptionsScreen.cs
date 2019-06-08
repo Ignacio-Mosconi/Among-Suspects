@@ -27,7 +27,7 @@ class DialogueOptionsScreen : MonoBehaviour
 
     void SelectOption(int option)
     {
-        GameManager.Instance.SetCursorEnable(enable: true);
+        GameManager.Instance.SetCursorEnable(enable: false);
 
         foreach (Button optionButton in optionsButtons)
             optionButton.gameObject.SetActive(false);
