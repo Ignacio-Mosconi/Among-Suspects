@@ -12,11 +12,6 @@ public class PauseMenu : Menu
     UnityEvent onPaused = new UnityEvent();
     UnityEvent onResume = new UnityEvent();
 
-    protected override void Start()
-    {
-        base.Start();
-    }
-
     void Update()
     {
         if (Input.GetButtonDown("Pause"))

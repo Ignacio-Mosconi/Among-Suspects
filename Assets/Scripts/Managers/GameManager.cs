@@ -1,4 +1,6 @@
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -41,14 +43,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] Color playerThinkingTextColor = default;
     [SerializeField] Color npcSpeakingTextColor = default;
 
+    [Header("Scenes")]
+    [SerializeField] SceneAsset mainMenuScene = default;
+    [SerializeField] SceneAsset[] chapterScenes = default;
+
     float charactersShowIntervals;
 
     void Start()
     {
         Application.targetFrameRate = targetFrameRate;
         charactersShowIntervals = 1f / (textSpeedMultiplier * targetFrameRate);
-
-        SetCursorEnable(enable: false);
     }
 
     public void SetCursorEnable(bool enable)
@@ -57,9 +61,35 @@ public class GameManager : MonoBehaviour
         Cursor.visible = enable;
     }
 
+    public void TransitionToScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void QuitApplication()
+    {
+        Application.Quit();
+    }
+
     public bool IsCursorEnabled()
     {
         return (Cursor.visible);
+    }
+
+    public string GetMainMenuSceneName()
+    {
+        return mainMenuScene.name;
+    }
+
+    public string GetChapterSceneName(uint chapterIndex)
+    {
+        if (chapterIndex >= chapterScenes.Length)
+        {
+            Debug.LogError("There is no chapter with that index");
+            return null;
+        }
+
+        return chapterScenes[chapterIndex].name;
     }
 
     #region Properties
