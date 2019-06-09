@@ -37,18 +37,23 @@ public class ChapterManager : MonoBehaviour
 
     #endregion
 
+    [Header("Main Areas")]
     [SerializeField] GameObject endScreenArea = default;
-    [SerializeField] GameObject debateStartPromptArea = default;
     [SerializeField] GameObject debateRetryArea = default;
     [SerializeField] GameObject chapterWonArea = default;
+    [Header("Confirmation Messages")]
+    [SerializeField] [TextArea(3, 5)] string debateStartWarning = default;
+    [SerializeField] [TextArea(3, 5)] string quitWarning = default;
 
     ClueInfo[] chapterClues;
+    ConfirmationPrompt confirmationPrompt;
     DebateInitializer debateInitializer;
     PauseMenu pauseMenu;
     ChapterPhase currentPhase = ChapterPhase.Exploration;
 
     void Start()
     {
+        confirmationPrompt = GetComponentInChildren<ConfirmationPrompt>(includeInactive: true);
         chapterClues = Resources.LoadAll<ClueInfo>("Clues/" + SceneManager.GetActiveScene().name);
         debateInitializer = FindObjectOfType<DebateInitializer>();
         pauseMenu = FindObjectOfType<PauseMenu>();
@@ -58,38 +63,39 @@ public class ChapterManager : MonoBehaviour
         debateInitializer.DisableInteraction();
     }
 
-    public ClueInfo GetChapterClueInfo(int index)
-    {
-        ClueInfo clueInfo = null;
-
-        if (index < chapterClues.Length && index >= 0)
-            clueInfo = chapterClues[index];
-
-        return clueInfo;
-    }
-
-    void HideDebateStartPrompt()
+    void ConfirmDebateStart()
     {
         pauseMenu.enabled = true;
-        debateStartPromptArea.SetActive(false);
-    }
-
-    public void ShowDebateStartPrompt()
-    {
-        pauseMenu.enabled = false;
-        debateStartPromptArea.SetActive(true);
-    }
-
-    public void ConfirmDebateStart()
-    {
-        HideDebateStartPrompt();
         debateInitializer.StartDebate();
     }
 
-    public void CancelDebateStart()
+    void ExitGame()
     {
-        HideDebateStartPrompt();
+        Time.timeScale = 1f;
+
+        GameManager gameManager = GameManager.Instance;
+        string mainMenuSceneName = gameManager.GetMainMenuSceneName();
+        gameManager.TransitionToScene(mainMenuSceneName);
+    }
+
+    void CancelDebateStart()
+    {
+        pauseMenu.enabled = true;
+
+        confirmationPrompt.RemoveAllConfirmationListeners();
+        confirmationPrompt.RemoveAllCancelationListeners();
         debateInitializer.CancelDebate();
+    }
+
+    void CancelExit()
+    {
+        if (pauseMenu.enabled)
+            pauseMenu.ActivateMenuArea();
+        else
+            endScreenArea.SetActive(true);
+
+        confirmationPrompt.RemoveAllConfirmationListeners();
+        confirmationPrompt.RemoveAllCancelationListeners();
     }
 
     public void ShowDebateEndScreen(bool hasWon)
@@ -103,6 +109,25 @@ public class ChapterManager : MonoBehaviour
         
         endScreenArea.SetActive(true);
         GameManager.Instance.SetCursorEnable(enable: true);
+    }
+
+    public void ShowDebateStartConfirmation()
+    {
+        pauseMenu.enabled = false;
+
+        confirmationPrompt.AddConfirmationListener(delegate { ConfirmDebateStart(); });
+        confirmationPrompt.AddCancelationListener(delegate { CancelDebateStart(); });
+        confirmationPrompt.ChangeWarningMessage(debateStartWarning);
+        confirmationPrompt.ShowConfirmation();
+    }
+
+    public void ShowExitConfirmation()
+    {
+        endScreenArea.SetActive(false);
+        confirmationPrompt.AddConfirmationListener(delegate { ExitGame(); });
+        confirmationPrompt.AddCancelationListener(delegate { CancelExit(); });
+        confirmationPrompt.ChangeWarningMessage(quitWarning);
+        confirmationPrompt.ShowConfirmation();
     }
 
     public void RetryDebate()
@@ -123,6 +148,16 @@ public class ChapterManager : MonoBehaviour
             CharacterManager.Instance.LoadDialogues(ChapterPhase.Investigation);
             CharacterManager.Instance.PlayerController.StartInvestigation();
         }
+    }
+
+    public ClueInfo GetChapterClueInfo(int index)
+    {
+        ClueInfo clueInfo = null;
+
+        if (index < chapterClues.Length && index >= 0)
+            clueInfo = chapterClues[index];
+
+        return clueInfo;
     }
 
     #region Properties

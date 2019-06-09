@@ -4,14 +4,15 @@ using TMPro;
 
 public class MainMenu : Menu
 {
-    [Header("Warning Messages")]
+    [SerializeField] GameObject mainScreenMainArea = default;
+    [Header("COnfirmation Messages")]
     [SerializeField] [TextArea(3, 5)] string newGameWarning = default;
     [SerializeField] [TextArea(3, 5)] string quitWarning = default;
-    ConfirmationPrompt genericConfirmationPrompt;
+    ConfirmationPrompt confirmationPrompt;
 
     void Awake()
     {
-        genericConfirmationPrompt = mainScreen.GetComponentInChildren<ConfirmationPrompt>(includeInactive: true);
+        confirmationPrompt = mainScreen.GetComponentInChildren<ConfirmationPrompt>(includeInactive: true);
     }
 
     protected override void Start()
@@ -19,7 +20,7 @@ public class MainMenu : Menu
         base.Start();
         
         GameManager.Instance.SetCursorEnable(enable: true);  
-        genericConfirmationPrompt.AddCancelationListener(delegate { CancelConfirmation(); });
+        confirmationPrompt.AddCancelationListener(delegate { CancelConfirmation(); });
     }
 
     void StartNewGame()
@@ -36,20 +37,23 @@ public class MainMenu : Menu
 
     public void ShowNewGameConfirmation()
     {
-        genericConfirmationPrompt.AddConfirmationListener(delegate { StartNewGame(); });
-        genericConfirmationPrompt.ChangeWarningMessage(newGameWarning);
-        genericConfirmationPrompt.ShowConfirmation();
+        mainScreenMainArea.SetActive(false);
+        confirmationPrompt.AddConfirmationListener(delegate { StartNewGame(); });
+        confirmationPrompt.ChangeWarningMessage(newGameWarning);
+        confirmationPrompt.ShowConfirmation();
     }
 
     public void ShowQuitConfirmation()
     {
-        genericConfirmationPrompt.AddConfirmationListener(delegate { QuitGame(); });
-        genericConfirmationPrompt.ChangeWarningMessage(quitWarning);
-        genericConfirmationPrompt.ShowConfirmation();
+        mainScreenMainArea.SetActive(false);
+        confirmationPrompt.AddConfirmationListener(delegate { QuitGame(); });
+        confirmationPrompt.ChangeWarningMessage(quitWarning);
+        confirmationPrompt.ShowConfirmation();
     }
 
     public void CancelConfirmation()
     {
-        genericConfirmationPrompt.RemoveAllConfirmationListeners();
+        mainScreenMainArea.SetActive(true);
+        confirmationPrompt.RemoveAllConfirmationListeners();
     }
 }

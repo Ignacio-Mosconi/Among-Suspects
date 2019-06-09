@@ -5,25 +5,12 @@ public class PauseMenu : Menu
 {
     [SerializeField] GameObject menuArea = default;
 
-    ConfirmationPrompt exitConfirmationPrompt;
     bool isPaused;
     bool playerMovementEnabledAtPause;
     bool cursorEnabledAtPause;
 
     UnityEvent onPaused = new UnityEvent();
     UnityEvent onResume = new UnityEvent();
-
-    void Awake()
-    {
-        exitConfirmationPrompt = GetComponentInChildren<ConfirmationPrompt>(includeInactive: true);
-    }
-
-    protected override void Start()
-    {
-        base.Start();
-
-        exitConfirmationPrompt.AddConfirmationListener(delegate { ExitGame(); });
-    }
 
     void Update()
     {
@@ -34,15 +21,6 @@ public class PauseMenu : Menu
             else
                 Resume();
         }
-    }
-
-    void ExitGame()
-    {
-        Time.timeScale = 1f;
-
-        GameManager gameManager = GameManager.Instance;
-        string mainMenuSceneName = gameManager.GetMainMenuSceneName();
-        gameManager.TransitionToScene(mainMenuSceneName);
     }
 
     public void Pause()
@@ -81,7 +59,13 @@ public class PauseMenu : Menu
 
     public void ShowExitConfirmation()
     {
-        exitConfirmationPrompt.ShowConfirmation();
+        menuArea.SetActive(false);
+        ChapterManager.Instance.ShowExitConfirmation();
+    }
+
+    public void ActivateMenuArea()
+    {
+        menuArea.SetActive(true);
     }
 
     #region Properties

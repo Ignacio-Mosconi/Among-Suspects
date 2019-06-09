@@ -167,6 +167,7 @@ MonoBehaviour:
     previousScreen: {fileID: 0}
   - screen: {fileID: 1558407468657923502}
     previousScreen: {fileID: 1558407469410239607}
+  mainScreenMainArea: {fileID: 6630415504783177410}
   newGameWarning: You are about to start a new game from the start. Is that what you
     want?
   quitWarning: Are you completely sure you want to quit the game?
@@ -3346,7 +3347,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f64ef70c50ac474bb9ea238dff0ded0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainArea: {fileID: 6630415504783177410}
   confirmButton: {fileID: 1558407470750602279}
   cancelButton: {fileID: 1558407469509025495}
   warningText: {fileID: 1558407470431266328}
