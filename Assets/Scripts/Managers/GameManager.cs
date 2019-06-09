@@ -22,7 +22,10 @@ public class GameManager : MonoBehaviour
             {
                 instance = FindObjectOfType<GameManager>();
                 if (!instance)
-                    Debug.LogError("There is no 'GameManager' in the scene");
+                {
+                    GameObject gameManagerPrefab = Resources.Load("Game Management/Game Manager") as GameObject;
+                    instance = Instantiate(gameManagerPrefab).GetComponent<GameManager>();
+                }
             }
 
             return instance;
