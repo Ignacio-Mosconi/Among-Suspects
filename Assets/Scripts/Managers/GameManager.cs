@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
 
     public void TransitionToScene(string sceneName)
     {
+        SetCursorEnable(enable: false);
         SceneManager.LoadScene(sceneName);
     }
 

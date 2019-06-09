@@ -53,6 +53,8 @@ public class ChapterManager : MonoBehaviour
         debateInitializer = FindObjectOfType<DebateInitializer>();
         pauseMenu = FindObjectOfType<PauseMenu>();
 
+        GameManager.Instance.SetCursorEnable(enable: false);
+
         debateInitializer.DisableInteraction();
     }
 

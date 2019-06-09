@@ -10,8 +10,8 @@ public struct MenuScreen
 
 public class Menu : MonoBehaviour
 {
-    [SerializeField] GameObject mainScreen = default;
-    [SerializeField] MenuScreen[] menuScreens = default;
+    [SerializeField] protected GameObject mainScreen = default;
+    [SerializeField] protected MenuScreen[] menuScreens = default;
 
     MenuScreen currentScreen;
     MenuScreen previousScreen;
