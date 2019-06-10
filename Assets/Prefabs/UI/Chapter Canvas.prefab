@@ -586,7 +586,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5370846251301884732}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6519120774620729519}
+        m_MethodName: ShowExitConfirmation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &1847561458275929765
@@ -941,7 +952,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5410822278516767163}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6519120774620729519}
+        m_MethodName: ShowNextChapterConfirmation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &2475569490453347658
@@ -2595,6 +2617,8 @@ MonoBehaviour:
   chapterWonArea: {fileID: 687065102222682406}
   debateStartWarning: "Are you sure you want to start the debate?\t"
   quitWarning: Are you sure you want to exit without having solved the mystery?
+  nextChapterWarning: Ups... It looks like the devs are working on the next chapter.
+    Do you want to exit instead?
 --- !u!1 &6712373868272550175
 GameObject:
   m_ObjectHideFlags: 0

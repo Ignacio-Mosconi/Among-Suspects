@@ -44,6 +44,7 @@ public class ChapterManager : MonoBehaviour
     [Header("Confirmation Messages")]
     [SerializeField] [TextArea(3, 5)] string debateStartWarning = default;
     [SerializeField] [TextArea(3, 5)] string quitWarning = default;
+    [SerializeField] [TextArea(3, 5)] string nextChapterWarning = default;
 
     ClueInfo[] chapterClues;
     ConfirmationPrompt confirmationPrompt;
@@ -63,15 +64,24 @@ public class ChapterManager : MonoBehaviour
         debateInitializer.DisableInteraction();
     }
 
+    void RemoveAllConfirmationPromptListeners()
+    {
+        confirmationPrompt.RemoveAllConfirmationListeners();
+        confirmationPrompt.RemoveAllCancelationListeners();
+    }
+
     void ConfirmDebateStart()
     {
         pauseMenu.enabled = true;
+        RemoveAllConfirmationPromptListeners();
         debateInitializer.StartDebate();
     }
 
     void ExitGame()
     {
         Time.timeScale = 1f;
+
+        RemoveAllConfirmationPromptListeners();
 
         GameManager gameManager = GameManager.Instance;
         string mainMenuSceneName = gameManager.GetMainMenuSceneName();
@@ -81,9 +91,7 @@ public class ChapterManager : MonoBehaviour
     void CancelDebateStart()
     {
         pauseMenu.enabled = true;
-
-        confirmationPrompt.RemoveAllConfirmationListeners();
-        confirmationPrompt.RemoveAllCancelationListeners();
+        RemoveAllConfirmationPromptListeners();
         debateInitializer.CancelDebate();
     }
 
@@ -93,9 +101,7 @@ public class ChapterManager : MonoBehaviour
             pauseMenu.ActivateMenuArea();
         else
             endScreenArea.SetActive(true);
-
-        confirmationPrompt.RemoveAllConfirmationListeners();
-        confirmationPrompt.RemoveAllCancelationListeners();
+        RemoveAllConfirmationPromptListeners();
     }
 
     public void ShowDebateEndScreen(bool hasWon)
@@ -127,6 +133,16 @@ public class ChapterManager : MonoBehaviour
         confirmationPrompt.AddConfirmationListener(delegate { ExitGame(); });
         confirmationPrompt.AddCancelationListener(delegate { CancelExit(); });
         confirmationPrompt.ChangeWarningMessage(quitWarning);
+        confirmationPrompt.ShowConfirmation();
+    }
+
+    // Placeholder Method!
+    public void ShowNextChapterConfirmation()
+    {
+        endScreenArea.SetActive(false);
+        confirmationPrompt.AddConfirmationListener(delegate { ExitGame(); });
+        confirmationPrompt.AddCancelationListener(delegate { CancelExit(); });
+        confirmationPrompt.ChangeWarningMessage(nextChapterWarning);
         confirmationPrompt.ShowConfirmation();
     }
 
