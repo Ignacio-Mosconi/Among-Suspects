@@ -36,7 +36,8 @@ public class DebateInitializer : Interactable
         GameManager.Instance.SetCursorEnable(enable: false);
 
         debateSpritesContainer.SetActive(true);
-        DebateManager.Instance.InitializeDebate(debateInfo, playerController.CluesGathered);
+        CharacterManager.Instance.HideCharacterMeshes();
+        DebateManager.Instance.StartDebate(debateInfo, playerController.CluesGathered);
     }
 
     public void CancelDebate()

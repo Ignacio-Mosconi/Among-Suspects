@@ -18,19 +18,29 @@ public class NPC : Interactable, ICharacter
     public override void EnableInteraction()
     {
         base.EnableInteraction();
-        characterMesh.SetActive(true);
+        CharacterManager.Instance.ShowCharacterMeshes();
     }
 
     public override void DisableInteraction()
     {
         base.DisableInteraction();
-        characterMesh.SetActive(false);
+        CharacterManager.Instance.HideCharacterMeshes();
     }
 
     protected override void Interact()
     {   
         DisableInteraction();
         DialogueManager.Instance.StartDialogue(dialogueInfo, this);
+    }
+
+    public void ShowMesh()
+    {
+        characterMesh.SetActive(true);
+    }
+
+    public void HideMesh()
+    {
+        characterMesh.SetActive(false);
     }
     
     public CharacterName GetCharacterName()

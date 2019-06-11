@@ -446,7 +446,7 @@ public class DebateManager : MonoBehaviour
         clueOptionsPanel.SetActive(false);
     }
 
-    public void InitializeDebate(DebateInfo debateInfo, List<ClueInfo> playerClues)
+    public void StartDebate(DebateInfo debateInfo, List<ClueInfo> playerClues)
     {
         debateCameraController.SetDebateCameraAvailability(enable: true);
 

@@ -100,10 +100,29 @@ public class CharacterManager : MonoBehaviour
     {
         foreach (ICharacter character in characters)
         {
-            NPC npc = character as NPC;
-            
+            NPC npc = character as NPC;      
             if (npc)
                 npc.DialogueInfo.groupDialogueRead = true;
+        }
+    }
+
+    public void HideCharacterMeshes()
+    {
+        foreach (ICharacter character in characters)
+        {
+            NPC npc = character as NPC;
+            if (npc)
+                npc.HideMesh();
+        }
+    }
+
+    public void ShowCharacterMeshes()
+    {
+        foreach (ICharacter character in characters)
+        {
+            NPC npc = character as NPC;
+            if (npc)
+                npc.ShowMesh();
         }
     }
 
