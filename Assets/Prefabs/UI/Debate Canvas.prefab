@@ -156,15 +156,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   credibilityPanel: {fileID: 621336432036328361}
   credibilityBar: {fileID: 7291051576146925324}
+  credibilityBarBackground: {fileID: 4451372246101663813}
   credibilityIcon: {fileID: 6632993151302062361}
-  fillBarDuration: 1
-  idleBarDuration: 3
+  fillBarDuration: 3
+  idleBarDuration: 1.5
+  fadingDuration: 0.75
   colorPositive: {r: 0, g: 0.49056602, b: 0, a: 1}
   colorNeutral: {r: 0.7169812, g: 0.66173756, b: 0.02367392, a: 1}
   colorNegative: {r: 0.6698113, g: 0.041073352, b: 0.041073352, a: 1}
   credibilitySprites:
   - {fileID: 21300000, guid: d12407cdc4840ad4ba773611cd60459b, type: 3}
-  - {fileID: 21300000, guid: 3ac293cd8504e1240b22a866ba3c26ec, type: 3}
   - {fileID: 21300000, guid: 70f0cc5cdecc7a24c9adeadbd753ef57, type: 3}
 --- !u!1 &761603635704131043
 GameObject:

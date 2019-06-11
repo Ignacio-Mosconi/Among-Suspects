@@ -6,9 +6,11 @@ public class CredibilityBarController : MonoBehaviour
 {
     [SerializeField] GameObject credibilityPanel = default;
     [SerializeField] Image credibilityBar = default;
+    [SerializeField] Image credibilityBarBackground = default;
     [SerializeField] Image credibilityIcon = default;
-    [SerializeField] [Range(0.5f, 1.5f)] float fillBarDuration = 1f;
-    [SerializeField] [Range(2f, 4f)] float idleBarDuration = 3f;
+    [SerializeField] [Range(1f, 3f)] float fillBarDuration = 1.5f;
+    [SerializeField] [Range(1f, 2f)] float idleBarDuration = 1.5f;
+    [SerializeField] [Range(0.5f, 1f)] float fadingDuration = 0.75f;
     [SerializeField] Color colorPositive = Color.green;
     [SerializeField] Color colorNeutral = Color.yellow;
     [SerializeField] Color colorNegative = Color.red;
@@ -21,45 +23,59 @@ public class CredibilityBarController : MonoBehaviour
         float timer = 0f;
         float currentFill = credibilityBar.fillAmount;
         float targetFill = credibilityPerc / 100f;
+        
+        Color newBarColor = credibilityBar.color;
+        Color newBackgroundColor = credibilityBarBackground.color;
+        Color newCredibilityIconColor = credibilityIcon.color;
+        newBarColor.a = newBackgroundColor.a = newCredibilityIconColor.a = 0f;
+
+        credibilityIcon.sprite = (targetFill > currentFill) ? credibilitySprites[0] : credibilitySprites[1];
 
         credibilityPanel.SetActive(true);
 
-        while (credibilityBar.fillAmount != targetFill)
+        while (timer < fillBarDuration)
         {
             timer += Time.deltaTime;
             credibilityBar.fillAmount = Mathf.Lerp(currentFill, targetFill, timer / fillBarDuration);
 
-            Color newColor = credibilityBar.color;
             float currentPerc = credibilityBar.fillAmount * 100f;
 
             if (currentPerc >= minPercRequired && credibilityBar.color != colorPositive)
-            {
-                newColor = colorPositive;
-                credibilityIcon.sprite = credibilitySprites[0];
-            }
+                newBarColor = colorPositive;
 
             if (currentPerc < minPercRequired && !isCriticalPerc && credibilityBar.color != colorNeutral)
-            {
-                newColor = colorNeutral;
-                credibilityIcon.sprite = credibilitySprites[1];
-            }
+                newBarColor = colorNeutral;
 
             if (isCriticalPerc && credibilityBar.color != colorNegative)
-            {
-                newColor = colorNegative;
-                credibilityIcon.sprite = credibilitySprites[2];
-            }
+                newBarColor = colorNegative;
 
-            if (newColor != credibilityBar.color)
-            {
-                newColor.a = credibilityBar.color.a;
-                credibilityBar.color = newColor;
-            }
+            newBarColor.a = newBackgroundColor.a = newCredibilityIconColor.a = Mathf.Lerp(0f, 1f, timer / fadingDuration);
+
+            if (newBarColor != credibilityBar.color)
+                credibilityBar.color = newBarColor;
+            if (newBackgroundColor != credibilityBarBackground.color)
+                credibilityBarBackground.color = newBackgroundColor;
+            if (newCredibilityIconColor != credibilityIcon.color)
+                credibilityIcon.color = newCredibilityIconColor;
 
             yield return new WaitForEndOfFrame();
         }
 
         yield return new WaitForSeconds(idleBarDuration);
+
+        timer = 0f;
+
+        while (timer < fadingDuration)
+        {
+            timer += Time.deltaTime;
+            newBarColor.a = newBackgroundColor.a = newCredibilityIconColor.a = Mathf.Lerp(1f, 0f, timer / fadingDuration);
+
+            credibilityBar.color = newBarColor;
+            credibilityBarBackground.color = newBackgroundColor;
+            credibilityIcon.color = newCredibilityIconColor;
+
+            yield return new WaitForEndOfFrame();
+        }
 
         credibilityPanel.SetActive(false);
 
