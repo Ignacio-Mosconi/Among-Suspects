@@ -4,10 +4,14 @@ using TMPro;
 
 public class MainMenu : Menu
 {
+    [Header("Main Areas")]
     [SerializeField] GameObject mainScreenMainArea = default;
-    [Header("COnfirmation Messages")]
+    [Header("Confirmation Messages")]
     [SerializeField] [TextArea(3, 5)] string newGameWarning = default;
     [SerializeField] [TextArea(3, 5)] string quitWarning = default;
+    [Header("Other References")]
+    [SerializeField] TextMeshProUGUI appVersionText = default;
+    
     ConfirmationPrompt confirmationPrompt;
 
     void Awake()
@@ -18,6 +22,8 @@ public class MainMenu : Menu
     protected override void Start()
     {
         base.Start();
+
+        appVersionText.text = "Version " + Application.version;
         
         GameManager.Instance.SetCursorEnable(enable: true);  
         confirmationPrompt.AddCancelationListener(delegate { CancelConfirmation(); });
