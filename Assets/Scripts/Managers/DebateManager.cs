@@ -93,6 +93,7 @@ public class DebateManager : MonoBehaviour
         credibilityBarController = GetComponent<CredibilityBarController>();
         
         cluesScreen = GetComponentInChildren<CluesScreen>(includeInactive: true);
+        useEvidenceButton.interactable = false;
 
         argumentController.OnArgumentFinish.AddListener(ShowDebateOptions);
         debateCameraController.OnFocusFinish.AddListener(ProceedAfterCameraFocus);
@@ -134,9 +135,7 @@ public class DebateManager : MonoBehaviour
                 case DebatePhase.Dialoguing:
                     
                     if (lineIndex < currentDialogueLines.Length)
-                    {
                         Dialogue(currentDialogueLines[lineIndex]);
-                    }
                     else
                         StartArgumentPhase();
                     break;
@@ -145,17 +144,13 @@ public class DebateManager : MonoBehaviour
                     
                     argumentController.ResetArgumentPanelScale();
                     if (lineIndex < currentArgumentLines.Length)
-                    {
                         Argue(currentArgumentLines[lineIndex]);
-                    }
                     break;
 
                 case DebatePhase.SolvingArgument:
 
                     if (lineIndex < currentDialogueLines.Length)
-                    {
                         Dialogue(currentDialogueLines[lineIndex]);
-                    }
                     else
                     {
                         if (!ShouldLoseCase())
@@ -173,9 +168,7 @@ public class DebateManager : MonoBehaviour
                 case DebatePhase.SolvingCase:
                     
                     if (lineIndex < currentDialogueLines.Length)
-                    {
                         Dialogue(currentDialogueLines[lineIndex]);
-                    }
                     else
                     {
                         ChapterManager.Instance.ShowDebateEndScreen(caseWon);              
