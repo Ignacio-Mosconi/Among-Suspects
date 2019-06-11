@@ -44,8 +44,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] Color npcSpeakingTextColor = default;
 
     [Header("Scenes")]
-    [SerializeField] SceneAsset mainMenuScene = default;
-    [SerializeField] SceneAsset[] chapterScenes = default;
+    [SerializeField] string mainMenuSceneName = default;
+    [SerializeField] string[] chapterScenesNames = default;
 
     float charactersShowIntervals;
 
@@ -79,18 +79,18 @@ public class GameManager : MonoBehaviour
 
     public string GetMainMenuSceneName()
     {
-        return mainMenuScene.name;
+        return mainMenuSceneName;
     }
 
     public string GetChapterSceneName(uint chapterIndex)
     {
-        if (chapterIndex >= chapterScenes.Length)
+        if (chapterIndex >= chapterScenesNames.Length)
         {
             Debug.LogError("There is no chapter with that index");
             return null;
         }
 
-        return chapterScenes[chapterIndex].name;
+        return chapterScenesNames[chapterIndex];
     }
 
     #region Properties
