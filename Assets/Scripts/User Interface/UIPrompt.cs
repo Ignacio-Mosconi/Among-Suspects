@@ -1,34 +1,42 @@
 using System;
 using UnityEngine;
+using TMPro;
 
 [RequireComponent(typeof(Animator))]
 public class UIPrompt : MonoBehaviour
-{
-    [SerializeField] [Range(0f, 3f)] float onScreenDuration = 1.5f;
+{ 
     [SerializeField] bool keepOnScreen = false;
-    
-    Animator promptAnimator;
 
-    void Awake()
+    Animator promptAnimator;
+    float showAnimationDuration;
+    float idleAnimationDuration;
+    float hideAnimationDuration;
+
+    public void Awake()
     {
         promptAnimator = GetComponent<Animator>();
+
+        AnimationClip[] animations = promptAnimator.runtimeAnimatorController.animationClips;
+        AnimationClip showAnim = Array.Find(animations, a => a.name.Contains("Show"));
+        AnimationClip idleAnim = Array.Find(animations, a => a.name.Contains("Idle"));
+        AnimationClip hideAnim = Array.Find(animations, a => a.name.Contains("Hide"));
+
+        showAnimationDuration = showAnim.length;
+        idleAnimationDuration = idleAnim.length;
+        hideAnimationDuration = hideAnim.length;
     }
 
     public void Show()
     {
-        gameObject.SetActive(true);
+        gameObject.SetActive(true); 
         if (!keepOnScreen)
-        {
-            float showAnimationDur = promptAnimator.GetCurrentAnimatorStateInfo(0).length;    
-            Invoke("Hide", onScreenDuration + showAnimationDur);
-        }
+            Invoke("Hide", showAnimationDuration + idleAnimationDuration);
     } 
 
     public void Hide()
     {
         promptAnimator.SetTrigger("Hide");
-        float hideAnimationDur = promptAnimator.GetCurrentAnimatorStateInfo(0).length;
-        Invoke("Deactivate", hideAnimationDur);
+        Invoke("Deactivate", hideAnimationDuration);
     }
 
     public void Deactivate()
@@ -36,34 +44,8 @@ public class UIPrompt : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    #region Properties
-
-    public float OnScreenDuration
+    public float GetOnScreenDuration()
     {
-        get { return onScreenDuration; }
+        return (showAnimationDuration + idleAnimationDuration + hideAnimationDuration);
     }
-
-    public float ShowAnimationDuration
-    {
-        get 
-        { 
-             AnimationClip[] animations = promptAnimator.runtimeAnimatorController.animationClips;
-             AnimationClip showAnim = Array.Find(animations, a => a.name.Contains("Show"));
-
-             return showAnim.length;
-        }
-    }
-
-    public float HideAnimationDuration
-    {
-        get 
-        {
-            AnimationClip[] animations = promptAnimator.runtimeAnimatorController.animationClips;
-            AnimationClip hideAnim = Array.Find(animations, a => a.name.Contains("Hide"));
-
-            return hideAnim.length;
-        }
-    }
-
-    #endregion
 }

@@ -379,7 +379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 21120102080062614, guid: 81b77f1eb2f6a7843b18c0aa9edc329f,
+  m_Material: {fileID: 21588889384110550, guid: b6f0d71eddfc9964d858802e52aa50a9,
     type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -389,9 +389,9 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_fontAsset: {fileID: 11400000, guid: cfcc70fef0d7f604089553c796e12ec6, type: 2}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: b6f0d71eddfc9964d858802e52aa50a9, type: 2}
   m_material: {fileID: 0}
-  m_sharedMaterial: {fileID: 21120102080062614, guid: 81b77f1eb2f6a7843b18c0aa9edc329f,
+  m_sharedMaterial: {fileID: 21588889384110550, guid: b6f0d71eddfc9964d858802e52aa50a9,
     type: 2}
   m_isDefaultMaterial: 1
   m_padding: 0
@@ -855,11 +855,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 2
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -942,7 +942,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f950a905179da2d4bbd885cba9f8e78e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onScreenDuration: 0
+  text: {fileID: 5118334225594090611}
   keepOnScreen: 1
 --- !u!1 &8531699086757702387
 GameObject:
@@ -1052,7 +1052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f950a905179da2d4bbd885cba9f8e78e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onScreenDuration: 1
+  text: {fileID: 7051682222956537960}
   keepOnScreen: 0
 --- !u!1 &8724572250603822043
 GameObject:
@@ -1201,5 +1201,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f950a905179da2d4bbd885cba9f8e78e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onScreenDuration: 1.5
+  text: {fileID: 2531865776818274046}
   keepOnScreen: 0

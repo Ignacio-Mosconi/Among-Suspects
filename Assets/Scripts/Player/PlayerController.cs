@@ -15,8 +15,8 @@ public class PlayerController : MonoBehaviour, ICharacter
     Camera playerCamera;
     List<ClueInfo> cluesGathered = new List<ClueInfo>();
     bool canInteract = true;
-    bool foundClueInLastDialogue;
-    bool startedInvestigationInLastDialogue;
+    bool foundClueInLastDialogue = false;
+    bool startedInvestigationInLastDialogue = false;
 
     UnityEvent onClueFound = new UnityEvent();
     UnityEvent onStartedInvestigation = new UnityEvent();
@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour, ICharacter
         DialogueManager.Instance.OnDialogueAreaDisable.AddListener(Enable);
     }
 
-    bool CheckNotificationsDisplay()
+    bool TriggeredNotification()
     {
         bool triggeredNotification = false;
 
@@ -59,9 +59,7 @@ public class PlayerController : MonoBehaviour, ICharacter
     {
         firstPersonCamera.enabled = true;
         playerMovement.enabled = true;
-
-        bool triggeredNotification = CheckNotificationsDisplay();
-        canInteract = !triggeredNotification;
+        canInteract = !TriggeredNotification();
     }
 
     public void Disable()
@@ -69,6 +67,11 @@ public class PlayerController : MonoBehaviour, ICharacter
         firstPersonCamera.enabled = false;
         playerMovement.enabled = false;
         canInteract = false;
+    }
+
+    public void ReEnableInteractionDelayed()
+    {
+        canInteract = true;
     }
 
     public void DeactivateCamera()
@@ -120,7 +123,6 @@ public class PlayerController : MonoBehaviour, ICharacter
     public bool CanInteract
     {
         get { return canInteract; }
-        set { canInteract = value; }
     }
 
     public List<ClueInfo> CluesGathered

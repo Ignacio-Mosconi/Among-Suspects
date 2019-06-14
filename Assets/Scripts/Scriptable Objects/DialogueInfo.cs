@@ -57,7 +57,6 @@ public class DialogueInfo : ScriptableObject
 
     [HideInInspector] public bool introRead = false;
     [HideInInspector] public bool interactionOptionSelected = false;
-    //[HideInInspector] public bool niceWithPlayer = false;
     [HideInInspector] public bool groupDialogueRead = false;
 
     public bool HasIntroLines()

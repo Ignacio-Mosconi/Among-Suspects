@@ -29,6 +29,10 @@ public class HUD : MonoBehaviour
         PlayerController playerController = CharacterManager.Instance.PlayerController;
         playerController.OnClueFound.AddListener(ShowClueFoundPrompt);
         playerController.OnStartedInvestigation.AddListener(ShowInvestigationPhasePrompt);
+
+        interactTextPrompt.Awake();
+        clueFoundPrompt.Awake();
+        investigationPhasePrompt.Awake();
     }
 
     void ShowHUD()
@@ -59,19 +63,14 @@ public class HUD : MonoBehaviour
     void ShowClueFoundPrompt()
     {
         clueFoundPrompt.Show();
-        float animationsDur = clueFoundPrompt.ShowAnimationDuration + clueFoundPrompt.HideAnimationDuration;
-        Invoke("EnablePlayerInteractionAfterPrompt", animationsDur + clueFoundPrompt.OnScreenDuration);
+        float promptDur = clueFoundPrompt.GetOnScreenDuration();
+        CharacterManager.Instance.PlayerController.Invoke("ReEnableInteractionDelayed", promptDur);
     }
 
     void ShowInvestigationPhasePrompt()
     {
         investigationPhasePrompt.Show();
-        float animationsDur = investigationPhasePrompt.ShowAnimationDuration + investigationPhasePrompt.HideAnimationDuration;
-        Invoke("EnablePlayerInteractionAfterPrompt", animationsDur + investigationPhasePrompt.OnScreenDuration);
-    }
-
-    void EnablePlayerInteractionAfterPrompt()
-    {
-        CharacterManager.Instance.PlayerController.CanInteract = true;
+        float promptDur = investigationPhasePrompt.GetOnScreenDuration();
+        CharacterManager.Instance.PlayerController.Invoke("ReEnableInteractionDelayed", promptDur);
     }
 }
