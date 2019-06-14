@@ -7,6 +7,7 @@ class DialogueOptionsScreen : MonoBehaviour
     [SerializeField] VerticalLayoutGroup optionsLayout = default;
 
     Button[] optionsButtons;
+    bool isSelectingOption = false;
     int[] regularOptionsLayoutPadding = { 0, 0 };
     float regularOptionsLayoutSpacing = 0f;
 
@@ -27,6 +28,7 @@ class DialogueOptionsScreen : MonoBehaviour
 
     void SelectOption(int option)
     {
+        isSelectingOption = false;
         GameManager.Instance.SetCursorEnable(enable: false);
 
         foreach (Button optionButton in optionsButtons)
@@ -41,6 +43,7 @@ class DialogueOptionsScreen : MonoBehaviour
 
     public void ShowOptionsScreen(InteractiveDialogue[] interactiveConversation)
     {
+        isSelectingOption = true;
         GameManager.Instance.SetCursorEnable(enable: true);
 
         int i = 0;
@@ -62,4 +65,13 @@ class DialogueOptionsScreen : MonoBehaviour
         optionsLayout.padding.bottom = regularOptionsLayoutPadding[1] + (addtionalPadding * optionsLayoutPaddingMult);
         optionsLayout.spacing = regularOptionsLayoutSpacing + (addtionalPadding * optionsLayoutPaddingMult);
     }
+
+    #region Properties
+
+    public bool IsSelectingOption
+    {
+        get { return isSelectingOption; }
+    }
+
+    #endregion 
 }

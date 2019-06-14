@@ -41,6 +41,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI speechText = default;
     [SerializeField] Image speakerImage = default;
     [SerializeField] Image objectImage = default;
+    [SerializeField] UIPrompt leftMouseClickPrompt = default;
     
     SpeechController speechController;
     DialogueOptionsScreen dialogueOptionScreen;
@@ -58,6 +59,7 @@ public class DialogueManager : MonoBehaviour
     {
         speechController = GetComponent<SpeechController>();
         dialogueOptionScreen = GetComponent<DialogueOptionsScreen>();
+        leftMouseClickPrompt.Awake();
         enabled = false;
     }
 
@@ -72,6 +74,9 @@ public class DialogueManager : MonoBehaviour
             }
             
             lineIndex++;
+
+            if (leftMouseClickPrompt.gameObject.activeInHierarchy)
+                leftMouseClickPrompt.Hide();
             
             if (lineIndex < currentLines.Length)
                 SayDialogue(currentLines[lineIndex]);
@@ -95,6 +100,9 @@ public class DialogueManager : MonoBehaviour
                     SetDialogueAreaAvailability(enableDialogueArea: false);              
             }
         }
+        else
+            if (ShouldDisplayLeftMousePrompt())
+                leftMouseClickPrompt.Show();
     }
 
     void SetDialogueAreaAvailability(bool enableDialogueArea)
@@ -121,6 +129,12 @@ public class DialogueManager : MonoBehaviour
         
         dialogueArea.SetActive(enableDialogueArea);
         enabled = enableDialogueArea;
+    }
+
+    bool ShouldDisplayLeftMousePrompt()
+    {
+        return (!speechController.IsSpeaking() && !dialogueOptionScreen.IsSelectingOption &&
+                !leftMouseClickPrompt.gameObject.activeInHierarchy);
     }
 
     void SayDialogue(Dialogue dialogue)
