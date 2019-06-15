@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,6 +24,12 @@ public class AnimatedMenuScreen : MonoBehaviour
         hideAnimationDuration = hideAnim.length;
     }
 
+    IEnumerator InvokeDeactivationRealTime()
+    {
+        yield return new WaitForSecondsRealtime(hideAnimationDuration);
+        Deactivate();
+    }
+
     public void Show()
     {
         gameObject.SetActive(true);
@@ -33,7 +40,7 @@ public class AnimatedMenuScreen : MonoBehaviour
     public void Hide()
     {
         screenAnimator.SetTrigger("Hide");
-        Invoke("Deactivate", hideAnimationDuration);
+        StartCoroutine(InvokeDeactivationRealTime());
         if (backButton)
             backButton.interactable = false;
     }
