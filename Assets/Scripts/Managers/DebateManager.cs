@@ -94,6 +94,7 @@ public class DebateManager : MonoBehaviour
         
         cluesScreen = GetComponentInChildren<CluesScreen>(includeInactive: true);
         useEvidenceButton.interactable = false;
+        GameManager.Instance.AddCursorPointerEventsToAllButtons(debateOptionsPanel);
 
         argumentController.OnArgumentFinish.AddListener(ShowDebateOptions);
         debateCameraController.OnFocusFinish.AddListener(ProceedAfterCameraFocus);

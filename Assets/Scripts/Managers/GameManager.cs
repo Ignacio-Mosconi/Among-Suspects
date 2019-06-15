@@ -1,6 +1,14 @@
-using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+
+[System.Serializable]
+public struct MouseCursor
+{
+    public Texture2D texture;
+    public Vector2 hotspot;
+}
 
 public class GameManager : MonoBehaviour
 {
@@ -46,6 +54,9 @@ public class GameManager : MonoBehaviour
     [Header("Scenes")]
     [SerializeField] string mainMenuSceneName = default;
     [SerializeField] string[] chapterScenesNames = default;
+    [Header("Mouse Cursors")]
+    [SerializeField] MouseCursor normalCursor;
+    [SerializeField] MouseCursor selectionCursor;
 
     float charactersShowIntervals;
 
@@ -53,6 +64,40 @@ public class GameManager : MonoBehaviour
     {
         Application.targetFrameRate = targetFrameRate;
         charactersShowIntervals = 1f / (textSpeedMultiplier * targetFrameRate);
+    }
+
+    void OnMousePointerEnter(PointerEventData data)
+    {
+        Cursor.SetCursor(selectionCursor.texture, selectionCursor.hotspot, CursorMode.Auto);
+    }
+
+    void OnMousePointerExit(PointerEventData data)
+    {
+        Cursor.SetCursor(normalCursor.texture, normalCursor.hotspot, CursorMode.Auto);
+    }
+
+    void AddCursorPointerEvent(GameObject uiElement, EventTriggerType triggerType)
+    {
+        EventTrigger trigger = uiElement.GetComponent<EventTrigger>();
+        if (!trigger)
+            trigger = uiElement.AddComponent<EventTrigger>();
+
+        EventTrigger.Entry entry = new EventTrigger.Entry();
+
+        entry.eventID = triggerType;
+
+        switch (triggerType)
+        {
+            case EventTriggerType.PointerEnter:
+                entry.callback.AddListener((data) => { OnMousePointerEnter((PointerEventData)data); });
+                break;
+            case EventTriggerType.PointerExit:
+            case EventTriggerType.PointerClick:
+                entry.callback.AddListener((data) => { OnMousePointerExit((PointerEventData)data); });
+                break;
+        }
+
+        trigger.triggers.Add(entry);
     }
 
     public void SetCursorEnable(bool enable)
@@ -65,6 +110,24 @@ public class GameManager : MonoBehaviour
     {
         SetCursorEnable(enable: false);
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void AddCursorPointerEventsToAllButtons(GameObject uiLayout)
+    {
+        Button[] buttons = uiLayout.GetComponentsInChildren<Button>(includeInactive: true);
+        foreach (Button button in buttons)
+        {
+            AddCursorPointerEvent(button.gameObject, EventTriggerType.PointerEnter);
+            AddCursorPointerEvent(button.gameObject, EventTriggerType.PointerExit);
+            AddCursorPointerEvent(button.gameObject, EventTriggerType.PointerClick);
+        }
+    }
+
+    public void AddCursorPointerEvents(Button button)
+    {
+        AddCursorPointerEvent(button.gameObject, EventTriggerType.PointerEnter);
+        AddCursorPointerEvent(button.gameObject, EventTriggerType.PointerExit);
+        AddCursorPointerEvent(button.gameObject, EventTriggerType.PointerClick);
     }
 
     public void QuitApplication()

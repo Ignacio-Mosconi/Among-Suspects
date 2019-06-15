@@ -14,11 +14,15 @@ class DialogueOptionsScreen : MonoBehaviour
     void Awake()
     {
         optionsButtons = optionsLayout.GetComponentsInChildren<Button>(includeInactive: true);
+    }
 
+    void Start()
+    {
         for (int i = 0; i < optionsButtons.Length; i++)
         {
             int optionIndex = i;
             optionsButtons[i].onClick.AddListener(() => SelectOption(optionIndex));
+            GameManager.Instance.AddCursorPointerEvents(optionsButtons[i]);
         }
 
         regularOptionsLayoutPadding[0] = optionsLayout.padding.top;

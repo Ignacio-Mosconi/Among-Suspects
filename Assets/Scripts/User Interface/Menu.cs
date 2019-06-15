@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public struct MenuScreen
@@ -19,6 +20,7 @@ public class Menu : MonoBehaviour
     protected virtual void Start()
     {
         currentScreen = Array.Find(menuScreens, ms => ms.screen == mainScreen);
+        GameManager.Instance.AddCursorPointerEventsToAllButtons(gameObject);
     }
 
     protected void ResetMenuState()
