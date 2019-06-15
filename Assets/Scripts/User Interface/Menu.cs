@@ -5,17 +5,24 @@ using UnityEngine.UI;
 [System.Serializable]
 public struct MenuScreen
 {
-    public GameObject screen;
-    public GameObject previousScreen;
+    public AnimatedMenuScreen screen;
+    public AnimatedMenuScreen previousScreen;
 }
 
 public class Menu : MonoBehaviour
 {
-    [SerializeField] protected GameObject mainScreen = default;
+    [Header("Menu Screens")]
+    [SerializeField] protected AnimatedMenuScreen mainScreen = default;
     [SerializeField] protected MenuScreen[] menuScreens = default;
 
     MenuScreen currentScreen;
     MenuScreen previousScreen;
+
+    void Awake()
+    {
+        foreach (MenuScreen menuScreen in menuScreens)
+            menuScreen.screen.Awake();
+    }
 
     protected virtual void Start()
     {
@@ -27,18 +34,18 @@ public class Menu : MonoBehaviour
     {
         if (currentScreen.screen != mainScreen)
         {
-            currentScreen.screen.SetActive(false);
+            currentScreen.screen.Deactivate();
             currentScreen = Array.Find(menuScreens, ms => ms.screen == mainScreen);
-            currentScreen.screen.SetActive(true);
+            currentScreen.screen.Show();
             previousScreen.screen = null;
             previousScreen.previousScreen = null;
         }
     }
 
-    public void MoveToNextScreen(GameObject nextScreen)
+    public void MoveToNextScreen(AnimatedMenuScreen nextScreen)
     {
-        currentScreen.screen.SetActive(false);
-        nextScreen.SetActive(true);
+        currentScreen.screen.Hide();
+        nextScreen.Show();
 
         previousScreen = currentScreen;
         currentScreen = Array.Find(menuScreens, ms => ms.screen == nextScreen);
@@ -46,8 +53,8 @@ public class Menu : MonoBehaviour
 
     public void ReturnToPreviousScreen()
     {
-        currentScreen.screen.SetActive(false);
-        previousScreen.screen.SetActive(true);
+        currentScreen.screen.Hide();
+        previousScreen.screen.Show();
         
         currentScreen = previousScreen;
         previousScreen = Array.Find(menuScreens, ms => ms.screen == previousScreen.previousScreen);

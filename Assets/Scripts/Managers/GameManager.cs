@@ -55,8 +55,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] string mainMenuSceneName = default;
     [SerializeField] string[] chapterScenesNames = default;
     [Header("Mouse Cursors")]
-    [SerializeField] MouseCursor normalCursor;
-    [SerializeField] MouseCursor selectionCursor;
+    [SerializeField] MouseCursor normalCursor = default;
+    [SerializeField] MouseCursor selectionCursor = default;
 
     float charactersShowIntervals;
 
