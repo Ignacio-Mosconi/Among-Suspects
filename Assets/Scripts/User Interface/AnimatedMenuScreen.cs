@@ -1,9 +1,12 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Animator))]
 public class AnimatedMenuScreen : MonoBehaviour
 {
+    [SerializeField] Button backButton = default;
+
     Animator screenAnimator;
     float showAnimationDuration;
     float hideAnimationDuration;
@@ -23,12 +26,16 @@ public class AnimatedMenuScreen : MonoBehaviour
     public void Show()
     {
         gameObject.SetActive(true);
+        if (backButton)
+            backButton.interactable = true;
     }
 
     public void Hide()
     {
         screenAnimator.SetTrigger("Hide");
         Invoke("Deactivate", hideAnimationDuration);
+        if (backButton)
+            backButton.interactable = false;
     }
 
     public void Deactivate()
