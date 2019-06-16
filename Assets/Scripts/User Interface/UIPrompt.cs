@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using TMPro;
 
@@ -17,26 +18,38 @@ public class UIPrompt : MonoBehaviour
         promptAnimator = GetComponent<Animator>();
 
         AnimationClip[] animations = promptAnimator.runtimeAnimatorController.animationClips;
-        AnimationClip showAnim = Array.Find(animations, a => a.name.Contains("Show"));
-        AnimationClip idleAnim = Array.Find(animations, a => a.name.Contains("Idle"));
-        AnimationClip hideAnim = Array.Find(animations, a => a.name.Contains("Hide"));
+        AnimationClip showAnim = Array.Find(animations, a => a.name.ToLower().Contains("show"));
+        AnimationClip idleAnim = Array.Find(animations, a => a.name.ToLower().Contains("idle"));
+        AnimationClip hideAnim = Array.Find(animations, a => a.name.ToLower().Contains("hide"));
 
         showAnimationDuration = showAnim.length;
         idleAnimationDuration = idleAnim.length;
         hideAnimationDuration = hideAnim.length;
     }
 
+    IEnumerator InvokeHidingRealTime()
+    {
+        yield return new WaitForSecondsRealtime(showAnimationDuration + idleAnimationDuration);
+        Hide();
+    }
+
+    IEnumerator InvokeDeactivationRealTime()
+    {
+        yield return new WaitForSecondsRealtime(hideAnimationDuration);
+        Deactivate();
+    }
+
     public void Show()
     {
         gameObject.SetActive(true); 
         if (!keepOnScreen)
-            Invoke("Hide", showAnimationDuration + idleAnimationDuration);
+            StartCoroutine(InvokeHidingRealTime());
     } 
 
     public void Hide()
     {
         promptAnimator.SetTrigger("Hide");
-        Invoke("Deactivate", hideAnimationDuration);
+        StartCoroutine(InvokeDeactivationRealTime());
     }
 
     public void Deactivate()

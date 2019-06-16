@@ -33,7 +33,6 @@ class DialogueOptionsScreen : MonoBehaviour
     void SelectOption(int option)
     {
         isSelectingOption = false;
-        GameManager.Instance.SetCursorEnable(enable: false);
 
         foreach (Button optionButton in optionsButtons)
             optionButton.gameObject.SetActive(false);
@@ -42,13 +41,14 @@ class DialogueOptionsScreen : MonoBehaviour
         optionsLayout.padding.bottom = regularOptionsLayoutPadding[1];
         optionsLayout.spacing = regularOptionsLayoutSpacing;
 
+        GameManager.Instance.SetCursorEnable(enable: false);
+
         DialogueManager.Instance.ResumeInteractiveDialogue(option);
     }
 
     public void ShowOptionsScreen(InteractiveDialogue[] interactiveConversation)
     {
         isSelectingOption = true;
-        GameManager.Instance.SetCursorEnable(enable: true);
 
         int i = 0;
 
@@ -68,6 +68,8 @@ class DialogueOptionsScreen : MonoBehaviour
         optionsLayout.padding.top = regularOptionsLayoutPadding[0] + (addtionalPadding * optionsLayoutPaddingMult);
         optionsLayout.padding.bottom = regularOptionsLayoutPadding[1] + (addtionalPadding * optionsLayoutPaddingMult);
         optionsLayout.spacing = regularOptionsLayoutSpacing + (addtionalPadding * optionsLayoutPaddingMult);
+
+        GameManager.Instance.SetCursorEnable(enable: true);
     }
 
     #region Properties

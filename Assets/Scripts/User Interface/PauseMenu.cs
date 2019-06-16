@@ -33,7 +33,7 @@ public class PauseMenu : Menu
         cursorEnabledAtPause = GameManager.Instance.IsCursorEnabled();
 
         CharacterManager.Instance.PlayerController.Disable();
-        DialogueManager.Instance.SetUpdateEnable(enable: false);   
+        DialogueManager.Instance.PauseUpdate(); 
         DebateManager.Instance.SetUpdateEnable(enable: false);
         GameManager.Instance.SetCursorEnable(enable: true);
         
@@ -50,7 +50,7 @@ public class PauseMenu : Menu
 
         if (playerMovementEnabledAtPause)
             CharacterManager.Instance.PlayerController.Enable();
-        DialogueManager.Instance.SetUpdateEnable(enable: true);
+        DialogueManager.Instance.ResumeUpdate();
         DebateManager.Instance.SetUpdateEnable(enable: true);
         GameManager.Instance.SetCursorEnable(enable: cursorEnabledAtPause);
         

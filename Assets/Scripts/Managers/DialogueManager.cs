@@ -35,14 +35,16 @@ public class DialogueManager : MonoBehaviour
 
     #endregion
 
-    [SerializeField] GameObject dialogueArea = default;
-    [SerializeField] GameObject textArea = default;
+    [Header("Main UI Elements")]
     [SerializeField] TextMeshProUGUI speakerText = default;
     [SerializeField] TextMeshProUGUI speechText = default;
     [SerializeField] Image speakerImage = default;
     [SerializeField] Image objectImage = default;
+    [Header("UI Prompts")]
+    [SerializeField] UIPrompt speechPanelPrompt = default;
     [SerializeField] UIPrompt leftMouseClickPrompt = default;
-    
+    [SerializeField] UIPrompt dialogueOptionsPrompt = default;
+
     SpeechController speechController;
     DialogueOptionsScreen dialogueOptionScreen;
     DialogueInfo currentDialogueInfo;
@@ -59,7 +61,9 @@ public class DialogueManager : MonoBehaviour
     {
         speechController = GetComponent<SpeechController>();
         dialogueOptionScreen = GetComponent<DialogueOptionsScreen>();
+        speechPanelPrompt.Awake();
         leftMouseClickPrompt.Awake();
+        dialogueOptionsPrompt.Awake();
         enabled = false;
     }
 
@@ -94,10 +98,10 @@ public class DialogueManager : MonoBehaviour
                     if (currentDialogueInfo.HasInteractiveDialogue() && !currentDialogueInfo.interactionOptionSelected)
                         ShowDialogueOptions();
                     else
-                        SetDialogueAreaAvailability(enableDialogueArea: false);             
+                        DisableDialogueArea();             
                 }
                 else
-                    SetDialogueAreaAvailability(enableDialogueArea: false);              
+                    DisableDialogueArea();              
             }
         }
         else
@@ -105,30 +109,33 @@ public class DialogueManager : MonoBehaviour
                 leftMouseClickPrompt.Show();
     }
 
-    void SetDialogueAreaAvailability(bool enableDialogueArea)
+    void EnableDialogueArea()
     {
-        if (enableDialogueArea)
-            onDialogueAreaEnable.Invoke();
-        else
-            onDialogueAreaDisable.Invoke();
+        onDialogueAreaEnable.Invoke();
+        speechPanelPrompt.Show();
+        enabled = true;
+    }
 
-        if (!enableDialogueArea)
-        {
-            if (currentDialogueInfo && currentLines == currentDialogueInfo.groupDialogue.dialogue && 
-                currentDialogueInfo.groupDialogue.cancelOtherGroupDialogues)
-                CharacterManager.Instance.CancelOtherGroupDialogues();
+    void DisableDialogueArea()
+    {
+        onDialogueAreaDisable.Invoke();
+        speechPanelPrompt.Hide();
+        enabled = false;
 
-            currentDialogueInfo = null;
-            currentLines = null;
-            mainSpeaker = null;
-            previousSpeaker = null;
+        if (dialogueOptionsPrompt.gameObject.activeInHierarchy)
+            dialogueOptionsPrompt.Hide();
 
-            objectImage.gameObject.SetActive(false);
-            speakerImage.gameObject.SetActive(false);
-        }
-        
-        dialogueArea.SetActive(enableDialogueArea);
-        enabled = enableDialogueArea;
+        if (currentDialogueInfo && currentLines == currentDialogueInfo.groupDialogue.dialogue && 
+            currentDialogueInfo.groupDialogue.cancelOtherGroupDialogues)
+            CharacterManager.Instance.CancelOtherGroupDialogues();
+
+        currentDialogueInfo = null;
+        currentLines = null;
+        mainSpeaker = null;
+        previousSpeaker = null;
+
+        objectImage.gameObject.SetActive(false);
+        speakerImage.gameObject.SetActive(false);
     }
 
     bool ShouldDisplayLeftMousePrompt()
@@ -208,12 +215,14 @@ public class DialogueManager : MonoBehaviour
     void ShowDialogueOptions()
     {
         enabled = false;
+        dialogueOptionsPrompt.Show();
         dialogueOptionScreen.ShowOptionsScreen(currentDialogueInfo.interactiveConversation);
     }
 
     public void ResumeInteractiveDialogue(int option)
     {       
         enabled = true;
+        dialogueOptionsPrompt.Hide();
              
         currentLines = currentDialogueInfo.interactiveConversation[option].dialogue;
         mainSpeaker.NiceWithPlayer = currentDialogueInfo.interactiveConversation[option].triggerNiceImpression;
@@ -232,7 +241,7 @@ public class DialogueManager : MonoBehaviour
 
         speakerImage.gameObject.SetActive(true);
         
-        SetDialogueAreaAvailability(enableDialogueArea: true);
+        EnableDialogueArea();
 
         if (currentDialogueInfo.HasIntroLines() && !currentDialogueInfo.introRead)
             currentLines = currentDialogueInfo.introLines;
@@ -258,7 +267,7 @@ public class DialogueManager : MonoBehaviour
             objectImage.gameObject.SetActive(true);
         }
 
-        SetDialogueAreaAvailability(enableDialogueArea: true);
+        EnableDialogueArea();
 
         currentLines = (ChapterManager.Instance.CurrentPhase == ChapterPhase.Exploration) ? thoughtInfo.explorationThought : 
                                                                                             thoughtInfo.investigationThought;
@@ -269,12 +278,21 @@ public class DialogueManager : MonoBehaviour
         SayDialogue(currentLines[0]);
     }
 
-    public void SetUpdateEnable(bool enable)
+    public void PauseUpdate()
     {
         if (currentLines != null)
         {
-            textArea.SetActive(enable);
-            enabled = enable;
+            speechPanelPrompt.Hide();
+            enabled = false;
+        }
+    }
+
+    public void ResumeUpdate()
+    {
+        if (currentLines != null)
+        {
+            speechPanelPrompt.Show();
+            enabled = true;
         }
     }
 
