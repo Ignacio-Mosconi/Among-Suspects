@@ -63,15 +63,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] MouseCursor normalCursor = default;
     [SerializeField] MouseCursor selectionCursor = default;
 
-    const float MinLodingTime = 1.5f;
+    const float MinLodingTime = 3f;
 
     ScreenFader screenFader;
+    LoadingScreen loadingScreen;
     ConfirmationPrompt confirmationPrompt;
     float charactersShowIntervals;
 
     void AwakeSetUp()
     {
         screenFader = GetComponentInChildren<ScreenFader>();
+        loadingScreen = GetComponentInChildren<LoadingScreen>(includeInactive: true);
         confirmationPrompt = GetComponentInChildren<ConfirmationPrompt>(includeInactive: true);
     }
 
@@ -147,17 +149,22 @@ public class GameManager : MonoBehaviour
         AsyncOperation loadOperation = SceneManager.LoadSceneAsync(sceneName);
 
         loadOperation.allowSceneActivation = false;
+        loadingScreen.Show();
 
         while (!loadOperation.isDone)
         {
             loadingTimer += Time.deltaTime;
             currentProgress = Mathf.Clamp01((loadOperation.progress + loadingTimer) / maxProgressValue);
 
+            loadingScreen.ChangeLoadPercentage(currentProgress);
+
             if (currentProgress == 1f)
                 loadOperation.allowSceneActivation = true;
 
             yield return new WaitForEndOfFrame();
         }
+
+        loadingScreen.Hide();
     }
 
     public void SetCursorEnable(bool enable)
