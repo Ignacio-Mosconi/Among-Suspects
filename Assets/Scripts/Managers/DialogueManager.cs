@@ -61,9 +61,9 @@ public class DialogueManager : MonoBehaviour
     {
         speechController = GetComponent<SpeechController>();
         dialogueOptionScreen = GetComponent<DialogueOptionsScreen>();
-        speechPanelPrompt.Awake();
-        leftMouseClickPrompt.Awake();
-        dialogueOptionsPrompt.Awake();
+        speechPanelPrompt.SetUp();
+        leftMouseClickPrompt.SetUp();
+        dialogueOptionsPrompt.SetUp();
         enabled = false;
     }
 

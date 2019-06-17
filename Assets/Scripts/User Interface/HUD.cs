@@ -30,9 +30,9 @@ public class HUD : MonoBehaviour
         playerController.OnClueFound.AddListener(ShowClueFoundPrompt);
         playerController.OnStartedInvestigation.AddListener(ShowInvestigationPhasePrompt);
 
-        interactTextPrompt.Awake();
-        clueFoundPrompt.Awake();
-        investigationPhasePrompt.Awake();
+        interactTextPrompt.SetUp();
+        clueFoundPrompt.SetUp();
+        investigationPhasePrompt.SetUp();
     }
 
     void ShowHUD()

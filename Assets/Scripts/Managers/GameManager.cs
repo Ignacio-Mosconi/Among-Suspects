@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -100,6 +102,12 @@ public class GameManager : MonoBehaviour
         trigger.triggers.Add(entry);
     }
 
+    IEnumerator InvokeRealTime(Action action, float waitTime)
+    {
+        yield return new WaitForSecondsRealtime(waitTime);
+        action();
+    }
+
     public void SetCursorEnable(bool enable)
     {   
         Cursor.lockState = (enable) ? CursorLockMode.None : CursorLockMode.Locked;
@@ -128,6 +136,11 @@ public class GameManager : MonoBehaviour
         AddCursorPointerEvent(button.gameObject, EventTriggerType.PointerEnter);
         AddCursorPointerEvent(button.gameObject, EventTriggerType.PointerExit);
         AddCursorPointerEvent(button.gameObject, EventTriggerType.PointerClick);
+    }
+
+    public void InvokeMethodInRealTime(Action action, float waitTime)
+    {
+        StartCoroutine(InvokeRealTime(action, waitTime));
     }
 
     public void QuitApplication()

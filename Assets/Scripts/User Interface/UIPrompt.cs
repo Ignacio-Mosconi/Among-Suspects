@@ -7,13 +7,14 @@ using TMPro;
 public class UIPrompt : MonoBehaviour
 { 
     [SerializeField] bool keepOnScreen = false;
+    [SerializeField] bool keepStateAtPause = false;
 
     Animator promptAnimator;
     float showAnimationDuration;
     float idleAnimationDuration;
     float hideAnimationDuration;
 
-    public void Awake()
+    public void SetUp()
     {
         promptAnimator = GetComponent<Animator>();
 
@@ -27,38 +28,32 @@ public class UIPrompt : MonoBehaviour
         hideAnimationDuration = hideAnim.length;
     }
 
-    IEnumerator InvokeHidingRealTime()
-    {
-        yield return new WaitForSecondsRealtime(showAnimationDuration + idleAnimationDuration);
-        Hide();
-    }
-
-    IEnumerator InvokeDeactivationRealTime()
-    {
-        yield return new WaitForSecondsRealtime(hideAnimationDuration);
-        Deactivate();
-    }
-
     public void Show()
     {
-        gameObject.SetActive(true); 
+        gameObject.SetActive(true);
+        promptAnimator.keepAnimatorControllerStateOnDisable = keepStateAtPause;
         if (!keepOnScreen)
-            StartCoroutine(InvokeHidingRealTime());
+            Invoke("Hide", showAnimationDuration + idleAnimationDuration);
     } 
 
     public void Hide()
     {
         promptAnimator.SetTrigger("Hide");
-        StartCoroutine(InvokeDeactivationRealTime());
+        if (promptAnimator.updateMode == AnimatorUpdateMode.Normal)
+            Invoke("Deactivate", hideAnimationDuration);
+        else
+            GameManager.Instance.InvokeMethodInRealTime(Deactivate, hideAnimationDuration);
     }
 
     public void Deactivate()
     {
+        promptAnimator.keepAnimatorControllerStateOnDisable = false;
         gameObject.SetActive(false);
     }
 
     public float GetOnScreenDuration()
     {
-        return (showAnimationDuration + idleAnimationDuration + hideAnimationDuration);
+        float duration = (!keepOnScreen) ? showAnimationDuration + idleAnimationDuration + hideAnimationDuration : -1f; 
+        return duration;
     }
 }

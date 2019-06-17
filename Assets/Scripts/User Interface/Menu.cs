@@ -18,16 +18,13 @@ public class Menu : MonoBehaviour
     MenuScreen currentScreen;
     MenuScreen previousScreen;
 
-    void Awake()
-    {
-        foreach (MenuScreen menuScreen in menuScreens)
-            menuScreen.screen.Awake();
-    }
-
     protected virtual void Start()
     {
         currentScreen = Array.Find(menuScreens, ms => ms.screen == mainScreen);
         GameManager.Instance.AddCursorPointerEventsToAllButtons(gameObject);
+
+        foreach (MenuScreen menuScreen in menuScreens)
+            menuScreen.screen.SetUp();
     }
 
     protected void ResetMenuState()

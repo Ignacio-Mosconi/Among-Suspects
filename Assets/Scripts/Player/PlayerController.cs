@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour, ICharacter
     {
         firstPersonCamera.enabled = true;
         playerMovement.enabled = true;
-        canInteract = !TriggeredNotification();
+        canInteract = !TriggeredNotification() && !IsInvoking("ReEnableInteractionDelayed");
     }
 
     public void Disable()

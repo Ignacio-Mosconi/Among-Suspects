@@ -236,7 +236,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4286809042
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -943,6 +943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keepOnScreen: 1
+  keepStateAtPause: 0
 --- !u!1 &8531699086757702387
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,6 +1053,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keepOnScreen: 0
+  keepStateAtPause: 1
 --- !u!1 &8724572250603822043
 GameObject:
   m_ObjectHideFlags: 0
@@ -1170,3 +1172,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keepOnScreen: 0
+  keepStateAtPause: 1

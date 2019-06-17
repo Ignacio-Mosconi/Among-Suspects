@@ -12,7 +12,7 @@ public class AnimatedMenuScreen : MonoBehaviour
     float showAnimationDuration;
     float hideAnimationDuration;
 
-    public void Awake()
+    public void SetUp()
     {
         screenAnimator = GetComponent<Animator>();
 
@@ -22,12 +22,6 @@ public class AnimatedMenuScreen : MonoBehaviour
 
         showAnimationDuration = showAnim.length;
         hideAnimationDuration = hideAnim.length;
-    }
-
-    IEnumerator InvokeDeactivationRealTime()
-    {
-        yield return new WaitForSecondsRealtime(hideAnimationDuration);
-        Deactivate();
     }
 
     public void Show()
@@ -40,7 +34,7 @@ public class AnimatedMenuScreen : MonoBehaviour
     public void Hide()
     {
         screenAnimator.SetTrigger("Hide");
-        StartCoroutine(InvokeDeactivationRealTime());
+        GameManager.Instance.InvokeMethodInRealTime(Deactivate, hideAnimationDuration);
         if (backButton)
             backButton.interactable = false;
     }
