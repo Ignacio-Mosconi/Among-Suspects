@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-class ConfirmationPrompt : MonoBehaviour
+public class ConfirmationPrompt : MonoBehaviour
 {
     [SerializeField] Button confirmButton = default;
     [SerializeField] Button cancelButton = default;

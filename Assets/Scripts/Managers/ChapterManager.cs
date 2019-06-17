@@ -41,20 +41,18 @@ public class ChapterManager : MonoBehaviour
     [SerializeField] GameObject endScreenArea = default;
     [SerializeField] GameObject debateRetryArea = default;
     [SerializeField] GameObject chapterWonArea = default;
-    [Header("Confirmation Messages")]
+    [Header("Confirmation Prompt Messages")]
     [SerializeField] [TextArea(3, 5)] string debateStartWarning = default;
-    [SerializeField] [TextArea(3, 5)] string quitWarning = default;
+    [SerializeField] [TextArea(3, 5)] string exitDebateWarning = default;
     [SerializeField] [TextArea(3, 5)] string nextChapterWarning = default;
 
     ClueInfo[] chapterClues;
-    ConfirmationPrompt confirmationPrompt;
     DebateInitializer debateInitializer;
     PauseMenu pauseMenu;
     ChapterPhase currentPhase = ChapterPhase.Exploration;
 
     void Start()
     {
-        confirmationPrompt = GetComponentInChildren<ConfirmationPrompt>(includeInactive: true);
         chapterClues = Resources.LoadAll<ClueInfo>("Clues/" + SceneManager.GetActiveScene().name);
         debateInitializer = FindObjectOfType<DebateInitializer>();
         pauseMenu = FindObjectOfType<PauseMenu>();
@@ -66,8 +64,8 @@ public class ChapterManager : MonoBehaviour
 
     void RemoveAllConfirmationPromptListeners()
     {
-        confirmationPrompt.RemoveAllConfirmationListeners();
-        confirmationPrompt.RemoveAllCancelationListeners();
+        GameManager.Instance.ConfirmationPrompt.RemoveAllConfirmationListeners();
+        GameManager.Instance.ConfirmationPrompt.RemoveAllCancelationListeners();
     }
 
     void ConfirmDebateStart()
@@ -75,17 +73,6 @@ public class ChapterManager : MonoBehaviour
         pauseMenu.enabled = true;
         RemoveAllConfirmationPromptListeners();
         debateInitializer.StartDebate();
-    }
-
-    void ExitGame()
-    {
-        Time.timeScale = 1f;
-
-        RemoveAllConfirmationPromptListeners();
-
-        GameManager gameManager = GameManager.Instance;
-        string mainMenuSceneName = gameManager.GetMainMenuSceneName();
-        gameManager.TransitionToScene(mainMenuSceneName);
     }
 
     void CancelDebateStart()
@@ -97,10 +84,7 @@ public class ChapterManager : MonoBehaviour
 
     void CancelExit()
     {
-        if (pauseMenu.enabled)
-            pauseMenu.ActivateMenuArea();
-        else
-            endScreenArea.SetActive(true);
+        endScreenArea.SetActive(true);
         RemoveAllConfirmationPromptListeners();
     }
 
@@ -121,29 +105,28 @@ public class ChapterManager : MonoBehaviour
     {
         pauseMenu.enabled = false;
 
-        confirmationPrompt.AddConfirmationListener(delegate { ConfirmDebateStart(); });
-        confirmationPrompt.AddCancelationListener(delegate { CancelDebateStart(); });
-        confirmationPrompt.ChangeWarningMessage(debateStartWarning);
-        confirmationPrompt.ShowConfirmation();
+        GameManager.Instance.ConfirmationPrompt.AddConfirmationListener(delegate { ConfirmDebateStart(); });
+        GameManager.Instance.ConfirmationPrompt.AddCancelationListener(delegate { CancelDebateStart(); });
+        GameManager.Instance.ConfirmationPrompt.ChangeWarningMessage(debateStartWarning);
+        GameManager.Instance.ConfirmationPrompt.ShowConfirmation();
     }
 
     public void ShowExitConfirmation()
     {
         endScreenArea.SetActive(false);
-        confirmationPrompt.AddConfirmationListener(delegate { ExitGame(); });
-        confirmationPrompt.AddCancelationListener(delegate { CancelExit(); });
-        confirmationPrompt.ChangeWarningMessage(quitWarning);
-        confirmationPrompt.ShowConfirmation();
+        GameManager.Instance.ConfirmationPrompt.AddConfirmationListener(delegate { ExitGame(); });
+        GameManager.Instance.ConfirmationPrompt.AddCancelationListener(delegate { CancelExit(); });
+        GameManager.Instance.ConfirmationPrompt.ChangeWarningMessage(exitDebateWarning);
+        GameManager.Instance.ConfirmationPrompt.ShowConfirmation();
     }
 
-    // Placeholder Method!
     public void ShowNextChapterConfirmation()
     {
         endScreenArea.SetActive(false);
-        confirmationPrompt.AddConfirmationListener(delegate { ExitGame(); });
-        confirmationPrompt.AddCancelationListener(delegate { CancelExit(); });
-        confirmationPrompt.ChangeWarningMessage(nextChapterWarning);
-        confirmationPrompt.ShowConfirmation();
+        GameManager.Instance.ConfirmationPrompt.AddConfirmationListener(delegate { ExitGame(); });
+        GameManager.Instance.ConfirmationPrompt.AddCancelationListener(delegate { CancelExit(); });
+        GameManager.Instance.ConfirmationPrompt.ChangeWarningMessage(nextChapterWarning);
+        GameManager.Instance.ConfirmationPrompt.ShowConfirmation();
     }
 
     public void RetryDebate()
@@ -164,6 +147,14 @@ public class ChapterManager : MonoBehaviour
             CharacterManager.Instance.LoadDialogues(ChapterPhase.Investigation);
             CharacterManager.Instance.PlayerController.StartInvestigation();
         }
+    }
+
+    public void ExitGame()
+    {
+        Time.timeScale = 1f;
+        GameManager gameManager = GameManager.Instance;
+        string mainMenuSceneName = gameManager.GetMainMenuSceneName();
+        gameManager.TransitionToScene(mainMenuSceneName);
     }
 
     public ClueInfo GetChapterClueInfo(int index)

@@ -23,7 +23,10 @@ public class GameManager : MonoBehaviour
         if (Instance != this)
             Destroy(gameObject);
         else
-            DontDestroyOnLoad(gameObject);
+        {
+            DontDestroyOnLoad(transform.parent.gameObject);
+            AwakeSetUp();
+        }
     }
 
     public static GameManager Instance
@@ -35,8 +38,8 @@ public class GameManager : MonoBehaviour
                 instance = FindObjectOfType<GameManager>();
                 if (!instance)
                 {
-                    GameObject gameManagerPrefab = Resources.Load("Game Management/Game Manager") as GameObject;
-                    instance = Instantiate(gameManagerPrefab).GetComponent<GameManager>();
+                    GameObject gameManagerPrefab = Resources.Load("Game Management/Game Manager Canvas") as GameObject;
+                    instance = Instantiate(gameManagerPrefab).GetComponentInChildren<GameManager>();
                 }
             }
 
@@ -60,7 +63,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] MouseCursor normalCursor = default;
     [SerializeField] MouseCursor selectionCursor = default;
 
+    ConfirmationPrompt confirmationPrompt;
     float charactersShowIntervals;
+
+    void AwakeSetUp()
+    {
+        confirmationPrompt = GetComponentInChildren<ConfirmationPrompt>(includeInactive: true); 
+    }
 
     void Start()
     {
@@ -117,6 +126,8 @@ public class GameManager : MonoBehaviour
     public void TransitionToScene(string sceneName)
     {
         SetCursorEnable(enable: false);
+        confirmationPrompt.RemoveAllConfirmationListeners();
+        confirmationPrompt.RemoveAllCancelationListeners();
         SceneManager.LoadScene(sceneName);
     }
 
@@ -170,6 +181,11 @@ public class GameManager : MonoBehaviour
     }
 
     #region Properties
+    
+    public ConfirmationPrompt ConfirmationPrompt
+    {
+        get { return confirmationPrompt; }
+    }
     
     public float CharactersShowIntervals
     {

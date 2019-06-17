@@ -4,6 +4,8 @@ using UnityEngine.Events;
 public class PauseMenu : Menu
 {
     [SerializeField] GameObject menuArea = default;
+    [SerializeField] GameObject mainScreenMainArea = default;
+    [SerializeField] [TextArea(3, 5)] string exitWarning = default;
 
     bool isPaused;
     bool playerMovementEnabledAtPause;
@@ -21,6 +23,18 @@ public class PauseMenu : Menu
             else
                 Resume();
         }
+    }
+
+    void CancelExit()
+    {
+        mainScreenMainArea.SetActive(true);
+        GameManager.Instance.ConfirmationPrompt.RemoveAllConfirmationListeners();
+        GameManager.Instance.ConfirmationPrompt.RemoveAllCancelationListeners();
+    }
+
+    void ExitGame()
+    {
+        ChapterManager.Instance.ExitGame();
     }
 
     public void Pause()
@@ -59,13 +73,11 @@ public class PauseMenu : Menu
 
     public void ShowExitConfirmation()
     {
-        menuArea.SetActive(false);
-        ChapterManager.Instance.ShowExitConfirmation();
-    }
-
-    public void ActivateMenuArea()
-    {
-        menuArea.SetActive(true);
+        mainScreenMainArea.SetActive(false);
+        GameManager.Instance.ConfirmationPrompt.AddConfirmationListener(delegate { ExitGame(); });
+        GameManager.Instance.ConfirmationPrompt.AddCancelationListener(delegate { CancelExit(); });
+        GameManager.Instance.ConfirmationPrompt.ChangeWarningMessage(exitWarning);
+        GameManager.Instance.ConfirmationPrompt.ShowConfirmation();
     }
 
     #region Properties

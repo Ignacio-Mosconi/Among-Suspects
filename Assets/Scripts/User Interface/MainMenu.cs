@@ -11,13 +11,6 @@ public class MainMenu : Menu
     [SerializeField] [TextArea(3, 5)] string quitWarning = default;
     [Header("Other References")]
     [SerializeField] TextMeshProUGUI appVersionText = default;
-    
-    ConfirmationPrompt confirmationPrompt;
-
-    void Awake()
-    {
-        confirmationPrompt = mainScreen.GetComponentInChildren<ConfirmationPrompt>(includeInactive: true);
-    }
 
     protected override void Start()
     {
@@ -26,13 +19,13 @@ public class MainMenu : Menu
         appVersionText.text = "Version " + Application.version;
         
         GameManager.Instance.SetCursorEnable(enable: true);  
-        confirmationPrompt.AddCancelationListener(delegate { CancelConfirmation(); });
+        GameManager.Instance.ConfirmationPrompt.AddCancelationListener(delegate { CancelConfirmation(); });
     }
 
     void StartNewGame()
     {
         GameManager gameManager = GameManager.Instance;
-        string firstChapterName = gameManager.GetChapterSceneName(0);     
+        string firstChapterName = gameManager.GetChapterSceneName(0);  
         gameManager.TransitionToScene(firstChapterName);
     }
 
@@ -44,22 +37,22 @@ public class MainMenu : Menu
     public void ShowNewGameConfirmation()
     {
         mainScreenMainArea.SetActive(false);
-        confirmationPrompt.AddConfirmationListener(delegate { StartNewGame(); });
-        confirmationPrompt.ChangeWarningMessage(newGameWarning);
-        confirmationPrompt.ShowConfirmation();
+        GameManager.Instance.ConfirmationPrompt.AddConfirmationListener(delegate { StartNewGame(); });
+        GameManager.Instance.ConfirmationPrompt.ChangeWarningMessage(newGameWarning);
+        GameManager.Instance.ConfirmationPrompt.ShowConfirmation();
     }
 
     public void ShowQuitConfirmation()
     {
         mainScreenMainArea.SetActive(false);
-        confirmationPrompt.AddConfirmationListener(delegate { QuitGame(); });
-        confirmationPrompt.ChangeWarningMessage(quitWarning);
-        confirmationPrompt.ShowConfirmation();
+        GameManager.Instance.ConfirmationPrompt.AddConfirmationListener(delegate { QuitGame(); });
+        GameManager.Instance.ConfirmationPrompt.ChangeWarningMessage(quitWarning);
+        GameManager.Instance.ConfirmationPrompt.ShowConfirmation();
     }
 
     public void CancelConfirmation()
     {
         mainScreenMainArea.SetActive(true);
-        confirmationPrompt.RemoveAllConfirmationListeners();
+        GameManager.Instance.ConfirmationPrompt.RemoveAllConfirmationListeners();
     }
 }
