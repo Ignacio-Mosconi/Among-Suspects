@@ -63,18 +63,24 @@ public class GameManager : MonoBehaviour
     [SerializeField] MouseCursor normalCursor = default;
     [SerializeField] MouseCursor selectionCursor = default;
 
+    const float MinLodingTime = 1.5f;
+
+    ScreenFader screenFader;
     ConfirmationPrompt confirmationPrompt;
     float charactersShowIntervals;
 
     void AwakeSetUp()
     {
-        confirmationPrompt = GetComponentInChildren<ConfirmationPrompt>(includeInactive: true); 
+        screenFader = GetComponentInChildren<ScreenFader>();
+        confirmationPrompt = GetComponentInChildren<ConfirmationPrompt>(includeInactive: true);
     }
 
     void Start()
     {
         Application.targetFrameRate = targetFrameRate;
         charactersShowIntervals = 1f / (textSpeedMultiplier * targetFrameRate);
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void OnMousePointerEnter(PointerEventData data)
@@ -111,10 +117,47 @@ public class GameManager : MonoBehaviour
         trigger.triggers.Add(entry);
     }
 
+    void LoadNextScene(string sceneName)
+    {
+        StartCoroutine(LoadSceneAsynchronously(sceneName));
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
+    {
+        screenFader.FadeInScene();
+    }
+
     IEnumerator InvokeRealTime(Action action, float waitTime)
     {
         yield return new WaitForSecondsRealtime(waitTime);
         action();
+    }
+
+    IEnumerator InvokeRealTime<T>(Action<T> action, T paramenter, float waitTime)
+    {
+        yield return new WaitForSecondsRealtime(waitTime);
+        action(paramenter);
+    }
+
+    IEnumerator LoadSceneAsynchronously(string sceneName)
+    {
+        float loadingTimer = 0f;
+        float currentProgress = 0f;
+        float maxProgressValue = 0.0f + MinLodingTime;
+        AsyncOperation loadOperation = SceneManager.LoadSceneAsync(sceneName);
+
+        loadOperation.allowSceneActivation = false;
+
+        while (!loadOperation.isDone)
+        {
+            loadingTimer += Time.deltaTime;
+            currentProgress = Mathf.Clamp01((loadOperation.progress + loadingTimer) / maxProgressValue);
+
+            if (currentProgress == 1f)
+                loadOperation.allowSceneActivation = true;
+
+            yield return new WaitForEndOfFrame();
+        }
     }
 
     public void SetCursorEnable(bool enable)
@@ -128,7 +171,8 @@ public class GameManager : MonoBehaviour
         SetCursorEnable(enable: false);
         confirmationPrompt.RemoveAllConfirmationListeners();
         confirmationPrompt.RemoveAllCancelationListeners();
-        SceneManager.LoadScene(sceneName);
+        screenFader.FadeOutScene();
+        InvokeMethodInRealTime(LoadNextScene, sceneName, screenFader.FadeDuration);
     }
 
     public void AddCursorPointerEventsToAllButtons(GameObject uiLayout)
@@ -152,6 +196,11 @@ public class GameManager : MonoBehaviour
     public void InvokeMethodInRealTime(Action action, float waitTime)
     {
         StartCoroutine(InvokeRealTime(action, waitTime));
+    }
+    
+    public void InvokeMethodInRealTime<T>(Action<T> action, T parameter, float waitTime)
+    {
+        StartCoroutine(InvokeRealTime(action, parameter, waitTime));
     }
 
     public void QuitApplication()
