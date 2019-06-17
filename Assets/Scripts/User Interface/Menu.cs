@@ -43,6 +43,7 @@ public class Menu : MonoBehaviour
     {
         currentScreen.screen.Hide();
         nextScreen.Show();
+        AudioManager.Instance.PlaySound("Menu Advance");
 
         previousScreen = currentScreen;
         currentScreen = Array.Find(menuScreens, ms => ms.screen == nextScreen);
@@ -52,7 +53,8 @@ public class Menu : MonoBehaviour
     {
         currentScreen.screen.Hide();
         previousScreen.screen.Show();
-        
+        AudioManager.Instance.PlaySound("Menu Return");
+
         currentScreen = previousScreen;
         previousScreen = Array.Find(menuScreens, ms => ms.screen == previousScreen.previousScreen);
     }

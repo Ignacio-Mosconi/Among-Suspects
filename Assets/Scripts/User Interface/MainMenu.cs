@@ -18,8 +18,8 @@ public class MainMenu : Menu
 
         appVersionText.text = "Version " + Application.version;
         
-        GameManager.Instance.SetCursorEnable(enable: true);  
-        GameManager.Instance.ConfirmationPrompt.AddCancelationListener(delegate { CancelConfirmation(); });
+        GameManager.Instance.SetCursorEnable(enable: true);
+        AudioManager.Instance.PlayTheme("Menu Theme");
     }
 
     void StartNewGame()
@@ -38,6 +38,7 @@ public class MainMenu : Menu
     {
         mainScreenMainArea.SetActive(false);
         GameManager.Instance.ConfirmationPrompt.AddConfirmationListener(delegate { StartNewGame(); });
+        GameManager.Instance.ConfirmationPrompt.AddCancelationListener(delegate { CancelConfirmation(); });
         GameManager.Instance.ConfirmationPrompt.ChangeWarningMessage(newGameWarning);
         GameManager.Instance.ConfirmationPrompt.ShowConfirmation();
     }
@@ -46,6 +47,7 @@ public class MainMenu : Menu
     {
         mainScreenMainArea.SetActive(false);
         GameManager.Instance.ConfirmationPrompt.AddConfirmationListener(delegate { QuitGame(); });
+        GameManager.Instance.ConfirmationPrompt.AddCancelationListener(delegate { CancelConfirmation(); });
         GameManager.Instance.ConfirmationPrompt.ChangeWarningMessage(quitWarning);
         GameManager.Instance.ConfirmationPrompt.ShowConfirmation();
     }
@@ -54,5 +56,6 @@ public class MainMenu : Menu
     {
         mainScreenMainArea.SetActive(true);
         GameManager.Instance.ConfirmationPrompt.RemoveAllConfirmationListeners();
+        GameManager.Instance.ConfirmationPrompt.RemoveAllCancelationListeners();
     }
 }

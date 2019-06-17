@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         if (Instance != this)
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
         else
         {
             DontDestroyOnLoad(transform.parent.gameObject);
@@ -88,11 +88,18 @@ public class GameManager : MonoBehaviour
     void OnMousePointerEnter(PointerEventData data)
     {
         Cursor.SetCursor(selectionCursor.texture, selectionCursor.hotspot, CursorMode.Auto);
+        AudioManager.Instance.PlaySound("Button Highlight");
     }
 
     void OnMousePointerExit(PointerEventData data)
     {
         Cursor.SetCursor(normalCursor.texture, normalCursor.hotspot, CursorMode.Auto);
+    }
+
+    void OnMousePointerClick(PointerEventData data)
+    {
+        Cursor.SetCursor(normalCursor.texture, normalCursor.hotspot, CursorMode.Auto);
+        AudioManager.Instance.PlaySound("Button Click");
     }
 
     void AddCursorPointerEvent(GameObject uiElement, EventTriggerType triggerType)
@@ -111,8 +118,10 @@ public class GameManager : MonoBehaviour
                 entry.callback.AddListener((data) => { OnMousePointerEnter((PointerEventData)data); });
                 break;
             case EventTriggerType.PointerExit:
-            case EventTriggerType.PointerClick:
                 entry.callback.AddListener((data) => { OnMousePointerExit((PointerEventData)data); });
+                break;
+            case EventTriggerType.PointerClick:
+                entry.callback.AddListener((data) => { OnMousePointerClick((PointerEventData)data); });
                 break;
         }
 

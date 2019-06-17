@@ -13,6 +13,9 @@ public class ConfirmationPrompt : MonoBehaviour
     {
         confirmButton.onClick.AddListener(HideConfirmation);
         cancelButton.onClick.AddListener(HideConfirmation);
+        
+        GameManager.Instance.AddCursorPointerEvents(confirmButton);
+        GameManager.Instance.AddCursorPointerEvents(cancelButton);
     }
 
     public void ShowConfirmation()
