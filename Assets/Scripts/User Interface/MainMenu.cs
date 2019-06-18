@@ -19,6 +19,7 @@ public class MainMenu : Menu
         appVersionText.text = "Version " + Application.version;
         
         GameManager.Instance.SetCursorEnable(enable: true);
+        AudioManager.Instance.PlayTheme("Main Menu");
     }
 
     void StartNewGame()

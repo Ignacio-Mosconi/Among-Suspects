@@ -59,6 +59,7 @@ public class ChapterManager : MonoBehaviour
 
         GameManager.Instance.SetCursorEnable(enable: false);
         AudioManager.Instance.PlayAmbientSound("Rain Interior");
+        AudioManager.Instance.PlayTheme("Exploration Phase");
 
         debateInitializer.DisableInteraction();
     }
@@ -73,6 +74,7 @@ public class ChapterManager : MonoBehaviour
     {
         pauseMenu.enabled = true;
         RemoveAllConfirmationPromptListeners();
+        AudioManager.Instance.PlayTheme("Debate");
         debateInitializer.StartDebate();
     }
 
@@ -147,6 +149,7 @@ public class ChapterManager : MonoBehaviour
             debateInitializer.EnableInteraction();
             CharacterManager.Instance.LoadDialogues(ChapterPhase.Investigation);
             CharacterManager.Instance.PlayerController.StartInvestigation();
+            AudioManager.Instance.PlayTheme("Investigation Phase");
         }
     }
 
