@@ -93,8 +93,10 @@ public class DebateManager : MonoBehaviour
         credibilityBarController = GetComponent<CredibilityBarController>();
         
         cluesScreen = GetComponentInChildren<CluesScreen>(includeInactive: true);
+
         useEvidenceButton.interactable = false;
         GameManager.Instance.AddCursorPointerEventsToAllButtons(debateOptionsPanel);
+        GameManager.Instance.AddCursorPointerEventsToAllButtons(clueOptionsPanel);
 
         argumentController.OnArgumentFinish.AddListener(ShowDebateOptions);
         debateCameraController.OnFocusFinish.AddListener(ProceedAfterCameraFocus);

@@ -77,6 +77,7 @@ public class DialogueManager : MonoBehaviour
                 return;
             }
             
+            AudioManager.Instance.PlaySound("Advance Dialogue");
             lineIndex++;
 
             if (leftMouseClickPrompt.gameObject.activeInHierarchy)

@@ -23,7 +23,7 @@ public class ScreenFader : MonoBehaviour
 
         while (fadeTimer < fadeDuration)
         {
-            fadeTimer += Time.deltaTime;
+            fadeTimer += Time.unscaledDeltaTime;
             newFaderColor.a = Mathf.Lerp(initialAlpha, targetAlpha, fadeTimer / fadeDuration);
             blackImage.color = newFaderColor;
 
@@ -39,14 +39,14 @@ public class ScreenFader : MonoBehaviour
     {
         if (fadingRoutine != null)
             StopCoroutine(fadingRoutine);
-        StartCoroutine(Fade(1f, 0f));
+        fadingRoutine = StartCoroutine(Fade(1f, 0f));
     }
 
     public void FadeOutScene()
     {
         if (fadingRoutine != null)
             StopCoroutine(fadingRoutine);
-        StartCoroutine(Fade(0f, 1f));
+        fadingRoutine = StartCoroutine(Fade(0f, 1f));
     }
 
     #region Properties

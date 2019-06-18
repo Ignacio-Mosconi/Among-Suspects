@@ -69,6 +69,7 @@ public class AudioManager : MonoBehaviour
             Debug.LogError("There are no sounds named " + soundName + "registered in the Audio Manager.", gameObject);
             return;
         }
+        soundsUISource.clip = audioClip;
         soundsUISource.PlayOneShot(audioClip);
     }
 
@@ -94,5 +95,10 @@ public class AudioManager : MonoBehaviour
         }
         ambientSoundSource.clip = audioClip;
         ambientSoundSource.Play();
+    }
+
+    public bool IsPlayingSound(string soundName)
+    {
+        return (soundsUISource.isPlaying && soundsUISource.clip.name == soundName);
     }
 }

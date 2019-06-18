@@ -50,7 +50,9 @@ public class PauseMenu : Menu
         DialogueManager.Instance.PauseUpdate(); 
         DebateManager.Instance.SetUpdateEnable(enable: false);
         GameManager.Instance.SetCursorEnable(enable: true);
-        
+
+        AudioManager.Instance.PlaySound("Menu Pop In");
+
         onPaused.Invoke();
     }
 
@@ -67,7 +69,9 @@ public class PauseMenu : Menu
         DialogueManager.Instance.ResumeUpdate();
         DebateManager.Instance.SetUpdateEnable(enable: true);
         GameManager.Instance.SetCursorEnable(enable: cursorEnabledAtPause);
-        
+
+        AudioManager.Instance.PlaySound("Menu Pop Out");
+
         onResume.Invoke();
     }
 

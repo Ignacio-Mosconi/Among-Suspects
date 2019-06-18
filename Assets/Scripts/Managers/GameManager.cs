@@ -85,28 +85,37 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    void OnMousePointerEnter(PointerEventData data)
-    {
-        Cursor.SetCursor(selectionCursor.texture, selectionCursor.hotspot, CursorMode.Auto);
-        AudioManager.Instance.PlaySound("Button Highlight");
+    void OnMousePointerEnter(PointerEventData data, Selectable selectable)
+    {     
+        Button button = selectable as Button;
+        if (button && button.interactable)
+        {
+            Cursor.SetCursor(selectionCursor.texture, selectionCursor.hotspot, CursorMode.Auto);
+            AudioManager.Instance.PlaySound("Button Highlight");
+        }
     }
 
-    void OnMousePointerExit(PointerEventData data)
+    void OnMousePointerExit(PointerEventData data, Selectable selectable)
     {
         Cursor.SetCursor(normalCursor.texture, normalCursor.hotspot, CursorMode.Auto);
     }
 
-    void OnMousePointerClick(PointerEventData data)
+    void OnMousePointerClick(PointerEventData data, Selectable selectable)
     {
-        Cursor.SetCursor(normalCursor.texture, normalCursor.hotspot, CursorMode.Auto);
-        AudioManager.Instance.PlaySound("Button Click");
+        Button button = selectable as Button;
+        if (button && button.image.sprite != button.spriteState.disabledSprite)
+        {
+            Cursor.SetCursor(normalCursor.texture, normalCursor.hotspot, CursorMode.Auto);
+            if (!AudioManager.Instance.IsPlayingSound("Button Click"))
+                AudioManager.Instance.PlaySound("Button Click");
+        }      
     }
 
-    void AddCursorPointerEvent(GameObject uiElement, EventTriggerType triggerType)
+    void AddCursorPointerEvent(Selectable selectable, EventTriggerType triggerType)
     {
-        EventTrigger trigger = uiElement.GetComponent<EventTrigger>();
+        EventTrigger trigger = selectable.GetComponent<EventTrigger>();
         if (!trigger)
-            trigger = uiElement.AddComponent<EventTrigger>();
+            trigger = selectable.gameObject.AddComponent<EventTrigger>();
 
         EventTrigger.Entry entry = new EventTrigger.Entry();
 
@@ -115,13 +124,13 @@ public class GameManager : MonoBehaviour
         switch (triggerType)
         {
             case EventTriggerType.PointerEnter:
-                entry.callback.AddListener((data) => { OnMousePointerEnter((PointerEventData)data); });
+                entry.callback.AddListener((data) => { OnMousePointerEnter((PointerEventData)data, selectable); });
                 break;
             case EventTriggerType.PointerExit:
-                entry.callback.AddListener((data) => { OnMousePointerExit((PointerEventData)data); });
+                entry.callback.AddListener((data) => { OnMousePointerExit((PointerEventData)data, selectable); });
                 break;
             case EventTriggerType.PointerClick:
-                entry.callback.AddListener((data) => { OnMousePointerClick((PointerEventData)data); });
+                entry.callback.AddListener((data) => { OnMousePointerClick((PointerEventData)data, selectable); });
                 break;
         }
 
@@ -196,17 +205,17 @@ public class GameManager : MonoBehaviour
         Button[] buttons = uiLayout.GetComponentsInChildren<Button>(includeInactive: true);
         foreach (Button button in buttons)
         {
-            AddCursorPointerEvent(button.gameObject, EventTriggerType.PointerEnter);
-            AddCursorPointerEvent(button.gameObject, EventTriggerType.PointerExit);
-            AddCursorPointerEvent(button.gameObject, EventTriggerType.PointerClick);
+            AddCursorPointerEvent(button, EventTriggerType.PointerEnter);
+            AddCursorPointerEvent(button, EventTriggerType.PointerExit);
+            AddCursorPointerEvent(button, EventTriggerType.PointerClick);
         }
     }
 
     public void AddCursorPointerEvents(Button button)
     {
-        AddCursorPointerEvent(button.gameObject, EventTriggerType.PointerEnter);
-        AddCursorPointerEvent(button.gameObject, EventTriggerType.PointerExit);
-        AddCursorPointerEvent(button.gameObject, EventTriggerType.PointerClick);
+        AddCursorPointerEvent(button, EventTriggerType.PointerEnter);
+        AddCursorPointerEvent(button, EventTriggerType.PointerExit);
+        AddCursorPointerEvent(button, EventTriggerType.PointerClick);
     }
 
     public void InvokeMethodInRealTime(Action action, float waitTime)
