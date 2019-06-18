@@ -44,13 +44,13 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 192
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -441,7 +441,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e722d7f1b2d934245b0725a5083a100b, type: 3}
   themes:
   - {fileID: 8300000, guid: 9edf771de9fda4b4abe66e2dfce1a3ad, type: 3}
-  ambientSounds: []
+  ambientSounds:
+  - {fileID: 8300000, guid: a76fc76d8bc5f5b498070ed12abd81c4, type: 3}
   soundsUISource: {fileID: 7772999099879494985}
   musicSource: {fileID: 7772999100198588058}
   ambientSoundSource: {fileID: 7772999099776890794}

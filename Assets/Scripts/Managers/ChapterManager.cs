@@ -58,6 +58,7 @@ public class ChapterManager : MonoBehaviour
         pauseMenu = FindObjectOfType<PauseMenu>();
 
         GameManager.Instance.SetCursorEnable(enable: false);
+        AudioManager.Instance.PlayAmbientSound("Rain Interior");
 
         debateInitializer.DisableInteraction();
     }

@@ -97,6 +97,26 @@ public class AudioManager : MonoBehaviour
         ambientSoundSource.Play();
     }
 
+    public void PauseAmbientSound()
+    {
+        ambientSoundSource.Pause();
+    }
+
+    public void ResumeAmbientSound()
+    {
+        ambientSoundSource.UnPause();
+    }
+
+    public void PauseMusic()
+    {
+        musicSource.Pause();
+    }
+
+    public void ResumeMusic()
+    {
+        musicSource.UnPause();
+    }
+
     public bool IsPlayingSound(string soundName)
     {
         return (soundsUISource.isPlaying && soundsUISource.clip.name == soundName);
