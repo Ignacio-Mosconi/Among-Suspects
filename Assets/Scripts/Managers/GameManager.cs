@@ -1,7 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -66,33 +64,56 @@ public class GameManager : MonoBehaviour
     [SerializeField] MouseCursor selectionCursor = default;
 
     const float MinLodingTime = 3f;
-    //Settings
-    private Resolution[] _resolutions;
-    List<string> _resolutionString;
-    int currentRes;
-    bool _isFullscreen;
 
     ScreenFader screenFader;
     LoadingScreen loadingScreen;
     ConfirmationPrompt confirmationPrompt;
+    int currentQualityLevelIndex;
+    int currentResolutionIndex;
+    bool isFullscreen;
     float charactersShowIntervals;
-
 
     void AwakeSetUp()
     {
         screenFader = GetComponentInChildren<ScreenFader>();
         loadingScreen = GetComponentInChildren<LoadingScreen>(includeInactive: true);
         confirmationPrompt = GetComponentInChildren<ConfirmationPrompt>(includeInactive: true);
-        updateResolutions();
     }
 
     void Start()
     {
-        initPlayerPrefs();
+        LoadPlayerPrefs();
         Application.targetFrameRate = targetFrameRate;
         charactersShowIntervals = 1f / (textSpeedMultiplier * targetFrameRate);
 
         SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void SetBoolPreference(string key, bool state)
+    {
+        PlayerPrefs.SetInt(key, state ? 1 : 0);
+    }
+
+    bool GetBoolPreference(string key, bool defaultValue)
+    {
+        int defaultIntValue = defaultValue ? 1 : 0;
+        int value = PlayerPrefs.GetInt(key, defaultIntValue);
+        return (value == 1);
+    }
+
+    void LoadPlayerPrefs()
+    {
+        Resolution[] resolutions = Screen.resolutions;
+        Resolution currentRes = Screen.currentResolution;
+        int defaultResIndex = Array.FindIndex(resolutions, r => r.width == currentRes.width && r.height == currentRes.height);
+
+        currentQualityLevelIndex = PlayerPrefs.GetInt("pQualityLevel", QualitySettings.GetQualityLevel());
+        currentResolutionIndex = PlayerPrefs.GetInt("pResolution", defaultResIndex);
+        isFullscreen = GetBoolPreference("pFullscreen", Screen.fullScreen);
+
+        SetQualityLevel(currentQualityLevelIndex);
+        SetResolution(currentResolutionIndex);
+        SetFullscreen(isFullscreen);
     }
 
     void OnMousePointerEnter(PointerEventData data, Selectable selectable)
@@ -263,79 +284,48 @@ public class GameManager : MonoBehaviour
 
         return chapterScenesNames[chapterIndex];
     }
-    #region settings
-    public void setFullscreen(bool fullscreen){
-        Screen.fullScreen = fullscreen;
-        setBool("pFullscreen", fullscreen);
-    }
 
-    private void initPlayerPrefs(){
-        if (PlayerPrefs.HasKey("pSfxVolume")){
-            //code
-        }
-        if (PlayerPrefs.HasKey("pMusicVolume")){
-            //code
-        }
-        if (PlayerPrefs.HasKey("pFullscreen")){
-            Screen.fullScreen = getBool("pFullscreen");
-            _isFullscreen = Screen.fullScreen;
-        }
-    }
-    public void setResolution(int resolution){
-            Resolution res = _resolutions[resolution];
-            Screen.SetResolution(res.width, res.height, Screen.fullScreen);
-    }
-
-    public void updateResolutions()
+    public void SetQualityLevel(int qualityLevelIndex)
     {
-        _resolutions = Screen.resolutions.Select(resolution => new Resolution
-        {
-            width = resolution.width,
-            height = resolution.height
-        }).Distinct().ToArray();
-        _resolutionString = new List<string>();
-        for (int i = 0; i < _resolutions.Length; i++)
-        {
-            string option = _resolutions[i].width + " x " + _resolutions[i].height;
-            if (_resolutions[i].width == Screen.width
-                && _resolutions[i].height == Screen.height)
-            {
-                currentRes = i;
-            }
-            _resolutionString.Add(option);
-        }
-    }
-    #endregion
-    #region bool translator
-    public static void setBool(string key, bool state){
-        PlayerPrefs.SetInt(key, state ? 1 : 0);
+        currentQualityLevelIndex = qualityLevelIndex;
+        PlayerPrefs.SetInt("pQualityLevel", currentQualityLevelIndex);
+        
+        QualitySettings.SetQualityLevel(qualityLevelIndex);
     }
 
-    public static bool getBool(string key){
-        int value = PlayerPrefs.GetInt(key);
-        if (value == 1){
-            return true;
-        }
-        else{
-            return false;
-        }
+    public void SetResolution(int resolutionIndex)
+    {
+        currentResolutionIndex = resolutionIndex;
+        PlayerPrefs.SetInt("pResolution", currentResolutionIndex);
+
+        Resolution res = Screen.resolutions[currentResolutionIndex];
+        Screen.SetResolution(res.width, res.height, isFullscreen);
     }
-    #endregion
+
+    public void SetFullscreen(bool fullScreen)
+    {
+        isFullscreen = fullScreen;
+        SetBoolPreference("pFullscreen", isFullscreen);
+        Debug.Log(isFullscreen);
+        
+        Screen.fullScreen = isFullscreen;
+    }
+
     #region Properties
-
-    public List<string> resolutions
-    {
-        get { return _resolutionString; }
-    }
-
-    public int currentResolution
-    {
-        get { return currentRes; }
-    }
 
     public ConfirmationPrompt ConfirmationPrompt
     {
         get { return confirmationPrompt; }
+    }
+
+    public int CurrentQualityLevelIndex
+    {
+        get { return currentQualityLevelIndex; }
+    }
+
+    public int CurrentResolutionIndex
+    {
+        get { return currentResolutionIndex; }
     }
     
     public float CharactersShowIntervals
