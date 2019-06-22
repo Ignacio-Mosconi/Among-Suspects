@@ -1,22 +1,36 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SettingsScreen : MonoBehaviour
 {
-    [SerializeField] Dropdown qualityLevelDropdown = default;
-    [SerializeField] Dropdown resolutionDropdown = default;
+    [SerializeField] TMP_Dropdown qualityLevelDropdown = default;
+    [SerializeField] TMP_Dropdown resolutionDropdown = default;
     [SerializeField] Toggle fullscreenToggle = default;
     [SerializeField] Slider textSpeedSlider = default;
     [SerializeField] Slider sfxVolumeSlider = default;
     [SerializeField] Slider musicVolumeSlider = default;
+    [SerializeField] TextMeshProUGUI fullscreenText = default;
+    [SerializeField] [Range(150f, 300f)] float maxDropdownHeight = 300f;
     
     void Start()
     {
-        fullscreenToggle.isOn = Screen.fullScreen;
+        fullscreenToggle.isOn = GameManager.Instance.IsFullscreen;
         InitializeQualityLevelDropdown();
         InitializeResolutionDropdown();
+    }
+
+    void ResizeDropdownList(TMP_Dropdown dropdown)
+    {
+        RectTransform templateTransform = dropdown.template;
+        RectTransform viewportTransform = templateTransform.GetComponentInChildren<Mask>().rectTransform;
+        RectTransform contentTransform = viewportTransform.GetChild(0).GetComponent<RectTransform>();
+        float contentHeight = contentTransform.sizeDelta.y;
+        int numberOfOptions = dropdown.options.Count;
+        float newTemplateHeight = Mathf.Min(contentHeight * numberOfOptions, maxDropdownHeight);
+
+        templateTransform.sizeDelta = new Vector2(templateTransform.sizeDelta.x, newTemplateHeight);
     }
 
     void InitializeQualityLevelDropdown()
@@ -26,15 +40,13 @@ public class SettingsScreen : MonoBehaviour
         qualityLevelDropdown.ClearOptions();
         qualityLevelDropdown.AddOptions(qualityLevelsStrings);
         qualityLevelDropdown.value = GameManager.Instance.CurrentQualityLevelIndex;
+
+        ResizeDropdownList(qualityLevelDropdown);
     }
 
     void InitializeResolutionDropdown()
     {
-        Resolution[] resolutions = Screen.resolutions.Select(resolution => new Resolution
-        {
-            width = resolution.width,
-            height = resolution.height
-        }).Distinct().ToArray();
+        Resolution[] resolutions = GameManager.Instance.AvailableResolutions;
 
         List<string> resolutionsStrings = new List<string>();
         for (int i = 0; i < resolutions.Length; i++)
@@ -46,6 +58,31 @@ public class SettingsScreen : MonoBehaviour
         resolutionDropdown.ClearOptions();
         resolutionDropdown.AddOptions(resolutionsStrings);
         resolutionDropdown.value = GameManager.Instance.CurrentResolutionIndex;
+        ValidateResolution();
+
+        ResizeDropdownList(resolutionDropdown);
+    }
+
+    void ValidateResolution()
+    {
+        bool shouldBeWindowed = GameManager.Instance.ShouldBeWindowed();
+        bool shouldBeFullscreen = GameManager.Instance.ShouldBeFullscreen();
+
+        if (shouldBeWindowed || shouldBeFullscreen)
+        {
+            fullscreenToggle.interactable = false;
+            fullscreenToggle.graphic.color = fullscreenToggle.colors.disabledColor;
+            fullscreenText.color = Color.grey;
+            fullscreenToggle.isOn = shouldBeFullscreen;
+            ChangeFullscreen(shouldBeFullscreen);
+        }
+        else
+            if (!fullscreenToggle.interactable)
+        {
+            fullscreenToggle.interactable = true;
+            fullscreenToggle.graphic.color = fullscreenToggle.colors.normalColor;
+            fullscreenText.color = Color.white;
+        }
     }
 
     public void ChangeQualityLevel(int qualityLevelIndex)
@@ -56,6 +93,7 @@ public class SettingsScreen : MonoBehaviour
     public void ChangeResolution(int resolutionIndex)
     {
         GameManager.Instance.SetResolution(resolutionIndex);
+        ValidateResolution();
     }
 
     public void ChangeFullscreen(bool fullscreen)

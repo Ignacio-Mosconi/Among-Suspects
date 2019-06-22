@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -63,11 +64,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] MouseCursor normalCursor = default;
     [SerializeField] MouseCursor selectionCursor = default;
 
-    const float MinLodingTime = 3f;
+    public const float MinLodingTime = 3f;
+    public const float MinFullscreenDPI = 90f;
 
     ScreenFader screenFader;
     LoadingScreen loadingScreen;
     ConfirmationPrompt confirmationPrompt;
+    Resolution[] availableResolutions;
     int currentQualityLevelIndex;
     int currentResolutionIndex;
     bool isFullscreen;
@@ -82,7 +85,9 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        FetchAvailableResolutions();
         LoadPlayerPrefs();
+        
         Application.targetFrameRate = targetFrameRate;
         charactersShowIntervals = 1f / (textSpeedMultiplier * targetFrameRate);
 
@@ -99,6 +104,12 @@ public class GameManager : MonoBehaviour
         int defaultIntValue = defaultValue ? 1 : 0;
         int value = PlayerPrefs.GetInt(key, defaultIntValue);
         return (value == 1);
+    }
+
+    void FetchAvailableResolutions()
+    {
+        availableResolutions = Screen.resolutions;
+        Array.Reverse(availableResolutions);
     }
 
     void LoadPlayerPrefs()
@@ -285,6 +296,23 @@ public class GameManager : MonoBehaviour
         return chapterScenesNames[chapterIndex];
     }
 
+    public bool ShouldBeWindowed()
+    {
+        float maxScreenWidth = availableResolutions[0].width;
+        float maxScreenHeight = availableResolutions[0].height;
+        float currentScreenWidth = availableResolutions[currentResolutionIndex].width;
+        float currentScreenHeight = availableResolutions[currentResolutionIndex].height;
+        float screenSize = Mathf.Sqrt(maxScreenWidth * maxScreenWidth + maxScreenHeight * maxScreenHeight) / Screen.dpi; 
+        float currentDPI = Mathf.Sqrt(currentScreenWidth * currentScreenWidth + currentScreenHeight * currentScreenHeight) / screenSize;
+
+        return (currentDPI < MinFullscreenDPI); 
+    }
+
+    public bool ShouldBeFullscreen()
+    {
+        return (currentResolutionIndex == 0); 
+    }
+
     public void SetQualityLevel(int qualityLevelIndex)
     {
         currentQualityLevelIndex = qualityLevelIndex;
@@ -298,7 +326,7 @@ public class GameManager : MonoBehaviour
         currentResolutionIndex = resolutionIndex;
         PlayerPrefs.SetInt("pResolution", currentResolutionIndex);
 
-        Resolution res = Screen.resolutions[currentResolutionIndex];
+        Resolution res = availableResolutions[currentResolutionIndex];
         Screen.SetResolution(res.width, res.height, isFullscreen);
     }
 
@@ -306,7 +334,6 @@ public class GameManager : MonoBehaviour
     {
         isFullscreen = fullScreen;
         SetBoolPreference("pFullscreen", isFullscreen);
-        Debug.Log(isFullscreen);
         
         Screen.fullScreen = isFullscreen;
     }
@@ -318,6 +345,11 @@ public class GameManager : MonoBehaviour
         get { return confirmationPrompt; }
     }
 
+    public Resolution[] AvailableResolutions
+    {
+        get { return availableResolutions; }
+    }
+
     public int CurrentQualityLevelIndex
     {
         get { return currentQualityLevelIndex; }
@@ -326,6 +358,11 @@ public class GameManager : MonoBehaviour
     public int CurrentResolutionIndex
     {
         get { return currentResolutionIndex; }
+    }
+
+    public bool IsFullscreen
+    {
+        get { return isFullscreen; }
     }
     
     public float CharactersShowIntervals
