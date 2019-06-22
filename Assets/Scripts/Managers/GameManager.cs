@@ -52,7 +52,6 @@ public class GameManager : MonoBehaviour
 
     [Header("Application's Default Settings")]
     [SerializeField] [Range(24, 60)] int targetFrameRate = 60;
-    [SerializeField] [Range(0.5f, 2f)] float textSpeedMultiplier = 1f;
     [SerializeField] Color playerSpeakingTextColor = default;
     [SerializeField] Color playerThinkingTextColor = default;
     [SerializeField] Color npcSpeakingTextColor = default;
@@ -74,6 +73,7 @@ public class GameManager : MonoBehaviour
     int currentQualityLevelIndex;
     int currentResolutionIndex;
     bool isFullscreen;
+    float textSpeedMultiplier;
     float charactersShowIntervals;
 
     void AwakeSetUp()
@@ -85,12 +85,9 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        Application.targetFrameRate = targetFrameRate;     
         FetchAvailableResolutions();
-        LoadPlayerPrefs();
-        
-        Application.targetFrameRate = targetFrameRate;
-        charactersShowIntervals = 1f / (textSpeedMultiplier * targetFrameRate);
-
+        LoadPlayerPrefs(); 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -121,10 +118,12 @@ public class GameManager : MonoBehaviour
         currentQualityLevelIndex = PlayerPrefs.GetInt("pQualityLevel", QualitySettings.GetQualityLevel());
         currentResolutionIndex = PlayerPrefs.GetInt("pResolution", defaultResIndex);
         isFullscreen = GetBoolPreference("pFullscreen", Screen.fullScreen);
+        textSpeedMultiplier = PlayerPrefs.GetFloat("pTextSpeedMultiplier", 1f);
 
         SetQualityLevel(currentQualityLevelIndex);
         SetResolution(currentResolutionIndex);
         SetFullscreen(isFullscreen);
+        SetTextSpeed(textSpeedMultiplier);
     }
 
     void OnMousePointerEnter(PointerEventData data, Selectable selectable)
@@ -338,6 +337,14 @@ public class GameManager : MonoBehaviour
         Screen.fullScreen = isFullscreen;
     }
 
+    public void SetTextSpeed(float speedMultiplier)
+    {
+        textSpeedMultiplier = speedMultiplier;
+        PlayerPrefs.SetFloat("pTextSpeedMultiplier", textSpeedMultiplier);
+
+        charactersShowIntervals = 1f / (textSpeedMultiplier * targetFrameRate);
+    }
+
     #region Properties
 
     public ConfirmationPrompt ConfirmationPrompt
@@ -363,6 +370,11 @@ public class GameManager : MonoBehaviour
     public bool IsFullscreen
     {
         get { return isFullscreen; }
+    }
+
+    public float TextSpeedMultiplier
+    {
+        get { return textSpeedMultiplier; }
     }
     
     public float CharactersShowIntervals

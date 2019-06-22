@@ -16,9 +16,10 @@ public class SettingsScreen : MonoBehaviour
     
     void Start()
     {
-        fullscreenToggle.isOn = GameManager.Instance.IsFullscreen;
         InitializeQualityLevelDropdown();
         InitializeResolutionDropdown();
+        fullscreenToggle.isOn = GameManager.Instance.IsFullscreen;
+        textSpeedSlider.value = GameManager.Instance.TextSpeedMultiplier;
     }
 
     void ResizeDropdownList(TMP_Dropdown dropdown)
@@ -99,5 +100,10 @@ public class SettingsScreen : MonoBehaviour
     public void ChangeFullscreen(bool fullscreen)
     {
         GameManager.Instance.SetFullscreen(fullscreen);
+    }
+
+    public void ChangeTextSpeed(float speedMultiplier)
+    {
+        GameManager.Instance.SetTextSpeed(speedMultiplier);
     }
 }
