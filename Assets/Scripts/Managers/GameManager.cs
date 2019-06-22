@@ -75,6 +75,8 @@ public class GameManager : MonoBehaviour
     bool isFullscreen;
     float textSpeedMultiplier;
     float charactersShowIntervals;
+    float sfxVolume;
+    float musicVolume;
 
     void AwakeSetUp()
     {
@@ -119,11 +121,15 @@ public class GameManager : MonoBehaviour
         currentResolutionIndex = PlayerPrefs.GetInt("pResolution", defaultResIndex);
         isFullscreen = GetBoolPreference("pFullscreen", Screen.fullScreen);
         textSpeedMultiplier = PlayerPrefs.GetFloat("pTextSpeedMultiplier", 1f);
+        sfxVolume = PlayerPrefs.GetFloat("pSfxVolume", 0.75f);
+        musicVolume = PlayerPrefs.GetFloat("pMusicVolume", 0.75f);
 
         SetQualityLevel(currentQualityLevelIndex);
         SetResolution(currentResolutionIndex);
         SetFullscreen(isFullscreen);
         SetTextSpeed(textSpeedMultiplier);
+        SetSfxVolume(sfxVolume);
+        SetMusicVolume(musicVolume);
     }
 
     void OnMousePointerEnter(PointerEventData data, Selectable selectable)
@@ -345,6 +351,22 @@ public class GameManager : MonoBehaviour
         charactersShowIntervals = 1f / (textSpeedMultiplier * targetFrameRate);
     }
 
+    public void SetSfxVolume(float volume)
+    {
+        sfxVolume = volume;
+        PlayerPrefs.SetFloat("pSfxVolume", sfxVolume);
+
+        AudioManager.Instance.SetMixerVolume(MixerType.Sfx, sfxVolume);
+    }
+
+    public void SetMusicVolume(float volume)
+    {
+        musicVolume = volume;
+        PlayerPrefs.SetFloat("pMusicVolume", musicVolume);
+
+        AudioManager.Instance.SetMixerVolume(MixerType.Music, musicVolume);
+    }
+
     #region Properties
 
     public ConfirmationPrompt ConfirmationPrompt
@@ -375,6 +397,16 @@ public class GameManager : MonoBehaviour
     public float TextSpeedMultiplier
     {
         get { return textSpeedMultiplier; }
+    }
+
+    public float SfxVolume
+    {
+        get { return sfxVolume; }
+    }
+
+    public float MusicVolume
+    {
+        get { return musicVolume; }
     }
     
     public float CharactersShowIntervals

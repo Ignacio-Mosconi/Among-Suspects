@@ -5,13 +5,18 @@ using TMPro;
 
 public class SettingsScreen : MonoBehaviour
 {
+    [Header("Dropdowns")]
     [SerializeField] TMP_Dropdown qualityLevelDropdown = default;
     [SerializeField] TMP_Dropdown resolutionDropdown = default;
+    [Header("Toggles")]
     [SerializeField] Toggle fullscreenToggle = default;
+    [Header("Sliders")]
     [SerializeField] Slider textSpeedSlider = default;
     [SerializeField] Slider sfxVolumeSlider = default;
     [SerializeField] Slider musicVolumeSlider = default;
+    [Header("Texts")]
     [SerializeField] TextMeshProUGUI fullscreenText = default;
+    [Header("Other Properties")]
     [SerializeField] [Range(150f, 300f)] float maxDropdownHeight = 300f;
     
     void Start()
@@ -20,6 +25,8 @@ public class SettingsScreen : MonoBehaviour
         InitializeResolutionDropdown();
         fullscreenToggle.isOn = GameManager.Instance.IsFullscreen;
         textSpeedSlider.value = GameManager.Instance.TextSpeedMultiplier;
+        sfxVolumeSlider.value = GameManager.Instance.SfxVolume;
+        musicVolumeSlider.value = GameManager.Instance.MusicVolume;
     }
 
     void ResizeDropdownList(TMP_Dropdown dropdown)
@@ -105,5 +112,15 @@ public class SettingsScreen : MonoBehaviour
     public void ChangeTextSpeed(float speedMultiplier)
     {
         GameManager.Instance.SetTextSpeed(speedMultiplier);
+    }
+
+    public void ChangeSfxVolume(float volume)
+    {
+        GameManager.Instance.SetSfxVolume(volume);
+    }
+
+    public void ChangeMusicVolume(float volume)
+    {
+        GameManager.Instance.SetMusicVolume(volume);
     }
 }

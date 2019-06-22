@@ -19,7 +19,10 @@ public class AudioManager : MonoBehaviour
         if (Instance != this)
             Destroy(gameObject);
         else
+        {
             DontDestroyOnLoad(gameObject);
+            AwakeSetUp();
+        }
     }
 
     public static AudioManager Instance
@@ -53,9 +56,12 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource musicSource = default;
     [SerializeField] AudioSource ambientSoundSource = default;
 
+    const float MixerMultiplier = 11.5f;
+    const float MuteValue = -80f;
+
     Dictionary<MixerType, AudioMixer> audioMixersDic = new Dictionary<MixerType, AudioMixer>();
 
-    void Start()
+    void AwakeSetUp()
     {
         for (int i = 0; i < audioMixers.Length; i++)
             audioMixersDic.Add((MixerType)i, audioMixers[i]);
@@ -115,6 +121,12 @@ public class AudioManager : MonoBehaviour
     public void ResumeMusic()
     {
         musicSource.UnPause();
+    }
+
+    public void SetMixerVolume(MixerType mixerType, float volume)
+    {
+        float desiredMixerLevel = (volume > 0f) ? Mathf.Max(Mathf.Log(volume) * MixerMultiplier, MuteValue) : MuteValue;
+        audioMixersDic[mixerType].SetFloat("Volume", desiredMixerLevel);
     }
 
     public bool IsPlayingSound(string soundName)
