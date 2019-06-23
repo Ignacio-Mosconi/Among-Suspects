@@ -18,8 +18,9 @@ public class PlayerController : MonoBehaviour, ICharacter
     bool foundClueInLastDialogue = false;
     bool startedInvestigationInLastDialogue = false;
 
-    UnityEvent onClueFound = new UnityEvent();
     UnityEvent onStartedInvestigation = new UnityEvent();
+    UnityEvent onClueFound = new UnityEvent();
+    UnityEvent onAllCluesFound = new UnityEvent();
 
     void Awake()
     {
@@ -43,6 +44,8 @@ public class PlayerController : MonoBehaviour, ICharacter
             triggeredNotification = true;
             foundClueInLastDialogue = false;
             onClueFound.Invoke();
+            if (ChapterManager.Instance.CluesAmount == cluesGathered.Count)
+                onAllCluesFound.Invoke();
         }
 
         if (startedInvestigationInLastDialogue)
@@ -130,14 +133,19 @@ public class PlayerController : MonoBehaviour, ICharacter
         get { return cluesGathered; }
     }
 
+    public UnityEvent OnStartedInvestigation
+    {
+        get { return onStartedInvestigation; }
+    }
+
     public UnityEvent OnClueFound
     {
         get { return onClueFound; }
     }
 
-    public UnityEvent OnStartedInvestigation
+    public UnityEvent OnAllCluesFound
     {
-        get { return onStartedInvestigation; }
+        get { return onAllCluesFound; }
     }
     
     #endregion

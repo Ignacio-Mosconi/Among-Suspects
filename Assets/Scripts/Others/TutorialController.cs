@@ -8,6 +8,7 @@ public class TutorialController : MonoBehaviour
     float navigationTutorialDelay;
     float investigationTutorialDelay;
     float cluesTutorialDelay;
+    float debateTutorialDelay;
 
     const float AdditionalTutorialDelay = 0.1f;
 
@@ -22,10 +23,12 @@ public class TutorialController : MonoBehaviour
         navigationTutorialDelay = DialogueManager.Instance.SpeechPanelPrompt.HideAnimationDuration + AdditionalTutorialDelay;
         investigationTutorialDelay = hud.InvestigationPhasePrompt.GetOnScreenDuration() + AdditionalTutorialDelay;
         cluesTutorialDelay = hud.ClueFoundPrompt.GetOnScreenDuration() + AdditionalTutorialDelay;
+        debateTutorialDelay = cluesTutorialDelay;
         
         DialogueManager.Instance.OnDialogueAreaDisable.AddListener(TriggerNavigationTutorial);
         CharacterManager.Instance.PlayerController.OnStartedInvestigation.AddListener(TriggerInvestigationTutorial);
         CharacterManager.Instance.PlayerController.OnClueFound.AddListener(TriggerCluesTutorial);
+        CharacterManager.Instance.PlayerController.OnAllCluesFound.AddListener(TriggerDebateTutorial);
     }
 
     TutorialInfo FetchTutorial(TutorialType tutorialType)
@@ -58,6 +61,11 @@ public class TutorialController : MonoBehaviour
         Invoke("DisplayCluesTutorial", cluesTutorialDelay);
     }
 
+    void TriggerDebateTutorial()
+    {
+        Invoke("DisplayDebateTutorial", debateTutorialDelay);
+    }
+
     void DisplayNavigationTutorial()
     {
         TutorialInfo tutorial = FetchTutorial(TutorialType.Navigation);
@@ -76,6 +84,13 @@ public class TutorialController : MonoBehaviour
     {
         TutorialInfo tutorial = FetchTutorial(TutorialType.Clues);
         CharacterManager.Instance.PlayerController.OnClueFound.RemoveListener(TriggerCluesTutorial);
+        DisplayTutorial(tutorial);
+    }
+
+    void DisplayDebateTutorial()
+    {
+        TutorialInfo tutorial = FetchTutorial(TutorialType.Debate);
+        CharacterManager.Instance.PlayerController.OnAllCluesFound.RemoveListener(TriggerDebateTutorial);
         DisplayTutorial(tutorial);
     }
 
