@@ -61,6 +61,8 @@ public class ChapterManager : MonoBehaviour
         AudioManager.Instance.PlayAmbientSound("Rain Interior");
         AudioManager.Instance.PlayTheme("Exploration Phase");
 
+        GameManager.Instance.AddCursorPointerEventsToAllButtons(endScreenArea);
+
         debateInitializer.DisableInteraction();
     }
 
