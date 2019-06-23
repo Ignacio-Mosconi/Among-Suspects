@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Color playerSpeakingTextColor = default;
     [SerializeField] Color playerThinkingTextColor = default;
     [SerializeField] Color npcSpeakingTextColor = default;
+    [SerializeField] Color tutorialTextColor = default;
 
     [Header("Scenes")]
     [SerializeField] string mainMenuSceneName = default;
@@ -427,6 +428,11 @@ public class GameManager : MonoBehaviour
     public Color NpcSpeakingTextColor
     {
         get { return npcSpeakingTextColor; }
+    }
+
+    public Color TutorialTextColor
+    {
+        get { return tutorialTextColor; }
     }
 
     #endregion

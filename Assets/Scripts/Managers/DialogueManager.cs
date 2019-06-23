@@ -112,14 +112,13 @@ public class DialogueManager : MonoBehaviour
 
     void EnableDialogueArea()
     {
-        onDialogueAreaEnable.Invoke();
         speechPanelPrompt.Show();
         enabled = true;
+        onDialogueAreaEnable.Invoke();
     }
 
     void DisableDialogueArea()
     {
-        onDialogueAreaDisable.Invoke();
         speechPanelPrompt.Hide();
         enabled = false;
 
@@ -137,6 +136,8 @@ public class DialogueManager : MonoBehaviour
 
         objectImage.gameObject.SetActive(false);
         speakerImage.gameObject.SetActive(false);
+
+        onDialogueAreaDisable.Invoke();
     }
 
     bool ShouldDisplayLeftMousePrompt()
@@ -152,7 +153,7 @@ public class DialogueManager : MonoBehaviour
         if (dialogue.clueInfo)
             playerController.AddClue(dialogue.clueInfo);
         
-        if (dialogue.speakerName != playerController.GetCharacterName())
+        if (dialogue.speakerName != playerController.GetCharacterName() && dialogue.speakerName != CharacterName.Tutorial)
         {
             NPC currentSpeaker;
             
@@ -197,17 +198,23 @@ public class DialogueManager : MonoBehaviour
 
             if (!currentDialogueInfo)
                 speakerImage.gameObject.SetActive(false);
-            
-            if (!dialogue.playerThought)
+
+            if (dialogue.speakerName != CharacterName.Tutorial)
             {
-                if (speechText.color != GameManager.Instance.PlayerSpeakingTextColor)
-                    speechText.color = GameManager.Instance.PlayerSpeakingTextColor;
-            }
+                if (!dialogue.playerThought)
+                {
+                    if (speechText.color != GameManager.Instance.PlayerSpeakingTextColor)
+                        speechText.color = GameManager.Instance.PlayerSpeakingTextColor;
+                }
+                else
+                {
+                    if (speechText.color != GameManager.Instance.PlayerThinkingTextColor)
+                        speechText.color = GameManager.Instance.PlayerThinkingTextColor;
+                }       
+            } 
             else
-            {
-                if (speechText.color != GameManager.Instance.PlayerThinkingTextColor)
-                    speechText.color = GameManager.Instance.PlayerThinkingTextColor;
-            }       
+                if (speechText.color != GameManager.Instance.TutorialTextColor)
+                    speechText.color = GameManager.Instance.TutorialTextColor;
         }
 
         speechController.StartSpeaking(dialogue.speech);
@@ -276,6 +283,14 @@ public class DialogueManager : MonoBehaviour
         if (thoughtInfo.triggerInvestigationPhase)
             ChapterManager.Instance.TriggerInvestigationPhase();
 
+        SayDialogue(currentLines[0]);
+    }
+
+    public void StartDialogue(TutorialInfo tutorialInfo)
+    {
+        EnableDialogueArea();
+
+        currentLines = tutorialInfo.tutorialLines;
         SayDialogue(currentLines[0]);
     }
 

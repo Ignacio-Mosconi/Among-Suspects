@@ -42,6 +42,13 @@ public struct GroupDialogue
     public bool cancelOtherGroupDialogues;
 }
 
+[System.Serializable]
+public struct TutorialDialogue
+{
+    public bool isPlayerTalking;
+    [TextArea(3, 10)] public string speech;
+}
+
 [CreateAssetMenu(fileName = "New Dialogue Info", menuName = "Dialogue Info", order = 1)]
 public class DialogueInfo : ScriptableObject
 {

@@ -22,7 +22,7 @@ public class DebateInitializer : Interactable
         debateInfo = Resources.Load("Debates/" + SceneManager.GetActiveScene().name + " Debate") as DebateInfo;
     }
 
-    protected override void Interact()
+    public override void Interact()
     {
         DisableInteraction();
         playerController.Disable();

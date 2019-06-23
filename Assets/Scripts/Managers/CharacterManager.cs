@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public enum CharacterName
 {
     James, Monica, William, Gary,
-    None
+    None, Tutorial
 }
 
 public class CharacterManager : MonoBehaviour

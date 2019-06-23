@@ -13,7 +13,7 @@ public class InteractableObject : Interactable
         thoughtInfo = Resources.Load("Thoughts/" + SceneManager.GetActiveScene().name + "/" + gameObject.name + " Thought") as ThoughtInfo;
     }
 
-    protected override void Interact()
+    public override void Interact()
     {
         DisableInteraction();
         DialogueManager.Instance.StartDialogue(thoughtInfo, interactionPoint.position, objectSprite, enableImage: true);

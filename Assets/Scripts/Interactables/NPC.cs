@@ -27,7 +27,7 @@ public class NPC : Interactable, ICharacter
         CharacterManager.Instance.HideCharacterMeshes();
     }
 
-    protected override void Interact()
+    public override void Interact()
     {   
         DisableInteraction();
         DialogueManager.Instance.StartDialogue(dialogueInfo, this);

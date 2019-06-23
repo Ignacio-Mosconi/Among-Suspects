@@ -81,7 +81,7 @@ public abstract class Interactable : MonoBehaviour
         enabled = false;
     }
 
-    protected abstract void Interact();
+    public abstract void Interact();
 
     #region Properties
 
