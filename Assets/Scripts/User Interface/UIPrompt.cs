@@ -56,4 +56,13 @@ public class UIPrompt : MonoBehaviour
         float duration = (!keepOnScreen) ? showAnimationDuration + idleAnimationDuration + hideAnimationDuration : -1f; 
         return duration;
     }
+
+    #region Properties
+
+    public float HideAnimationDuration
+    {
+        get { return hideAnimationDuration; }
+    }
+
+    #endregion
 }

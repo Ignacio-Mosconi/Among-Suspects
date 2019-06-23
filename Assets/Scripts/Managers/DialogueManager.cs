@@ -324,5 +324,10 @@ public class DialogueManager : MonoBehaviour
         get { return onDialogueAreaDisable; }
     }
 
+    public UIPrompt SpeechPanelPrompt
+    {
+        get { return speechPanelPrompt; }
+    }
+
     #endregion
 }

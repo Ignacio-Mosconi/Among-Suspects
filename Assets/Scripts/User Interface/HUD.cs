@@ -19,6 +19,10 @@ public class HUD : MonoBehaviour
             interactable.OnInteraction.AddListener(DeactivateInteractTextPrompt);
         }
 
+        TutorialController tutorialController = FindObjectOfType<TutorialController>();
+        if (tutorialController)
+            tutorialController.OnTutorialTriggered.AddListener(HideHUD);
+
         PauseMenu pauseMenu = FindObjectOfType<PauseMenu>();
         pauseMenu.OnPaused.AddListener(HideHUD);
         pauseMenu.OnResume.AddListener(ShowHUD);
@@ -37,7 +41,8 @@ public class HUD : MonoBehaviour
 
     void ShowHUD()
     {
-        hudArea.SetActive(true);
+        if (!DialogueManager.Instance.enabled)
+            hudArea.SetActive(true);
     }
 
     void HideHUD()
@@ -73,4 +78,18 @@ public class HUD : MonoBehaviour
         float promptDur = investigationPhasePrompt.GetOnScreenDuration();
         CharacterManager.Instance.PlayerController.Invoke("ReEnableInteractionDelayed", promptDur);
     }
+
+    #region Properties
+
+    public UIPrompt InvestigationPhasePrompt
+    {
+        get { return investigationPhasePrompt; }
+    }
+
+    public UIPrompt ClueFoundPrompt
+    {
+        get { return clueFoundPrompt; }
+    }
+
+    #endregion
 }
