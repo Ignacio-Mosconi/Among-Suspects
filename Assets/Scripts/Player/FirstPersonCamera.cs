@@ -6,7 +6,7 @@ public class FirstPersonCamera : MonoBehaviour
     [SerializeField] [Range(90f, 135f)] float rotationSpeed = 100f;
     [SerializeField] [Range(50f, 90f)] float verticalRange = 80f;
     [SerializeField] [Range(60f, 90f)] float interactionFOV = 90f;
-    [SerializeField] [Range(60f, 90f)] float focusSpeed = 75f;
+    [SerializeField] [Range(90f, 120f)] float focusSpeed = 110f;
 
     Transform fpsCamera;
     Coroutine focusing;
@@ -70,11 +70,25 @@ public class FirstPersonCamera : MonoBehaviour
         focusing = StartCoroutine(RotateViewProgressively(position));
     }
 
+    public float GetFocusDuration(Vector3 position)
+    {
+        Vector3 diff = position - transform.position;
+        float angle = Vector3.Angle(transform.forward, diff);
+        float focusDuration = angle / focusSpeed;
+
+        return focusDuration;
+    }
+
     #region Properties
     
     public float InteractionFOV
     {
         get { return interactionFOV; }
+    }
+
+    public float FocusSpeed
+    {
+        get { return focusSpeed; }
     }
     
     #endregion

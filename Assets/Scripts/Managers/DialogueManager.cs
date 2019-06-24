@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using TMPro;
 
 [RequireComponent(typeof(SpeechController))]
+[RequireComponent(typeof(CharacterSpriteController))]
 [RequireComponent(typeof(DialogueOptionsScreen))]
 public class DialogueManager : MonoBehaviour
 {
@@ -38,7 +39,7 @@ public class DialogueManager : MonoBehaviour
     [Header("Main UI Elements")]
     [SerializeField] TextMeshProUGUI speakerText = default;
     [SerializeField] TextMeshProUGUI speechText = default;
-    [SerializeField] Image speakerImage = default;
+    //[SerializeField] Image speakerImage = default;
     [SerializeField] Image objectImage = default;
     [Header("UI Prompts")]
     [SerializeField] UIPrompt speechPanelPrompt = default;
@@ -46,6 +47,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] UIPrompt dialogueOptionsPrompt = default;
 
     SpeechController speechController;
+    CharacterSpriteController characterSpriteController;
     DialogueOptionsScreen dialogueOptionScreen;
     DialogueInfo currentDialogueInfo;
     Dialogue[] currentLines;
@@ -60,6 +62,7 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         speechController = GetComponent<SpeechController>();
+        characterSpriteController= GetComponent<CharacterSpriteController>();
         dialogueOptionScreen = GetComponent<DialogueOptionsScreen>();
         speechPanelPrompt.SetUp();
         leftMouseClickPrompt.SetUp();
@@ -135,7 +138,7 @@ public class DialogueManager : MonoBehaviour
         previousSpeaker = null;
 
         objectImage.gameObject.SetActive(false);
-        speakerImage.gameObject.SetActive(false);
+        characterSpriteController.HideImmediately();
 
         onDialogueAreaDisable.Invoke();
     }
@@ -164,17 +167,38 @@ public class DialogueManager : MonoBehaviour
                 if (currentDialogueInfo)
                 {
                     if (currentSpeaker == mainSpeaker)
+                    {
                         playerController.FirstPersonCamera.FocusOnPosition(mainSpeaker.InteractionPosition);
+                        if (previousSpeaker)
+                        {
+                            float slideDuration = playerController.FirstPersonCamera.GetFocusDuration(mainSpeaker.InteractionPosition);
+
+                            if (previousSpeaker.GetCharacterName() == currentDialogueInfo.groupDialogue.leftSpeaker)
+                                characterSpriteController.SlideInFromLeft(slideDuration);
+                            else
+                                characterSpriteController.SlideInFromRight(slideDuration);
+                        }
+                    }
                     else
                     {
                         if (currentSpeaker.GetCharacterName() == currentDialogueInfo.groupDialogue.leftSpeaker)
+                        {
+                            float slideDuration = playerController.FirstPersonCamera.GetFocusDuration(mainSpeaker.LeftSpeakerPosition);
+
                             playerController.FirstPersonCamera.FocusOnPosition(mainSpeaker.LeftSpeakerPosition);
+                            characterSpriteController.SlideInFromRight(slideDuration);
+                        }
                         else
+                        {
+                            float slideDuration = playerController.FirstPersonCamera.GetFocusDuration(mainSpeaker.RightSpeakerPosition);
+
                             playerController.FirstPersonCamera.FocusOnPosition(mainSpeaker.RightSpeakerPosition);
+                            characterSpriteController.SlideInFromLeft(slideDuration);
+                        }
                     }          
                 }
                 else
-                    speakerImage.gameObject.SetActive(true);
+                    characterSpriteController.ShowImmediately();
 
                 previousSpeaker = currentSpeaker;
             }
@@ -187,7 +211,7 @@ public class DialogueManager : MonoBehaviour
             speakerText.text = (currentSpeaker.NameRevealed) ? dialogue.speakerName.ToString() : "???";
 
             if (dialogue.speakerEmotion != CharacterEmotion.Listening)
-                speakerImage.sprite = currentSpeaker.GetSprite(dialogue.speakerEmotion);
+                characterSpriteController.ChangeSprite(currentSpeaker.GetSprite(dialogue.speakerEmotion));
             
             if (speechText.color != GameManager.Instance.NpcSpeakingTextColor)
                 speechText.color = GameManager.Instance.NpcSpeakingTextColor;
@@ -197,7 +221,7 @@ public class DialogueManager : MonoBehaviour
             speakerText.text = dialogue.speakerName.ToString();
 
             if (!currentDialogueInfo)
-                speakerImage.gameObject.SetActive(false);
+                characterSpriteController.HideImmediately();
 
             if (dialogue.speakerName != CharacterName.Tutorial)
             {
@@ -247,7 +271,7 @@ public class DialogueManager : MonoBehaviour
         mainSpeaker = npc;
         CharacterManager.Instance.PlayerController.FirstPersonCamera.FocusOnPosition(npc.InteractionPosition);
 
-        speakerImage.gameObject.SetActive(true);
+        characterSpriteController.ShowImmediately();
         
         EnableDialogueArea();
 

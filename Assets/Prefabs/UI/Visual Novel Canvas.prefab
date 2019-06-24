@@ -1253,6 +1253,7 @@ GameObject:
   - component: {fileID: 9167945567919098837}
   - component: {fileID: 3161203964369622912}
   - component: {fileID: 30101642736891579}
+  - component: {fileID: 7397449940674020444}
   m_Layer: 5
   m_Name: Dialogue Manager
   m_TagString: Untagged
@@ -1325,6 +1326,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   optionsLayout: {fileID: 124838045845784242}
+--- !u!114 &7397449940674020444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6437505107080250375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95b563ae7ddafe843b45c0f15690232b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speakerImage: {fileID: 3707035913217989938}
 --- !u!1 &6437505107173970335
 GameObject:
   m_ObjectHideFlags: 0
@@ -1801,11 +1815,11 @@ MonoBehaviour:
     lineCount: 2
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -1962,11 +1976,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
