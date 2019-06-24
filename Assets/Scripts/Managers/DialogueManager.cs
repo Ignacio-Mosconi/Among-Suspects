@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using TMPro;
@@ -39,12 +38,11 @@ public class DialogueManager : MonoBehaviour
     [Header("Main UI Elements")]
     [SerializeField] TextMeshProUGUI speakerText = default;
     [SerializeField] TextMeshProUGUI speechText = default;
-    //[SerializeField] Image speakerImage = default;
-    [SerializeField] Image objectImage = default;
     [Header("UI Prompts")]
     [SerializeField] UIPrompt speechPanelPrompt = default;
     [SerializeField] UIPrompt leftMouseClickPrompt = default;
     [SerializeField] UIPrompt dialogueOptionsPrompt = default;
+    [SerializeField] UIPrompt objectPanelPrompt = default;
 
     SpeechController speechController;
     CharacterSpriteController characterSpriteController;
@@ -67,6 +65,7 @@ public class DialogueManager : MonoBehaviour
         speechPanelPrompt.SetUp();
         leftMouseClickPrompt.SetUp();
         dialogueOptionsPrompt.SetUp();
+        objectPanelPrompt.SetUp();
         enabled = false;
     }
 
@@ -137,7 +136,8 @@ public class DialogueManager : MonoBehaviour
         mainSpeaker = null;
         previousSpeaker = null;
 
-        objectImage.gameObject.SetActive(false);
+        if (objectPanelPrompt.gameObject.activeInHierarchy)
+            objectPanelPrompt.Hide();
         characterSpriteController.HideImmediately();
 
         onDialogueAreaDisable.Invoke();
@@ -295,8 +295,8 @@ public class DialogueManager : MonoBehaviour
 
         if (enableImage)
         {
-            objectImage.sprite = objectSprite;
-            objectImage.gameObject.SetActive(true);
+            objectPanelPrompt.transform.GetChild(0).GetComponent<Image>().sprite = objectSprite;
+            objectPanelPrompt.Show();
         }
 
         EnableDialogueArea();
