@@ -4,6 +4,7 @@ TextureImporter:
   fileIDToRecycleName:
     21300000: Mouse_0
     21300002: Mouse_1
+    21300004: Mouse_1
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -82,16 +83,38 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mouse_0
+      name: Mouse_1
       rect:
         serializedVersion: 2
-        x: 0
+        x: 152
         y: 0
-        width: 128
+        width: 81
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -100,18 +123,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b528bbdd8948cb42b422372e2a621c8
+      spriteID: dc2a2d75f784d8247a76ac9266ed9912
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mouse_1
+      name: Mouse_0
       rect:
         serializedVersion: 2
-        x: 128
+        x: 1
         y: 0
-        width: 128
+        width: 124
         height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -120,7 +143,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f098a04a0453c74fa739782260e2e73
+      spriteID: bf9ac48ef6d7f264a9833e7d3d26f640
       vertices: []
       indices: 
       edges: []
