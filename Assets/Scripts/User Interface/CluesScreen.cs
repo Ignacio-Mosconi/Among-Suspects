@@ -39,7 +39,6 @@ public class CluesScreen : MonoBehaviour
             ClueInfo clueInfo = ChapterManager.Instance.GetChapterClueInfo(i);
 
             clueButton.onClick.AddListener(() => SelectClue(clueInfo));
-            GameManager.Instance.AddCursorPointerEvents(clueButton);
             cluesButtons.Add(clueButton);
         }
     }

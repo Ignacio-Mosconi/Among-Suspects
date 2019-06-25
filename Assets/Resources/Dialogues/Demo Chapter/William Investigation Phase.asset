@@ -14,9 +14,183 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   introLines: []
   interactiveConversation:
-    intro: []
-    playerOptions: []
-    resultingDialogues: []
+    intro:
+    - speakerName: 2
+      speech: A damn corpse...
+      speakerEmotion: 1
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 2
+      speech: What da fuck is goin' on around here?
+      speakerEmotion: 4
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 0
+      speech: I have no idea, <color=orange>William</color>, but we have to find out
+        who did this - as we don't have a way to get out of here yet...
+      speakerEmotion: 8
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 0
+      speech: Where were you before I entered that room and discovered the body, by
+        the way?
+      speakerEmotion: 8
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 2
+      speech: Ehm...I was just trying to watch some TV in the living room...
+      speakerEmotion: 1
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    playerOptions:
+    - option: Believe
+      description: '''That''s right, I trust you'''
+    - option: Pressure
+      description: '''I don''t buy it; tell me the truth'''
+    resultingDialogues:
+    - branchDialogue:
+      - speakerName: 0
+        speech: That's right. I think I heard you say that you wanted to watch the
+          sports channel...
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 2
+        speech: Yeah, that's right I wanted...
+        speakerEmotion: 1
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 2
+        speech: Anyways, the TV was busted or somethin', because none of the channels
+          worked...
+        speakerEmotion: 0
+        clueInfo: {fileID: 11400000, guid: d74553952f6bf144e9a0ef6e56429e81, type: 2}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 0
+        speech: Really? Whoever trapped us here really left us isolated from everything,
+          didn't they?
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 0
+        speech: 'I mean: the doors are shut; the windows have thick bars; we don''t
+          have any phone signal...'
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 0
+        speech: They planned it pretty well, I'd say...
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 2
+        speech: Don't mention it, dude...
+        speakerEmotion: 1
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 2
+        speech: I really wanted to watch that football game...
+        speakerEmotion: 0
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 2
+        speech: Fuck the bastard who did this!
+        speakerEmotion: 5
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+    - branchDialogue:
+      - speakerName: 0
+        speech: Really? Is that so?
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 2
+        speech: What are you thinkin', man?
+        speakerEmotion: 3
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 0
+        speech: I think you might be hiding something.
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 2
+        speech: What the hell, dude?!
+        speakerEmotion: 4
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 2
+        speech: I dunno shit about anything!
+        speakerEmotion: 5
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 2
+        speech: I just wanted to watch today's game on that TV...
+        speakerEmotion: 1
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 2
+        speech: Screw you if you think I had anything to do with this...
+        speakerEmotion: 4
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 0
+        speech: Maybe I rushed accusing him there...
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 1
+        triggerNiceImpression: 0
+      - speakerName: 0
+        speech: I thought he was acting suspiciously, but he might not be the one
+          responsible for this...
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 1
+        triggerNiceImpression: 0
   niceComment:
   - speakerName: 2
     speech: Let's hurry the fuck up, dude!
@@ -180,7 +354,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     cancelOtherGroupDialogues: 1
-  dialogueTypeOrder: 020000000000000000000000
+  dialogueTypeOrder: 020000000100000000000000
   introRead: 0
-  interactionOptionSelected: 0
+  interactionOptionSelected: 1
   groupDialogueRead: 1
