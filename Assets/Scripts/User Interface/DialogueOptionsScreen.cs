@@ -46,20 +46,20 @@ class DialogueOptionsScreen : MonoBehaviour
         DialogueManager.Instance.ResumeInteractiveDialogue(option);
     }
 
-    public void ShowOptionsScreen(InteractiveDialogue[] interactiveConversation)
+    public void ShowOptionsScreen(DialogueOption[] dialogueOptions)
     {
         isSelectingOption = true;
 
         int i = 0;
 
-        for (i = 0; i < interactiveConversation.Length; i++)
+        for (i = 0; i < dialogueOptions.Length; i++)
         {
             optionsButtons[i].gameObject.SetActive(true);
 
             TextMeshProUGUI[] optionTexts = optionsButtons[i].gameObject.GetComponentsInChildren<TextMeshProUGUI>();
             
-            optionTexts[0].text = interactiveConversation[i].playerOption.option;
-            optionTexts[1].text = interactiveConversation[i].playerOption.description;
+            optionTexts[0].text = dialogueOptions[i].option;
+            optionTexts[1].text = dialogueOptions[i].description;
         }
 
         int optionsLayoutPaddingMult = optionsButtons.Length - i;

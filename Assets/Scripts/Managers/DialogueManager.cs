@@ -207,6 +207,8 @@ public class DialogueManager : MonoBehaviour
 
             if (dialogue.revealName)
                 currentSpeaker.NameRevealed = true;
+            if (dialogue.triggerNiceImpression)
+                currentSpeaker.NiceWithPlayer = true;
 
             speakerText.text = (currentSpeaker.NameRevealed) ? dialogue.speakerName.ToString() : "???";
 
@@ -248,7 +250,7 @@ public class DialogueManager : MonoBehaviour
     {
         enabled = false;
         dialogueOptionsPrompt.Show();
-        dialogueOptionScreen.ShowOptionsScreen(currentDialogueInfo.interactiveConversation);
+        dialogueOptionScreen.ShowOptionsScreen(currentDialogueInfo.interactiveConversation.playerOptions);
     }
 
     public void ResumeInteractiveDialogue(int option)
@@ -256,8 +258,7 @@ public class DialogueManager : MonoBehaviour
         enabled = true;
         dialogueOptionsPrompt.Hide();
              
-        currentLines = currentDialogueInfo.interactiveConversation[option].dialogue;
-        mainSpeaker.NiceWithPlayer = currentDialogueInfo.interactiveConversation[option].triggerNiceImpression;
+        currentLines = currentDialogueInfo.interactiveConversation.resultingDialogues[option].branchDialogue;
 
         currentDialogueInfo.interactionOptionSelected = true;
 
@@ -279,11 +280,16 @@ public class DialogueManager : MonoBehaviour
             currentLines = currentDialogueInfo.introLines;
         else
         {
-            if (currentDialogueInfo.HasGroupDialogue() && !currentDialogueInfo.groupDialogueRead)
-                currentLines = currentDialogueInfo.groupDialogue.dialogue;
+            if (currentDialogueInfo.HasInteractiveDialogue() && !currentDialogueInfo.interactionOptionSelected)
+                currentLines = currentDialogueInfo.interactiveConversation.intro;
             else
-                currentLines = (npc.NiceWithPlayer) ? currentDialogueInfo.niceComment : 
-                                                        currentDialogueInfo.rudeComment;
+            {
+                if (currentDialogueInfo.HasGroupDialogue() && !currentDialogueInfo.groupDialogueRead)
+                    currentLines = currentDialogueInfo.groupDialogue.dialogue;
+                else
+                    currentLines = (npc.NiceWithPlayer) ? currentDialogueInfo.niceComment : 
+                                                            currentDialogueInfo.rudeComment;
+            }
         }
 
         SayDialogue(currentLines[0]);

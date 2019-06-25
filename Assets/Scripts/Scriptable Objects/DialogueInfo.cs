@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum CharacterEmotion
@@ -16,7 +17,15 @@ public struct Dialogue
     public ClueInfo clueInfo;
     public bool revealName;
     public bool playerThought;
+    public bool triggerNiceImpression;
 }
+
+[System.Serializable]
+public struct BranchedDialogue
+{
+    public Dialogue[] branchDialogue;
+}
+
 
 [System.Serializable]
 public struct DialogueOption
@@ -28,9 +37,9 @@ public struct DialogueOption
 [System.Serializable]
 public struct InteractiveDialogue
 {
-    public DialogueOption playerOption;
-    public Dialogue[] dialogue;
-    public bool triggerNiceImpression;
+    public Dialogue[] intro;
+    public DialogueOption[] playerOptions;
+    public BranchedDialogue[] resultingDialogues;
 }
 
 [System.Serializable]
@@ -55,7 +64,7 @@ public class DialogueInfo : ScriptableObject
     [Header("Intro Dialogue")]
     public Dialogue[] introLines;
     [Header("Interactive Dialogue")]
-    public InteractiveDialogue[] interactiveConversation;
+    public InteractiveDialogue interactiveConversation;
     [Header("'Already Interacted' Dialogue")]
     public Dialogue[] niceComment;
     public Dialogue[] rudeComment;
@@ -73,7 +82,7 @@ public class DialogueInfo : ScriptableObject
 
     public bool HasInteractiveDialogue()
     {
-        return (interactiveConversation.Length > 0);
+        return (interactiveConversation.intro.Length > 0);
     }
 
     public bool HasGroupDialogue()

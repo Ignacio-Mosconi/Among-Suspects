@@ -12,136 +12,153 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9345bdb6d41302b4997bfaa46be947a2, type: 3}
   m_Name: Gary Exploration Phase
   m_EditorClassIdentifier: 
-  introLines:
-  - speakerName: 3
-    speech: '...'
-    speakerEmotion: 0
-    clueInfo: {fileID: 0}
-    revealName: 0
-    playerThought: 0
-  - speakerName: 0
-    speech: Ehmm...what was your name?
-    speakerEmotion: 8
-    clueInfo: {fileID: 0}
-    revealName: 0
-    playerThought: 0
-  - speakerName: 3
-    speech: Huh?
-    speakerEmotion: 1
-    clueInfo: {fileID: 0}
-    revealName: 0
-    playerThought: 0
-  - speakerName: 3
-    speech: Was I so forgettable that you cannot even remember my name?
-    speakerEmotion: 0
-    clueInfo: {fileID: 0}
-    revealName: 0
-    playerThought: 0
-  - speakerName: 3
-    speech: Do you remember me at all?
-    speakerEmotion: 4
-    clueInfo: {fileID: 0}
-    revealName: 0
-    playerThought: 0
-  - speakerName: 3
-    speech: I thought you were at least a bit decent, <color=orange>James</color>.
-    speakerEmotion: 1
-    clueInfo: {fileID: 0}
-    revealName: 0
-    playerThought: 0
+  introLines: []
   interactiveConversation:
-  - playerOption:
-      option: Angry
-      description: '''I suffered an accident, you jerk!'''
-    dialogue:
-    - speakerName: 0
-      speech: I don't like your tone, buddy!
-      speakerEmotion: 8
-      clueInfo: {fileID: 0}
-      revealName: 0
-      playerThought: 0
-    - speakerName: 0
-      speech: Why did you have to insult my decency like that?
-      speakerEmotion: 8
-      clueInfo: {fileID: 0}
-      revealName: 0
-      playerThought: 0
-    - speakerName: 0
-      speech: 'I can''t remember you because I had a freaking accident!
-
-        I lost my damn memory!'
-      speakerEmotion: 8
-      clueInfo: {fileID: 0}
-      revealName: 0
-      playerThought: 0
+    intro:
     - speakerName: 3
-      speech: You are just like the rest...
-      speakerEmotion: 2
-      clueInfo: {fileID: 0}
-      revealName: 0
-      playerThought: 0
-    - speakerName: 3
-      speech: You think that you are the center of the world, that you are the only
-        one whose problems matter...
+      speech: '...'
       speakerEmotion: 0
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 0
-      speech: What's up with this guy?
-      speakerEmotion: 8
-      clueInfo: {fileID: 0}
-      revealName: 0
-      playerThought: 1
-    triggerNiceImpression: 0
-  - playerOption:
-      option: Calm
-      description: '''I cannot remember anybody due to an accident...'''
-    dialogue:
-    - speakerName: 0
-      speech: Oh, I'm sorry. It's nothing personal; I just lost my memory in an accident.
+      speech: Ehmm...what was your name?
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 0
-      speech: I can't remember anybody, really...
-      speakerEmotion: 8
-      clueInfo: {fileID: 0}
-      revealName: 0
-      playerThought: 0
-    - speakerName: 0
-      speech: Would you mind telling me your name?
-      speakerEmotion: 8
-      clueInfo: {fileID: 0}
-      revealName: 0
-      playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 3
-      speech: All right, since you ask for it so politely...
-      speakerEmotion: 2
-      clueInfo: {fileID: 0}
-      revealName: 0
-      playerThought: 0
-    - speakerName: 3
-      speech: 'My name is <color=orange>Gary</color>. '
+      speech: Huh?
       speakerEmotion: 1
       clueInfo: {fileID: 0}
-      revealName: 1
+      revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 3
-      speech: And I'm sorry to hear about your accident, by the way. I'm not a self-centred
-        person...
+      speech: Was I so forgettable that you cannot even remember my name?
       speakerEmotion: 0
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    - speakerName: 0
-      speech: All right, <color=orange>Gary</color>. Nice to meet you - again.
-      speakerEmotion: 8
+      triggerNiceImpression: 0
+    - speakerName: 3
+      speech: Do you remember me at all?
+      speakerEmotion: 4
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
-    triggerNiceImpression: 1
+      triggerNiceImpression: 0
+    - speakerName: 3
+      speech: I thought you were at least a bit decent, <color=orange>James</color>.
+      speakerEmotion: 1
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    playerOptions:
+    - option: Angry
+      description: '''I suffered an accident, you jerk!'''
+    - option: Calm
+      description: '''I cannot remember anybody due to an accident...'''
+    resultingDialogues:
+    - branchDialogue:
+      - speakerName: 0
+        speech: I don't like your tone, buddy!
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 0
+        speech: Why did you have to insult my decency like that?
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 0
+        speech: I can't remember you because I had a freaking accident!
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 3
+        speech: You are just like the rest...
+        speakerEmotion: 2
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 0
+        speech: You think that you are the center of the world, that you are the only
+          one whose problems matter...
+        speakerEmotion: 0
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 0
+        speech: What's up with this guy?
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 1
+        triggerNiceImpression: 0
+    - branchDialogue:
+      - speakerName: 0
+        speech: Oh, I'm sorry. It's nothing personal; I just lost my memory in an
+          accident.
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 0
+        speech: I can't remember anybody, really...
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 0
+        speech: Would you mind telling me your name?
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 3
+        speech: All right, since you ask for it so politely...
+        speakerEmotion: 2
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 3
+        speech: My name is <color=orange>Gary</color>.
+        speakerEmotion: 1
+        clueInfo: {fileID: 0}
+        revealName: 1
+        playerThought: 0
+        triggerNiceImpression: 1
+      - speakerName: 3
+        speech: And I'm sorry to hear about your accident, by the way. I'm not a self-centered
+          person...
+        speakerEmotion: 0
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 0
+        speech: All right, <color=orange>Gary</color>. Nice to meet you - again.
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
   niceComment:
   - speakerName: 3
     speech: Why don't you talk to the rest of the crew?
@@ -149,12 +166,14 @@ MonoBehaviour:
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0
   - speakerName: 3
     speech: I'm not really too talkative...
     speakerEmotion: 1
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0
   rudeComment:
   - speakerName: 3
     speech: Here's the guy who doesn't remember other people's names.
@@ -162,12 +181,14 @@ MonoBehaviour:
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0
   - speakerName: 3
     speech: Why don't you talk to someone self-centered like you?
     speakerEmotion: 4
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0
   groupDialogue:
     leftSpeaker: 4
     rightSpeaker: 4
