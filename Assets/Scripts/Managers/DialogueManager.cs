@@ -97,14 +97,14 @@ public class DialogueManager : MonoBehaviour
                         currentDialogueInfo.introRead = true;
                     if (currentLines == currentDialogueInfo.groupDialogue.dialogue)
                         currentDialogueInfo.groupDialogueRead = true;
-
-                    if (currentDialogueInfo.HasInteractiveDialogue() && !currentDialogueInfo.interactionOptionSelected)
+                    if (currentLines == currentDialogueInfo.interactiveConversation.intro && 
+                        !currentDialogueInfo.interactionOptionSelected)
                         ShowDialogueOptions();
                     else
-                        DisableDialogueArea();             
+                        DisableDialogueArea();
                 }
-                else
-                    DisableDialogueArea();              
+                else           
+                    DisableDialogueArea();
             }
         }
         else
@@ -276,21 +276,9 @@ public class DialogueManager : MonoBehaviour
         
         EnableDialogueArea();
 
-        if (currentDialogueInfo.HasIntroLines() && !currentDialogueInfo.introRead)
-            currentLines = currentDialogueInfo.introLines;
-        else
-        {
-            if (currentDialogueInfo.HasInteractiveDialogue() && !currentDialogueInfo.interactionOptionSelected)
-                currentLines = currentDialogueInfo.interactiveConversation.intro;
-            else
-            {
-                if (currentDialogueInfo.HasGroupDialogue() && !currentDialogueInfo.groupDialogueRead)
-                    currentLines = currentDialogueInfo.groupDialogue.dialogue;
-                else
-                    currentLines = (npc.NiceWithPlayer) ? currentDialogueInfo.niceComment : 
-                                                            currentDialogueInfo.rudeComment;
-            }
-        }
+        currentLines = currentDialogueInfo.DetermineNextDialogueLines();
+        if (currentLines == null)
+            currentLines = (npc.NiceWithPlayer) ? currentDialogueInfo.niceComment : currentDialogueInfo.rudeComment;
 
         SayDialogue(currentLines[0]);
     }

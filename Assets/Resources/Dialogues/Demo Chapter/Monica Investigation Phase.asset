@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Monica Investigation Phase
   m_EditorClassIdentifier: 
   introLines: []
-  interactiveConversation: []
+  interactiveConversation:
+    intro: []
+    playerOptions: []
+    resultingDialogues: []
   niceComment:
   - speakerName: 1
     speech: A corpse?
@@ -21,30 +24,35 @@ MonoBehaviour:
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0
   - speakerName: 1
     speech: We can't call for help!
     speakerEmotion: 7
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0
   - speakerName: 1
     speech: We can't get out of here!
     speakerEmotion: 3
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0
   - speakerName: 1
     speech: What are we going to do?!
     speakerEmotion: 7
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0
   - speakerName: 0
     speech: Don't worry, <color=orange>Monica</color>, I'll get us out of this...
     speakerEmotion: 8
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0
   rudeComment:
   - speakerName: 1
     speech: '...'
@@ -52,6 +60,7 @@ MonoBehaviour:
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0
   groupDialogue:
     leftSpeaker: 3
     rightSpeaker: 2
@@ -62,90 +71,105 @@ MonoBehaviour:
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 0
       speech: The-there is a corpse in one of the bedrooms....
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 1
       speech: What? What do you mean?
       speakerEmotion: 3
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 0
       speech: Someone was killed in here!
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 1
       speech: What?!
       speakerEmotion: 7
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 1
       speech: How could this happen? Was it an accident?
       speakerEmotion: 3
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 0
       speech: No...it looked like murder...
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 3
       speech: Oh, christ...
       speakerEmotion: 3
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 3
       speech: That must be John; he arrived a bit earlier than you...
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 2
       speech: A freaking corpse?
       speakerEmotion: 4
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 1
       speech: We have to call the police!
       speakerEmotion: 7
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 0
       speech: (Gets her phone out)
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 1
+      triggerNiceImpression: 0
     - speakerName: 0
       speech: '...'
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 1
       speech: It can't be! There's no reception!
       speakerEmotion: 3
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 2
       speech: Let's leave this fucking place, then!
       speakerEmotion: 4
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 0
       speech: 'The front door is locked!
 
@@ -154,25 +178,30 @@ MonoBehaviour:
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 3
       speech: Well, don't look at me. This was John's place - I don't have any keys.
       speakerEmotion: 0
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 3
       speech: Damn it. If the place is locked....
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 3
       speech: That means the murderer is within our group...
       speakerEmotion: 0
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     cancelOtherGroupDialogues: 1
+  dialogueTypeOrder: 020000000000000000000000
   introRead: 0
   interactionOptionSelected: 0
-  groupDialogueRead: 0
+  groupDialogueRead: 1

@@ -8,6 +8,11 @@ public enum CharacterEmotion
     Listening
 }
 
+public enum DialogueType
+{
+    Normal, Interactive, Group
+}
+
 [System.Serializable]
 public struct Dialogue
 {
@@ -70,23 +75,38 @@ public class DialogueInfo : ScriptableObject
     public Dialogue[] rudeComment;
     [Header("Group Dialogue")]
     public GroupDialogue groupDialogue;
+    [Header("Dialogue Order")]
+    public DialogueType[] dialogueTypeOrder = new DialogueType[3];
 
     [HideInInspector] public bool introRead = false;
     [HideInInspector] public bool interactionOptionSelected = false;
     [HideInInspector] public bool groupDialogueRead = false;
 
-    public bool HasIntroLines()
+    public Dialogue[] DetermineNextDialogueLines()
     {
-        return (introLines.Length > 0);
-    }
+        Dialogue[] nextLines = null;
 
-    public bool HasInteractiveDialogue()
-    {
-        return (interactiveConversation.intro.Length > 0);
-    }
+        foreach (DialogueType dialogueType in dialogueTypeOrder)
+        {
+            switch (dialogueType)
+            {
+                case DialogueType.Normal:
+                    if (introLines.Length > 0 && !introRead)
+                        nextLines = introLines;
+                    break;
+                case DialogueType.Interactive:
+                    if (interactiveConversation.intro.Length > 0 && !interactionOptionSelected)
+                        nextLines = interactiveConversation.intro;
+                    break;
+                case DialogueType.Group:
+                    if (groupDialogue.dialogue.Length> 0 && !groupDialogueRead)
+                        nextLines = groupDialogue.dialogue;
+                    break;
+            }
+            if (nextLines != null)
+                break;
+        }
 
-    public bool HasGroupDialogue()
-    {
-        return (groupDialogue.dialogue.Length > 0);
+        return nextLines;
     }
 }

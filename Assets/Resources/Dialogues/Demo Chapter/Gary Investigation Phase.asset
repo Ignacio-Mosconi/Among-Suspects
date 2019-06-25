@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Gary Investigation Phase
   m_EditorClassIdentifier: 
   introLines: []
-  interactiveConversation: []
+  interactiveConversation:
+    intro: []
+    playerOptions: []
+    resultingDialogues: []
   niceComment:
   - speakerName: 3
     speech: Let's find the killer, <color=orange>James</color>.
@@ -21,6 +24,7 @@ MonoBehaviour:
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0
   rudeComment:
   - speakerName: 3
     speech: Let's find the killer, Mr. <i>'I lost my memory'</i>.
@@ -28,6 +32,7 @@ MonoBehaviour:
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0
   groupDialogue:
     leftSpeaker: 2
     rightSpeaker: 1
@@ -38,90 +43,105 @@ MonoBehaviour:
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 3
       speech: Are you all right?
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 3
       speech: You look like you've seen a ghost back there.
       speakerEmotion: 2
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 0
       speech: There's a co-corpse in the bedroom...
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 3
       speech: Excuse me?
       speakerEmotion: 3
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 0
       speech: Someone was killed in here!
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 1
       speech: What?!
       speakerEmotion: 7
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 3
       speech: Oh, christ...
       speakerEmotion: 3
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 3
       speech: That must be John; he arrived a bit earlier than you...
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 2
       speech: A freaking corpse?
       speakerEmotion: 4
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 1
       speech: We have to call the police!
       speakerEmotion: 7
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 0
       speech: (Gets her phone out)
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 1
+      triggerNiceImpression: 0
     - speakerName: 0
       speech: '...'
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 1
       speech: It can't be! There's no reception!
       speakerEmotion: 3
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 2
       speech: Let's leave this fucking place, then!
       speakerEmotion: 4
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 0
       speech: 'The front door is locked!
 
@@ -130,26 +150,30 @@ MonoBehaviour:
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 3
       speech: Well, don't look at me. This was John's place - I don't have any keys.
       speakerEmotion: 0
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 3
       speech: Damn it. If the place is locked....
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 3
       speech: That means the murderer is within our group...
       speakerEmotion: 0
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     cancelOtherGroupDialogues: 1
+  dialogueTypeOrder: 020000000000000000000000
   introRead: 0
   interactionOptionSelected: 0
-  niceWithPlayer: 1
   groupDialogueRead: 1

@@ -19,30 +19,35 @@ MonoBehaviour:
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0
   - speakerName: 0
     speech: Hi...big guy...
     speakerEmotion: 8
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0
   - speakerName: 0
     speech: Well, I kind of lost my memory in an accident...
     speakerEmotion: 8
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0
   - speakerName: 0
     speech: Can you tell me your name? I actually...don't remember you...
     speakerEmotion: 8
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0
   - speakerName: 2
     speech: Really? Is that so?
     speakerEmotion: 3
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0
   - speakerName: 2
     speech: Ehm, okay, dude. You're talking to <color=orange>Wiliam Evans</color>,
       the super famous football player.
@@ -50,57 +55,69 @@ MonoBehaviour:
     clueInfo: {fileID: 0}
     revealName: 1
     playerThought: 0
+    triggerNiceImpression: 1
   - speakerName: 0
     speech: Are you famous?
     speakerEmotion: 8
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0
   - speakerName: 2
     speech: You bet I am! I'm gonna be the next legend of the sport!
     speakerEmotion: 2
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0
   - speakerName: 0
     speech: He seems pretty proud of himself, but why does he have to be so loud?
     speakerEmotion: 8
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 1
-  interactiveConversation: []
+    triggerNiceImpression: 0
+  interactiveConversation:
+    intro: []
+    playerOptions: []
+    resultingDialogues: []
   niceComment:
-  - speakerName: 2
-    speech: '...'
-    speakerEmotion: 0
-    clueInfo: {fileID: 0}
-    revealName: 0
-    playerThought: 0
-  rudeComment:
   - speakerName: 2
     speech: You really don't remember me at all, dude?
     speakerEmotion: 1
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0
   - speakerName: 0
     speech: I'm sorry...I can't recall you...
-    speakerEmotion: 0
+    speakerEmotion: 8
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0
   - speakerName: 2
     speech: That's...
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0
   - speakerName: 2
     speech: '...all right. Never mind.'
     speakerEmotion: 1
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0
+  rudeComment:
+  - speakerName: 2
+    speech: '...'
+    speakerEmotion: 1
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
   groupDialogue:
     leftSpeaker: 1
     rightSpeaker: 3
@@ -111,42 +128,49 @@ MonoBehaviour:
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 2
       speech: Hell, yeah! I'm known all over the county!
       speakerEmotion: 2
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 2
       speech: I'm the most talented dude this town's ever seen...
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 1
       speech: That's impressive!
       speakerEmotion: 2
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 0
       speech: I hope he's not trying to flirt with my girlfriend...
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 1
+      triggerNiceImpression: 0
     - speakerName: 1
       speech: Darling, you never told me about your famous sports friend...
       speakerEmotion: 0
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 0
       speech: Well...I really don't remember why I have never told you about him.
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 3
       speech: Mhh, that football star has always exaggerated and bragged about his
         actual talents.
@@ -154,43 +178,51 @@ MonoBehaviour:
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 3
       speech: Maybe that's why you never told her about him...
       speakerEmotion: 2
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 2
       speech: What da fuck do you know, freak?!
       speakerEmotion: 5
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 1
       speech: '...'
       speakerEmotion: 3
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 0
       speech: I can sense a lot of tension between those two...
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 1
+      triggerNiceImpression: 0
     - speakerName: 0
       speech: Okay; let's just calm down, all right?
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     - speakerName: 0
       speech: We are all here to have a nice party, aren't we?
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       revealName: 0
       playerThought: 0
+      triggerNiceImpression: 0
     cancelOtherGroupDialogues: 0
-  introRead: 0
+  dialogueTypeOrder: 000000000200000000000000
+  introRead: 1
   interactionOptionSelected: 0
-  groupDialogueRead: 0
+  groupDialogueRead: 1
