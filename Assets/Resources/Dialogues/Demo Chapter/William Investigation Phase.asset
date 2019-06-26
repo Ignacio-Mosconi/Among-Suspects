@@ -53,9 +53,9 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     playerOptions:
-    - option: Believe
+    - option: Believing
       description: '''That''s right, I trust you'''
-    - option: Pressure
+    - option: Doubtful
       description: '''I don''t buy it; tell me the truth'''
     resultingDialogues:
     - branchDialogue:
@@ -78,7 +78,7 @@ MonoBehaviour:
         speech: Anyways, the TV was busted or somethin', because none of the channels
           worked...
         speakerEmotion: 0
-        clueInfo: {fileID: 11400000, guid: d74553952f6bf144e9a0ef6e56429e81, type: 2}
+        clueInfo: {fileID: 0}
         revealName: 0
         playerThought: 0
         triggerNiceImpression: 0

@@ -14,9 +14,180 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   introLines: []
   interactiveConversation:
-    intro: []
-    playerOptions: []
-    resultingDialogues: []
+    intro:
+    - speakerName: 3
+      speech: Let me guess...
+      speakerEmotion: 0
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 3
+      speech: You have come here to play the detective and interrogate me, haven't
+        you?
+      speakerEmotion: 2
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 0
+      speech: 'I wouldn''t call it ''play'': this is no game.'
+      speakerEmotion: 8
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 3
+      speech: You're right. This is a serious matter, so take it seriously.
+      speakerEmotion: 1
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 0
+      speech: I will. Now, would you mind if I asked you what you were doing before
+        I found the body?
+      speakerEmotion: 8
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 3
+      speech: I was in the kitchen. As I was starting to feel hunger, I decided to
+        take some food myself...
+      speakerEmotion: 0
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 3
+      speech: I can tell you I'm guilty of that.
+      speakerEmotion: 2
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 0
+      speech: And I didn't want to be rude and take any food without permission...
+      speakerEmotion: 8
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 1
+      triggerNiceImpression: 0
+    - speakerName: 3
+      speech: So...Is that enough, detective?
+      speakerEmotion: 0
+      clueInfo: {fileID: 0}
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    playerOptions:
+    - option: Satisfied
+      description: '''You''ve told me enough'''
+    - option: Unsatisfied
+      description: '''I want to know more'''
+    resultingDialogues:
+    - branchDialogue:
+      - speakerName: 0
+        speech: Yes, that's enough information for now.
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 0
+        speech: Thank you for your collaboration.
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 3
+        speech: You're welcome, 'detective'.
+        speakerEmotion: 2
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 0
+        speech: He told me to take this thing seriously, and yet HE's the one playing
+          'cops & robbers'.
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 1
+        triggerNiceImpression: 0
+    - branchDialogue:
+      - speakerName: 0
+        speech: No, I need you to tell me more.
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 0
+        speech: What were you eating, for instance?
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 3
+        speech: What?
+        speakerEmotion: 0
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 3
+        speech: I told you not to play detective, <color=orange>James</color>...
+        speakerEmotion: 2
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 3
+        speech: You are asking nonsense now...
+        speakerEmotion: 1
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 0
+        speech: You didn't answer the question.
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 3
+        speech: Fine, fine. I was just making a sandwich...
+        speakerEmotion: 0
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 3
+        speech: This is sort of amusing, actually...
+        speakerEmotion: 2
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 0
+        speech: He seems to be the cynical type.
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 1
+        triggerNiceImpression: 0
+      - speakerName: 0
+        speech: But maybe he's a bit right, and I went a little out of my way there.
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        revealName: 0
+        playerThought: 1
+        triggerNiceImpression: 0
   niceComment:
   - speakerName: 3
     speech: Let's find the killer, <color=orange>James</color>.
@@ -173,7 +344,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     cancelOtherGroupDialogues: 1
-  dialogueTypeOrder: 020000000000000000000000
+  dialogueTypeOrder: 020000000100000000000000
   introRead: 0
-  interactionOptionSelected: 0
+  interactionOptionSelected: 1
   groupDialogueRead: 1
