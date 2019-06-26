@@ -52,6 +52,11 @@ public class SettingsScreen : MonoBehaviour
         musicAudioIcon.sprite = (musicVolumeSlider.value != 0f) ? audioIconsSprites[0] : audioIconsSprites[1];
     }
 
+    void OnEnable()
+    {
+        HideInfoPanel();
+    }
+
     void ResizeDropdownList(TMP_Dropdown dropdown)
     {
         RectTransform templateTransform = dropdown.template;
