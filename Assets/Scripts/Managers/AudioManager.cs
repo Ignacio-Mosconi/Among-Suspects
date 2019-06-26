@@ -67,7 +67,7 @@ public class AudioManager : MonoBehaviour
             audioMixersDic.Add((MixerType)i, audioMixers[i]);
     }
 
-    public void PlaySound(string soundName)
+    public void PlaySound(string soundName, bool oneShot = true)
     {
         AudioClip audioClip = Array.Find(soundsUI, clip => clip.name == soundName);
         if (!audioClip)
@@ -76,7 +76,10 @@ public class AudioManager : MonoBehaviour
             return;
         }
         soundsUISource.clip = audioClip;
-        soundsUISource.PlayOneShot(audioClip);
+        if (oneShot)
+            soundsUISource.PlayOneShot(audioClip);
+        else
+            soundsUISource.Play();
     }
 
     public void PlayTheme(string themeName)

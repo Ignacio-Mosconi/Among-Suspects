@@ -22,15 +22,22 @@ public class SettingsScreen : MonoBehaviour
     [SerializeField] [TextArea(3, 10)] string fullscreenInfoText = default;
     [SerializeField] [TextArea(3, 10)] string textSpeedInfoText = default;
     [Header("Other Properties")]
+    [SerializeField] Image sfxAudioIcon = default;
+    [SerializeField] Image musicAudioIcon = default;
+    [SerializeField] Sprite[] audioIconsSprites = default;
     [SerializeField] [Range(150f, 300f)] float maxDropdownHeight = 300f;
     
     TextMeshProUGUI infoPanelText;
+    TextMeshProUGUI sfxVolumeValueText;
+    TextMeshProUGUI musicVolumeValueText;
 
     const float InfoPanelBorderPadding = 20f;
 
     void Awake()
     {
         infoPanelText = infoPanel.GetComponentInChildren<TextMeshProUGUI>(includeInactive: true);
+        sfxVolumeValueText = sfxVolumeSlider.GetComponentInChildren<TextMeshProUGUI>();
+        musicVolumeValueText = musicVolumeSlider.GetComponentInChildren<TextMeshProUGUI>();
     }
     
     void Start()
@@ -41,6 +48,8 @@ public class SettingsScreen : MonoBehaviour
         textSpeedSlider.value = GameManager.Instance.TextSpeedMultiplier;
         sfxVolumeSlider.value = GameManager.Instance.SfxVolume;
         musicVolumeSlider.value = GameManager.Instance.MusicVolume;
+        sfxAudioIcon.sprite = (sfxVolumeSlider.value != 0f) ? audioIconsSprites[0] : audioIconsSprites[1];
+        musicAudioIcon.sprite = (musicVolumeSlider.value != 0f) ? audioIconsSprites[0] : audioIconsSprites[1];
     }
 
     void ResizeDropdownList(TMP_Dropdown dropdown)
@@ -141,12 +150,29 @@ public class SettingsScreen : MonoBehaviour
 
     public void ChangeSfxVolume(float volume)
     {
+        sfxAudioIcon.sprite = (volume != 0f) ? audioIconsSprites[0] : audioIconsSprites[1];
+        sfxVolumeValueText.text = ((int)(volume * 100f)).ToString();
         GameManager.Instance.SetSfxVolume(volume);
+        AudioManager.Instance.PlaySound("Button Click", oneShot: false);
+    }
+
+    public void SetSfxMute()
+    {
+        float newVolume = (sfxAudioIcon.sprite == audioIconsSprites[0]) ? 0f : 1f;
+        sfxVolumeSlider.value = newVolume;
     }
 
     public void ChangeMusicVolume(float volume)
     {
+        musicAudioIcon.sprite = (volume != 0f) ? audioIconsSprites[0] : audioIconsSprites[1];
+        musicVolumeValueText.text = ((int)(volume * 100f)).ToString();
         GameManager.Instance.SetMusicVolume(volume);
+    }
+
+    public void SetMusicMute()
+    {
+        float newVolume = (musicAudioIcon.sprite == audioIconsSprites[0]) ? 0f : 1f;
+        musicVolumeSlider.value = newVolume;
     }
 
     public void ShowFullscreenInfo()
@@ -160,7 +186,7 @@ public class SettingsScreen : MonoBehaviour
     {
         infoPanel.gameObject.SetActive(true);    
         infoPanelText.text = textSpeedInfoText;
-        ResizeInfoPanel(); 
+        ResizeInfoPanel();
     }
 
     public void HideInfoPanel()
