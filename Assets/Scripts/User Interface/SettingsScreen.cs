@@ -16,8 +16,22 @@ public class SettingsScreen : MonoBehaviour
     [SerializeField] Slider musicVolumeSlider = default;
     [Header("Texts")]
     [SerializeField] TextMeshProUGUI fullscreenText = default;
+    [Header("Info Panel")]
+    [SerializeField] RectTransform infoPanel = default;
+    [SerializeField] [Range(0f, 100f)] float infoPanelAppearHorOffset = 75f;
+    [SerializeField] [TextArea(3, 10)] string fullscreenInfoText = default;
+    [SerializeField] [TextArea(3, 10)] string textSpeedInfoText = default;
     [Header("Other Properties")]
     [SerializeField] [Range(150f, 300f)] float maxDropdownHeight = 300f;
+    
+    TextMeshProUGUI infoPanelText;
+
+    const float InfoPanelBorderPadding = 20f;
+
+    void Awake()
+    {
+        infoPanelText = infoPanel.GetComponentInChildren<TextMeshProUGUI>(includeInactive: true);
+    }
     
     void Start()
     {
@@ -39,6 +53,17 @@ public class SettingsScreen : MonoBehaviour
         float newTemplateHeight = Mathf.Min(contentHeight * numberOfOptions, maxDropdownHeight);
 
         templateTransform.sizeDelta = new Vector2(templateTransform.sizeDelta.x, newTemplateHeight);
+    }
+
+    void ResizeInfoPanel()
+    {
+        infoPanelText.ForceMeshUpdate();
+
+        float newPanelHeight = infoPanelText.renderedHeight + InfoPanelBorderPadding;
+        infoPanel.sizeDelta = new Vector2(infoPanel.sizeDelta.x, newPanelHeight);
+
+        Vector2 offset = new Vector2(infoPanelAppearHorOffset, -infoPanel.rect.height);
+        infoPanel.anchoredPosition = (Vector2)Input.mousePosition + offset;
     }
 
     void InitializeQualityLevelDropdown()
@@ -122,5 +147,24 @@ public class SettingsScreen : MonoBehaviour
     public void ChangeMusicVolume(float volume)
     {
         GameManager.Instance.SetMusicVolume(volume);
+    }
+
+    public void ShowFullscreenInfo()
+    {
+        infoPanel.gameObject.SetActive(true);    
+        infoPanelText.text = fullscreenInfoText;
+        ResizeInfoPanel(); 
+    }
+
+    public void ShowTextSpeedInfo()
+    {
+        infoPanel.gameObject.SetActive(true);    
+        infoPanelText.text = textSpeedInfoText;
+        ResizeInfoPanel(); 
+    }
+
+    public void HideInfoPanel()
+    {
+        infoPanel.gameObject.SetActive(false);
     }
 }

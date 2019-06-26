@@ -21,7 +21,10 @@ public class PauseMenu : Menu
             if (!isPaused)
                 Pause();
             else
+            {
+                AudioManager.Instance.PlaySound("Menu Pop Out");
                 Resume();
+            }
         }
     }
 
@@ -72,7 +75,6 @@ public class PauseMenu : Menu
         GameManager.Instance.SetCursorEnable(enable: cursorEnabledAtPause);
 
         AudioManager.Instance.ResumeAmbientSound();
-        AudioManager.Instance.PlaySound("Menu Pop Out");
 
         onResume.Invoke();
     }
