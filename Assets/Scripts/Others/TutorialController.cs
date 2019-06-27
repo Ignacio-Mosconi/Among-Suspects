@@ -4,13 +4,15 @@ using UnityEngine.Events;
 
 public class TutorialController : MonoBehaviour
 {   
+    [SerializeField] TutorialTrigger debateTutorialTrigger = default;
+
     TutorialInfo[] tutorials;
     float navigationTutorialDelay;
     float investigationTutorialDelay;
     float cluesTutorialDelay;
-    float debateTutorialDelay;
+    float debateStartTutorialDelay;
 
-    const float AdditionalTutorialDelay = 0.1f;
+    const float AdditionalTutorialDelay = 0.025f;
 
     UnityEvent onTutorialTriggered = new UnityEvent();
 
@@ -23,12 +25,15 @@ public class TutorialController : MonoBehaviour
         navigationTutorialDelay = DialogueManager.Instance.SpeechPanelPrompt.HideAnimationDuration + AdditionalTutorialDelay;
         investigationTutorialDelay = hud.InvestigationPhasePrompt.GetOnScreenDuration() + AdditionalTutorialDelay;
         cluesTutorialDelay = hud.ClueFoundPrompt.GetOnScreenDuration() + AdditionalTutorialDelay;
-        debateTutorialDelay = cluesTutorialDelay;
+        debateStartTutorialDelay = cluesTutorialDelay;
         
         DialogueManager.Instance.OnDialogueAreaDisable.AddListener(TriggerNavigationTutorial);
         CharacterManager.Instance.PlayerController.OnStartedInvestigation.AddListener(TriggerInvestigationTutorial);
         CharacterManager.Instance.PlayerController.OnClueFound.AddListener(TriggerCluesTutorial);
-        CharacterManager.Instance.PlayerController.OnAllCluesFound.AddListener(TriggerDebateTutorial);
+        CharacterManager.Instance.PlayerController.OnAllCluesFound.AddListener(TriggerDebateStartTutorial);
+
+        debateTutorialTrigger.gameObject.SetActive(false);
+        debateTutorialTrigger.OnTrigger.AddListener(DisplayDebateTutorial);
     }
 
     TutorialInfo FetchTutorial(TutorialType tutorialType)
@@ -61,9 +66,10 @@ public class TutorialController : MonoBehaviour
         Invoke("DisplayCluesTutorial", cluesTutorialDelay);
     }
 
-    void TriggerDebateTutorial()
+    void TriggerDebateStartTutorial()
     {
-        Invoke("DisplayDebateTutorial", debateTutorialDelay);
+        debateTutorialTrigger.gameObject.SetActive(true);
+        Invoke("DisplayDebateStartTutorial", debateStartTutorialDelay);
     }
 
     void DisplayNavigationTutorial()
@@ -87,10 +93,17 @@ public class TutorialController : MonoBehaviour
         DisplayTutorial(tutorial);
     }
 
+    void DisplayDebateStartTutorial()
+    {
+        TutorialInfo tutorial = FetchTutorial(TutorialType.DebateStart);
+        CharacterManager.Instance.PlayerController.OnAllCluesFound.RemoveListener(TriggerDebateStartTutorial);
+        DisplayTutorial(tutorial);
+    }
+
     void DisplayDebateTutorial()
     {
         TutorialInfo tutorial = FetchTutorial(TutorialType.Debate);
-        CharacterManager.Instance.PlayerController.OnAllCluesFound.RemoveListener(TriggerDebateTutorial);
+        debateTutorialTrigger.OnTrigger.RemoveListener(DisplayDebateTutorial);
         DisplayTutorial(tutorial);
     }
 
