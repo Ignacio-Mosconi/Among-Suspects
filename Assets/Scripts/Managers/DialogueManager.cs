@@ -43,6 +43,9 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] UIPrompt leftMouseClickPrompt = default;
     [SerializeField] UIPrompt dialogueOptionsPrompt = default;
     [SerializeField] UIPrompt objectPanelPrompt = default;
+    [Header("Icons")]
+    [SerializeField] Image speakerIcon = default;
+    [SerializeField] Sprite[] speakerSprites = default;
 
     SpeechController speechController;
     CharacterSpriteController characterSpriteController;
@@ -217,6 +220,10 @@ public class DialogueManager : MonoBehaviour
             
             if (speechText.color != GameManager.Instance.NpcSpeakingTextColor)
                 speechText.color = GameManager.Instance.NpcSpeakingTextColor;
+            if (speakerText.color != GameManager.Instance.NpcSpeakingTextColor)
+                speakerText.color = GameManager.Instance.NpcSpeakingTextColor;
+            if (speakerIcon.sprite != speakerSprites[0])
+                speakerIcon.sprite = speakerSprites[0];
         }
         else
         {
@@ -231,16 +238,30 @@ public class DialogueManager : MonoBehaviour
                 {
                     if (speechText.color != GameManager.Instance.PlayerSpeakingTextColor)
                         speechText.color = GameManager.Instance.PlayerSpeakingTextColor;
+                    if (speakerText.color != GameManager.Instance.PlayerSpeakingTextColor)
+                        speakerText.color = GameManager.Instance.PlayerSpeakingTextColor;
+                    if (speakerIcon.sprite != speakerSprites[0])
+                        speakerIcon.sprite = speakerSprites[0];
                 }
                 else
                 {
                     if (speechText.color != GameManager.Instance.PlayerThinkingTextColor)
                         speechText.color = GameManager.Instance.PlayerThinkingTextColor;
+                    if (speakerText.color != GameManager.Instance.PlayerThinkingTextColor)
+                        speakerText.color = GameManager.Instance.PlayerThinkingTextColor;
+                    if (speakerIcon.sprite != speakerSprites[1])
+                        speakerIcon.sprite = speakerSprites[1];
                 }       
             } 
             else
+            {
                 if (speechText.color != GameManager.Instance.TutorialTextColor)
                     speechText.color = GameManager.Instance.TutorialTextColor;
+                if (speakerText.color != GameManager.Instance.TutorialTextColor)
+                    speakerText.color = GameManager.Instance.TutorialTextColor;
+                if (speakerIcon.sprite != speakerSprites[2])
+                    speakerIcon.sprite = speakerSprites[2];
+            }
         }
 
         speechController.StartSpeaking(dialogue.speech);
