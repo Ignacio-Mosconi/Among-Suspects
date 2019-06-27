@@ -114,9 +114,8 @@ public class GameManager : MonoBehaviour
 
     void LoadPlayerPrefs()
     {
-        Resolution[] resolutions = Screen.resolutions;
         Resolution currentRes = Screen.currentResolution;
-        int defaultResIndex = Array.FindIndex(resolutions, r => r.width == currentRes.width && r.height == currentRes.height);
+        int defaultResIndex = Array.FindIndex(availableResolutions, r => r.width == currentRes.width && r.height == currentRes.height);
 
         currentQualityLevelIndex = PlayerPrefs.GetInt("pQualityLevel", QualitySettings.GetQualityLevel());
         currentResolutionIndex = PlayerPrefs.GetInt("pResolution", defaultResIndex);
