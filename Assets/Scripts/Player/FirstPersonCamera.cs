@@ -43,7 +43,7 @@ public class FirstPersonCamera : MonoBehaviour
         float angleBetweenDirs = Vector3.Angle(transform.forward, targetDir);
         float targetHorAngle = (localTargetDir.x > localForward.x) ? horAngle + angleBetweenDirs : horAngle - angleBetweenDirs;
         
-        Vector3 targetCameraDir = new Vector3(fpsCamera.forward.x, verDiff.y, fpsCamera.forward.z).normalized;
+        Vector3 targetCameraDir = new Vector3(fpsCamera.forward.x, verDiff.y / verDiff.magnitude, fpsCamera.forward.z).normalized;
         float angleBetweenCamDirs = Vector3.Angle(fpsCamera.forward, targetCameraDir);
         float targetVerAngle = (targetCameraDir.y > fpsCamera.forward.y) ? verAngle - angleBetweenCamDirs : verAngle + angleBetweenCamDirs;
 

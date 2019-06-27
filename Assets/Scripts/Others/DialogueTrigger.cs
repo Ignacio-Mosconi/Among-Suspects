@@ -3,7 +3,7 @@
 [RequireComponent(typeof(BoxCollider))]
 public class DialogueTrigger : MonoBehaviour
 {
-    [SerializeField] NPC npc = default;
+    [SerializeField] Interactable interactable = default;
     
     PlayerController playerController;
 
@@ -16,7 +16,7 @@ public class DialogueTrigger : MonoBehaviour
     {
         if (collider.gameObject == playerController.gameObject)
         {
-            npc.Interact();
+            interactable.Interact();
             gameObject.SetActive(false);
         }
     }
