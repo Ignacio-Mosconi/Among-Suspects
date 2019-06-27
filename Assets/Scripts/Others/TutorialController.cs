@@ -12,7 +12,7 @@ public class TutorialController : MonoBehaviour
     float cluesTutorialDelay;
     float debateStartTutorialDelay;
 
-    const float AdditionalTutorialDelay = 0.025f;
+    const float AdditionalTutorialDelay = 0.1f;
 
     UnityEvent onTutorialTriggered = new UnityEvent();
 
