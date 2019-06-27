@@ -20,24 +20,28 @@ MonoBehaviour:
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 1
+    triggerNiceImpression: 0
   - speakerName: 0
     speech: I never thought I'd actually see something like this in real life...
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 1
+    triggerNiceImpression: 0
   - speakerName: 0
     speech: I should probably talk to the others...
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 1
+    triggerNiceImpression: 0
   - speakerName: 0
     speech: We have to do something about it!
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 1
+    triggerNiceImpression: 0
   - speakerName: 0
     speech: I could also take a look at some things around the room; they might reveal
       what actually happened here...
@@ -45,20 +49,23 @@ MonoBehaviour:
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 1
+    triggerNiceImpression: 0
   - speakerName: 5
-    speech: You are now in the 'Investigation Phase'.
+    speech: You are now in the <color=yellow>'Investigation Phase'</color>.
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0
   - speakerName: 5
-    speech: As such, you can now start searching for clues around the house in order
-      to find out how the victim died. <color=yellow>Inspect</color> nearby objects
-      to find them.
+    speech: As such, you can now start searching for <color=yellow>clues</color> around
+      the house in order to find out how the victim died. <color=yellow>Inspect</color>
+      nearby objects to find them.
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0
   - speakerName: 5
     speech: It would also be a good idea to go back and <color=yellow>talk</color>
       to the rest of the guests in order to find out more about the victim.
@@ -66,3 +73,4 @@ MonoBehaviour:
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0

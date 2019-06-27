@@ -20,6 +20,7 @@ MonoBehaviour:
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 1
+    triggerNiceImpression: 0
   - speakerName: 0
     speech: I should probably approach the rest of the guests at this party, so that
       I can greet them.
@@ -27,6 +28,7 @@ MonoBehaviour:
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 1
+    triggerNiceImpression: 0
   - speakerName: 0
     speech: If I'm lucky enough, I'll be able to start remembering things from my
       past...
@@ -34,6 +36,7 @@ MonoBehaviour:
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 1
+    triggerNiceImpression: 0
   - speakerName: 5
     speech: Use the <sprite="Main Keys" name="W">, <sprite="Main Keys" name="A">,
       <sprite="Main Keys" name="S">, and <sprite="Main Keys" name="D"> keys to move
@@ -42,6 +45,7 @@ MonoBehaviour:
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0
   - speakerName: 5
     speech: You can hold down the <sprite="Other Keys" name="shift"> key to move around
       faster while you walk.
@@ -49,6 +53,14 @@ MonoBehaviour:
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: Use the <sprite="Mouse" name="Mouse"> to control the view.
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
   - speakerName: 5
     speech: Press the <sprite="Main Keys" name="E"> key to <color=yellow>talk</color>
       to a character when you get close to them. You can also <color=yellow>inspect</color>
@@ -57,9 +69,11 @@ MonoBehaviour:
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0
   - speakerName: 5
-    speech: Go ahead and talk to the rest of the group.
+    speech: Go ahead and <color=yellow>talk</color> to the rest of the group.
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0

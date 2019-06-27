@@ -47,6 +47,11 @@ public class DebateInitializer : Interactable
         GameManager.Instance.SetCursorEnable(enable: false);
     }
 
+    public override string GetInteractionKind()
+    {
+        return "start the debate";
+    }
+
     public DebateCharacterSprite[] DebateCharactersSprites
     {
         get { return debateCharactersSprites; }

@@ -27,6 +27,11 @@ public class NPC : Interactable, ICharacter
         CharacterManager.Instance.HideCharacterMeshes();
     }
 
+    public override string GetInteractionKind()
+    {
+        return "talk";
+    }
+
     public override void Interact()
     {   
         DisableInteraction();

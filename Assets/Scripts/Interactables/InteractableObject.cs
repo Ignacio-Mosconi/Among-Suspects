@@ -18,4 +18,9 @@ public class InteractableObject : Interactable
         DisableInteraction();
         DialogueManager.Instance.StartDialogue(thoughtInfo, interactionPoint.position, objectSprite, enableImage: true);
     }
+
+    public override string GetInteractionKind()
+    {
+        return "inspect";
+    }
 }

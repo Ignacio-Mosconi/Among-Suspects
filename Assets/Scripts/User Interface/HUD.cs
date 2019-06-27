@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class HUD : MonoBehaviour
 {
@@ -7,6 +7,9 @@ public class HUD : MonoBehaviour
     [SerializeField] UIPrompt interactTextPrompt = default;
     [SerializeField] UIPrompt clueFoundPrompt = default;
     [SerializeField] UIPrompt investigationPhasePrompt = default;
+    [SerializeField] string interactionKeyString = default;
+
+    TextMeshProUGUI interactText;
 
     void Start()
     {
@@ -37,6 +40,8 @@ public class HUD : MonoBehaviour
         interactTextPrompt.SetUp();
         clueFoundPrompt.SetUp();
         investigationPhasePrompt.SetUp();
+
+        interactText = interactTextPrompt.GetComponentInChildren<TextMeshProUGUI>(includeInactive: true);
     }
 
     void ShowHUD()
@@ -50,8 +55,9 @@ public class HUD : MonoBehaviour
         hudArea.SetActive(false);
     }
 
-    void ShowInteractTextPrompt()
+    void ShowInteractTextPrompt(string interactionKind)
     {
+        interactText.text = "Press " + interactionKeyString + " to <color=yellow>" + interactionKind + "</color>";
         interactTextPrompt.Show();
     }
 

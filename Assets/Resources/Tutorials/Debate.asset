@@ -20,6 +20,7 @@ MonoBehaviour:
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 1
+    triggerNiceImpression: 0
   - speakerName: 0
     speech: I wonder if I have enough info to dot the i's and cross the t's on what
       actually happened in that room...
@@ -27,24 +28,28 @@ MonoBehaviour:
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 1
+    triggerNiceImpression: 0
   - speakerName: 0
     speech: I feel like I can get a general picture of the events now...
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 1
+    triggerNiceImpression: 0
   - speakerName: 0
     speech: But I'm not sure about it yet...
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 1
+    triggerNiceImpression: 0
   - speakerName: 5
-    speech: You have already found a whole bunch of clues.
+    speech: You have already found a whole bunch of <color=yellow>clues</color>.
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0
   - speakerName: 5
     speech: Usually, it will be up to you to decide when to conclude the investigation
       and proeceed with the solution of the case.
@@ -52,13 +57,15 @@ MonoBehaviour:
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0
   - speakerName: 5
     speech: 'However, there''s an exception this time around: you have already found
-      every clue that will allow you to identify the culprit.'
+      every <color=yellow>clue</color> that will allow you to identify the culprit.'
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0
   - speakerName: 5
     speech: You should proceed by approaching the large table in the main hall and
       initializing the so called <color=yellow>'debate'</color>.
@@ -66,6 +73,7 @@ MonoBehaviour:
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0
   - speakerName: 5
     speech: 'You haven''t forgotten how to <color=yellow>walk</color> and <color=yellow>interact</color>,
       have you?
@@ -75,10 +83,12 @@ MonoBehaviour:
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0
   - speakerName: 5
     speech: Now is the time to review all the evidence you found to be prepared for
-      the debate. You'll learn all about it really soon...
+      the <color=yellow>debate</color>. You'll learn all about it really soon...
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     revealName: 0
     playerThought: 0
+    triggerNiceImpression: 0

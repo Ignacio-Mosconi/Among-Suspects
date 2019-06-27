@@ -711,6 +711,7 @@ MonoBehaviour:
   interactTextPrompt: {fileID: 402987291991321606}
   clueFoundPrompt: {fileID: 1661687436802051765}
   investigationPhasePrompt: {fileID: 2063236425631751846}
+  interactionKeyString: <sprite="Main Keys" name="E">
 --- !u!1 &5118334225594090573
 GameObject:
   m_ObjectHideFlags: 0
@@ -906,8 +907,8 @@ RectTransform:
   m_Father: {fileID: 7275652567596126308}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.3, y: 0.2}
-  m_AnchorMax: {x: 0.7, y: 0.35}
+  m_AnchorMin: {x: 0.2, y: 0.2}
+  m_AnchorMax: {x: 0.8, y: 0.35}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
+[System.Serializable]
+public class StartLookingEvent : UnityEvent<string> {}
+
 public abstract class Interactable : MonoBehaviour
 {
     [SerializeField] protected Transform interactionPoint = default;
@@ -12,7 +15,7 @@ public abstract class Interactable : MonoBehaviour
     Transform cameraTransform;
     bool isPlayerLookingAt = false;
 
-    UnityEvent onStartLookingAt = new UnityEvent();
+    StartLookingEvent onStartLookingAt = new StartLookingEvent();
     UnityEvent onStopLookingAt = new UnityEvent();
     UnityEvent onInteraction = new UnityEvent();
 
@@ -62,7 +65,7 @@ public abstract class Interactable : MonoBehaviour
     void StartLookingAt()
     {
         isPlayerLookingAt = true;
-        onStartLookingAt.Invoke();
+        onStartLookingAt.Invoke(GetInteractionKind());
     }
 
     void StopLookingAt()
@@ -81,6 +84,11 @@ public abstract class Interactable : MonoBehaviour
         enabled = false;
     }
 
+    public virtual string GetInteractionKind()
+    {
+        return "interact";
+    }
+
     public abstract void Interact();
 
     #region Properties
@@ -90,7 +98,7 @@ public abstract class Interactable : MonoBehaviour
         get { return interactionPoint.position; }
     }
 
-    public UnityEvent OnStartLookingAt
+    public StartLookingEvent OnStartLookingAt
     {
         get { return onStartLookingAt; }
     }
