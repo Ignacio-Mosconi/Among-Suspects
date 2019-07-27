@@ -96,7 +96,7 @@ MonoBehaviour:
   argumentPanel: {fileID: 761603635975782502}
   speechPanel: {fileID: 6170737698435450236}
   debateOptionsPanel: {fileID: 1801679832460021641}
-  clueOptionsPanel: {fileID: 4102656720875789619}
+  clueOptionsPanel: {fileID: 8535884513989473265}
   useEvidenceButton: {fileID: 2465190632631547827}
   speakerText: {fileID: 4457280893740812679}
   argumentText: {fileID: 761603636835373319}
@@ -1111,9 +1111,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: This is a sample clue description...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 0}
-  m_sharedMaterial: {fileID: 21333373908695394, guid: 2d7ad3e9cb7df0847b2f2857da58426b,
-    type: 2}
+  m_fontAsset: {fileID: 11400000, guid: cfcc70fef0d7f604089553c796e12ec6, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 1ccac3850f706a442a1c548021d305a7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1607,7 +1606,7 @@ MonoBehaviour:
   m_text: Select Evidence
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cfcc70fef0d7f604089553c796e12ec6, type: 2}
-  m_sharedMaterial: {fileID: 21333373908695394, guid: 2d7ad3e9cb7df0847b2f2857da58426b,
+  m_sharedMaterial: {fileID: 21333373908695394, guid: cfcc70fef0d7f604089553c796e12ec6,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1682,7 +1681,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -1915,6 +1914,9 @@ GameObject:
   - component: {fileID: 3360348903687656729}
   - component: {fileID: 5430023253064301623}
   - component: {fileID: 4554624284447667123}
+  - component: {fileID: 3291626562824776007}
+  - component: {fileID: 8535884513989473265}
+  - component: {fileID: 3077874207522699925}
   m_Layer: 0
   m_Name: Clue Options Panel
   m_TagString: Untagged
@@ -2000,6 +2002,50 @@ MonoBehaviour:
   clueTitleText: {fileID: 1553000840846621334}
   clueDescriptionText: {fileID: 5532590491981651955}
   clueImage: {fileID: 1642747697279399131}
+--- !u!95 &3291626562824776007
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4102656720875789619}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 8465cdc92a50f03449ec37a2b36f8b4b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8535884513989473265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4102656720875789619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bc798d56cfb9124091539aa590520e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backButton: {fileID: 783617603462501938}
+--- !u!225 &3077874207522699925
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4102656720875789619}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &4129067738469023427
 GameObject:
   m_ObjectHideFlags: 0
@@ -2223,7 +2269,7 @@ MonoBehaviour:
   m_text: Use
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cfcc70fef0d7f604089553c796e12ec6, type: 2}
-  m_sharedMaterial: {fileID: 21333373908695394, guid: 2d7ad3e9cb7df0847b2f2857da58426b,
+  m_sharedMaterial: {fileID: 21333373908695394, guid: cfcc70fef0d7f604089553c796e12ec6,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2298,13 +2344,13 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
   m_isInputParsingRequired: 0
   m_inputSource: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_subTextObjects:
   - {fileID: 0}
   - {fileID: 0}
@@ -2442,7 +2488,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5325723875381233723
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3757,7 +3803,7 @@ MonoBehaviour:
   m_text: Back
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cfcc70fef0d7f604089553c796e12ec6, type: 2}
-  m_sharedMaterial: {fileID: 21333373908695394, guid: 2d7ad3e9cb7df0847b2f2857da58426b,
+  m_sharedMaterial: {fileID: 21333373908695394, guid: cfcc70fef0d7f604089553c796e12ec6,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3832,7 +3878,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}

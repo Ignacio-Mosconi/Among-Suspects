@@ -52,7 +52,7 @@ public class DebateManager : MonoBehaviour
     [SerializeField] GameObject argumentPanel = default;
     [SerializeField] GameObject speechPanel = default;
     [SerializeField] GameObject debateOptionsPanel = default;
-    [SerializeField] GameObject clueOptionsPanel = default;
+    [SerializeField] AnimatedMenuScreen clueOptionsPanel = default;
     [Header("Buttons & Texts")]
     [SerializeField] Button useEvidenceButton = default;
     [SerializeField] TextMeshProUGUI speakerText = default;
@@ -95,8 +95,9 @@ public class DebateManager : MonoBehaviour
         cluesScreen = GetComponentInChildren<CluesScreen>(includeInactive: true);
 
         useEvidenceButton.interactable = false;
+        clueOptionsPanel.SetUp();
         GameManager.Instance.AddCursorPointerEventsToAllButtons(debateOptionsPanel);
-        GameManager.Instance.AddCursorPointerEventsToAllButtons(clueOptionsPanel);
+        GameManager.Instance.AddCursorPointerEventsToAllButtons(clueOptionsPanel.gameObject);
 
         argumentController.OnArgumentFinish.AddListener(ShowDebateOptions);
         debateCameraController.OnFocusFinish.AddListener(ProceedAfterCameraFocus);
@@ -399,7 +400,7 @@ public class DebateManager : MonoBehaviour
         debateOptionsPanel.SetActive(false);
         speakerArea.SetActive(false);
         argumentAndSpeechArea.SetActive(false);
-        clueOptionsPanel.gameObject.SetActive(true);
+        clueOptionsPanel.Show();
 
         Button[] cluesButtons = cluesScreen.CluesButtons.ToArray();
 
@@ -426,7 +427,7 @@ public class DebateManager : MonoBehaviour
             credibilityPerc -= credibilityDecPerc;
         }
 
-        clueOptionsPanel.SetActive(false);
+        clueOptionsPanel.Hide();
         
         useEvidenceButton.interactable = false;
         currentlySelectedEvidence = null;
@@ -439,7 +440,7 @@ public class DebateManager : MonoBehaviour
         debateOptionsPanel.SetActive(true);
         speakerArea.SetActive(true);
         argumentAndSpeechArea.SetActive(true);
-        clueOptionsPanel.SetActive(false);
+        clueOptionsPanel.Hide();
     }
 
     public void StartDebate(DebateInfo debateInfo, List<ClueInfo> playerClues)

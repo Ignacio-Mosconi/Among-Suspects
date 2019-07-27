@@ -4622,7 +4622,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &173750903
 Transform:
   m_ObjectHideFlags: 0
@@ -50742,6 +50742,11 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 383697423134739881, guid: 08c1291f79efca04ab90288adf30db5c,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3537176775212016247, guid: 08c1291f79efca04ab90288adf30db5c,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -50752,6 +50757,11 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3537176775212016247, guid: 08c1291f79efca04ab90288adf30db5c,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4954067403181533318, guid: 08c1291f79efca04ab90288adf30db5c,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -50761,6 +50771,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4954067403181533318, guid: 08c1291f79efca04ab90288adf30db5c,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6158674095232141904, guid: 08c1291f79efca04ab90288adf30db5c,
         type: 3}
@@ -50782,6 +50797,12 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5532590491981651955, guid: 08c1291f79efca04ab90288adf30db5c,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 21333373908695394, guid: cfcc70fef0d7f604089553c796e12ec6,
+        type: 2}
     - target: {fileID: 1553000840846621334, guid: 08c1291f79efca04ab90288adf30db5c,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -50796,6 +50817,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ScrollSensitivity
       value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630027277448448979, guid: 08c1291f79efca04ab90288adf30db5c,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630027277448448979, guid: 08c1291f79efca04ab90288adf30db5c,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630027277448448979, guid: 08c1291f79efca04ab90288adf30db5c,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08c1291f79efca04ab90288adf30db5c, type: 3}
@@ -51545,6 +51581,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tutorial Controller
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169714835373591763, guid: 91b0847e1a42b28489223f57b570c60f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4674015219660970219, guid: 91b0847e1a42b28489223f57b570c60f,
         type: 3}
