@@ -743,6 +743,7 @@ GameObject:
   - component: {fileID: 1637689287959815378}
   - component: {fileID: 4767136632953414405}
   - component: {fileID: 7304844114988127567}
+  - component: {fileID: 5718644871826764137}
   m_Layer: 5
   m_Name: Settings Screen
   m_TagString: Untagged
@@ -836,6 +837,18 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 98c2d5746d71ebd4ebad8b9c26f0b2f2, type: 3}
   - {fileID: 21300000, guid: 70ec45485098eb345bc2c950f8161788, type: 3}
   maxDropdownHeight: 300
+--- !u!225 &5718644871826764137
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776844573623282882}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &822264686042193629
 GameObject:
   m_ObjectHideFlags: 0
@@ -5161,13 +5174,13 @@ MonoBehaviour:
     lineCount: 2
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
   m_isInputParsingRequired: 0
   m_inputSource: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_subTextObjects:
   - {fileID: 0}
   - {fileID: 0}
@@ -5190,6 +5203,7 @@ GameObject:
   - component: {fileID: 4479487947955831122}
   - component: {fileID: 2312707790285163805}
   - component: {fileID: 1844409823930495231}
+  - component: {fileID: 201949587986095208}
   m_Layer: 5
   m_Name: Main Screen
   m_TagString: Untagged
@@ -5249,6 +5263,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backButton: {fileID: 0}
+--- !u!225 &201949587986095208
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4479487947955831123}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &4479487948007249394
 GameObject:
   m_ObjectHideFlags: 0
@@ -6348,6 +6374,7 @@ GameObject:
   - component: {fileID: 1469621923236644187}
   - component: {fileID: 1155369394778161283}
   - component: {fileID: 8172948420279333562}
+  - component: {fileID: 3076196858846540845}
   m_Layer: 5
   m_Name: Clues Screen
   m_TagString: Untagged
@@ -6427,6 +6454,18 @@ MonoBehaviour:
   clueTitleText: {fileID: 4479487948007249392}
   clueDescriptionText: {fileID: 4479487947914901734}
   clueImage: {fileID: 8619578238844105618}
+--- !u!225 &3076196858846540845
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4479487949260736960}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &4479487949302474199
 GameObject:
   m_ObjectHideFlags: 0
