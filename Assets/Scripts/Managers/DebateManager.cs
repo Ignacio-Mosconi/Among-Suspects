@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -44,11 +43,11 @@ public class DebateManager : MonoBehaviour
     #endregion
 
     [Header("UI Elements")]
-    [Header("Areas")]
+    [Header("Main Area")]
     [SerializeField] GameObject debateArea = default;
-    [SerializeField] GameObject speakerArea = default;
-    [SerializeField] GameObject argumentAndSpeechArea = default;
-    [Header("Panels")]
+    [Header("Panels & Sub Areas")]
+    [SerializeField] UIPrompt speakerArea = default;
+    [SerializeField] UIPrompt argumentAndSpeechArea = default;
     [SerializeField] GameObject argumentPanel = default;
     [SerializeField] GameObject speechPanel = default;
     [SerializeField] UIPrompt debateOptionsPanel = default;
@@ -58,7 +57,9 @@ public class DebateManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI speakerText = default;
     [SerializeField] TextMeshProUGUI argumentText = default;
     [SerializeField] TextMeshProUGUI speechText = default;
-    
+    [Header("Other Properties")]
+    [SerializeField] [Range(3f, 10f)] float speakerAreaAutoHideTime = 5f;
+
     SpeechController speechController;
     ArgumentController argumentController;
     DebateCameraController debateCameraController;
@@ -95,6 +96,9 @@ public class DebateManager : MonoBehaviour
         cluesScreen = GetComponentInChildren<CluesScreen>(includeInactive: true);
 
         useEvidenceButton.interactable = false;
+
+        speakerArea.SetUp();
+        argumentAndSpeechArea.SetUp();
         debateOptionsPanel.SetUp();
         clueOptionsPanel.SetUp();
 
@@ -114,7 +118,7 @@ public class DebateManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Continue"))
+        if (Input.GetButtonDown("Continue") && CanContinueDialogue())
         {
             if (debateCameraController.IsFocusing())
             {
@@ -186,6 +190,11 @@ public class DebateManager : MonoBehaviour
         }
     }
 
+    bool CanContinueDialogue()
+    {
+        return (!speakerArea.IsShowing && !argumentAndSpeechArea.IsShowing && !speakerArea.IsHiding && !argumentAndSpeechArea.IsHiding);
+    }
+
     bool ShouldLoseCase()
     {
         bool shouldLose;
@@ -224,8 +233,49 @@ public class DebateManager : MonoBehaviour
 
     void ResetMainUIVisibility()
     {
-        speakerArea.SetActive(false);
-        argumentAndSpeechArea.SetActive(false);
+        if (speakerArea.gameObject.activeInHierarchy)
+        {
+            if (IsInvoking("AutoHideSpeakerArea"))
+                CancelInvoke("AutoHideSpeakerArea");
+            speakerArea.Hide();
+        }
+        if (argumentAndSpeechArea.gameObject.activeInHierarchy)
+            argumentAndSpeechArea.Hide();
+    }
+
+    void ShowSpeakerArea()
+    {
+        speakerArea.Show();
+        Invoke("AutoHideSpeakerArea", speakerAreaAutoHideTime);
+    }
+
+    void AutoHideSpeakerArea()
+    {
+        speakerArea.Hide();
+    }
+
+    void DetermineSpeechTextColor(Dialogue dialogue)
+    {
+        if (dialogue.playerThought)
+        {
+            if (speakerText.color != GameManager.Instance.PlayerThinkingTextColor)
+                speechText.color = GameManager.Instance.PlayerThinkingTextColor;
+        }
+        else
+        {
+            if (speechText.color != GameManager.Instance.NpcSpeakingTextColor)
+                speechText.color = GameManager.Instance.NpcSpeakingTextColor;
+        }
+    }
+
+    void ChangeSpeakerNameText(string speakerName)
+    {
+        speakerText.text = speakerName;
+    }
+
+    void ChangeArgumentText(string argument)
+    {
+        argumentText.text = argument;
     }
 
     void ShowDebateOptions()
@@ -305,8 +355,6 @@ public class DebateManager : MonoBehaviour
         DebateCharacterSprite debateSprite = Array.Find(debateCharactersSprites, cs => cs.characterName == debateDialogue.speakerName);
         SpriteRenderer characterRenderer = debateSprite.spriteRenderer;
 
-        argumentText.text = debateDialogue.argument;
-
         ICharacter character = CharacterManager.Instance.GetCharacter(debateDialogue.speakerName);
         characterRenderer.sprite = character.GetSprite(debateDialogue.speakerEmotion);
 
@@ -316,12 +364,19 @@ public class DebateManager : MonoBehaviour
 
             ResetMainUIVisibility();
 
+            float changeTextDelay = Mathf.Max(speakerArea.HideAnimationDuration, argumentAndSpeechArea.HideAnimationDuration);
+
+            GameManager.Instance.InvokeMethodInScaledTime(ChangeSpeakerNameText, debateDialogue.speakerName.ToString(), changeTextDelay);
+            GameManager.Instance.InvokeMethodInScaledTime(ChangeArgumentText, debateDialogue.argument, changeTextDelay);
+
             debateCameraController.StartFocusing(charPosition);     
-            speakerText.text = debateDialogue.speakerName.ToString();
             previousSpeaker = debateDialogue.speakerName;
         }
         else
+        {
+            ChangeArgumentText(debateDialogue.argument);
             SayArgument(lineIndex == currentArgumentLines.Length - 1);
+        }
     }
 
     void Dialogue(Dialogue dialogue)
@@ -332,35 +387,31 @@ public class DebateManager : MonoBehaviour
         ICharacter character = CharacterManager.Instance.GetCharacter(dialogue.speakerName);
         characterRenderer.sprite = character.GetSprite(dialogue.speakerEmotion);
 
-        if (dialogue.playerThought)
-        {
-            if (speakerText.color != GameManager.Instance.PlayerThinkingTextColor)
-                speechText.color = GameManager.Instance.PlayerThinkingTextColor;
-        }
-        else
-        {
-            if (speechText.color != GameManager.Instance.NpcSpeakingTextColor)
-                speechText.color = GameManager.Instance.NpcSpeakingTextColor;
-        }
-
         if (dialogue.speakerName != previousSpeaker)
         {
             Vector3 charPosition = characterRenderer.transform.position;
 
             ResetMainUIVisibility();
 
+            float changTextDelay = Mathf.Max(speakerArea.HideAnimationDuration, argumentAndSpeechArea.HideAnimationDuration);
+            
+            GameManager.Instance.InvokeMethodInScaledTime(DetermineSpeechTextColor, dialogue, changTextDelay);
+            GameManager.Instance.InvokeMethodInScaledTime(ChangeSpeakerNameText, dialogue.speakerName.ToString(), changTextDelay);
+
             debateCameraController.StartFocusing(charPosition);
-            speakerText.text = dialogue.speakerName.ToString();
             previousSpeaker = dialogue.speakerName;
         }
         else
+        {
+            DetermineSpeechTextColor(dialogue);
             SayDialogue(dialogue.speech);
+        }
     }
 
     void SayArgument(bool lastArgument)
     {
-        speakerArea.SetActive(true);
-        argumentAndSpeechArea.SetActive(true);
+        ShowSpeakerArea();
+        argumentAndSpeechArea.Show();
         argumentPanel.SetActive(true);
 
         argumentController.StartExpanding(lastArgument);
@@ -368,8 +419,8 @@ public class DebateManager : MonoBehaviour
 
     void SayDialogue(string speech)
     {
-        speakerArea.SetActive(true);
-        argumentAndSpeechArea.SetActive(true);
+        ShowSpeakerArea();
+        argumentAndSpeechArea.Show();
         speechPanel.SetActive(true);
 
         speechController.StartSpeaking(speech);
@@ -399,9 +450,8 @@ public class DebateManager : MonoBehaviour
 
     public void RefuteComment()
     {
+        ResetMainUIVisibility();
         debateOptionsPanel.Hide();
-        speakerArea.SetActive(false);
-        argumentAndSpeechArea.SetActive(false);
         clueOptionsPanel.Show();
 
         Button[] cluesButtons = cluesScreen.CluesButtons.ToArray();
@@ -439,10 +489,10 @@ public class DebateManager : MonoBehaviour
 
     public void ReturnToDebateOptions()
     {
-        debateOptionsPanel.Show();
-        speakerArea.SetActive(true);
-        argumentAndSpeechArea.SetActive(true);
         clueOptionsPanel.Hide();
+        debateOptionsPanel.Show();
+        ShowSpeakerArea();
+        argumentAndSpeechArea.Show();
     }
 
     public void StartDebate(DebateInfo debateInfo, List<ClueInfo> playerClues)

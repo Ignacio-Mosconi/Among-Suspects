@@ -200,6 +200,12 @@ public class GameManager : MonoBehaviour
         action();
     }
 
+    IEnumerator InvokeScaledTime<T>(Action<T> action, T parameter, float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        action(parameter);
+    }
+
     IEnumerator InvokeRealTime<T>(Action<T> action, T paramenter, float waitTime)
     {
         yield return new WaitForSecondsRealtime(waitTime);
@@ -263,6 +269,11 @@ public class GameManager : MonoBehaviour
         AddCursorPointerEvent(button, EventTriggerType.PointerEnter);
         AddCursorPointerEvent(button, EventTriggerType.PointerExit);
         AddCursorPointerEvent(button, EventTriggerType.PointerClick);
+    }
+
+    public void InvokeMethodInScaledTime<T>(Action<T> action, T parameter, float waitTime)
+    {
+        StartCoroutine(InvokeScaledTime(action, parameter, waitTime));
     }
 
     public void InvokeMethodInRealTime(Action action, float waitTime)

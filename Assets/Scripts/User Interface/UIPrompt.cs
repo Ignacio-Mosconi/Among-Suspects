@@ -13,6 +13,18 @@ public class UIPrompt : MonoBehaviour
     float showAnimationDuration;
     float idleAnimationDuration;
     float hideAnimationDuration;
+    bool isShowing = false;
+    bool isHiding = false;
+
+    void FinishShowing()
+    {
+        isShowing = false;
+    }
+
+    void FinishHiding()
+    {
+        isHiding = false;
+    }
 
     public void SetUp()
     {
@@ -30,19 +42,34 @@ public class UIPrompt : MonoBehaviour
 
     public void Show()
     {
-        gameObject.SetActive(true);
-        promptAnimator.keepAnimatorControllerStateOnDisable = keepStateAtPause;
-        if (!keepOnScreen)
-            Invoke("Hide", showAnimationDuration + idleAnimationDuration);
+        if (!isShowing && !isHiding)
+        {
+            isShowing = true;
+            gameObject.SetActive(true);
+            promptAnimator.keepAnimatorControllerStateOnDisable = keepStateAtPause;
+            Invoke("FinishShowing", showAnimationDuration);
+            if (!keepOnScreen)
+                Invoke("Hide", showAnimationDuration + idleAnimationDuration);
+        }
     } 
 
     public void Hide()
     {
-        promptAnimator.SetTrigger("Hide");
-        if (promptAnimator.updateMode == AnimatorUpdateMode.Normal)
-            Invoke("Deactivate", hideAnimationDuration);
-        else
-            GameManager.Instance.InvokeMethodInRealTime(Deactivate, hideAnimationDuration);
+        if (!isHiding && !isShowing)
+        {
+            isHiding = true;
+            promptAnimator.SetTrigger("Hide");
+            if (promptAnimator.updateMode == AnimatorUpdateMode.Normal)
+            {
+                Invoke("FinishHiding", hideAnimationDuration);
+                Invoke("Deactivate", hideAnimationDuration);
+            }
+            else
+            {
+                GameManager.Instance.InvokeMethodInRealTime(FinishHiding, hideAnimationDuration);
+                GameManager.Instance.InvokeMethodInRealTime(Deactivate, hideAnimationDuration);
+            }
+        }
     }
 
     public void Deactivate()
@@ -62,6 +89,16 @@ public class UIPrompt : MonoBehaviour
     public float HideAnimationDuration
     {
         get { return hideAnimationDuration; }
+    }
+
+    public bool IsShowing
+    {
+        get { return isShowing; }
+    }
+
+    public bool IsHiding
+    {
+        get { return isHiding; }
     }
 
     #endregion
