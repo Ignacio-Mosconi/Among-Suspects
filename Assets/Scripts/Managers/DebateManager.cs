@@ -297,9 +297,9 @@ public class DebateManager : MonoBehaviour
     void ProceedAfterCameraFocus()
     {
         if (currentPhase == DebatePhase.Arguing)
-            SayArgument(lineIndex == currentArgumentLines.Length - 1);
+            SayArgument(lineIndex == currentArgumentLines.Length - 1, newSpeaker: true);
         else
-            SayDialogue(currentDialogueLines[lineIndex].speech);
+            SayDialogue(currentDialogueLines[lineIndex].speech, newSpeaker: true);
     }
 
     void ProceedAfterOptionSelection()
@@ -408,18 +408,20 @@ public class DebateManager : MonoBehaviour
         }
     }
 
-    void SayArgument(bool lastArgument)
+    void SayArgument(bool lastArgument, bool newSpeaker = false)
     {
-        ShowSpeakerArea();
+        if (newSpeaker)
+            ShowSpeakerArea();
         argumentAndSpeechArea.Show();
         argumentPanel.SetActive(true);
 
         argumentController.StartExpanding(lastArgument);
     }
 
-    void SayDialogue(string speech)
+    void SayDialogue(string speech, bool newSpeaker = false)
     {
-        ShowSpeakerArea();
+        if (newSpeaker)
+            ShowSpeakerArea();
         argumentAndSpeechArea.Show();
         speechPanel.SetActive(true);
 
