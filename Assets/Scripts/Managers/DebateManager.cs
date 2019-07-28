@@ -51,7 +51,7 @@ public class DebateManager : MonoBehaviour
     [Header("Panels")]
     [SerializeField] GameObject argumentPanel = default;
     [SerializeField] GameObject speechPanel = default;
-    [SerializeField] GameObject debateOptionsPanel = default;
+    [SerializeField] UIPrompt debateOptionsPanel = default;
     [SerializeField] AnimatedMenuScreen clueOptionsPanel = default;
     [Header("Buttons & Texts")]
     [SerializeField] Button useEvidenceButton = default;
@@ -95,8 +95,10 @@ public class DebateManager : MonoBehaviour
         cluesScreen = GetComponentInChildren<CluesScreen>(includeInactive: true);
 
         useEvidenceButton.interactable = false;
+        debateOptionsPanel.SetUp();
         clueOptionsPanel.SetUp();
-        GameManager.Instance.AddCursorPointerEventsToAllButtons(debateOptionsPanel);
+
+        GameManager.Instance.AddCursorPointerEventsToAllButtons(debateOptionsPanel.gameObject);
         GameManager.Instance.AddCursorPointerEventsToAllButtons(clueOptionsPanel.gameObject);
 
         argumentController.OnArgumentFinish.AddListener(ShowDebateOptions);
@@ -230,7 +232,7 @@ public class DebateManager : MonoBehaviour
     {
         enabled = false;
         isSelectingOption = true;
-        debateOptionsPanel.SetActive(true);
+        debateOptionsPanel.Show();
         GameManager.Instance.SetCursorEnable(enable: true);
     }
 
@@ -390,14 +392,14 @@ public class DebateManager : MonoBehaviour
         else
             credibilityPerc -= credibilityDecPerc;
 
-        debateOptionsPanel.SetActive(false);
+        debateOptionsPanel.Hide();
 
         ProceedAfterOptionSelection();
     }
 
     public void RefuteComment()
     {
-        debateOptionsPanel.SetActive(false);
+        debateOptionsPanel.Hide();
         speakerArea.SetActive(false);
         argumentAndSpeechArea.SetActive(false);
         clueOptionsPanel.Show();
@@ -437,7 +439,7 @@ public class DebateManager : MonoBehaviour
 
     public void ReturnToDebateOptions()
     {
-        debateOptionsPanel.SetActive(true);
+        debateOptionsPanel.Show();
         speakerArea.SetActive(true);
         argumentAndSpeechArea.SetActive(true);
         clueOptionsPanel.Hide();
