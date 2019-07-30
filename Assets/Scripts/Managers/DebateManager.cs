@@ -152,7 +152,6 @@ public class DebateManager : MonoBehaviour
 
                 case DebatePhase.Arguing:
                     
-                    argumentController.ResetArgumentPanelScale();
                     if (lineIndex < currentArgumentLines.Length)
                         Argue(currentArgumentLines[lineIndex]);
                     break;
@@ -276,6 +275,7 @@ public class DebateManager : MonoBehaviour
     void ChangeArgumentText(string argument)
     {
         argumentText.text = argument;
+        argumentController.ResetArgumentPanelScale();
     }
 
     void ShowDebateOptions()
