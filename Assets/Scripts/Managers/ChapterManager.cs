@@ -37,10 +37,11 @@ public class ChapterManager : MonoBehaviour
 
     #endregion
 
-    [Header("Main Areas")]
+    [Header("Main Area")]
     [SerializeField] GameObject endScreenArea = default;
-    [SerializeField] GameObject debateRetryArea = default;
-    [SerializeField] GameObject chapterWonArea = default;
+    [Header("Animated Screens")]
+    [SerializeField] AnimatedMenuScreen chapterWonScreen = default;
+    [SerializeField] AnimatedMenuScreen debateRetryScreen = default;
     [Header("Confirmation Prompt Messages")]
     [SerializeField] [TextArea(3, 5)] string debateStartWarning = default;
     [SerializeField] [TextArea(3, 5)] string exitDebateWarning = default;
@@ -56,6 +57,9 @@ public class ChapterManager : MonoBehaviour
         chapterClues = Resources.LoadAll<ClueInfo>("Clues/" + SceneManager.GetActiveScene().name);
         debateInitializer = FindObjectOfType<DebateInitializer>();
         pauseMenu = FindObjectOfType<PauseMenu>();
+
+        chapterWonScreen.SetUp();
+        debateRetryScreen.SetUp();
 
         GameManager.Instance.SetCursorEnable(enable: false);
         AudioManager.Instance.PlayAmbientSound("Rain Interior");
@@ -98,9 +102,9 @@ public class ChapterManager : MonoBehaviour
         pauseMenu.enabled = false;
 
         if (hasWon)
-            chapterWonArea.SetActive(true);
+            chapterWonScreen.Show();
         else
-            debateRetryArea.SetActive(true);
+            debateRetryScreen.Show();
         
         endScreenArea.SetActive(true);
         GameManager.Instance.SetCursorEnable(enable: true);
@@ -139,7 +143,7 @@ public class ChapterManager : MonoBehaviour
         pauseMenu.enabled = true;
 
         endScreenArea.SetActive(false);
-        debateRetryArea.SetActive(false);
+        debateRetryScreen.Hide();
         debateInitializer.StartDebate();
     }
 
