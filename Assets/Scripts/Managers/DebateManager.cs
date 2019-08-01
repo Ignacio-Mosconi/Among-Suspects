@@ -58,6 +58,7 @@ public class DebateManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI argumentText = default;
     [SerializeField] TextMeshProUGUI speechText = default;
     [Header("Other Properties")]
+    [SerializeField] UIPrompt leftClickPrompt = default;
     [SerializeField] [Range(3f, 10f)] float speakerAreaAutoHideTime = 5f;
 
     SpeechController speechController;
@@ -101,6 +102,7 @@ public class DebateManager : MonoBehaviour
         argumentAndSpeechArea.SetUp();
         debateOptionsPanel.SetUp();
         clueOptionsPanel.SetUp();
+        leftClickPrompt.SetUp();
 
         GameManager.Instance.AddCursorPointerEventsToAllButtons(debateOptionsPanel.gameObject);
         GameManager.Instance.AddCursorPointerEventsToAllButtons(clueOptionsPanel.gameObject);
@@ -138,7 +140,12 @@ public class DebateManager : MonoBehaviour
                 return;
             }
 
+            AudioManager.Instance.PlaySound("Advance Dialogue");
+
             lineIndex++;
+
+            if (leftClickPrompt.gameObject.activeInHierarchy)
+                leftClickPrompt.Deactivate();
 
             switch (currentPhase)
             {
@@ -187,11 +194,20 @@ public class DebateManager : MonoBehaviour
                     break;
             }
         }
+        else
+            if (ShouldDisplayLeftClickPrompt())
+                leftClickPrompt.Show();
     }
 
     bool CanContinueDialogue()
     {
         return (!speakerArea.IsShowing && !argumentAndSpeechArea.IsShowing && !speakerArea.IsHiding && !argumentAndSpeechArea.IsHiding);
+    }
+
+    bool ShouldDisplayLeftClickPrompt()
+    {
+        return (!speechController.IsSpeaking() && !argumentController.IsExpanding() && !debateCameraController.IsFocusing() &&
+                !isSelectingOption && !leftClickPrompt.gameObject.activeInHierarchy);
     }
 
     bool ShouldLoseCase()
