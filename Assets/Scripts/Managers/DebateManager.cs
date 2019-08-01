@@ -409,10 +409,10 @@ public class DebateManager : MonoBehaviour
 
             ResetMainUIVisibility();
 
-            float changTextDelay = Mathf.Max(speakerArea.HideAnimationDuration, argumentAndSpeechArea.HideAnimationDuration);
+            float changeTextDelay = Mathf.Max(speakerArea.HideAnimationDuration, argumentAndSpeechArea.HideAnimationDuration);
             
-            GameManager.Instance.InvokeMethodInScaledTime(DetermineSpeechTextColor, dialogue, changTextDelay);
-            GameManager.Instance.InvokeMethodInScaledTime(ChangeSpeakerNameText, dialogue.speakerName.ToString(), changTextDelay);
+            GameManager.Instance.InvokeMethodInScaledTime(DetermineSpeechTextColor, dialogue, changeTextDelay);
+            GameManager.Instance.InvokeMethodInScaledTime(ChangeSpeakerNameText, dialogue.speakerName.ToString(), changeTextDelay);
 
             debateCameraController.StartFocusing(charPosition);
             previousSpeaker = dialogue.speakerName;
@@ -530,6 +530,7 @@ public class DebateManager : MonoBehaviour
 
         SetDebateAreaAvailability(enableDebateArea: true);
 
+        ChangeSpeakerNameText(currentDialogueLines[0].speakerName.ToString());
         Dialogue(currentDialogueLines[0]);
     }
 

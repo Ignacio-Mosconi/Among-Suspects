@@ -86,7 +86,7 @@ public class DialogueManager : MonoBehaviour
             lineIndex++;
 
             if (leftMouseClickPrompt.gameObject.activeInHierarchy)
-                leftMouseClickPrompt.Hide();
+                leftMouseClickPrompt.Deactivate();
             
             if (lineIndex < currentLines.Length)
                 SayDialogue(currentLines[lineIndex]);
