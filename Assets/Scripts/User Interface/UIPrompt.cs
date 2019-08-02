@@ -42,33 +42,27 @@ public class UIPrompt : MonoBehaviour
 
     public void Show()
     {
-        if (!isShowing && !isHiding)
-        {
-            isShowing = true;
-            gameObject.SetActive(true);
-            promptAnimator.keepAnimatorControllerStateOnDisable = keepStateAtPause;
-            Invoke("FinishShowing", showAnimationDuration);
-            if (!keepOnScreen)
-                Invoke("Hide", showAnimationDuration + idleAnimationDuration);
-        }
+        isShowing = true;
+        gameObject.SetActive(true);
+        promptAnimator.keepAnimatorControllerStateOnDisable = keepStateAtPause;
+        Invoke("FinishShowing", showAnimationDuration);
+        if (!keepOnScreen)
+            Invoke("Hide", showAnimationDuration + idleAnimationDuration);
     } 
 
     public void Hide()
     {
-        if (!isHiding && !isShowing)
+        isHiding = true;
+        promptAnimator.SetTrigger("Hide");
+        if (promptAnimator.updateMode == AnimatorUpdateMode.Normal)
         {
-            isHiding = true;
-            promptAnimator.SetTrigger("Hide");
-            if (promptAnimator.updateMode == AnimatorUpdateMode.Normal)
-            {
-                Invoke("FinishHiding", hideAnimationDuration);
-                Invoke("Deactivate", hideAnimationDuration);
-            }
-            else
-            {
-                GameManager.Instance.InvokeMethodInRealTime(FinishHiding, hideAnimationDuration);
-                GameManager.Instance.InvokeMethodInRealTime(Deactivate, hideAnimationDuration);
-            }
+            Invoke("FinishHiding", hideAnimationDuration);
+            Invoke("Deactivate", hideAnimationDuration);
+        }
+        else
+        {
+            GameManager.Instance.InvokeMethodInRealTime(FinishHiding, hideAnimationDuration);
+            GameManager.Instance.InvokeMethodInRealTime(Deactivate, hideAnimationDuration);
         }
     }
 

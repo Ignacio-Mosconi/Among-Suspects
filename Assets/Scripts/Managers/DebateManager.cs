@@ -144,9 +144,6 @@ public class DebateManager : MonoBehaviour
 
             lineIndex++;
 
-            if (leftClickPrompt.gameObject.activeInHierarchy)
-                leftClickPrompt.Deactivate();
-
             switch (currentPhase)
             {
                 case DebatePhase.Dialoguing:
@@ -192,6 +189,14 @@ public class DebateManager : MonoBehaviour
                     }
 
                     break;
+            }
+
+            if (leftClickPrompt.gameObject.activeInHierarchy)
+            {
+                if (!argumentAndSpeechArea.IsHiding)
+                    leftClickPrompt.Hide();
+                else
+                    leftClickPrompt.Deactivate();
             }
         }
         else
