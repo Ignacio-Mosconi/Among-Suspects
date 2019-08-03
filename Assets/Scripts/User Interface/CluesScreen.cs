@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
 
 public class CluesScreen : MonoBehaviour
@@ -14,6 +15,7 @@ public class CluesScreen : MonoBehaviour
     List<Button> cluesButtons = new List<Button>();
     RectTransform cluesButtonsPanelsRectTrans;
     GameObject clueButtonPrefab;
+    Button lastButtonSelected;
     float addedClueButtonsPanelSize;
 
     const string ClueButtonPrefabPath = "Menu Elements/Clue Button";
@@ -37,9 +39,12 @@ public class CluesScreen : MonoBehaviour
         {
             GameObject clueButtonObject = Instantiate(clueButtonPrefab, cluesButtonsPanel.transform);
             Button clueButton = clueButtonObject.GetComponent<Button>();
+            TextMeshProUGUI buttonText = clueButton.GetComponentInChildren<TextMeshProUGUI>();
             ClueInfo clueInfo = ChapterManager.Instance.GetChapterClueInfo(i);
 
-            clueButton.onClick.AddListener(() => SelectClue(clueInfo));
+            buttonText.text = clueInfo.clueName;
+
+            clueButton.onClick.AddListener(() => SelectClue(clueInfo, clueButton));
             clueButton.gameObject.SetActive(false);
             cluesButtons.Add(clueButton);
         }
@@ -52,10 +57,8 @@ public class CluesScreen : MonoBehaviour
         for (int i = 0; i < cluesButtons.Count; i++)
         {
             ClueInfo clueInfo = ChapterManager.Instance.GetChapterClueInfo(i);
-            Image buttonImage = cluesButtons[i].GetComponent<Image>();
-            TextMeshProUGUI buttonText = cluesButtons[i].GetComponentInChildren<TextMeshProUGUI>();
 
-            if (CharacterManager.Instance.PlayerController.HasClue(ref clueInfo) && !cluesButtons[i].gameObject.activeSelf)
+            if (!cluesButtons[i].gameObject.activeSelf && CharacterManager.Instance.PlayerController.HasClue(ref clueInfo))
             {
                 cluesButtons[i].gameObject.SetActive(true);
                 cluesButtonsPanelsRectTrans.sizeDelta = new Vector2(cluesButtonsPanelsRectTrans.sizeDelta.x, 
@@ -64,10 +67,12 @@ public class CluesScreen : MonoBehaviour
 
             if (cluesButtons[i].gameObject.activeSelf)
             {
-                buttonText.text = clueInfo.clueName;
-
                 if (foundClueIndex == 0)
-                    SelectClue(clueInfo);
+                {
+                    lastButtonSelected = cluesButtons[i];
+                    GameManager.Instance.InvokeMethodInRealTime(cluesButtons[i].Select, 0.1f);
+                    SelectClue(clueInfo, cluesButtons[i]);
+                }
 
                 cluesButtons[i].transform.SetSiblingIndex(foundClueIndex);
                 foundClueIndex++;
@@ -77,8 +82,15 @@ public class CluesScreen : MonoBehaviour
         cluesDescriptionArea.SetActive(foundClueIndex != 0);
     }
 
-    void SelectClue(ClueInfo clueInfo)
-    {   
+    void Update()
+    {
+        if (!EventSystem.current.currentSelectedGameObject && lastButtonSelected)
+            EventSystem.current.SetSelectedGameObject(lastButtonSelected.gameObject);
+    }
+
+    void SelectClue(ClueInfo clueInfo, Button clueButton)
+    {
+        lastButtonSelected = clueButton;
         clueTitleText.text = clueInfo.clueName;
         clueDescriptionText.text = clueInfo.description;
         clueImage.sprite = clueInfo.clueSprite;
