@@ -82,6 +82,19 @@ public class AudioManager : MonoBehaviour
             soundsUISource.Play();
     }
 
+    public void PlaySoundDelayed(AudioClip audioClip, float delay)
+    {
+        AudioClip clip = Array.Find(soundsUI, c => c == audioClip);
+        if (!audioClip)
+        {
+            Debug.LogError("There are no sounds named " + audioClip.name + "registered in the Audio Manager.", gameObject);
+            return;
+        }
+        soundsUISource.clip = audioClip;
+
+        soundsUISource.PlayDelayed(delay);
+    }
+
     public void PlayTheme(string themeName)
     {
         AudioClip audioClip = Array.Find(themes, theme => theme.name == themeName);

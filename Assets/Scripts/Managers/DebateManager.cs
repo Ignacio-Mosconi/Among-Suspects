@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using TMPro;
 
 public enum DebatePhase
@@ -74,6 +75,7 @@ public class DebateManager : MonoBehaviour
     CharacterName previousSpeaker = CharacterName.None;
     ClueInfo currentlySelectedEvidence;
     DebatePhase currentPhase = DebatePhase.Dialoguing;
+    UnityAction playSoundOnFocusFinishAction;
     bool caseWon = false;
     int lineIndex = 0;
     int argumentIndex = 0;
@@ -299,6 +301,13 @@ public class DebateManager : MonoBehaviour
         argumentController.ResetArgumentPanelScale();
     }
 
+    void PlayDialogueSoundOnFocusFinish(AudioClip audioClip, float delay)
+    {
+        AudioManager.Instance.PlaySoundDelayed(audioClip, delay);
+        debateCameraController.OnFocusFinish.RemoveListener(playSoundOnFocusFinishAction);
+        playSoundOnFocusFinishAction = null;
+    }
+
     void ShowDebateOptions()
     {
         enabled = false;
@@ -419,11 +428,23 @@ public class DebateManager : MonoBehaviour
             GameManager.Instance.InvokeMethodInScaledTime(DetermineSpeechTextColor, dialogue, changeTextDelay);
             GameManager.Instance.InvokeMethodInScaledTime(ChangeSpeakerNameText, dialogue.speakerName.ToString(), changeTextDelay);
 
+            if (dialogue.dialogueSound.audioClip)
+            {
+                AudioClip audioClip = dialogue.dialogueSound.audioClip;
+                float playDelay = dialogue.dialogueSound.playDelay;
+                playSoundOnFocusFinishAction = () => PlayDialogueSoundOnFocusFinish(audioClip, playDelay);
+
+                debateCameraController.OnFocusFinish.AddListener(playSoundOnFocusFinishAction);
+            }
+
             debateCameraController.StartFocusing(charPosition);
+            
             previousSpeaker = dialogue.speakerName;
         }
         else
         {
+            if (dialogue.dialogueSound.audioClip)
+                AudioManager.Instance.PlaySoundDelayed(dialogue.dialogueSound.audioClip, dialogue.dialogueSound.playDelay);
             DetermineSpeechTextColor(dialogue);
             SayDialogue(dialogue.speech);
         }

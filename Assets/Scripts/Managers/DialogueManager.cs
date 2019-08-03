@@ -158,6 +158,9 @@ public class DialogueManager : MonoBehaviour
 
         if (dialogue.clueInfo)
             playerController.AddClue(dialogue.clueInfo);
+
+        if (dialogue.dialogueSound.audioClip)
+            AudioManager.Instance.PlaySoundDelayed(dialogue.dialogueSound.audioClip, dialogue.dialogueSound.playDelay);
         
         if (dialogue.speakerName != playerController.GetCharacterName() && dialogue.speakerName != CharacterName.Tutorial)
         {

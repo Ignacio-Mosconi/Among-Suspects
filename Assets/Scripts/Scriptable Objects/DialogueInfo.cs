@@ -14,12 +14,20 @@ public enum DialogueType
 }
 
 [System.Serializable]
+public struct DialogueSound
+{
+    public AudioClip audioClip;
+    [Range(0f, 1f)] public float playDelay;
+}
+
+[System.Serializable]
 public struct Dialogue
 {
     public CharacterName speakerName;
     [TextArea(3, 10)] public string speech;
     public CharacterEmotion speakerEmotion;
     public ClueInfo clueInfo;
+    public DialogueSound dialogueSound;
     public bool revealName;
     public bool playerThought;
     public bool triggerNiceImpression;
