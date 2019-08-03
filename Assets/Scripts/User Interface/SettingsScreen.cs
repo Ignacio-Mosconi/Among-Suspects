@@ -3,6 +3,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+public enum Setting
+{
+    Graphics,
+    Resolution,
+    Fullscreen,
+    TextSpeed,
+    SfxVolume,
+    MusicVolume,
+    Count
+}
+
+
 public class SettingsScreen : MonoBehaviour
 {
     [Header("Dropdowns")]
@@ -19,14 +31,14 @@ public class SettingsScreen : MonoBehaviour
     [Header("Info Panel")]
     [SerializeField] RectTransform infoPanel = default;
     [SerializeField] [Range(50f, 75f)] float infoPanelAppearHorOffset = 60f;
-    [SerializeField] [TextArea(3, 10)] string fullscreenInfoText = default;
-    [SerializeField] [TextArea(3, 10)] string textSpeedInfoText = default;
+    [SerializeField] [TextArea(3, 10)] string[] settingInfoTexts = new string[(int)Setting.Count];
     [Header("Other Properties")]
     [SerializeField] Image sfxAudioIcon = default;
     [SerializeField] Image musicAudioIcon = default;
     [SerializeField] Sprite[] audioIconsSprites = default;
     [SerializeField] [Range(150f, 300f)] float maxDropdownHeight = 300f;
     
+    Dictionary<Setting, string> settingInfoTextsDic = new Dictionary<Setting, string>();
     TextMeshProUGUI infoPanelText;
     TextMeshProUGUI sfxVolumeValueText;
     TextMeshProUGUI musicVolumeValueText;
@@ -42,6 +54,9 @@ public class SettingsScreen : MonoBehaviour
 
         CanvasScaler canvasScaler = GetComponentInParent<CanvasScaler>();
         canvasReferenceResolution = new Vector2(canvasScaler.referenceResolution.x, canvasScaler.referenceResolution.y);
+
+        for (int i = 0; i < settingInfoTexts.Length; i++)
+            settingInfoTextsDic.Add((Setting)i, settingInfoTexts[i]);
     }
     
     void Start()
@@ -190,18 +205,11 @@ public class SettingsScreen : MonoBehaviour
         musicVolumeSlider.value = newVolume;
     }
 
-    public void ShowFullscreenInfo()
+    public void ShowSettingInfo(int settingIndex)
     {
         infoPanel.gameObject.SetActive(true);    
-        infoPanelText.text = fullscreenInfoText;
+        infoPanelText.text = settingInfoTextsDic[(Setting)settingIndex];
         ResizeInfoPanel(); 
-    }
-
-    public void ShowTextSpeedInfo()
-    {
-        infoPanel.gameObject.SetActive(true);    
-        infoPanelText.text = textSpeedInfoText;
-        ResizeInfoPanel();
     }
 
     public void HideInfoPanel()
