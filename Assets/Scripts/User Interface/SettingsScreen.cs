@@ -18,7 +18,7 @@ public class SettingsScreen : MonoBehaviour
     [SerializeField] TextMeshProUGUI fullscreenText = default;
     [Header("Info Panel")]
     [SerializeField] RectTransform infoPanel = default;
-    [SerializeField] [Range(0f, 100f)] float infoPanelAppearHorOffset = 75f;
+    [SerializeField] [Range(50f, 75f)] float infoPanelAppearHorOffset = 60f;
     [SerializeField] [TextArea(3, 10)] string fullscreenInfoText = default;
     [SerializeField] [TextArea(3, 10)] string textSpeedInfoText = default;
     [Header("Other Properties")]
@@ -30,6 +30,7 @@ public class SettingsScreen : MonoBehaviour
     TextMeshProUGUI infoPanelText;
     TextMeshProUGUI sfxVolumeValueText;
     TextMeshProUGUI musicVolumeValueText;
+    Vector2 canvasReferenceResolution;
 
     const float InfoPanelBorderPadding = 20f;
 
@@ -38,6 +39,9 @@ public class SettingsScreen : MonoBehaviour
         infoPanelText = infoPanel.GetComponentInChildren<TextMeshProUGUI>(includeInactive: true);
         sfxVolumeValueText = sfxVolumeSlider.GetComponentInChildren<TextMeshProUGUI>();
         musicVolumeValueText = musicVolumeSlider.GetComponentInChildren<TextMeshProUGUI>();
+
+        CanvasScaler canvasScaler = GetComponentInParent<CanvasScaler>();
+        canvasReferenceResolution = new Vector2(canvasScaler.referenceResolution.x, canvasScaler.referenceResolution.y);
     }
     
     void Start()
@@ -77,7 +81,13 @@ public class SettingsScreen : MonoBehaviour
         infoPanel.sizeDelta = new Vector2(infoPanel.sizeDelta.x, newPanelHeight);
 
         Vector2 offset = new Vector2(infoPanelAppearHorOffset, -infoPanel.rect.height);
-        infoPanel.anchoredPosition = (Vector2)Input.mousePosition + offset;
+        Vector2 mouseViewportPosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+        
+        Vector2 mouseReferenceResolutionPosition = Vector2.zero;
+        mouseReferenceResolutionPosition.x = Mathf.Lerp(0f, canvasReferenceResolution.x, mouseViewportPosition.x);
+        mouseReferenceResolutionPosition.y = Mathf.Lerp(0f, canvasReferenceResolution.y, mouseViewportPosition.y);
+
+        infoPanel.anchoredPosition = mouseReferenceResolutionPosition + offset;
     }
 
     void InitializeQualityLevelDropdown()
