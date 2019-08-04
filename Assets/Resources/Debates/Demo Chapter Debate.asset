@@ -60,12 +60,21 @@ MonoBehaviour:
     - speakerName: 1
       argument: I was inside the room in front of the bedroom...
       speakerEmotion: 1
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
     - speakerName: 1
       argument: I was just wandering around the place...
       speakerEmotion: 0
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
     - speakerName: 1
       argument: I didn't do anything!
       speakerEmotion: 3
+      dialogueSound:
+        audioClip: {fileID: 8300000, guid: e385eea23327362469b9cda629c066b0, type: 3}
+        playDelay: 0.2
     correctReaction: 0
     correctEvidence: {fileID: 0}
     trustDialogue:
@@ -84,8 +93,8 @@ MonoBehaviour:
       speakerEmotion: 0
       clueInfo: {fileID: 0}
       dialogueSound:
-        audioClip: {fileID: 0}
-        playDelay: 0
+        audioClip: {fileID: 8300000, guid: cc5a3916f736bbb498f0d4a34915c859, type: 3}
+        playDelay: 0.2
       revealName: 0
       playerThought: 0
       triggerNiceImpression: 0
@@ -96,8 +105,8 @@ MonoBehaviour:
       speakerEmotion: 3
       clueInfo: {fileID: 0}
       dialogueSound:
-        audioClip: {fileID: 0}
-        playDelay: 0
+        audioClip: {fileID: 8300000, guid: e385eea23327362469b9cda629c066b0, type: 3}
+        playDelay: 0.2
       revealName: 0
       playerThought: 0
       triggerNiceImpression: 0
@@ -137,8 +146,8 @@ MonoBehaviour:
       speakerEmotion: 2
       clueInfo: {fileID: 0}
       dialogueSound:
-        audioClip: {fileID: 0}
-        playDelay: 0
+        audioClip: {fileID: 8300000, guid: bd7c94b20ffa22e4cabcdbb6c0f1f582, type: 3}
+        playDelay: 0.2
       revealName: 0
       playerThought: 0
       triggerNiceImpression: 0
@@ -146,12 +155,21 @@ MonoBehaviour:
     - speakerName: 2
       argument: You freak!
       speakerEmotion: 4
+      dialogueSound:
+        audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+        playDelay: 0
     - speakerName: 2
       argument: I ain't the killer!
       speakerEmotion: 5
+      dialogueSound:
+        audioClip: {fileID: 8300000, guid: 55d5e73e9b222f24e9a5f8342150cc66, type: 3}
+        playDelay: 0.2
     - speakerName: 2
       argument: I was trying to watch the TV at that time...
       speakerEmotion: 1
+      dialogueSound:
+        audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+        playDelay: 0.2
     correctReaction: 0
     correctEvidence: {fileID: 0}
     trustDialogue:
@@ -182,8 +200,8 @@ MonoBehaviour:
       speakerEmotion: 4
       clueInfo: {fileID: 0}
       dialogueSound:
-        audioClip: {fileID: 0}
-        playDelay: 0
+        audioClip: {fileID: 8300000, guid: 55d5e73e9b222f24e9a5f8342150cc66, type: 3}
+        playDelay: 0.2
       revealName: 0
       playerThought: 0
       triggerNiceImpression: 0
@@ -192,8 +210,8 @@ MonoBehaviour:
       speakerEmotion: 5
       clueInfo: {fileID: 0}
       dialogueSound:
-        audioClip: {fileID: 0}
-        playDelay: 0
+        audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+        playDelay: 0.2
       revealName: 0
       playerThought: 0
       triggerNiceImpression: 0
@@ -223,8 +241,8 @@ MonoBehaviour:
       speakerEmotion: 4
       clueInfo: {fileID: 0}
       dialogueSound:
-        audioClip: {fileID: 0}
-        playDelay: 0
+        audioClip: {fileID: 8300000, guid: 55d5e73e9b222f24e9a5f8342150cc66, type: 3}
+        playDelay: 0.2
       revealName: 0
       playerThought: 0
       triggerNiceImpression: 0
@@ -232,12 +250,21 @@ MonoBehaviour:
     - speakerName: 2
       argument: The little freak must be guilty!
       speakerEmotion: 6
+      dialogueSound:
+        audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+        playDelay: 0.2
     - speakerName: 3
       argument: I was in the kitchen at the time...
       speakerEmotion: 0
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
     - speakerName: 3
       argument: What proof do you have against it?
       speakerEmotion: 2
+      dialogueSound:
+        audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+        playDelay: 0.2
     correctReaction: 0
     correctEvidence: {fileID: 0}
     trustDialogue:
@@ -329,12 +356,21 @@ MonoBehaviour:
     - speakerName: 2
       argument: The jar coulda been used by John to defend himself...
       speakerEmotion: 0
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
     - speakerName: 1
       argument: I don't think so...
       speakerEmotion: 0
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
     - speakerName: 1
       argument: If that was the case, one of us would be injured, right?
       speakerEmotion: 1
+      dialogueSound:
+        audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+        playDelay: 0.2
     correctReaction: 0
     correctEvidence: {fileID: 0}
     trustDialogue:
@@ -365,8 +401,8 @@ MonoBehaviour:
       speakerEmotion: 4
       clueInfo: {fileID: 0}
       dialogueSound:
-        audioClip: {fileID: 0}
-        playDelay: 0
+        audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+        playDelay: 0.2
       revealName: 0
       playerThought: 0
       triggerNiceImpression: 0
@@ -427,15 +463,27 @@ MonoBehaviour:
     - speakerName: 3
       argument: That's simply impossible...
       speakerEmotion: 0
+      dialogueSound:
+        audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+        playDelay: 0.2
     - speakerName: 1
       argument: Are you sure?
       speakerEmotion: 3
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
     - speakerName: 3
       argument: John would have seen the killer inside...
       speakerEmotion: 1
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
     - speakerName: 3
       argument: There's no way the killer could've remained hidden in the bedroom!
       speakerEmotion: 6
+      dialogueSound:
+        audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+        playDelay: 0.2
     correctReaction: 1
     correctEvidence: {fileID: 11400000, guid: 90e5ca8000ffae343b0503cf69dd6ffd, type: 2}
     trustDialogue:
@@ -485,8 +533,8 @@ MonoBehaviour:
       speakerEmotion: 6
       clueInfo: {fileID: 0}
       dialogueSound:
-        audioClip: {fileID: 0}
-        playDelay: 0
+        audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+        playDelay: 0.2
       revealName: 0
       playerThought: 0
       triggerNiceImpression: 0
@@ -536,8 +584,8 @@ MonoBehaviour:
       speakerEmotion: 5
       clueInfo: {fileID: 0}
       dialogueSound:
-        audioClip: {fileID: 0}
-        playDelay: 0
+        audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+        playDelay: 0.2
       revealName: 0
       playerThought: 0
       triggerNiceImpression: 0
@@ -588,8 +636,8 @@ MonoBehaviour:
       speakerEmotion: 0
       clueInfo: {fileID: 0}
       dialogueSound:
-        audioClip: {fileID: 0}
-        playDelay: 0
+        audioClip: {fileID: 8300000, guid: c7a9c6bd76ea0ec42b0e26ae02464bfa, type: 3}
+        playDelay: 0.2
       revealName: 0
       playerThought: 1
       triggerNiceImpression: 0
@@ -597,12 +645,21 @@ MonoBehaviour:
     - speakerName: 3
       argument: The victim was well aware of the killer...
       speakerEmotion: 0
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
     - speakerName: 3
       argument: Furthermore...
       speakerEmotion: 1
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
     - speakerName: 3
       argument: He even threw a jar at them in self defense!
       speakerEmotion: 6
+      dialogueSound:
+        audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+        playDelay: 0.2
     correctReaction: 1
     correctEvidence: {fileID: 11400000, guid: 9cfc2c8a48537574787858fc59e08b7e, type: 2}
     trustDialogue:
@@ -631,8 +688,8 @@ MonoBehaviour:
       speakerEmotion: 6
       clueInfo: {fileID: 0}
       dialogueSound:
-        audioClip: {fileID: 0}
-        playDelay: 0
+        audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+        playDelay: 0.2
       revealName: 0
       playerThought: 0
       triggerNiceImpression: 0
@@ -683,8 +740,8 @@ MonoBehaviour:
       speakerEmotion: 6
       clueInfo: {fileID: 0}
       dialogueSound:
-        audioClip: {fileID: 0}
-        playDelay: 0
+        audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+        playDelay: 0.2
       revealName: 0
       playerThought: 0
       triggerNiceImpression: 0
@@ -722,11 +779,11 @@ MonoBehaviour:
     - speakerName: 0
       speech: But the shards were right next to each other. Hence, it must have fallen
         from inside the wardrobe!
-      speakerEmotion: 1
+      speakerEmotion: 6
       clueInfo: {fileID: 0}
       dialogueSound:
-        audioClip: {fileID: 0}
-        playDelay: 0
+        audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+        playDelay: 0.2
       revealName: 0
       playerThought: 0
       triggerNiceImpression: 0
@@ -756,8 +813,8 @@ MonoBehaviour:
       speakerEmotion: 5
       clueInfo: {fileID: 0}
       dialogueSound:
-        audioClip: {fileID: 0}
-        playDelay: 0
+        audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+        playDelay: 0.2
       revealName: 0
       playerThought: 0
       triggerNiceImpression: 0
@@ -817,8 +874,8 @@ MonoBehaviour:
       speakerEmotion: 2
       clueInfo: {fileID: 0}
       dialogueSound:
-        audioClip: {fileID: 0}
-        playDelay: 0
+        audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+        playDelay: 0.2
       revealName: 0
       playerThought: 0
       triggerNiceImpression: 0
@@ -827,8 +884,8 @@ MonoBehaviour:
       speakerEmotion: 7
       clueInfo: {fileID: 0}
       dialogueSound:
-        audioClip: {fileID: 0}
-        playDelay: 0
+        audioClip: {fileID: 8300000, guid: 134878e2883748f458f8f61be939ed3b, type: 3}
+        playDelay: 0.2
       revealName: 0
       playerThought: 0
       triggerNiceImpression: 0
@@ -836,21 +893,39 @@ MonoBehaviour:
     - speakerName: 3
       argument: I think <color=orange>William</color> is the killer!
       speakerEmotion: 6
+      dialogueSound:
+        audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+        playDelay: 0.2
     - speakerName: 3
       argument: He's the only one strong enough to deal with another man in a struggle!
       speakerEmotion: 1
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
     - speakerName: 2
       argument: That ain't true!
       speakerEmotion: 4
+      dialogueSound:
+        audioClip: {fileID: 8300000, guid: 55d5e73e9b222f24e9a5f8342150cc66, type: 3}
+        playDelay: 0.2
     - speakerName: 2
       argument: We said the killer had to be inside the wardrobe!
       speakerEmotion: 4
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
     - speakerName: 2
       argument: That thing is not big enough for me!
       speakerEmotion: 6
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
     - speakerName: 2
       argument: I don't fit in there!
       speakerEmotion: 5
+      dialogueSound:
+        audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+        playDelay: 0.2
     correctReaction: 0
     correctEvidence: {fileID: 0}
     trustDialogue:
@@ -859,8 +934,8 @@ MonoBehaviour:
       speakerEmotion: 0
       clueInfo: {fileID: 0}
       dialogueSound:
-        audioClip: {fileID: 0}
-        playDelay: 0
+        audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+        playDelay: 0.2
       revealName: 0
       playerThought: 0
       triggerNiceImpression: 0
@@ -901,8 +976,8 @@ MonoBehaviour:
       speakerEmotion: 4
       clueInfo: {fileID: 0}
       dialogueSound:
-        audioClip: {fileID: 0}
-        playDelay: 0
+        audioClip: {fileID: 8300000, guid: 55d5e73e9b222f24e9a5f8342150cc66, type: 3}
+        playDelay: 0.2
       revealName: 0
       playerThought: 0
       triggerNiceImpression: 0
@@ -911,8 +986,8 @@ MonoBehaviour:
       speakerEmotion: 5
       clueInfo: {fileID: 0}
       dialogueSound:
-        audioClip: {fileID: 0}
-        playDelay: 0
+        audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+        playDelay: 0.2
       revealName: 0
       playerThought: 0
       triggerNiceImpression: 0
@@ -962,9 +1037,15 @@ MonoBehaviour:
     - speakerName: 2
       argument: I think the knife was not used at all!
       speakerEmotion: 6
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
     - speakerName: 2
       argument: The victim could have been strangled or somethin'...
       speakerEmotion: 1
+      dialogueSound:
+        audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+        playDelay: 0.2
     correctReaction: 1
     correctEvidence: {fileID: 11400000, guid: 51c150ff211ae2642919afb1d4ed2ce4, type: 2}
     trustDialogue:
@@ -973,8 +1054,8 @@ MonoBehaviour:
       speakerEmotion: 0
       clueInfo: {fileID: 0}
       dialogueSound:
-        audioClip: {fileID: 0}
-        playDelay: 0
+        audioClip: {fileID: 8300000, guid: c7a9c6bd76ea0ec42b0e26ae02464bfa, type: 3}
+        playDelay: 0.2
       revealName: 0
       playerThought: 0
       triggerNiceImpression: 0
@@ -1024,8 +1105,8 @@ MonoBehaviour:
       speakerEmotion: 6
       clueInfo: {fileID: 0}
       dialogueSound:
-        audioClip: {fileID: 0}
-        playDelay: 0
+        audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+        playDelay: 0.2
       revealName: 0
       playerThought: 0
       triggerNiceImpression: 0
@@ -1054,8 +1135,8 @@ MonoBehaviour:
       speakerEmotion: 6
       clueInfo: {fileID: 0}
       dialogueSound:
-        audioClip: {fileID: 0}
-        playDelay: 0
+        audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+        playDelay: 0.2
       revealName: 0
       playerThought: 0
       triggerNiceImpression: 0
@@ -1065,8 +1146,8 @@ MonoBehaviour:
       speakerEmotion: 4
       clueInfo: {fileID: 0}
       dialogueSound:
-        audioClip: {fileID: 0}
-        playDelay: 0
+        audioClip: {fileID: 8300000, guid: 55d5e73e9b222f24e9a5f8342150cc66, type: 3}
+        playDelay: 0.2
       revealName: 0
       playerThought: 0
       triggerNiceImpression: 0
@@ -1075,8 +1156,8 @@ MonoBehaviour:
       speakerEmotion: 5
       clueInfo: {fileID: 0}
       dialogueSound:
-        audioClip: {fileID: 0}
-        playDelay: 0
+        audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+        playDelay: 0.2
       revealName: 0
       playerThought: 0
       triggerNiceImpression: 0
@@ -1148,8 +1229,8 @@ MonoBehaviour:
       speakerEmotion: 7
       clueInfo: {fileID: 0}
       dialogueSound:
-        audioClip: {fileID: 0}
-        playDelay: 0
+        audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+        playDelay: 0.2
       revealName: 0
       playerThought: 0
       triggerNiceImpression: 0
@@ -1157,18 +1238,33 @@ MonoBehaviour:
     - speakerName: 3
       argument: You are acussing me?
       speakerEmotion: 3
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
     - speakerName: 3
       argument: But I was in the kitchen during the incident!
       speakerEmotion: 4
+      dialogueSound:
+        audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+        playDelay: 0.2
     - speakerName: 0
       argument: And you didn't find the killer there?
       speakerEmotion: 2
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
     - speakerName: 3
       argument: What? No...
       speakerEmotion: 3
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
     - speakerName: 3
       argument: What would the killer be doing in the kitchen?
       speakerEmotion: 4
+      dialogueSound:
+        audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+        playDelay: 0.2
     correctReaction: 1
     correctEvidence: {fileID: 11400000, guid: 5309767f58951e343a540d34dded473b, type: 2}
     trustDialogue:
@@ -1188,8 +1284,8 @@ MonoBehaviour:
       speakerEmotion: 6
       clueInfo: {fileID: 0}
       dialogueSound:
-        audioClip: {fileID: 0}
-        playDelay: 0
+        audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+        playDelay: 0.2
       revealName: 0
       playerThought: 0
       triggerNiceImpression: 0
@@ -1218,8 +1314,8 @@ MonoBehaviour:
       speakerEmotion: 6
       clueInfo: {fileID: 0}
       dialogueSound:
-        audioClip: {fileID: 0}
-        playDelay: 0
+        audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+        playDelay: 0.2
       revealName: 0
       playerThought: 0
       triggerNiceImpression: 0
@@ -1229,8 +1325,8 @@ MonoBehaviour:
       speakerEmotion: 4
       clueInfo: {fileID: 0}
       dialogueSound:
-        audioClip: {fileID: 0}
-        playDelay: 0
+        audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+        playDelay: 0.2
       revealName: 0
       playerThought: 0
       triggerNiceImpression: 0
@@ -1239,8 +1335,8 @@ MonoBehaviour:
       speakerEmotion: 5
       clueInfo: {fileID: 0}
       dialogueSound:
-        audioClip: {fileID: 0}
-        playDelay: 0
+        audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+        playDelay: 0.2
       revealName: 0
       playerThought: 0
       triggerNiceImpression: 0
@@ -1281,8 +1377,8 @@ MonoBehaviour:
     speakerEmotion: 6
     clueInfo: {fileID: 0}
     dialogueSound:
-      audioClip: {fileID: 0}
-      playDelay: 0
+      audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+      playDelay: 0.2
     revealName: 0
     playerThought: 0
     triggerNiceImpression: 0
@@ -1301,8 +1397,8 @@ MonoBehaviour:
     speakerEmotion: 7
     clueInfo: {fileID: 0}
     dialogueSound:
-      audioClip: {fileID: 0}
-      playDelay: 0
+      audioClip: {fileID: 8300000, guid: 9d11d1bed0f9d8c4e8916f7189eeadd0, type: 3}
+      playDelay: 0.2
     revealName: 0
     playerThought: 0
     triggerNiceImpression: 0
@@ -1342,8 +1438,8 @@ MonoBehaviour:
     speakerEmotion: 6
     clueInfo: {fileID: 0}
     dialogueSound:
-      audioClip: {fileID: 0}
-      playDelay: 0
+      audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+      playDelay: 0.2
     revealName: 0
     playerThought: 0
     triggerNiceImpression: 0
@@ -1382,8 +1478,8 @@ MonoBehaviour:
     speakerEmotion: 5
     clueInfo: {fileID: 0}
     dialogueSound:
-      audioClip: {fileID: 0}
-      playDelay: 0
+      audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+      playDelay: 0.2
     revealName: 0
     playerThought: 0
     triggerNiceImpression: 0

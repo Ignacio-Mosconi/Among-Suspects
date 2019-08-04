@@ -301,6 +301,18 @@ public class DebateManager : MonoBehaviour
         argumentController.ResetArgumentPanelScale();
     }
 
+    void ScheduleSoundPlaybackOnFocusStart(DialogueSound dialogueSound)
+    {
+        if (dialogueSound.audioClip)
+        {
+            AudioClip audioClip = dialogueSound.audioClip;
+            float playDelay = dialogueSound.playDelay;
+            playSoundOnFocusFinishAction = () => PlayDialogueSoundOnFocusFinish(audioClip, playDelay);
+
+            debateCameraController.OnFocusFinish.AddListener(playSoundOnFocusFinishAction);
+        }
+    }
+
     void PlayDialogueSoundOnFocusFinish(AudioClip audioClip, float delay)
     {
         AudioManager.Instance.PlaySoundDelayed(audioClip, delay);
@@ -399,11 +411,15 @@ public class DebateManager : MonoBehaviour
             GameManager.Instance.InvokeMethodInScaledTime(ChangeSpeakerNameText, debateDialogue.speakerName.ToString(), changeTextDelay);
             GameManager.Instance.InvokeMethodInScaledTime(ChangeArgumentText, debateDialogue.argument, changeTextDelay);
 
+            ScheduleSoundPlaybackOnFocusStart(debateDialogue.dialogueSound);
+
             debateCameraController.StartFocusing(charPosition);     
             previousSpeaker = debateDialogue.speakerName;
         }
         else
         {
+            if (debateDialogue.dialogueSound.audioClip)
+                AudioManager.Instance.PlaySoundDelayed(debateDialogue.dialogueSound.audioClip, debateDialogue.dialogueSound.playDelay);
             ChangeArgumentText(debateDialogue.argument);
             SayArgument(lineIndex == currentArgumentLines.Length - 1);
         }
@@ -428,17 +444,9 @@ public class DebateManager : MonoBehaviour
             GameManager.Instance.InvokeMethodInScaledTime(DetermineSpeechTextColor, dialogue, changeTextDelay);
             GameManager.Instance.InvokeMethodInScaledTime(ChangeSpeakerNameText, dialogue.speakerName.ToString(), changeTextDelay);
 
-            if (dialogue.dialogueSound.audioClip)
-            {
-                AudioClip audioClip = dialogue.dialogueSound.audioClip;
-                float playDelay = dialogue.dialogueSound.playDelay;
-                playSoundOnFocusFinishAction = () => PlayDialogueSoundOnFocusFinish(audioClip, playDelay);
+            ScheduleSoundPlaybackOnFocusStart(dialogue.dialogueSound);
 
-                debateCameraController.OnFocusFinish.AddListener(playSoundOnFocusFinishAction);
-            }
-
-            debateCameraController.StartFocusing(charPosition);
-            
+            debateCameraController.StartFocusing(charPosition);     
             previousSpeaker = dialogue.speakerName;
         }
         else

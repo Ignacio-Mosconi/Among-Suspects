@@ -11,6 +11,7 @@ public struct DebateDialogue
     public CharacterName speakerName;
     [TextArea(3, 10)] public string argument;
     public CharacterEmotion speakerEmotion;
+    public DialogueSound dialogueSound;
 }
 
 [System.Serializable]
