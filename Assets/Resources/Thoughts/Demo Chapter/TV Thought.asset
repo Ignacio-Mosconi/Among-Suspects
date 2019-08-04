@@ -17,25 +17,62 @@ MonoBehaviour:
     speech: This TV seems too new compared to rest of the furniture.
     speakerEmotion: 0
     clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
     revealName: 0
     playerThought: 1
+    triggerNiceImpression: 0
   - speakerName: 0
     speech: It kind of stands out from the rest of the things around it.
     speakerEmotion: 0
     clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
     revealName: 0
     playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: 'It''s weird, though...it looks like it''s plugged in and turned on, but
+      it''s not displaying anything. '
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 8300000, guid: c7a9c6bd76ea0ec42b0e26ae02464bfa, type: 3}
+      playDelay: 0.2
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: Maybe someone didn't pay the cable bill...
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
   investigationThought:
   - speakerName: 0
     speech: The last thing I want to do right now is watch the TV...
     speakerEmotion: 0
     clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
     revealName: 0
     playerThought: 1
+    triggerNiceImpression: 0
   - speakerName: 0
     speech: We need to get out before the murderer acts again...
     speakerEmotion: 0
     clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
     revealName: 0
     playerThought: 1
+    triggerNiceImpression: 0
   triggerInvestigationPhase: 0

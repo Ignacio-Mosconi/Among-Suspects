@@ -17,44 +17,72 @@ MonoBehaviour:
     speech: This looks like a broken jar...
     speakerEmotion: 0
     clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
     revealName: 0
     playerThought: 1
+    triggerNiceImpression: 0
   - speakerName: 0
     speech: 'But more importantly: who''s that person lying next to it?!'
     speakerEmotion: 0
     clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
     revealName: 0
     playerThought: 1
+    triggerNiceImpression: 0
   investigationThought:
   - speakerName: 0
     speech: A broken jar next to the corpse?
     speakerEmotion: 0
     clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
     revealName: 0
     playerThought: 1
+    triggerNiceImpression: 0
   - speakerName: 0
     speech: Was it used by the victim to defend himself?
     speakerEmotion: 0
     clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
     revealName: 0
     playerThought: 1
+    triggerNiceImpression: 0
   - speakerName: 0
     speech: Mhh...
     speakerEmotion: 0
     clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 8300000, guid: c7a9c6bd76ea0ec42b0e26ae02464bfa, type: 3}
+      playDelay: 0.2
     revealName: 0
     playerThought: 1
+    triggerNiceImpression: 0
   - speakerName: 0
     speech: Wait, he couldn't have thrown it, as the shattered pieces are too close
       to each other...
     speakerEmotion: 0
-    clueInfo: {fileID: 0}
+    clueInfo: {fileID: 11400000, guid: 9cfc2c8a48537574787858fc59e08b7e, type: 2}
+    dialogueSound:
+      audioClip: {fileID: 8300000, guid: acdbe76e85b8e1541b5d49efe23f9c48, type: 3}
+      playDelay: 0.2
     revealName: 0
     playerThought: 1
+    triggerNiceImpression: 0
   - speakerName: 0
     speech: This thing might have been dropped by accident...
     speakerEmotion: 0
-    clueInfo: {fileID: 11400000, guid: 9cfc2c8a48537574787858fc59e08b7e, type: 2}
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
     revealName: 0
     playerThought: 1
+    triggerNiceImpression: 0
   triggerInvestigationPhase: 0

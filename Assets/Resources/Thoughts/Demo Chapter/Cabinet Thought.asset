@@ -17,25 +17,62 @@ MonoBehaviour:
     speech: This is a really nice furniture...
     speakerEmotion: 0
     clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
     revealName: 0
     playerThought: 1
+    triggerNiceImpression: 0
   - speakerName: 0
     speech: It looks pretty old as well...
     speakerEmotion: 0
     clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
     revealName: 0
     playerThought: 1
-  investigationThought:
+    triggerNiceImpression: 0
   - speakerName: 0
-    speech: This wardrobe seems to be empty.
+    speech: 'I wonder where it was made. I''m pretty sure that <color=orange>Monica</color>
+      is the kind of person that would love to know that kind of stuff about things. '
     speakerEmotion: 0
     clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 8300000, guid: c7a9c6bd76ea0ec42b0e26ae02464bfa, type: 3}
+      playDelay: 0.2
     revealName: 0
     playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: Or at least that's what I think, anyway...
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  investigationThought:
+  - speakerName: 0
+    speech: This cabinet seems to be empty.
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
   - speakerName: 0
     speech: I guess it won't help us solve the case in any way...
     speakerEmotion: 0
     clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
     revealName: 0
     playerThought: 1
+    triggerNiceImpression: 0
   triggerInvestigationPhase: 0
