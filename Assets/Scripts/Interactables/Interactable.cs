@@ -6,6 +6,7 @@ public class StartLookingEvent : UnityEvent<string> {}
 
 public abstract class Interactable : MonoBehaviour
 {
+    [Header("Basic Interaction Properties")]
     [SerializeField] protected Transform interactionPoint = default;
     [SerializeField] [Range(1f, 5f)] float interactionRadius = default;
     [SerializeField] bool hasToBeFaced = false;

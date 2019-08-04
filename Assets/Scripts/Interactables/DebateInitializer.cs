@@ -11,6 +11,7 @@ public struct DebateCharacterSprite
 
 public class DebateInitializer : Interactable
 {
+    [Header("Debate Initializer Properties")]
     [SerializeField] GameObject debateSpritesContainer = default;
     [SerializeField] DebateCharacterSprite[] debateCharactersSprites = default;
     

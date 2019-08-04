@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class InteractableObject : Interactable
 {
+    [Header("Interactable Object Properties")]
     [SerializeField] Sprite objectSprite = default;
 
     ThoughtInfo thoughtInfo;
