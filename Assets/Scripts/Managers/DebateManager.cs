@@ -43,7 +43,6 @@ public class DebateManager : MonoBehaviour
 
     #endregion
 
-    [Header("UI Elements")]
     [Header("Main Area")]
     [SerializeField] GameObject debateArea = default;
     [Header("Panels & Sub Areas")]
@@ -505,6 +504,20 @@ public class DebateManager : MonoBehaviour
         ResetMainUIVisibility();
         debateOptionsPanel.Hide();
         clueOptionsPanel.Show();
+
+        if (CharacterManager.Instance.PlayerController.CluesGathered.Count > 0)
+        {
+            for (int i = 0; i < ChapterManager.Instance.CluesAmount; i++)
+            {
+                ClueInfo clueInfo = ChapterManager.Instance.GetChapterClueInfo(i);
+                
+                if (CharacterManager.Instance.PlayerController.HasClue(ref clueInfo))
+                {
+                    ChangeCurrentlySelectedEvidence(clueInfo);
+                    break;
+                }
+            }
+        }
 
         Button[] cluesButtons = cluesScreen.CluesButtons.ToArray();
 
