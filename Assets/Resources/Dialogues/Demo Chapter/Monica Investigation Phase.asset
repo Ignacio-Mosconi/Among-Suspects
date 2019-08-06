@@ -162,8 +162,8 @@ MonoBehaviour:
     speakerEmotion: 2
     clueInfo: {fileID: 0}
     dialogueSound:
-      audioClip: {fileID: 0}
-      playDelay: 0
+      audioClip: {fileID: 8300000, guid: acdbe76e85b8e1541b5d49efe23f9c48, type: 3}
+      playDelay: 0.2
     revealName: 0
     playerThought: 0
     triggerNiceImpression: 0
@@ -502,6 +502,6 @@ MonoBehaviour:
       triggerNiceImpression: 0
     cancelOtherGroupDialogues: 1
   dialogueTypeOrder: 020000000000000000000000
-  introRead: 0
+  introRead: 1
   interactionOptionSelected: 0
   groupDialogueRead: 1
