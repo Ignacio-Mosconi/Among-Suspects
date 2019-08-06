@@ -18,6 +18,11 @@ public class FirstPersonCamera : MonoBehaviour
         fpsCamera = GetComponentInChildren<Camera>().transform;
     }
 
+    void Start()
+    {
+        horAngle = transform.eulerAngles.y;
+    }
+
     void Update()
     {
         float horRotation = Input.GetAxis("Mouse X");
