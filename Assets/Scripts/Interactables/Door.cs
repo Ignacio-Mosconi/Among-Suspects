@@ -18,8 +18,9 @@ public class Door : Interactable
     float closeAnimationDuration;
     bool isOpen;
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>(); 
     }

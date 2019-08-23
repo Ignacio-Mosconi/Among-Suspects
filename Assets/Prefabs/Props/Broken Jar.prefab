@@ -404,6 +404,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3920191719551355275}
   - component: {fileID: 6162895451453440527}
+  - component: {fileID: 3073569194321574501}
   m_Layer: 0
   m_Name: Broken Jar
   m_TagString: Untagged
@@ -442,6 +443,19 @@ MonoBehaviour:
   interactionRadius: 2
   hasToBeFaced: 0
   objectSprite: {fileID: 21300000, guid: 593ccbcaf3862cb45ab6e6a78c0acd35, type: 3}
+--- !u!65 &3073569194321574501
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3920191719551718827}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 48.244293, y: 27.276573, z: 50.607258}
+  m_Center: {x: 4.7592583, y: 13.638287, z: -1.4658235}
 --- !u!1 &3920191719551718829
 GameObject:
   m_ObjectHideFlags: 0

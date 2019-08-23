@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 [System.Serializable]
@@ -14,11 +15,17 @@ public abstract class Interactable : MonoBehaviour
     protected PlayerController playerController;
     
     Transform cameraTransform;
+    Collider[] interactionColliders;
     bool isPlayerLookingAt = false;
 
     StartLookingEvent onStartLookingAt = new StartLookingEvent();
     UnityEvent onStopLookingAt = new UnityEvent();
     UnityEvent onInteraction = new UnityEvent();
+
+    protected virtual void Awake()
+    {
+        interactionColliders = GetComponentsInChildren<Collider>();
+    }
 
     protected virtual void Start()
     {
@@ -41,7 +48,17 @@ public abstract class Interactable : MonoBehaviour
             float viewRange = playerController.FirstPersonCamera.InteractionFOV * 0.5f / diff.magnitude;
             float interactableFwdOrient = playerController.transform.InverseTransformDirection(transform.forward).z;
 
-            if (angleBetweenObjs < viewRange && (!hasToBeFaced || interactableFwdOrient < -0.5f))
+            RaycastHit hitInfo;
+            Vector3 cameraPosition = cameraTransform.position;
+            Vector3 interactionPointPosition = interactionPoint.position;
+            Vector3 raycastDirection = (interactionPointPosition - cameraPosition).normalized;
+            
+            bool isObjectOccluded = true;
+            if (Physics.Raycast(cameraPosition, raycastDirection, out hitInfo, interactionRadius))
+                if (Array.Find(interactionColliders, c => c == hitInfo.collider))
+                    isObjectOccluded = false;
+            
+            if (angleBetweenObjs < viewRange && (!hasToBeFaced || interactableFwdOrient < -0.5f) && !isObjectOccluded)
             {
                 if (!isPlayerLookingAt)
                     StartLookingAt();

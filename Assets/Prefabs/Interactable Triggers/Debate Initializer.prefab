@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 175076882}
   - component: {fileID: 175076881}
+  - component: {fileID: 1477151910366445412}
   m_Layer: 0
-  m_Name: Debate Initializer - Demo Chapter
+  m_Name: Debate Initializer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,7 +49,6 @@ MonoBehaviour:
   interactionPoint: {fileID: 175076882}
   interactionRadius: 2
   hasToBeFaced: 0
-  debateInfo: {fileID: 11400000, guid: 5b6a45632c9deac4d8581db5efa261a7, type: 2}
   debateSpritesContainer: {fileID: 209001022}
   debateCharactersSprites:
   - characterName: 0
@@ -59,6 +59,19 @@ MonoBehaviour:
     spriteRenderer: {fileID: 1217074542}
   - characterName: 2
     spriteRenderer: {fileID: 750593327}
+--- !u!65 &1477151910366445412
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175076880}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.41167146, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &209001022
 GameObject:
   m_ObjectHideFlags: 0
