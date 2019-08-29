@@ -65,6 +65,7 @@ public class DebateManager : MonoBehaviour
     ArgumentController argumentController;
     DebateCameraController debateCameraController;
     CredibilityBarController credibilityBarController;
+    ArgumentTimer argumentTimer;
     CluesScreen cluesScreen;
     DebateCharacterSprite[] debateCharactersSprites;
     DebateInfo currentDebateInfo;
@@ -94,7 +95,8 @@ public class DebateManager : MonoBehaviour
         argumentController = GetComponent<ArgumentController>();
         debateCameraController = GetComponent<DebateCameraController>();
         credibilityBarController = GetComponent<CredibilityBarController>();
-        
+        argumentTimer = GetComponent<ArgumentTimer>();
+
         cluesScreen = GetComponentInChildren<CluesScreen>(includeInactive: true);
 
         useEvidenceButton.interactable = false;
@@ -110,6 +112,7 @@ public class DebateManager : MonoBehaviour
 
         argumentController.OnArgumentFinish.AddListener(ShowDebateOptions);
         debateCameraController.OnFocusFinish.AddListener(ProceedAfterCameraFocus);
+        argumentTimer.OnTimeOut.AddListener(StayQuietAfterComment);
         
         debateCharactersSprites = debateInitializer.DebateCharactersSprites;
         
@@ -324,6 +327,7 @@ public class DebateManager : MonoBehaviour
         enabled = false;
         isSelectingOption = true;
         debateOptionsPanel.Show();
+        argumentTimer.StartTimer();
         GameManager.Instance.SetCursorEnable(enable: true);
     }
 
@@ -351,6 +355,8 @@ public class DebateManager : MonoBehaviour
 
         argumentController.ResetArgumentPanelScale();
         ResetMainUIVisibility();
+
+        argumentTimer.StopTimer();
 
         argumentPanel.SetActive(false);
         GameManager.Instance.SetCursorEnable(false);
@@ -483,6 +489,19 @@ public class DebateManager : MonoBehaviour
         useEvidenceButton.interactable = true;
     }
 
+    void StayQuietAfterComment()
+    {
+        currentDialogueLines = (currentArgument.correctReaction == DebateReaction.Agree) ?
+                                 currentArgument.refuteIncorrectDialogue : currentArgument.trustDialogue;
+
+        currentPhase = DebatePhase.SolvingArgument;
+
+        credibilityPerc -= credibilityDecPerc;
+
+        debateOptionsPanel.Hide();
+        ProceedAfterOptionSelection();
+    }
+
     public void TrustComment()
     {
         currentDialogueLines = currentArgument.trustDialogue;
@@ -495,7 +514,6 @@ public class DebateManager : MonoBehaviour
             credibilityPerc -= credibilityDecPerc;
 
         debateOptionsPanel.Hide();
-
         ProceedAfterOptionSelection();
     }
 
