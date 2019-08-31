@@ -43,6 +43,8 @@ public class DebateManager : MonoBehaviour
 
     #endregion
 
+    [Header("Scoring Management")]
+    [SerializeField] DebatePerformanceController debatePerformanceController;
     [Header("Main Area")]
     [SerializeField] GameObject debateArea = default;
     [Header("Panels & Sub Areas")]
@@ -79,13 +81,7 @@ public class DebateManager : MonoBehaviour
     bool caseWon = false;
     int lineIndex = 0;
     int argumentIndex = 0;
-    float credibilityPerc;
-    float credibilityIncPerc;
-    float credibilityDecPerc;
     bool isSelectingOption;
-
-    const float MinCredibilityPercRequired = 70f;
-    const float InitialCredibilityPerc = 50f;
 
     void Start()
     {
@@ -96,6 +92,8 @@ public class DebateManager : MonoBehaviour
         debateCameraController = GetComponent<DebateCameraController>();
         credibilityBarController = GetComponent<CredibilityBarController>();
         argumentTimer = GetComponent<ArgumentTimer>();
+
+        debatePerformanceController = new DebatePerformanceController();
 
         cluesScreen = GetComponentInChildren<CluesScreen>(includeInactive: true);
 
@@ -170,7 +168,7 @@ public class DebateManager : MonoBehaviour
                         Dialogue(currentDialogueLines[lineIndex]);
                     else
                     {
-                        if (!ShouldLoseCase())
+                        if (!debatePerformanceController.ShouldLoseCase(argumentIndex))
                         {
                             if (argumentIndex == currentDebateInfo.arguments.Length - 1)
                                 EndCase();
@@ -219,17 +217,6 @@ public class DebateManager : MonoBehaviour
                 !isSelectingOption && !leftClickPrompt.gameObject.activeInHierarchy);
     }
 
-    bool ShouldLoseCase()
-    {
-        bool shouldLose;
-        int argumentsRemaining = currentDebateInfo.arguments.Length - argumentIndex - 1;
-        float maxAchievableCredibility = credibilityPerc + argumentsRemaining * credibilityIncPerc;
-
-        shouldLose = (maxAchievableCredibility < MinCredibilityPercRequired);
-        
-        return shouldLose;
-    }
-
     void SetDebateAreaAvailability(bool enableDebateArea)
     {
         debateArea.SetActive(enableDebateArea);
@@ -242,15 +229,13 @@ public class DebateManager : MonoBehaviour
             currentArgumentLines = null;
 
             currentPhase = DebatePhase.Dialoguing;
-            
-            credibilityPerc = InitialCredibilityPerc;
 
             caseWon = false;
             lineIndex = 0;
             argumentIndex = 0;
 
             argumentController.ResetArgumentPanelScale();
-            credibilityBarController.ResetCredibilityBar(InitialCredibilityPerc);
+            credibilityBarController.ResetCredibilityBar(debatePerformanceController.InitialCredibility);
             ResetMainUIVisibility();
         }
     }
@@ -349,9 +334,7 @@ public class DebateManager : MonoBehaviour
 
     void ProceedAfterOptionSelection()
     {
-        int argumentsRemaining = currentDebateInfo.arguments.Length - 1 - argumentIndex;
-        float percAtNextFail = credibilityPerc - credibilityDecPerc;
-        bool isCriticalPer = (percAtNextFail + credibilityIncPerc * argumentsRemaining < MinCredibilityPercRequired);
+        currentPhase = DebatePhase.SolvingArgument;
 
         argumentController.ResetArgumentPanelScale();
         
@@ -366,7 +349,11 @@ public class DebateManager : MonoBehaviour
         if (credibilityBarController.IsFillingBar())
             credibilityBarController.StopFillingBar();
 
-        credibilityBarController.StartFillingBar(credibilityPerc, MinCredibilityPercRequired, isCriticalPer);
+        float credibility = debatePerformanceController.Credibility;
+        float requiredCredibility = debatePerformanceController.RequiredCredibility;
+        bool isAtCriticalCredibility = debatePerformanceController.IsAtCriticalCredibility(argumentIndex);
+
+        credibilityBarController.StartFillingBar(credibility, requiredCredibility, isAtCriticalCredibility);
 
         lineIndex = 0;
         isSelectingOption = false;
@@ -495,24 +482,19 @@ public class DebateManager : MonoBehaviour
     {
         currentDialogueLines = currentArgument.outOfTimeDialogue;
 
-        currentPhase = DebatePhase.SolvingArgument;
-
-        credibilityPerc -= credibilityDecPerc;
-
+        debatePerformanceController.DecreaseCredibility();
         debateOptionsPanel.Hide();
         ProceedAfterOptionSelection();
     }
 
     public void TrustComment()
     {
-        currentDialogueLines = currentArgument.trustDialogue;
-        
-        currentPhase = DebatePhase.SolvingArgument;
+        currentDialogueLines = currentArgument.trustDialogue;  
 
         if (currentArgument.correctReaction == DebateReaction.Agree)
-            credibilityPerc += credibilityIncPerc;
+            debatePerformanceController.IncreaseCredibility();
         else
-            credibilityPerc -= credibilityDecPerc;
+            debatePerformanceController.DecreaseCredibility();
 
         debateOptionsPanel.Hide();
         ProceedAfterOptionSelection();
@@ -549,18 +531,16 @@ public class DebateManager : MonoBehaviour
 
     public void AccuseWithEvidence()
     {        
-        currentPhase = DebatePhase.SolvingArgument;
-
         if (currentArgument.correctReaction == DebateReaction.Disagree && 
             currentArgument.correctEvidence == currentlySelectedEvidence)
         {
             currentDialogueLines = currentArgument.refuteCorrectDialogue;
-            credibilityPerc += credibilityIncPerc;
+            debatePerformanceController.IncreaseCredibility();
         }
         else
         {
             currentDialogueLines = currentArgument.refuteIncorrectDialogue;
-            credibilityPerc -= credibilityDecPerc;
+            debatePerformanceController.DecreaseCredibility();
         }
 
         clueOptionsPanel.Hide();
@@ -588,12 +568,7 @@ public class DebateManager : MonoBehaviour
         currentDialogueLines = currentArgument.argumentIntroDialogue;
         currentArgumentLines = currentArgument.debateDialogue;
 
-        credibilityPerc = InitialCredibilityPerc;
-        credibilityIncPerc = credibilityPerc / currentDebateInfo.arguments.Length;
-        credibilityDecPerc = credibilityIncPerc * 2f;
-
-        credibilityBarController.ResetCredibilityBar(credibilityPerc);
-
+        debatePerformanceController.Initialize(currentDebateInfo.arguments.Length);
         SetDebateAreaAvailability(enableDebateArea: true);
 
         ChangeSpeakerNameText(currentDialogueLines[0].speakerName.ToString());
