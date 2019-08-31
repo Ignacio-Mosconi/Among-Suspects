@@ -28,6 +28,7 @@ public struct Argument
     public Dialogue[] trustDialogue;
     public Dialogue[] refuteCorrectDialogue;
     public Dialogue[] refuteIncorrectDialogue;
+    public Dialogue[] outOfTimeDialogue;
 }
 
 [CreateAssetMenu(fileName = "New Debate Info", menuName = "Debate Info", order = 3)]

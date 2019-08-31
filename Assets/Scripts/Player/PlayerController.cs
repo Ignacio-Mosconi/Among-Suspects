@@ -35,6 +35,18 @@ public class PlayerController : MonoBehaviour, ICharacter
         DialogueManager.Instance.OnDialogueAreaDisable.AddListener(Enable);
     }
 
+#if UNITY_EDITOR
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.I))
+        {
+            ChapterManager.Instance.TriggerInvestigationPhase();
+            for (int i = 0; i < ChapterManager.Instance.CluesAmount; i++)
+                cluesGathered.Add(ChapterManager.Instance.GetChapterClueInfo(i));
+        }    
+    }
+#endif
+
     bool TriggeredNotification()
     {
         bool triggeredNotification = false;

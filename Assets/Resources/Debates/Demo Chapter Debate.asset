@@ -130,6 +130,27 @@ MonoBehaviour:
       revealName: 0
       playerThought: 1
       triggerNiceImpression: 0
+    outOfTimeDialogue:
+    - speakerName: 1
+      speech: What's the matter, <color=orange>Jimmy<color=orange>?
+      speakerEmotion: 1
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 1
+      speech: Don't you trust me?
+      speakerEmotion: 3
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
   - argumentIntroDialogue:
     - speakerName: 3
       speech: What about the big football star?
@@ -217,6 +238,58 @@ MonoBehaviour:
       triggerNiceImpression: 0
     - speakerName: 0
       speech: He's right. I'm losing my temper...
+      speakerEmotion: 0
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 1
+      triggerNiceImpression: 0
+    outOfTimeDialogue:
+    - speakerName: 2
+      speech: Dude, what're you doin'?
+      speakerEmotion: 1
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 2
+      speech: Say somethin'!
+      speakerEmotion: 4
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 1
+      speech: Calm down, guys!
+      speakerEmotion: 6
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 1
+      speech: I saw <color=orange>William</color> in the living room, trying to watch
+        the TV...so he's telling the truth.
+      speakerEmotion: 1
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 0
+      speech: That's correct. I think I have to start stepping forward to respond.
       speakerEmotion: 0
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -330,6 +403,38 @@ MonoBehaviour:
       revealName: 0
       playerThought: 1
       triggerNiceImpression: 0
+    outOfTimeDialogue:
+    - speakerName: 3
+      speech: What's wrong with you?
+      speakerEmotion: 0
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 3
+      speech: Has the cat got your tongue?
+      speakerEmotion: 2
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 0
+      speech: I have to start saying something, or the others are going to think I'm
+        hiding something.
+      speakerEmotion: 0
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 1
+      triggerNiceImpression: 0
   - argumentIntroDialogue:
     - speakerName: 0
       speech: Let's discuss about the murder weapon...
@@ -419,6 +524,37 @@ MonoBehaviour:
     - speakerName: 0
       speech: They're right. I'm not thinking straight...
       speakerEmotion: 0
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 1
+      triggerNiceImpression: 0
+    outOfTimeDialogue:
+    - speakerName: 1
+      speech: Why aren't you backing me up, darling?
+      speakerEmotion: 3
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 1
+      speech: You know I'm telling the truth, don't you?
+      speakerEmotion: 4
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 0
+      speech: I think I should have stepped up for her, as she seems to be right...
+      speakerEmotion: 1
       clueInfo: {fileID: 0}
       dialogueSound:
         audioClip: {fileID: 0}
@@ -592,6 +728,57 @@ MonoBehaviour:
     - speakerName: 0
       speech: Mhh. Maybe I'm wrong about that one...
       speakerEmotion: 1
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 1
+      triggerNiceImpression: 0
+    outOfTimeDialogue:
+    - speakerName: 3
+      speech: Nothing to object?
+      speakerEmotion: 0
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 3
+      speech: I figured as much...
+      speakerEmotion: 2
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 1
+      speech: No, wait. What about the wardrobe inside the bedroom?
+      speakerEmotion: 1
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 1
+      speech: A person could fit inside that place without much trouble...
+      speakerEmotion: 0
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 0
+      speech: Damn it! I forgot about that detail. I have to remain focused...
+      speakerEmotion: 0
       clueInfo: {fileID: 0}
       dialogueSound:
         audioClip: {fileID: 0}
@@ -828,6 +1015,68 @@ MonoBehaviour:
       revealName: 0
       playerThought: 1
       triggerNiceImpression: 0
+    outOfTimeDialogue:
+    - speakerName: 3
+      speech: I see you don't have anyhing to say about it...
+      speakerEmotion: 1
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 3
+      speech: Have you finally thought it through?
+      speakerEmotion: 0
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 1
+      speech: Hold on a second!
+      speakerEmotion: 6
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 1
+      speech: I don't think the jar was ever thrown.
+      speakerEmotion: 0
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 1
+      speech: If it had been thrown, its pieces would have sparsed around the room...and
+        that didn't happen!
+      speakerEmotion: 6
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 0
+      speech: She's right. Why didn't I say something to object that?
+      speakerEmotion: 1
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 1
+      triggerNiceImpression: 0
   - argumentIntroDialogue:
     - speakerName: 1
       speech: Okay, moving on...
@@ -1011,6 +1260,48 @@ MonoBehaviour:
       revealName: 0
       playerThought: 1
       triggerNiceImpression: 0
+    outOfTimeDialogue:
+    - speakerName: 2
+      speech: Somebody say somethin'!
+      speakerEmotion: 4
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 2
+      speech: I'm innocent!
+      speakerEmotion: 5
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 1
+      speech: I think he's right. I mean, that wardrobe is not THAT big for him to
+        enter there.
+      speakerEmotion: 1
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 2
+      speech: That's what I was tryin' to say!
+      speakerEmotion: 1
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
   - argumentIntroDialogue:
     - speakerName: 0
       speech: We are running out of ideas...
@@ -1173,6 +1464,67 @@ MonoBehaviour:
       triggerNiceImpression: 0
     - speakerName: 0
       speech: I missed the point there...
+      speakerEmotion: 1
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 1
+      triggerNiceImpression: 0
+    outOfTimeDialogue:
+    - speakerName: 2
+      speech: Nothing to say?
+      speakerEmotion: 0
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 2
+      speech: He must've been strangled, then!
+      speakerEmotion: 1
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 1
+      speech: What? No!
+      speakerEmotion: 6
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 1
+      speech: The body has wounds that indicate that he suffered several cuts.
+      speakerEmotion: 1
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 1
+      speech: Why didn't you say something about it, <color=orange>James</color>?
+      speakerEmotion: 6
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 0
+      speech: Ups...she's right.
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -1359,6 +1711,27 @@ MonoBehaviour:
         playDelay: 0
       revealName: 0
       playerThought: 1
+      triggerNiceImpression: 0
+    outOfTimeDialogue:
+    - speakerName: 3
+      speech: Don't you have something to back up your claims?
+      speakerEmotion: 1
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 0
+      speech: In that case, stop this nonsense immediately.
+      speakerEmotion: 4
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
       triggerNiceImpression: 0
   loseDebateDialogue:
   - speakerName: 3

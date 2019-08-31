@@ -295,14 +295,14 @@ MonoBehaviour:
   minutesText: {fileID: 743810970958977613}
   secondsText: {fileID: 2546066547783532193}
   hundredthsOfSecondText: {fileID: 588197424258851297}
-  baseAnswerTime: 180
-  warningTime: 60
-  criticalTime: 30
+  baseAnswerTime: 120
+  warningTime: 30
+  criticalTime: 10
   maxDifficultyLevel: 3
   difficultyChangeIntervals: 3
   normalTimeColor: {r: 1, g: 1, b: 1, a: 1}
-  warningTimeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  criticalTimeColor: {r: 1, g: 0, b: 0, a: 1}
+  warningTimeColor: {r: 0.6886792, g: 0.63613397, b: 0.029236369, a: 1}
+  criticalTimeColor: {r: 0.5377358, g: 0.07863118, b: 0.07863118, a: 1}
 --- !u!1 &761603635704131043
 GameObject:
   m_ObjectHideFlags: 0

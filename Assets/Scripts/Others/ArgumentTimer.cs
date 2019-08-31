@@ -10,9 +10,9 @@ public class ArgumentTimer : MonoBehaviour
     [SerializeField] TextMeshProUGUI secondsText = default;
     [SerializeField] TextMeshProUGUI hundredthsOfSecondText = default;
     [Header("Time Values")]
-    [SerializeField, Range(180f, 300f)] float baseAnswerTime = 180f;
-    [SerializeField, Range(60f, 180f)] float warningTime = 60f;
-    [SerializeField, Range(30f, 60f)] float criticalTime = 30f;
+    [SerializeField, Range(60f, 120f)] float baseAnswerTime = 120f;
+    [SerializeField, Range(20f, 60f)] float warningTime = 60f;
+    [SerializeField, Range(5f, 20f)] float criticalTime = 20f;
     [Header("Difficulty")]
     [SerializeField, Range(1, 3)] int maxDifficultyLevel = 3;
     [SerializeField, Range(1, 5)] int difficultyChangeIntervals = 3;
@@ -34,6 +34,11 @@ public class ArgumentTimer : MonoBehaviour
 
     void Update()
     {
+#if UNITY_EDITOR
+    if (Input.GetKey(KeyCode.T))
+        timer = 5f;
+#endif
+
         timer -= Time.deltaTime;
 
         int minutesLeft = (int)timer / 60;
@@ -58,10 +63,7 @@ public class ArgumentTimer : MonoBehaviour
         }
 
         if (timer <= 0f)
-        {
-            StopTimer();
             onTimeOut.Invoke();
-        }
     }
 
     void CheckTextColorChange(Color targetColor)

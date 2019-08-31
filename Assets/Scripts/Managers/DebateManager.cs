@@ -354,7 +354,9 @@ public class DebateManager : MonoBehaviour
         bool isCriticalPer = (percAtNextFail + credibilityIncPerc * argumentsRemaining < MinCredibilityPercRequired);
 
         argumentController.ResetArgumentPanelScale();
-        ResetMainUIVisibility();
+        
+        if (currentDialogueLines[0].speakerName != previousSpeaker)
+            ResetMainUIVisibility();
 
         argumentTimer.StopTimer();
 
@@ -491,8 +493,7 @@ public class DebateManager : MonoBehaviour
 
     void StayQuietAfterComment()
     {
-        currentDialogueLines = (currentArgument.correctReaction == DebateReaction.Agree) ?
-                                 currentArgument.refuteIncorrectDialogue : currentArgument.trustDialogue;
+        currentDialogueLines = currentArgument.outOfTimeDialogue;
 
         currentPhase = DebatePhase.SolvingArgument;
 
