@@ -24,6 +24,8 @@ public class ArgumentTimer : MonoBehaviour
     UnityEvent onTimeOut = new UnityEvent();
 
     float timer = 0f;
+    float lastRemainingTimeOnStop = 0f;
+    float lastAvailableAnsweringTime = 0f;
     int difficultyLevel = 1;
     int argumentsSinceLastDifficultyChange = 0;
 
@@ -79,6 +81,7 @@ public class ArgumentTimer : MonoBehaviour
     public void StartTimer()
     {
         timer = baseAnswerTime / difficultyLevel;
+        lastAvailableAnsweringTime = timer;
         minutesText.color = normalTimeColor;
         secondsText.color = normalTimeColor;
         hundredthsOfSecondText.color = normalTimeColor;
@@ -88,6 +91,7 @@ public class ArgumentTimer : MonoBehaviour
 
     public void StopTimer()
     {
+        lastRemainingTimeOnStop = Mathf.Max(timer, 0f);
         timerPanel.SetActive(false);
         enabled = false;
         argumentsSinceLastDifficultyChange++;
@@ -104,6 +108,16 @@ public class ArgumentTimer : MonoBehaviour
     public UnityEvent OnTimeOut
     {
         get { return onTimeOut; }
+    }
+
+    public float LastRemainingTimeOnStop
+    {
+        get { return lastRemainingTimeOnStop; }
+    }
+
+    public float LastAvailableAnsweringTime
+    {
+        get { return lastAvailableAnsweringTime; }
     }
 
     #endregion

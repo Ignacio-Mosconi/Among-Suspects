@@ -332,7 +332,7 @@ public class DebateManager : MonoBehaviour
             SayDialogue(currentDialogueLines[lineIndex].speech, newSpeaker: true);
     }
 
-    void ProceedAfterOptionSelection()
+    void ProceedAfterOptionSelection(bool increaseCredibility)
     {
         currentPhase = DebatePhase.SolvingArgument;
 
@@ -342,6 +342,14 @@ public class DebateManager : MonoBehaviour
             ResetMainUIVisibility();
 
         argumentTimer.StopTimer();
+        
+        float timeLeft = argumentTimer.LastRemainingTimeOnStop;
+        float totalAnsweringTime = argumentTimer.LastAvailableAnsweringTime;
+
+        if (increaseCredibility)
+            debatePerformanceController.IncreaseCredibility(timeLeft, totalAnsweringTime);
+        else
+            debatePerformanceController.DecreaseCredibility(timeLeft, totalAnsweringTime);
 
         argumentPanel.SetActive(false);
         GameManager.Instance.SetCursorEnable(false);
@@ -481,23 +489,17 @@ public class DebateManager : MonoBehaviour
     void StayQuietAfterComment()
     {
         currentDialogueLines = currentArgument.outOfTimeDialogue;
-
-        debatePerformanceController.DecreaseCredibility();
         debateOptionsPanel.Hide();
-        ProceedAfterOptionSelection();
+        ProceedAfterOptionSelection(increaseCredibility: false);
     }
 
     public void TrustComment()
     {
+        bool increaseCredibility = (currentArgument.correctReaction == DebateReaction.Agree);
+
         currentDialogueLines = currentArgument.trustDialogue;  
-
-        if (currentArgument.correctReaction == DebateReaction.Agree)
-            debatePerformanceController.IncreaseCredibility();
-        else
-            debatePerformanceController.DecreaseCredibility();
-
         debateOptionsPanel.Hide();
-        ProceedAfterOptionSelection();
+        ProceedAfterOptionSelection(increaseCredibility);
     }
 
     public void RefuteComment()
@@ -530,17 +532,19 @@ public class DebateManager : MonoBehaviour
     }
 
     public void AccuseWithEvidence()
-    {        
+    {  
+        bool increaseCredibility;
+
         if (currentArgument.correctReaction == DebateReaction.Disagree && 
             currentArgument.correctEvidence == currentlySelectedEvidence)
         {
             currentDialogueLines = currentArgument.refuteCorrectDialogue;
-            debatePerformanceController.IncreaseCredibility();
+            increaseCredibility = true;
         }
         else
         {
             currentDialogueLines = currentArgument.refuteIncorrectDialogue;
-            debatePerformanceController.DecreaseCredibility();
+            increaseCredibility = false;
         }
 
         clueOptionsPanel.Hide();
@@ -548,7 +552,7 @@ public class DebateManager : MonoBehaviour
         useEvidenceButton.interactable = false;
         currentlySelectedEvidence = null;
 
-        ProceedAfterOptionSelection();
+        ProceedAfterOptionSelection(increaseCredibility);
     }
 
     public void ReturnToDebateOptions()
@@ -584,4 +588,13 @@ public class DebateManager : MonoBehaviour
                 enabled = enable;
         }
     }
+
+    #region Properties
+
+    public DebatePerformanceController DebatePerformanceController
+    {
+        get { return debatePerformanceController; }
+    }
+
+    #endregion
 }
