@@ -493,7 +493,12 @@ public class DebateManager : MonoBehaviour
     void StayQuietAfterComment()
     {
         currentDialogueLines = currentArgument.outOfTimeDialogue;
-        debateOptionsPanel.Hide();
+        
+        if (debateOptionsPanel.gameObject.activeInHierarchy)
+            debateOptionsPanel.Hide();
+        if (clueOptionsPanel.gameObject.activeInHierarchy)
+            clueOptionsPanel.Hide();
+
         ProceedAfterOptionSelection(increaseCredibility: false);
     }
 
