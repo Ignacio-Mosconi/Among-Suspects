@@ -80,6 +80,11 @@ public class UIPrompt : MonoBehaviour
 
     #region Properties
 
+    public float ShowAnimationDuration
+    {
+        get { return showAnimationDuration; }
+    }
+
     public float HideAnimationDuration
     {
         get { return hideAnimationDuration; }

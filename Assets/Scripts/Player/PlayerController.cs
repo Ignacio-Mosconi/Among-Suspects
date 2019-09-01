@@ -39,11 +39,7 @@ public class PlayerController : MonoBehaviour, ICharacter
     void Update()
     {
         if (Input.GetKey(KeyCode.I))
-        {
-            ChapterManager.Instance.TriggerInvestigationPhase();
-            for (int i = 0; i < ChapterManager.Instance.CluesAmount; i++)
-                cluesGathered.Add(ChapterManager.Instance.GetChapterClueInfo(i));
-        }    
+            GatherAllClues();
     }
 #endif
 
@@ -161,4 +157,16 @@ public class PlayerController : MonoBehaviour, ICharacter
     }
     
     #endregion
+
+#if UNITY_EDITOR
+    #region Development Cheats
+
+    public void GatherAllClues()
+    {
+        ChapterManager.Instance.TriggerInvestigationPhase();
+        for (int i = 0; i < ChapterManager.Instance.CluesAmount; i++)
+            cluesGathered.Add(ChapterManager.Instance.GetChapterClueInfo(i));
+    }
+    #endregion
+#endif
 }

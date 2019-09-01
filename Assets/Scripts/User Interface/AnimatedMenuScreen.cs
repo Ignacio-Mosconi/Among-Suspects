@@ -42,4 +42,18 @@ public class AnimatedMenuScreen : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
+    #region Properties
+
+    public float ShowAnimationDuration
+    {
+        get { return showAnimationDuration; }
+    }
+
+    public float HideAnimationDuration
+    {
+        get { return hideAnimationDuration; }
+    }
+
+    #endregion
 }

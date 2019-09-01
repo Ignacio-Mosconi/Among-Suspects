@@ -6,6 +6,7 @@ public struct ArgumentRecordData
     public bool wasSolvedCorrectly;
     public float timeLeftToSolve;
     public float totalTimeToSolve;
+    public int argumentScore;
 }
 
 public struct ScoreRecordData
@@ -42,11 +43,16 @@ public class DebatePerformanceController
             Debug.LogError("All the records have been stored for this debate.");
             return;
         }
+        
+        float timeLeftPerc = timeLeftToSolve * 100f / totalTimeToSolve;
+        int argumentScore = (wasSolvedCorrectly) ? scorePerCorrectReaction + (int)timeLeftPerc : -(int)timeLeftPerc;
 
         ArgumentRecordData argumentRecord;
+
         argumentRecord.wasSolvedCorrectly = wasSolvedCorrectly;
         argumentRecord.timeLeftToSolve = timeLeftToSolve;
         argumentRecord.totalTimeToSolve = totalTimeToSolve;
+        argumentRecord.argumentScore = argumentScore;
 
         argumentRecordsData.Add(argumentRecord);
     }
@@ -105,12 +111,8 @@ public class DebatePerformanceController
         int maxQualificationScore = (scorePerCorrectReaction + (int)timeLeftPercentageForMaxScore) * argumentRecordsData.Count;
 
         foreach (ArgumentRecordData argumentRecordData in argumentRecordsData)
-        {
-            float percentageOfTimeRemaining = argumentRecordData.timeLeftToSolve * 100f / argumentRecordData.totalTimeToSolve;
-            scoreAchieved += (argumentRecordData.wasSolvedCorrectly) ? 
-                            scorePerCorrectReaction + (int)percentageOfTimeRemaining : 
-                            -(int)percentageOfTimeRemaining;
-        }
+            scoreAchieved += argumentRecordData.argumentScore;
+        
         scorePerStar = maxQualificationScore / starRatings;
         
         scoreRecordData.scoreAchieved = Mathf.Max(0, scoreAchieved);
@@ -147,6 +149,11 @@ public class DebatePerformanceController
     public int DebateArguments
     {
         get { return debateArguments; }
+    }
+
+    public int StarRatings
+    {
+        get { return starRatings; }
     }
 
     #endregion

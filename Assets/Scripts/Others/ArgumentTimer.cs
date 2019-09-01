@@ -38,7 +38,7 @@ public class ArgumentTimer : MonoBehaviour
     {
 #if UNITY_EDITOR
     if (Input.GetKey(KeyCode.T))
-        timer = 5f;
+        FastForwardTimer();
 #endif
 
         timer -= Time.deltaTime;
@@ -121,4 +121,16 @@ public class ArgumentTimer : MonoBehaviour
     }
 
     #endregion
+
+#if UNITY_EDITOR
+    #region Development Cheats
+
+    public void FastForwardTimer()
+    {
+        timer = 5f;
+    }
+
+    #endregion
+
+#endif
 }

@@ -122,6 +122,10 @@ public class DebateManager : MonoBehaviour
 
     void Update()
     {
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.D) && CanContinueDialogue())
+            SkipDebate();
+#endif
         if (Input.GetButtonDown("Continue") && CanContinueDialogue())
         {
             if (debateCameraController.IsFocusing())
@@ -597,4 +601,22 @@ public class DebateManager : MonoBehaviour
     }
 
     #endregion
+
+#if UNITY_EDITOR
+    #region Development Cheats
+
+    void SkipDebate()
+    {
+        for (int i = argumentIndex; i < currentDebateInfo.arguments.Length; i++)
+            debatePerformanceController.IncreaseCredibility(60f, 60f);
+
+        lineIndex = 0;
+        caseWon = true;
+        currentDialogueLines = currentDebateInfo.winDebateDialogue;
+        currentPhase = DebatePhase.SolvingCase;
+        Dialogue(currentDialogueLines[0]);
+    }
+
+    #endregion
+#endif
 }
