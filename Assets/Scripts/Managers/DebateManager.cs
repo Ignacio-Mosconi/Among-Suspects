@@ -226,6 +226,8 @@ public class DebateManager : MonoBehaviour
         debateArea.SetActive(enableDebateArea);
         enabled = enableDebateArea;
 
+        credibilityBarController.ResetCredibilityBar(debatePerformanceController.InitialCredibility);
+
         if (!enableDebateArea)
         {
             currentDebateInfo = null;
@@ -239,7 +241,6 @@ public class DebateManager : MonoBehaviour
             argumentIndex = 0;
 
             argumentController.ResetArgumentPanelScale();
-            credibilityBarController.ResetCredibilityBar(debatePerformanceController.InitialCredibility);
             ResetMainUIVisibility();
         }
     }
