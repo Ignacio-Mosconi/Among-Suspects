@@ -15,6 +15,7 @@ public abstract class Interactable : MonoBehaviour
     protected PlayerController playerController;
     
     Transform cameraTransform;
+    LayerMask interactionRaycastLayerMask;
     Collider[] interactionColliders;
     bool isPlayerLookingAt = false;
 
@@ -31,6 +32,7 @@ public abstract class Interactable : MonoBehaviour
     {
         playerController = CharacterManager.Instance.PlayerController;
         cameraTransform = playerController.GetComponentInChildren<Camera>().transform;
+        interactionRaycastLayerMask = ~LayerMask.GetMask(LayerMask.LayerToName(cameraTransform.gameObject.layer));
 
         DialogueManager.Instance.OnDialogueAreaDisable.AddListener(EnableInteraction);
     }
@@ -54,7 +56,7 @@ public abstract class Interactable : MonoBehaviour
             Vector3 raycastDirection = (interactionPointPosition - cameraPosition).normalized;
             
             bool isObjectOccluded = true;
-            if (Physics.Raycast(cameraPosition, raycastDirection, out hitInfo, interactionRadius))
+            if (Physics.Raycast(cameraPosition, raycastDirection, out hitInfo, interactionRadius, interactionRaycastLayerMask))
                 if (Array.Find(interactionColliders, c => c == hitInfo.collider))
                     isObjectOccluded = false;
             
