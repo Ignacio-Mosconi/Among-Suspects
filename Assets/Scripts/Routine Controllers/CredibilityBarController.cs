@@ -11,9 +11,9 @@ public class CredibilityBarController : MonoBehaviour
     [SerializeField] [Range(1f, 3f)] float fillBarDuration = 1.5f;
     [SerializeField] [Range(1f, 2f)] float idleBarDuration = 1.5f;
     [SerializeField] [Range(0.5f, 1f)] float fadingDuration = 0.75f;
-    [SerializeField] Color colorPositive = Color.green;
-    [SerializeField] Color colorNeutral = Color.yellow;
-    [SerializeField] Color colorNegative = Color.red;
+    //[SerializeField] Color colorPositive = Color.green;
+    //[SerializeField] Color colorNeutral = Color.yellow;
+    //[SerializeField] Color colorNegative = Color.red;
     [SerializeField] Sprite[] credibilitySprites = default;
 
     Coroutine fillingBarRoutine;
@@ -40,14 +40,14 @@ public class CredibilityBarController : MonoBehaviour
 
             float currentPerc = credibilityBar.fillAmount * 100f;
 
-            if (currentPerc >= minPercRequired && credibilityBar.color != colorPositive)
-                newBarColor = colorPositive;
+            //if (currentPerc >= minPercRequired && credibilityBar.color != colorPositive)
+            //    newBarColor = colorPositive;
 
-            if (currentPerc < minPercRequired && !isCriticalPerc && credibilityBar.color != colorNeutral)
-                newBarColor = colorNeutral;
+            //if (currentPerc < minPercRequired && !isCriticalPerc && credibilityBar.color != colorNeutral)
+            //    newBarColor = colorNeutral;
 
-            if (isCriticalPerc && credibilityBar.color != colorNegative)
-                newBarColor = colorNegative;
+            //if (isCriticalPerc && credibilityBar.color != colorNegative)
+            //    newBarColor = colorNegative;
 
             newBarColor.a = newBackgroundColor.a = newCredibilityIconColor.a = Mathf.Lerp(0f, 1f, timer / fadingDuration);
 
@@ -104,7 +104,7 @@ public class CredibilityBarController : MonoBehaviour
     public void ResetCredibilityBar(float credibilityPerc)
     {
         credibilityBar.fillAmount = credibilityPerc / 100f;
-        credibilityBar.color = colorNeutral;
+        //credibilityBar.color = colorNeutral;
         credibilityIcon.sprite = credibilitySprites[1];
     }
 }
