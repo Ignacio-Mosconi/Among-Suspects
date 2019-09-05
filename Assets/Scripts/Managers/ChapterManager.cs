@@ -78,7 +78,7 @@ public class ChapterManager : MonoBehaviour
 
     void ConfirmDebateStart()
     {
-        pauseMenu.enabled = true;
+        SetPauseAvailability(enable: true);
         RemoveAllConfirmationPromptListeners();
         AudioManager.Instance.PlayTheme("Debate");
         debateInitializer.StartDebate();
@@ -86,7 +86,7 @@ public class ChapterManager : MonoBehaviour
 
     void CancelDebateStart()
     {
-        pauseMenu.enabled = true;
+        SetPauseAvailability(enable: true);
         RemoveAllConfirmationPromptListeners();
         debateInitializer.CancelDebate();
     }
@@ -99,7 +99,7 @@ public class ChapterManager : MonoBehaviour
 
     public void ShowDebateEndScreen(bool hasWon)
     {
-        pauseMenu.enabled = false;
+        SetPauseAvailability(enable: false);
 
         if (hasWon)
             debateResultsScreen.Show();
@@ -112,7 +112,7 @@ public class ChapterManager : MonoBehaviour
 
     public void ShowDebateStartConfirmation()
     {
-        pauseMenu.enabled = false;
+        SetPauseAvailability(enable: false);
 
         GameManager.Instance.ConfirmationPrompt.AddConfirmationListener(delegate { ConfirmDebateStart(); });
         GameManager.Instance.ConfirmationPrompt.AddCancelationListener(delegate { CancelDebateStart(); });
@@ -140,7 +140,7 @@ public class ChapterManager : MonoBehaviour
 
     public void RetryDebate()
     {
-        pauseMenu.enabled = true;
+        SetPauseAvailability(enable: true);
 
         endScreenArea.SetActive(false);
         debateRetryScreen.Hide();
@@ -165,6 +165,11 @@ public class ChapterManager : MonoBehaviour
         GameManager gameManager = GameManager.Instance;
         string mainMenuSceneName = gameManager.GetMainMenuSceneName();
         gameManager.TransitionToScene(mainMenuSceneName);
+    }
+
+    public void SetPauseAvailability(bool enable)
+    {
+        pauseMenu.enabled = enable;
     }
 
     public ClueInfo GetChapterClueInfo(int index)

@@ -325,6 +325,7 @@ public class DebateManager : MonoBehaviour
         lineIndex = 0;
         speechPanel.SetActive(false);
         currentPhase = DebatePhase.Arguing;
+        ChapterManager.Instance.SetPauseAvailability(enable: false);
         Argue(currentArgumentLines[0]);
     }
 
@@ -339,6 +340,8 @@ public class DebateManager : MonoBehaviour
     void ProceedAfterOptionSelection(bool increaseCredibility)
     {
         currentPhase = DebatePhase.SolvingArgument;
+
+        ChapterManager.Instance.SetPauseAvailability(enable: true);
 
         argumentController.ResetArgumentPanelScale();
         
