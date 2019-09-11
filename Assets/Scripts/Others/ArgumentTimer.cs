@@ -52,9 +52,9 @@ public class ArgumentTimer : MonoBehaviour
         string hundredthsOfSecond = (hundredthsOfSecondLeft >= 10) ? hundredthsOfSecondLeft.ToString() : 
                                                                     "0" + hundredthsOfSecondLeft.ToString();
 
-        minutesText.text = minutes + "\"";
+        minutesText.text = minutes + "'";
         secondsText.text = seconds + ".";
-        hundredthsOfSecondText.text = hundredthsOfSecond + "'";
+        hundredthsOfSecondText.text = hundredthsOfSecond + "\"";
 
         if (timer < warningTime / difficultyLevel)
         {
