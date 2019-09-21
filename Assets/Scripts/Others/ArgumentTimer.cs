@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
 
@@ -20,18 +21,55 @@ public class ArgumentTimer : MonoBehaviour
     [SerializeField] Color normalTimeColor = Color.white;
     [SerializeField] Color warningTimeColor = Color.yellow;
     [SerializeField] Color criticalTimeColor = Color.red;
+    [Header("Timer Animation")]
+    [SerializeField, Range(1f, 1.5f)] float maxTimerScale = 1.2f;
+    [SerializeField, Range(0.5f, 1f)] float minTimerScale = 0.8f;
 
     UnityEvent onTimeOut = new UnityEvent();
 
+    Coroutine tickingRoutine;
     float timer = 0f;
     float lastRemainingTimeOnStop = 0f;
     float lastAvailableAnsweringTime = 0f;
     int difficultyLevel = 1;
     int argumentsSinceLastDifficultyChange = 0;
 
+    const float ScaleDownDuration = 0.8f;
+    const float ScaleUpDuration = 0.2f;
+
     void Start()
     {
         enabled = false;
+    }
+
+    IEnumerator TickTimer()
+    {
+        float scaleTimer = 0f;
+        float updatedTimerScale = 0f;
+        float targetTimerScale = minTimerScale;
+
+        while (scaleTimer < ScaleDownDuration)
+        {
+            scaleTimer += Time.deltaTime;
+            updatedTimerScale = Mathf.SmoothStep(1f, targetTimerScale, scaleTimer / ScaleDownDuration);
+            timerPanel.transform.localScale = new Vector3(updatedTimerScale, updatedTimerScale, updatedTimerScale);
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        scaleTimer = 0;
+        targetTimerScale = maxTimerScale;
+
+        while (scaleTimer < ScaleUpDuration)
+        {
+            scaleTimer += Time.deltaTime;
+            updatedTimerScale = Mathf.Lerp(1f, targetTimerScale, scaleTimer / ScaleUpDuration);
+            timerPanel.transform.localScale = new Vector3(updatedTimerScale, updatedTimerScale, updatedTimerScale);
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        tickingRoutine = null;
     }
 
     void Update()
@@ -61,7 +99,11 @@ public class ArgumentTimer : MonoBehaviour
             if (timer > criticalTime / difficultyLevel)
                 CheckTextColorChange(warningTimeColor);
             else
+            {
                 CheckTextColorChange(criticalTimeColor);
+                if (tickingRoutine == null)
+                    tickingRoutine = StartCoroutine(TickTimer());
+            }
         }
 
         if (timer <= 0f)
@@ -93,7 +135,6 @@ public class ArgumentTimer : MonoBehaviour
     {
         lastRemainingTimeOnStop = Mathf.Max(timer, 0f);
         timerPanel.SetActive(false);
-        enabled = false;
         argumentsSinceLastDifficultyChange++;
         if (argumentsSinceLastDifficultyChange == difficultyChangeIntervals)
         {
@@ -101,6 +142,13 @@ public class ArgumentTimer : MonoBehaviour
             if (difficultyLevel < maxDifficultyLevel)
                 difficultyLevel++; 
         }
+        if (tickingRoutine != null)
+        {
+            StopCoroutine(tickingRoutine);
+            timerPanel.transform.localScale = new Vector3(1f, 1f, 1f);
+            tickingRoutine = null;
+        }
+        enabled = false;
     }
 
     #region Properties
