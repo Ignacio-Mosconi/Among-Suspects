@@ -95,8 +95,9 @@ public class SettingsScreen : MonoBehaviour
         float newPanelHeight = infoPanelText.renderedHeight + InfoPanelBorderPadding;
         infoPanel.sizeDelta = new Vector2(infoPanel.sizeDelta.x, newPanelHeight);
 
+        Camera activeCamera = FindObjectOfType<Camera>();
         Vector2 offset = new Vector2(infoPanelAppearHorOffset, -infoPanel.rect.height);
-        Vector2 mouseViewportPosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+        Vector2 mouseViewportPosition = activeCamera.ScreenToViewportPoint(Input.mousePosition);
         
         Vector2 mouseReferenceResolutionPosition = Vector2.zero;
         mouseReferenceResolutionPosition.x = Mathf.Lerp(0f, canvasReferenceResolution.x, mouseViewportPosition.x);
