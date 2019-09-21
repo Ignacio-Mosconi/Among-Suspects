@@ -4,14 +4,15 @@ using UnityEngine.UI;
 
 public class CredibilityBarController : MonoBehaviour
 {
-    [SerializeField] GameObject credibilityPanel = default;
+    [SerializeField] CanvasGroup credibilityPanel = default;
     [SerializeField] Image credibilityBar = default;
-    [SerializeField] Image credibilityBarBackground = default;
+    [SerializeField] Image credibilityBarOutline = default;
     [SerializeField] Image credibilityIcon = default;
     [SerializeField] [Range(1f, 3f)] float fillBarDuration = 1.5f;
     [SerializeField] [Range(1f, 2f)] float idleBarDuration = 1.5f;
     [SerializeField] [Range(0.5f, 1f)] float fadingDuration = 0.75f;
-    [SerializeField] [Range(0.25f, 0.5f)] float scaleDuration = 0.4f;
+    [SerializeField] [Range(0.25f, 0.5f)] float iconScaleDuration = 0.4f;
+    [SerializeField] [Range(0.2f, 0.75f)] float outlineFlashIntervals = 0.3f;
     [SerializeField] [Range(1f, 1.3f)] float maxIconScale = 1.2f;
     [SerializeField] [Range(0.7f, 1f)] float minIconScale = 0.8f;
     [SerializeField] Sprite[] credibilitySprites = default;
@@ -20,34 +21,32 @@ public class CredibilityBarController : MonoBehaviour
 
     void ScaleCredibilityIcon(ref bool scaleUp, ref float scaleTimer)
     {
-        float newIconScale = (scaleUp) ? Mathf.SmoothStep(1f, maxIconScale, scaleTimer / scaleDuration) :
-                                            Mathf.SmoothStep(1f, minIconScale, scaleTimer / scaleDuration);
+        float newIconScale = (scaleUp) ? Mathf.SmoothStep(1f, maxIconScale, scaleTimer / iconScaleDuration) :
+                                            Mathf.SmoothStep(1f, minIconScale, scaleTimer / iconScaleDuration);
 
         credibilityIcon.transform.localScale = new Vector3(newIconScale, newIconScale, newIconScale);
 
-        if (scaleTimer >= scaleDuration)
+        if (scaleTimer >= iconScaleDuration)
         {
             scaleTimer = 0f;
             scaleUp = !scaleUp;
         }
     }
 
-    IEnumerator FillBar(float credibilityPerc, float minPercRequired, bool isCriticalPerc)
+    IEnumerator FillBar(float credibilityPerc)
     {
         float timer = 0f;
         float scaleTimer = 0f;
+        float outlineFlashTimer = 0f;
         float currentFill = credibilityBar.fillAmount;
         float targetFill = credibilityPerc / 100f;
         bool isIncreasingIconSize = true;
-        
-        Color newBarColor = credibilityBar.color;
-        Color newBackgroundColor = credibilityBarBackground.color;
-        Color newCredibilityIconColor = credibilityIcon.color;
-        newBarColor.a = newBackgroundColor.a = newCredibilityIconColor.a = 0f;
 
         credibilityIcon.sprite = (targetFill > currentFill) ? credibilitySprites[0] : credibilitySprites[1];
-
-        credibilityPanel.SetActive(true);
+        credibilityBarOutline.fillAmount = 0f;
+        
+        credibilityPanel.gameObject.SetActive(true);
+        credibilityBarOutline.gameObject.SetActive(true);
 
         while (timer < fillBarDuration)
         {
@@ -60,14 +59,10 @@ public class CredibilityBarController : MonoBehaviour
 
             float currentPerc = credibilityBar.fillAmount * 100f;
 
-            newBarColor.a = newBackgroundColor.a = newCredibilityIconColor.a = Mathf.Lerp(0f, 1f, timer / fadingDuration);
+            credibilityPanel.alpha = Mathf.Lerp(0f, 1f, timer / fadingDuration);
 
-            if (newBarColor != credibilityBar.color)
-                credibilityBar.color = newBarColor;
-            if (newBackgroundColor != credibilityBarBackground.color)
-                credibilityBarBackground.color = newBackgroundColor;
-            if (newCredibilityIconColor != credibilityIcon.color)
-                credibilityIcon.color = newCredibilityIconColor;
+            if (credibilityPerc >= 100f)
+                credibilityBarOutline.fillAmount = Mathf.SmoothStep(0f, 1f, timer / fillBarDuration);
 
             yield return new WaitForEndOfFrame();
         }
@@ -78,8 +73,15 @@ public class CredibilityBarController : MonoBehaviour
         {
             timer += Time.deltaTime;
             scaleTimer += Time.deltaTime;
+            outlineFlashTimer += Time.deltaTime;
 
-            ScaleCredibilityIcon(ref isIncreasingIconSize, ref scaleTimer); 
+            ScaleCredibilityIcon(ref isIncreasingIconSize, ref scaleTimer);
+            
+            if (outlineFlashTimer >= outlineFlashIntervals)
+            {
+                outlineFlashTimer = 0f;
+                credibilityBarOutline.gameObject.SetActive(!credibilityBarOutline.gameObject.activeInHierarchy);
+            }
 
             yield return new WaitForEndOfFrame();
         }
@@ -95,23 +97,19 @@ public class CredibilityBarController : MonoBehaviour
             float newIconScale = Mathf.SmoothStep(previousIconScale, 1f, timer / fadingDuration);
             
             credibilityIcon.transform.localScale = new Vector3(newIconScale, newIconScale, newIconScale);
-            newBarColor.a = newBackgroundColor.a = newCredibilityIconColor.a = Mathf.Lerp(1f, 0f, timer / fadingDuration);
-
-            credibilityBar.color = newBarColor;
-            credibilityBarBackground.color = newBackgroundColor;
-            credibilityIcon.color = newCredibilityIconColor;
+            credibilityPanel.alpha = Mathf.Lerp(1f, 0f, timer / fadingDuration);
 
             yield return new WaitForEndOfFrame();
         }
 
-        credibilityPanel.SetActive(false);
+        credibilityPanel.gameObject.SetActive(false);
 
         fillingBarRoutine = null;
     }
 
-    public void StartFillingBar(float credibilityPerc, float minPercRequired, bool isCriticalPerc)
+    public void StartFillingBar(float credibilityPerc)
     {
-        fillingBarRoutine = StartCoroutine(FillBar(credibilityPerc, minPercRequired, isCriticalPerc));
+        fillingBarRoutine = StartCoroutine(FillBar(credibilityPerc));
     }
 
     public void StopFillingBar()
@@ -133,5 +131,7 @@ public class CredibilityBarController : MonoBehaviour
         credibilityBar.fillAmount = credibilityPerc / 100f;
         credibilityIcon.sprite = credibilitySprites[1];
         credibilityIcon.transform.localScale = new Vector3(1f, 1f, 1f);
+        credibilityBarOutline.gameObject.SetActive(true);
+        credibilityBarOutline.fillAmount = 0f;
     }
 }

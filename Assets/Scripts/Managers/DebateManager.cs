@@ -369,7 +369,7 @@ public class DebateManager : MonoBehaviour
         float requiredCredibility = debatePerformanceController.RequiredCredibility;
         bool isAtCriticalCredibility = debatePerformanceController.IsAtCriticalCredibility(argumentIndex);
 
-        credibilityBarController.StartFillingBar(credibility, requiredCredibility, isAtCriticalCredibility);
+        credibilityBarController.StartFillingBar(credibility);
 
         lineIndex = 0;
         isSelectingOption = false;
