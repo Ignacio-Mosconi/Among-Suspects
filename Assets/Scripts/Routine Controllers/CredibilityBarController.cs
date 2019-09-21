@@ -11,15 +11,34 @@ public class CredibilityBarController : MonoBehaviour
     [SerializeField] [Range(1f, 3f)] float fillBarDuration = 1.5f;
     [SerializeField] [Range(1f, 2f)] float idleBarDuration = 1.5f;
     [SerializeField] [Range(0.5f, 1f)] float fadingDuration = 0.75f;
+    [SerializeField] [Range(0.25f, 0.5f)] float scaleDuration = 0.4f;
+    [SerializeField] [Range(1f, 1.3f)] float maxIconScale = 1.2f;
+    [SerializeField] [Range(0.7f, 1f)] float minIconScale = 0.8f;
     [SerializeField] Sprite[] credibilitySprites = default;
 
     Coroutine fillingBarRoutine;
 
+    void ScaleCredibilityIcon(ref bool scaleUp, ref float scaleTimer)
+    {
+        float newIconScale = (scaleUp) ? Mathf.SmoothStep(1f, maxIconScale, scaleTimer / scaleDuration) :
+                                            Mathf.SmoothStep(1f, minIconScale, scaleTimer / scaleDuration);
+
+        credibilityIcon.transform.localScale = new Vector3(newIconScale, newIconScale, newIconScale);
+
+        if (scaleTimer >= scaleDuration)
+        {
+            scaleTimer = 0f;
+            scaleUp = !scaleUp;
+        }
+    }
+
     IEnumerator FillBar(float credibilityPerc, float minPercRequired, bool isCriticalPerc)
     {
         float timer = 0f;
+        float scaleTimer = 0f;
         float currentFill = credibilityBar.fillAmount;
         float targetFill = credibilityPerc / 100f;
+        bool isIncreasingIconSize = true;
         
         Color newBarColor = credibilityBar.color;
         Color newBackgroundColor = credibilityBarBackground.color;
@@ -33,7 +52,11 @@ public class CredibilityBarController : MonoBehaviour
         while (timer < fillBarDuration)
         {
             timer += Time.deltaTime;
+            scaleTimer += Time.deltaTime;
+
             credibilityBar.fillAmount = Mathf.Lerp(currentFill, targetFill, timer / fillBarDuration);
+
+            ScaleCredibilityIcon(ref isIncreasingIconSize, ref scaleTimer);
 
             float currentPerc = credibilityBar.fillAmount * 100f;
 
@@ -49,13 +72,29 @@ public class CredibilityBarController : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
-        yield return new WaitForSeconds(idleBarDuration);
+        timer = 0f;
+
+        while (timer < idleBarDuration)
+        {
+            timer += Time.deltaTime;
+            scaleTimer += Time.deltaTime;
+
+            ScaleCredibilityIcon(ref isIncreasingIconSize, ref scaleTimer); 
+
+            yield return new WaitForEndOfFrame();
+        }
 
         timer = 0f;
+
+        float previousIconScale = credibilityIcon.transform.localScale.x;
 
         while (timer < fadingDuration)
         {
             timer += Time.deltaTime;
+
+            float newIconScale = Mathf.SmoothStep(previousIconScale, 1f, timer / fadingDuration);
+            
+            credibilityIcon.transform.localScale = new Vector3(newIconScale, newIconScale, newIconScale);
             newBarColor.a = newBackgroundColor.a = newCredibilityIconColor.a = Mathf.Lerp(1f, 0f, timer / fadingDuration);
 
             credibilityBar.color = newBarColor;
@@ -93,5 +132,6 @@ public class CredibilityBarController : MonoBehaviour
     {
         credibilityBar.fillAmount = credibilityPerc / 100f;
         credibilityIcon.sprite = credibilitySprites[1];
+        credibilityIcon.transform.localScale = new Vector3(1f, 1f, 1f);
     }
 }
