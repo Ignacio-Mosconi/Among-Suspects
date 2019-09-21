@@ -264,11 +264,27 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void AddCursorPointerHoverEventsToAllButtons(GameObject uiLayout)
+    {
+        Button[] buttons = uiLayout.GetComponentsInChildren<Button>(includeInactive: true);
+        foreach (Button button in buttons)
+        {
+            AddCursorPointerEvent(button, EventTriggerType.PointerEnter);
+            AddCursorPointerEvent(button, EventTriggerType.PointerExit);
+        }
+    }
+
     public void AddCursorPointerEvents(Button button)
     {
         AddCursorPointerEvent(button, EventTriggerType.PointerEnter);
         AddCursorPointerEvent(button, EventTriggerType.PointerExit);
         AddCursorPointerEvent(button, EventTriggerType.PointerClick);
+    }
+
+    public void AddCursorPointerHoverEvents(Button button)
+    {
+        AddCursorPointerEvent(button, EventTriggerType.PointerEnter);
+        AddCursorPointerEvent(button, EventTriggerType.PointerExit);
     }
 
     public void InvokeMethodInScaledTime<T>(Action<T> action, T parameter, float waitTime)

@@ -99,6 +99,9 @@ public class DebateManager : MonoBehaviour
 
         useEvidenceButton.interactable = false;
 
+        GameManager.Instance.AddCursorPointerHoverEventsToAllButtons(debateOptionsPanel.gameObject);
+        GameManager.Instance.AddCursorPointerHoverEventsToAllButtons(clueOptionsPanel.gameObject);
+
         speakerArea.SetUp();
         argumentAndSpeechArea.SetUp();
         debateOptionsPanel.SetUp();
@@ -569,6 +572,8 @@ public class DebateManager : MonoBehaviour
 
     public void ReturnToDebateOptions()
     {
+        AudioManager.Instance.PlaySound("Button Click");
+
         clueOptionsPanel.Hide();
         debateOptionsPanel.Show();
         ShowSpeakerArea();
