@@ -105,9 +105,6 @@ public class DebateManager : MonoBehaviour
         clueOptionsPanel.SetUp();
         leftClickPrompt.SetUp();
 
-        GameManager.Instance.AddCursorPointerEventsToAllButtons(debateOptionsPanel.gameObject);
-        GameManager.Instance.AddCursorPointerEventsToAllButtons(clueOptionsPanel.gameObject);
-
         argumentController.OnArgumentFinish.AddListener(ShowDebateOptions);
         debateCameraController.OnFocusFinish.AddListener(ProceedAfterCameraFocus);
         argumentTimer.OnTimeOut.AddListener(StayQuietAfterComment);
@@ -517,6 +514,8 @@ public class DebateManager : MonoBehaviour
 
     public void RefuteComment()
     {
+        AudioManager.Instance.PlaySound("Button Click");
+
         ResetMainUIVisibility();
         debateOptionsPanel.Hide();
         clueOptionsPanel.Show();

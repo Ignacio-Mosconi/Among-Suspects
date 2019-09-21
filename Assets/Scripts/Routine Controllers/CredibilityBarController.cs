@@ -16,6 +16,7 @@ public class CredibilityBarController : MonoBehaviour
     [SerializeField] [Range(1f, 1.3f)] float maxIconScale = 1.2f;
     [SerializeField] [Range(0.7f, 1f)] float minIconScale = 0.8f;
     [SerializeField] Sprite[] credibilitySprites = default;
+    [SerializeField] AudioClip[] credibilitySounds = default;
 
     Coroutine fillingBarRoutine;
 
@@ -35,6 +36,7 @@ public class CredibilityBarController : MonoBehaviour
 
     IEnumerator FillBar(float credibilityPerc)
     {
+        string soundToPlayName;
         float timer = 0f;
         float scaleTimer = 0f;
         float outlineFlashTimer = 0f;
@@ -42,7 +44,19 @@ public class CredibilityBarController : MonoBehaviour
         float targetFill = credibilityPerc / 100f;
         bool isIncreasingIconSize = true;
 
-        credibilityIcon.sprite = (targetFill > currentFill) ? credibilitySprites[0] : credibilitySprites[1];
+        if (targetFill > currentFill)
+        {
+            credibilityIcon.sprite = credibilitySprites[0];
+            soundToPlayName = credibilitySounds[0].name;
+        }
+        else
+        {
+            credibilityIcon.sprite = credibilitySprites[1];
+            soundToPlayName = credibilitySounds[1].name;
+        }
+
+        AudioManager.Instance.PlaySound(soundToPlayName);
+        
         credibilityBarOutline.fillAmount = 0f;
         
         credibilityPanel.gameObject.SetActive(true);
