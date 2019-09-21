@@ -19,8 +19,8 @@ public struct ScoreRecordData
 public class DebatePerformanceController
 {
     [SerializeField, Range(30f, 60f)] float initialCredibility = 50f;
-    [SerializeField, Range(50f, 100f)] float requiredCredibility = 50f;
-    [SerializeField, Range(50f, 100f)] float timeLeftPercentageForMaxScore = 50f;
+    [SerializeField, Range(50f, 100f)] float requiredCredibility = 70f;
+    [SerializeField, Range(50f, 100f)] float timeLeftPercentageForMaxScore = 70f;
     [SerializeField, Range(50, 100)] int scorePerCorrectReaction = 50;
     [SerializeField, Range(3, 5)] int starRatings = 5;
     
