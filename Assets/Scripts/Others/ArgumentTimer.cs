@@ -57,7 +57,7 @@ public class ArgumentTimer : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
-        scaleTimer = 0;
+        scaleTimer = 0f;
         targetTimerScale = maxTimerScale;
 
         while (scaleTimer < ScaleUpDuration)
@@ -68,6 +68,8 @@ public class ArgumentTimer : MonoBehaviour
 
             yield return new WaitForEndOfFrame();
         }
+
+        AudioManager.Instance.PlaySound("Clock Tick");
 
         tickingRoutine = null;
     }
