@@ -34,8 +34,8 @@ public class ItemRequiredInteractable : Interactable
         {
             DialogueManager.Instance.StartDialogue(itemRequiredThoughtInfo.useCorrectItemThought, interactionPoint.position,
                                                     interactableSprite, enableImage: false);
-            enabled = false;
             actualInteractable.enabled = true;
+            Destroy(this);
         }
         else
             DialogueManager.Instance.StartDialogue(itemRequiredThoughtInfo.useIncorrectItemThought, interactionPoint.position,

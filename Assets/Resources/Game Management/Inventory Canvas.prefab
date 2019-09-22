@@ -54,7 +54,7 @@ MonoBehaviour:
   m_Content: {fileID: 3345710482426348085}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 2
+  m_MovementType: 1
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -333,7 +333,7 @@ Animator:
   m_GameObject: {fileID: 297038177735461236}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 8465cdc92a50f03449ec37a2b36f8b4b, type: 2}
+  m_Controller: {fileID: 22100000, guid: d5ba8b97958ae6b48984134aa166539e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -915,6 +915,7 @@ GameObject:
   - component: {fileID: 1430881291983042644}
   - component: {fileID: 7501504005093916382}
   - component: {fileID: 3904376948048872053}
+  - component: {fileID: 4525043265692780552}
   m_Layer: 5
   m_Name: Cancel Button
   m_TagString: Untagged
@@ -1032,6 +1033,18 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!225 &4525043265692780552
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3375132796545909019}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &3400532295153194123
 GameObject:
   m_ObjectHideFlags: 0
@@ -1282,7 +1295,7 @@ GameObject:
   - component: {fileID: 9117322287201967016}
   - component: {fileID: 6172004157143178875}
   m_Layer: 5
-  m_Name: Select Item Panel
+  m_Name: Choose an Item Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1834,11 +1847,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 20
-    m_Right: 20
+    m_Left: 64
+    m_Right: 64
     m_Top: 20
     m_Bottom: 20
-  m_ChildAlignment: 1
+  m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 200, y: 200}
@@ -1857,6 +1870,7 @@ GameObject:
   - component: {fileID: 7969532298236139631}
   - component: {fileID: 5147414441790773435}
   - component: {fileID: 2217679745868555252}
+  - component: {fileID: 2465578042747004955}
   m_Layer: 5
   m_Name: Use Button
   m_TagString: Untagged
@@ -1974,6 +1988,18 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!225 &2465578042747004955
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7718862856547043053}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &8273940947334364300
 GameObject:
   m_ObjectHideFlags: 0

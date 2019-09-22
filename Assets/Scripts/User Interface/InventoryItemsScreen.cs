@@ -18,7 +18,7 @@ public class InventoryItemsScreen : MonoBehaviour
     Button lastButtonSelected;
     float addeditemButtonsPanelSize;
 
-    const string itemButtonPrefabPath = "Menu Elements/item Button";
+    const string itemButtonPrefabPath = "Menu Elements/Item Button";
 
     void Awake()
     {

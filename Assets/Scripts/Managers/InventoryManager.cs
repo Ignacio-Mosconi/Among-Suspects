@@ -48,14 +48,6 @@ public class InventoryManager : MonoBehaviour
         allInventoryItems = Resources.LoadAll<InventoryItemInfo>("Inventory Items");
         inventoryAnimatedScreen = inventoryItemsScreen.GetComponent<AnimatedMenuScreen>();
         inventoryAnimatedScreen.SetUp();
-
-        Button[] cluesButtons = inventoryItemsScreen.ItemsButtons.ToArray();
-
-        for (int i = 0; i < cluesButtons.Length; i++)
-        {
-            InventoryItemInfo itemInfo = GetInventoryItemInfo(i);
-            cluesButtons[i].onClick.AddListener(() => ChangeCurrentlySelectedItem(itemInfo));
-        }
     }
 
     void ChangeCurrentlySelectedItem(InventoryItemInfo itemInfo)
@@ -78,6 +70,8 @@ public class InventoryManager : MonoBehaviour
         ChapterManager.Instance.SetPauseAvailability(enable: false);
         CharacterManager.Instance.PlayerController.Disable();
         GameManager.Instance.SetCursorEnable(enable: true);
+        
+        inventoryAnimatedScreen.Show();
 
         if (collectedInventoryItems.Count > 0)
         {
@@ -93,7 +87,13 @@ public class InventoryManager : MonoBehaviour
             }
         }
 
-        inventoryAnimatedScreen.Show();
+        Button[] cluesButtons = inventoryItemsScreen.ItemsButtons.ToArray();
+
+        for (int i = 0; i < cluesButtons.Length; i++)
+        {
+            InventoryItemInfo itemInfo = GetInventoryItemInfo(i);
+            cluesButtons[i].onClick.AddListener(() => ChangeCurrentlySelectedItem(itemInfo));
+        }
     }
 
     public void ChooseItem()
