@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a7e9810d40ded54dadb89bfc66b24e3, type: 3}
-  m_Name: Bedroom Key Thought
+  m_Name: Credit Card Thought
   m_EditorClassIdentifier: 
   explorationThought:
   - speakerName: 0
-    speech: Threre's a key lying in here...
+    speech: A wallet in the table?
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -24,7 +24,7 @@ MonoBehaviour:
     playerThought: 1
     triggerNiceImpression: 0
   - speakerName: 0
-    speech: I guess it may be able to open one of the doors around here.
+    speech: It looks like a credit card is right next to it.
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -34,8 +34,7 @@ MonoBehaviour:
     playerThought: 1
     triggerNiceImpression: 0
   - speakerName: 0
-    speech: I wonder why people need keys to lock even the interior doors of their
-      houses...how desperate are they for privacy?
+    speech: It seems it belongs to <color=orange>'John Smith'</color>.
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -45,8 +44,18 @@ MonoBehaviour:
     playerThought: 1
     triggerNiceImpression: 0
   - speakerName: 0
-    speech: Anyway, maybe I should grab it to check if it opens one of the doors around
-      this place.
+    speech: The name doesn't ring a bell.
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: Maybe I should check with the guys later, to see if they know who might
+      be the owner of this.
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -57,13 +66,34 @@ MonoBehaviour:
     triggerNiceImpression: 0
   investigationThought:
   - speakerName: 0
-    speech: '...'
+    speech: There's a wallet and a credit card here.
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
       audioClip: {fileID: 0}
       playDelay: 0
     revealName: 0
-    playerThought: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: It has the name <color=orange>'John Smith'</color> on it...
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: I don't know how it could help me solve this mystery, but I'll take it
+      to check it out with the others later.
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
     triggerNiceImpression: 0
   triggerInvestigationPhase: 0
