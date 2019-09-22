@@ -21672,7 +21672,6 @@ GameObject:
   - component: {fileID: 1556802241119454403}
   - component: {fileID: 1556802241118356995}
   - component: {fileID: 1556802241116428486}
-  - component: {fileID: 1556802241116428484}
   m_Layer: 0
   m_Name: Wallet
   m_TagString: Untagged
@@ -21680,23 +21679,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1556802241116428484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1556802241116428483}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b5b85d74f0f35b4fba29aced6f2d13e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionPoint: {fileID: 1556802241116062951}
-  interactionRadius: 1.5
-  hasToBeFaced: 0
-  objectSprite: {fileID: 21300000, guid: 76eea0026712a8245b2a7bfd9e7cabed, type: 3}
-  inventoryItemInfo: {fileID: 0}
 --- !u!1 &1556802241116428485
 GameObject:
   m_ObjectHideFlags: 0
