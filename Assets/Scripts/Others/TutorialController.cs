@@ -10,6 +10,7 @@ public class TutorialController : MonoBehaviour
     float navigationTutorialDelay;
     float investigationTutorialDelay;
     float cluesTutorialDelay;
+    float itemsTutorialDelay;
     float debateStartTutorialDelay;
 
     const float AdditionalTutorialDelay = 0.1f;
@@ -25,11 +26,13 @@ public class TutorialController : MonoBehaviour
         navigationTutorialDelay = DialogueManager.Instance.SpeechPanelPrompt.HideAnimationDuration + AdditionalTutorialDelay;
         investigationTutorialDelay = hud.InvestigationPhasePrompt.GetOnScreenDuration() + AdditionalTutorialDelay;
         cluesTutorialDelay = hud.ClueFoundPrompt.GetOnScreenDuration() + AdditionalTutorialDelay;
+        itemsTutorialDelay = DialogueManager.Instance.SpeechPanelPrompt.HideAnimationDuration + AdditionalTutorialDelay;
         debateStartTutorialDelay = cluesTutorialDelay;
         
         DialogueManager.Instance.OnDialogueAreaDisable.AddListener(TriggerNavigationTutorial);
         CharacterManager.Instance.PlayerController.OnStartedInvestigation.AddListener(TriggerInvestigationTutorial);
         CharacterManager.Instance.PlayerController.OnClueFound.AddListener(TriggerCluesTutorial);
+        CharacterManager.Instance.PlayerController.OnItemCollected.AddListener(TriggerItemsTutorial);
         CharacterManager.Instance.PlayerController.OnAllCluesFound.AddListener(TriggerDebateStartTutorial);
 
         debateTutorialTrigger.gameObject.SetActive(false);
@@ -66,6 +69,11 @@ public class TutorialController : MonoBehaviour
         Invoke("DisplayCluesTutorial", cluesTutorialDelay);
     }
 
+    void TriggerItemsTutorial()
+    {
+        Invoke("DisplayItemsTutorial", itemsTutorialDelay);
+    }
+
     void TriggerDebateStartTutorial()
     {
         debateTutorialTrigger.gameObject.SetActive(true);
@@ -90,6 +98,13 @@ public class TutorialController : MonoBehaviour
     {
         TutorialInfo tutorial = FetchTutorial(TutorialType.Clues);
         CharacterManager.Instance.PlayerController.OnClueFound.RemoveListener(TriggerCluesTutorial);
+        DisplayTutorial(tutorial);
+    }
+
+    void DisplayItemsTutorial()
+    {
+        TutorialInfo tutorial = FetchTutorial(TutorialType.Items);
+        CharacterManager.Instance.PlayerController.OnItemCollected.RemoveListener(TriggerItemsTutorial);
         DisplayTutorial(tutorial);
     }
 

@@ -61,6 +61,6 @@ public class ItemRequiredInteractable : Interactable
 
     public override string GetInteractionKind()
     {
-        return "interact";
+        return actualInteractable.GetInteractionKind();
     }
 }

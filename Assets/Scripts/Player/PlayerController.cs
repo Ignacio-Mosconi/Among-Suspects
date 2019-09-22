@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour, ICharacter
     UnityEvent onStartedInvestigation = new UnityEvent();
     UnityEvent onClueFound = new UnityEvent();
     UnityEvent onAllCluesFound = new UnityEvent();
+    UnityEvent onItemCollected = new UnityEvent();
 
     void Awake()
     {
@@ -154,6 +155,11 @@ public class PlayerController : MonoBehaviour, ICharacter
     public UnityEvent OnAllCluesFound
     {
         get { return onAllCluesFound; }
+    }
+
+    public UnityEvent OnItemCollected
+    {
+        get { return onItemCollected; }
     }
     
     #endregion

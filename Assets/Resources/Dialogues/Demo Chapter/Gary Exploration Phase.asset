@@ -237,6 +237,17 @@ MonoBehaviour:
     revealName: 0
     playerThought: 0
     triggerNiceImpression: 0
+  - speakerName: 3
+    speech: You should try to find <color=orange>John</color>. I think he's in one
+      of the rooms upstairs...
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
   rudeComment:
   - speakerName: 3
     speech: Here's the guy who doesn't remember other people's names.
@@ -250,6 +261,27 @@ MonoBehaviour:
     triggerNiceImpression: 0
   - speakerName: 3
     speech: Why don't you talk to someone self-centered like you?
+    speakerEmotion: 4
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+      playDelay: 0.2
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 3
+    speech: Go find <color=orange>John</color>. He's the one who invited you, not
+      me.
+    speakerEmotion: 1
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0.2
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 3
+    speech: Get lost!
     speakerEmotion: 4
     clueInfo: {fileID: 0}
     dialogueSound:

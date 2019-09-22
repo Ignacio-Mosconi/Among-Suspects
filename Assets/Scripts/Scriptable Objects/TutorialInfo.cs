@@ -6,7 +6,8 @@ public enum TutorialType
     Investigation,
     Clues,
     DebateStart,
-    Debate
+    Debate,
+    Items
 }
 
 [CreateAssetMenu(fileName = "New Tutorial Info", menuName = "Tutorial Info", order = 5)]

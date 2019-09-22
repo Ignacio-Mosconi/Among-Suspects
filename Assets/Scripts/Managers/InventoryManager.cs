@@ -126,7 +126,10 @@ public class InventoryManager : MonoBehaviour
     public void AddInventoryItem(InventoryItemInfo itemInfo)
     {
         if (!collectedInventoryItems.Contains(itemInfo))
+        {
+            CharacterManager.Instance.PlayerController.OnItemCollected.Invoke();
             collectedInventoryItems.Add(itemInfo);
+        }
     }
 
     public bool HasInventoryItem(ref InventoryItemInfo itemInfo)
