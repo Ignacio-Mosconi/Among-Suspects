@@ -9,33 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59ddb036443903148bbab77424a68b2a, type: 3}
-  m_Name: Tachito Thought
+  m_Script: {fileID: 11500000, guid: 6a7e9810d40ded54dadb89bfc66b24e3, type: 3}
+  m_Name: Bedroom Key Thought
   m_EditorClassIdentifier: 
-  interactionThought:
+  explorationThought:
   - speakerName: 0
-    speech: Mhh...
-    speakerEmotion: 0
-    clueInfo: {fileID: 0}
-    dialogueSound:
-      audioClip: {fileID: 0}
-      playDelay: 0
-    revealName: 0
-    playerThought: 0
-    triggerNiceImpression: 0
-  - speakerName: 0
-    speech: I need a key...
-    speakerEmotion: 0
-    clueInfo: {fileID: 0}
-    dialogueSound:
-      audioClip: {fileID: 0}
-      playDelay: 0
-    revealName: 0
-    playerThought: 0
-    triggerNiceImpression: 0
-  useCorrectItemThought:
-  - speakerName: 0
-    speech: That's right!
+    speech: Threre's a key lying in here...
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -44,9 +23,8 @@ MonoBehaviour:
     revealName: 0
     playerThought: 1
     triggerNiceImpression: 0
-  useIncorrectItemThought:
   - speakerName: 0
-    speech: This doesn't work...
+    speech: I guess it may be able to open of the doors around here.
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -55,3 +33,37 @@ MonoBehaviour:
     revealName: 0
     playerThought: 1
     triggerNiceImpression: 0
+  - speakerName: 0
+    speech: I wonder why people need keys to lock even the interior doors of their
+      houses...how desperate are they for privacy?
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: Anyway, maybe I should grab it to check if it opens one of the doors around
+      this place.
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  investigationThought:
+  - speakerName: 0
+    speech: '...'
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  triggerInvestigationPhase: 0

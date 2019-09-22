@@ -9,6 +9,16 @@ public class ItemRequiredInteractable : Interactable
 
     ItemRequiredThoughtInfo itemRequiredThoughtInfo;
 
+    void OnValidate()
+    {
+        if (actualInteractable)
+        {
+            interactionPoint = actualInteractable.InteractionPoint;
+            interactionRadius = actualInteractable.InteractionRadius;
+            hasToBeFaced = actualInteractable.HasToBeFaced;
+        }
+    }
+
     protected override void Start()
     {
         base.Start();

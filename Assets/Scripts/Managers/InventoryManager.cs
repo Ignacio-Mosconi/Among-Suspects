@@ -55,6 +55,19 @@ public class InventoryManager : MonoBehaviour
         currentlySelectedItem = itemInfo;
     }
 
+    void HideItemSelectionScreen()
+    {
+        Button[] itemButtons = inventoryItemsScreen.ItemsButtons.ToArray();
+
+        foreach (Button itemButton in itemButtons)
+            itemButton.onClick.RemoveAllListeners();
+
+        ChapterManager.Instance.SetPauseAvailability(enable: true);
+        CharacterManager.Instance.PlayerController.Enable();
+        GameManager.Instance.SetCursorEnable(enable: false);
+        inventoryAnimatedScreen.Hide();
+    }
+
     public InventoryItemInfo GetInventoryItemInfo(int index)
     {
         InventoryItemInfo inventoryItem = null;
@@ -87,30 +100,27 @@ public class InventoryManager : MonoBehaviour
             }
         }
 
-        Button[] cluesButtons = inventoryItemsScreen.ItemsButtons.ToArray();
+        Button[] itemButtons = inventoryItemsScreen.ItemsButtons.ToArray();
 
-        for (int i = 0; i < cluesButtons.Length; i++)
+        for (int i = 0; i < itemButtons.Length; i++)
         {
             InventoryItemInfo itemInfo = GetInventoryItemInfo(i);
-            cluesButtons[i].onClick.AddListener(() => ChangeCurrentlySelectedItem(itemInfo));
+            Button itemButton = itemButtons[i];
+            UnityAction listener = () => ChangeCurrentlySelectedItem(itemInfo);
+            
+            itemButton.onClick.AddListener(listener);
         }
     }
 
     public void ChooseItem()
     {
-        ChapterManager.Instance.SetPauseAvailability(enable: true);
-        CharacterManager.Instance.PlayerController.Enable();
-        GameManager.Instance.SetCursorEnable(enable: false);
-        inventoryAnimatedScreen.Hide();
+        HideItemSelectionScreen();
         onInventoryItemChosen.Invoke();
     }
 
     public void CancelItemUsage()
     {
-        ChapterManager.Instance.SetPauseAvailability(enable: true);
-        CharacterManager.Instance.PlayerController.Enable();
-        GameManager.Instance.SetCursorEnable(enable: false);
-        inventoryAnimatedScreen.Hide();
+        HideItemSelectionScreen();
     }
 
     public void AddInventoryItem(InventoryItemInfo itemInfo)
@@ -140,13 +150,7 @@ public class InventoryManager : MonoBehaviour
 
     public InventoryItemInfo CurrentlySelectedItem
     {
-        get 
-        {
-            InventoryItemInfo item = currentlySelectedItem;
-            currentlySelectedItem = null;
-            
-            return item;
-        }
+        get { return currentlySelectedItem; }
     }
 
     #endregion

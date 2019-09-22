@@ -9,8 +9,8 @@ public abstract class Interactable : MonoBehaviour
 {
     [Header("Basic Interaction Properties")]
     [SerializeField] protected Transform interactionPoint = default;
-    [SerializeField] [Range(1f, 5f)] float interactionRadius = default;
-    [SerializeField] bool hasToBeFaced = false;
+    [SerializeField] [Range(1f, 5f)] protected float interactionRadius = default;
+    [SerializeField] protected bool hasToBeFaced = false;
 
     protected PlayerController playerController;
     
@@ -112,6 +112,21 @@ public abstract class Interactable : MonoBehaviour
     public abstract void Interact();
 
     #region Properties
+
+    public Transform InteractionPoint
+    {
+        get { return interactionPoint; }
+    }
+
+    public float InteractionRadius
+    {
+        get { return interactionRadius; }
+    }
+
+    public bool HasToBeFaced
+    {
+        get { return hasToBeFaced; }
+    }
 
     public Vector3 InteractionPosition
     {
