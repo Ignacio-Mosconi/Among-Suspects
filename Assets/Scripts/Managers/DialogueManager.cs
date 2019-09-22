@@ -328,6 +328,23 @@ public class DialogueManager : MonoBehaviour
         SayDialogue(currentLines[0]);
     }
 
+    public void StartDialogue(Dialogue[] dialogueLines, Vector3 objectPosition, Sprite objectSprite = null, bool enableImage = false)
+    {
+        CharacterManager.Instance.PlayerController.FirstPersonCamera.FocusOnPosition(objectPosition);
+
+        if (enableImage)
+        {
+            objectPanelPrompt.transform.GetChild(0).GetComponent<Image>().sprite = objectSprite;
+            objectPanelPrompt.Show();
+        }
+
+        EnableDialogueArea();
+
+        currentLines = dialogueLines;
+
+        SayDialogue(currentLines[0]);
+    }
+
     public void StartDialogue(TutorialInfo tutorialInfo)
     {
         EnableDialogueArea();
