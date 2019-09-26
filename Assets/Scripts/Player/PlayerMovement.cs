@@ -4,7 +4,7 @@
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] [Range(2f, 5f)] float movementSpeed = 3f;
-	[SerializeField] [Range(2f, 3f)] float runMultiplier = 2f;
+	[SerializeField] [Range(1f, 3f)] float runMultiplier = 2f;
 
     CharacterController characterController;
     float currentRunMul = 1f;
