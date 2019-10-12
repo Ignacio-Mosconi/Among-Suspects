@@ -70,6 +70,7 @@ public class DebateManager : MonoBehaviour
     ArgumentTimer argumentTimer;
     CluesScreen cluesScreen;
     DebateCharacterSprite[] debateCharactersSprites;
+    Dictionary<Language, DebateInfo> debateInfosByLanguage;
     DebateInfo currentDebateInfo;
     Argument currentArgument;
     Dialogue[] currentDialogueLines;
@@ -77,7 +78,6 @@ public class DebateManager : MonoBehaviour
     CharacterName previousSpeaker = CharacterName.None;
     ClueInfo currentlySelectedEvidence;
     DebatePhase currentPhase = DebatePhase.Dialoguing;
-    Dictionary<Button, UnityAction> refuteCallbacks = new Dictionary<Button, UnityAction>();
     UnityAction playSoundOnFocusFinishAction;
     bool caseWon = false;
     int lineIndex = 0;
@@ -100,6 +100,7 @@ public class DebateManager : MonoBehaviour
 
         useEvidenceButton.interactable = false;
 
+        GameManager.Instance.OnLanguageChanged.AddListener(ChangeDebateLanguage);
         GameManager.Instance.AddCursorPointerHoverEventsToAllButtons(debateOptionsPanel.gameObject);
         GameManager.Instance.AddCursorPointerHoverEventsToAllButtons(clueOptionsPanel.gameObject);
 
@@ -497,17 +498,8 @@ public class DebateManager : MonoBehaviour
         {
             Button clueButton = cluesButtons[i];
             ClueInfo clueInfo = ChapterManager.Instance.GetChapterClueInfo(i);
-            UnityAction refuteCallback = () => ChangeCurrentlySelectedEvidence(clueInfo);
-            
-            if (refuteCallbacks.ContainsKey(clueButton))
-            {
-                clueButton.onClick.RemoveListener(refuteCallbacks[clueButton]);
-                refuteCallbacks[clueButton] = refuteCallback;
-            }
-            else
-                refuteCallbacks.Add(clueButton, refuteCallback);
 
-            clueButton.onClick.AddListener(refuteCallbacks[clueButton]);
+            clueButton.onClick.AddListener(() => ChangeCurrentlySelectedEvidence(clueInfo));
         }
     }
 
@@ -559,7 +551,7 @@ public class DebateManager : MonoBehaviour
                 }
             }
         }
-
+        
         LoadRefuteOptionsCallbacks();
     }
 
@@ -568,7 +560,7 @@ public class DebateManager : MonoBehaviour
         bool increaseCredibility;
 
         if (currentArgument.correctReaction == DebateReaction.Disagree && 
-            currentArgument.correctEvidence == currentlySelectedEvidence)
+            currentArgument.correctEvidence.clueID == currentlySelectedEvidence.clueID)
         {
             currentDialogueLines = currentArgument.refuteCorrectDialogue;
             increaseCredibility = true;
@@ -597,11 +589,12 @@ public class DebateManager : MonoBehaviour
         argumentAndSpeechArea.Show();
     }
 
-    public void StartDebate(DebateInfo debateInfo, List<ClueInfo> playerClues)
+    public void StartDebate(Dictionary<Language, DebateInfo> debateInfos, List<ClueInfo> playerClues)
     {
         debateCameraController.SetDebateCameraAvailability(enable: true);
 
-        currentDebateInfo = debateInfo;
+        debateInfosByLanguage = debateInfos;
+        currentDebateInfo = debateInfosByLanguage[GameManager.Instance.CurrentLanguage];
         currentArgument = currentDebateInfo.arguments[0];
         currentDialogueLines = currentArgument.argumentIntroDialogue;
         currentArgumentLines = currentArgument.debateDialogue;
@@ -611,6 +604,46 @@ public class DebateManager : MonoBehaviour
 
         ChangeSpeakerNameText(currentDialogueLines[0].speakerName.ToString());
         Dialogue(currentDialogueLines[0]);
+    }
+
+    public void ChangeDebateLanguage()
+    {
+        bool agreedInLastArgument = false;
+        bool selectedCorrectReactionInLastArgument = false;
+
+        if (currentPhase == DebatePhase.SolvingArgument)
+        {
+            agreedInLastArgument = (currentDialogueLines == currentArgument.trustDialogue);
+            selectedCorrectReactionInLastArgument = (currentArgument.correctReaction == DebateReaction.Agree && 
+                                                        currentDialogueLines == currentArgument.trustDialogue) ||
+                                                        (currentDialogueLines == currentArgument.refuteCorrectDialogue);
+        }
+
+        currentDebateInfo = debateInfosByLanguage[GameManager.Instance.CurrentLanguage];
+        currentArgument = currentDebateInfo.arguments[argumentIndex];
+        
+        switch (currentPhase)
+        {
+            case DebatePhase.Dialoguing:
+                currentDialogueLines = currentArgument.argumentIntroDialogue;
+                break;
+
+            case DebatePhase.Arguing:
+                currentArgumentLines = currentArgument.debateDialogue;
+                break;
+
+            case DebatePhase.SolvingArgument:
+                if (agreedInLastArgument)
+                    currentDialogueLines = currentArgument.trustDialogue;
+                else
+                    currentDialogueLines = (selectedCorrectReactionInLastArgument) ? currentArgument.refuteCorrectDialogue :
+                                                                                    currentArgument.refuteIncorrectDialogue;
+                break;
+
+            case DebatePhase.SolvingCase:
+                currentDialogueLines = (caseWon) ? currentDebateInfo.winDebateDialogue : currentDebateInfo.loseDebateDialogue;
+                break;
+        }
     }
 
     public void SetUpdateEnable(bool enable)

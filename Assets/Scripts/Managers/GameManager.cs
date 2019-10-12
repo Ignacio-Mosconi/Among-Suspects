@@ -2,13 +2,15 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public enum Language
 {
     English,
-    Spanish
+    Spanish,
+    Count
 }
 
 [System.Serializable]
@@ -85,6 +87,8 @@ public class GameManager : MonoBehaviour
     float charactersShowIntervals;
     float sfxVolume;
     float musicVolume;
+
+    UnityEvent onLanguageChanged = new UnityEvent();
 
     void AwakeSetUp()
     {
@@ -355,8 +359,12 @@ public class GameManager : MonoBehaviour
 
     public void SetLanguage(Language language)
     {
-        currentLanguage = language;
-        PlayerPrefs.SetInt("pLanguageIndex", (int)currentLanguage);
+        if (currentLanguage != language)
+        {
+            currentLanguage = language;
+            PlayerPrefs.SetInt("pLanguageIndex", (int)currentLanguage);
+            onLanguageChanged.Invoke();
+        }
     }
 
     public void SetQualityLevel(int qualityLevelIndex)
@@ -478,6 +486,11 @@ public class GameManager : MonoBehaviour
     public Color TutorialTextColor
     {
         get { return tutorialTextColor; }
+    }
+
+    public UnityEvent OnLanguageChanged
+    {
+        get { return onLanguageChanged; }
     }
 
     #endregion

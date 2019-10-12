@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,12 +16,19 @@ public class DebateInitializer : Interactable
     [SerializeField] GameObject debateSpritesContainer = default;
     [SerializeField] DebateCharacterSprite[] debateCharactersSprites = default;
     
-    DebateInfo debateInfo;
+    Dictionary<Language, DebateInfo> debateInfos = new Dictionary<Language, DebateInfo>();
 
     protected override void Start()
     {
         base.Start();
-        debateInfo = Resources.Load("Debates/" + SceneManager.GetActiveScene().name + " Debate") as DebateInfo;
+        
+        for (int i = 0; i < (int)Language.Count; i++)
+        {
+            string languagePath = Enum.GetName(typeof(Language), (Language)i);
+            DebateInfo debateInfo = Resources.Load("Debates/" + languagePath + "/" + SceneManager.GetActiveScene().name + " Debate") as DebateInfo;
+            
+            debateInfos.Add((Language)i, debateInfo);
+        }
     }
 
     public override void Interact()
@@ -38,7 +46,7 @@ public class DebateInitializer : Interactable
 
         debateSpritesContainer.SetActive(true);
         CharacterManager.Instance.HideCharacterMeshes();
-        DebateManager.Instance.StartDebate(debateInfo, playerController.CluesGathered);
+        DebateManager.Instance.StartDebate(debateInfos, playerController.CluesGathered);
     }
 
     public void CancelDebate()
