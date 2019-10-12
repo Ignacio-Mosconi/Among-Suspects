@@ -16,6 +16,7 @@ public class CluesScreen : MonoBehaviour
     RectTransform cluesButtonsPanelsRectTrans;
     GameObject clueButtonPrefab;
     Button lastButtonSelected;
+    Language previousLanguage;
     float addedClueButtonsPanelSize;
 
     const string ClueButtonPrefabPath = "Menu Elements/Clue Button";
@@ -23,6 +24,8 @@ public class CluesScreen : MonoBehaviour
     void Awake()
     {
         VerticalLayoutGroup cluesButtonsPanelVerLay = cluesButtonsPanel.GetComponent<VerticalLayoutGroup>();
+
+        previousLanguage = GameManager.Instance.CurrentLanguage;
         
         cluesButtonsPanelsRectTrans = cluesButtonsPanel.GetComponent<RectTransform>();
         
@@ -52,6 +55,9 @@ public class CluesScreen : MonoBehaviour
 
     void OnEnable()
     {
+        if (GameManager.Instance.CurrentLanguage != previousLanguage)
+            ReloadCluesInCurrentLanguage();
+
         int foundClueIndex = 0;
 
         for (int i = 0; i < cluesButtons.Count; i++)
@@ -86,6 +92,23 @@ public class CluesScreen : MonoBehaviour
     {
         if (!EventSystem.current.currentSelectedGameObject && lastButtonSelected)
             EventSystem.current.SetSelectedGameObject(lastButtonSelected.gameObject);
+    }
+
+    void ReloadCluesInCurrentLanguage()
+    {
+        previousLanguage = GameManager.Instance.CurrentLanguage;
+
+        for (int i = 0; i < cluesButtons.Count; i++)
+        {
+            Button clueButton = cluesButtons[i];
+            TextMeshProUGUI buttonText = clueButton.GetComponentInChildren<TextMeshProUGUI>();
+            ClueInfo clueInfo = ChapterManager.Instance.GetChapterClueInfo(i);
+
+            buttonText.text = clueInfo.clueName;
+
+            clueButton.onClick.RemoveAllListeners();
+            clueButton.onClick.AddListener(() => SelectClue(clueInfo, clueButton));
+        }
     }
 
     void SelectClue(ClueInfo clueInfo, Button clueButton)

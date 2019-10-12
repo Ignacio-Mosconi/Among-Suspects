@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -48,8 +49,6 @@ public class CharacterManager : MonoBehaviour
 
         characters.Add(playerController);
 
-        dialoguesPath = "Dialogues/" + SceneManager.GetActiveScene().name + "/";
-
         NPC[] npcs = FindObjectsOfType<NPC>();
 
         foreach (NPC npc in npcs)
@@ -78,6 +77,10 @@ public class CharacterManager : MonoBehaviour
 
     public void LoadDialogues(ChapterPhase chapterPhase)
     {
+        Language language = GameManager.Instance.CurrentLanguage;
+
+        dialoguesPath = "Dialogues/" + Enum.GetName(typeof(Language), language) + "/" + SceneManager.GetActiveScene().name + "/";
+
         foreach (ICharacter character in characters)
         {
             NPC npc = character as NPC;

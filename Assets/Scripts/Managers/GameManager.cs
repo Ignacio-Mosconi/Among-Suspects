@@ -1,10 +1,15 @@
 using System;
-using System.Linq;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+
+public enum Language
+{
+    English,
+    Spanish
+}
 
 [System.Serializable]
 public struct MouseCursor
@@ -60,6 +65,7 @@ public class GameManager : MonoBehaviour
     [Header("Scenes")]
     [SerializeField] string mainMenuSceneName = default;
     [SerializeField] string[] chapterScenesNames = default;
+    
     [Header("Mouse Cursors")]
     [SerializeField] MouseCursor normalCursor = default;
     [SerializeField] MouseCursor selectionCursor = default;
@@ -71,6 +77,7 @@ public class GameManager : MonoBehaviour
     LoadingScreen loadingScreen;
     ConfirmationPrompt confirmationPrompt;
     Resolution[] availableResolutions;
+    Language currentLanguage;
     int currentQualityLevelIndex;
     int currentResolutionIndex;
     bool isFullscreen;
@@ -117,6 +124,7 @@ public class GameManager : MonoBehaviour
         Resolution currentRes = Screen.currentResolution;
         int defaultResIndex = Array.FindIndex(availableResolutions, r => r.width == currentRes.width && r.height == currentRes.height);
 
+        currentLanguage = (Language)PlayerPrefs.GetInt("pLanguageIndex", 0);
         currentQualityLevelIndex = PlayerPrefs.GetInt("pQualityLevel", QualitySettings.GetQualityLevel());
         currentResolutionIndex = PlayerPrefs.GetInt("pResolution", defaultResIndex);
         isFullscreen = GetBoolPreference("pFullscreen", Screen.fullScreen);
@@ -345,6 +353,12 @@ public class GameManager : MonoBehaviour
         return (currentResolutionIndex == 0); 
     }
 
+    public void SetLanguage(Language language)
+    {
+        currentLanguage = language;
+        PlayerPrefs.SetInt("pLanguageIndex", (int)currentLanguage);
+    }
+
     public void SetQualityLevel(int qualityLevelIndex)
     {
         currentQualityLevelIndex = qualityLevelIndex;
@@ -404,6 +418,11 @@ public class GameManager : MonoBehaviour
     public Resolution[] AvailableResolutions
     {
         get { return availableResolutions; }
+    }
+
+    public Language CurrentLanguage
+    {
+        get { return currentLanguage; }
     }
 
     public int CurrentQualityLevelIndex

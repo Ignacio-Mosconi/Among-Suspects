@@ -100,6 +100,20 @@ public class PlayerController : MonoBehaviour, ICharacter
         }
     }
 
+    public void ReloadCluesGathered(ClueInfo[] newClueInfos)
+    {
+        foreach (ClueInfo newClueInfo in newClueInfos)
+        {
+            ClueInfo clueInfoInList = cluesGathered.Find(ci => ci.clueID == newClueInfo.clueID);
+            
+            if (clueInfoInList)
+            {
+                cluesGathered.Add(newClueInfo);
+                cluesGathered.Remove(clueInfoInList);
+            }
+        }
+    }
+
     public void StartInvestigation()
     {
         startedInvestigationInLastDialogue = true;

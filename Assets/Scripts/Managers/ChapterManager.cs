@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public enum ChapterPhase
@@ -54,9 +53,10 @@ public class ChapterManager : MonoBehaviour
 
     void Start()
     {
-        chapterClues = Resources.LoadAll<ClueInfo>("Clues/" + SceneManager.GetActiveScene().name);
         debateInitializer = FindObjectOfType<DebateInitializer>();
         pauseMenu = FindObjectOfType<PauseMenu>();
+
+        LoadChapterClues();
 
         debateResultsScreen.SetUp();
         debateRetryScreen.SetUp();
@@ -68,6 +68,32 @@ public class ChapterManager : MonoBehaviour
         GameManager.Instance.AddCursorPointerEventsToAllButtons(endScreenArea);
 
         debateInitializer.DisableInteraction();
+    }
+
+#if UNITY_EDITOR
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.L))
+        {
+            GameManager.Instance.SetLanguage(Language.Spanish);
+            LoadChapterClues();
+        }
+        if (Input.GetKey(KeyCode.K))
+        {
+            GameManager.Instance.SetLanguage(Language.English);
+            LoadChapterClues();
+        }
+    }
+#endif
+
+    void LoadChapterClues()
+    {
+        Language language = GameManager.Instance.CurrentLanguage;
+        string languagePath = Enum.GetName(typeof(Language), language);
+        
+        chapterClues = Resources.LoadAll<ClueInfo>("Clues/" + languagePath + "/" + SceneManager.GetActiveScene().name);
+
+        CharacterManager.Instance.PlayerController.ReloadCluesGathered(chapterClues);
     }
 
     void RemoveAllConfirmationPromptListeners()

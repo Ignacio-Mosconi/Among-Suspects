@@ -77,6 +77,7 @@ public class DebateManager : MonoBehaviour
     CharacterName previousSpeaker = CharacterName.None;
     ClueInfo currentlySelectedEvidence;
     DebatePhase currentPhase = DebatePhase.Dialoguing;
+    Dictionary<Button, UnityAction> refuteCallbacks = new Dictionary<Button, UnityAction>();
     UnityAction playSoundOnFocusFinishAction;
     bool caseWon = false;
     int lineIndex = 0;
@@ -488,6 +489,28 @@ public class DebateManager : MonoBehaviour
         speechController.StartSpeaking(speech);
     }
 
+    void LoadRefuteOptionsCallbacks()
+    {
+        Button[] cluesButtons = cluesScreen.CluesButtons.ToArray();
+        
+        for (int i = 0; i < cluesButtons.Length; i++)
+        {
+            Button clueButton = cluesButtons[i];
+            ClueInfo clueInfo = ChapterManager.Instance.GetChapterClueInfo(i);
+            UnityAction refuteCallback = () => ChangeCurrentlySelectedEvidence(clueInfo);
+            
+            if (refuteCallbacks.ContainsKey(clueButton))
+            {
+                clueButton.onClick.RemoveListener(refuteCallbacks[clueButton]);
+                refuteCallbacks[clueButton] = refuteCallback;
+            }
+            else
+                refuteCallbacks.Add(clueButton, refuteCallback);
+
+            clueButton.onClick.AddListener(refuteCallbacks[clueButton]);
+        }
+    }
+
     void ChangeCurrentlySelectedEvidence(ClueInfo clueInfo)
     {
         currentlySelectedEvidence = clueInfo;
@@ -537,13 +560,7 @@ public class DebateManager : MonoBehaviour
             }
         }
 
-        Button[] cluesButtons = cluesScreen.CluesButtons.ToArray();
-
-        for (int i = 0; i < cluesButtons.Length; i++)
-        {
-            ClueInfo clueInfo = ChapterManager.Instance.GetChapterClueInfo(i);
-            cluesButtons[i].onClick.AddListener(() => ChangeCurrentlySelectedEvidence(clueInfo));
-        }
+        LoadRefuteOptionsCallbacks();
     }
 
     public void AccuseWithEvidence()
