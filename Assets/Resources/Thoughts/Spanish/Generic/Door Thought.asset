@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explorationThought:
   - speakerName: 0
-    speech: This door seems to be locked.
+    speech: La puerta parece estar trabada.
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -24,7 +24,7 @@ MonoBehaviour:
     playerThought: 1
     triggerNiceImpression: 0
   - speakerName: 0
-    speech: I guess I won't be able to enter there...for now, at least.
+    speech: "Supongo que no podr\xE9 entrar ah\xED...por ahora, al menos."
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -35,7 +35,7 @@ MonoBehaviour:
     triggerNiceImpression: 0
   investigationThought:
   - speakerName: 0
-    speech: The door is locked!
+    speech: "\xA1La puerta est\xE1 cerrada!"
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -45,7 +45,8 @@ MonoBehaviour:
     playerThought: 0
     triggerNiceImpression: 0
   - speakerName: 0
-    speech: I guess I'll have to investigate elsewhere to solve this case...
+    speech: "Supongo que tendr\xE9 que investigar en otro lado para resolver este
+      caso..."
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:

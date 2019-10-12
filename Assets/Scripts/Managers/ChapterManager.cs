@@ -66,7 +66,7 @@ public class ChapterManager : MonoBehaviour
         AudioManager.Instance.PlayTheme("Exploration Phase");
 
         GameManager.Instance.AddCursorPointerEventsToAllButtons(endScreenArea);
-        GameManager.Instance.OnLanguageChanged.AddListener(ChangeDialoguesAndCluesLanguage);
+        GameManager.Instance.OnLanguageChanged.AddListener(LoadChapterClues);
 
         debateInitializer.DisableInteraction();
     }
@@ -93,12 +93,6 @@ public class ChapterManager : MonoBehaviour
         chapterClues = Resources.LoadAll<ClueInfo>("Clues/" + languagePath + "/" + SceneManager.GetActiveScene().name);
 
         CharacterManager.Instance.PlayerController.ReloadCluesGathered(chapterClues);
-    }
-
-    void ChangeDialoguesAndCluesLanguage()
-    {
-        LoadChapterClues();
-        CharacterManager.Instance.LoadDialogues(currentPhase);
     }
 
     void RemoveAllConfirmationPromptListeners()

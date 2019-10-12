@@ -1,19 +1,22 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class NPC : Interactable, ICharacter
 {
     [Header("Main Data")]
     [SerializeField] CharacterName characterName = default;
     [SerializeField] Sprite[] characterSprites = default;
+    
     [Header("Other Data")]
     [SerializeField] bool nameRevealed = false;
     [SerializeField] bool niceWithPlayer = false;
+    
     [Header("Other References")]
     [SerializeField] GameObject characterMesh = default;
     [SerializeField] Transform leftSpeaker = default;
     [SerializeField] Transform rightSpeaker = default;
 
-    DialogueInfo dialogueInfo;
+    Dictionary<Language, DialogueInfo> dialogueInfosByLanguage;
 
     public override void EnableInteraction()
     {
@@ -35,7 +38,12 @@ public class NPC : Interactable, ICharacter
     public override void Interact()
     {   
         DisableInteraction();
-        DialogueManager.Instance.StartDialogue(dialogueInfo, this);
+        DialogueManager.Instance.StartDialogue(dialogueInfosByLanguage, this);
+    }
+
+    public void SetDialogues(Dictionary<Language, DialogueInfo> dialogueInfosByLanguage)
+    {
+        this.dialogueInfosByLanguage = dialogueInfosByLanguage;
     }
 
     public void ShowMesh()
@@ -46,6 +54,12 @@ public class NPC : Interactable, ICharacter
     public void HideMesh()
     {
         characterMesh.SetActive(false);
+    }
+
+    public void DisableGroupDialogue()
+    {
+        foreach (DialogueInfo dialogueInfo in dialogueInfosByLanguage.Values)
+            dialogueInfo.groupDialogueRead = true;
     }
     
     public CharacterName GetCharacterName()
@@ -80,12 +94,6 @@ public class NPC : Interactable, ICharacter
     public Vector3 RightSpeakerPosition
     {
         get { return rightSpeaker.position; }
-    }
-
-    public DialogueInfo DialogueInfo
-    {
-        get { return dialogueInfo; }
-        set { dialogueInfo = value; }
     }
 
     #endregion

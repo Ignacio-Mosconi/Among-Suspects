@@ -41,8 +41,6 @@ public class CharacterManager : MonoBehaviour
     List<ICharacter> characters = new List<ICharacter>();
     PlayerController playerController = default;
 
-    string dialoguesPath;
-
     void Start()
     {
         playerController = FindObjectOfType<PlayerController>();
@@ -77,24 +75,33 @@ public class CharacterManager : MonoBehaviour
 
     public void LoadDialogues(ChapterPhase chapterPhase)
     {
-        Language language = GameManager.Instance.CurrentLanguage;
-
-        dialoguesPath = "Dialogues/" + Enum.GetName(typeof(Language), language) + "/" + SceneManager.GetActiveScene().name + "/";
-
         foreach (ICharacter character in characters)
         {
             NPC npc = character as NPC;
 
             if (npc)
             {
-                string path = dialoguesPath + character.GetCharacterName().ToString();
+                Dictionary<Language, DialogueInfo> dialogueInfosByLanguage = new Dictionary<Language, DialogueInfo>();
                 
-                path += (chapterPhase == ChapterPhase.Exploration) ? " Exploration Phase" : " Investigation Phase";
+                for (int i = 0; i < (int)Language.Count; i++)
+                {
+                    Language language = (Language)i;
+                    string dialoguesPath = "Dialogues/" + Enum.GetName(typeof(Language), language) + "/" + 
+                                            SceneManager.GetActiveScene().name + "/";
+                    
+                    dialoguesPath += character.GetCharacterName().ToString();
+                    dialoguesPath += (chapterPhase == ChapterPhase.Exploration) ? " Exploration Phase" : " Investigation Phase";
 
-                npc.DialogueInfo = Resources.Load(path) as DialogueInfo;
-                npc.DialogueInfo.introRead = false;
-                npc.DialogueInfo.interactionOptionSelected = false;
-                npc.DialogueInfo.groupDialogueRead = false;
+                    DialogueInfo dialogueInfo = Resources.Load(dialoguesPath) as DialogueInfo;
+
+                    dialogueInfo.introRead = false;
+                    dialogueInfo.interactionOptionSelected = false;
+                    dialogueInfo.groupDialogueRead = false;
+
+                    dialogueInfosByLanguage.Add(language, dialogueInfo);
+                }
+
+                npc.SetDialogues(dialogueInfosByLanguage);
             }
         }
     }
@@ -105,7 +112,7 @@ public class CharacterManager : MonoBehaviour
         {
             NPC npc = character as NPC;      
             if (npc)
-                npc.DialogueInfo.groupDialogueRead = true;
+                npc.DisableGroupDialogue();
         }
     }
 

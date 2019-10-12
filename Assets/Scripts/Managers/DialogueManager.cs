@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using TMPro;
@@ -50,6 +51,7 @@ public class DialogueManager : MonoBehaviour
     SpeechController speechController;
     CharacterSpriteController characterSpriteController;
     DialogueOptionsScreen dialogueOptionScreen;
+    Dictionary<Language, DialogueInfo> currentDialogueInfoByLanguage;
     DialogueInfo currentDialogueInfo;
     Dialogue[] currentLines;
     NPC mainSpeaker;
@@ -70,6 +72,8 @@ public class DialogueManager : MonoBehaviour
         dialogueOptionsPrompt.SetUp();
         objectPanelPrompt.SetUp();
         enabled = false;
+
+        GameManager.Instance.OnLanguageChanged.AddListener(ChangeCurrentDialogueLanguage);
     }
 
     void Update()
@@ -144,6 +148,20 @@ public class DialogueManager : MonoBehaviour
         characterSpriteController.HideImmediately();
 
         onDialogueAreaDisable.Invoke();
+    }
+
+    void ChangeCurrentDialogueLanguage()
+    {
+        if (!enabled)
+            return;
+
+        if (currentDialogueInfo)
+        {
+            currentDialogueInfo = currentDialogueInfoByLanguage[GameManager.Instance.CurrentLanguage];
+            currentLines = currentDialogueInfo.DetermineNextDialogueLines();
+            if (currentLines == null)
+                currentLines = (mainSpeaker.NiceWithPlayer) ? currentDialogueInfo.niceComment : currentDialogueInfo.rudeComment;
+        }
     }
 
     bool ShouldDisplayLeftMousePrompt()
@@ -289,9 +307,10 @@ public class DialogueManager : MonoBehaviour
         SayDialogue(currentLines[0]);
     }
 
-    public void StartDialogue(DialogueInfo dialogueInfo, NPC npc)
+    public void StartDialogue(Dictionary<Language, DialogueInfo> dialogueInfos, NPC npc)
     {
-        currentDialogueInfo = dialogueInfo;
+        currentDialogueInfoByLanguage = dialogueInfos; 
+        currentDialogueInfo = currentDialogueInfoByLanguage[GameManager.Instance.CurrentLanguage];
         
         mainSpeaker = npc;
         CharacterManager.Instance.PlayerController.FirstPersonCamera.FocusOnPosition(npc.InteractionPosition);
