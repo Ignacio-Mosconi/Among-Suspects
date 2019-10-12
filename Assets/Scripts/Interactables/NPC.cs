@@ -16,7 +16,7 @@ public class NPC : Interactable, ICharacter
     [SerializeField] Transform leftSpeaker = default;
     [SerializeField] Transform rightSpeaker = default;
 
-    Dictionary<Language, DialogueInfo> dialogueInfosByLanguage;
+    Dictionary<Language, DialogueInfo> dialogueInfoByLanguage;
 
     public override void EnableInteraction()
     {
@@ -38,12 +38,12 @@ public class NPC : Interactable, ICharacter
     public override void Interact()
     {   
         DisableInteraction();
-        DialogueManager.Instance.StartDialogue(dialogueInfosByLanguage, this);
+        DialogueManager.Instance.StartDialogue(dialogueInfoByLanguage, this);
     }
 
     public void SetDialogues(Dictionary<Language, DialogueInfo> dialogueInfosByLanguage)
     {
-        this.dialogueInfosByLanguage = dialogueInfosByLanguage;
+        this.dialogueInfoByLanguage = dialogueInfosByLanguage;
     }
 
     public void ShowMesh()
@@ -58,7 +58,7 @@ public class NPC : Interactable, ICharacter
 
     public void DisableGroupDialogue()
     {
-        foreach (DialogueInfo dialogueInfo in dialogueInfosByLanguage.Values)
+        foreach (DialogueInfo dialogueInfo in dialogueInfoByLanguage.Values)
             dialogueInfo.groupDialogueRead = true;
     }
     

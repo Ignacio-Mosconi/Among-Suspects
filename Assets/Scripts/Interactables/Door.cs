@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
@@ -11,9 +12,9 @@ public class Door : Interactable
     [SerializeField] AudioClip openSound = default; 
     [SerializeField] AudioClip closeSound = default;
     
+    Dictionary<Language, ThoughtInfo> lockedThoughtInfoByLanguage = new Dictionary<Language, ThoughtInfo>();
     Animator animator;
     AudioSource audioSource;
-    ThoughtInfo lockedThoughtInfo;
     float openAnimationDuration;
     float closeAnimationDuration;
     bool isOpen;
@@ -38,14 +39,18 @@ public class Door : Interactable
         closeAnimationDuration = closeAnim.length;
 
         LoadThought();
-        GameManager.Instance.OnLanguageChanged.AddListener(LoadThought);
     }
 
     void LoadThought()
     {
-        string languagePath = Enum.GetName(typeof(Language), GameManager.Instance.CurrentLanguage);
+        for (int i = 0; i < (int)Language.Count; i++)
+        {
+            Language language = (Language)i;
+            string languagePath = Enum.GetName(typeof(Language), language);
+            ThoughtInfo thoughtInfo = Resources.Load("Thoughts/" + languagePath + "/Generic/Door Thought") as ThoughtInfo;
 
-        lockedThoughtInfo = Resources.Load("Thoughts/" + languagePath + "/Generic/Door Thought") as ThoughtInfo;
+            lockedThoughtInfoByLanguage.Add(language, thoughtInfo);
+        }
     }
 
     void Open()
@@ -86,7 +91,7 @@ public class Door : Interactable
                 Close();
         }
         else
-            DialogueManager.Instance.StartDialogue(lockedThoughtInfo, interactionPoint.position);
+            DialogueManager.Instance.StartDialogue(lockedThoughtInfoByLanguage, interactionPoint.position);
     }
 
     public override string GetInteractionKind()

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,7 +10,7 @@ public class ItemRequiredInteractable : Interactable
     [SerializeField] InventoryItemInfo requiredItem = default;
     [SerializeField] Sprite interactableSprite = default;
 
-    ItemRequiredThoughtInfo itemRequiredThoughtInfo;
+    Dictionary<Language, ItemRequiredThoughtInfo> itemRequiredThoughtInfoByLanguage = new Dictionary<Language, ItemRequiredThoughtInfo>();
 
     void OnValidate()
     {
@@ -28,15 +29,19 @@ public class ItemRequiredInteractable : Interactable
         actualInteractable.enabled = false;
         
         LoadThought();
-        GameManager.Instance.OnLanguageChanged.AddListener(LoadThought);
     }
 
     void LoadThought()
     {
-        string languagePath = Enum.GetName(typeof(Language), GameManager.Instance.CurrentLanguage);
+        for (int i = 0; i < (int)Language.Count; i++)
+        {
+            Language language = (Language)i;
+            string languagePath = Enum.GetName(typeof(Language), language);
+            ItemRequiredThoughtInfo thoughtInfo = Resources.Load("Thoughts/" + languagePath + "/" + SceneManager.GetActiveScene().name + "/" +
+                                        gameObject.name + " Thought") as ItemRequiredThoughtInfo;
 
-        itemRequiredThoughtInfo = Resources.Load("Thoughts/" + languagePath + "/" + SceneManager.GetActiveScene().name + "/" + 
-                                                gameObject.name + " Thought") as ItemRequiredThoughtInfo;
+            itemRequiredThoughtInfoByLanguage.Add(language, thoughtInfo);
+        }
     }
 
     void ShowInventoryItemsAvailable()
@@ -52,21 +57,28 @@ public class ItemRequiredInteractable : Interactable
         
         InventoryItemInfo itemInfo = InventoryManager.Instance.CurrentlySelectedItem;
 
-        if (itemInfo.itemID == requiredItem.itemID)
+        if (itemInfo != null && itemInfo.itemID == requiredItem.itemID)
         {
-            DialogueManager.Instance.StartDialogue(itemRequiredThoughtInfo.useCorrectItemThought, interactionPoint.position,
-                                                    interactableSprite, enableImage: false);
+            DialogueManager.Instance.StartDialogue(itemRequiredThoughtInfoByLanguage, 
+                                                    itemRequiredThoughtInfoByLanguage[GameManager.Instance.CurrentLanguage].useCorrectItemThought,
+                                                    interactionPoint.position,
+                                                    interactableSprite, 
+                                                    enableImage: false);
             actualInteractable.enabled = true;
             Destroy(this);
         }
         else
-            DialogueManager.Instance.StartDialogue(itemRequiredThoughtInfo.useIncorrectItemThought, interactionPoint.position,
+            DialogueManager.Instance.StartDialogue(itemRequiredThoughtInfoByLanguage,
+                                                    itemRequiredThoughtInfoByLanguage[GameManager.Instance.CurrentLanguage].useIncorrectItemThought,
+                                                    interactionPoint.position,
                                                     interactableSprite, enableImage: false);
     }
 
     public override void Interact()
     {
-        DialogueManager.Instance.StartDialogue(itemRequiredThoughtInfo.interactionThought, interactionPoint.position, 
+        DialogueManager.Instance.StartDialogue(itemRequiredThoughtInfoByLanguage,
+                                                itemRequiredThoughtInfoByLanguage[GameManager.Instance.CurrentLanguage].interactionThought,
+                                                interactionPoint.position, 
                                                 interactableSprite, enableImage: true);
         DialogueManager.Instance.OnDialogueAreaDisable.AddListener(ShowInventoryItemsAvailable);
     }

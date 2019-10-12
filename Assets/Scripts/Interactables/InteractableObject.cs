@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,22 +9,26 @@ public class InteractableObject : Interactable
     [SerializeField] Sprite objectSprite = default;
     [SerializeField] InventoryItemInfo inventoryItemInfo = null;
 
-    ThoughtInfo thoughtInfo;
+    Dictionary<Language, ThoughtInfo> thoughtInfoByLanguage = new Dictionary<Language, ThoughtInfo>();
     
     protected override void Start()
     {
         base.Start();
 
         LoadThought();
-        GameManager.Instance.OnLanguageChanged.AddListener(LoadThought);
     }
 
     void LoadThought()
     {
-        string languagePath = Enum.GetName(typeof(Language), GameManager.Instance.CurrentLanguage);
+        for (int i = 0; i < (int)Language.Count; i++)
+        {
+            Language language = (Language)i;
+            string languagePath = Enum.GetName(typeof(Language), language);
+            ThoughtInfo thoughtInfo = Resources.Load("Thoughts/" + languagePath + "/" + SceneManager.GetActiveScene().name + "/" + 
+                                        gameObject.name + " Thought") as ThoughtInfo;
 
-        thoughtInfo = Resources.Load("Thoughts/" + languagePath + "/" + SceneManager.GetActiveScene().name + "/" + 
-                                    gameObject.name + " Thought") as ThoughtInfo;
+            thoughtInfoByLanguage.Add(language, thoughtInfo);
+        }
     }
 
     void RemoveFromScene()
@@ -36,7 +41,7 @@ public class InteractableObject : Interactable
     public override void Interact()
     {
         DisableInteraction();
-        DialogueManager.Instance.StartDialogue(thoughtInfo, interactionPoint.position, objectSprite, enableImage: true);
+        DialogueManager.Instance.StartDialogue(thoughtInfoByLanguage, interactionPoint.position, objectSprite, enableImage: true);
 
         if (inventoryItemInfo)
             DialogueManager.Instance.OnDialogueAreaDisable.AddListener(RemoveFromScene);

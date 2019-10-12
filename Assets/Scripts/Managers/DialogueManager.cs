@@ -52,7 +52,11 @@ public class DialogueManager : MonoBehaviour
     CharacterSpriteController characterSpriteController;
     DialogueOptionsScreen dialogueOptionScreen;
     Dictionary<Language, DialogueInfo> currentDialogueInfoByLanguage;
+    Dictionary<Language, ThoughtInfo> currentThoughtInfoByLanguage;
+    Dictionary<Language, ItemRequiredThoughtInfo> currentItemRequiredThoughtInfoByLanguage;
     DialogueInfo currentDialogueInfo;
+    ThoughtInfo currentThoughtInfo;
+    ItemRequiredThoughtInfo currentItemRequiredThoughtInfo;
     Dialogue[] currentLines;
     NPC mainSpeaker;
     NPC previousSpeaker;
@@ -138,7 +142,12 @@ public class DialogueManager : MonoBehaviour
             currentDialogueInfo.groupDialogue.cancelOtherGroupDialogues)
             CharacterManager.Instance.CancelOtherGroupDialogues();
 
+        currentDialogueInfoByLanguage = null;
+        currentThoughtInfoByLanguage = null;
+        currentItemRequiredThoughtInfoByLanguage = null;
         currentDialogueInfo = null;
+        currentThoughtInfo = null;
+        currentItemRequiredThoughtInfo = null;
         currentLines = null;
         mainSpeaker = null;
         previousSpeaker = null;
@@ -161,6 +170,28 @@ public class DialogueManager : MonoBehaviour
             currentLines = currentDialogueInfo.DetermineNextDialogueLines();
             if (currentLines == null)
                 currentLines = (mainSpeaker.NiceWithPlayer) ? currentDialogueInfo.niceComment : currentDialogueInfo.rudeComment;
+        }
+
+        if (currentThoughtInfo)
+        {
+            currentThoughtInfo = currentThoughtInfoByLanguage[GameManager.Instance.CurrentLanguage];
+            currentLines = (ChapterManager.Instance.CurrentPhase == ChapterPhase.Exploration) ? currentThoughtInfo.explorationThought :
+                                                                                                currentThoughtInfo.investigationThought;
+        }
+
+        if (currentItemRequiredThoughtInfo)
+        {
+            bool wasInteractionThought = (currentLines == currentItemRequiredThoughtInfo.interactionThought);
+            bool wasUseCorrectThought = (currentLines == currentItemRequiredThoughtInfo.useCorrectItemThought);
+            bool wasUseIncorrectThought = (currentLines == currentItemRequiredThoughtInfo.useIncorrectItemThought);
+
+            currentItemRequiredThoughtInfo = currentItemRequiredThoughtInfoByLanguage[GameManager.Instance.CurrentLanguage];
+            
+            if (wasInteractionThought)
+                currentLines = currentItemRequiredThoughtInfo.interactionThought;
+            else
+                currentLines = (wasUseCorrectThought) ? currentItemRequiredThoughtInfo.useCorrectItemThought : 
+                                                        currentItemRequiredThoughtInfo.useIncorrectItemThought;
         }
     }
 
@@ -326,8 +357,12 @@ public class DialogueManager : MonoBehaviour
         SayDialogue(currentLines[0]);
     }
 
-    public void StartDialogue(ThoughtInfo thoughtInfo, Vector3 objectPosition, Sprite objectSprite = null, bool enableImage = false)
+    public void StartDialogue(Dictionary<Language, ThoughtInfo> thoughtInfos, Vector3 objectPosition, 
+                                Sprite objectSprite = null, bool enableImage = false)
     {
+        currentThoughtInfoByLanguage = thoughtInfos;
+        currentThoughtInfo = currentThoughtInfoByLanguage[GameManager.Instance.CurrentLanguage];
+
         CharacterManager.Instance.PlayerController.FirstPersonCamera.FocusOnPosition(objectPosition);
 
         if (enableImage)
@@ -338,17 +373,22 @@ public class DialogueManager : MonoBehaviour
 
         EnableDialogueArea();
 
-        currentLines = (ChapterManager.Instance.CurrentPhase == ChapterPhase.Exploration) ? thoughtInfo.explorationThought : 
-                                                                                            thoughtInfo.investigationThought;
+        currentLines = (ChapterManager.Instance.CurrentPhase == ChapterPhase.Exploration) ? currentThoughtInfo.explorationThought : 
+                                                                                            currentThoughtInfo.investigationThought;
 
-        if (thoughtInfo.triggerInvestigationPhase)
+        if (currentThoughtInfo.triggerInvestigationPhase)
             ChapterManager.Instance.TriggerInvestigationPhase();
 
         SayDialogue(currentLines[0]);
     }
 
-    public void StartDialogue(Dialogue[] dialogueLines, Vector3 objectPosition, Sprite objectSprite = null, bool enableImage = false)
+    public void StartDialogue(Dictionary<Language, ItemRequiredThoughtInfo> itemRequiredThoughtInfos, Dialogue[] dialogueLines,
+                                Vector3 objectPosition, Sprite objectSprite = null, bool enableImage = false)
     {
+        currentItemRequiredThoughtInfoByLanguage = itemRequiredThoughtInfos;
+        currentItemRequiredThoughtInfo = currentItemRequiredThoughtInfoByLanguage[GameManager.Instance.CurrentLanguage];
+        currentLines = dialogueLines;
+
         CharacterManager.Instance.PlayerController.FirstPersonCamera.FocusOnPosition(objectPosition);
 
         if (enableImage)
@@ -358,8 +398,6 @@ public class DialogueManager : MonoBehaviour
         }
 
         EnableDialogueArea();
-
-        currentLines = dialogueLines;
 
         SayDialogue(currentLines[0]);
     }

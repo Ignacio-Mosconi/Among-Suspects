@@ -24,7 +24,7 @@ MonoBehaviour:
     playerThought: 1
     triggerNiceImpression: 0
   - speakerName: 0
-    speech: This door is locked...
+    speech: "La puerta est\xE1 cerrada..."
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -34,7 +34,7 @@ MonoBehaviour:
     playerThought: 1
     triggerNiceImpression: 0
   - speakerName: 0
-    speech: However, it looks like it can be opened with a key.
+    speech: 'Sin embargo, parece ser que puede ser abierta con una llave. '
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -44,7 +44,7 @@ MonoBehaviour:
     playerThought: 1
     triggerNiceImpression: 0
   - speakerName: 0
-    speech: I wonder if I have something to open it...
+    speech: Me pregunto si tengo algo para abrirla...
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -55,7 +55,7 @@ MonoBehaviour:
     triggerNiceImpression: 0
   useCorrectItemThought:
   - speakerName: 0
-    speech: Let's check if I can use this...
+    speech: Veamos si puedo usar esto...
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -65,7 +65,7 @@ MonoBehaviour:
     playerThought: 1
     triggerNiceImpression: 0
   - speakerName: 0
-    speech: It worked! The door opened!
+    speech: "\xA1Funcion\xF3! \xA1La puerta se abri\xF3!"
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -75,7 +75,7 @@ MonoBehaviour:
     playerThought: 1
     triggerNiceImpression: 0
   - speakerName: 0
-    speech: It's time to check what's inside...
+    speech: "Es hora de ver qu\xE9 hay adentro..."
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -86,7 +86,7 @@ MonoBehaviour:
     triggerNiceImpression: 0
   useIncorrectItemThought:
   - speakerName: 0
-    speech: Maybe I could...use this?
+    speech: "Quiz\xE1s... \xBFpueda usar esto?"
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -106,7 +106,7 @@ MonoBehaviour:
     playerThought: 1
     triggerNiceImpression: 0
   - speakerName: 0
-    speech: Nope, it didn't work; it's still locked...
+    speech: "No, no funcion\xF3; sigue bloqueada..."
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
