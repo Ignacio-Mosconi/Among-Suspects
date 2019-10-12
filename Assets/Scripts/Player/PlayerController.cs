@@ -93,10 +93,12 @@ public class PlayerController : MonoBehaviour, ICharacter
 
     public void AddClue(ClueInfo clueInfo)
     {
-        if (!cluesGathered.Contains(clueInfo))
+        if (!cluesGathered.Find(ci => ci.clueID == clueInfo.clueID))
         {
+            ClueInfo clueInfoToAdd = ChapterManager.Instance.GetChapterClueInfo(clueInfo.clueID);
+            
             foundClueInLastDialogue = true;
-            cluesGathered.Add(clueInfo);
+            cluesGathered.Add(clueInfoToAdd);
         }
     }
 

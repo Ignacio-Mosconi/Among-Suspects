@@ -4,6 +4,7 @@ using UnityEngine;
 public class InventoryItemInfo : ScriptableObject
 {
     public string itemName;
+    public uint itemID;
     [TextArea(3, 10)] public string description;
     public Sprite itemSprite;
 }

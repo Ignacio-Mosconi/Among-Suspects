@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ItemRequiredInteractable : Interactable
 {
@@ -23,8 +25,18 @@ public class ItemRequiredInteractable : Interactable
     {
         base.Start();
         
-        itemRequiredThoughtInfo = Resources.Load("Thoughts/Item-Required/" + gameObject.name + " Thought") as ItemRequiredThoughtInfo;
         actualInteractable.enabled = false;
+        
+        LoadThought();
+        GameManager.Instance.OnLanguageChanged.AddListener(LoadThought);
+    }
+
+    void LoadThought()
+    {
+        string languagePath = Enum.GetName(typeof(Language), GameManager.Instance.CurrentLanguage);
+
+        itemRequiredThoughtInfo = Resources.Load("Thoughts/" + languagePath + "/" + SceneManager.GetActiveScene().name + "/" + 
+                                                gameObject.name + " Thought") as ItemRequiredThoughtInfo;
     }
 
     void ShowInventoryItemsAvailable()
@@ -40,7 +52,7 @@ public class ItemRequiredInteractable : Interactable
         
         InventoryItemInfo itemInfo = InventoryManager.Instance.CurrentlySelectedItem;
 
-        if (itemInfo == requiredItem)
+        if (itemInfo.itemID == requiredItem.itemID)
         {
             DialogueManager.Instance.StartDialogue(itemRequiredThoughtInfo.useCorrectItemThought, interactionPoint.position,
                                                     interactableSprite, enableImage: false);

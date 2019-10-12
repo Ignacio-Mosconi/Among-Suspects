@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,7 +13,17 @@ public class InteractableObject : Interactable
     protected override void Start()
     {
         base.Start();
-        thoughtInfo = Resources.Load("Thoughts/" + SceneManager.GetActiveScene().name + "/" + gameObject.name + " Thought") as ThoughtInfo;
+
+        LoadThought();
+        GameManager.Instance.OnLanguageChanged.AddListener(LoadThought);
+    }
+
+    void LoadThought()
+    {
+        string languagePath = Enum.GetName(typeof(Language), GameManager.Instance.CurrentLanguage);
+
+        thoughtInfo = Resources.Load("Thoughts/" + languagePath + "/" + SceneManager.GetActiveScene().name + "/" + 
+                                    gameObject.name + " Thought") as ThoughtInfo;
     }
 
     void RemoveFromScene()

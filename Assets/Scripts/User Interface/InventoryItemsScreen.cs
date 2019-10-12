@@ -16,6 +16,7 @@ public class InventoryItemsScreen : MonoBehaviour
     RectTransform itemsButtonsPanelsRectTrans;
     GameObject itemButtonPrefab;
     Button lastButtonSelected;
+    Language previousLanguage;
     float addeditemButtonsPanelSize;
 
     const string itemButtonPrefabPath = "Menu Elements/Item Button";
@@ -48,10 +49,15 @@ public class InventoryItemsScreen : MonoBehaviour
             itemButton.gameObject.SetActive(false);
             itemsButtons.Add(itemButton);
         }
+
+        previousLanguage = GameManager.Instance.CurrentLanguage;
     }
 
     void OnEnable()
     {
+        if (previousLanguage != GameManager.Instance.CurrentLanguage)
+            ReloadItemsInCurrentLanguage();
+
         int founditemIndex = 0;
 
         for (int i = 0; i < itemsButtons.Count; i++)
@@ -86,6 +92,20 @@ public class InventoryItemsScreen : MonoBehaviour
     {
         if (!EventSystem.current.currentSelectedGameObject && lastButtonSelected)
             EventSystem.current.SetSelectedGameObject(lastButtonSelected.gameObject);
+    }
+
+    void ReloadItemsInCurrentLanguage()
+    {
+        previousLanguage = GameManager.Instance.CurrentLanguage;
+
+        for (int i = 0; i < itemsButtons.Count; i++)
+        {
+            Button itemButton = itemsButtons[i];
+            InventoryItemInfo inventoryItemInfo = InventoryManager.Instance.GetInventoryItemInfo(i);
+
+            itemButton.onClick.RemoveAllListeners();
+            itemButton.onClick.AddListener(() => SelectItem(inventoryItemInfo, itemButton));
+        }
     }
 
     void SelectItem(InventoryItemInfo itemInfo, Button itemButton)

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
@@ -45,9 +46,30 @@ public class InventoryManager : MonoBehaviour
 
     void Start()
     {
-        allInventoryItems = Resources.LoadAll<InventoryItemInfo>("Inventory Items");
         inventoryAnimatedScreen = inventoryItemsScreen.GetComponent<AnimatedMenuScreen>();
         inventoryAnimatedScreen.SetUp();
+        
+        LoadInventoryItems();
+        GameManager.Instance.OnLanguageChanged.AddListener(LoadInventoryItems);
+    }
+
+    void LoadInventoryItems()
+    {
+        Language language = GameManager.Instance.CurrentLanguage;
+        string languagePath = Enum.GetName(typeof(Language), language);
+
+        allInventoryItems = Resources.LoadAll<InventoryItemInfo>("Inventory Items/" + languagePath);
+
+        foreach (InventoryItemInfo inventoryItemInfo in allInventoryItems)
+        {
+            InventoryItemInfo inventoryItemInfoInList = collectedInventoryItems.Find(it => it.itemID == inventoryItemInfo.itemID);
+
+            if (inventoryItemInfoInList)
+            {
+                collectedInventoryItems.Add(inventoryItemInfo);
+                collectedInventoryItems.Remove(inventoryItemInfoInList);
+            }
+        }
     }
 
     void ChangeCurrentlySelectedItem(InventoryItemInfo itemInfo)
@@ -125,10 +147,12 @@ public class InventoryManager : MonoBehaviour
 
     public void AddInventoryItem(InventoryItemInfo itemInfo)
     {
-        if (!collectedInventoryItems.Contains(itemInfo))
+        if (!collectedInventoryItems.Find(it => it.itemID == itemInfo.itemID))
         {
+            InventoryItemInfo itemInfoToAdd = Array.Find(allInventoryItems, it => it.itemID == itemInfo.itemID); 
+            
             CharacterManager.Instance.PlayerController.OnItemCollected.Invoke();
-            collectedInventoryItems.Add(itemInfo);
+            collectedInventoryItems.Add(itemInfoToAdd);
         }
     }
 

@@ -66,6 +66,7 @@ public class ChapterManager : MonoBehaviour
         AudioManager.Instance.PlayTheme("Exploration Phase");
 
         GameManager.Instance.AddCursorPointerEventsToAllButtons(endScreenArea);
+        GameManager.Instance.OnLanguageChanged.AddListener(ChangeDialoguesAndCluesLanguage);
 
         debateInitializer.DisableInteraction();
     }
@@ -76,12 +77,10 @@ public class ChapterManager : MonoBehaviour
         if (Input.GetKey(KeyCode.L))
         {
             GameManager.Instance.SetLanguage(Language.Spanish);
-            LoadChapterClues();
         }
         if (Input.GetKey(KeyCode.K))
         {
             GameManager.Instance.SetLanguage(Language.English);
-            LoadChapterClues();
         }
     }
 #endif
@@ -94,6 +93,12 @@ public class ChapterManager : MonoBehaviour
         chapterClues = Resources.LoadAll<ClueInfo>("Clues/" + languagePath + "/" + SceneManager.GetActiveScene().name);
 
         CharacterManager.Instance.PlayerController.ReloadCluesGathered(chapterClues);
+    }
+
+    void ChangeDialoguesAndCluesLanguage()
+    {
+        LoadChapterClues();
+        CharacterManager.Instance.LoadDialogues(currentPhase);
     }
 
     void RemoveAllConfirmationPromptListeners()
@@ -204,6 +209,13 @@ public class ChapterManager : MonoBehaviour
 
         if (index < chapterClues.Length && index >= 0)
             clueInfo = chapterClues[index];
+
+        return clueInfo;
+    }
+
+    public ClueInfo GetChapterClueInfo(uint clueID)
+    {
+        ClueInfo clueInfo = Array.Find(chapterClues, ci => ci.clueID == clueID);
 
         return clueInfo;
     }

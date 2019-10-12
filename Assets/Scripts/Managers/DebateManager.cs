@@ -100,7 +100,6 @@ public class DebateManager : MonoBehaviour
 
         useEvidenceButton.interactable = false;
 
-        GameManager.Instance.OnLanguageChanged.AddListener(ChangeDebateLanguage);
         GameManager.Instance.AddCursorPointerHoverEventsToAllButtons(debateOptionsPanel.gameObject);
         GameManager.Instance.AddCursorPointerHoverEventsToAllButtons(clueOptionsPanel.gameObject);
 
@@ -601,6 +600,8 @@ public class DebateManager : MonoBehaviour
 
         debatePerformanceController.Initialize(currentDebateInfo.arguments.Length);
         SetDebateAreaAvailability(enableDebateArea: true);
+
+        GameManager.Instance.OnLanguageChanged.AddListener(ChangeDebateLanguage);
 
         ChangeSpeakerNameText(currentDialogueLines[0].speakerName.ToString());
         Dialogue(currentDialogueLines[0]);

@@ -21,6 +21,7 @@ public class Door : Interactable
     protected override void Awake()
     {
         base.Awake();
+        
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>(); 
     }
@@ -28,7 +29,6 @@ public class Door : Interactable
     protected override void Start()
     {
         base.Start();
-        lockedThoughtInfo = Resources.Load("Thoughts/Generic/Door Thought") as ThoughtInfo;
         
         AnimationClip[] animations = animator.runtimeAnimatorController.animationClips;
         AnimationClip openAnim = Array.Find(animations, a => a.name.ToLower().Contains("open"));
@@ -36,6 +36,16 @@ public class Door : Interactable
 
         openAnimationDuration = openAnim.length;
         closeAnimationDuration = closeAnim.length;
+
+        LoadThought();
+        GameManager.Instance.OnLanguageChanged.AddListener(LoadThought);
+    }
+
+    void LoadThought()
+    {
+        string languagePath = Enum.GetName(typeof(Language), GameManager.Instance.CurrentLanguage);
+
+        lockedThoughtInfo = Resources.Load("Thoughts/" + languagePath + "/Generic/Door Thought") as ThoughtInfo;
     }
 
     void Open()
