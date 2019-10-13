@@ -1,11 +1,23 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 public class PauseMenu : Menu
 {
+    [Header("Main Properties")]
     [SerializeField] GameObject menuArea = default;
     [SerializeField] GameObject mainScreenMainArea = default;
     [SerializeField] [TextArea(3, 5)] string exitWarning = default;
+
+    [Header("Translation Texts")]
+    [SerializeField] TextMeshProUGUI[] backButtonTexts = default;
+    [SerializeField] TextMeshProUGUI pauseTitleText = default;
+    [SerializeField] TextMeshProUGUI[] mainButtonTexts = default;
+    [SerializeField] TextMeshProUGUI cluesTitleText = default;
+    [SerializeField] TextMeshProUGUI inventoryTitleText = default;
+    [SerializeField] TextMeshProUGUI settingsTitleText = default;
+    [SerializeField] TextMeshProUGUI[] settingsOptionsTexts = default;
+    [SerializeField] TextMeshProUGUI[] textSpeedTexts = default;
 
     bool isPaused;
     bool playerMovementEnabledAtPause;
@@ -30,7 +42,27 @@ public class PauseMenu : Menu
 
     protected override void SetUpTexts()
     {
+        Language language = GameManager.Instance.CurrentLanguage;
+        PauseMenuTextInfo pauseMenuTextInfo = menuTextsByLanguage[language] as PauseMenuTextInfo;
 
+        if (!pauseMenuTextInfo)
+        {
+            Debug.LogError("The scriptable object set for translation is incorrect.", gameObject);
+            return;
+        }
+
+        for (int i = 0; i < backButtonTexts.Length; i++)
+            backButtonTexts[i].text = pauseMenuTextInfo.backButtonText;
+        pauseTitleText.text = pauseMenuTextInfo.pauseTitle;
+        for (int i = 0; i < mainButtonTexts.Length; i++)
+            mainButtonTexts[i].text = pauseMenuTextInfo.mainButtonTexts[i];
+        cluesTitleText.text = pauseMenuTextInfo.cluesTitle;
+        inventoryTitleText.text = pauseMenuTextInfo.inventoryTitle;;
+        settingsTitleText.text = pauseMenuTextInfo.settingsTitle;
+        for (int i = 0; i < settingsOptionsTexts.Length; i++)
+            settingsOptionsTexts[i].text = pauseMenuTextInfo.settingsOptions[i];
+        for (int i = 0; i < textSpeedTexts.Length; i++)
+            textSpeedTexts[i].text = pauseMenuTextInfo.textSpeedTexts[i];
     }
 
     void CancelExit()
