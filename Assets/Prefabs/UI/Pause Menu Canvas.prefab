@@ -1040,7 +1040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cd266bdf029c1641ba8be24f3f4c162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  novelLanguageDropdown: {fileID: 8695706674175287454}
+  languageDropdown: {fileID: 8695706674175287454}
   qualityLevelDropdown: {fileID: 8130415136624962019}
   resolutionDropdown: {fileID: 6484389605985505947}
   fullscreenToggle: {fileID: 1182346585593437603}
@@ -1592,7 +1592,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8317957963424211247}
   m_Layer: 5
-  m_Name: Novel Language
+  m_Name: Language
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8015,6 +8015,9 @@ MonoBehaviour:
     previousScreen: {fileID: 1844409823930495231}
   - screen: {fileID: 4767136632953414405}
     previousScreen: {fileID: 1844409823930495231}
+  menuTranslatedTexts:
+  - {fileID: 0}
+  - {fileID: 0}
   menuArea: {fileID: 4479487948888730846}
   mainScreenMainArea: {fileID: 9111411268322876820}
   exitWarning: Are you sure you want to exit without having solved the mystery?
@@ -8788,7 +8791,7 @@ GameObject:
   - component: {fileID: 5396997751232150339}
   - component: {fileID: 8695706674175287454}
   m_Layer: 5
-  m_Name: Novel Language Dropdown
+  m_Name: Language Dropdown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10801,7 +10804,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6469261137537215166}
   m_Layer: 5
-  m_Name: Novel Language
+  m_Name: Language
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

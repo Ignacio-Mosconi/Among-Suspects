@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 [System.Serializable]
 public struct MenuScreen
@@ -9,23 +9,48 @@ public struct MenuScreen
     public AnimatedMenuScreen previousScreen;
 }
 
-public class Menu : MonoBehaviour
+public abstract class Menu : MonoBehaviour
 {
     [Header("Menu Screens")]
     [SerializeField] protected AnimatedMenuScreen mainScreen = default;
     [SerializeField] protected MenuScreen[] menuScreens = default;
+    
+    [Header("Menu Languages")]
+    [SerializeField] ScriptableObject[] menuTranslatedTexts = new ScriptableObject[(int)Language.Count];
 
+    protected Dictionary<Language, ScriptableObject> menuTextsByLanguage = new Dictionary<Language, ScriptableObject>();
+    
     MenuScreen currentScreen;
     MenuScreen previousScreen;
+
+    void OnValidate()
+    {
+        Array.Resize(ref menuTranslatedTexts, (int)Language.Count);
+    }
+
+    protected virtual void Awake()
+    {
+        for (int i = 0; i < (int)Language.Count; i++)
+        {
+            Language language = (Language)i;
+            menuTextsByLanguage.Add(language, menuTranslatedTexts[i]);
+        }
+    }
 
     protected virtual void Start()
     {
         currentScreen = Array.Find(menuScreens, ms => ms.screen == mainScreen);
+
+        SetUpTexts();
+
         GameManager.Instance.AddCursorPointerEventsToAllButtons(gameObject);
+        GameManager.Instance.OnLanguageChanged.AddListener(SetUpTexts);
 
         foreach (MenuScreen menuScreen in menuScreens)
             menuScreen.screen.SetUp();
     }
+
+    protected abstract void SetUpTexts();
 
     protected void ResetMenuState()
     {

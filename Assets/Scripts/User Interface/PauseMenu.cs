@@ -28,6 +28,11 @@ public class PauseMenu : Menu
         }
     }
 
+    protected override void SetUpTexts()
+    {
+
+    }
+
     void CancelExit()
     {
         mainScreenMainArea.SetActive(true);

@@ -6,7 +6,7 @@ using TMPro;
 
 public enum Setting
 {
-    NovelLanguage,
+    Language,
     Graphics,
     Resolution,
     Fullscreen,
@@ -20,7 +20,7 @@ public enum Setting
 public class SettingsScreen : MonoBehaviour
 {
     [Header("Dropdowns")]
-    [SerializeField] TMP_Dropdown novelLanguageDropdown = default;
+    [SerializeField] TMP_Dropdown languageDropdown = default;
     [SerializeField] TMP_Dropdown qualityLevelDropdown = default;
     [SerializeField] TMP_Dropdown resolutionDropdown = default;
     [Header("Toggles")]
@@ -69,7 +69,7 @@ public class SettingsScreen : MonoBehaviour
     
     void Start()
     {
-        InitializeNovelLanguageDropdown();
+        InitializeLanguageDropdown();
         InitializeQualityLevelDropdown();
         InitializeResolutionDropdown();
         fullscreenToggle.isOn = GameManager.Instance.IsFullscreen;
@@ -115,7 +115,7 @@ public class SettingsScreen : MonoBehaviour
         infoPanel.anchoredPosition = mouseReferenceResolutionPosition + offset;
     }
 
-    void InitializeNovelLanguageDropdown()
+    void InitializeLanguageDropdown()
     {
         List<string> novelLanguageOptions = new List<string>();
 
@@ -125,11 +125,11 @@ public class SettingsScreen : MonoBehaviour
             novelLanguageOptions.Add(option);
         }
 
-        novelLanguageDropdown.ClearOptions();
-        novelLanguageDropdown.AddOptions(novelLanguageOptions);
-        novelLanguageDropdown.value = (int)GameManager.Instance.CurrentLanguage;
+        languageDropdown.ClearOptions();
+        languageDropdown.AddOptions(novelLanguageOptions);
+        languageDropdown.value = (int)GameManager.Instance.CurrentLanguage;
 
-        ResizeDropdownList(novelLanguageDropdown);
+        ResizeDropdownList(languageDropdown);
     }
 
     void InitializeQualityLevelDropdown()

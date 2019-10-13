@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class MainMenu : Menu
@@ -11,6 +10,16 @@ public class MainMenu : Menu
     [SerializeField] [TextArea(3, 5)] string quitWarning = default;
     [Header("Other References")]
     [SerializeField] TextMeshProUGUI appVersionText = default;
+    [Header("Translation Texts")]
+    [SerializeField] TextMeshProUGUI[] backButtonTexts = default; 
+    [SerializeField] TextMeshProUGUI[] mainButtonTexts = default; 
+    [SerializeField] TextMeshProUGUI controlsTitleText = default; 
+    [SerializeField] TextMeshProUGUI[] controlsTexts = default;
+    [SerializeField] TextMeshProUGUI settingsTitleText = default;
+    [SerializeField] TextMeshProUGUI[] settingsOptionsTexts = default;
+    [SerializeField] TextMeshProUGUI[] textSpeedTexts = default;
+    [SerializeField] TextMeshProUGUI creditsTitleText = default;
+    [SerializeField] TextMeshProUGUI thanksText = default;
 
     protected override void Start()
     {
@@ -20,6 +29,33 @@ public class MainMenu : Menu
         
         GameManager.Instance.SetCursorEnable(enable: true);
         AudioManager.Instance.PlayTheme("Main Menu");
+    }
+
+    protected override void SetUpTexts()
+    {
+        Language language = GameManager.Instance.CurrentLanguage;
+        MainMenuTextInfo mainMenuTextInfo = menuTextsByLanguage[language] as MainMenuTextInfo;
+
+        if (!mainMenuTextInfo)
+        {
+            Debug.LogError("The scriptable object set for translation is incorrect.", gameObject);
+            return;
+        }
+
+        for (int i = 0; i < backButtonTexts.Length; i++)
+            backButtonTexts[i].text = mainMenuTextInfo.backButtonText;
+        for (int i = 0; i < mainButtonTexts.Length; i++)
+            mainButtonTexts[i].text = mainMenuTextInfo.mainButtonTexts[i];
+        controlsTitleText.text = mainMenuTextInfo.controlsTitle;
+        for (int i = 0; i < controlsTexts.Length; i++)
+            controlsTexts[i].text = mainMenuTextInfo.controlsTexts[i];
+        settingsTitleText.text = mainMenuTextInfo.settingsTitle;
+        for (int i = 0; i < settingsOptionsTexts.Length; i++)
+            settingsOptionsTexts[i].text = mainMenuTextInfo.settingsOptions[i];
+        for (int i = 0; i < textSpeedTexts.Length; i++)
+            textSpeedTexts[i].text = mainMenuTextInfo.textSpeedTexts[i];
+        creditsTitleText.text = mainMenuTextInfo.creditsTitle;
+        thanksText.text = mainMenuTextInfo.thanksText;
     }
 
     void StartNewGame()
