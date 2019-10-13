@@ -165,9 +165,6 @@ public class DialogueManager : MonoBehaviour
 
     void ChangeCurrentDialogueLanguage()
     {
-        if (!enabled)
-            return;
-
         if (currentDialogueInfo)
         {
             currentDialogueInfo = currentDialogueInfoByLanguage[GameManager.Instance.CurrentLanguage];
@@ -203,6 +200,9 @@ public class DialogueManager : MonoBehaviour
             currentTutorialInfo = currentTutorialInfoByLanguage[GameManager.Instance.CurrentLanguage];
             currentLines = currentTutorialInfo.tutorialLines;
         }
+
+        if (dialogueOptionScreen.IsSelectingOption)
+            dialogueOptionScreen.ChangeOptionsLanguage();
     }
 
     bool ShouldDisplayLeftMousePrompt()
@@ -331,9 +331,17 @@ public class DialogueManager : MonoBehaviour
 
     void ShowDialogueOptions()
     {
+        Dictionary<Language, DialogueOption[]> dialogueOptionsByLanguage = new Dictionary<Language, DialogueOption[]>();
+
+        for (int i = 0; i < (int)Language.Count; i++)
+        {
+            Language language = (Language)i;
+            dialogueOptionsByLanguage.Add(language, currentDialogueInfoByLanguage[language].interactiveConversation.playerOptions);
+        }
+
         enabled = false;
         dialogueOptionsPrompt.Show();
-        dialogueOptionScreen.ShowOptionsScreen(currentDialogueInfo.interactiveConversation.playerOptions);
+        dialogueOptionScreen.ShowOptionsScreen(dialogueOptionsByLanguage);
     }
 
     public void ResumeInteractiveDialogue(int option)

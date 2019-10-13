@@ -76,10 +76,10 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     playerOptions:
-    - option: Angry
-      description: '''I suffered an accident, you jerk!'''
-    - option: Calm
-      description: '''I cannot remember anybody due to an accident...'''
+    - option: Enojado
+      description: "\"Sufr\xED un accidente, \xA1idiota!\""
+    - option: Tranquilo
+      description: '"No puedo recordar a nadie debido a un accidente..."'
     resultingDialogues:
     - branchDialogue:
       - speakerName: 0
