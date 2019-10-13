@@ -54,8 +54,10 @@ public class DialogueManager : MonoBehaviour
     Dictionary<Language, DialogueInfo> currentDialogueInfoByLanguage;
     Dictionary<Language, ThoughtInfo> currentThoughtInfoByLanguage;
     Dictionary<Language, ItemRequiredThoughtInfo> currentItemRequiredThoughtInfoByLanguage;
+    Dictionary<Language, TutorialInfo> currentTutorialInfoByLanguage;
     DialogueInfo currentDialogueInfo;
     ThoughtInfo currentThoughtInfo;
+    TutorialInfo currentTutorialInfo;
     ItemRequiredThoughtInfo currentItemRequiredThoughtInfo;
     Dialogue[] currentLines;
     NPC mainSpeaker;
@@ -145,9 +147,11 @@ public class DialogueManager : MonoBehaviour
         currentDialogueInfoByLanguage = null;
         currentThoughtInfoByLanguage = null;
         currentItemRequiredThoughtInfoByLanguage = null;
+        currentTutorialInfoByLanguage = null;
         currentDialogueInfo = null;
         currentThoughtInfo = null;
         currentItemRequiredThoughtInfo = null;
+        currentTutorialInfo = null;
         currentLines = null;
         mainSpeaker = null;
         previousSpeaker = null;
@@ -192,6 +196,12 @@ public class DialogueManager : MonoBehaviour
             else
                 currentLines = (wasUseCorrectThought) ? currentItemRequiredThoughtInfo.useCorrectItemThought : 
                                                         currentItemRequiredThoughtInfo.useIncorrectItemThought;
+        }
+
+        if (currentTutorialInfo)
+        {
+            currentTutorialInfo = currentTutorialInfoByLanguage[GameManager.Instance.CurrentLanguage];
+            currentLines = currentTutorialInfo.tutorialLines;
         }
     }
 
@@ -402,11 +412,13 @@ public class DialogueManager : MonoBehaviour
         SayDialogue(currentLines[0]);
     }
 
-    public void StartDialogue(TutorialInfo tutorialInfo)
+    public void StartDialogue(Dictionary<Language, TutorialInfo> tutorialInfos)
     {
-        EnableDialogueArea();
+        currentTutorialInfoByLanguage = tutorialInfos;
+        currentTutorialInfo = currentTutorialInfoByLanguage[GameManager.Instance.CurrentLanguage];
+        currentLines = currentTutorialInfo.tutorialLines;
 
-        currentLines = tutorialInfo.tutorialLines;
+        EnableDialogueArea();
         SayDialogue(currentLines[0]);
     }
 

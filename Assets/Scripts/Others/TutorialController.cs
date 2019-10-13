@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,7 +7,7 @@ public class TutorialController : MonoBehaviour
 {   
     [SerializeField] TutorialTrigger debateTutorialTrigger = default;
 
-    TutorialInfo[] tutorials;
+    Dictionary<Language, TutorialInfo[]> tutorialsByLanguage = new Dictionary<Language, TutorialInfo[]>();
     float navigationTutorialDelay;
     float investigationTutorialDelay;
     float cluesTutorialDelay;
@@ -19,7 +20,7 @@ public class TutorialController : MonoBehaviour
 
     void Start()
     {
-        tutorials = Resources.LoadAll<TutorialInfo>("Tutorials");
+        LoadTutorials();
 
         HUD hud = FindObjectOfType<HUD>();
 
@@ -39,18 +40,39 @@ public class TutorialController : MonoBehaviour
         debateTutorialTrigger.OnTrigger.AddListener(DisplayDebateTutorial);
     }
 
-    TutorialInfo FetchTutorial(TutorialType tutorialType)
+    void LoadTutorials()
     {
-        TutorialInfo tutorial = Array.Find(tutorials, t => t.tutorialType == tutorialType);
-        if (!tutorial)
-            Debug.LogError("There are no '" + tutorialType.ToString() + "' tutorials set up");
+        for (int i = 0; i < (int)Language.Count; i++)
+        {
+            Language language = (Language)i;
+            string languagePath = Enum.GetName(typeof(Language), language);
+            TutorialInfo[] tutorials = Resources.LoadAll<TutorialInfo>("Tutorials/" + languagePath);
 
-        return tutorial;
+            tutorialsByLanguage.Add(language, tutorials);
+        }
     }
 
-    void DisplayTutorial(TutorialInfo tutorial)
+    Dictionary<Language, TutorialInfo> FetchTutorialByLanguage(TutorialType tutorialType)
     {
-        DialogueManager.Instance.StartDialogue(tutorial);
+        Dictionary<Language, TutorialInfo> tutorialByLanguage = new Dictionary<Language, TutorialInfo>();
+
+        for (int i = 0; i < (int)Language.Count; i++)
+        {
+            Language language = (Language)i;
+            TutorialInfo tutorial = Array.Find(tutorialsByLanguage[language], t => t.tutorialType == tutorialType);
+
+            tutorialByLanguage.Add(language, tutorial);
+        }
+
+        if (tutorialByLanguage == null)
+            Debug.LogError("There are no '" + tutorialType.ToString() + "' tutorials set up");
+
+        return tutorialByLanguage;
+    }
+
+    void DisplayTutorial(Dictionary<Language, TutorialInfo> tutorialByLanguage)
+    {
+        DialogueManager.Instance.StartDialogue(tutorialByLanguage);
         onTutorialTriggered.Invoke();
     }
 
@@ -82,44 +104,44 @@ public class TutorialController : MonoBehaviour
 
     void DisplayNavigationTutorial()
     {
-        TutorialInfo tutorial = FetchTutorial(TutorialType.Navigation);
+        Dictionary<Language, TutorialInfo> tutorialByLanguage = FetchTutorialByLanguage(TutorialType.Navigation);
         DialogueManager.Instance.OnDialogueAreaDisable.RemoveListener(TriggerNavigationTutorial);
-        DisplayTutorial(tutorial);
+        DisplayTutorial(tutorialByLanguage);
     }
 
     void DisplayInvestigationTutorial()
     {
-        TutorialInfo tutorial = FetchTutorial(TutorialType.Investigation);
+        Dictionary<Language, TutorialInfo> tutorialByLanguage = FetchTutorialByLanguage(TutorialType.Investigation);
         CharacterManager.Instance.PlayerController.OnStartedInvestigation.RemoveListener(TriggerInvestigationTutorial);
-        DisplayTutorial(tutorial);
+        DisplayTutorial(tutorialByLanguage);
     }
 
     void DisplayCluesTutorial()
     {
-        TutorialInfo tutorial = FetchTutorial(TutorialType.Clues);
+        Dictionary<Language, TutorialInfo> tutorialByLanguage = FetchTutorialByLanguage(TutorialType.Clues);
         CharacterManager.Instance.PlayerController.OnClueFound.RemoveListener(TriggerCluesTutorial);
-        DisplayTutorial(tutorial);
+        DisplayTutorial(tutorialByLanguage);
     }
 
     void DisplayItemsTutorial()
     {
-        TutorialInfo tutorial = FetchTutorial(TutorialType.Items);
+        Dictionary<Language, TutorialInfo> tutorialByLanguage = FetchTutorialByLanguage(TutorialType.Items);
         CharacterManager.Instance.PlayerController.OnItemCollected.RemoveListener(TriggerItemsTutorial);
-        DisplayTutorial(tutorial);
+        DisplayTutorial(tutorialByLanguage);
     }
 
     void DisplayDebateStartTutorial()
     {
-        TutorialInfo tutorial = FetchTutorial(TutorialType.DebateStart);
+        Dictionary<Language, TutorialInfo> tutorialByLanguage = FetchTutorialByLanguage(TutorialType.DebateStart);
         CharacterManager.Instance.PlayerController.OnAllCluesFound.RemoveListener(TriggerDebateStartTutorial);
-        DisplayTutorial(tutorial);
+        DisplayTutorial(tutorialByLanguage);
     }
 
     void DisplayDebateTutorial()
     {
-        TutorialInfo tutorial = FetchTutorial(TutorialType.Debate);
+        Dictionary<Language, TutorialInfo> tutorialByLanguage = FetchTutorialByLanguage(TutorialType.Debate);
         debateTutorialTrigger.OnTrigger.RemoveListener(DisplayDebateTutorial);
-        DisplayTutorial(tutorial);
+        DisplayTutorial(tutorialByLanguage);
     }
 
     #region Properties

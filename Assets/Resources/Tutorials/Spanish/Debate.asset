@@ -1,0 +1,125 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11ba2c5285c405445beae8461f0e3327, type: 3}
+  m_Name: Debate
+  m_EditorClassIdentifier: 
+  tutorialType: 4
+  tutorialLines:
+  - speakerName: 0
+    speech: Okay, it's the moment of truth...
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: We have to discuss about which one of us killed that person, because it
+      could only have been one of us!
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+      playDelay: 0.2
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: After interacting with the table, you'll oficially start the <color=yellow>debate</color>.
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: 'During that instance, you won''t be able to move around anymore: you''ll
+      be forced to show the power of your deductive logic in an intense argument-showdown.'
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: The characters will make statements, and you'll have to identify lies
+      and contradictions.
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: Therefore, some testimonies will be 'refutable', which means that you'll
+      have to either <color=yellow>trust</color> or <color=yellow>refute</color> them.
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: Whenever you decide to <color=yellow>refute</color> something, you'll
+      have to do it by presenting a valid piece of evidence from the <color=yellow>clues</color>
+      you found.
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: Making choices during this instances will have an impact on your <color=yellow>'credibility
+      bar'</color>; if you choose wisely, it will increase - if you fail to do so,
+      it will decrease.
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: Solve the case by gaining enough <color=yellow>credibility</color> to
+      make it to end of the <color=yellow>debate</color>.
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: You are on your own now; start whenever you're ready.
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0

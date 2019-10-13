@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11ba2c5285c405445beae8461f0e3327, type: 3}
+  m_Name: Navigation
+  m_EditorClassIdentifier: 
+  tutorialType: 0
+  tutorialLines:
+  - speakerName: 0
+    speech: Okay, then...
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: I should probably approach the rest of the guests at this party, so that
+      I can greet them.
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: If I'm lucky enough, I'll be able to start remembering things from my
+      past...
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: Use the <sprite="Main Keys" name="W">, <sprite="Main Keys" name="A">,
+      <sprite="Main Keys" name="S">, and <sprite="Main Keys" name="D"> keys to move
+      around.
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: You can hold down the <sprite="Other Keys" name="shift"> key to move around
+      faster while you walk.
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: Use the <sprite="Mouse" name="Mouse"> to control the view.
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: Press the <sprite="Main Keys" name="E"> key to <color=yellow>talk</color>
+      to a character when you get close to them. You can also <color=yellow>inspect</color>
+      objects with that same key.
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: Go ahead and <color=yellow>talk</color> to the rest of the group.
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
