@@ -278,7 +278,7 @@ RectTransform:
   - {fileID: 5176875964438992314}
   - {fileID: 8590155819658095123}
   - {fileID: 8004568076491889898}
-  m_Father: {fileID: 3918439898179481193}
+  m_Father: {fileID: 8824152541071662604}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -384,6 +384,65 @@ MonoBehaviour:
   itemTitleText: {fileID: 2989691010298605265}
   itemDescriptionText: {fileID: 8086054347307764660}
   itemImage: {fileID: 3043567451160748188}
+--- !u!1 &1313667708315260565
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8824152541071662604}
+  - component: {fileID: 2999404894355124881}
+  m_Layer: 0
+  m_Name: Inventory Menu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8824152541071662604
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313667708315260565}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8857679193099103019}
+  m_Father: {fileID: 3918439898179481193}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2999404894355124881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313667708315260565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4255e4c4e310bfe48aad5586afb3aa13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainScreen: {fileID: 5369794434941904822}
+  menuScreens:
+  - screen: {fileID: 5369794434941904822}
+    previousScreen: {fileID: 0}
+  menuTranslatedTexts:
+  - {fileID: 11400000, guid: b7d98215e56e96047af607211cdec73d, type: 2}
+  - {fileID: 11400000, guid: 4b3dec09206a9924ca5e86ca21a0c4f6, type: 2}
+  chooseItemTitleText: {fileID: 1001568928709441072}
+  useItemButtonText: {fileID: 8660624553299901633}
+  cancelItemButtonText: {fileID: 4153428190127233518}
 --- !u!1 &1528217955881303840
 GameObject:
   m_ObjectHideFlags: 0
@@ -1162,7 +1221,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 8857679193099103019}
+  - {fileID: 8824152541071662604}
   m_Father: {fileID: 3918439899233332541}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
