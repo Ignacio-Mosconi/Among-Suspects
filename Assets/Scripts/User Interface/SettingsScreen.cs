@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 public enum Setting
 {
+    NovelLanguage,
     Graphics,
     Resolution,
     Fullscreen,
@@ -18,6 +20,7 @@ public enum Setting
 public class SettingsScreen : MonoBehaviour
 {
     [Header("Dropdowns")]
+    [SerializeField] TMP_Dropdown novelLanguageDropdown = default;
     [SerializeField] TMP_Dropdown qualityLevelDropdown = default;
     [SerializeField] TMP_Dropdown resolutionDropdown = default;
     [Header("Toggles")]
@@ -46,6 +49,11 @@ public class SettingsScreen : MonoBehaviour
 
     const float InfoPanelBorderPadding = 20f;
 
+    void OnValidate()
+    {
+        Array.Resize(ref settingInfoTexts, (int)Setting.Count);
+    }
+
     void Awake()
     {
         infoPanelText = infoPanel.GetComponentInChildren<TextMeshProUGUI>(includeInactive: true);
@@ -61,6 +69,7 @@ public class SettingsScreen : MonoBehaviour
     
     void Start()
     {
+        InitializeNovelLanguageDropdown();
         InitializeQualityLevelDropdown();
         InitializeResolutionDropdown();
         fullscreenToggle.isOn = GameManager.Instance.IsFullscreen;
@@ -104,6 +113,23 @@ public class SettingsScreen : MonoBehaviour
         mouseReferenceResolutionPosition.y = Mathf.Lerp(0f, canvasReferenceResolution.y, mouseViewportPosition.y);
 
         infoPanel.anchoredPosition = mouseReferenceResolutionPosition + offset;
+    }
+
+    void InitializeNovelLanguageDropdown()
+    {
+        List<string> novelLanguageOptions = new List<string>();
+
+        for (int i = 0; i < (int)Language.Count; i++)
+        {
+            string option = Enum.GetName(typeof(Language), (Language)i);
+            novelLanguageOptions.Add(option);
+        }
+
+        novelLanguageDropdown.ClearOptions();
+        novelLanguageDropdown.AddOptions(novelLanguageOptions);
+        novelLanguageDropdown.value = (int)GameManager.Instance.CurrentLanguage;
+
+        ResizeDropdownList(novelLanguageDropdown);
     }
 
     void InitializeQualityLevelDropdown()
@@ -156,6 +182,11 @@ public class SettingsScreen : MonoBehaviour
             fullscreenToggle.graphic.color = fullscreenToggle.colors.normalColor;
             fullscreenText.color = Color.white;
         }
+    }
+
+    public void ChangeNovelLanguage(int languageIndex)
+    {
+        GameManager.Instance.SetLanguage((Language)languageIndex);
     }
 
     public void ChangeQualityLevel(int qualityLevelIndex)

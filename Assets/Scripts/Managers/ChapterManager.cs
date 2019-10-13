@@ -71,20 +71,6 @@ public class ChapterManager : MonoBehaviour
         debateInitializer.DisableInteraction();
     }
 
-#if UNITY_EDITOR
-    void Update()
-    {
-        if (Input.GetKey(KeyCode.L))
-        {
-            GameManager.Instance.SetLanguage(Language.Spanish);
-        }
-        if (Input.GetKey(KeyCode.K))
-        {
-            GameManager.Instance.SetLanguage(Language.English);
-        }
-    }
-#endif
-
     void LoadChapterClues()
     {
         Language language = GameManager.Instance.CurrentLanguage;
