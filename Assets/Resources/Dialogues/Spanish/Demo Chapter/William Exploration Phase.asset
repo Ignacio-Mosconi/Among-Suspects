@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   introLines:
   - speakerName: 2
-    speech: Hey, there, bro. What's up?
+    speech: "Hola amigo, \xBFQue hay?"
     speakerEmotion: 1
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -24,7 +24,7 @@ MonoBehaviour:
     playerThought: 0
     triggerNiceImpression: 0
   - speakerName: 0
-    speech: Hi...big guy...
+    speech: Hola... grandote...
     speakerEmotion: 8
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -34,7 +34,7 @@ MonoBehaviour:
     playerThought: 0
     triggerNiceImpression: 0
   - speakerName: 0
-    speech: Well, I kind of lost my memory in an accident...
+    speech: "Perdona, como que perd\xED mi memoria en un accidente..."
     speakerEmotion: 8
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -44,7 +44,7 @@ MonoBehaviour:
     playerThought: 0
     triggerNiceImpression: 0
   - speakerName: 0
-    speech: Can you tell me your name? I actually...don't remember you...
+    speech: "\xBFPodr\xEDas decirme tu nombre? De hecho no me... acuerdo de ti."
     speakerEmotion: 8
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -54,7 +54,7 @@ MonoBehaviour:
     playerThought: 0
     triggerNiceImpression: 0
   - speakerName: 2
-    speech: Really? Is that so?
+    speech: "\xBFAh si? "
     speakerEmotion: 3
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -64,8 +64,8 @@ MonoBehaviour:
     playerThought: 0
     triggerNiceImpression: 0
   - speakerName: 2
-    speech: Ehm, okay, dude. You're talking to <color=orange>William Evans</color>,
-      the super famous football player.
+    speech: Ehm, bueno, amigo. Le estas hablando al grande  <color=orange>William
+      Evans</color>, el super famoso jugar de futbol.
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -75,7 +75,7 @@ MonoBehaviour:
     playerThought: 0
     triggerNiceImpression: 1
   - speakerName: 0
-    speech: Are you famous?
+    speech: "\xBFEres famoso?"
     speakerEmotion: 8
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -85,7 +85,8 @@ MonoBehaviour:
     playerThought: 0
     triggerNiceImpression: 0
   - speakerName: 2
-    speech: You bet I am! I'm gonna be the next legend of the sport!
+    speech: "\xA1Claro que lo soy! \xA1Voy a ser la siguiente leyenda en el mundo
+      del deporte!"
     speakerEmotion: 2
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -95,7 +96,7 @@ MonoBehaviour:
     playerThought: 0
     triggerNiceImpression: 0
   - speakerName: 0
-    speech: He seems pretty proud of himself, but why does he have to be so loud?
+    speech: "Parece estar seguro de si mismo, pero \xBFporque debe ser tan ruidoso?"
     speakerEmotion: 8
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -110,7 +111,7 @@ MonoBehaviour:
     resultingDialogues: []
   niceComment:
   - speakerName: 2
-    speech: You really don't remember me at all, dude?
+    speech: "\xBFEn serio no te acuerdas de mi, amigo?"
     speakerEmotion: 1
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -120,7 +121,7 @@ MonoBehaviour:
     playerThought: 0
     triggerNiceImpression: 0
   - speakerName: 0
-    speech: I'm sorry...I can't recall you...
+    speech: "Perd\xF3n, no me acuerdo nada de t\xED."
     speakerEmotion: 8
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -130,7 +131,7 @@ MonoBehaviour:
     playerThought: 0
     triggerNiceImpression: 0
   - speakerName: 2
-    speech: That's...
+    speech: Eso es....
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -140,7 +141,7 @@ MonoBehaviour:
     playerThought: 0
     triggerNiceImpression: 0
   - speakerName: 2
-    speech: '...all right. Never mind.'
+    speech: '...Dejalo, no es nada.'
     speakerEmotion: 1
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -150,8 +151,7 @@ MonoBehaviour:
     playerThought: 0
     triggerNiceImpression: 0
   - speakerName: 2
-    speech: I guess I'll watch that badass TV over there while we wait for the rest
-      of the people.
+    speech: Supongo que ire a ver esa TV mientras esperamos al resto.
     speakerEmotion: 1
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -161,7 +161,7 @@ MonoBehaviour:
     playerThought: 0
     triggerNiceImpression: 0
   - speakerName: 2
-    speech: I wanna check out one of the sports channels...
+    speech: Quiero ver que canales de deportes hay.
     speakerEmotion: 2
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -171,7 +171,7 @@ MonoBehaviour:
     playerThought: 0
     triggerNiceImpression: 0
   - speakerName: 0
-    speech: Okay...go ahead.
+    speech: Adelante.
     speakerEmotion: 8
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -206,7 +206,7 @@ MonoBehaviour:
     rightSpeaker: 3
     dialogue:
     - speakerName: 1
-      speech: Really? Are you so popular?
+      speech: "\xBFEn serio eres tan popular?"
       speakerEmotion: 3
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -216,7 +216,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 2
-      speech: Hell, yeah! I'm known all over the county!
+      speech: "Absolutamente, \xA1soy reconocido por todo el pa\xEDs!"
       speakerEmotion: 2
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -226,7 +226,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 2
-      speech: I'm the most talented dude this town's ever seen...
+      speech: Soy el jugador mas talentoso de toda la ciudad...
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -236,7 +236,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 1
-      speech: That's impressive!
+      speech: "\xA1Eso es impresionante!"
       speakerEmotion: 2
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -246,7 +246,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: I hope he's not trying to flirt with my girlfriend...
+      speech: Espero que no este coqueteando con mi novia...
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -256,7 +256,7 @@ MonoBehaviour:
       playerThought: 1
       triggerNiceImpression: 0
     - speakerName: 1
-      speech: Darling, you never told me about your famous sports friend...
+      speech: "Cari\xF1o, nunca me contaste que tenias un amigo tan popular."
       speakerEmotion: 0
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -266,7 +266,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: Well...I really don't remember why I have never told you about him.
+      speech: Bueno... tampoco me acuerdo porque nunca te conte.
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -276,8 +276,8 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: Mhh, that football star has always exaggerated and bragged about his
-        actual talents.
+      speech: Mhm, esa estrella no hace mas que presumir su carrera que, honestamente,
+        la esta exagerando bastante.
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -287,7 +287,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: Maybe that's why you never told her about him...
+      speech: "Quizas por eso no se te ocurri\xF3 contarle..."
       speakerEmotion: 2
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -297,7 +297,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 2
-      speech: What da fuck do you know, freak?!
+      speech: Y tu que sabes, mocoso?!
       speakerEmotion: 5
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -317,7 +317,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: I can sense a lot of tension between those two...
+      speech: Puedo hasta tocar la tension entre estos dos...
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -327,7 +327,7 @@ MonoBehaviour:
       playerThought: 1
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: Okay; let's just calm down, all right?
+      speech: "Bueno; es hora de calmarse, \xBFSi?"
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -337,7 +337,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: We are all here to have a nice party, aren't we?
+      speech: "Estamos todos aqu\xED para tener una agradable fiesta."
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       dialogueSound:
