@@ -26,7 +26,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: Ehmm...what was your name?
+      speech: "Ehmm...Cu\xE1l era tu nombre?"
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -36,7 +36,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: Huh?
+      speech: Eh?
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -46,7 +46,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: Was I so forgettable that you cannot even remember my name?
+      speech: "Te import\xE9 tan poco que ni mi nombre te acuerdas?"
       speakerEmotion: 0
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -56,7 +56,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: Do you remember me at all?
+      speech: Siquieras sabes quien soy?
       speakerEmotion: 4
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -66,7 +66,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: I thought you were at least a bit decent, <color=orange>James</color>.
+      speech: Pense que eras decente, <color=orange>James</color>.
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -83,7 +83,7 @@ MonoBehaviour:
     resultingDialogues:
     - branchDialogue:
       - speakerName: 0
-        speech: I don't like your tone, buddy!
+        speech: "\xA1No me gusta tu tono, amigo!"
         speakerEmotion: 8
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -93,7 +93,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 0
-        speech: Why did you have to insult my decency like that?
+        speech: "\xBFQue necesidad tienes de insultarme as\xED?"
         speakerEmotion: 8
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -103,7 +103,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 0
-        speech: I can't remember you because I had a freaking accident!
+        speech: "\xA1No me acuerdo nada porque sufr\xED un accidente!"
         speakerEmotion: 8
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -113,7 +113,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 3
-        speech: You are just like the rest...
+        speech: "T\xEDpico..."
         speakerEmotion: 2
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -123,8 +123,8 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 3
-        speech: You think that you are the center of the world, that you are the only
-          one whose problems matter...
+        speech: "Crees que eres el centro del universo, cuyos problemas son los \xFAnicos
+          que importan."
         speakerEmotion: 0
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -134,7 +134,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 0
-        speech: What's up with this guy?
+        speech: "\xBFQue hay con este tipo?"
         speakerEmotion: 8
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -145,8 +145,8 @@ MonoBehaviour:
         triggerNiceImpression: 0
     - branchDialogue:
       - speakerName: 0
-        speech: Oh, I'm sorry. It's nothing personal; I just lost my memory in an
-          accident.
+        speech: "Disculpas, no es nada personal. Resulta que perd\xED mi memoria en
+          un accidente."
         speakerEmotion: 8
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -156,7 +156,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 0
-        speech: I can't remember anybody, really...
+        speech: No me acuerdo de nadie, enserio.
         speakerEmotion: 8
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -166,7 +166,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 0
-        speech: Would you mind telling me your name?
+        speech: "\xBFTe molestaria decirme tu nombre?"
         speakerEmotion: 8
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -176,7 +176,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 3
-        speech: All right, since you ask for it so politely...
+        speech: Esta bien, ya que preguntaste tan amablemente...
         speakerEmotion: 2
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -186,7 +186,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 3
-        speech: My name is <color=orange>Gary</color>.
+        speech: Mi nombre es <color=orange>Gary</color>.
         speakerEmotion: 1
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -196,8 +196,8 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 1
       - speakerName: 3
-        speech: And I'm sorry to hear about your accident, by the way. I'm not a self-centered
-          person...
+        speech: Y lamento lo del accidente. Sabes, a diferencia del resto si tengo
+          algo de empatia.
         speakerEmotion: 0
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -207,7 +207,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 0
-        speech: All right, <color=orange>Gary</color>. Nice to meet you - again.
+        speech: Esta bien, <color=orange>Gary</color>. Encantado de conocerte - denuevo.
         speakerEmotion: 8
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -218,7 +218,7 @@ MonoBehaviour:
         triggerNiceImpression: 0
   niceComment:
   - speakerName: 3
-    speech: Why don't you talk to the rest of the crew?
+    speech: "\xBFPor qu\xE9 no hablas con el resto de la clase?"
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -228,7 +228,7 @@ MonoBehaviour:
     playerThought: 0
     triggerNiceImpression: 0
   - speakerName: 3
-    speech: I'm not really too talkative...
+    speech: No soy muy bueno charlando.
     speakerEmotion: 1
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -238,8 +238,8 @@ MonoBehaviour:
     playerThought: 0
     triggerNiceImpression: 0
   - speakerName: 3
-    speech: You should try to find <color=orange>John</color>. I think he's in one
-      of the rooms upstairs...
+    speech: "Deber\xEDas buscar a <color=orange>John</color>. Creo que esta en uno
+      de los cuartos arriba."
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -250,7 +250,7 @@ MonoBehaviour:
     triggerNiceImpression: 0
   rudeComment:
   - speakerName: 3
-    speech: Here's the guy who doesn't remember other people's names.
+    speech: Miren quien es, el chico que no se acuerda el nombre del resto.
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -260,7 +260,7 @@ MonoBehaviour:
     playerThought: 0
     triggerNiceImpression: 0
   - speakerName: 3
-    speech: Why don't you talk to someone self-centered like you?
+    speech: "\xBFPor qu\xE9 no le hablas a alguien egoc\xE9ntrico como tu?"
     speakerEmotion: 4
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -270,8 +270,8 @@ MonoBehaviour:
     playerThought: 0
     triggerNiceImpression: 0
   - speakerName: 3
-    speech: Go find <color=orange>John</color>. He's the one who invited you, not
-      me.
+    speech: "Ve y busca a <color=orange>John</color>. \xC9l te invit\xF3 a la mansi\xF3n,
+      no yo."
     speakerEmotion: 1
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -281,7 +281,7 @@ MonoBehaviour:
     playerThought: 0
     triggerNiceImpression: 0
   - speakerName: 3
-    speech: Get lost!
+    speech: "\xA1Pierdete!"
     speakerEmotion: 4
     clueInfo: {fileID: 0}
     dialogueSound:

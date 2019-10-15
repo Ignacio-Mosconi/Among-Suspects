@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explorationThought:
   - speakerName: 0
-    speech: This looks like a broken jar...
+    speech: 
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -24,7 +24,7 @@ MonoBehaviour:
     playerThought: 1
     triggerNiceImpression: 0
   - speakerName: 0
-    speech: 'But more importantly: who''s that person lying next to it?!'
+    speech: 
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -35,7 +35,7 @@ MonoBehaviour:
     triggerNiceImpression: 0
   investigationThought:
   - speakerName: 0
-    speech: A broken jar next to the corpse?
+    speech: "\xBFUna jarra rota al lado del cadaver?"
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -45,7 +45,7 @@ MonoBehaviour:
     playerThought: 1
     triggerNiceImpression: 0
   - speakerName: 0
-    speech: Was it used by the victim to defend himself?
+    speech: "\xBFFue usada por la v\xEDctima para defenderse?"
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -65,8 +65,8 @@ MonoBehaviour:
     playerThought: 1
     triggerNiceImpression: 0
   - speakerName: 0
-    speech: Wait, he couldn't have thrown it, as the shattered pieces are too close
-      to each other...
+    speech: Espera, no pudo haberla tirado, las piezas estan muy cerca una de la otra
+      para haber sido lanzada.
     speakerEmotion: 0
     clueInfo: {fileID: 11400000, guid: 9cfc2c8a48537574787858fc59e08b7e, type: 2}
     dialogueSound:
@@ -76,7 +76,7 @@ MonoBehaviour:
     playerThought: 1
     triggerNiceImpression: 0
   - speakerName: 0
-    speech: This thing might have been dropped by accident...
+    speech: "Esta cosa quiza se cay\xF3 por accidente..."
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
