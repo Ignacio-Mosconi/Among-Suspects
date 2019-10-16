@@ -16,7 +16,7 @@ MonoBehaviour:
   interactiveConversation:
     intro:
     - speakerName: 2
-      speech: A damn corpse...
+      speech: Un maldito cadaver...
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -26,7 +26,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 2
-      speech: What da fuck is goin' on around here?
+      speech: "\xBFQue carajos esta pasando aqu\xED?"
       speakerEmotion: 4
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -36,8 +36,8 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: I have no idea, <color=orange>William</color>, but we have to find out
-        who did this - as we don't have a way to get out of here yet...
+      speech: "No tengo idea,<color=orange>William</color> , pero tenemos que averiguar
+        quien fue - ya que no encontramos una salida  de aqu\xED aun..."
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -47,8 +47,8 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: Where were you before I entered that room and discovered the body, by
-        the way?
+      speech: "Por cierto, \xBFDonde estabas antes de que entrara al cuarto y descubriera
+        el cadaver?"
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -58,7 +58,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 2
-      speech: Ehm...I was just trying to watch some TV in the living room...
+      speech: Ehm... Yo estaba intentando de ver la TV en el living...
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -68,15 +68,14 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     playerOptions:
-    - option: Believing
-      description: '''That''s right, I trust you'''
-    - option: Doubtful
-      description: '''I don''t buy it; tell me the truth'''
+    - option: Confiar
+      description: "'Tienes raz\xF3n, te creo'"
+    - option: Dudar
+      description: '''No me lo creo, dime la verdad'''
     resultingDialogues:
     - branchDialogue:
       - speakerName: 0
-        speech: That's right. I think I heard you say that you wanted to watch the
-          sports channel...
+        speech: Cierto, creo que te escuche decir que querias ver el canal de deportes...
         speakerEmotion: 8
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -86,7 +85,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 2
-        speech: Yeah, that's right I wanted...
+        speech: "Si, eso es lo que quer\xEDa..."
         speakerEmotion: 1
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -96,8 +95,8 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 2
-        speech: Anyways, the TV was busted or somethin', because none of the channels
-          worked...
+        speech: De todos modos, la television estaba rota o algo, porque ninguno de
+          los canales funcionaban...
         speakerEmotion: 0
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -107,8 +106,8 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 0
-        speech: Really? Whoever trapped us here really left us isolated from everything,
-          didn't they?
+        speech: "\xBFEnserio? Quien nos haya encerrado aqu\xED nos dejo completamente
+          isolados de todo, \xBFno?"
         speakerEmotion: 8
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -118,8 +117,8 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 0
-        speech: 'I mean: the doors are shut; the windows have thick bars; we don''t
-          have any phone signal...'
+        speech: "Es decir: las puertas estan bloqueadas, las ventanas tienen barras
+          de metal, no tenemos se\xF1al..."
         speakerEmotion: 8
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -129,7 +128,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 0
-        speech: They planned it pretty well, I'd say...
+        speech: Realmente lo planearon, diria yo...
         speakerEmotion: 8
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -139,7 +138,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 2
-        speech: Don't mention it, dude...
+        speech: Ni lo digas, chico.
         speakerEmotion: 1
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -149,7 +148,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 2
-        speech: I really wanted to watch that football game...
+        speech: Realmente queria ver ese partido de futbol...
         speakerEmotion: 0
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -159,7 +158,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 2
-        speech: Fuck the bastard who did this!
+        speech: "\xA1Al carajo el bastardo que hizo esto!"
         speakerEmotion: 5
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -170,7 +169,7 @@ MonoBehaviour:
         triggerNiceImpression: 0
     - branchDialogue:
       - speakerName: 0
-        speech: Really? Is that so?
+        speech: "\xBFEnserio? \xBFEs eso?"
         speakerEmotion: 8
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -180,7 +179,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 2
-        speech: What are you thinkin', man?
+        speech: "\xBFQue estas insinuando, hombrecito?"
         speakerEmotion: 3
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -190,7 +189,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 0
-        speech: I think you might be hiding something.
+        speech: Creo que estas escondiendo algo.
         speakerEmotion: 8
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -200,7 +199,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 2
-        speech: What the hell, dude?!
+        speech: "\xBF\xA1Que te pasa!?"
         speakerEmotion: 4
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -210,7 +209,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 2
-        speech: I dunno shit about anything!
+        speech: "\xA1No se nada de nada!"
         speakerEmotion: 5
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -220,7 +219,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 2
-        speech: I just wanted to watch today's game on that TV...
+        speech: Solo queria ver el partido de hoy en la tele...
         speakerEmotion: 1
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -230,7 +229,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 2
-        speech: Screw you if you think I had anything to do with this...
+        speech: Vete al carajo si piensas que tuve que ver con algo de esto...
         speakerEmotion: 4
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -240,7 +239,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 0
-        speech: Maybe I rushed accusing him there...
+        speech: Quizas lo acuse demasiado temprano...
         speakerEmotion: 8
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -250,8 +249,8 @@ MonoBehaviour:
         playerThought: 1
         triggerNiceImpression: 0
       - speakerName: 0
-        speech: I thought he was acting suspiciously, but he might not be the one
-          responsible for this...
+        speech: Pense que era sospechoso, pero quizas no es el responsable de todo
+          esto...
         speakerEmotion: 8
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -262,7 +261,7 @@ MonoBehaviour:
         triggerNiceImpression: 0
   niceComment:
   - speakerName: 2
-    speech: Let's hurry the fuck up, dude!
+    speech: "\xA1Apuremonos, amigo!"
     speakerEmotion: 4
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -273,7 +272,7 @@ MonoBehaviour:
     triggerNiceImpression: 0
   rudeComment:
   - speakerName: 2
-    speech: Let's hurry the fuck up, punk!
+    speech: "\xA1Apuremonos, mocoso!"
     speakerEmotion: 5
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -287,7 +286,7 @@ MonoBehaviour:
     rightSpeaker: 3
     dialogue:
     - speakerName: 2
-      speech: Whassup with you, bro?
+      speech: "\xBFQue tal, hermano?"
       speakerEmotion: 0
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -297,7 +296,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 2
-      speech: You look like you've seen a dead body!
+      speech: "\xA1Tienes pinta de haber visto un muerto!"
       speakerEmotion: 2
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -307,7 +306,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: Well...
+      speech: Bueno...
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -317,7 +316,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: As a matter of fact...I...did.
+      speech: De hecho... lo vi.
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -327,7 +326,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 2
-      speech: What?!
+      speech: "\xBF\xA1Qu\xE9!?"
       speakerEmotion: 3
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -337,7 +336,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: Someone died in one of the bedrooms!
+      speech: "\xA1Alguien murio en uno de los dormitorios!"
       speakerEmotion: 3
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -347,7 +346,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 1
-      speech: What?!
+      speech: "\xBF\xA1Que!?"
       speakerEmotion: 7
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -357,7 +356,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: Oh, christ...
+      speech: Oh, Dios...
       speakerEmotion: 3
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -377,7 +376,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: That must be John; he arrived a bit earlier than you...
+      speech: "Ese debi\xF3 ser John; el llego un poco antes que tu..."
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -387,7 +386,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 2
-      speech: A freaking corpse?
+      speech: "\xBFUn maldito cadaver?"
       speakerEmotion: 4
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -397,7 +396,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 1
-      speech: We have to call the police!
+      speech: "\xA1Tenemos que llamar a la polic\xEDa!"
       speakerEmotion: 7
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -407,7 +406,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: (Gets her phone out)
+      speech: "(Saca su tel\xE9fono)"
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -427,7 +426,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 1
-      speech: It can't be! There's no reception!
+      speech: "\xA1No puede ser! \xA1No hay se\xF1al!"
       speakerEmotion: 3
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -437,7 +436,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 2
-      speech: Let's leave this fucking place, then!
+      speech: "\xA1Larguemonos de este lugar, entonces!"
       speakerEmotion: 4
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -447,9 +446,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: 'The front door is locked!
-
-        There''s no way out!'
+      speech: "\xA1La puerta esta travada!\n\xA1No hay salida!"
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -459,7 +456,8 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: Well, don't look at me. This was John's place - I don't have any keys.
+      speech: Bueno, no me miren a mi. Este era el lugar de John - No tengo ninguna
+        llave.
       speakerEmotion: 0
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -469,7 +467,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: Damn it. If the place is locked....
+      speech: Rayos, si todo esta cerrado...
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -479,7 +477,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: That means the murderer is within our group...
+      speech: Eso significa que el asesino esta en nuestro grupo...
       speakerEmotion: 0
       clueInfo: {fileID: 0}
       dialogueSound:

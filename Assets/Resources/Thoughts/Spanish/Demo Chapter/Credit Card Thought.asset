@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explorationThought:
   - speakerName: 0
-    speech: A wallet in the table?
+    speech: "\xBFUna billetera en la mesa?"
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -24,7 +24,7 @@ MonoBehaviour:
     playerThought: 1
     triggerNiceImpression: 0
   - speakerName: 0
-    speech: It looks like a credit card is right next to it.
+    speech: Parece que hay una tarjeta de credito al lado.
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -34,7 +34,7 @@ MonoBehaviour:
     playerThought: 1
     triggerNiceImpression: 0
   - speakerName: 0
-    speech: It seems it belongs to <color=orange>'John Smith'</color>.
+    speech: Parece que le pertenece a <color=orange>'John Smith'</color>.
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -44,7 +44,7 @@ MonoBehaviour:
     playerThought: 1
     triggerNiceImpression: 0
   - speakerName: 0
-    speech: The name doesn't ring a bell.
+    speech: Ese nombre no me suena.
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -66,7 +66,7 @@ MonoBehaviour:
     triggerNiceImpression: 0
   investigationThought:
   - speakerName: 0
-    speech: There's a wallet and a credit card here.
+    speech: "Hay una billetera y una tarjeta de credito aqu\xED."
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -76,7 +76,7 @@ MonoBehaviour:
     playerThought: 1
     triggerNiceImpression: 0
   - speakerName: 0
-    speech: It has the name <color=orange>'John Smith'</color> on it...
+    speech: Tiene el nombre <color=orange>'John Smith'</color> en ella...
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -86,8 +86,8 @@ MonoBehaviour:
     playerThought: 1
     triggerNiceImpression: 0
   - speakerName: 0
-    speech: I don't know how it could help me solve this mystery, but I'll take it
-      to check it out with the others later.
+    speech: "No se como podr\xEDa ayudar a resolver el misterio, pero la tomare para
+      ver si el resto sabe algo despu\xE9s."
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:

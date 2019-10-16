@@ -16,7 +16,7 @@ MonoBehaviour:
   interactiveConversation:
     intro:
     - speakerName: 3
-      speech: Let me guess...
+      speech: "D\xE9jame adivinar..."
       speakerEmotion: 0
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -26,8 +26,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: You have come here to play the detective and interrogate me, haven't
-        you?
+      speech: "\xBFViniste a jugar detective e interrogarme, no?"
       speakerEmotion: 2
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -37,7 +36,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: 'I wouldn''t call it ''play'': this is no game.'
+      speech: "No lo llamar\xEDa 'jugar': esto no es un juego."
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -47,7 +46,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: You're right. This is a serious matter, so take it seriously.
+      speech: "Tienes raz\xF3n. Esto es algo serio, as\xED que tomatelo como tal."
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -57,8 +56,8 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: I will. Now, would you mind if I asked you what you were doing before
-        I found the body?
+      speech: "Lo har\xE9, ahora, \xBFte importar\xEDa decirme que estabas haciendo
+        antes de que encontrara el cadaver?"
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -68,8 +67,8 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: I was in the kitchen. As I was starting to feel hunger, I decided to
-        take some food myself...
+      speech: "Estaba en la cocina. Empezaba a tener hambre, as\xED que me decidi
+        tomar algo de comida por mi cuenta."
       speakerEmotion: 0
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -79,7 +78,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: I can tell you I'm guilty of that.
+      speech: Puedo decir que soy culpable de eso.
       speakerEmotion: 2
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -89,7 +88,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: And I didn't want to be rude and take any food without permission...
+      speech: Y eso que yo no queria ser grosero revisando la comida sin permiso...
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -99,7 +98,7 @@ MonoBehaviour:
       playerThought: 1
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: So...Is that enough, detective?
+      speech: "Entonces... \xBFeso es suficiente, detective?"
       speakerEmotion: 0
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -109,14 +108,14 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     playerOptions:
-    - option: Satisfied
-      description: '''You''ve told me enough'''
-    - option: Unsatisfied
-      description: '''I want to know more'''
+    - option: Satisfecho
+      description: '''Me dijiste suficiente'''
+    - option: Desatisfecho
+      description: "'Quiero saber m\xE1s'"
     resultingDialogues:
     - branchDialogue:
       - speakerName: 0
-        speech: Yes, that's enough information for now.
+        speech: Si, eso es suficiente por ahora.
         speakerEmotion: 8
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -126,7 +125,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 0
-        speech: Thank you for your collaboration.
+        speech: "Gracias por tu colaboraci\xF3n."
         speakerEmotion: 8
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -136,7 +135,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 3
-        speech: You're welcome, 'detective'.
+        speech: De nada, 'detective'.
         speakerEmotion: 2
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -146,8 +145,8 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 0
-        speech: He told me to take this thing seriously, and yet HE's the one playing
-          'cops & robbers'.
+        speech: "Me dijo de tomarme esto enserio, pero \xC9L es el que juega 'policia
+          & ladron'."
         speakerEmotion: 8
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -158,7 +157,7 @@ MonoBehaviour:
         triggerNiceImpression: 0
     - branchDialogue:
       - speakerName: 0
-        speech: No, I need you to tell me more.
+        speech: No, necesito que me cuentes mas.
         speakerEmotion: 8
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -168,7 +167,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 0
-        speech: What were you eating, for instance?
+        speech: "Por ejemplo, \xBFqu\xE9 estabas comiendo?"
         speakerEmotion: 8
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -178,7 +177,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 3
-        speech: What?
+        speech: "\xBFQu\xE9?"
         speakerEmotion: 0
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -188,7 +187,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 3
-        speech: I told you not to play detective, <color=orange>James</color>...
+        speech: Te dije de no jugar detective, <color=orange>James</color>...
         speakerEmotion: 2
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -198,7 +197,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 3
-        speech: You are asking nonsense now...
+        speech: Ahora preguntas locuras...
         speakerEmotion: 1
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -208,7 +207,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 0
-        speech: You didn't answer the question.
+        speech: No respondiste la pregunta.
         speakerEmotion: 8
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -218,7 +217,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 3
-        speech: Fine, fine. I was just making a sandwich...
+        speech: "Bueno, bueno. Me prepar\xE9 un sandwich..."
         speakerEmotion: 0
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -228,7 +227,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 3
-        speech: This is sort of amusing, actually...
+        speech: Esto es algo divertido, de hecho...
         speakerEmotion: 2
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -238,7 +237,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 0
-        speech: He seems to be the cynical type.
+        speech: "Parece ser el tipo de persona c\xEDnica."
         speakerEmotion: 8
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -248,7 +247,7 @@ MonoBehaviour:
         playerThought: 1
         triggerNiceImpression: 0
       - speakerName: 0
-        speech: But maybe he's a bit right, and I went a little out of my way there.
+        speech: "Pero quiz\xE1s tiene algo de raz\xF3n, fui demasiado lejos con esto."
         speakerEmotion: 8
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -259,7 +258,7 @@ MonoBehaviour:
         triggerNiceImpression: 0
   niceComment:
   - speakerName: 3
-    speech: Let's find the killer, <color=orange>James</color>.
+    speech: Encontremos al culpable,  <color=orange>James</color>.
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -270,7 +269,9 @@ MonoBehaviour:
     triggerNiceImpression: 0
   rudeComment:
   - speakerName: 3
-    speech: Let's find the killer, Mr. <i>'I lost my memory'</i>.
+    speech: 'Let''s find the killer, Mr. <i>''I lost my memory''</i>.
+
+      Encontremos al culpable, Mr. <i>''perdi mi memoria''</i>. '
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -284,7 +285,7 @@ MonoBehaviour:
     rightSpeaker: 1
     dialogue:
     - speakerName: 3
-      speech: Huh?
+      speech: "\xBFEh?"
       speakerEmotion: 0
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -294,7 +295,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: Are you all right?
+      speech: "\xBFEstas bien?"
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -304,7 +305,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: You look like you've seen a ghost back there.
+      speech: "Parece que viste un fantasma por ah\xED."
       speakerEmotion: 2
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -314,7 +315,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: There's a co-corpse in the bedroom...
+      speech: Hay un c-cuerpo en el dormitorio...
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -324,7 +325,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: Excuse me?
+      speech: "\xBFDisculpa?"
       speakerEmotion: 3
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -334,7 +335,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: Someone was killed in here!
+      speech: "\xA1Alguien fue asesinado ah\xED!"
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -344,7 +345,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 1
-      speech: What?!
+      speech: "\xBF\xA1Qu\xE9!?"
       speakerEmotion: 7
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -354,7 +355,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: Oh, christ...
+      speech: Oh, Dios...
       speakerEmotion: 3
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -364,7 +365,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: That must be John; he arrived a bit earlier than you...
+      speech: "Ese debi\xF3 ser John; el llego un poco antes que tu..."
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -374,7 +375,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 2
-      speech: A freaking corpse?
+      speech: "\xBFUn maldito cadaver?"
       speakerEmotion: 4
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -384,7 +385,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 1
-      speech: We have to call the police!
+      speech: "\xA1Tenemos que llamar a la polic\xEDa!"
       speakerEmotion: 7
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -394,7 +395,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: (Gets her phone out)
+      speech: "(Saca su tel\xE9fono)"
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -414,7 +415,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 1
-      speech: It can't be! There's no reception!
+      speech: "\xA1No puede ser! \xA1No hay se\xF1al!"
       speakerEmotion: 3
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -424,7 +425,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 2
-      speech: Let's leave this fucking place, then!
+      speech: "\xA1Larguemonos de este lugar, entonces!"
       speakerEmotion: 4
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -434,9 +435,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: 'The front door is locked!
-
-        There''s no way out!'
+      speech: "\xA1La puerta esta travada!\n\xA1No hay salida!"
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -446,7 +445,8 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: Well, don't look at me. This was John's place - I don't have any keys.
+      speech: Bueno, no me miren a mi. Este era el lugar de John - No tengo ninguna
+        llave.
       speakerEmotion: 0
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -456,7 +456,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: Damn it. If the place is locked....
+      speech: Rayos, si todo esta cerrado...
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -466,7 +466,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: That means the murderer is within our group...
+      speech: Eso significa que el asesino esta en nuestro grupo...
       speakerEmotion: 0
       clueInfo: {fileID: 0}
       dialogueSound:
