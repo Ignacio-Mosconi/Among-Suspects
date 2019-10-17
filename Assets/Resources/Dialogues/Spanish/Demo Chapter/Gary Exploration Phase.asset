@@ -26,7 +26,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: "Ehmm...Cu\xE1l era tu nombre?"
+      speech: "Ehmm...\xBFcu\xE1l era tu nombre?"
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -36,7 +36,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: Eh?
+      speech: "\xBFEh?"
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -46,7 +46,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: "Te import\xE9 tan poco que ni mi nombre te acuerdas?"
+      speech: "\xBFTe import\xE9 tan poco que ni de mi nombre te acuerdas?"
       speakerEmotion: 0
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -56,7 +56,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: Siquieras sabes quien soy?
+      speech: "\xBFNi siquiera sabes qui\xE9n soy?"
       speakerEmotion: 4
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -66,7 +66,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: Pense que eras decente, <color=orange>James</color>.
+      speech: "Pens\xE9 que eras decente, <color=orange>James</color>."
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -93,7 +93,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 0
-        speech: "\xBFQue necesidad tienes de insultarme as\xED?"
+        speech: "\xBFQu\xE9 necesidad tienes de insultarme as\xED?"
         speakerEmotion: 8
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -103,7 +103,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 0
-        speech: "\xA1No me acuerdo nada porque sufr\xED un accidente!"
+        speech: "\xA1No me acuerdo de nada porque sufr\xED un accidente!"
         speakerEmotion: 8
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -123,8 +123,8 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 3
-        speech: "Crees que eres el centro del universo, cuyos problemas son los \xFAnicos
-          que importan."
+        speech: "Crees que eres el centro del universo, y que tus problemas son los
+          \xFAnicos que importan."
         speakerEmotion: 0
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -134,7 +134,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 0
-        speech: "\xBFQue hay con este tipo?"
+        speech: "\xBFQu\xE9 hay con este tipo?"
         speakerEmotion: 8
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -145,7 +145,7 @@ MonoBehaviour:
         triggerNiceImpression: 0
     - branchDialogue:
       - speakerName: 0
-        speech: "Disculpas, no es nada personal. Resulta que perd\xED mi memoria en
+        speech: "Disculpa, no es nada personal. Resulta que perd\xED mi memoria en
           un accidente."
         speakerEmotion: 8
         clueInfo: {fileID: 0}
@@ -156,7 +156,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 0
-        speech: No me acuerdo de nadie, enserio.
+        speech: No me acuerdo de nadie, en serio.
         speakerEmotion: 8
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -166,7 +166,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 0
-        speech: "\xBFTe molestaria decirme tu nombre?"
+        speech: "\xBFTe molestar\xEDa decirme tu nombre?"
         speakerEmotion: 8
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -176,7 +176,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 3
-        speech: Esta bien, ya que preguntaste tan amablemente...
+        speech: "Est\xE1 bien, ya que preguntaste tan amablemente..."
         speakerEmotion: 2
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -196,8 +196,8 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 1
       - speakerName: 3
-        speech: Y lamento lo del accidente. Sabes, a diferencia del resto si tengo
-          algo de empatia.
+        speech: "Y lamento lo del accidente. Sabes, a diferencia del resto, s\xED
+          tengo algo de empat\xEDa."
         speakerEmotion: 0
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -207,7 +207,8 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 0
-        speech: Esta bien, <color=orange>Gary</color>. Encantado de conocerte - denuevo.
+        speech: Esta bien, <color=orange>Gary</color>. Encantado de conocerte - de
+          nuevo.
         speakerEmotion: 8
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -250,7 +251,7 @@ MonoBehaviour:
     triggerNiceImpression: 0
   rudeComment:
   - speakerName: 3
-    speech: Miren quien es, el chico que no se acuerda el nombre del resto.
+    speech: "Miren qui\xE9n es, el chico que no se acuerda de los nombres de los dem\xE1s."
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -281,7 +282,7 @@ MonoBehaviour:
     playerThought: 0
     triggerNiceImpression: 0
   - speakerName: 3
-    speech: "\xA1Pierdete!"
+    speech: "\xA1Pi\xE9rdete!"
     speakerEmotion: 4
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -297,5 +298,5 @@ MonoBehaviour:
     cancelOtherGroupDialogues: 0
   dialogueTypeOrder: 010000000000000000000000
   introRead: 0
-  interactionOptionSelected: 0
+  interactionOptionSelected: 1
   groupDialogueRead: 0

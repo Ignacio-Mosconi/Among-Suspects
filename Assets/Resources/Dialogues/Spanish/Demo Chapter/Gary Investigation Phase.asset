@@ -26,7 +26,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: "\xBFViniste a jugar detective e interrogarme, no?"
+      speech: "\xBFViniste a jugar a ser detective e interrogarme, no?"
       speakerEmotion: 2
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -46,7 +46,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: "Tienes raz\xF3n. Esto es algo serio, as\xED que tomatelo como tal."
+      speech: "Tienes raz\xF3n. Esto es algo serio, as\xED que t\xF3matelo como tal."
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -56,8 +56,8 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: "Lo har\xE9, ahora, \xBFte importar\xEDa decirme que estabas haciendo
-        antes de que encontrara el cadaver?"
+      speech: "Lo har\xE9, ahora, \xBFte importar\xEDa decirme qu\xE9 estabas haciendo
+        antes de que encontrara al cad\xE1ver?"
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -67,7 +67,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: "Estaba en la cocina. Empezaba a tener hambre, as\xED que me decidi
+      speech: "Estaba en la cocina. Empezaba a tener hambre, as\xED que decid\xED
         tomar algo de comida por mi cuenta."
       speakerEmotion: 0
       clueInfo: {fileID: 0}
@@ -88,7 +88,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: Y eso que yo no queria ser grosero revisando la comida sin permiso...
+      speech: Y yo que no queria ser grosero revisando la comida sin permiso...
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -115,7 +115,7 @@ MonoBehaviour:
     resultingDialogues:
     - branchDialogue:
       - speakerName: 0
-        speech: Si, eso es suficiente por ahora.
+        speech: "S\xED, eso es suficiente por ahora"
         speakerEmotion: 8
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -145,8 +145,8 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 0
-        speech: "Me dijo de tomarme esto enserio, pero \xC9L es el que juega 'policia
-          & ladron'."
+        speech: "Me dijo de tomarme esto en serio, pero \xC9L es el que juega a 'policias
+          & ladrones'."
         speakerEmotion: 8
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -157,7 +157,7 @@ MonoBehaviour:
         triggerNiceImpression: 0
     - branchDialogue:
       - speakerName: 0
-        speech: No, necesito que me cuentes mas.
+        speech: "No, necesito que me cuentes m\xE1s."
         speakerEmotion: 8
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -187,7 +187,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 3
-        speech: Te dije de no jugar detective, <color=orange>James</color>...
+        speech: Te dije de no jugar al detective, <color=orange>James</color>...
         speakerEmotion: 2
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -269,9 +269,7 @@ MonoBehaviour:
     triggerNiceImpression: 0
   rudeComment:
   - speakerName: 3
-    speech: 'Let''s find the killer, Mr. <i>''I lost my memory''</i>.
-
-      Encontremos al culpable, Mr. <i>''perdi mi memoria''</i>. '
+    speech: 'Encontremos al culpable, Sr. <i>''perdí mi memoria''</i>. '
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -295,7 +293,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: "\xBFEstas bien?"
+      speech: "\xBFEstás bien?"
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -365,7 +363,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: "Ese debi\xF3 ser John; el llego un poco antes que tu..."
+      speech: "Ese debi\xF3 ser John; el llego un poco antes que tú..."
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -375,7 +373,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 2
-      speech: "\xBFUn maldito cadaver?"
+      speech: "\xBFUn maldito cadáver?"
       speakerEmotion: 4
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -425,7 +423,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 2
-      speech: "\xA1Larguemonos de este lugar, entonces!"
+      speech: "\xA1Larguémonos de este lugar, entonces!"
       speakerEmotion: 4
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -435,7 +433,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: "\xA1La puerta esta travada!\n\xA1No hay salida!"
+      speech: "\xA1La puerta está trabada!\n\xA1No hay salida!"
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -445,7 +443,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: Bueno, no me miren a mi. Este era el lugar de John - No tengo ninguna
+      speech: Bueno, no me miren a mí. Este era el lugar de John - No tengo ninguna
         llave.
       speakerEmotion: 0
       clueInfo: {fileID: 0}

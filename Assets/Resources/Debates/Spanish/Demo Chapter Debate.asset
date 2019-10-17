@@ -25,8 +25,8 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: Se que esto no es lindo para nadie, pero tenemos que discutir donde
-        estuvo cada uno de nosotros cuando halle el cuerpo.
+      speech: "S\xE9 que esto no es lindo para nadie, pero tenemos que discutir acerca
+        de d\xF3n estuvo cada uno de nosotros cuando hall\xE9 el cuerpo."
       speakerEmotion: 0
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -36,8 +36,8 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: Es bastante obvio que estaba en el dormitorio, porque yo fui el que
-        encontro el cadaver.
+      speech: "Es bastante obvio que yo estaba en el dormitorio, porque fui el que
+        encontro el cad\xE1ver."
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -47,7 +47,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: Ahora, Monica. Donde estabas en ese momento?
+      speech: "Ahora, <color=orange>Monica</color>, \xBFd\xF3nde estabas en ese momento?"
       speakerEmotion: 0
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -79,7 +79,7 @@ MonoBehaviour:
     correctEvidence: {fileID: 0}
     trustDialogue:
     - speakerName: 0
-      speech: "Claro que te creo, \n<color=orange>Monica</color>."
+      speech: Claro que te creo, <color=orange>Monica</color>.
       speakerEmotion: 0
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -89,7 +89,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: "Aun no tenemos  evidencia para acusar a alguien, as\xED que calmala,
+      speech: "A\xFAn no tenemos  evidencia para acusar a alguien, as\xED que c\xE1lmala,
         por favor."
       speakerEmotion: 0
       clueInfo: {fileID: 0}
@@ -102,7 +102,7 @@ MonoBehaviour:
     refuteCorrectDialogue: []
     refuteIncorrectDialogue:
     - speakerName: 1
-      speech: "\xBFQue quieres decir, <color=orange>James</color>?"
+      speech: "\xBFQu\xE9 quieres decir, <color=orange>James</color>?"
       speakerEmotion: 3
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -133,7 +133,7 @@ MonoBehaviour:
       triggerNiceImpression: 0
     outOfTimeDialogue:
     - speakerName: 1
-      speech: "Que pasa,\n <color=orange>Jimmy<color=orange>?"
+      speech: "¿Qué pasa <color=orange>Jimmy<color=orange>?"
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -154,7 +154,7 @@ MonoBehaviour:
       triggerNiceImpression: 0
   - argumentIntroDialogue:
     - speakerName: 3
-      speech: "\xBFY que tal la estrella futbolistica?"
+      speech: "\xBFY qué tal la estrella del fútbol?"
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -249,7 +249,7 @@ MonoBehaviour:
       triggerNiceImpression: 0
     outOfTimeDialogue:
     - speakerName: 2
-      speech: "\xBFAmigo, que haces?"
+      speech: "\xBFAmigo, qué haces?"
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -301,7 +301,7 @@ MonoBehaviour:
       triggerNiceImpression: 0
   - argumentIntroDialogue:
     - speakerName: 0
-      speech: "\xBFAs\xED que, donde estabas, <color=orange>Gary</color>?"
+      speech: "\xBFAs\xED que, dónde estabas, <color=orange>Gary</color>?"
       speakerEmotion: 0
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -395,7 +395,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: "Tiene raz\xF3n. No se que estoy haciendo..."
+      speech: "Tiene raz\xF3n. No se qué estoy haciendo..."
       speakerEmotion: 0
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -699,7 +699,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: "\xA1El asesino podria haber esperado ahi a que la victima entrara! "
+      speech: "\xA1El asesino podria haber esperado ahí a que la victima entrara! "
       speakerEmotion: 6
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -1541,8 +1541,8 @@ MonoBehaviour:
       triggerNiceImpression: 0
   - argumentIntroDialogue:
     - speakerName: 1
-      speech: "\xBFYa que el cuchillo fue usado como el arma homicida, de donde lo
-        saco el asesino?"
+      speech: "\xBFYa que el cuchillo fue usado como el arma homicida, de dónde lo
+        sacó el asesino?"
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -1648,7 +1648,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: "\xA1El asesino estaba lavando el cuchillo que uso para matar a la victima!"
+      speech: "\xA1El asesino estaba lavando el cuchillo que uso para matar a la víctima!"
       speakerEmotion: 6
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -1741,8 +1741,7 @@ MonoBehaviour:
       triggerNiceImpression: 0
   loseDebateDialogue:
   - speakerName: 3
-    speech: "Desde que nuestro amigo perdi\xF3 la memoria nos estuvo guiando en la
-      direccion contraria..."
+    speech: "Dado a que nustro amigo que perdió la memoria nos ha estado guiando en la dirección equivocada..."
     speakerEmotion: 2
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -1803,7 +1802,7 @@ MonoBehaviour:
     triggerNiceImpression: 0
   winDebateDialogue:
   - speakerName: 0
-    speech: Basada en la evidencia que recolectamos...
+    speech: Basándonos en la evidencia que recolectamos...
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -1833,7 +1832,7 @@ MonoBehaviour:
     playerThought: 0
     triggerNiceImpression: 0
   - speakerName: 2
-    speech: "\xBFQue tienes para decir, mocoso?"
+    speech: "\xBFQué tienes para decir, mocoso?"
     speakerEmotion: 6
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -1853,7 +1852,7 @@ MonoBehaviour:
     playerThought: 0
     triggerNiceImpression: 0
   - speakerName: 3
-    speech: "How did you find out?! It was supposed to be a flawless plan!\n\xA1\xBFComo
+    speech: \n\xA1\xBFComo
       lo supieron?! \xA1Se supon\xEDa que era un plan perfecto!"
     speakerEmotion: 5
     clueInfo: {fileID: 0}

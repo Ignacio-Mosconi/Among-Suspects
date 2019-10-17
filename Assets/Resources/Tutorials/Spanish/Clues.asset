@@ -15,7 +15,7 @@ MonoBehaviour:
   tutorialType: 2
   tutorialLines:
   - speakerName: 0
-    speech: This data could prove to be really useful at some point.
+    speech: "Esta informaci\xF3n podr\xEDa ser de utilidad en alg\xFAn momento."
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -25,8 +25,8 @@ MonoBehaviour:
     playerThought: 1
     triggerNiceImpression: 0
   - speakerName: 0
-    speech: I must gather as many clues as possible in order to find out exactly how
-      this person was killed, before the murderer acts again...
+    speech: "Debo hallar tantas pistas como sea posible para averiguar exactamente
+      c\xF3mo esta persona fue asesinada, antes de que el asesino act\xFAe de nuevo..."
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -36,7 +36,7 @@ MonoBehaviour:
     playerThought: 1
     triggerNiceImpression: 0
   - speakerName: 5
-    speech: It looks like you found your first clue.
+    speech: Parece que encontraste tu primera pista.
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -46,8 +46,8 @@ MonoBehaviour:
     playerThought: 0
     triggerNiceImpression: 0
   - speakerName: 5
-    speech: They reveal important facts about the mystery, so you should keep obtaining
-      more of them.
+    speech: "\xC9stas revelan cuestiones importantes acerca del misterio, as\xED que
+      deber\xEDas seguir obeni\xE9ndolas."
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -57,9 +57,10 @@ MonoBehaviour:
     playerThought: 0
     triggerNiceImpression: 0
   - speakerName: 5
-    speech: You can review the clues you have gathered so far by pressing <sprite="Other
-      Keys" name="esc"> to access the <color=yellow>pause menu</color> and selecting
-      the <color=yellow>'Clues'</color> option. Why don't you try it right now?
+    speech: "Puedes revisar las pistas que hayas encontrado hasta el momento apretando
+      <sprite=\"Other Keys\" name=\"esc\"> para acceder al <color=yellow>men\xFA de
+      pausa</color> y seleccionando la opci\xF3n <color=yellow>'Pistas'</color>. \xBFPor
+      qu\xE9 no lo intentas ahora?"
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -69,8 +70,8 @@ MonoBehaviour:
     playerThought: 0
     triggerNiceImpression: 0
   - speakerName: 5
-    speech: Remember to read the descriptions carefully, as they contain crucial data
-      to solve the case.
+    speech: Recuerda leer las descripciones cuidadosamente, ya que contienen datos
+      cruciales para resolver el caso.
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
