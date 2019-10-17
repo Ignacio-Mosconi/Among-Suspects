@@ -1,5 +1,64 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &189755079137683461
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8499752299739131710}
+  - component: {fileID: 595418205686959308}
+  m_Layer: 0
+  m_Name: Clue Options Menu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8499752299739131710
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189755079137683461}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5051937487074049900}
+  m_Father: {fileID: 761603635704131042}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &595418205686959308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189755079137683461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f21f9775aa62c4abf0f48c5ed8e57e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainScreen: {fileID: 8535884513989473265}
+  menuScreens:
+  - screen: {fileID: 8535884513989473265}
+    previousScreen: {fileID: 0}
+  menuTranslatedTexts:
+  - {fileID: 11400000, guid: f9958b4ff68a5154ab7ff32f3daeca48, type: 2}
+  - {fileID: 11400000, guid: 35b9857532a936c459cbd177ff9e35c4, type: 2}
+  selectEvidenceTitleText: {fileID: 3537176775212016247}
+  backButtonText: {fileID: 383697423134739881}
+  useButtonText: {fileID: 4954067403181533318}
 --- !u!1 &410247196402922889
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,8 +418,8 @@ RectTransform:
   - {fileID: 4277196023264512099}
   - {fileID: 5126665373638749768}
   - {fileID: 4565386703636274348}
-  - {fileID: 8752652142609318627}
-  - {fileID: 5051937487074049900}
+  - {fileID: 7048672646125458771}
+  - {fileID: 8499752299739131710}
   m_Father: {fileID: 5325723875381233723}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -809,7 +868,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -970,7 +1029,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -1393,19 +1452,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1801679832460021641}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2264868510566608330}
   - {fileID: 7685307866606999503}
-  m_Father: {fileID: 761603635704131042}
-  m_RootOrder: 4
+  m_Father: {fileID: 7048672646125458771}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.4}
   m_AnchorMax: {x: 1, y: 0.6}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 172.79999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6669062387012623140
 MonoBehaviour:
@@ -1890,12 +1949,12 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 75
+  m_fontSize: 65
   m_fontSizeBase: 75
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 30
-  m_fontSizeMax: 60
+  m_fontSizeMax: 65
   m_fontStyle: 32
   m_textAlignment: 514
   m_isAlignmentEnumConverted: 1
@@ -2260,8 +2319,8 @@ RectTransform:
   - {fileID: 8874113722888061437}
   - {fileID: 5460200167803518548}
   - {fileID: 6045284711519373485}
-  m_Father: {fileID: 761603635704131042}
-  m_RootOrder: 5
+  m_Father: {fileID: 8499752299739131710}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2807,6 +2866,62 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!1 &4614898608992941625
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7048672646125458771}
+  - component: {fileID: 5623977201924270124}
+  m_Layer: 5
+  m_Name: Debate Options Menu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7048672646125458771
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4614898608992941625}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8752652142609318627}
+  m_Father: {fileID: 761603635704131042}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: -864}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5623977201924270124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4614898608992941625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f326d249bfc510b4b96c4f88bc6e5298, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainScreen: {fileID: 0}
+  menuScreens: []
+  menuTranslatedTexts:
+  - {fileID: 11400000, guid: 0b9bc93cdcea68644839500bd9cc7da9, type: 2}
+  - {fileID: 11400000, guid: 6a1a43b00c548854ebeec767bd90c2b8, type: 2}
+  trustText: {fileID: 2989667196247927033}
+  refuteText: {fileID: 7522224001725745690}
 --- !u!1 &5006570306517346911
 GameObject:
   m_ObjectHideFlags: 0
