@@ -72,7 +72,7 @@ public class AudioManager : MonoBehaviour
         AudioClip audioClip = Array.Find(soundsUI, clip => clip.name == soundName);
         if (!audioClip)
         {
-            Debug.LogError("There are no sounds named " + soundName + "registered in the Audio Manager.", gameObject);
+            Debug.LogError("There are no sounds named " + soundName + " registered in the Audio Manager.", gameObject);
             return;
         }
         soundsUISource.clip = audioClip;

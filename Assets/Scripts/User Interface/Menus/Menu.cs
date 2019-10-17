@@ -52,13 +52,14 @@ public abstract class Menu : MonoBehaviour
 
     protected abstract void SetUpTexts();
 
-    protected void ResetMenuState()
+    public void ResetMenuState(bool showImmediately = true)
     {
         if (currentScreen.screen != mainScreen)
         {
             currentScreen.screen.Deactivate();
             currentScreen = Array.Find(menuScreens, ms => ms.screen == mainScreen);
-            currentScreen.screen.Show();
+            if (showImmediately)
+                currentScreen.screen.Show();
             previousScreen.screen = null;
             previousScreen.previousScreen = null;
         }
