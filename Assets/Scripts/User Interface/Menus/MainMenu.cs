@@ -6,8 +6,8 @@ public class MainMenu : Menu
     [Header("Main Areas")]
     [SerializeField] GameObject mainScreenMainArea = default;
     [Header("Confirmation Messages")]
-    [SerializeField] [TextArea(3, 5)] string newGameWarning = default;
-    [SerializeField] [TextArea(3, 5)] string quitWarning = default;
+    [SerializeField] [TextArea(3, 5)] string[] newGameWarnings = new string[(int)Language.Count];
+    [SerializeField] [TextArea(3, 5)] string[] quitWarnings = new string[(int)Language.Count];
     [Header("Other References")]
     [SerializeField] TextMeshProUGUI appVersionText = default;
     [Header("Translation Texts")]
@@ -75,7 +75,7 @@ public class MainMenu : Menu
         mainScreenMainArea.SetActive(false);
         GameManager.Instance.ConfirmationPrompt.AddConfirmationListener(delegate { StartNewGame(); });
         GameManager.Instance.ConfirmationPrompt.AddCancelationListener(delegate { CancelConfirmation(); });
-        GameManager.Instance.ConfirmationPrompt.ChangeWarningMessage(newGameWarning);
+        GameManager.Instance.ConfirmationPrompt.ChangeWarningMessage(newGameWarnings[(int)GameManager.Instance.CurrentLanguage]);
         GameManager.Instance.ConfirmationPrompt.ShowConfirmation();
     }
 
@@ -84,7 +84,7 @@ public class MainMenu : Menu
         mainScreenMainArea.SetActive(false);
         GameManager.Instance.ConfirmationPrompt.AddConfirmationListener(delegate { QuitGame(); });
         GameManager.Instance.ConfirmationPrompt.AddCancelationListener(delegate { CancelConfirmation(); });
-        GameManager.Instance.ConfirmationPrompt.ChangeWarningMessage(quitWarning);
+        GameManager.Instance.ConfirmationPrompt.ChangeWarningMessage(quitWarnings[(int)GameManager.Instance.CurrentLanguage]);
         GameManager.Instance.ConfirmationPrompt.ShowConfirmation();
     }
 

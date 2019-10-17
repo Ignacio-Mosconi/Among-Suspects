@@ -234,6 +234,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1734721313367769599, guid: 445a67f86a8969746af56fce424165c2,
+        type: 3}
+      propertyPath: affirmativeButtonText
+      value: 
+      objectReference: {fileID: 269775409}
     - target: {fileID: 7506386659000624711, guid: 445a67f86a8969746af56fce424165c2,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -332,6 +337,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &269775409 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3868549061726089188, guid: 445a67f86a8969746af56fce424165c2,
+    type: 3}
+  m_PrefabInstance: {fileID: 230870807}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1172262817
 GameObject:
   m_ObjectHideFlags: 0
@@ -3457,6 +3474,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968150137094995481, guid: 8546d0f116f763a41aae1d3cd4f1b25b,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968150137094995481, guid: 8546d0f116f763a41aae1d3cd4f1b25b,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8546d0f116f763a41aae1d3cd4f1b25b, type: 3}

@@ -42,9 +42,9 @@ public class ChapterManager : MonoBehaviour
     [SerializeField] AnimatedMenuScreen debateResultsScreen = default;
     [SerializeField] AnimatedMenuScreen debateRetryScreen = default;
     [Header("Confirmation Prompt Messages")]
-    [SerializeField] [TextArea(3, 5)] string debateStartWarning = default;
-    [SerializeField] [TextArea(3, 5)] string exitDebateWarning = default;
-    [SerializeField] [TextArea(3, 5)] string nextChapterWarning = default;
+    [SerializeField] [TextArea(3, 5)] string[] debateStartWarnings = new string[(int)Language.Count];
+    [SerializeField] [TextArea(3, 5)] string[] exitDebateWarnings = new string[(int)Language.Count];
+    [SerializeField] [TextArea(3, 5)] string[] nextChapterWarnings = new string[(int)Language.Count];
 
     ClueInfo[] chapterClues;
     DebateInitializer debateInitializer;
@@ -127,7 +127,7 @@ public class ChapterManager : MonoBehaviour
 
         GameManager.Instance.ConfirmationPrompt.AddConfirmationListener(delegate { ConfirmDebateStart(); });
         GameManager.Instance.ConfirmationPrompt.AddCancelationListener(delegate { CancelDebateStart(); });
-        GameManager.Instance.ConfirmationPrompt.ChangeWarningMessage(debateStartWarning);
+        GameManager.Instance.ConfirmationPrompt.ChangeWarningMessage(debateStartWarnings[(int)GameManager.Instance.CurrentLanguage]);
         GameManager.Instance.ConfirmationPrompt.ShowConfirmation();
     }
 
@@ -136,7 +136,7 @@ public class ChapterManager : MonoBehaviour
         endScreenArea.SetActive(false);
         GameManager.Instance.ConfirmationPrompt.AddConfirmationListener(delegate { ExitGame(); });
         GameManager.Instance.ConfirmationPrompt.AddCancelationListener(delegate { CancelExit(); });
-        GameManager.Instance.ConfirmationPrompt.ChangeWarningMessage(exitDebateWarning);
+        GameManager.Instance.ConfirmationPrompt.ChangeWarningMessage(exitDebateWarnings[(int)GameManager.Instance.CurrentLanguage]);
         GameManager.Instance.ConfirmationPrompt.ShowConfirmation();
     }
 
@@ -145,7 +145,7 @@ public class ChapterManager : MonoBehaviour
         endScreenArea.SetActive(false);
         GameManager.Instance.ConfirmationPrompt.AddConfirmationListener(delegate { ExitGame(); });
         GameManager.Instance.ConfirmationPrompt.AddCancelationListener(delegate { CancelExit(); });
-        GameManager.Instance.ConfirmationPrompt.ChangeWarningMessage(nextChapterWarning);
+        GameManager.Instance.ConfirmationPrompt.ChangeWarningMessage(nextChapterWarnings[(int)GameManager.Instance.CurrentLanguage]);
         GameManager.Instance.ConfirmationPrompt.ShowConfirmation();
     }
 

@@ -2695,9 +2695,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: eb029ab241adee449866c5ef20df9027, type: 2}
   - {fileID: 11400000, guid: c06a1736e80840b4aadfd83dcbff88a9, type: 2}
   mainScreenMainArea: {fileID: 6630415504783177410}
-  newGameWarning: You are about to start a new game from the start. Is that what you
-    want?
-  quitWarning: Are you completely sure you want to quit the game?
+  newGameWarnings:
+  - You are about to start a new game from the start. Is that what you want?
+  - "Est\xE1s por empezar una partida desde el comienzo. \xBFEs eso lo que quieres?"
+  quitWarnings:
+  - Are you completely sure that you want to quit?
+  - "\xBFEst\xE1s completamente seguro/a de que quieres salir?"
   appVersionText: {fileID: 8968150137094995481}
   backButtonTexts:
   - {fileID: 1558407469831707619}

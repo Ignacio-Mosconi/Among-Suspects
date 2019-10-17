@@ -3089,11 +3089,19 @@ MonoBehaviour:
   endScreenArea: {fileID: 1847561458275929765}
   debateResultsScreen: {fileID: 9195319457542432669}
   debateRetryScreen: {fileID: 1949748009042905903}
-  debateStartWarning: "Are you sure you want to start the debate?\t"
-  exitDebateWarning: You are so close to solving the mystery! Are you sure you want
-    to exit the game now?
-  nextChapterWarning: Ups... It looks like the devs are working on the next chapter.
-    Do you want to exit instead?
+  debateStartWarnings:
+  - Are you sure you want to start the debate?
+  - "\xBFEst\xE1s seguro/a de que quieres comenzar el debate?"
+  exitDebateWarnings:
+  - You are so close to solving the mystery! Are you sure you want to exit the game
+    now?
+  - "\xA1Est\xE1s tan cerca de resolver el misterio! \xBFEst\xE1s seguro/a de que
+    quieres salir ahora?"
+  nextChapterWarnings:
+  - Ups! It looks like the devs are working on the next chapter. Do you want to exit
+    instead?
+  - "\xA1Ups! Parece que los desarrolladores est\xE1n trabajando en el pr\xF3ximo
+    cap\xEDtulo. \xBFQuieres salir en su lugar?"
 --- !u!1 &6712373868272550175
 GameObject:
   m_ObjectHideFlags: 0

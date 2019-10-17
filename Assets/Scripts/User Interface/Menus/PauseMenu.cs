@@ -7,7 +7,7 @@ public class PauseMenu : Menu
     [Header("Main Properties")]
     [SerializeField] GameObject menuArea = default;
     [SerializeField] GameObject mainScreenMainArea = default;
-    [SerializeField] [TextArea(3, 5)] string exitWarning = default;
+    [SerializeField] [TextArea(3, 5)] string[] exitWarnings = new string[(int)Language.Count];
 
     [Header("Translation Texts")]
     [SerializeField] TextMeshProUGUI[] backButtonTexts = default;
@@ -121,7 +121,7 @@ public class PauseMenu : Menu
         mainScreenMainArea.SetActive(false);
         GameManager.Instance.ConfirmationPrompt.AddConfirmationListener(delegate { ExitGame(); });
         GameManager.Instance.ConfirmationPrompt.AddCancelationListener(delegate { CancelExit(); });
-        GameManager.Instance.ConfirmationPrompt.ChangeWarningMessage(exitWarning);
+        GameManager.Instance.ConfirmationPrompt.ChangeWarningMessage(exitWarnings[(int)GameManager.Instance.CurrentLanguage]);
         GameManager.Instance.ConfirmationPrompt.ShowConfirmation();
     }
 
