@@ -18,6 +18,8 @@ public class NPC : Interactable, ICharacter
 
     Dictionary<Language, DialogueInfo> dialogueInfoByLanguage;
 
+    static string[] interactionKindByLanguage = { "talk", "hablar" };
+
     public override void EnableInteraction()
     {
         base.EnableInteraction();
@@ -32,7 +34,7 @@ public class NPC : Interactable, ICharacter
 
     public override string GetInteractionKind()
     {
-        return "talk";
+        return interactionKindByLanguage[(int)GameManager.Instance.CurrentLanguage];
     }
 
     public override void Interact()

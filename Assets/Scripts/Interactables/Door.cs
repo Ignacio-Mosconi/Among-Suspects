@@ -19,6 +19,9 @@ public class Door : Interactable
     float closeAnimationDuration;
     bool isOpen;
 
+    static string[] openInteractionByLanguage = { "open the door", "abrir la puerta" };
+    static string[] closeInteractionByLanguage = { "close the door", "cerrar la puerta" };
+
     protected override void Awake()
     {
         base.Awake();
@@ -96,6 +99,8 @@ public class Door : Interactable
 
     public override string GetInteractionKind()
     {
-        return (!isOpen) ? "open the door" : "close the door";
+        Language language = GameManager.Instance.CurrentLanguage;
+
+        return (!isOpen) ? openInteractionByLanguage[(int)language] : closeInteractionByLanguage[(int)language];
     }
 }

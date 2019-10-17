@@ -711,7 +711,9 @@ MonoBehaviour:
   interactTextPrompt: {fileID: 402987291991321606}
   clueFoundPrompt: {fileID: 1661687436802051765}
   investigationPhasePrompt: {fileID: 2063236425631751846}
-  interactionKeyString: <sprite="Main Keys" name="E">
+  hudTextInfos:
+  - {fileID: 11400000, guid: 37bbe9a80e4868545b3cac6a6d3c50db, type: 2}
+  - {fileID: 11400000, guid: 33d74285f87872c49b4eaf7d9baaa179, type: 2}
 --- !u!1 &5118334225594090573
 GameObject:
   m_ObjectHideFlags: 0

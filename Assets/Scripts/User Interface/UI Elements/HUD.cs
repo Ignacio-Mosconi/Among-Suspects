@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using TMPro;
 
 public class HUD : MonoBehaviour
@@ -7,9 +8,16 @@ public class HUD : MonoBehaviour
     [SerializeField] UIPrompt interactTextPrompt = default;
     [SerializeField] UIPrompt clueFoundPrompt = default;
     [SerializeField] UIPrompt investigationPhasePrompt = default;
-    [SerializeField] string interactionKeyString = default;
+    [SerializeField] HudTextInfo[] hudTextInfos = new HudTextInfo[(int)Language.Count];
 
     TextMeshProUGUI interactText;
+    TextMeshProUGUI[] investigationPhaseTexts;
+    TextMeshProUGUI clueFoundText;
+
+    void OnValidate()
+    {
+        Array.Resize(ref hudTextInfos, (int)Language.Count);
+    }
 
     void Start()
     {
@@ -42,6 +50,11 @@ public class HUD : MonoBehaviour
         investigationPhasePrompt.SetUp();
 
         interactText = interactTextPrompt.GetComponentInChildren<TextMeshProUGUI>(includeInactive: true);
+        investigationPhaseTexts = investigationPhasePrompt.GetComponentsInChildren<TextMeshProUGUI>(includeInactive: true);
+        clueFoundText = clueFoundPrompt.GetComponentInChildren<TextMeshProUGUI>(includeInactive: true);
+
+        ChangeHUDLanguage();
+        GameManager.Instance.OnLanguageChanged.AddListener(ChangeHUDLanguage);
     }
 
     void ShowHUD()
@@ -57,7 +70,11 @@ public class HUD : MonoBehaviour
 
     void ShowInteractTextPrompt(string interactionKind)
     {
-        interactText.text = "Press " + interactionKeyString + " to <color=yellow>" + interactionKind + "</color>";
+        string interactionString = hudTextInfos[(int)GameManager.Instance.CurrentLanguage].interact;
+
+        interactionString = interactionString.Replace("X", interactionKind);
+
+        interactText.text = interactionString;
         interactTextPrompt.Show();
     }
 
@@ -83,6 +100,15 @@ public class HUD : MonoBehaviour
         investigationPhasePrompt.Show();
         float promptDur = investigationPhasePrompt.GetOnScreenDuration();
         CharacterManager.Instance.PlayerController.Invoke("ReEnableInteractionDelayed", promptDur);
+    }
+
+    void ChangeHUDLanguage()
+    {
+        Language currentLanguage = GameManager.Instance.CurrentLanguage;
+
+        clueFoundText.text = hudTextInfos[(int)currentLanguage].clueFound;
+        for (int i = 0; i < investigationPhaseTexts.Length; i++)
+            investigationPhaseTexts[i].text = hudTextInfos[(int)currentLanguage].investigationPhaseInstructions[i];
     }
 
     #region Properties

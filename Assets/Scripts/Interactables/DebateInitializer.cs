@@ -18,6 +18,8 @@ public class DebateInitializer : Interactable
     
     Dictionary<Language, DebateInfo> debateInfos = new Dictionary<Language, DebateInfo>();
 
+    static string[] interactionKindByLanguage = {"start the debate" , "empezar el debate" };
+
     protected override void Start()
     {
         base.Start();
@@ -58,7 +60,7 @@ public class DebateInitializer : Interactable
 
     public override string GetInteractionKind()
     {
-        return "start the debate";
+        return interactionKindByLanguage[(int)GameManager.Instance.CurrentLanguage];
     }
 
     public DebateCharacterSprite[] DebateCharactersSprites

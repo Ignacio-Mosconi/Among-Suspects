@@ -10,7 +10,9 @@ public class InteractableObject : Interactable
     [SerializeField] InventoryItemInfo inventoryItemInfo = null;
 
     Dictionary<Language, ThoughtInfo> thoughtInfoByLanguage = new Dictionary<Language, ThoughtInfo>();
-    
+
+    static string[] interactionKindByLanguage = { "inspect", "inspeccionar" };
+
     protected override void Start()
     {
         base.Start();
@@ -49,6 +51,6 @@ public class InteractableObject : Interactable
 
     public override string GetInteractionKind()
     {
-        return "inspect";
+        return interactionKindByLanguage[(int)GameManager.Instance.CurrentLanguage];
     }
 }
