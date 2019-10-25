@@ -1,3 +1,4 @@
+<<<<<<< development
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
@@ -121,3 +122,128 @@ MonoBehaviour:
     revealName: 0
     playerThought: 0
     triggerNiceImpression: 0
+=======
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11ba2c5285c405445beae8461f0e3327, type: 3}
+  m_Name: Debate Start
+  m_EditorClassIdentifier: 
+  tutorialType: 3
+  tutorialLines:
+  - speakerName: 0
+    speech: Esta es definitivamente otra pieza importante de evidencia.
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "Me pregunto si tengo suficiente informaci\xF3n como para descubrir lo
+      que realmente pas\xF3 en ese cuarto..."
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: Siento que ahora tengo un panorama general de los eventos...
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "Pero todav\xEDa no estoy seguro de eso..."
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: "Ya has encontrado un mont\xF3n de <color=yellow>pistas</color>."
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: "Usualmente, depender\xE1 de ti decidir cu\xE1ndo concluir la investigaci\xF3n
+      y proceder con la resoluci\xF3n del caso."
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: "Sin embargo, hy una excepci\xF3n esta vex: ya has encontrado todas las
+      <color=yellow>pistas</color> que te permitir\xE1n identificar al culpable."
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: "Sin embargo, hy una excepci\xF3n esta vez: ya has encontrado todas las
+      <color=yellow>pistas</color> que te permitir\xE1n identificar al culpable."
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: "No te has olvidado c\xF3mo <color=yellow>correr</color> e <color=yellow>interactuar</color>,
+      \xBFno?\nClaro que no..."
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: "\xC9ste es el momento de revisar toda la evidencia que encontraste para
+      estar preparado para el <color=yellow>debate</color>. Aprender\xE1s todo acerca
+      de \xE9l muy pronto..."
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+>>>>>>> Assets were implemented (WIP)

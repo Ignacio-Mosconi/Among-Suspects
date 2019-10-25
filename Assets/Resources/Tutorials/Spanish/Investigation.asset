@@ -1,3 +1,4 @@
+<<<<<<< development
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
@@ -98,3 +99,105 @@ MonoBehaviour:
     revealName: 0
     playerThought: 0
     triggerNiceImpression: 0
+=======
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11ba2c5285c405445beae8461f0e3327, type: 3}
+  m_Name: Investigation
+  m_EditorClassIdentifier: 
+  tutorialType: 1
+  tutorialLines:
+  - speakerName: 0
+    speech: "Maldici\xF3n..."
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "Nunca pens\xE9 que ver\xEDa algo as\xED en la vida real..."
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: Probablemente deba preguntarle al resto...
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "\xA1Tenemos que hacer algo!"
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "Tambi\xE9n podr\xEDa darle un vistazo a algunas de las cosas alrededor
+      del cuarto; podr\xEDan revelar lo que realmente pas\xF3 aqu\xED..."
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: "Ahora est\xE1s en la <color=yellow>'fase de investigaci\xF3n'</color>."
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: "Por ende, ya puedes empezar a buscar <color=yellow>pistas</color> alrededor
+      de la casa para averiguar c\xF3mo la v\xEDctima muri\xF3. <color=yellow>Inspecciona</color>
+      objetos cercanos para encontrarlas."
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: "Tambi\xE9n ser\xEDa una buena idea regresar y <color=yellow>hablar</color>
+      con el resto de los invitados para averiguar m\xE1s acerca de la v\xEDctima."
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+>>>>>>> Assets were implemented (WIP)

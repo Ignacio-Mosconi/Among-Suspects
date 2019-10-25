@@ -1,3 +1,4 @@
+<<<<<<< development
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
@@ -124,3 +125,131 @@ MonoBehaviour:
     revealName: 0
     playerThought: 0
     triggerNiceImpression: 0
+=======
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11ba2c5285c405445beae8461f0e3327, type: 3}
+  m_Name: Debate
+  m_EditorClassIdentifier: 
+  tutorialType: 4
+  tutorialLines:
+  - speakerName: 0
+    speech: Bien, es el momento de la verdad...
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "Tenemos que discutir acerca de qui\xE9n de nosotros mat\xF3 a esa persona,
+      \xA1porque solamente pudo haber sido uno de nosotros!"
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+      playDelay: 0.2
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: "Despu\xE9s de interactuar con la mesa, oficialmente empezar\xE1s el <color=yellow>debate</color>."
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: "Durante esa instancia, no podr\xE1s moverte: ser\xE1s forzado a demostrar
+      tu poder deductivo en una intensa batalla de argumentos."
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: "Los personajes har\xE1n declaraciones, y t\xFA deber\xE1s identificar
+      mentiras y contradicciones."
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: "De este modo, algunos testimonios ser\xE1n 'refutables, lo que significa
+      que tendr\xE1s que decidir si <color=yellow>confiar</color> o <color=yellow>refutar</color>
+      a los mismos."
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: "Siempre que decidas <color=yellow>refutar</color> algo, tendr\xE1s que
+      hacerlo presentando una pieza v\xE1lida de evidencia de las <color=yellow>clues</color>
+      que encontraste."
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: "Elegir opciones durante estas instancias tendr\xE1 un impacto en tu <color=yellow>'barra
+      de credibilidad'</color>'; si eliges sabiamente, subir\xE1 - si fallas en hacerlo,
+      bajar\xE1."
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: Resuelve el caso ganando la <color=yellow>credibilidad</color> suficiente
+      para llegar al final del  <color=yellow>debate</color>.
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: "Ahora est\xE1s solo; empieza cuando est\xE9s listo."
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+>>>>>>> Assets were implemented (WIP)

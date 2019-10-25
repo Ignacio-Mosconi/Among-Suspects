@@ -1,3 +1,4 @@
+<<<<<<< development
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
@@ -99,3 +100,106 @@ MonoBehaviour:
     revealName: 0
     playerThought: 0
     triggerNiceImpression: 0
+=======
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11ba2c5285c405445beae8461f0e3327, type: 3}
+  m_Name: Navigation
+  m_EditorClassIdentifier: 
+  tutorialType: 0
+  tutorialLines:
+  - speakerName: 0
+    speech: Bien, entonces...
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "Deber\xEDa acercarme a los otros miembros de la fiesta, as\xED puedo
+      saludarlos."
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "Si tengo suerte, quiz\xE1s recuerde una cosa o dos."
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: Usa las teclas <sprite="Main Keys" name="W">, <sprite="Main Keys" name="A">,
+      <sprite="Main Keys" name="S">, y <sprite="Main Keys" name="D"> para moverte.
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: "Puedes mantener <sprite=\"Other Keys\" name=\"shift\"> para correr mientras
+      est\xE9s movi\xE9ndote."
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: Usa el <sprite="Mouse" name="Mouse"> para manejar la vista.
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: "Presiona la tecla <sprite=\"Main Keys\" name=\"E\">  para <color=yellow>hablar</color>
+      con un personaje cuando est\xE9s cerca. Tambi\xE9n puedes <color=yellow>inspeccionar</color>
+      objetos de la misma forma."
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 5
+    speech: Ve y <color=yellow>habla</color> con el resto del grupo.
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+>>>>>>> Assets were implemented (WIP)

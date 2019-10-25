@@ -1,3 +1,4 @@
+<<<<<<< development
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
@@ -299,3 +300,306 @@ MonoBehaviour:
   introRead: 0
   interactionOptionSelected: 0
   groupDialogueRead: 0
+=======
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9345bdb6d41302b4997bfaa46be947a2, type: 3}
+  m_Name: Gary Exploration Phase
+  m_EditorClassIdentifier: 
+  introLines: []
+  interactiveConversation:
+    intro:
+    - speakerName: 3
+      speech: '...'
+      speakerEmotion: 0
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 0
+      speech: Ehmm...what was your name?
+      speakerEmotion: 8
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 3
+      speech: Huh?
+      speakerEmotion: 1
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 8300000, guid: cc5a3916f736bbb498f0d4a34915c859, type: 3}
+        playDelay: 0.2
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 3
+      speech: Was I so forgettable that you cannot even remember my name?
+      speakerEmotion: 0
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 3
+      speech: Do you remember me at all?
+      speakerEmotion: 4
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+        playDelay: 0.2
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 3
+      speech: I thought you were at least a bit decent, <color=orange>James</color>.
+      speakerEmotion: 1
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        audioClip: {fileID: 0}
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    playerOptions:
+    - option: Angry
+      description: '''I suffered an accident, you jerk!'''
+    - option: Calm
+      description: '''I cannot remember anybody due to an accident...'''
+    resultingDialogues:
+    - branchDialogue:
+      - speakerName: 0
+        speech: I don't like your tone, buddy!
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        dialogueSound:
+          audioClip: {fileID: 0}
+          playDelay: 0
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 0
+        speech: Why did you have to insult my decency like that?
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        dialogueSound:
+          audioClip: {fileID: 0}
+          playDelay: 0
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 0
+        speech: I can't remember you because I had a freaking accident!
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        dialogueSound:
+          audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+          playDelay: 0.2
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 3
+        speech: You are just like the rest...
+        speakerEmotion: 2
+        clueInfo: {fileID: 0}
+        dialogueSound:
+          audioClip: {fileID: 8300000, guid: bd7c94b20ffa22e4cabcdbb6c0f1f582, type: 3}
+          playDelay: 0.2
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 3
+        speech: You think that you are the center of the world, that you are the only
+          one whose problems matter...
+        speakerEmotion: 0
+        clueInfo: {fileID: 0}
+        dialogueSound:
+          audioClip: {fileID: 0}
+          playDelay: 0
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 0
+        speech: What's up with this guy?
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        dialogueSound:
+          audioClip: {fileID: 0}
+          playDelay: 0
+        revealName: 0
+        playerThought: 1
+        triggerNiceImpression: 0
+    - branchDialogue:
+      - speakerName: 0
+        speech: Oh, I'm sorry. It's nothing personal; I just lost my memory in an
+          accident.
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        dialogueSound:
+          audioClip: {fileID: 0}
+          playDelay: 0
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 0
+        speech: I can't remember anybody, really...
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        dialogueSound:
+          audioClip: {fileID: 0}
+          playDelay: 0
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 0
+        speech: Would you mind telling me your name?
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        dialogueSound:
+          audioClip: {fileID: 0}
+          playDelay: 0
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 3
+        speech: All right, since you ask for it so politely...
+        speakerEmotion: 2
+        clueInfo: {fileID: 0}
+        dialogueSound:
+          audioClip: {fileID: 0}
+          playDelay: 0
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 3
+        speech: My name is <color=orange>Gary</color>.
+        speakerEmotion: 1
+        clueInfo: {fileID: 0}
+        dialogueSound:
+          audioClip: {fileID: 0}
+          playDelay: 0
+        revealName: 1
+        playerThought: 0
+        triggerNiceImpression: 1
+      - speakerName: 3
+        speech: And I'm sorry to hear about your accident, by the way. I'm not a self-centered
+          person...
+        speakerEmotion: 0
+        clueInfo: {fileID: 0}
+        dialogueSound:
+          audioClip: {fileID: 0}
+          playDelay: 0
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 0
+        speech: All right, <color=orange>Gary</color>. Nice to meet you - again.
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        dialogueSound:
+          audioClip: {fileID: 0}
+          playDelay: 0
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+  niceComment:
+  - speakerName: 3
+    speech: Why don't you talk to the rest of the crew?
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 3
+    speech: I'm not really too talkative...
+    speakerEmotion: 1
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 3
+    speech: You should try to find <color=orange>John</color>. I think he's in one
+      of the rooms upstairs...
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  rudeComment:
+  - speakerName: 3
+    speech: Here's the guy who doesn't remember other people's names.
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 8300000, guid: cc5a3916f736bbb498f0d4a34915c859, type: 3}
+      playDelay: 0.2
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 3
+    speech: Why don't you talk to someone self-centered like you?
+    speakerEmotion: 4
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+      playDelay: 0.2
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 3
+    speech: Go find <color=orange>John</color>. He's the one who invited you, not
+      me.
+    speakerEmotion: 1
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0.2
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 3
+    speech: Get lost!
+    speakerEmotion: 4
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+      playDelay: 0.2
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  groupDialogue:
+    leftSpeaker: 4
+    rightSpeaker: 4
+    dialogue: []
+    cancelOtherGroupDialogues: 0
+  dialogueTypeOrder: 010000000000000000000000
+  introRead: 0
+  interactionOptionSelected: 0
+  groupDialogueRead: 0
+>>>>>>> Assets were implemented (WIP)
