@@ -188,7 +188,7 @@ MonoBehaviour:
     playerThought: 0
     triggerNiceImpression: 0
   - speakerName: 1
-    speech: I'm sorry, Jimmy. Everything happened so suddenly...
+    speech: I'm sorry, <color=orange>Jimmy</color>. Everything happened so suddenly...
     speakerEmotion: 0
     clueInfo: {fileID: 11400000, guid: d74553952f6bf144e9a0ef6e56429e81, type: 2}
     dialogueSound:
@@ -309,7 +309,7 @@ MonoBehaviour:
     rightSpeaker: 2
     dialogue:
     - speakerName: 1
-      speech: What's up with you, Jimmy?
+      speech: What's up with you, <color=orange>Jimmy</color>?
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       dialogueSound:
