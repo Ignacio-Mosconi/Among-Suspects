@@ -6142,6 +6142,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 175076881, guid: a27aaa9d161ea364fb216959892dc659, type: 3}
+      propertyPath: debateChairs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 175076881, guid: a27aaa9d161ea364fb216959892dc659, type: 3}
+      propertyPath: debateChairs.Array.data[0]
+      value: 
+      objectReference: {fileID: 1376408531162262770}
+    - target: {fileID: 175076881, guid: a27aaa9d161ea364fb216959892dc659, type: 3}
+      propertyPath: debateChairs.Array.data[1]
+      value: 
+      objectReference: {fileID: 48599011}
+    - target: {fileID: 175076881, guid: a27aaa9d161ea364fb216959892dc659, type: 3}
+      propertyPath: debateChairs.Array.data[2]
+      value: 
+      objectReference: {fileID: 319387073}
+    - target: {fileID: 175076881, guid: a27aaa9d161ea364fb216959892dc659, type: 3}
+      propertyPath: debateChairs.Array.data[3]
+      value: 
+      objectReference: {fileID: 1808043600}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a27aaa9d161ea364fb216959892dc659, type: 3}
 --- !u!4 &472297713 stripped

@@ -15,6 +15,8 @@ public class DebateInitializer : Interactable
     [Header("Debate Initializer Properties")]
     [SerializeField] GameObject debateSpritesContainer = default;
     [SerializeField] DebateCharacterSprite[] debateCharactersSprites = default;
+    [SerializeField] Transform[] debateChairs = default;
+    [SerializeField, Range(0f, 1.5f)] float chairPushBackAmount = 1.25f;
     
     Dictionary<Language, DebateInfo> debateInfos = new Dictionary<Language, DebateInfo>();
 
@@ -43,6 +45,9 @@ public class DebateInitializer : Interactable
 
     public void StartDebate()
     {
+        foreach (Transform chair in debateChairs)
+            chair.Translate(chair.InverseTransformDirection(-chair.forward) * chairPushBackAmount);
+
         playerController.DeactivateCamera();
         GameManager.Instance.SetCursorEnable(enable: false);
 
