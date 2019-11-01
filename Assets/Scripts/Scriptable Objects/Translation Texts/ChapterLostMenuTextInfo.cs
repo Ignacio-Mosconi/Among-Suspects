@@ -4,6 +4,7 @@ using UnityEngine;
 public class ChapterLostMenuTextInfo : ScriptableObject
 {
     [Header("Chapter Lost Screen")]
+    public string guiltyContuneButtonText = default;
     public string debateLostTitle = default;
     public string retryDescription = default;
     public string[] continueOptions = default;

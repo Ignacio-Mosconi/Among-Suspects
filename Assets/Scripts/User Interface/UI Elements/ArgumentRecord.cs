@@ -8,6 +8,10 @@ public class ArgumentRecord : MonoBehaviour
     [SerializeField] TextMeshProUGUI argumentNumberText = default;
     [SerializeField] TextMeshProUGUI timeLeftAmountText = default;
     [SerializeField] Image resultIcon = default;
+    [SerializeField] TextMeshProUGUI resultText = default;
+    [SerializeField] TextMeshProUGUI timeLeftText = default;
+    [SerializeField] string[] resultTextByLanguage = new string[(int)Language.Count];
+    [SerializeField] string[] timeLeftTextByLanguage = new string[(int)Language.Count];
 
     ArgumentRecordData argumentRecordData;
     UIPrompt uiPrompt;
@@ -30,6 +34,11 @@ public class ArgumentRecord : MonoBehaviour
         argumentNumberText.text = "#" + argumentNumber + ":";
         timeLeftAmountText.text = (int)argumentRecordData.timeLeftToSolve + "\"";
         resultIcon.sprite = (argumentRecordData.wasSolvedCorrectly) ? resultSprites[0] : resultSprites[1];
+
+        Language language = GameManager.Instance.CurrentLanguage;
+
+        resultText.text = resultTextByLanguage[(int)language] + ": ";
+        timeLeftText.text = timeLeftTextByLanguage[(int)language] + ": ";
     }
 
     #region Properties

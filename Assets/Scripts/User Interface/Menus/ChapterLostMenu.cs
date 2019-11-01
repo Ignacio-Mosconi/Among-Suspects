@@ -4,6 +4,7 @@ using TMPro;
 public class ChapterLostMenu : Menu
 {
     [Header("Translation Texts")]
+    [SerializeField] TextMeshProUGUI guiltyContinueButtonText = default;
     [SerializeField] TextMeshProUGUI debateLostTitleText = default;
     [SerializeField] TextMeshProUGUI retryDescriptionText = default;
     [SerializeField] TextMeshProUGUI[] continueOptionsTexts = default;
@@ -19,6 +20,7 @@ public class ChapterLostMenu : Menu
             return;
         }
 
+        guiltyContinueButtonText.text = chapterLostMenuTextInfo.guiltyContuneButtonText;
         debateLostTitleText.text = chapterLostMenuTextInfo.debateLostTitle;
         retryDescriptionText.text = chapterLostMenuTextInfo.retryDescription;
         for (int i = 0; i < continueOptionsTexts.Length; i++)

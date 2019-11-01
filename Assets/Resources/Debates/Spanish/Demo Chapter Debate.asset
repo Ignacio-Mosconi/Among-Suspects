@@ -89,7 +89,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: "A\xFAn no tenemos  evidencia para acusar a alguien, as\xED que c\xE1lmala,
+      speech: "A\xFAn no tenemos evidencia para acusar a alguien, as\xED que c\xE1lmala,
         por favor."
       speakerEmotion: 0
       clueInfo: {fileID: 0}
@@ -218,7 +218,7 @@ MonoBehaviour:
     refuteCorrectDialogue: []
     refuteIncorrectDialogue:
     - speakerName: 2
-      speech: "\xBFQu\xE9 estás diciendo, mocoso?"
+      speech: "\xBFQu\xE9 est\xE1s diciendo, mocoso?"
       speakerEmotion: 4
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -460,7 +460,8 @@ MonoBehaviour:
       triggerNiceImpression: 0
     debateDialogue:
     - speakerName: 2
-      argument: "Esa jarra podr\xEDa haber sido usada por John para defenderse..."
+      argument: "Esa jarra podr\xEDa haber sido usada por <color=orange>Mark</color>
+        para defenderse..."
       speakerEmotion: 0
       dialogueSound:
         audioClip: {fileID: 0}
@@ -566,8 +567,8 @@ MonoBehaviour:
       triggerNiceImpression: 0
   - argumentIntroDialogue:
     - speakerName: 0
-      speech: "\xBFPor qu\xE9 no hablamos de donde podr\xEDa haber estado el culpable
-        antes del asesinato?"
+      speech: "\xBFPor qu\xE9 no hablamos acerca de donde podr\xEDa haber estado el
+        culpable antes del asesinato?"
       speakerEmotion: 4
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -577,7 +578,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 1
-      speech: "Si el asesino estaba armado con un cuchillo, \xBFla víctima no hubiese
+      speech: "Si el asesino estaba armado con un cuchillo, \xBFla v\xEDctima no hubiese
         tenido chance de reaccionar?"
       speakerEmotion: 0
       clueInfo: {fileID: 0}
@@ -588,7 +589,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: "Quiz\xE1s el asesino ya estaba adentro, para entonces..."
+      speech: "Quiz\xE1s el asesino ya estaba adentro, entonces..."
       speakerEmotion: 0
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -611,7 +612,7 @@ MonoBehaviour:
         audioClip: {fileID: 0}
         playDelay: 0
     - speakerName: 3
-      argument: John hubiera visto al asesino si estaba adentro...
+      argument: <color=orange>Mark</color> hubiera visto al asesino si estaba adentro...
       speakerEmotion: 1
       dialogueSound:
         audioClip: {fileID: 0}
@@ -626,7 +627,7 @@ MonoBehaviour:
     correctEvidence: {fileID: 11400000, guid: 90e5ca8000ffae343b0503cf69dd6ffd, type: 2}
     trustDialogue:
     - speakerName: 0
-      speech: "Esto suena correcto, tienes raz\xF3n."
+      speech: "Esto suena correcto; tienes raz\xF3n."
       speakerEmotion: 2
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -698,7 +699,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: "\xA1El asesino podria haber esperado ah\xED a que la víctima entrara! "
+      speech: "\xA1El asesino podria haber esperado ah\xED a que la v\xEDctima entrara! "
       speakerEmotion: 6
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -812,7 +813,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: A John no lo tomaron por sorpresa...
+      speech: A <color=orange>Mark</color> no lo tomaron por sorpresa...
       speakerEmotion: 2
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -894,8 +895,8 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 1
-      speech: La jarra no fue lanzada porque todas sus piezas estan esparcidas en
-        un solo lugar...
+      speech: La jarra no fue lanzada porque todas sus piezas estan reunidas en un
+        solo lugar...
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -1112,7 +1113,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: "La persona con la que luch\xF3 debi\xF3 ser fuerte también..."
+      speech: "La persona con la que luch\xF3 debi\xF3 ser fuerte tambi\xE9n..."
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -1149,8 +1150,8 @@ MonoBehaviour:
         audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
         playDelay: 0.2
     - speakerName: 3
-      argument: "\xA1Es el \xFAnico suficientemente fuerte para ganarle a otro hombre
-        en un forcejeo!"
+      argument: "\xA1Es el \xFAnico lo suficientemente fuerte como para ganarle a
+        otro hombre en un forcejeo!"
       speakerEmotion: 1
       dialogueSound:
         audioClip: {fileID: 0}
@@ -1168,7 +1169,7 @@ MonoBehaviour:
         audioClip: {fileID: 0}
         playDelay: 0
     - speakerName: 2
-      argument: "\xA1Esa cosa no es suficientemente grande para mí!"
+      argument: "\xA1Esa cosa no es suficientemente grande para m\xED!"
       speakerEmotion: 6
       dialogueSound:
         audioClip: {fileID: 0}
@@ -1336,7 +1337,7 @@ MonoBehaviour:
         audioClip: {fileID: 0}
         playDelay: 0
     - speakerName: 2
-      argument: "La víctima podr\xEDa haber sido estrangulada o algo..."
+      argument: "La v\xEDctima podr\xEDa haber sido estrangulada o algo..."
       speakerEmotion: 1
       dialogueSound:
         audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
@@ -1355,7 +1356,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 1
-      speech: "\xBFDe qu\xE9 estás hablando, Jimmy?"
+      speech: "\xBFDe qu\xE9 est\xE1s hablando, Jimmy?"
       speakerEmotion: 3
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -1605,7 +1606,7 @@ MonoBehaviour:
         audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
         playDelay: 0.2
     - speakerName: 0
-      argument: "\xBFY no encontraste el asesino ah\xED?"
+      argument: "\xBFY no encontraste al asesino ah\xED?"
       speakerEmotion: 2
       dialogueSound:
         audioClip: {fileID: 0}
@@ -1668,7 +1669,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: "\xA1Eso significa que tu eres el culpable!"
+      speech: "\xA1Eso significa que t\xFA eres el culpable!"
       speakerEmotion: 6
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -1803,7 +1804,7 @@ MonoBehaviour:
     triggerNiceImpression: 0
   winDebateDialogue:
   - speakerName: 0
-    speech: "Bas\xE1ndonos en la evidencia que recolectamos.."
+    speech: "Bas\xE1ndonos en la evidencia que recolectamos..."
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:

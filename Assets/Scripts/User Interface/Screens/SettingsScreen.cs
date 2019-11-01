@@ -34,14 +34,15 @@ public class SettingsScreen : MonoBehaviour
     [Header("Info Panel")]
     [SerializeField] RectTransform infoPanel = default;
     [SerializeField] [Range(50f, 75f)] float infoPanelAppearHorOffset = 60f;
-    [SerializeField] [TextArea(3, 10)] string[] settingInfoTexts = new string[(int)Setting.Count];
+    [SerializeField] [TextArea(3, 10)] string[] settingInfoTextsEnglish = new string[(int)Setting.Count];
+    [SerializeField] [TextArea(3, 10)] string[] settingInfoTextsSpanish = new string[(int)Setting.Count];
     [Header("Other Properties")]
     [SerializeField] Image sfxAudioIcon = default;
     [SerializeField] Image musicAudioIcon = default;
     [SerializeField] Sprite[] audioIconsSprites = default;
     [SerializeField] [Range(150f, 300f)] float maxDropdownHeight = 300f;
     
-    Dictionary<Setting, string> settingInfoTextsDic = new Dictionary<Setting, string>();
+    Dictionary<Setting, string[]> settingInfoTextsDic = new Dictionary<Setting, string[]>();
     TextMeshProUGUI infoPanelText;
     TextMeshProUGUI sfxVolumeValueText;
     TextMeshProUGUI musicVolumeValueText;
@@ -51,7 +52,8 @@ public class SettingsScreen : MonoBehaviour
 
     void OnValidate()
     {
-        Array.Resize(ref settingInfoTexts, (int)Setting.Count);
+        Array.Resize(ref settingInfoTextsEnglish, (int)Setting.Count);
+        Array.Resize(ref settingInfoTextsSpanish, (int)Setting.Count);
     }
 
     void Awake()
@@ -63,8 +65,11 @@ public class SettingsScreen : MonoBehaviour
         CanvasScaler canvasScaler = GetComponentInParent<CanvasScaler>();
         canvasReferenceResolution = new Vector2(canvasScaler.referenceResolution.x, canvasScaler.referenceResolution.y);
 
-        for (int i = 0; i < settingInfoTexts.Length; i++)
-            settingInfoTextsDic.Add((Setting)i, settingInfoTexts[i]);
+        for (int i = 0; i < settingInfoTextsEnglish.Length; i++)
+        {
+            string[] settingInfoByLanguage = { settingInfoTextsEnglish[i], settingInfoTextsSpanish[i] };
+            settingInfoTextsDic.Add((Setting)i, settingInfoByLanguage);
+        }
     }
     
     void Start()
@@ -122,6 +127,8 @@ public class SettingsScreen : MonoBehaviour
         for (int i = 0; i < (int)Language.Count; i++)
         {
             string option = Enum.GetName(typeof(Language), (Language)i);
+            if (option == "Spanish")
+                option = "Español";
             novelLanguageOptions.Add(option);
         }
 
@@ -239,8 +246,9 @@ public class SettingsScreen : MonoBehaviour
 
     public void ShowSettingInfo(int settingIndex)
     {
+        Language currentLanguage = GameManager.Instance.CurrentLanguage;
         infoPanel.gameObject.SetActive(true);    
-        infoPanelText.text = settingInfoTextsDic[(Setting)settingIndex];
+        infoPanelText.text = settingInfoTextsDic[(Setting)settingIndex][(int)currentLanguage];
         ResizeInfoPanel(); 
     }
 

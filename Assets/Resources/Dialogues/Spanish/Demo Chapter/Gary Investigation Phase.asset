@@ -98,7 +98,7 @@ MonoBehaviour:
       playerThought: 1
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: "Entonces... \xBFeso es suficiente, detective?"
+      speech: "Entonces...\xBFeso es suficiente, detective?"
       speakerEmotion: 0
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -135,7 +135,7 @@ MonoBehaviour:
         playerThought: 0
         triggerNiceImpression: 0
       - speakerName: 3
-        speech: De nada, 'detective'.
+        speech: De nada, "detective".
         speakerEmotion: 2
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -247,7 +247,8 @@ MonoBehaviour:
         playerThought: 1
         triggerNiceImpression: 0
       - speakerName: 0
-        speech: "Pero quiz\xE1s tiene algo de raz\xF3n, fui demasiado lejos con esto."
+        speech: "Pero quiz\xE1s tiene algo de raz\xF3n, y yo haya ido demasiado lejos
+          con esto."
         speakerEmotion: 8
         clueInfo: {fileID: 0}
         dialogueSound:
@@ -269,7 +270,7 @@ MonoBehaviour:
     triggerNiceImpression: 0
   rudeComment:
   - speakerName: 3
-    speech: 'Encontremos al culpable, Sr. <i>''perdí mi memoria''</i>. '
+    speech: "Encontremos al culpable, Sr. <i>\"perd\xED mi memoria\"</i>. "
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -293,7 +294,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: "\xBFEstás bien?"
+      speech: "\xBFEst\xE1s bien?"
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -343,7 +344,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 1
-      speech: "\xBF\xA1Qu\xE9!?"
+      speech: "\xA1\xBFQu\xE9?!"
       speakerEmotion: 7
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -363,7 +364,8 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: "Ese debi\xF3 ser John; el llego un poco antes que tú..."
+      speech: "Ese debi\xF3 ser <color-orange>Mark</color>; \xE9l llego un poco antes
+        que ustedes..."
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -373,7 +375,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 2
-      speech: "\xBFUn maldito cadáver?"
+      speech: "\xBFUn maldito cad\xE1ver?"
       speakerEmotion: 4
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -423,7 +425,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 2
-      speech: "\xA1Larguémonos de este lugar, entonces!"
+      speech: "\xA1Largu\xE9monos de este lugar, entonces!"
       speakerEmotion: 4
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -433,7 +435,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: "\xA1La puerta está trabada!\n\xA1No hay salida!"
+      speech: "\xA1La puerta est\xE1 trabada!\n\xA1No hay salida!"
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -443,8 +445,8 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: Bueno, no me miren a mí. Este era el lugar de John - No tengo ninguna
-        llave.
+      speech: "Bueno, no me miren a m\xED. Este era el lugar de <color>Mark</color>
+        - No tengo ninguna llave."
       speakerEmotion: 0
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -464,7 +466,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: Eso significa que el asesino esta en nuestro grupo...
+      speech: "Eso significa que el asesino est\xE1 en nuestro grupo..."
       speakerEmotion: 0
       clueInfo: {fileID: 0}
       dialogueSound:

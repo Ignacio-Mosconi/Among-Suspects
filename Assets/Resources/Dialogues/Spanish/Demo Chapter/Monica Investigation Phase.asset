@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   introLines:
   - speakerName: 1
-    speech: "\xBFUn cad\xE1ver?, \xBFEn esta fiesta?"
+    speech: "\xBFUn cad\xE1ver? \xBFEn esta fiesta?"
     speakerEmotion: 3
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -65,7 +65,7 @@ MonoBehaviour:
     playerThought: 0
     triggerNiceImpression: 0
   - speakerName: 0
-    speech: "Ahora, necesito que me digas qu\xE9 viste antes de que entrara al dormitori
+    speech: "Ahora, necesito que me digas qu\xE9 viste antes de que entrara al dormitorio
       y encontrara al cuerpo."
     speakerEmotion: 8
     clueInfo: {fileID: 0}
@@ -76,7 +76,7 @@ MonoBehaviour:
     playerThought: 0
     triggerNiceImpression: 0
   - speakerName: 1
-    speech: "Claro. Y-yo estaba cerca del dormitorio... donde encontraste al c-cad\xE1ver.."
+    speech: "Claro. Y-yo estaba cerca del dormitorio...donde encontraste al c-cad\xE1ver..."
     speakerEmotion: 1
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -96,8 +96,8 @@ MonoBehaviour:
     playerThought: 0
     triggerNiceImpression: 0
   - speakerName: 1
-    speech: Antes de eso, vi a <color=orange>William</color> cerca de la television
-      en la sala...
+    speech: "Antes de eso, vi a <color=orange>William</color> cerca de la televisi\xF3n
+      en la sala..."
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -187,7 +187,7 @@ MonoBehaviour:
     playerThought: 0
     triggerNiceImpression: 0
   - speakerName: 1
-    speech: "Lo siento, Jimmy. Todo paso tan r\xE1pido..."
+    speech: "Lo siento, <color=orange>Jimmy</color>. Todo paso tan r\xE1pido..."
     speakerEmotion: 0
     clueInfo: {fileID: 11400000, guid: d74553952f6bf144e9a0ef6e56429e81, type: 2}
     dialogueSound:
@@ -218,7 +218,7 @@ MonoBehaviour:
     triggerNiceImpression: 0
   - speakerName: 0
     speech: "Aunque no recuerde nada de ella por mi accidente, creo que es la \xFAnica
-      persona que puedo confiar aqu\xED."
+      persona en la que puedo confiar aqu\xED."
     speakerEmotion: 8
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -273,7 +273,7 @@ MonoBehaviour:
     playerThought: 0
     triggerNiceImpression: 0
   - speakerName: 1
-    speech: "\xBF\xA1Qu\xE9 vamos a hacer!?"
+    speech: "\xA1\xBFQu\xE9 vamos a hacer?!"
     speakerEmotion: 7
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -308,7 +308,7 @@ MonoBehaviour:
     rightSpeaker: 2
     dialogue:
     - speakerName: 1
-      speech: "\xBFQu\xE9 te pasa, Jimmy?"
+      speech: "\xBFQu\xE9 te pasa, <color=orange>Jimmy</color>?"
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -318,7 +318,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: "H-hay un cad\xE1ver en uno de los dormitorios.."
+      speech: "H-hay un cad\xE1ver en uno de los dormitorios..."
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -328,7 +328,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 1
-      speech: "\xBFQu\xE9?\xBFA qu\xE9 te refieres?"
+      speech: "\xBFQu\xE9? \xBFA qu\xE9 te refieres?"
       speakerEmotion: 3
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -348,7 +348,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 1
-      speech: "\xBF\xA1Qu\xE9!?"
+      speech: "\xA1\xBFQu\xE9?!"
       speakerEmotion: 7
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -358,7 +358,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 1
-      speech: "\xBFC\xE9mo puedo pasar esto? \xBFFue un accidente?"
+      speech: "\xBFC\xF3mo puedo pasar esto? \xBFFue un accidente?"
       speakerEmotion: 3
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -368,7 +368,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 0
-      speech: "No... parec\xEDa un asesinato.."
+      speech: "No...parec\xEDa un asesinato..."
       speakerEmotion: 8
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -388,7 +388,8 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: "Ese debi\xF3 ser John; \xE9l lleg\xF3 un poco antes que t\xFA..."
+      speech: "Ese debi\xF3 ser <color=orange>Mark</color>; \xE9l lleg\xF3 un poco
+        antes que ustedes..."
       speakerEmotion: 1
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -448,7 +449,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 2
-      speech: "\xA1Larguemonos de este lugar, entonces!"
+      speech: "\xA1Largu\xE9monos de este lugar, entonces!"
       speakerEmotion: 4
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -468,8 +469,8 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: "Bueno, no me miren a m\xED. Este era el lugar de John - no tengo ningun
-        llave."
+      speech: "Bueno, no me miren a m\xED. Este era el lugar de <color=orange>Mark</color>
+        - no tengo ninguna llave."
       speakerEmotion: 0
       clueInfo: {fileID: 0}
       dialogueSound:
@@ -489,7 +490,7 @@ MonoBehaviour:
       playerThought: 0
       triggerNiceImpression: 0
     - speakerName: 3
-      speech: "Eso significa que el asesino est\xE1 en nuestro grupo.."
+      speech: "Eso significa que el asesino est\xE1 en nuestro grupo..."
       speakerEmotion: 0
       clueInfo: {fileID: 0}
       dialogueSound:

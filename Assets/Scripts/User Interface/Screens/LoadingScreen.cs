@@ -6,6 +6,8 @@ public class LoadingScreen : MonoBehaviour
 {
     [SerializeField] Image loadingBarForeground = default;
     [SerializeField] TextMeshProUGUI loadingText = default;
+    [SerializeField] TextMeshProUGUI loadingPercentageText = default;
+    [SerializeField] string[] loadingTexts = new string[(int)Language.Count];
 
     public void Show()
     {
@@ -22,13 +24,12 @@ public class LoadingScreen : MonoBehaviour
     {
         string percentageText;
         int percentage = (int)(progressValue * 100f);
+        Language language = GameManager.Instance.CurrentLanguage;
 
-        if (percentage == 100f)
-            percentageText = percentage.ToString();
-        else
-            percentageText = (percentage > 10f) ? " " + percentage.ToString() : "  " + percentage.ToString();
+        percentageText = percentage.ToString();
 
         loadingBarForeground.fillAmount = progressValue;
-        loadingText.text = "Loading: " + percentageText + "%"; 
+        loadingText.text = loadingTexts[(int)language] + ": ";
+        loadingPercentageText.text = percentageText + "%";
     }
 }

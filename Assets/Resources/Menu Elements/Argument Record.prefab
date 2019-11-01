@@ -95,12 +95,12 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 40
+  m_fontSize: 20
   m_fontSizeBase: 40
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 40
-  m_fontSizeMax: 120
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 20
+  m_fontSizeMax: 40
   m_fontStyle: 1
   m_textAlignment: 513
   m_isAlignmentEnumConverted: 1
@@ -595,6 +595,14 @@ MonoBehaviour:
   argumentNumberText: {fileID: 6681430913844727007}
   timeLeftAmountText: {fileID: 7706927231243485444}
   resultIcon: {fileID: 4556829486094972687}
+  resultText: {fileID: 1252248583813316688}
+  timeLeftText: {fileID: 349409211249175350}
+  resultTextByLanguage:
+  - Result
+  - Resultado
+  timeLeftTextByLanguage:
+  - Time Left
+  - Tiempo Restante
 --- !u!1 &2998847002033050865
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,12 +698,12 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 40
+  m_fontSize: 20
   m_fontSizeBase: 40
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 40
-  m_fontSizeMax: 120
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 20
+  m_fontSizeMax: 40
   m_fontStyle: 1
   m_textAlignment: 513
   m_isAlignmentEnumConverted: 1

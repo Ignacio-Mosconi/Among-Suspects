@@ -15810,7 +15810,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 500, y: 100}
+  m_SizeDelta: {x: 800, y: 100}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &3332153899846010381
 CanvasRenderer:
@@ -18481,17 +18481,27 @@ MonoBehaviour:
   fullscreenText: {fileID: 8778038098610943032}
   infoPanel: {fileID: 7446669771945800948}
   infoPanelAppearHorOffset: 60
-  settingInfoTexts:
-  - Determines the language in which the dialogues and the descriptions of clues and
-    items are shown.
-  - Determines the graphical quality of the image rendered.
-  - Determines the screen resolution that the game will be rendererd at.
-  - Determines whether the game is windowed or not; this option won't be available
-    if the resolution is set to the display's maximum, or of it's too low.
-  - Changes the speed at which the text is displayed during regular dialogues (slow
-    means half speed, and fast increases the speed by 50%).
+  settingInfoTextsEnglish:
+  - Changes the language of the texts shown.
+  - 'Changes the graphical quality of the image rendered. '
+  - Changes the target screen resolution.
+  - Determines if it the game is windowed or not. The option won't be available if
+    the resolution is either set to the display's maximum or if it's too low.
+  - Changes the speed at which the dialogue is displayed (from half speed to a 50%
+    increase).
   - Changes the volume of the sound effects.
-  - Changes the volume of the background music.
+  - Changes the volume of the music.
+  settingInfoTextsSpanish:
+  - Cambia el idioma de los textos mostrados.
+  - "Cambia la calidad gr\xE1fica de la imagen renderizada."
+  - "Cambia la resoluci\xF3n de pantalla."
+  - "Determina si el juego corre en \"modo ventana\" o no. La opci\xF3n no estar\xE1
+    disponible si la resoluci\xF3n est\xE1 configurada al m\xE1ximo posible o si est\xE1
+    muy baja."
+  - "Cambia la velocidad de aparici\xF3n de los di\xE1logos (var\xEDa entre la mitad
+    de velocidad hasta un incremento del 50%)."
+  - Cambia el volumen de los efectos de sonido.
+  - "Cambia el volumen de la m\xFAsica."
   sfxAudioIcon: {fileID: 2254903364134687490}
   musicAudioIcon: {fileID: 1251621277393212630}
   audioIconsSprites:
