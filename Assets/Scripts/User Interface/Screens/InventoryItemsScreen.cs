@@ -58,7 +58,7 @@ public class InventoryItemsScreen : MonoBehaviour
         if (previousLanguage != GameManager.Instance.CurrentLanguage)
             ReloadItemsInCurrentLanguage();
 
-        int founditemIndex = 0;
+        int foundItemIndex = 0;
 
         for (int i = 0; i < itemsButtons.Count; i++)
         {
@@ -73,25 +73,19 @@ public class InventoryItemsScreen : MonoBehaviour
 
             if (itemsButtons[i].gameObject.activeSelf)
             {
-                if (founditemIndex == 0)
+                if (foundItemIndex == 0)
                 {
                     lastButtonSelected = itemsButtons[i];
                     GameManager.Instance.InvokeMethodInRealTime(itemsButtons[i].Select, 0.1f);
                     SelectItem(itemInfo, itemsButtons[i]);
                 }
 
-                itemsButtons[i].transform.SetSiblingIndex(founditemIndex);
-                founditemIndex++;
+                itemsButtons[i].transform.SetSiblingIndex(foundItemIndex);
+                foundItemIndex++;
             }
         }
 
-        itemsDescriptionArea.SetActive(founditemIndex != 0);
-    }
-
-    void Update()
-    {
-        if (!EventSystem.current.currentSelectedGameObject && lastButtonSelected)
-            EventSystem.current.SetSelectedGameObject(lastButtonSelected.gameObject);
+        itemsDescriptionArea.SetActive(foundItemIndex != 0);
     }
 
     void ReloadItemsInCurrentLanguage()

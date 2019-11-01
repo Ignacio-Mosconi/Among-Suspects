@@ -90,7 +90,12 @@ public class CluesScreen : MonoBehaviour
 
     void Update()
     {
-        if (!EventSystem.current.currentSelectedGameObject && lastButtonSelected)
+        Button currentlySelectedButton = null;
+
+        if (EventSystem.current.currentSelectedGameObject)
+            currentlySelectedButton = EventSystem.current.GetComponent<Button>(); 
+
+        if (!currentlySelectedButton && lastButtonSelected)
             EventSystem.current.SetSelectedGameObject(lastButtonSelected.gameObject);
     }
 
