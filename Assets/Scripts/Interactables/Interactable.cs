@@ -43,6 +43,8 @@ public abstract class Interactable : MonoBehaviour
         if (!playerController.CanInteract)
             return;
 
+        Debug.Log(gameObject);
+
         Vector3 diff = interactionPoint.position - cameraTransform.position;
 
         if (diff.sqrMagnitude < interactionRadius * interactionRadius)
