@@ -442,7 +442,10 @@ MonoBehaviour:
   interactionPoint: {fileID: 3920191719551355273}
   interactionRadius: 2
   hasToBeFaced: 0
-  objectSprite: {fileID: 21300000, guid: 593ccbcaf3862cb45ab6e6a78c0acd35, type: 3}
+  explorationSprite: {fileID: 21300000, guid: 593ccbcaf3862cb45ab6e6a78c0acd35, type: 3}
+  investigationSprite: {fileID: 21300000, guid: 593ccbcaf3862cb45ab6e6a78c0acd35,
+    type: 3}
+  inventoryItemInfo: {fileID: 0}
 --- !u!65 &3073569194321574501
 BoxCollider:
   m_ObjectHideFlags: 0

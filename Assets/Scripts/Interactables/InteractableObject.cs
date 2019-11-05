@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class InteractableObject : Interactable
 {
     [Header("Interactable Object Properties")]
-    [SerializeField] Sprite objectSprite = default;
+    [SerializeField] Sprite explorationSprite = default;
+    [SerializeField] Sprite investigationSprite = default;
     [SerializeField] InventoryItemInfo inventoryItemInfo = null;
 
     Dictionary<Language, ThoughtInfo> thoughtInfoByLanguage = new Dictionary<Language, ThoughtInfo>();
@@ -42,8 +43,11 @@ public class InteractableObject : Interactable
 
     public override void Interact()
     {
+        Sprite spriteToShow = (ChapterManager.Instance.CurrentPhase == ChapterPhase.Exploration) ? explorationSprite : investigationSprite;
+        bool enableImage = (spriteToShow != null);
+
         DisableInteraction();
-        DialogueManager.Instance.StartDialogue(thoughtInfoByLanguage, interactionPoint.position, objectSprite, enableImage: true);
+        DialogueManager.Instance.StartDialogue(thoughtInfoByLanguage, interactionPoint.position, spriteToShow, enableImage);
 
         if (inventoryItemInfo)
             DialogueManager.Instance.OnDialogueAreaDisable.AddListener(RemoveFromScene);
