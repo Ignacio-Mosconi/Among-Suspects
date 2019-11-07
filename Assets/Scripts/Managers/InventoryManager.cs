@@ -164,6 +164,12 @@ public class InventoryManager : MonoBehaviour
         return hasItem;
     }
 
+    public void ResetInventory()
+    {
+        collectedInventoryItems.Clear();
+        LoadInventoryItems();
+    }
+
     #region Properties
 
     public int InventoryItemsAmount

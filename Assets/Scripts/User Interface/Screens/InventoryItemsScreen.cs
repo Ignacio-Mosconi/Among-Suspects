@@ -112,7 +112,7 @@ public class InventoryItemsScreen : MonoBehaviour
             InventoryItemInfo inventoryItemInfo = InventoryManager.Instance.GetInventoryItemInfo(i);
 
             itemButton.onClick.RemoveAllListeners();
-            itemButton.onClick.AddListener(() => SelectItem(inventoryItemInfo, itemButton));
+            itemButton.onClick.AddListener(() => StartCoroutine(SelectItem(inventoryItemInfo, itemButton)));
         }
     }
 

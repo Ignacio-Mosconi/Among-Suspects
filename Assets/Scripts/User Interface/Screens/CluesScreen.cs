@@ -115,7 +115,7 @@ public class CluesScreen : MonoBehaviour
             buttonText.text = clueInfo.clueName;
 
             clueButton.onClick.RemoveAllListeners();
-            clueButton.onClick.AddListener(() => SelectClue(clueInfo, clueButton));
+            clueButton.onClick.AddListener(() => StartCoroutine(SelectClue(clueInfo, clueButton)));
         }
     }
 

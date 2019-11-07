@@ -63,6 +63,7 @@ public class MainMenu : Menu
         GameManager gameManager = GameManager.Instance;
         string firstChapterName = gameManager.GetChapterSceneName(0);  
         gameManager.TransitionToScene(firstChapterName);
+        InventoryManager.Instance.ResetInventory();
     }
 
     void QuitGame()
