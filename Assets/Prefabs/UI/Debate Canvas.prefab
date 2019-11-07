@@ -2377,7 +2377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cluesButtonsPanel: {fileID: 6256485425815567045}
-  cluesDescriptionArea: {fileID: 6398945482874040614}
+  clueDescriptionPrompt: {fileID: 5251009617862232466}
   clueTitleText: {fileID: 1553000840846621334}
   clueDescriptionText: {fileID: 5532590491981651955}
   clueImage: {fileID: 1642747697279399131}
@@ -3579,8 +3579,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8874113722888061437}
   - component: {fileID: 4731081833011700174}
+  - component: {fileID: 8381799289161460732}
+  - component: {fileID: 5251009617862232466}
   m_Layer: 5
-  m_Name: Clue Description Area
+  m_Name: Clue Description Prompt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3615,6 +3617,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6398945482874040614}
   m_CullTransparentMesh: 0
+--- !u!95 &8381799289161460732
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6398945482874040614}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 1f794e92ec875474cbebcc1c132bffe4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5251009617862232466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6398945482874040614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f950a905179da2d4bbd885cba9f8e78e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keepOnScreen: 1
+  keepStateAtPause: 1
 --- !u!1 &6438602614513447066
 GameObject:
   m_ObjectHideFlags: 0

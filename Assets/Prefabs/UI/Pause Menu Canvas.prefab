@@ -7053,7 +7053,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 40, y: -54.19995}
+  m_AnchoredPosition: {x: 40, y: -54.2}
   m_SizeDelta: {x: 688, y: 108.4}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &4479487947879719271
@@ -8598,7 +8598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cluesButtonsPanel: {fileID: 4479487948915848922}
-  cluesDescriptionArea: {fileID: 7721114198402992989}
+  clueDescriptionPrompt: {fileID: 5321331518039909298}
   clueTitleText: {fileID: 4479487948007249392}
   clueDescriptionText: {fileID: 4479487947914901734}
   clueImage: {fileID: 8619578238844105618}
@@ -13752,8 +13752,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8954801920529688423}
   - component: {fileID: 3391584621488566626}
+  - component: {fileID: 1454672673169337853}
+  - component: {fileID: 5321331518039909298}
   m_Layer: 5
-  m_Name: Clue Description Area
+  m_Name: Clue Description Prompt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13788,6 +13790,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7721114198402992989}
   m_CullTransparentMesh: 0
+--- !u!95 &1454672673169337853
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7721114198402992989}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 1f794e92ec875474cbebcc1c132bffe4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5321331518039909298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7721114198402992989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f950a905179da2d4bbd885cba9f8e78e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keepOnScreen: 1
+  keepStateAtPause: 1
 --- !u!1 &7731802634101282650
 GameObject:
   m_ObjectHideFlags: 0

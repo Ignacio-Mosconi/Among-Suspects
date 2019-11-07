@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using TMPro;
 
 public enum DebatePhase
@@ -83,6 +84,7 @@ public class DebateManager : MonoBehaviour
     int lineIndex = 0;
     int argumentIndex = 0;
     bool isSelectingOption;
+    bool evidenceJustUsed;
 
     void Start()
     {
@@ -98,6 +100,13 @@ public class DebateManager : MonoBehaviour
 
         cluesScreen = GetComponentInChildren<CluesScreen>(includeInactive: true);
 
+        cluesScreen.OnClueDeselected.AddListener(() => 
+        {
+            ExtendedInputModule inputModule = EventSystem.current.GetComponent<ExtendedInputModule>();
+
+            if (inputModule.GetHoveredObject() != useEvidenceButton.GetComponentInChildren<TextMeshProUGUI>().gameObject)
+                ChangeCurrentlySelectedEvidence(null);
+        });
         useEvidenceButton.interactable = false;
 
         GameManager.Instance.AddCursorPointerHoverEventsToAllButtons(debateOptionsPanel.gameObject);
@@ -505,7 +514,7 @@ public class DebateManager : MonoBehaviour
     void ChangeCurrentlySelectedEvidence(ClueInfo clueInfo)
     {
         currentlySelectedEvidence = clueInfo;
-        useEvidenceButton.interactable = true;
+        useEvidenceButton.interactable = (clueInfo != null);
     }
 
     void StayQuietAfterComment()
@@ -537,19 +546,19 @@ public class DebateManager : MonoBehaviour
         debateOptionsPanel.Hide();
         clueOptionsPanel.Show();
 
-        if (CharacterManager.Instance.PlayerController.CluesGathered.Count > 0)
-        {
-            for (int i = 0; i < ChapterManager.Instance.CluesAmount; i++)
-            {
-                ClueInfo clueInfo = ChapterManager.Instance.GetChapterClueInfo(i);
+        // if (CharacterManager.Instance.PlayerController.CluesGathered.Count > 0)
+        // {
+        //     for (int i = 0; i < ChapterManager.Instance.CluesAmount; i++)
+        //     {
+        //         ClueInfo clueInfo = ChapterManager.Instance.GetChapterClueInfo(i);
                 
-                if (CharacterManager.Instance.PlayerController.HasClue(ref clueInfo))
-                {
-                    ChangeCurrentlySelectedEvidence(clueInfo);
-                    break;
-                }
-            }
-        }
+        //         if (CharacterManager.Instance.PlayerController.HasClue(ref clueInfo))
+        //         {
+        //             ChangeCurrentlySelectedEvidence(clueInfo);
+        //             break;
+        //         }
+        //     }
+        // }
         
         LoadRefuteOptionsCallbacks();
     }
@@ -557,6 +566,8 @@ public class DebateManager : MonoBehaviour
     public void AccuseWithEvidence()
     {  
         bool increaseCredibility;
+
+        evidenceJustUsed = true;
 
         if (currentArgument.correctReaction == DebateReaction.Disagree && 
             currentArgument.correctEvidence.clueID == currentlySelectedEvidence.clueID)

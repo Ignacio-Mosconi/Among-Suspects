@@ -1,13 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using TMPro;
 
 public class CluesScreen : MonoBehaviour
 {
     [SerializeField] GameObject cluesButtonsPanel = default;
-    [SerializeField] GameObject cluesDescriptionArea = default;
+    [SerializeField] UIPrompt clueDescriptionPrompt = default;
     [SerializeField] TextMeshProUGUI clueTitleText = default;
     [SerializeField] TextMeshProUGUI clueDescriptionText = default;
     [SerializeField] Image clueImage = default;
@@ -18,6 +20,8 @@ public class CluesScreen : MonoBehaviour
     Button lastButtonSelected;
     Language previousLanguage;
     float addedClueButtonsPanelSize;
+
+    UnityEvent onClueDeselected = new UnityEvent();
 
     const string ClueButtonPrefabPath = "Menu Elements/Clue Button";
 
@@ -47,10 +51,13 @@ public class CluesScreen : MonoBehaviour
 
             buttonText.text = clueInfo.clueName;
 
-            clueButton.onClick.AddListener(() => SelectClue(clueInfo, clueButton));
+            clueButton.onClick.AddListener(() => StartCoroutine(SelectClue(clueInfo, clueButton)));
             clueButton.gameObject.SetActive(false);
             cluesButtons.Add(clueButton);
         }
+
+        clueDescriptionPrompt.SetUp();
+        clueDescriptionPrompt.Deactivate();
     }
 
     void OnEnable()
@@ -73,30 +80,26 @@ public class CluesScreen : MonoBehaviour
 
             if (cluesButtons[i].gameObject.activeSelf)
             {
-                if (foundClueIndex == 0)
-                {
-                    lastButtonSelected = cluesButtons[i];
-                    GameManager.Instance.InvokeMethodInRealTime(cluesButtons[i].Select, 0.1f);
-                    SelectClue(clueInfo, cluesButtons[i]);
-                }
-
                 cluesButtons[i].transform.SetSiblingIndex(foundClueIndex);
                 foundClueIndex++;
             }
         }
-
-        cluesDescriptionArea.SetActive(foundClueIndex != 0);
     }
 
     void Update()
     {
-        Button currentlySelectedButton = null;
+        if (Input.GetMouseButton(0))
+        {
+            GameObject currentlySelectedObject = EventSystem.current.currentSelectedGameObject;
 
-        if (EventSystem.current.currentSelectedGameObject)
-            currentlySelectedButton = EventSystem.current.GetComponent<Button>(); 
-
-        if (!currentlySelectedButton && lastButtonSelected)
-            EventSystem.current.SetSelectedGameObject(lastButtonSelected.gameObject);
+            if ((!currentlySelectedObject || (lastButtonSelected && currentlySelectedObject != lastButtonSelected.gameObject)) &&
+                clueDescriptionPrompt.gameObject.activeInHierarchy && !clueDescriptionPrompt.IsHiding)
+            {
+                lastButtonSelected = null;
+                clueDescriptionPrompt.Hide();
+                onClueDeselected.Invoke();
+            }
+        }
     }
 
     void ReloadCluesInCurrentLanguage()
@@ -116,12 +119,22 @@ public class CluesScreen : MonoBehaviour
         }
     }
 
-    void SelectClue(ClueInfo clueInfo, Button clueButton)
+    IEnumerator SelectClue(ClueInfo clueInfo, Button clueButton)
     {
+        if (lastButtonSelected == clueButton && clueDescriptionPrompt.gameObject.activeInHierarchy)
+            yield break;
+
         lastButtonSelected = clueButton;
+
+        clueDescriptionPrompt.Hide();
+
+        yield return new WaitForSecondsRealtime(clueDescriptionPrompt.HideAnimationDuration);
+
         clueTitleText.text = clueInfo.clueName;
         clueDescriptionText.text = clueInfo.description;
         clueImage.sprite = clueInfo.clueSprite;
+
+        clueDescriptionPrompt.Show();
     }
 
     #region Properties
@@ -129,6 +142,11 @@ public class CluesScreen : MonoBehaviour
     public List<Button> CluesButtons
     {
         get { return cluesButtons; }
+    }
+
+    public UnityEvent OnClueDeselected
+    {
+        get { return onClueDeselected; }
     }
 
     #endregion
