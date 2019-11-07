@@ -41,6 +41,8 @@ public class ChapterManager : MonoBehaviour
     [Header("Animated Screens")]
     [SerializeField] AnimatedMenuScreen debateResultsScreen = default;
     [SerializeField] AnimatedMenuScreen debateRetryScreen = default;
+    [Header("Various Controllers")]
+    [SerializeField] ObjectStateController objectStateController = default;
     [Header("Confirmation Prompt Messages")]
     [SerializeField] [TextArea(3, 5)] string[] debateStartWarnings = new string[(int)Language.Count];
     [SerializeField] [TextArea(3, 5)] string[] exitDebateWarnings = new string[(int)Language.Count];
@@ -55,6 +57,8 @@ public class ChapterManager : MonoBehaviour
     {
         debateInitializer = FindObjectOfType<DebateInitializer>();
         pauseMenu = FindObjectOfType<PauseMenu>();
+
+        objectStateController.SetExplorationVariableMeshesMaterials();
 
         LoadChapterClues();
 
@@ -163,6 +167,7 @@ public class ChapterManager : MonoBehaviour
         if (currentPhase == ChapterPhase.Exploration)
         {
             currentPhase = ChapterPhase.Investigation;
+            objectStateController.SetInvestigationVariableMeshesMaterials();
             debateInitializer.EnableInteraction();
             CharacterManager.Instance.LoadDialogues(ChapterPhase.Investigation);
             CharacterManager.Instance.PlayerController.StartInvestigation();
