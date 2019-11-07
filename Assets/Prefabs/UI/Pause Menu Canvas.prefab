@@ -4865,7 +4865,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsButtonsPanel: {fileID: 294201444475673324}
-  itemsDescriptionArea: {fileID: 6806056306359531454}
+  itemDescriptionPrompt: {fileID: 2845375930815320187}
   itemTitleText: {fileID: 888539691515657844}
   itemDescriptionText: {fileID: 1712013976507818478}
   itemImage: {fileID: 6625789838543098395}
@@ -11967,8 +11967,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8645500612695024525}
   - component: {fileID: 2047047388239685364}
+  - component: {fileID: 58939498258899817}
+  - component: {fileID: 2845375930815320187}
   m_Layer: 5
-  m_Name: Item Description Area
+  m_Name: Item Description Prompt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12003,6 +12005,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6806056306359531454}
   m_CullTransparentMesh: 0
+--- !u!95 &58939498258899817
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6806056306359531454}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 1f794e92ec875474cbebcc1c132bffe4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2845375930815320187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6806056306359531454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f950a905179da2d4bbd885cba9f8e78e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keepOnScreen: 1
+  keepStateAtPause: 1
 --- !u!1 &6834237469301248281
 GameObject:
   m_ObjectHideFlags: 0

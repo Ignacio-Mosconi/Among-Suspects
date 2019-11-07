@@ -1,13 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using TMPro;
 
 public class InventoryItemsScreen : MonoBehaviour
 {
     [SerializeField] GameObject itemsButtonsPanel = default;
-    [SerializeField] GameObject itemsDescriptionArea = default;
+    [SerializeField] UIPrompt itemDescriptionPrompt = default;
     [SerializeField] TextMeshProUGUI itemTitleText = default;
     [SerializeField] TextMeshProUGUI itemDescriptionText = default;
     [SerializeField] Image itemImage = default;
@@ -18,6 +20,8 @@ public class InventoryItemsScreen : MonoBehaviour
     Button lastButtonSelected;
     Language previousLanguage;
     float addeditemButtonsPanelSize;
+
+    UnityEvent onItemDeselected = new UnityEvent();
 
     const string itemButtonPrefabPath = "Menu Elements/Item Button";
 
@@ -45,12 +49,15 @@ public class InventoryItemsScreen : MonoBehaviour
 
             buttonImage.sprite = itemInfo.itemSprite;
 
-            itemButton.onClick.AddListener(() => SelectItem(itemInfo, itemButton));
+            itemButton.onClick.AddListener(() => StartCoroutine(SelectItem(itemInfo, itemButton)));
             itemButton.gameObject.SetActive(false);
             itemsButtons.Add(itemButton);
         }
 
         previousLanguage = GameManager.Instance.CurrentLanguage;
+        
+        itemDescriptionPrompt.SetUp();
+        itemDescriptionPrompt.Deactivate();
     }
 
     void OnEnable()
@@ -73,19 +80,26 @@ public class InventoryItemsScreen : MonoBehaviour
 
             if (itemsButtons[i].gameObject.activeSelf)
             {
-                if (foundItemIndex == 0)
-                {
-                    lastButtonSelected = itemsButtons[i];
-                    GameManager.Instance.InvokeMethodInRealTime(itemsButtons[i].Select, 0.1f);
-                    SelectItem(itemInfo, itemsButtons[i]);
-                }
-
                 itemsButtons[i].transform.SetSiblingIndex(foundItemIndex);
                 foundItemIndex++;
             }
         }
+    }
 
-        itemsDescriptionArea.SetActive(foundItemIndex != 0);
+    void Update()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            GameObject currentlySelectedObject = EventSystem.current.currentSelectedGameObject;
+
+            if ((!currentlySelectedObject || (lastButtonSelected && currentlySelectedObject != lastButtonSelected.gameObject)) &&
+                itemDescriptionPrompt.gameObject.activeInHierarchy && !itemDescriptionPrompt.IsHiding)
+            {
+                lastButtonSelected = null;
+                itemDescriptionPrompt.Hide();
+                onItemDeselected.Invoke();
+            }
+        }
     }
 
     void ReloadItemsInCurrentLanguage()
@@ -102,12 +116,22 @@ public class InventoryItemsScreen : MonoBehaviour
         }
     }
 
-    void SelectItem(InventoryItemInfo itemInfo, Button itemButton)
+    IEnumerator SelectItem(InventoryItemInfo itemInfo, Button itemButton)
     {
+        if (lastButtonSelected == itemButton && itemDescriptionPrompt.gameObject.activeInHierarchy)
+            yield break;
+
         lastButtonSelected = itemButton;
+
+        itemDescriptionPrompt.Hide();
+
+        yield return new WaitForSecondsRealtime(itemDescriptionPrompt.HideAnimationDuration);
+
         itemTitleText.text = itemInfo.itemName;
         itemDescriptionText.text = itemInfo.description;
         itemImage.sprite = itemInfo.itemSprite;
+
+        itemDescriptionPrompt.Show();
     }
 
     #region Properties
@@ -115,6 +139,11 @@ public class InventoryItemsScreen : MonoBehaviour
     public List<Button> ItemsButtons
     {
         get { return itemsButtons; }
+    }
+
+    public UnityEvent OnItemDeselected
+    {
+        get { return onItemDeselected; }
     }
 
     #endregion

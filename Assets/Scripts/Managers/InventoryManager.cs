@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
+using TMPro;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -36,6 +38,7 @@ public class InventoryManager : MonoBehaviour
     #endregion
 
     [SerializeField] InventoryItemsScreen inventoryItemsScreen = default;
+    [SerializeField] Button useItemButton = default;
 
     List<InventoryItemInfo> collectedInventoryItems = new List<InventoryItemInfo>();
     InventoryItemInfo[] allInventoryItems;
@@ -51,6 +54,16 @@ public class InventoryManager : MonoBehaviour
         
         LoadInventoryItems();
         GameManager.Instance.OnLanguageChanged.AddListener(LoadInventoryItems);
+
+        inventoryItemsScreen.OnItemDeselected.AddListener(() =>
+        {
+            ExtendedInputModule inputModule = EventSystem.current.GetComponent<ExtendedInputModule>();
+
+            if (inputModule.GetHoveredObject() != useItemButton.GetComponentInChildren<TextMeshProUGUI>().gameObject)
+                ChangeCurrentlySelectedItem(null);
+        });
+
+        useItemButton.interactable = false;
     }
 
     void LoadInventoryItems()
@@ -75,6 +88,7 @@ public class InventoryManager : MonoBehaviour
     void ChangeCurrentlySelectedItem(InventoryItemInfo itemInfo)
     {
         currentlySelectedItem = itemInfo;
+        useItemButton.interactable = (itemInfo != null);
     }
 
     void HideItemSelectionScreen()
@@ -107,20 +121,7 @@ public class InventoryManager : MonoBehaviour
         GameManager.Instance.SetCursorEnable(enable: true);
         
         inventoryAnimatedScreen.Show();
-
-        if (collectedInventoryItems.Count > 0)
-        {
-            for (int i = 0; i < InventoryItemsAmount; i++)
-            {
-                InventoryItemInfo itemInfo = GetInventoryItemInfo(i);
-
-                if (HasInventoryItem(ref itemInfo))
-                {
-                    ChangeCurrentlySelectedItem(itemInfo);
-                    break;
-                }
-            }
-        }
+        useItemButton.interactable = false;
 
         Button[] itemButtons = inventoryItemsScreen.ItemsButtons.ToArray();
 

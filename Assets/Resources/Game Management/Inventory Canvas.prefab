@@ -380,7 +380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsButtonsPanel: {fileID: 7648056045052915330}
-  itemsDescriptionArea: {fileID: 7223005417155159393}
+  itemDescriptionPrompt: {fileID: 4940037273613566883}
   itemTitleText: {fileID: 2989691010298605265}
   itemDescriptionText: {fileID: 8086054347307764660}
   itemImage: {fileID: 3043567451160748188}
@@ -1243,6 +1243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryItemsScreen: {fileID: 1239256655969226956}
+  useItemButton: {fileID: 2217679745868555252}
 --- !u!1 &3918439899233332529
 GameObject:
   m_ObjectHideFlags: 0
@@ -1812,8 +1813,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5176875964438992314}
   - component: {fileID: 9032241694069372297}
+  - component: {fileID: 8817030670407643908}
+  - component: {fileID: 4940037273613566883}
   m_Layer: 5
-  m_Name: Item Description Area
+  m_Name: Item Description Prompt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1848,6 +1851,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7223005417155159393}
   m_CullTransparentMesh: 0
+--- !u!95 &8817030670407643908
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7223005417155159393}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 1f794e92ec875474cbebcc1c132bffe4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4940037273613566883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7223005417155159393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f950a905179da2d4bbd885cba9f8e78e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keepOnScreen: 1
+  keepStateAtPause: 1
 --- !u!1 &7648056045052915330
 GameObject:
   m_ObjectHideFlags: 0
@@ -2124,7 +2160,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Clue Name
+  m_text: Item Name
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cfcc70fef0d7f604089553c796e12ec6, type: 2}
   m_sharedMaterial: {fileID: 21333373908695394, guid: cfcc70fef0d7f604089553c796e12ec6,
