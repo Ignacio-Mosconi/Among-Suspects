@@ -6,7 +6,7 @@ public class ChapterWonMenu : Menu
     [Header("Translation Texts")]
     [SerializeField] TextMeshProUGUI debateResultsTitleText = default;
     [SerializeField] TextMeshProUGUI scoreText = default;
-    [SerializeField] TextMeshProUGUI continueButtonText = default;
+    [SerializeField] TextMeshProUGUI[] continueButtonTexts = default;
     [SerializeField] TextMeshProUGUI chapterFinishedTitleText = default;
     [SerializeField] TextMeshProUGUI nextChapterStartDescriptionText = default;
     [SerializeField] TextMeshProUGUI[] continueOptionsTexts = default;
@@ -24,7 +24,8 @@ public class ChapterWonMenu : Menu
 
         debateResultsTitleText.text = chapterWonMenuTextInfo.debateResultsTitle;
         scoreText.text = chapterWonMenuTextInfo.score;
-        continueButtonText.text = chapterWonMenuTextInfo.continueButtonText;
+        for (int i = 0; i < continueOptionsTexts.Length; i++)
+            continueButtonTexts[i].text = chapterWonMenuTextInfo.continueButtonTexts[i];
         chapterFinishedTitleText.text = chapterWonMenuTextInfo.chapterFinishedTitle;
         nextChapterStartDescriptionText.text = chapterWonMenuTextInfo.nextChapterStartDescription;
         for (int i = 0; i < continueOptionsTexts.Length; i++)

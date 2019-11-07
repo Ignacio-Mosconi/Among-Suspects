@@ -3,10 +3,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Chapter Won Menu Text Info", menuName = "Chapter Won Menu Text Info", order = 10)]
 public class ChapterWonMenuTextInfo : ScriptableObject
 {
-    [Header("Score Screen")]
+    [Header("Common")]
+    public string[] continueButtonTexts = default;
+
+    [Header("Results Screen")]
     public string debateResultsTitle = default;
     public string score = default;
-    public string continueButtonText = default;
 
     [Header("Chapter Finished Screen")]
     public string chapterFinishedTitle = default;
