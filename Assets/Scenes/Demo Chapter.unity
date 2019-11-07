@@ -33,7 +33,7 @@ RenderSettings:
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
   m_DefaultReflectionMode: 0
-  m_DefaultReflectionResolution: 256
+  m_DefaultReflectionResolution: 512
   m_ReflectionBounces: 2
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
@@ -56,17 +56,17 @@ LightmapSettings:
   m_LightmapEditorSettings:
     serializedVersion: 10
     m_Resolution: 2
-    m_BakeResolution: 30
+    m_BakeResolution: 50
     m_AtlasSize: 2048
     m_AO: 1
-    m_AOMaxDistance: 0.75
-    m_CompAOExponent: 1
-    m_CompAOExponentDirect: 0.25
-    m_Padding: 2
+    m_AOMaxDistance: 1
+    m_CompAOExponent: 1.5
+    m_CompAOExponentDirect: 0.3
+    m_Padding: 4
     m_LightmapParameters: {fileID: 15200, guid: 0000000000000000f000000000000000,
       type: 0}
     m_LightmapsBakeMode: 1
-    m_TextureCompression: 1
+    m_TextureCompression: 0
     m_FinalGather: 0
     m_FinalGatherFiltering: 1
     m_FinalGatherRayCount: 256
@@ -74,8 +74,8 @@ LightmapSettings:
     m_MixedBakeMode: 2
     m_BakeBackend: 2
     m_PVRSampling: 1
-    m_PVRDirectSampleCount: 64
-    m_PVRSampleCount: 500
+    m_PVRDirectSampleCount: 80
+    m_PVRSampleCount: 600
     m_PVRBounces: 4
     m_PVRFilterTypeDirect: 0
     m_PVRFilterTypeIndirect: 0
@@ -243,11 +243,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LamparaDePared (27)
       objectReference: {fileID: 0}
-    - target: {fileID: 6777409034536828773, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 8327515647993188686, guid: 263d80abf65e16c40bc932c96f7164c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -302,56 +297,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176231403527624924, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396841445565533999, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 263d80abf65e16c40bc932c96f7164c8, type: 3}
@@ -980,11 +925,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LamparaDePared (19)
       objectReference: {fileID: 0}
-    - target: {fileID: 6777409034536828773, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 8327515647993188686, guid: 263d80abf65e16c40bc932c96f7164c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1039,56 +979,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176231403527624924, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396841445565533999, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 263d80abf65e16c40bc932c96f7164c8, type: 3}
@@ -1380,11 +1270,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LamparaDePared (9)
       objectReference: {fileID: 0}
-    - target: {fileID: 6777409034536828773, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 8327515647993188686, guid: 263d80abf65e16c40bc932c96f7164c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1439,56 +1324,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176231403527624924, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396841445565533999, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 263d80abf65e16c40bc932c96f7164c8, type: 3}
@@ -2518,11 +2353,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LamparaDePared (29)
       objectReference: {fileID: 0}
-    - target: {fileID: 6777409034536828773, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 8327515647993188686, guid: 263d80abf65e16c40bc932c96f7164c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2577,56 +2407,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176231403527624924, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396841445565533999, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 263d80abf65e16c40bc932c96f7164c8, type: 3}
@@ -3393,7 +3173,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -3896,6 +3676,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Candelabro
       objectReference: {fileID: 0}
+    - target: {fileID: 6355394773384094293, guid: e761b44fa52b65b4189d9202e5283032,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 8824885423498408187, guid: e761b44fa52b65b4189d9202e5283032,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3904,7 +3689,7 @@ PrefabInstance:
     - target: {fileID: 8824885423498408187, guid: e761b44fa52b65b4189d9202e5283032,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.87
+      value: 2.98
       objectReference: {fileID: 0}
     - target: {fileID: 8824885423498408187, guid: e761b44fa52b65b4189d9202e5283032,
         type: 3}
@@ -3951,15 +3736,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8824885423498408187, guid: e761b44fa52b65b4189d9202e5283032,
+    - target: {fileID: 2086920748651224796, guid: e761b44fa52b65b4189d9202e5283032,
         type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.005
-      objectReference: {fileID: 0}
-    - target: {fileID: 7679724062367367894, guid: e761b44fa52b65b4189d9202e5283032,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
+      propertyPath: m_StaticEditorFlags
+      value: 126
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e761b44fa52b65b4189d9202e5283032, type: 3}
@@ -4094,11 +3874,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LamparaDePared (25)
       objectReference: {fileID: 0}
-    - target: {fileID: 6777409034536828773, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 8327515647993188686, guid: 263d80abf65e16c40bc932c96f7164c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4153,56 +3928,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176231403527624924, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396841445565533999, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 263d80abf65e16c40bc932c96f7164c8, type: 3}
@@ -5496,11 +5221,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LamparaDePared (4)
       objectReference: {fileID: 0}
-    - target: {fileID: 6777409034536828773, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 8327515647993188686, guid: 263d80abf65e16c40bc932c96f7164c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5556,56 +5276,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9176231403527624924, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396841445565533999, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 263d80abf65e16c40bc932c96f7164c8, type: 3}
 --- !u!4 &422021463 stripped
@@ -5631,11 +5301,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LamparaDePared (15)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6777409034536828773, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 8327515647993188686, guid: 263d80abf65e16c40bc932c96f7164c8,
         type: 3}
@@ -5691,56 +5356,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176231403527624924, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396841445565533999, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 263d80abf65e16c40bc932c96f7164c8, type: 3}
@@ -5837,11 +5452,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LamparaDePared (11)
       objectReference: {fileID: 0}
-    - target: {fileID: 6777409034536828773, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 8327515647993188686, guid: 263d80abf65e16c40bc932c96f7164c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5897,56 +5507,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9176231403527624924, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396841445565533999, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 263d80abf65e16c40bc932c96f7164c8, type: 3}
 --- !u!4 &437531649 stripped
@@ -5966,11 +5526,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LamparaDePared (23)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6777409034536828773, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 8327515647993188686, guid: 263d80abf65e16c40bc932c96f7164c8,
         type: 3}
@@ -6026,56 +5581,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176231403527624924, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396841445565533999, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 263d80abf65e16c40bc932c96f7164c8, type: 3}
@@ -8066,11 +7571,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LamparaDePared (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 6777409034536828773, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 8327515647993188686, guid: 263d80abf65e16c40bc932c96f7164c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8125,56 +7625,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176231403527624924, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396841445565533999, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 263d80abf65e16c40bc932c96f7164c8, type: 3}
@@ -8611,7 +8061,7 @@ PrefabInstance:
     - target: {fileID: 5304164870747986309, guid: 0a8739eab82ca4e44bb2da7713e552b7,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4656546350065486103, guid: 0a8739eab82ca4e44bb2da7713e552b7,
         type: 3}
@@ -9489,6 +8939,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Candelabro (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6355394773384094293, guid: e761b44fa52b65b4189d9202e5283032,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 8824885423498408187, guid: e761b44fa52b65b4189d9202e5283032,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9497,7 +8952,7 @@ PrefabInstance:
     - target: {fileID: 8824885423498408187, guid: e761b44fa52b65b4189d9202e5283032,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.87
+      value: 2.98
       objectReference: {fileID: 0}
     - target: {fileID: 8824885423498408187, guid: e761b44fa52b65b4189d9202e5283032,
         type: 3}
@@ -9544,15 +8999,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8824885423498408187, guid: e761b44fa52b65b4189d9202e5283032,
+    - target: {fileID: 2086920748651224796, guid: e761b44fa52b65b4189d9202e5283032,
         type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.005
-      objectReference: {fileID: 0}
-    - target: {fileID: 7679724062367367894, guid: e761b44fa52b65b4189d9202e5283032,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
+      propertyPath: m_StaticEditorFlags
+      value: 126
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e761b44fa52b65b4189d9202e5283032, type: 3}
@@ -9567,11 +9017,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LamparaDePared (28)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6777409034536828773, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 8327515647993188686, guid: 263d80abf65e16c40bc932c96f7164c8,
         type: 3}
@@ -9627,56 +9072,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176231403527624924, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396841445565533999, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 263d80abf65e16c40bc932c96f7164c8, type: 3}
@@ -10326,11 +9721,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LamparaDePared (17)
       objectReference: {fileID: 0}
-    - target: {fileID: 6777409034536828773, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 8327515647993188686, guid: 263d80abf65e16c40bc932c96f7164c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10385,56 +9775,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176231403527624924, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396841445565533999, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 263d80abf65e16c40bc932c96f7164c8, type: 3}
@@ -11737,11 +11077,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LamparaDePared (22)
       objectReference: {fileID: 0}
-    - target: {fileID: 6777409034536828773, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 8327515647993188686, guid: 263d80abf65e16c40bc932c96f7164c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11796,56 +11131,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176231403527624924, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396841445565533999, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 263d80abf65e16c40bc932c96f7164c8, type: 3}
@@ -14605,7 +13890,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -14981,11 +14266,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LamparaDePared (10)
       objectReference: {fileID: 0}
-    - target: {fileID: 6777409034536828773, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 8327515647993188686, guid: 263d80abf65e16c40bc932c96f7164c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15040,66 +14320,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8327515647993188686, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.0100000035
-      objectReference: {fileID: 0}
-    - target: {fileID: 8327515647993188686, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.0100000035
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176231403527624924, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396841445565533999, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 263d80abf65e16c40bc932c96f7164c8, type: 3}
@@ -15379,11 +14599,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LamparaDePared (31)
       objectReference: {fileID: 0}
-    - target: {fileID: 6777409034536828773, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 8327515647993188686, guid: 263d80abf65e16c40bc932c96f7164c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15439,56 +14654,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9176231403527624924, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396841445565533999, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 263d80abf65e16c40bc932c96f7164c8, type: 3}
 --- !u!4 &964081678 stripped
@@ -15508,11 +14673,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LamparaDePared (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6777409034536828773, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 8327515647993188686, guid: 263d80abf65e16c40bc932c96f7164c8,
         type: 3}
@@ -15568,56 +14728,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176231403527624924, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396841445565533999, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 263d80abf65e16c40bc932c96f7164c8, type: 3}
@@ -16361,11 +15471,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LamparaDePared (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 6777409034536828773, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 8327515647993188686, guid: 263d80abf65e16c40bc932c96f7164c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16420,96 +15525,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176231403527624924, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396841445565533999, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396841445565533999, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Range
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8049014820992432071, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Range
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8049014820992432071, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8830201271264209771, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 23.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8830201271264209771, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 61.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1224333239066550871, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Range
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1224333239066550871, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 263d80abf65e16c40bc932c96f7164c8, type: 3}
@@ -16687,11 +15702,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LamparaDePared (8)
       objectReference: {fileID: 0}
-    - target: {fileID: 6777409034536828773, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 8327515647993188686, guid: 263d80abf65e16c40bc932c96f7164c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16746,56 +15756,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176231403527624924, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396841445565533999, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 263d80abf65e16c40bc932c96f7164c8, type: 3}
@@ -17228,11 +16188,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LamparaDePared (24)
       objectReference: {fileID: 0}
-    - target: {fileID: 6777409034536828773, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 8327515647993188686, guid: 263d80abf65e16c40bc932c96f7164c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17287,56 +16242,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176231403527624924, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396841445565533999, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 263d80abf65e16c40bc932c96f7164c8, type: 3}
@@ -18683,11 +17588,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LamparaDePared (30)
       objectReference: {fileID: 0}
-    - target: {fileID: 6777409034536828773, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 8327515647993188686, guid: 263d80abf65e16c40bc932c96f7164c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18742,56 +17642,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176231403527624924, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396841445565533999, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 263d80abf65e16c40bc932c96f7164c8, type: 3}
@@ -20372,6 +19222,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Candelabro (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6355394773384094293, guid: e761b44fa52b65b4189d9202e5283032,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 8824885423498408187, guid: e761b44fa52b65b4189d9202e5283032,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20380,7 +19235,7 @@ PrefabInstance:
     - target: {fileID: 8824885423498408187, guid: e761b44fa52b65b4189d9202e5283032,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.885
+      value: 5.995625
       objectReference: {fileID: 0}
     - target: {fileID: 8824885423498408187, guid: e761b44fa52b65b4189d9202e5283032,
         type: 3}
@@ -20427,10 +19282,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8824885423498408187, guid: e761b44fa52b65b4189d9202e5283032,
+    - target: {fileID: 2086920748651224796, guid: e761b44fa52b65b4189d9202e5283032,
         type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.005
+      propertyPath: m_StaticEditorFlags
+      value: 126
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e761b44fa52b65b4189d9202e5283032, type: 3}
@@ -20636,11 +19491,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LamparaDePared (7)
       objectReference: {fileID: 0}
-    - target: {fileID: 6777409034536828773, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 8327515647993188686, guid: 263d80abf65e16c40bc932c96f7164c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20696,56 +19546,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9176231403527624924, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396841445565533999, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 263d80abf65e16c40bc932c96f7164c8, type: 3}
 --- !u!4 &1388421715 stripped
@@ -20771,11 +19571,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LamparaDePared (16)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6777409034536828773, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 8327515647993188686, guid: 263d80abf65e16c40bc932c96f7164c8,
         type: 3}
@@ -20831,56 +19626,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176231403527624924, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396841445565533999, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 263d80abf65e16c40bc932c96f7164c8, type: 3}
@@ -21069,7 +19814,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -21492,11 +20237,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LamparaDePared (26)
       objectReference: {fileID: 0}
-    - target: {fileID: 6777409034536828773, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 8327515647993188686, guid: 263d80abf65e16c40bc932c96f7164c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -21551,56 +20291,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176231403527624924, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396841445565533999, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 263d80abf65e16c40bc932c96f7164c8, type: 3}
@@ -21727,6 +20417,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Candelabro (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6355394773384094293, guid: e761b44fa52b65b4189d9202e5283032,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 8824885423498408187, guid: e761b44fa52b65b4189d9202e5283032,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -21735,7 +20430,7 @@ PrefabInstance:
     - target: {fileID: 8824885423498408187, guid: e761b44fa52b65b4189d9202e5283032,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.87
+      value: 2.98
       objectReference: {fileID: 0}
     - target: {fileID: 8824885423498408187, guid: e761b44fa52b65b4189d9202e5283032,
         type: 3}
@@ -21782,15 +20477,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8824885423498408187, guid: e761b44fa52b65b4189d9202e5283032,
+    - target: {fileID: 2086920748651224796, guid: e761b44fa52b65b4189d9202e5283032,
         type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.005
-      objectReference: {fileID: 0}
-    - target: {fileID: 7679724062367367894, guid: e761b44fa52b65b4189d9202e5283032,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
+      propertyPath: m_StaticEditorFlags
+      value: 126
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e761b44fa52b65b4189d9202e5283032, type: 3}
@@ -21859,7 +20549,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -22709,11 +21399,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LamparaDePared (12)
       objectReference: {fileID: 0}
-    - target: {fileID: 6777409034536828773, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 8327515647993188686, guid: 263d80abf65e16c40bc932c96f7164c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22768,56 +21453,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176231403527624924, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396841445565533999, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 263d80abf65e16c40bc932c96f7164c8, type: 3}
@@ -24289,11 +22924,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LamparaDePared (18)
       objectReference: {fileID: 0}
-    - target: {fileID: 6777409034536828773, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 8327515647993188686, guid: 263d80abf65e16c40bc932c96f7164c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -24348,66 +22978,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8327515647993188686, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.0100000035
-      objectReference: {fileID: 0}
-    - target: {fileID: 8327515647993188686, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.0100000035
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176231403527624924, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396841445565533999, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 263d80abf65e16c40bc932c96f7164c8, type: 3}
@@ -28245,11 +26815,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LamparaDePared (21)
       objectReference: {fileID: 0}
-    - target: {fileID: 6777409034536828773, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 8327515647993188686, guid: 263d80abf65e16c40bc932c96f7164c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -28304,56 +26869,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176231403527624924, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396841445565533999, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 263d80abf65e16c40bc932c96f7164c8, type: 3}
@@ -28727,7 +27242,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -30208,6 +28723,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Candelabro (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6355394773384094293, guid: e761b44fa52b65b4189d9202e5283032,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 8824885423498408187, guid: e761b44fa52b65b4189d9202e5283032,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -30216,7 +28736,7 @@ PrefabInstance:
     - target: {fileID: 8824885423498408187, guid: e761b44fa52b65b4189d9202e5283032,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.885
+      value: 6.01125
       objectReference: {fileID: 0}
     - target: {fileID: 8824885423498408187, guid: e761b44fa52b65b4189d9202e5283032,
         type: 3}
@@ -30263,15 +28783,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8824885423498408187, guid: e761b44fa52b65b4189d9202e5283032,
+    - target: {fileID: 2086920748651224796, guid: e761b44fa52b65b4189d9202e5283032,
         type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.005
-      objectReference: {fileID: 0}
-    - target: {fileID: 7679724062367367894, guid: e761b44fa52b65b4189d9202e5283032,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
+      propertyPath: m_StaticEditorFlags
+      value: 126
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e761b44fa52b65b4189d9202e5283032, type: 3}
@@ -30765,7 +29280,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -33055,6 +31570,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Candelabro
       objectReference: {fileID: 0}
+    - target: {fileID: 6355394773384094293, guid: e761b44fa52b65b4189d9202e5283032,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 8824885423498408187, guid: e761b44fa52b65b4189d9202e5283032,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -33063,7 +31583,7 @@ PrefabInstance:
     - target: {fileID: 8824885423498408187, guid: e761b44fa52b65b4189d9202e5283032,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.885
+      value: 6.01125
       objectReference: {fileID: 0}
     - target: {fileID: 8824885423498408187, guid: e761b44fa52b65b4189d9202e5283032,
         type: 3}
@@ -33110,15 +31630,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8824885423498408187, guid: e761b44fa52b65b4189d9202e5283032,
+    - target: {fileID: 2086920748651224796, guid: e761b44fa52b65b4189d9202e5283032,
         type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.005
-      objectReference: {fileID: 0}
-    - target: {fileID: 7679724062367367894, guid: e761b44fa52b65b4189d9202e5283032,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
+      propertyPath: m_StaticEditorFlags
+      value: 126
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e761b44fa52b65b4189d9202e5283032, type: 3}
@@ -33302,11 +31817,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LamparaDePared (6)
       objectReference: {fileID: 0}
-    - target: {fileID: 6777409034536828773, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 8327515647993188686, guid: 263d80abf65e16c40bc932c96f7164c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -33361,56 +31871,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176231403527624924, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396841445565533999, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 263d80abf65e16c40bc932c96f7164c8, type: 3}
@@ -36541,11 +35001,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LamparaDePared (20)
       objectReference: {fileID: 0}
-    - target: {fileID: 6777409034536828773, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 8327515647993188686, guid: 263d80abf65e16c40bc932c96f7164c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -36600,56 +35055,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176231403527624924, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396841445565533999, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 263d80abf65e16c40bc932c96f7164c8, type: 3}
@@ -44609,11 +43014,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LamparaDePared
       objectReference: {fileID: 0}
-    - target: {fileID: 6777409034536828773, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 8327515647993188686, guid: 263d80abf65e16c40bc932c96f7164c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -44668,56 +43068,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176231403527624924, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 4396841445565533999, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2687121219853837987, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196351453289867356, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2227852643712775151, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5531524068360952436, guid: 263d80abf65e16c40bc932c96f7164c8,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 263d80abf65e16c40bc932c96f7164c8, type: 3}
