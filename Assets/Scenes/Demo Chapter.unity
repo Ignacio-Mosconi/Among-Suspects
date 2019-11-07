@@ -3860,6 +3860,26 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6590374965406597774, guid: 9dcef7a88c54ecb478891ecf36edf5e3,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590374965406597774, guid: 9dcef7a88c54ecb478891ecf36edf5e3,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8302400706260353095, guid: 9dcef7a88c54ecb478891ecf36edf5e3,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8302400706260353095, guid: 9dcef7a88c54ecb478891ecf36edf5e3,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dcef7a88c54ecb478891ecf36edf5e3, type: 3}
 --- !u!1001 &314390591
@@ -18541,7 +18561,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1317420288
 Transform:
   m_ObjectHideFlags: 0
