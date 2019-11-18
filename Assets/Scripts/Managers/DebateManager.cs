@@ -8,7 +8,7 @@ using TMPro;
 
 public enum DebatePhase
 {
-    Dialoguing, Arguing, SolvingArgument, SolvingCase
+    Dialoguing, Arguing, SolvingArgument, FinalArgument, SolvingPuzzle, SolvingCase
 }
 
 [RequireComponent(typeof(SpeechController))]
@@ -55,6 +55,7 @@ public class DebateManager : MonoBehaviour
     [SerializeField] GameObject speechPanel = default;
     [SerializeField] UIPrompt debateOptionsPanel = default;
     [SerializeField] AnimatedMenuScreen clueOptionsPanel = default;
+    [SerializeField] AnimatedMenuScreen debatePuzzlePanel = default;
     [Header("Buttons & Texts")]
     [SerializeField] Button useEvidenceButton = default;
     [SerializeField] TextMeshProUGUI speakerText = default;
@@ -70,6 +71,7 @@ public class DebateManager : MonoBehaviour
     CredibilityBarController credibilityBarController;
     ArgumentTimer argumentTimer;
     CluesScreen cluesScreen;
+    DebatePuzzleScreen debatePuzzleScreen;
     DebateCharacterSprite[] debateCharactersSprites;
     Dictionary<Language, DebateInfo> debateInfosByLanguage;
     DebateInfo currentDebateInfo;
@@ -97,7 +99,8 @@ public class DebateManager : MonoBehaviour
 
         debatePerformanceController = new DebatePerformanceController();
 
-        cluesScreen = GetComponentInChildren<CluesScreen>(includeInactive: true);
+        cluesScreen = clueOptionsPanel.GetComponent<CluesScreen>();
+        debatePuzzleScreen = debatePuzzlePanel.GetComponent<DebatePuzzleScreen>();
 
         cluesScreen.OnClueDeselected.AddListener(() => 
         {
@@ -114,7 +117,6 @@ public class DebateManager : MonoBehaviour
         speakerArea.SetUp();
         argumentAndSpeechArea.SetUp();
         debateOptionsPanel.SetUp();
-        clueOptionsPanel.SetUp();
         leftClickPrompt.SetUp();
 
         argumentController.OnArgumentFinish.AddListener(ShowDebateOptions);
@@ -193,14 +195,23 @@ public class DebateManager : MonoBehaviour
                     }
                     break;
 
+                case DebatePhase.FinalArgument:
+                    
+                    if (lineIndex < currentDialogueLines.Length)
+                        Dialogue(currentDialogueLines[lineIndex]);
+                    else
+                        StartPuzzle();
+
+                    break;
+
                 case DebatePhase.SolvingCase:
                     
                     if (lineIndex < currentDialogueLines.Length)
                         Dialogue(currentDialogueLines[lineIndex]);
                     else
                     {
-                        ChapterManager.Instance.ShowDebateEndScreen(caseWon);              
                         SetDebateAreaAvailability(enableDebateArea: false);
+                        ChapterManager.Instance.ShowDebateEndScreen(caseWon);
                     }
 
                     break;
@@ -339,6 +350,17 @@ public class DebateManager : MonoBehaviour
         Argue(currentArgumentLines[0]);
     }
 
+    void StartPuzzle()
+    {
+        currentPhase = DebatePhase.SolvingPuzzle;
+        ResetMainUIVisibility();
+        debatePuzzlePanel.Show();
+        debateCameraController.StartSpinning(debatePuzzlePanel.ShowAnimationDuration);
+        GameManager.Instance.InvokeMethodInRealTime(() => GameManager.Instance.SetCursorEnable(enable: true), 
+                                                    debatePuzzlePanel.ShowAnimationDuration);
+        enabled = false;
+    }
+
     void ProceedAfterCameraFocus()
     {
         if (currentPhase == DebatePhase.Arguing)
@@ -403,7 +425,7 @@ public class DebateManager : MonoBehaviour
 
     void EndCase(bool lose = false)
     {
-        currentPhase = DebatePhase.SolvingCase;
+        currentPhase = DebatePhase.FinalArgument;
         caseWon = !lose;
         lineIndex = 0;
         currentDialogueLines = (!lose) ? currentDebateInfo.winDebateDialogue : currentDebateInfo.loseDebateDialogue;
@@ -544,20 +566,6 @@ public class DebateManager : MonoBehaviour
         ResetMainUIVisibility();
         debateOptionsPanel.Hide();
         clueOptionsPanel.Show();
-
-        // if (CharacterManager.Instance.PlayerController.CluesGathered.Count > 0)
-        // {
-        //     for (int i = 0; i < ChapterManager.Instance.CluesAmount; i++)
-        //     {
-        //         ClueInfo clueInfo = ChapterManager.Instance.GetChapterClueInfo(i);
-                
-        //         if (CharacterManager.Instance.PlayerController.HasClue(ref clueInfo))
-        //         {
-        //             ChangeCurrentlySelectedEvidence(clueInfo);
-        //             break;
-        //         }
-        //     }
-        // }
         
         LoadRefuteOptionsCallbacks();
     }
@@ -649,7 +657,7 @@ public class DebateManager : MonoBehaviour
                                                                                     currentArgument.refuteIncorrectDialogue;
                 break;
 
-            case DebatePhase.SolvingCase:
+            case DebatePhase.FinalArgument:
                 currentDialogueLines = (caseWon) ? currentDebateInfo.winDebateDialogue : currentDebateInfo.loseDebateDialogue;
                 break;
         }
@@ -685,7 +693,7 @@ public class DebateManager : MonoBehaviour
         lineIndex = 0;
         caseWon = true;
         currentDialogueLines = currentDebateInfo.winDebateDialogue;
-        currentPhase = DebatePhase.SolvingCase;
+        currentPhase = DebatePhase.FinalArgument;
         Dialogue(currentDialogueLines[0]);
     }
 

@@ -5,11 +5,13 @@ using UnityEngine.Events;
 public class DebateCameraController : MonoBehaviour
 {
     [SerializeField] [Range(50f, 100f)] float cameraRotSpeed = 75f;
+    [SerializeField] [Range(100f, 200f)] float spinningSpeed = 120f;
 
     Camera debateCamera;
     Quaternion currentCamTargetRot;
 
     Coroutine focusingRoutine;
+    Coroutine spinningRoutine;
 
     UnityEvent onFocusFinish = new UnityEvent();
 
@@ -39,6 +41,21 @@ public class DebateCameraController : MonoBehaviour
         focusingRoutine = null;
     }
 
+    IEnumerator SpinAround(float spinDuration)
+    {
+        float timer = 0f;
+
+        while (timer < spinDuration)
+        {
+            timer += Time.deltaTime;
+            debateCamera.transform.Rotate(Vector3.up, spinningSpeed * Time.deltaTime, Space.Self);
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        spinningRoutine = null;
+    }
+
     public void SetUpDebateCamera(Camera camera)
     {
         debateCamera = camera;
@@ -54,6 +71,11 @@ public class DebateCameraController : MonoBehaviour
         focusingRoutine = StartCoroutine(FocusOnCharacter(characterPosition));
     }
 
+    public void StartSpinning(float spinDuration)
+    {
+        spinningRoutine = StartCoroutine(SpinAround(spinDuration));
+    }
+
     public void StopFocusing()
     {
         if (focusingRoutine != null)
@@ -62,6 +84,15 @@ public class DebateCameraController : MonoBehaviour
             debateCamera.transform.rotation = currentCamTargetRot;
             onFocusFinish.Invoke();
             focusingRoutine = null;
+        }
+    }
+
+    public void StopSpinning()
+    {
+        if (spinningRoutine != null)
+        {
+            StopCoroutine(spinningRoutine);
+            spinningRoutine = null;
         }
     }
 
