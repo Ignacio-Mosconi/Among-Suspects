@@ -7,13 +7,13 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Button))]
 public class PuzzlePiece : MonoBehaviour
 {
-    [SerializeField, Range(0, 15)] uint pieceIndex;
+    [SerializeField, Range(0, 15)] uint pieceIndex = default;
 
     public bool IsMovable { get; set; } = false;
 
     RectTransform rectTransform;
     Vector2 gridCoordinates;
-    Coroutine dispacingRoutine;
+    Coroutine displacingRoutine;
     Button button;
 
     UnityEvent onFinishDisplacement = new UnityEvent();
@@ -42,21 +42,14 @@ public class PuzzlePiece : MonoBehaviour
 
         rectTransform.anchoredPosition = targetPosition;
         onFinishDisplacement.Invoke();
-        dispacingRoutine = null;
+        displacingRoutine = null;
     }
 
-    public void MoveTo(Vector2 targetPosition, float maxSpeed, float smoothTime)
+    public void MoveTo(BoardPosition boardPosition, float maxSpeed, float smoothTime)
     {
-        Debug.Log("Previous Coords: " + GridCoordinates);
+        gridCoordinates = boardPosition.gridCoordinates;
 
-        if (Mathf.Abs(targetPosition.x - rectTransform.anchoredPosition.x) > NegligibleDistance)
-            gridCoordinates.x += (targetPosition.x > rectTransform.anchoredPosition.x) ? 1 : -1;
-        else
-            gridCoordinates.y += (targetPosition.y < rectTransform.anchoredPosition.y) ? 1 : -1;
-
-        dispacingRoutine = StartCoroutine(DisplaceTo(targetPosition, maxSpeed, smoothTime));
-
-        Debug.Log("New Coords: " + GridCoordinates);
+        displacingRoutine = StartCoroutine(DisplaceTo(boardPosition.spacePosition, maxSpeed, smoothTime));
     }
 
     public void AddButtonClickAction(UnityAction unityAction)

@@ -6,6 +6,7 @@ public struct BoardPosition
 {
     public Vector2 spacePosition;
     public Vector2 gridCoordinates;
+    public uint currentPieceIndex;
 }
 
 [RequireComponent(typeof(AnimatedMenuScreen))]
@@ -45,15 +46,18 @@ public class DebatePuzzleScreen : MonoBehaviour
                     puzzlePieces[pieceIndex].SetGridCoordinates(gridCoordinates);
                     board[column, row].spacePosition = puzzlePieces[pieceIndex].RectTransform.anchoredPosition;
                     board[column, row].gridCoordinates = gridCoordinates;
+                    board[column, row].currentPieceIndex = puzzlePieces[pieceIndex].PieceIndex;
                     pieceIndex++;
                 }
             }
 
         float pieceWidth = puzzlePieces[0].RectTransform.rect.width;
+        Vector2 emptySpacePosition = puzzlePieces[puzzlePieces.Length - 1].RectTransform.anchoredPosition + new Vector2(pieceWidth, 0f);
+        Vector2 emptyGridCoordinaes = new Vector2(columns - 1, rows - 1);
 
-        board[columns - 1, rows - 1].spacePosition = puzzlePieces[puzzlePieces.Length - 1].RectTransform.anchoredPosition + 
-                                                    new Vector2(pieceWidth, 0f);
-        board[columns - 1, rows - 1].gridCoordinates = new Vector2(columns - 1, rows - 1);
+        board[columns - 1, rows - 1].spacePosition = emptySpacePosition;
+        board[columns - 1, rows - 1].gridCoordinates = emptyGridCoordinaes;
+        board[columns - 1, rows - 1].currentPieceIndex = pieceIndex;
 
         emptyPosition = board[columns - 1, rows - 1];
 
@@ -63,11 +67,13 @@ public class DebatePuzzleScreen : MonoBehaviour
         for (int i = 0; i < puzzlePieces.Length; i++)
         {
             PuzzlePiece puzzlePiece = puzzlePieces[i];
-            Debug.Log(puzzlePiece.name);
+            EventTrigger eventTrigger = puzzlePiece.GetComponent<EventTrigger>();
+
+            if (eventTrigger)
+                Destroy(eventTrigger);
 
             puzzlePiece.AddButtonClickAction(() => MovePiece(puzzlePiece));
-            puzzlePiece.OnFinishDisplacement.AddListener(() => SetMovablePiecesAvailability(enableMovement: true));
-            Destroy(puzzlePiece.GetComponent<EventTrigger>());
+            puzzlePiece.OnFinishDisplacement.AddListener(OnPieceDisplacementFinished);
         }
     }
 
@@ -95,14 +101,49 @@ public class DebatePuzzleScreen : MonoBehaviour
     {
         if (puzzlePiece.IsMovable)
         {
-            Vector2 newEmptySpacePosition = puzzlePiece.RectTransform.anchoredPosition;
-            Vector2 newEmptyPositionGridCoordinates = puzzlePiece.GridCoordinates;
+            Vector2 previousPieceSpacePosition = puzzlePiece.RectTransform.anchoredPosition;
+            Vector2 previousPieceGridCoordinates = puzzlePiece.GridCoordinates;
+
+            board[(int)emptyPosition.gridCoordinates.x, (int)emptyPosition.gridCoordinates.y].currentPieceIndex = puzzlePiece.PieceIndex;
+            board[(int)previousPieceGridCoordinates.x, (int)previousPieceGridCoordinates.y].currentPieceIndex = emptyPosition.currentPieceIndex;
 
             SetMovablePiecesAvailability(enableMovement: false);
-            puzzlePiece.MoveTo(emptyPosition.spacePosition, piecesMoveSpeed, piecesSmoothTime);
-            emptyPosition.spacePosition = newEmptySpacePosition;
-            emptyPosition.gridCoordinates = newEmptyPositionGridCoordinates;
+            puzzlePiece.MoveTo(emptyPosition, piecesMoveSpeed, piecesSmoothTime);
+            emptyPosition.spacePosition = previousPieceSpacePosition;
+            emptyPosition.gridCoordinates = previousPieceGridCoordinates;
             SetMovablePieces();
         }
+    }
+
+    bool CheckPuzzleCompletion()
+    {
+        bool puzzleCompleted = true;
+        int pieceIndex = 0;
+
+        for (int row = 0; row < rows; row++)
+        {
+            for (int column = 0; column < columns; column++)
+            {
+                if (board[column, row].currentPieceIndex != pieceIndex)
+                {
+                    puzzleCompleted = false;
+                    break;
+                }
+                pieceIndex++;
+            }
+
+            if (!puzzleCompleted)
+                break;
+        }
+
+        return puzzleCompleted;
+    }
+
+    void OnPieceDisplacementFinished()
+    {
+        if (CheckPuzzleCompletion())
+            Debug.Log("Puzzle Finished!");
+        else
+            SetMovablePiecesAvailability(enableMovement: true);
     }
 }

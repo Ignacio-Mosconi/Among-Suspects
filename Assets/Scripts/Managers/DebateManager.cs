@@ -352,7 +352,7 @@ public class DebateManager : MonoBehaviour
         currentPhase = DebatePhase.SolvingPuzzle;
         ResetMainUIVisibility();
         debatePuzzlePanel.Show();
-        //debateCameraController.StartSpinning(debatePuzzlePanel.ShowAnimationDuration);
+        debateCameraController.StartSpinning(debatePuzzlePanel.ShowAnimationDuration);
         GameManager.Instance.InvokeMethodInRealTime(() => GameManager.Instance.SetCursorEnable(enable: true), 
                                                     debatePuzzlePanel.ShowAnimationDuration);
         enabled = false;
