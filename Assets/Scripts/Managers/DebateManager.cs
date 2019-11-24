@@ -8,7 +8,7 @@ using TMPro;
 
 public enum DebatePhase
 {
-    Dialoguing, Arguing, SolvingArgument, FinalArgument, SolvingPuzzle, SolvingCase
+    Dialoguing, Arguing, SolvingArgument, FinalArgumentIntro, SolvingPuzzle, SolvingCase
 }
 
 [RequireComponent(typeof(SpeechController))]
@@ -192,7 +192,7 @@ public class DebateManager : MonoBehaviour
                     }
                     break;
 
-                case DebatePhase.FinalArgument:
+                case DebatePhase.FinalArgumentIntro:
                     
                     if (lineIndex < currentDialogueLines.Length)
                         Dialogue(currentDialogueLines[lineIndex]);
@@ -207,8 +207,8 @@ public class DebateManager : MonoBehaviour
                         Dialogue(currentDialogueLines[lineIndex]);
                     else
                     {
-                        SetDebateAreaAvailability(enableDebateArea: false);
                         ChapterManager.Instance.ShowDebateEndScreen(caseWon);
+                        SetDebateAreaAvailability(enableDebateArea: false);
                     }
 
                     break;
@@ -422,10 +422,19 @@ public class DebateManager : MonoBehaviour
 
     void EndCase(bool lose = false)
     {
-        currentPhase = DebatePhase.FinalArgument;
         caseWon = !lose;
         lineIndex = 0;
-        currentDialogueLines = (!lose) ? currentDebateInfo.winDebateDialogue : currentDebateInfo.loseDebateDialogue;
+
+        if (caseWon)
+        {
+            currentPhase = DebatePhase.FinalArgumentIntro;
+            currentDialogueLines = currentDebateInfo.winDebateDialogue;
+        }
+        else
+        {
+            currentPhase = DebatePhase.SolvingCase;
+            currentDialogueLines = currentDebateInfo.loseDebateDialogue;
+        }
 
         Dialogue(currentDialogueLines[0]);
     }
@@ -601,6 +610,18 @@ public class DebateManager : MonoBehaviour
         argumentAndSpeechArea.Show();
     }
 
+    public void StartFinalArgument()
+    {
+        debatePuzzlePanel.Hide();
+
+        currentPhase = DebatePhase.SolvingCase;
+        lineIndex = 0;
+        currentDialogueLines = currentDebateInfo.finalArgumentDebateDialogue;
+        enabled = true;
+
+        Dialogue(currentDialogueLines[0]);
+    }
+
     public void StartDebate(Dictionary<Language, DebateInfo> debateInfos, List<ClueInfo> playerClues)
     {
         debateCameraController.SetDebateCameraAvailability(enable: true);
@@ -654,8 +675,12 @@ public class DebateManager : MonoBehaviour
                                                                                     currentArgument.refuteIncorrectDialogue;
                 break;
 
-            case DebatePhase.FinalArgument:
-                currentDialogueLines = (caseWon) ? currentDebateInfo.winDebateDialogue : currentDebateInfo.loseDebateDialogue;
+            case DebatePhase.FinalArgumentIntro:
+                currentDialogueLines = currentDebateInfo.winDebateDialogue;
+                break;
+
+            case DebatePhase.SolvingCase:
+                currentDialogueLines = (caseWon) ? currentDebateInfo.finalArgumentDebateDialogue : currentDebateInfo.loseDebateDialogue;
                 break;
         }
     }
@@ -690,7 +715,7 @@ public class DebateManager : MonoBehaviour
         lineIndex = 0;
         caseWon = true;
         currentDialogueLines = currentDebateInfo.winDebateDialogue;
-        currentPhase = DebatePhase.FinalArgument;
+        currentPhase = DebatePhase.FinalArgumentIntro;
         Dialogue(currentDialogueLines[0]);
     }
 

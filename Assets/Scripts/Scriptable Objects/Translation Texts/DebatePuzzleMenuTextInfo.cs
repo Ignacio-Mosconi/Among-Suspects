@@ -4,8 +4,5 @@ using UnityEngine;
 public class DebatePuzzleMenuTextInfo : ScriptableObject
 {
     [Header("Debate Puzzle Lost Screen")]
-    public string puzzleLostTitle = default;
-    public string retryDescription = default;
-    public string[] continueOptions = default;
     public string finalArgumentButtonText = default;
 }

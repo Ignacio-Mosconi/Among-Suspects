@@ -37,4 +37,5 @@ public class DebateInfo : ScriptableObject
     public Argument[] arguments;
     public Dialogue[] loseDebateDialogue;
     public Dialogue[] winDebateDialogue;
+    public Dialogue[] finalArgumentDebateDialogue;
 }

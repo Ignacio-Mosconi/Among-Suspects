@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public struct BoardPosition
@@ -13,13 +14,16 @@ public struct BoardPosition
 public class DebatePuzzleScreen : MonoBehaviour
 {
     [Header("Board Properties")]
-    [SerializeField] GameObject puzzlePiecesContainer = default;
+    [SerializeField] GridLayoutGroup puzzlePiecesContainer = default;
     [SerializeField, Range(1, 4)] uint rows = 4;
     [SerializeField, Range(1, 4)] uint columns = 4;
 
     [Header("Piece Properties")]
     [SerializeField, Range(500f, 1000f)] float piecesMoveSpeed = 700f;
-    [SerializeField, Range(0.1f, 0.3f)] float piecesSmoothTime = 0.2f;
+    [SerializeField, Range(0f, 0.3f)] float piecesSmoothTime = 0.2f;
+
+    [Header("Puzzle Finished")]
+    [SerializeField] UIPrompt continueButtonPrompt = default;
 
     BoardPosition[,] board;
     PuzzlePiece[] puzzlePieces;
@@ -51,8 +55,11 @@ public class DebatePuzzleScreen : MonoBehaviour
                 }
             }
 
-        float pieceWidth = puzzlePieces[0].RectTransform.rect.width;
-        Vector2 emptySpacePosition = puzzlePieces[puzzlePieces.Length - 1].RectTransform.anchoredPosition + new Vector2(pieceWidth, 0f);
+        float pieceWidth = puzzlePiecesContainer.cellSize.x;
+        float pieceHeight = puzzlePiecesContainer.cellSize.y;
+        float emptyHorizontalPosition = (pieceWidth + puzzlePiecesContainer.spacing.x) * (columns - 1) + pieceWidth * 0.5f;
+        float emptyVerticalPosition = -((pieceHeight + puzzlePiecesContainer.spacing.y) * (rows - 1) + pieceHeight * 0.5f);
+        Vector2 emptySpacePosition = new Vector2(emptyHorizontalPosition, emptyVerticalPosition);
         Vector2 emptyGridCoordinaes = new Vector2(columns - 1, rows - 1);
 
         board[columns - 1, rows - 1].spacePosition = emptySpacePosition;
@@ -75,6 +82,9 @@ public class DebatePuzzleScreen : MonoBehaviour
             puzzlePiece.AddButtonClickAction(() => MovePiece(puzzlePiece));
             puzzlePiece.OnFinishDisplacement.AddListener(OnPieceDisplacementFinished);
         }
+
+        continueButtonPrompt.SetUp();
+        continueButtonPrompt.Deactivate();
     }
 
     void SetMovablePiecesAvailability(bool enableMovement)
@@ -142,8 +152,13 @@ public class DebatePuzzleScreen : MonoBehaviour
     void OnPieceDisplacementFinished()
     {
         if (CheckPuzzleCompletion())
-            Debug.Log("Puzzle Finished!");
+            EndPuzzle();
         else
             SetMovablePiecesAvailability(enableMovement: true);
+    }
+
+    void EndPuzzle()
+    {
+        continueButtonPrompt.Show();
     }
 }
