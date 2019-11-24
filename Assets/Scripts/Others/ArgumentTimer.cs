@@ -42,6 +42,43 @@ public class ArgumentTimer : MonoBehaviour
         enabled = false;
     }
 
+    void Update()
+    {
+#if UNITY_EDITOR
+    if (Input.GetKey(KeyCode.T))
+        FastForwardTimer();
+#endif
+
+        timer -= Time.deltaTime;
+
+        int minutesLeft = (int)timer / 60;
+        int secondsLeft = (int)timer % 60;
+        int hundredthsOfSecondLeft = (int)((timer - (int)timer) * 100f);
+
+        string minutes = minutesLeft.ToString("00");
+        string seconds = secondsLeft.ToString("00");
+        string hundredthsOfSecond = hundredthsOfSecondLeft.ToString("00");
+
+        minutesText.text = minutes + "'";
+        secondsText.text = seconds + ".";
+        hundredthsOfSecondText.text = hundredthsOfSecond + "\"";
+
+        if (timer < warningTime / difficultyLevel)
+        {
+            if (timer > criticalTime / difficultyLevel)
+                CheckTextColorChange(warningTimeColor);
+            else
+            {
+                CheckTextColorChange(criticalTimeColor);
+                if (tickingRoutine == null)
+                    tickingRoutine = StartCoroutine(TickTimer());
+            }
+        }
+
+        if (timer <= 0f)
+            onTimeOut.Invoke();
+    }
+
     IEnumerator TickTimer()
     {
         float scaleTimer = 0f;
@@ -72,44 +109,6 @@ public class ArgumentTimer : MonoBehaviour
         AudioManager.Instance.PlaySound("Clock Tick");
 
         tickingRoutine = null;
-    }
-
-    void Update()
-    {
-#if UNITY_EDITOR
-    if (Input.GetKey(KeyCode.T))
-        FastForwardTimer();
-#endif
-
-        timer -= Time.deltaTime;
-
-        int minutesLeft = (int)timer / 60;
-        int secondsLeft = (int)timer % 60;
-        int hundredthsOfSecondLeft = (int)((timer - (int)timer) * 100f);
-
-        string minutes = (minutesLeft >= 10) ? minutesLeft.ToString() : "0" + minutesLeft.ToString();
-        string seconds = (secondsLeft >= 10) ? secondsLeft.ToString() : "0" + secondsLeft.ToString();
-        string hundredthsOfSecond = (hundredthsOfSecondLeft >= 10) ? hundredthsOfSecondLeft.ToString() : 
-                                                                    "0" + hundredthsOfSecondLeft.ToString();
-
-        minutesText.text = minutes + "'";
-        secondsText.text = seconds + ".";
-        hundredthsOfSecondText.text = hundredthsOfSecond + "\"";
-
-        if (timer < warningTime / difficultyLevel)
-        {
-            if (timer > criticalTime / difficultyLevel)
-                CheckTextColorChange(warningTimeColor);
-            else
-            {
-                CheckTextColorChange(criticalTimeColor);
-                if (tickingRoutine == null)
-                    tickingRoutine = StartCoroutine(TickTimer());
-            }
-        }
-
-        if (timer <= 0f)
-            onTimeOut.Invoke();
     }
 
     void CheckTextColorChange(Color targetColor)

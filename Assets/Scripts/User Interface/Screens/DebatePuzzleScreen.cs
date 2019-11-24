@@ -11,6 +11,7 @@ public struct BoardPosition
 }
 
 [RequireComponent(typeof(AnimatedMenuScreen))]
+[RequireComponent(typeof(PuzzleTimer))]
 public class DebatePuzzleScreen : MonoBehaviour
 {
     [Header("Board Properties")]
@@ -28,11 +29,13 @@ public class DebatePuzzleScreen : MonoBehaviour
     BoardPosition[,] board;
     PuzzlePiece[] puzzlePieces;
     PuzzlePiece[] movablePieces = new PuzzlePiece[4];
+    PuzzleTimer puzzleTimer;
     BoardPosition emptyPosition;
 
     void Awake()
     {
         board = new BoardPosition[columns, rows];
+        puzzleTimer = GetComponent<PuzzleTimer>();
         puzzlePieces = puzzlePiecesContainer.GetComponentsInChildren<PuzzlePiece>();
     }
 
@@ -85,6 +88,8 @@ public class DebatePuzzleScreen : MonoBehaviour
 
         continueButtonPrompt.SetUp();
         continueButtonPrompt.Deactivate();
+
+        GameManager.Instance.InvokeMethodInRealTime(() => puzzleTimer.StartTimer(), GetComponent<AnimatedMenuScreen>().ShowAnimationDuration);
     }
 
     void SetMovablePiecesAvailability(bool enableMovement)
@@ -160,5 +165,6 @@ public class DebatePuzzleScreen : MonoBehaviour
     void EndPuzzle()
     {
         continueButtonPrompt.Show();
+        puzzleTimer.StopTimer();
     }
 }
