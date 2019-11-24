@@ -602,6 +602,7 @@ MonoBehaviour:
     timeLeftPercentageForMaxScore: 50
     scorePerCorrectReaction: 50
     starRatings: 5
+    puzzleSolvingTierScores: 000000000000000000000000
   debateArea: {fileID: 5451884772241724906}
   speakerArea: {fileID: 1841580826621953238}
   argumentAndSpeechArea: {fileID: 4831986174434985084}
@@ -8317,6 +8318,7 @@ MonoBehaviour:
   columns: 4
   piecesMoveSpeed: 1000
   piecesSmoothTime: 0.05
+  tierMinutes: 050000000a0000000f000000
   continueButtonPrompt: {fileID: 1780345883378596360}
 --- !u!114 &672539340500178630
 MonoBehaviour:
@@ -8334,9 +8336,6 @@ MonoBehaviour:
   minutesText: {fileID: 7682531491875700853}
   secondsText: {fileID: 1251400978030515628}
   hundredthsOfSecondText: {fileID: 9032172552910875169}
-  tier1Minutes: 5
-  tier2Minutes: 10
-  tier3Minutes: 15
   maxTimerScale: 1.2
   minTimerScale: 0.8
 --- !u!1 &8598471801650484724

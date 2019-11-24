@@ -9,6 +9,13 @@ public struct ArgumentRecordData
     public int argumentScore;
 }
 
+public struct PuzzleRecordData
+{
+    public PuzzleSolvingTier tier;
+    public PuzzleTimespan timeToSolve;
+    public int puzzleScore;
+}
+
 public struct ScoreRecordData
 {
     public int scoreAchieved;
@@ -23,8 +30,10 @@ public class DebatePerformanceController
     [SerializeField, Range(50f, 100f)] float timeLeftPercentageForMaxScore = 70f;
     [SerializeField, Range(50, 100)] int scorePerCorrectReaction = 50;
     [SerializeField, Range(3, 5)] int starRatings = 5;
+    [SerializeField, Range(150, 200)] int[] puzzleSolvingTierScores = new int[(int)PuzzleSolvingTier.Count];
     
     List<ArgumentRecordData> argumentRecordsData;
+    PuzzleRecordData puzzleRecordData;
     ScoreRecordData scoreRecordData;
     int debateArguments;
     float credibility;
@@ -104,14 +113,24 @@ public class DebatePerformanceController
         RegisterArgumentRecord(wasSolvedCorrectly: false, timeLeftToSolve, totalTimeToSolve);
     }
 
+    public void AddPuzzleRecordData(PuzzleSolvingTier tier, PuzzleTimespan timeToSolve)
+    {
+        puzzleRecordData.tier = tier;
+        puzzleRecordData.timeToSolve = timeToSolve;
+        puzzleRecordData.puzzleScore = puzzleSolvingTierScores[(int)tier];
+    }
+
     public void ComputeStarRatings()
     {
         int scorePerStar = 0;
         int scoreAchieved = 0;
-        int maxQualificationScore = (scorePerCorrectReaction + (int)timeLeftPercentageForMaxScore) * argumentRecordsData.Count;
+        int maxQualificationScore = (scorePerCorrectReaction + (int)timeLeftPercentageForMaxScore) * argumentRecordsData.Count +
+                                    puzzleSolvingTierScores[(int)PuzzleSolvingTier.A];
 
         foreach (ArgumentRecordData argumentRecordData in argumentRecordsData)
             scoreAchieved += argumentRecordData.argumentScore;
+
+        scoreAchieved += puzzleRecordData.puzzleScore;
         
         scorePerStar = maxQualificationScore / starRatings;
         
@@ -129,6 +148,11 @@ public class DebatePerformanceController
     public ScoreRecordData ScoreRecordData
     {
         get { return scoreRecordData; }
+    }
+
+    public PuzzleRecordData PuzzleRecordData
+    {
+        get { return puzzleRecordData; }
     }
 
     public float InitialCredibility

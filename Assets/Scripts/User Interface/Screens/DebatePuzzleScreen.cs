@@ -3,6 +3,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+public enum PuzzleSolvingTier
+{
+    A, B, C, Count
+}
+
 public struct BoardPosition
 {
     public Vector2 spacePosition;
@@ -23,6 +28,9 @@ public class DebatePuzzleScreen : MonoBehaviour
     [SerializeField, Range(500f, 1000f)] float piecesMoveSpeed = 700f;
     [SerializeField, Range(0f, 0.3f)] float piecesSmoothTime = 0.2f;
 
+    [Header("Tier Values")]
+    [SerializeField, Range(0, 15)] int[] tierMinutes = new int[(int)PuzzleSolvingTier.Count];
+
     [Header("Puzzle Finished")]
     [SerializeField] UIPrompt continueButtonPrompt = default;
 
@@ -31,6 +39,7 @@ public class DebatePuzzleScreen : MonoBehaviour
     PuzzlePiece[] movablePieces = new PuzzlePiece[4];
     PuzzleTimer puzzleTimer;
     BoardPosition emptyPosition;
+    PuzzleSolvingTier tierAchieved;
 
     void Awake()
     {
@@ -166,5 +175,27 @@ public class DebatePuzzleScreen : MonoBehaviour
     {
         continueButtonPrompt.Show();
         puzzleTimer.StopTimer();
+
+        PuzzleTimespan timeToSolve = GetSolvingTime();
+
+        if (timeToSolve.totalTimeInSeconds / 60f <= tierMinutes[(int)PuzzleSolvingTier.A])
+            tierAchieved = PuzzleSolvingTier.A;
+        else
+            tierAchieved = (timeToSolve.totalTimeInSeconds / 60f <= tierMinutes[(int)PuzzleSolvingTier.B]) ?
+                            PuzzleSolvingTier.B : PuzzleSolvingTier.C;
     }
+
+    public PuzzleTimespan GetSolvingTime()
+    {
+        return puzzleTimer.TimeToSolve;
+    }
+
+    #region Properties
+
+    public PuzzleSolvingTier TierAchieved
+    {
+        get { return tierAchieved; }
+    }
+
+    #endregion
 }

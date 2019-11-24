@@ -2,6 +2,14 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 
+public struct PuzzleTimespan
+{
+    public float totalTimeInSeconds;
+    public int minutes;
+    public int seconds;
+    public int hundredthsOfSecond;
+}
+
 public class PuzzleTimer : MonoBehaviour
 {
     [Header("UI References")]
@@ -10,14 +18,11 @@ public class PuzzleTimer : MonoBehaviour
     [SerializeField] TextMeshProUGUI secondsText = default;
     [SerializeField] TextMeshProUGUI hundredthsOfSecondText = default;
 
-    // [Header("Tier Values")]
-    // [SerializeField, Range(0, 5)] int tier1Minutes = 5;
-    // [SerializeField, Range(5, 10)] int tier2Minutes = 10;
-    // [SerializeField, Range(10, 15)] int tier3Minutes = 15;
-
     [Header("Timer Animation")]
     [SerializeField, Range(1f, 1.5f)] float maxTimerScale = 1.2f;
     [SerializeField, Range(0.5f, 1f)] float minTimerScale = 0.8f;
+
+    PuzzleTimespan timeToSolve;
 
     float timer = 0f;
     int totalMinutesElapsed = 0;
@@ -110,6 +115,21 @@ public class PuzzleTimer : MonoBehaviour
 
     public void StopTimer()
     {
+        timeToSolve.totalTimeInSeconds = timer;
+        timeToSolve.minutes = (int)timer / 60;
+        timeToSolve.seconds = (int)timer % 60;
+        timeToSolve.hundredthsOfSecond = (int)((timer - (int)timer) * 100f);
+
+        timer = 0f;
         enabled = false;
     }
+
+    #region Properties
+
+    public PuzzleTimespan TimeToSolve
+    {
+        get { return timeToSolve; }
+    }
+
+    #endregion
 }

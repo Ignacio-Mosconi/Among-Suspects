@@ -617,6 +617,7 @@ public class DebateManager : MonoBehaviour
         currentPhase = DebatePhase.SolvingCase;
         lineIndex = 0;
         currentDialogueLines = currentDebateInfo.finalArgumentDebateDialogue;
+        debatePerformanceController.AddPuzzleRecordData(debatePuzzleScreen.TierAchieved, debatePuzzleScreen.GetSolvingTime());
         enabled = true;
 
         Dialogue(currentDialogueLines[0]);
