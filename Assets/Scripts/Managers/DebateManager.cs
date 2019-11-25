@@ -472,7 +472,7 @@ public class DebateManager : MonoBehaviour
         }
     }
 
-    void Dialogue(Dialogue dialogue)
+    void Dialogue(Dialogue dialogue, bool forceFocus = false)
     {
         DebateCharacterSprite debateSprite = Array.Find(debateCharactersSprites, cs => cs.characterName == dialogue.speakerName);
         SpriteRenderer characterRenderer = Array.Find(debateCharactersSprites, cs => cs.characterName == dialogue.speakerName).spriteRenderer;
@@ -480,7 +480,7 @@ public class DebateManager : MonoBehaviour
         ICharacter character = CharacterManager.Instance.GetCharacter(dialogue.speakerName);
         characterRenderer.sprite = character.GetSprite(dialogue.speakerEmotion);
 
-        if (dialogue.speakerName != previousSpeaker)
+        if (dialogue.speakerName != previousSpeaker || forceFocus)
         {
             Vector3 charPosition = characterRenderer.transform.position;
 
@@ -620,7 +620,7 @@ public class DebateManager : MonoBehaviour
         debatePerformanceController.AddPuzzleRecordData(debatePuzzleScreen.TierAchieved, debatePuzzleScreen.GetSolvingTime());
         enabled = true;
 
-        Dialogue(currentDialogueLines[0]);
+        Dialogue(currentDialogueLines[0], forceFocus: true);
     }
 
     public void StartDebate(Dictionary<Language, DebateInfo> debateInfos, List<ClueInfo> playerClues)
