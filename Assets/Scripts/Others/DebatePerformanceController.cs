@@ -30,7 +30,7 @@ public class DebatePerformanceController
     [SerializeField, Range(50f, 100f)] float timeLeftPercentageForMaxScore = 70f;
     [SerializeField, Range(50, 100)] int scorePerCorrectReaction = 50;
     [SerializeField, Range(3, 5)] int starRatings = 5;
-    [SerializeField, Range(150, 200)] int[] puzzleSolvingTierScores = new int[(int)PuzzleSolvingTier.Count];
+    [SerializeField, Range(150, 200)] int[] puzzleSolvingTierScores = { 200, 150, 100 };
     
     List<ArgumentRecordData> argumentRecordsData;
     PuzzleRecordData puzzleRecordData;
