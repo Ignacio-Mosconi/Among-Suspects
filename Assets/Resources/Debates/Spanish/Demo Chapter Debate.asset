@@ -1854,7 +1854,7 @@ MonoBehaviour:
     playerThought: 0
     triggerNiceImpression: 0
   - speakerName: 3
-    speech: "\xA1\xBFC\xF3mo lo supieron?! \xA1Se supon\xEDa que era un plan perfecto!"
+    speech: "\xBFQu\xE9 carajo?"
     speakerEmotion: 5
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -1863,14 +1863,306 @@ MonoBehaviour:
     revealName: 0
     playerThought: 0
     triggerNiceImpression: 0
-  finalArgumentDebateDialogue:
+  - speakerName: 3
+    speech: "\xA1No, no, no!"
+    speakerEmotion: 4
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+      playDelay: 0.2
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 3
+    speech: "\xA1Ser\xE1 mejor que tengas evidencia para fundamentar tus afirmaciones!"
+    speakerEmotion: 5
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+      playDelay: 0.2
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
   - speakerName: 0
-    speech: "\xA1Gary es el culpable!"
+    speech: "\xBFPruebas? D\xE9jame pensar claramente..."
+    speakerEmotion: 1
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 3
+    speech: "S\xE9 que \xE9l es el culpable. Solamente tengo que pensar en todo lo
+      que hallamos hasta el momento para hacer un argumento convincente."
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
       audioClip: {fileID: 0}
       playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "Deber\xEDa intentar recrear la escena del crimen en mi mente..."
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  finalArgumentDebateDialogue:
+  - speakerName: 0
+    speech: "\xA1Yo te dir\xE9 c\xF3mo mataste a <color=orange>Mark</color>, gusano!"
+    speakerEmotion: 6
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 8300000, guid: b2c444d284f275342b736d903bb49ef1, type: 3}
+      playDelay: 0.2
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 3
+    speech: '...!'
+    speakerEmotion: 3
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "Empezaste por tomar el cuchillo de la cocina. Luego, te escabulliste
+      detr\xE1s de <color=orange>Mark</color> cuando viste que estaba por entrar al
+      dormitorio..."
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "Para ese entonces, sab\xEDas que, dado a tu peque\xF1a estatura, no tendr\xEDas
+      chances forcejeando con alguien casi dos veces m\xE1s alto que t\xFA."
+    speakerEmotion: 1
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "Es por eso que decidiste tomarlo por sorpresa, escondi\xE9ndote en el
+      armario hasta que \xE9l apareciera..."
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 3
+    speech: "Pe-pero hab\xEDamos acordado que nadie podr\xEDa haber entrado ah\xED..."
+    speakerEmotion: 7
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "En realidad, hab\xEDamos acordado que <color=orange>William</color> -
+      dado a lo grandote que es - no podr\xEDa entrar ah\xED. Pero t\xFA..."
+    speakerEmotion: 2
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "\xA1F\xE1cilmente podr\xEDas haber entrado c\xF3modamente!"
+    speakerEmotion: 6
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+      playDelay: 0.2
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 2
+    speech: "\xA1Es cierto, peque\xF1a rata!"
+    speakerEmotion: 6
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+      playDelay: 0.2
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "Tu plan hubiese funcionado perfectamente si no hubiese sido por un peque\xF1o
+      detalle: \xA1la jarra que estaba dentro del armario se cay\xF3 mientras estabas
+      dentro!"
+    speakerEmotion: 6
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+      playDelay: 0.2
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "En ese momento, la v\xEDctima se percat\xF3 de que alguien estaba en
+      la habitaci\xF3n, as\xED que no tuviste m\xE1s opci\xF3n que atacarlo en ese
+      instante, tratando de preservar tu ventaja..."
+    speakerEmotion: 1
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "Como <color=orange>Mark</color> ya estaba alerta de la presencia de alguien
+      m\xE1s, no tuviste m\xE1s opci\xF3n que enfrentarlo, \xA1y es por eso que \xE9l
+      sufri\xF3 muchas heridas en lugar de simplemente una \xFAnica apu\xF1alada limpia
+      en la espalda!"
+    speakerEmotion: 6
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+      playDelay: 0.2
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "Despu\xE9s, ten\xEDas que deshacerte de la evidencia. Pero primero, ten\xEDas
+      que asegurarte de que nadie pudiera entrar a la habitaci\xF3n para ver al cad\xE1ver
+      hasta que hubieses terminado..."
+    speakerEmotion: 1
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "Es por eso que tomaste la llave de la habitaci\xF3n y cerraste la puerta
+      a cal y canto."
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "Despu\xE9s de eso, fuiste a la cocina para lavar el cuchillo que usaste
+      para cometer el homicidio, pero claramente estabas nervioso, ya que <color=orange>Monica</color>
+      pudo verte corriendo en un apur\xF3n."
+    speakerEmotion: 1
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 1
+    speech: "\xA1Es cierto! \xA1Lo vi corriendo, r\xE1pido como un ant\xEDlope!"
+    speakerEmotion: 6
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "M\xE1s pruebas de tu intranquilidad se encuentran en el hecho de que
+      fallaste al limpiar el <color=red>arma homicida</color> debidamente, ya que
+      una gota de sangre todav\xEDa estaba presente en el cuchillo..."
+    speakerEmotion: 1
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "Finalmente, intentaste culpar a <color=orange>William</color>, \xA1gui\xE1ndonos
+      en la direcci\xF3n equivocada y tratando de hacernos creer que la v\xEDctima
+      hab\xEDa sido atacada con la jarra!"
+    speakerEmotion: 6
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+      playDelay: 0.2
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 3
+    speech: "\xA1N-no...no!"
+    speakerEmotion: 7
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+      playDelay: 0.2
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 3
+    speech: "\xA1Se supon\xEDa que lo iban a acusar a \xE9l, no a m\xED!"
+    speakerEmotion: 5
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 3
+    speech: "\xA1Deber\xEDa haber sido un plan sin fallas!"
+    speakerEmotion: 4
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 0}
+      playDelay: 0.012
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 3
+    speech: "\xA1Maldita seas, <color=orange>James Watson</color>!"
+    speakerEmotion: 4
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+      playDelay: 0.2
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 3
+    speech: "\xA1Maldita sean todos ustedes!"
+    speakerEmotion: 5
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
+      playDelay: 0.2
     revealName: 0
     playerThought: 0
     triggerNiceImpression: 0
