@@ -84,7 +84,6 @@ public class DebateManager : MonoBehaviour
     int lineIndex = 0;
     int argumentIndex = 0;
     bool isSelectingOption;
-    bool evidenceJustUsed;
 
     void Start()
     {
@@ -566,8 +565,6 @@ public class DebateManager : MonoBehaviour
     public void AccuseWithEvidence()
     {  
         bool increaseCredibility;
-
-        evidenceJustUsed = true;
 
         if (currentArgument.correctReaction == DebateReaction.Disagree && 
             currentArgument.correctEvidence.clueID == currentlySelectedEvidence.clueID)
