@@ -117,6 +117,8 @@ public class DebateResultsScreen : MonoBehaviour
 
         for (int i = 0; i < starsToDisplay; i++)
             starRatings[i].ShowStar();
+
+        continueButtonPrompt.Show();
     }
 
     IEnumerator DisplayScore()

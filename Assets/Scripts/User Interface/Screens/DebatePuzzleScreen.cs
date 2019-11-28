@@ -101,6 +101,14 @@ public class DebatePuzzleScreen : MonoBehaviour
         GameManager.Instance.InvokeMethodInRealTime(() => puzzleTimer.StartTimer(), GetComponent<AnimatedMenuScreen>().ShowAnimationDuration);
     }
 
+#if UNITY_EDITOR
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.P))
+            EndPuzzle();
+    }
+#endif
+
     void SetMovablePiecesAvailability(bool enableMovement)
     {
         for (int i = 0; i < movablePieces.Length; i++)
