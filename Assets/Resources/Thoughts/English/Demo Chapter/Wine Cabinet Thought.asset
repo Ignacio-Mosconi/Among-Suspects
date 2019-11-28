@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a7e9810d40ded54dadb89bfc66b24e3, type: 3}
-  m_Name: Fridge Thought
+  m_Name: Wine Cabinet Thought
   m_EditorClassIdentifier: 
   explorationThought:
   - speakerName: 0
-    speech: "Estoy algo hambriento, pero el anfitri\xF3n de esta fiesta no est\xE1
-      ofreciendo nada para comer."
+    speech: This is a really nice furniture...
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -25,7 +24,7 @@ MonoBehaviour:
     playerThought: 1
     triggerNiceImpression: 0
   - speakerName: 0
-    speech: "\xBFQu\xE9 clase de anfitri\xF3n hace eso?"
+    speech: It looks pretty old as well, and so do the wine bottles inside...
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -35,8 +34,8 @@ MonoBehaviour:
     playerThought: 1
     triggerNiceImpression: 0
   - speakerName: 0
-    speech: "\xBFMe ver\xE1n raro si busco algo de comida en la heladera por m\xED
-      mismo?"
+    speech: 'I wonder where it was made. I''m pretty sure that <color=orange>Monica</color>
+      is the kind of person that would love to know that kind of stuff about things. '
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -46,8 +45,7 @@ MonoBehaviour:
     playerThought: 1
     triggerNiceImpression: 0
   - speakerName: 0
-    speech: "Nah...simplemente no est\xE1 bien; me aguantar\xE9 el hambre hasta que
-      alguien se le ocurra comer algo..."
+    speech: Or at least that's what I think, anyway...
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -58,7 +56,7 @@ MonoBehaviour:
     triggerNiceImpression: 0
   investigationThought:
   - speakerName: 0
-    speech: "Unas horas antes, me mor\xEDa de hambre; ahora, apenas quiero comer."
+    speech: This cabinet seems to be filled with mere bottles of wine.
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
@@ -68,13 +66,13 @@ MonoBehaviour:
     playerThought: 1
     triggerNiceImpression: 0
   - speakerName: 0
-    speech: "\xA1Lo que realmente quiero es salir de este lugar lo antes posible!"
+    speech: I guess it won't help us solve the case in any way...
     speakerEmotion: 0
     clueInfo: {fileID: 0}
     dialogueSound:
-      audioClip: {fileID: 8300000, guid: 7809ebc583802fc4d95bafde1f00cc15, type: 3}
-      playDelay: 0.2
+      audioClip: {fileID: 0}
+      playDelay: 0
     revealName: 0
-    playerThought: 0
+    playerThought: 1
     triggerNiceImpression: 0
   triggerInvestigationPhase: 0
