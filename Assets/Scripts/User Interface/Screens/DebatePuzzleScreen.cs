@@ -25,8 +25,8 @@ public class DebatePuzzleScreen : MonoBehaviour
     [SerializeField, Range(1, 4)] uint columns = 4;
 
     [Header("Piece Properties")]
-    [SerializeField, Range(500f, 1000f)] float piecesMoveSpeed = 700f;
-    [SerializeField, Range(0f, 0.3f)] float piecesSmoothTime = 0.2f;
+    [SerializeField, Range(1000f, 2000f)] float piecesMoveSpeed = 700f;
+    [SerializeField, Range(0f, 0.2f)] float piecesSmoothTime = 0.1f;
 
     [Header("Tier Values")]
     [SerializeField, Range(0, 15)] int[] tierMinutes = new int[(int)PuzzleSolvingTier.Count];
