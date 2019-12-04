@@ -350,6 +350,7 @@ public class DebateManager : MonoBehaviour
     void StartPuzzle()
     {
         currentPhase = DebatePhase.SolvingPuzzle;
+        ChapterManager.Instance.SetPauseAvailability(enable: false);
         ResetMainUIVisibility();
         debatePuzzlePanel.Show();
         debateCameraController.StartSpinning(debatePuzzlePanel.ShowAnimationDuration);
@@ -613,6 +614,7 @@ public class DebateManager : MonoBehaviour
     public void StartFinalArgument()
     {
         debatePuzzlePanel.Hide();
+        ChapterManager.Instance.SetPauseAvailability(enable: true);
 
         currentPhase = DebatePhase.SolvingCase;
         lineIndex = 0;
