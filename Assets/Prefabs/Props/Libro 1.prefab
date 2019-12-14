@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 5262187240509730544}
   m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 0.38302, y: 7.8983, z: 0.8868}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.010000002, y: 0.010000002, z: 0.01}
   m_Children:
   - {fileID: 7302677402348162678}
   - {fileID: 4045966545700353066}
@@ -35,7 +35,7 @@ Transform:
   - {fileID: 840110736848613154}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: -180.033, y: -81.40698, z: -180.573}
 --- !u!33 &8759091385611497882
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -112,14 +112,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 97bef8483b35a5542bde93c9af341685, type: 2}
-    - target: {fileID: 1489608242965504582}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 97bef8483b35a5542bde93c9af341685, type: 2}
-    - target: {fileID: 5262187240509730544}
-      propertyPath: m_Name
-      value: Libro 5
-      objectReference: {fileID: 0}
     - target: {fileID: 8262020101157653776}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -176,6 +168,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5262187240509730544}
+      propertyPath: m_Name
+      value: Libro 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489608242965504582}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 97bef8483b35a5542bde93c9af341685, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea1ade7750faf6241b67cc9375ff66e5, type: 3}
 --- !u!4 &840110736848613154 stripped
@@ -215,14 +215,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a6a83c0b6317f384f8588c2421179a15, type: 2}
-    - target: {fileID: 1489608242965504582}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a6a83c0b6317f384f8588c2421179a15, type: 2}
-    - target: {fileID: 5262187240509730544}
-      propertyPath: m_Name
-      value: Libro 4
-      objectReference: {fileID: 0}
     - target: {fileID: 8262020101157653776}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -279,6 +271,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5262187240509730544}
+      propertyPath: m_Name
+      value: Libro 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489608242965504582}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a6a83c0b6317f384f8588c2421179a15, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea1ade7750faf6241b67cc9375ff66e5, type: 3}
 --- !u!4 &3350623787179108488 stripped
@@ -318,14 +318,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 439d77024f45467419af0c76f93a0a6e, type: 2}
-    - target: {fileID: 1489608242965504582}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 7fbd9f06037459743a185a114bb93e6c, type: 2}
-    - target: {fileID: 5262187240509730544}
-      propertyPath: m_Name
-      value: Libro 3
-      objectReference: {fileID: 0}
     - target: {fileID: 8262020101157653776}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -382,6 +374,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5262187240509730544}
+      propertyPath: m_Name
+      value: Libro 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489608242965504582}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7fbd9f06037459743a185a114bb93e6c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea1ade7750faf6241b67cc9375ff66e5, type: 3}
 --- !u!4 &4045966545700353066 stripped
@@ -417,14 +417,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7fbd9f06037459743a185a114bb93e6c, type: 2}
-    - target: {fileID: 1489608242965504582}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 439d77024f45467419af0c76f93a0a6e, type: 2}
-    - target: {fileID: 5262187240509730544}
-      propertyPath: m_Name
-      value: Libro 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8262020101157653776}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -481,6 +473,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5262187240509730544}
+      propertyPath: m_Name
+      value: Libro 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489608242965504582}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 439d77024f45467419af0c76f93a0a6e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea1ade7750faf6241b67cc9375ff66e5, type: 3}
 --- !u!4 &7302677402348162678 stripped
