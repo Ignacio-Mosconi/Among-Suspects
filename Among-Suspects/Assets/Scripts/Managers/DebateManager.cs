@@ -386,7 +386,7 @@ public class DebateManager : MonoBehaviour
         if (increaseCredibility)
             debatePerformanceController.IncreaseCredibility(timeLeft, totalAnsweringTime);
         else
-            debatePerformanceController.DecreaseCredibility(timeLeft, totalAnsweringTime);
+            debatePerformanceController.DecreaseCredibility(timeLeft, totalAnsweringTime, argumentIndex + 1);
 
         argumentPanel.SetActive(false);
         GameManager.Instance.SetCursorEnable(false);
@@ -394,11 +394,7 @@ public class DebateManager : MonoBehaviour
         if (credibilityBarController.IsFillingBar())
             credibilityBarController.StopFillingBar();
 
-        float credibility = debatePerformanceController.Credibility;
-        float requiredCredibility = debatePerformanceController.RequiredCredibility;
-        bool isAtCriticalCredibility = debatePerformanceController.IsAtCriticalCredibility(argumentIndex);
-
-        credibilityBarController.StartFillingBar(credibility);
+        credibilityBarController.StartFillingBar(debatePerformanceController.Credibility);
 
         lineIndex = 0;
         isSelectingOption = false;

@@ -107,9 +107,9 @@ public class DebatePerformanceController
         RegisterArgumentRecord(wasSolvedCorrectly: true, timeLeftToSolve, totalTimeToSolve);
     }
 
-    public void DecreaseCredibility(float timeLeftToSolve, float totalTimeToSolve)
+    public void DecreaseCredibility(float timeLeftToSolve, float totalTimeToSolve, int currentArgumentIndex)
     {
-        credibility -= credibilityDecreaseRate;
+        credibility = (!ShouldLoseCase(currentArgumentIndex)) ? credibility - credibilityDecreaseRate : 0f;
         RegisterArgumentRecord(wasSolvedCorrectly: false, timeLeftToSolve, totalTimeToSolve);
     }
 
