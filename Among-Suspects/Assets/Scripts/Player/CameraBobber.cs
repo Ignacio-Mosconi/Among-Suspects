@@ -1,5 +1,16 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
+public enum WalkingSurface
+{
+    Wood,
+    Ceramic,
+    Concrete,
+    Rug,
+    None
+}
+
+[RequireComponent(typeof(CapsuleCollider))]
 [RequireComponent(typeof(PlayerMovement))]
 public class CameraBobber : MonoBehaviour
 {
@@ -8,6 +19,7 @@ public class CameraBobber : MonoBehaviour
     
     PlayerMovement playerMovement;
     Transform fpsCamera;
+    WalkingSurface currentWalkingSurface = WalkingSurface.Ceramic;
     float verticalMidpoint;
     float bobbingTimer = 0f;
 
@@ -35,8 +47,12 @@ public class CameraBobber : MonoBehaviour
             float fullCircle = Mathf.PI * 2;
             
             bobbingTimer += bobbingSpeed * playerMovement.CurrentRunMultiplier * Time.deltaTime;
-            if (bobbingTimer > fullCircle)
+            
+            if (bobbingTimer >= fullCircle)
+            {
                 bobbingTimer -= fullCircle;
+                AudioManager.Instance.PostEvent("Pasos");
+            }
 
             if (wave != 0f)
             {
@@ -46,5 +62,39 @@ public class CameraBobber : MonoBehaviour
         }
 
         fpsCamera.localPosition = cameraPosition;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        WalkingSurface walkingSurface = WalkingSurface.None;
+        
+        Enum.TryParse(other.tag, out walkingSurface);
+
+        if (walkingSurface != WalkingSurface.None && walkingSurface != currentWalkingSurface)
+        {
+            currentWalkingSurface = walkingSurface;
+            
+            switch (currentWalkingSurface)
+            {
+                case WalkingSurface.Wood:
+                    AudioManager.Instance.SetSwitch("Pasos", "Madera");
+                    break;
+
+                case WalkingSurface.Ceramic:
+                    AudioManager.Instance.SetSwitch("Pasos", "Cemento");
+                    break;
+
+                case WalkingSurface.Rug:
+                    AudioManager.Instance.SetSwitch("Pasos", "Alfombra");
+                    break;
+
+                case WalkingSurface.Concrete:
+                    AudioManager.Instance.SetSwitch("Pasos", "Piedra");
+                    break;
+
+                default:
+                    break;
+            }
+        }
     }
 }
