@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 2239842487990225649}
   - component: {fileID: 2471377352604014998}
   - component: {fileID: 4208024603510496880}
+  - component: {fileID: 5141115344357105919}
+  - component: {fileID: 4979439454385707275}
   m_Layer: 16
   m_Name: FPS Camera
   m_TagString: MainCamera
@@ -161,6 +163,42 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &5141115344357105919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2239842487990225655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3efb05305c5928549a65d87d5735a902, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_listeners:
+    initialListenerList: []
+    useDefaultListeners: 1
+  isEnvironmentAware: 1
+  isStaticObject: 0
+  m_positionOffsetData:
+    KeepMe: 0
+    positionOffset: {x: 0, y: 0, z: 0}
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
+--- !u!114 &4979439454385707275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2239842487990225655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27ddf642e7f9ae041938dd18f54329a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDefaultListener: 1
+  listenerId: 0
 --- !u!1 &2574473679790153753
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,6 +212,7 @@ GameObject:
   - component: {fileID: 3379400161994766317}
   - component: {fileID: 984924569567180503}
   - component: {fileID: 7329557218065577264}
+  - component: {fileID: 7410377059594311569}
   m_Layer: 16
   m_Name: James
   m_TagString: Untagged
@@ -207,7 +246,7 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.65
+  m_Height: 1.69
   m_Radius: 0.3
   m_SlopeLimit: 45
   m_StepOffset: 0.1
@@ -266,3 +305,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 2.25
   runMultiplier: 1.5
+--- !u!114 &7410377059594311569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2574473679790153753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2136827843981fa45bed87b9d75db55b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bobbingSpeed: 12
+  bobbingIntensity: 0.05

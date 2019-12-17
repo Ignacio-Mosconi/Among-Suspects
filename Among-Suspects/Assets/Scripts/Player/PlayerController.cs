@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour, ICharacter
 
     FirstPersonCamera firstPersonCamera;
     PlayerMovement playerMovement;
+    CameraBobber cameraBobber;
     Camera playerCamera;
     List<ClueInfo> cluesGathered = new List<ClueInfo>();
     bool canInteract = true;
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour, ICharacter
     {
         firstPersonCamera = GetComponent<FirstPersonCamera>();
         playerMovement = GetComponent<PlayerMovement>();
+        cameraBobber = GetComponent<CameraBobber>();
         playerCamera = GetComponentInChildren<Camera>();
     }
 
@@ -71,6 +73,7 @@ public class PlayerController : MonoBehaviour, ICharacter
     {
         firstPersonCamera.enabled = true;
         playerMovement.enabled = true;
+        cameraBobber.enabled = true;
         canInteract = !TriggeredNotification() && !IsInvoking("ReEnableInteractionDelayed");
     }
 
@@ -78,6 +81,7 @@ public class PlayerController : MonoBehaviour, ICharacter
     {
         firstPersonCamera.enabled = false;
         playerMovement.enabled = false;
+        cameraBobber.enabled = false;
         canInteract = false;
     }
 
@@ -182,7 +186,6 @@ public class PlayerController : MonoBehaviour, ICharacter
 
 #if UNITY_EDITOR
     #region Development Cheats
-
     public void GatherAllClues()
     {
         ChapterManager.Instance.TriggerInvestigationPhase();
