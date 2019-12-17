@@ -1,0 +1,245 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9345bdb6d41302b4997bfaa46be947a2, type: 3}
+  m_Name: Monica Exploration Phase
+  m_EditorClassIdentifier: 
+  introLines:
+  - speakerName: 1
+    speech: "\xA1Hola, cari\xF1o!"
+    speakerEmotion: 2
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 1
+    speech: "As\xED que ya hemos llegado a la fiesta."
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 1
+    speech: "Ahora...\xA1vamos a conocer a tus viejos amigos de la secundaria!"
+    speakerEmotion: 2
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: Monica_Risa
+      playDelay: 0.2
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "Bueno, bueno...\t"
+    speakerEmotion: 8
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "Esa es mi novia s\xFAper-alegre. Ella estuvo ah\xED para apoyarme desde
+      que perd\xED la memoria en el accidente."
+    speakerEmotion: 8
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: Me siento mal por ella siendo que no la recuerdo...
+    speakerEmotion: 8
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: y sobre el tema, no me acuerdo tampoco de ninguna de las personas importantes
+      en mi vida.
+    speakerEmotion: 8
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "As\xED que aqu\xED estoy: en un reencuentro de compa\xF1eros de la  secundaria
+      que no he visto en a\xF1os, en un esfuerzo por recobrar mi memoria."
+    speakerEmotion: 8
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 1
+    speech: "<color=orange>Jimmy</color>, \xBFestas bien?"
+    speakerEmotion: 3
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "\xBFQu\xE9? Oh, s\xED..."
+    speakerEmotion: 8
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "Supongo que me perd\xED en mi propia cabeza..."
+    speakerEmotion: 8
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 1
+    speech: "Entonces, \xBFa\xFAn no recuerdas a nadie de aqu\xED, \xBFno?"
+    speakerEmotion: 1
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "No, a\xFAn no."
+    speakerEmotion: 8
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 1
+    speech: Bueno, no te preocupes, querido.
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 1
+    speech: "\xA1Estoy completamente segura que empezar\xE1s a acordarte una vez que
+      pases un tiempo con tus compas!"
+    speakerEmotion: 1
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 1
+    speech: "\xA1Divirt\xE1monos un rato!"
+    speakerEmotion: 2
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: Monica_Risa
+      playDelay: 0.2
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "Ah\xED esta, alegre y apoy\xE1ndome en todo como siempre desde que gane
+      conciencia despu\xE9s del accidente."
+    speakerEmotion: 8
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  interactiveConversation:
+    intro: []
+    playerOptions: []
+    resultingDialogues: []
+  niceComment:
+  - speakerName: 1
+    speech: "\xBFPor qu\xE9 no hablamos con tus compa\xF1eros un rato?"
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 1
+    speech: "\xA1Yo estoy s\xFAper-emocionada por poder conocerlos!"
+    speakerEmotion: 2
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: Monica_Risa
+      playDelay: 0.2
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "Est\xE1 bien, est\xE1 bien."
+    speakerEmotion: 8
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  rudeComment:
+  - speakerName: 0
+    speech: '...'
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  groupDialogue:
+    leftSpeaker: 0
+    rightSpeaker: 0
+    dialogue: []
+    cancelOtherGroupDialogues: 0
+  dialogueTypeOrder: 000000000000000000000000
+  introRead: 1
+  interactionOptionSelected: 0
+  groupDialogueRead: 0

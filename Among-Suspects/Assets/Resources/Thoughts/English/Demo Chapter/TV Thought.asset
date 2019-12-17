@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a7e9810d40ded54dadb89bfc66b24e3, type: 3}
+  m_Name: TV Thought
+  m_EditorClassIdentifier: 
+  explorationThought:
+  - speakerName: 0
+    speech: This TV seems too new compared to rest of the furniture.
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: It kind of stands out from the rest of the things around it.
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: 'It''s weird, though...it looks like it''s plugged in and turned on, but
+      it''s not displaying anything. '
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: James_Hum
+      playDelay: 0.2
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: Maybe someone didn't pay the cable bill...
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  investigationThought:
+  - speakerName: 0
+    speech: The last thing I want to do right now is watch the TV...
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: We need to get out before the murderer acts again...
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  triggerInvestigationPhase: 0

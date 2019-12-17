@@ -1,0 +1,506 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9345bdb6d41302b4997bfaa46be947a2, type: 3}
+  m_Name: Monica Investigation Phase
+  m_EditorClassIdentifier: 
+  introLines:
+  - speakerName: 1
+    speech: "\xBFUn cad\xE1ver? \xBFEn esta fiesta?"
+    speakerEmotion: 3
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 1
+    speech: "\xA1\xBFC\xF3mo puede ser?!"
+    speakerEmotion: 7
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: Monica_Sorprendida
+      playDelay: 0.2
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "C\xE1lmate, <color=orange>Monica</color>. Tenemos que mantener la calma
+      si queremos resolver esta situaci\xF3n."
+    speakerEmotion: 8
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 1
+    speech: '...'
+    speakerEmotion: 3
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 1
+    speech: "S\xED, tienes raz\xF3n..."
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "Ahora, necesito que me digas qu\xE9 viste antes de que entrara al dormitorio
+      y encontrara al cuerpo."
+    speakerEmotion: 8
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 1
+    speech: "Claro. Y-yo estaba cerca del dormitorio...donde encontraste al c-cad\xE1ver..."
+    speakerEmotion: 1
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "S\xED, contin\xFAa."
+    speakerEmotion: 8
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 1
+    speech: "Antes de eso, vi a <color=orange>William</color> cerca de la televisi\xF3n
+      en la sala..."
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 1
+    speech: Estaba tratando de hacerla funcionar, supongo...pero estaba tirando insultos...
+    speakerEmotion: 1
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 1
+    speech: Supuse que no la pudo hacer andar.
+    speakerEmotion: 1
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "\xBFY qu\xE9 tal <color=orange>Gary</color>?"
+    speakerEmotion: 8
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 1
+    speech: No....no me acuerdo...
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 1
+    speech: "Ah, \xA1espera!"
+    speakerEmotion: 3
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 1
+    speech: "\xA1Creo que lo vi ir a la cocina!"
+    speakerEmotion: 2
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: Pista_Descubierta
+      playDelay: 0.2
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 1
+    speech: Lo vi en un instante, estaba caminando bastante acelerado.
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "\xBFAlgo m\xE1s que me quieras contar?"
+    speakerEmotion: 8
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 1
+    speech: "Lo siento, <color=orange>Jimmy</color>. Todo paso tan r\xE1pido..."
+    speakerEmotion: 0
+    clueInfo: {fileID: 11400000, guid: d74553952f6bf144e9a0ef6e56429e81, type: 2}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: Esta bien, <color=orange>Monica</color>; me ayudaste bastante.
+    speakerEmotion: 8
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: Te prometo que volveremos a casa sanos y salvos.
+    speakerEmotion: 8
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "Aunque no recuerde nada de ella por mi accidente, creo que es la \xFAnica
+      persona en la que puedo confiar aqu\xED."
+    speakerEmotion: 8
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "Es decir, tengo que confiar en alguien, \xBFno?"
+    speakerEmotion: 8
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  interactiveConversation:
+    intro: []
+    playerOptions: []
+    resultingDialogues: []
+  niceComment:
+  - speakerName: 1
+    speech: "\xBFUn cad\xE1ver?"
+    speakerEmotion: 3
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 1
+    speech: "\xA1No podemos pedir ayuda!"
+    speakerEmotion: 7
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 1
+    speech: "\xA1No podemos salir de aqui!"
+    speakerEmotion: 3
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: Monica_Triste
+      playDelay: 0.2
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 1
+    speech: "\xA1\xBFQu\xE9 vamos a hacer?!"
+    speakerEmotion: 7
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: "No te preocupes <color=orange>Monica</color>, nos sacare de este l\xEDo."
+    speakerEmotion: 8
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  rudeComment:
+  - speakerName: 1
+    speech: '...'
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  groupDialogue:
+    leftSpeaker: 3
+    rightSpeaker: 2
+    dialogue:
+    - speakerName: 1
+      speech: "\xBFQu\xE9 te pasa, <color=orange>Jimmy</color>?"
+      speakerEmotion: 1
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 0
+      speech: "H-hay un cad\xE1ver en uno de los dormitorios..."
+      speakerEmotion: 8
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 1
+      speech: "\xBFQu\xE9? \xBFA qu\xE9 te refieres?"
+      speakerEmotion: 3
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: Monica_Sorprendida
+        playDelay: 0.2
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 0
+      speech: "\xA1Alguien fue asesinado ah\xED!"
+      speakerEmotion: 8
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: Dialogo_Tension
+        playDelay: 0.2
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 1
+      speech: "\xA1\xBFQu\xE9?!"
+      speakerEmotion: 7
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: Monica_Soreprendida
+        playDelay: 0.2
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 1
+      speech: "\xBFC\xF3mo puedo pasar esto? \xBFFue un accidente?"
+      speakerEmotion: 3
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: Monica_Sorprendida
+        playDelay: 0.2
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 0
+      speech: "No...parec\xEDa un asesinato..."
+      speakerEmotion: 8
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 3
+      speech: Oh, Dios...
+      speakerEmotion: 3
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 3
+      speech: "Ese debi\xF3 ser <color=orange>Mark</color>; \xE9l lleg\xF3 un poco
+        antes que ustedes..."
+      speakerEmotion: 1
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 2
+      speech: "\xBFUn maldito cad\xE1ver?"
+      speakerEmotion: 4
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 1
+      speech: "\xA1Tenemos que llamar a la polic\xEDa!"
+      speakerEmotion: 7
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 0
+      speech: "(Saca su tel\xE9fono)"
+      speakerEmotion: 8
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 1
+      triggerNiceImpression: 0
+    - speakerName: 0
+      speech: '...'
+      speakerEmotion: 1
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 1
+      speech: "\xA1No puede ser! \xA1No hay se\xF1al!"
+      speakerEmotion: 3
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: Monica_Sorprendida
+        playDelay: 0.2
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 2
+      speech: "\xA1Largu\xE9monos de este lugar, entonces!"
+      speakerEmotion: 4
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: William_Enojado
+        playDelay: 0.2
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 0
+      speech: "\xA1La puerta esta trabada!\n\xA1No hay salida!"
+      speakerEmotion: 8
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: Puerta_Trabada
+        playDelay: 0.2
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 3
+      speech: "Bueno, no me miren a m\xED. Este era el lugar de <color=orange>Mark</color>
+        - no tengo ninguna llave."
+      speakerEmotion: 0
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 3
+      speech: Rayos, si todo esta cerrado...
+      speakerEmotion: 1
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 3
+      speech: "Eso significa que el asesino est\xE1 en nuestro grupo..."
+      speakerEmotion: 0
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: Dialogo_Tension
+        playDelay: 0.2
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    cancelOtherGroupDialogues: 1
+  dialogueTypeOrder: 020000000000000000000000
+  introRead: 1
+  interactionOptionSelected: 0
+  groupDialogueRead: 1

@@ -1,0 +1,484 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9345bdb6d41302b4997bfaa46be947a2, type: 3}
+  m_Name: Gary Investigation Phase
+  m_EditorClassIdentifier: 
+  introLines: []
+  interactiveConversation:
+    intro:
+    - speakerName: 3
+      speech: Let me guess...
+      speakerEmotion: 0
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 3
+      speech: You have come here to play the detective and interrogate me, haven't
+        you?
+      speakerEmotion: 2
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: Gary_Risa
+        playDelay: 0.2
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 0
+      speech: 'I wouldn''t call it ''play'': this is no game.'
+      speakerEmotion: 8
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 3
+      speech: You're right. This is a serious matter, so take it seriously.
+      speakerEmotion: 1
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: Gary_Molesto
+        playDelay: 0.2
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 0
+      speech: I will. Now, would you mind if I asked you what you were doing before
+        I found the body?
+      speakerEmotion: 8
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 3
+      speech: I was in the kitchen. As I was starting to feel hunger, I decided to
+        take some food myself...
+      speakerEmotion: 0
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 3
+      speech: I can tell you I'm guilty of that.
+      speakerEmotion: 2
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 0
+      speech: And I didn't want to be rude and take any food without permission...
+      speakerEmotion: 8
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 1
+      triggerNiceImpression: 0
+    - speakerName: 3
+      speech: So...Is that enough, detective?
+      speakerEmotion: 0
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    playerOptions:
+    - option: Satisfied
+      description: '''You''ve told me enough'''
+    - option: Unsatisfied
+      description: '''I want to know more'''
+    resultingDialogues:
+    - branchDialogue:
+      - speakerName: 0
+        speech: Yes, that's enough information for now.
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        dialogueSound:
+          eventName: 
+          playDelay: 0
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 0
+        speech: Thank you for your collaboration.
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        dialogueSound:
+          eventName: 
+          playDelay: 0
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 3
+        speech: You're welcome, 'detective'.
+        speakerEmotion: 2
+        clueInfo: {fileID: 0}
+        dialogueSound:
+          eventName: 
+          playDelay: 0
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 0
+        speech: He told me to take this thing seriously, and yet HE's the one playing
+          'cops & robbers'.
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        dialogueSound:
+          eventName: 
+          playDelay: 0
+        revealName: 0
+        playerThought: 1
+        triggerNiceImpression: 0
+    - branchDialogue:
+      - speakerName: 0
+        speech: No, I need you to tell me more.
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        dialogueSound:
+          eventName: 
+          playDelay: 0
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 0
+        speech: What were you eating, for instance?
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        dialogueSound:
+          eventName: 
+          playDelay: 0
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 3
+        speech: What?
+        speakerEmotion: 0
+        clueInfo: {fileID: 0}
+        dialogueSound:
+          eventName: 
+          playDelay: 0
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 3
+        speech: I told you not to play detective, <color=orange>James</color>...
+        speakerEmotion: 2
+        clueInfo: {fileID: 0}
+        dialogueSound:
+          eventName: Gary_Risa
+          playDelay: 0.2
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 3
+        speech: You are asking nonsense now...
+        speakerEmotion: 1
+        clueInfo: {fileID: 0}
+        dialogueSound:
+          eventName: 
+          playDelay: 0
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 0
+        speech: You didn't answer the question.
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        dialogueSound:
+          eventName: 
+          playDelay: 0
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 3
+        speech: Fine, fine. I was just making a sandwich...
+        speakerEmotion: 0
+        clueInfo: {fileID: 0}
+        dialogueSound:
+          eventName: 
+          playDelay: 0
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 3
+        speech: This is sort of amusing, actually...
+        speakerEmotion: 2
+        clueInfo: {fileID: 0}
+        dialogueSound:
+          eventName: Gary_Risa
+          playDelay: 0.2
+        revealName: 0
+        playerThought: 0
+        triggerNiceImpression: 0
+      - speakerName: 0
+        speech: He seems to be the cynical type.
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        dialogueSound:
+          eventName: 
+          playDelay: 0
+        revealName: 0
+        playerThought: 1
+        triggerNiceImpression: 0
+      - speakerName: 0
+        speech: But maybe he's a bit right, and I went a little out of my way there.
+        speakerEmotion: 8
+        clueInfo: {fileID: 0}
+        dialogueSound:
+          eventName: 
+          playDelay: 0
+        revealName: 0
+        playerThought: 1
+        triggerNiceImpression: 0
+  niceComment:
+  - speakerName: 3
+    speech: Let's find the killer, <color=orange>James</color>.
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  rudeComment:
+  - speakerName: 3
+    speech: Let's find the killer, Mr. <i>'I lost my memory'</i>.
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: Gary_Molesto
+      playDelay: 0.2
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  groupDialogue:
+    leftSpeaker: 2
+    rightSpeaker: 1
+    dialogue:
+    - speakerName: 3
+      speech: Huh?
+      speakerEmotion: 0
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 3
+      speech: Are you all right?
+      speakerEmotion: 1
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: Gary_Molesto
+        playDelay: 0.2
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 3
+      speech: You look like you've seen a ghost back there.
+      speakerEmotion: 2
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 0
+      speech: There's a co-corpse in the bedroom...
+      speakerEmotion: 8
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 3
+      speech: Excuse me?
+      speakerEmotion: 3
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 0
+      speech: Someone was killed in here!
+      speakerEmotion: 8
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: Dialogo_Tension
+        playDelay: 0.2
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 1
+      speech: What?!
+      speakerEmotion: 7
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: Monica_Sorprendida
+        playDelay: 0.2
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 3
+      speech: Oh, christ...
+      speakerEmotion: 3
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 3
+      speech: That must be <color=orange>Mark</color>; he arrived a bit earlier than
+        you...
+      speakerEmotion: 1
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 2
+      speech: A freaking corpse?
+      speakerEmotion: 4
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: William_Sorprendido
+        playDelay: 0.2
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 1
+      speech: We have to call the police!
+      speakerEmotion: 7
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 0
+      speech: (Gets her phone out)
+      speakerEmotion: 8
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 1
+      triggerNiceImpression: 0
+    - speakerName: 0
+      speech: '...'
+      speakerEmotion: 1
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 1
+      speech: It can't be! There's no reception!
+      speakerEmotion: 3
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: Monica_Sorprendida
+        playDelay: 0.2
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 2
+      speech: Let's leave this fucking place, then!
+      speakerEmotion: 4
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: William_Enojado
+        playDelay: 0.2
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 0
+      speech: 'The front door is locked!
+
+        There''s no way out!'
+      speakerEmotion: 8
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: Puerta_Trabada
+        playDelay: 0.2
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 3
+      speech: Well, don't look at me. This was <color=orange>Mark</color>'s place
+        - I don't have any keys.
+      speakerEmotion: 0
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 3
+      speech: Damn it. If the place is locked....
+      speakerEmotion: 1
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 3
+      speech: That means the murderer is within our group...
+      speakerEmotion: 0
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: Dialogo_Tension
+        playDelay: 0.2
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    cancelOtherGroupDialogues: 1
+  dialogueTypeOrder: 020000000100000000000000
+  introRead: 0
+  interactionOptionSelected: 1
+  groupDialogueRead: 1

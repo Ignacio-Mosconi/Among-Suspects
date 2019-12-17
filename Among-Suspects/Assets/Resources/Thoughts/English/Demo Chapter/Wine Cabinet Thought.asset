@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a7e9810d40ded54dadb89bfc66b24e3, type: 3}
+  m_Name: Wine Cabinet Thought
+  m_EditorClassIdentifier: 
+  explorationThought:
+  - speakerName: 0
+    speech: This is a really nice furniture...
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: It looks pretty old as well, and so do the wine bottles inside...
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: 'I wonder where it was made. I''m pretty sure that <color=orange>Monica</color>
+      is the kind of person that would love to know that kind of stuff about things. '
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: James_Hum
+      playDelay: 0.2
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: Or at least that's what I think, anyway...
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  investigationThought:
+  - speakerName: 0
+    speech: This cabinet seems to be filled with mere bottles of wine.
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: I guess it won't help us solve the case in any way...
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  triggerInvestigationPhase: 0

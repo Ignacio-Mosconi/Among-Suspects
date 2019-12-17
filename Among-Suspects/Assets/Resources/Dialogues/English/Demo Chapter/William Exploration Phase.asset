@@ -1,0 +1,353 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9345bdb6d41302b4997bfaa46be947a2, type: 3}
+  m_Name: William Exploration Phase
+  m_EditorClassIdentifier: 
+  introLines:
+  - speakerName: 2
+    speech: Hey, there, bro. What's up?
+    speakerEmotion: 1
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: Hi...big guy...
+    speakerEmotion: 8
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: Well, I kind of lost my memory in an accident...
+    speakerEmotion: 8
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: Can you tell me your name? I actually...don't remember you...
+    speakerEmotion: 8
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 2
+    speech: Really? Is that so?
+    speakerEmotion: 3
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 2
+    speech: Ehm, okay, dude. You're talking to <color=orange>William Evans</color>,
+      the super famous football player.
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 1
+    playerThought: 0
+    triggerNiceImpression: 1
+  - speakerName: 0
+    speech: Are you famous?
+    speakerEmotion: 8
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 2
+    speech: You bet I am! I'm gonna be the next legend of the sport!
+    speakerEmotion: 2
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: He seems pretty proud of himself, but why does he have to be so loud?
+    speakerEmotion: 8
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 1
+    triggerNiceImpression: 0
+  interactiveConversation:
+    intro: []
+    playerOptions: []
+    resultingDialogues: []
+  niceComment:
+  - speakerName: 2
+    speech: You really don't remember me at all, dude?
+    speakerEmotion: 1
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: I'm sorry...I can't recall you...
+    speakerEmotion: 8
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 2
+    speech: That's...
+    speakerEmotion: 0
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 2
+    speech: '...all right. Never mind.'
+    speakerEmotion: 1
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: William_Enojado
+      playDelay: 0.2
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 2
+    speech: I guess I'll watch that badass TV over there while we wait for the rest
+      of the people.
+    speakerEmotion: 1
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 2
+    speech: I wanna check out one of the sports channels...
+    speakerEmotion: 2
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: Okay...go ahead.
+    speakerEmotion: 8
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  - speakerName: 0
+    speech: See you later, then...
+    speakerEmotion: 8
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  rudeComment:
+  - speakerName: 2
+    speech: '...'
+    speakerEmotion: 1
+    clueInfo: {fileID: 0}
+    dialogueSound:
+      eventName: 
+      playDelay: 0
+    revealName: 0
+    playerThought: 0
+    triggerNiceImpression: 0
+  groupDialogue:
+    leftSpeaker: 1
+    rightSpeaker: 3
+    dialogue:
+    - speakerName: 1
+      speech: Really? Are you so popular?
+      speakerEmotion: 3
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 2
+      speech: Hell, yeah! I'm known all over the county!
+      speakerEmotion: 2
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 2
+      speech: I'm the most talented dude this town's ever seen...
+      speakerEmotion: 1
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 1
+      speech: That's impressive!
+      speakerEmotion: 2
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: Monica_Risa
+        playDelay: 0.2
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 0
+      speech: I hope he's not trying to flirt with my girlfriend...
+      speakerEmotion: 8
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 1
+      triggerNiceImpression: 0
+    - speakerName: 1
+      speech: Darling, you never told me about your famous sports friend...
+      speakerEmotion: 0
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 0
+      speech: Well...I really don't remember why I have never told you about him.
+      speakerEmotion: 8
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 3
+      speech: Mhh, that football star has always exaggerated and bragged about his
+        actual talents.
+      speakerEmotion: 1
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: Gary_Molesto
+        playDelay: 0.2
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 3
+      speech: Maybe that's why you never told her about him...
+      speakerEmotion: 2
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 2
+      speech: What da fuck do you know, freak?!
+      speakerEmotion: 5
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: Dialogo_Tension
+        playDelay: 0.2
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 1
+      speech: '...'
+      speakerEmotion: 3
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: Monica_Sorprendida
+        playDelay: 0.2
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 0
+      speech: I can sense a lot of tension between those two...
+      speakerEmotion: 8
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 1
+      triggerNiceImpression: 0
+    - speakerName: 0
+      speech: Okay; let's just calm down, all right?
+      speakerEmotion: 8
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    - speakerName: 0
+      speech: We are all here to have a nice party, aren't we?
+      speakerEmotion: 8
+      clueInfo: {fileID: 0}
+      dialogueSound:
+        eventName: 
+        playDelay: 0
+      revealName: 0
+      playerThought: 0
+      triggerNiceImpression: 0
+    cancelOtherGroupDialogues: 0
+  dialogueTypeOrder: 000000000200000000000000
+  introRead: 0
+  interactionOptionSelected: 0
+  groupDialogueRead: 0

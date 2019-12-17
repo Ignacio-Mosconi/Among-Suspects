@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{97A101D8-A5E4-44EC-BE4D-928D17E49D71}" SchemaVersion="89">
+	<SoundcasterSessions>
+		<WorkUnit Name="Default Work Unit" ID="{97A101D8-A5E4-44EC-BE4D-928D17E49D71}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundcasterSession Name="New Soundcaster Session" ID="{061FDA5E-34E7-4BB5-B000-1B09962C2513}">
+					<ModuleList>
+						<Module>
+							<ObjectRef Name="Dialogo_Escrito" ID="{B6761264-4704-4544-9369-736E2A077007}" WorkUnitID="{7AC21647-4EFF-4260-8334-DC6EA489892F}"/>
+							<Position X="0" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Dialogo_Interrupcion" ID="{47A3BD6D-F1AF-4590-AC14-A85322ACEF43}" WorkUnitID="{7AC21647-4EFF-4260-8334-DC6EA489892F}"/>
+							<Position X="1" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Menu_Seleccionar" ID="{FB1DE11D-931D-477B-AB41-B61434D01B88}" WorkUnitID="{7AC21647-4EFF-4260-8334-DC6EA489892F}"/>
+							<Position X="2" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Menu_Posicionar_Cursor" ID="{353CD9CA-32A7-48A6-ACDB-9CE423C9F2E2}" WorkUnitID="{7AC21647-4EFF-4260-8334-DC6EA489892F}"/>
+							<Position X="3" Y="0"/>
+						</Module>
+					</ModuleList>
+					<RTPCValueList ShowAll="true"/>
+					<CurrentStateList ShowAll="true"/>
+					<CurrentSwitchList ShowAll="true">
+						<CurrentSwitchRef Name="Madera" ID="{B8ED5A52-7BA9-4AB3-9D61-4153B89AE612}"/>
+					</CurrentSwitchList>
+				</SoundcasterSession>
+				<SoundcasterSession Name="Musica" ID="{A9886AEB-AC00-4137-9F35-975AA5EC77CD}">
+					<ModuleList>
+						<Module>
+							<ObjectRef Name="Inicio_MenuPrincipal" ID="{91EFC046-11FB-4138-BAC3-80F62FEC07EC}" WorkUnitID="{7AC21647-4EFF-4260-8334-DC6EA489892F}"/>
+							<Position X="0" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Pasos" ID="{3B4F080B-1581-4D1A-8B58-9061B8ABAE5C}" WorkUnitID="{39FEEEEC-3732-4B7B-A50D-CE52F4EC3EFB}"/>
+							<Position X="0" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Pausa_On" ID="{DAB1C467-BC7B-44D2-9F84-4E4BDD9D3A0B}" WorkUnitID="{7AC21647-4EFF-4260-8334-DC6EA489892F}"/>
+							<Position X="0" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Monica_Risa" ID="{23C43E21-8CF9-42E9-9138-6AFDB53DB104}" WorkUnitID="{7AC21647-4EFF-4260-8334-DC6EA489892F}"/>
+							<Position X="0" Y="3"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Inicio_Juego" ID="{772A6542-290E-4E5B-A6B2-0F206106D767}" WorkUnitID="{7AC21647-4EFF-4260-8334-DC6EA489892F}"/>
+							<Position X="1" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Debate_Correct" ID="{FBC36563-C9A5-4982-A270-7F130A016A16}" WorkUnitID="{7AC21647-4EFF-4260-8334-DC6EA489892F}"/>
+							<Position X="1" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Pausa_Off" ID="{C4393895-D261-479C-8DC0-9B8959B56E78}" WorkUnitID="{7AC21647-4EFF-4260-8334-DC6EA489892F}"/>
+							<Position X="1" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Monica_Sorprendida" ID="{E94E07F6-A324-41FB-AEBA-55D10F5359E8}" WorkUnitID="{7AC21647-4EFF-4260-8334-DC6EA489892F}"/>
+							<Position X="1" Y="3"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Descubrir_Cadaver" ID="{2B3449A1-8A42-41A1-BDDF-741E53D782AE}" WorkUnitID="{7AC21647-4EFF-4260-8334-DC6EA489892F}"/>
+							<Position X="2" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Dialogo_Escrito" ID="{B6761264-4704-4544-9369-736E2A077007}" WorkUnitID="{7AC21647-4EFF-4260-8334-DC6EA489892F}"/>
+							<Position X="2" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Monica_Risa" ID="{23C43E21-8CF9-42E9-9138-6AFDB53DB104}" WorkUnitID="{7AC21647-4EFF-4260-8334-DC6EA489892F}"/>
+							<Position X="2" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="William_Sorprendido" ID="{8906B426-DCCA-47D6-ABC8-05D0814700FD}" WorkUnitID="{7AC21647-4EFF-4260-8334-DC6EA489892F}"/>
+							<Position X="2" Y="3"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Pase_Modo_Debate" ID="{3E4600C7-C010-4EF9-AB62-F33D720B8C40}" WorkUnitID="{7AC21647-4EFF-4260-8334-DC6EA489892F}"/>
+							<Position X="3" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Dialogo_Interrupcion" ID="{47A3BD6D-F1AF-4590-AC14-A85322ACEF43}" WorkUnitID="{7AC21647-4EFF-4260-8334-DC6EA489892F}"/>
+							<Position X="3" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="William_Enojado" ID="{FE8564CA-15B3-428A-9B27-F5F060858786}" WorkUnitID="{7AC21647-4EFF-4260-8334-DC6EA489892F}"/>
+							<Position X="3" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Clock_Tick" ID="{EBC11BB1-C782-4A82-9AD4-AE1379E2E591}" WorkUnitID="{7AC21647-4EFF-4260-8334-DC6EA489892F}"/>
+							<Position X="4" Y="3"/>
+						</Module>
+					</ModuleList>
+					<RTPCValueList ShowAll="true">
+						<RTPCValue>
+							<GameParameterRef Name="SFX" ID="{FEB66AC7-7C57-4661-A8A5-A69D26C6271D}"/>
+							<Value>50.132625994695</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="Music" ID="{90E7B559-409D-495D-815B-F3AD9E50AB29}"/>
+							<Value>54.5092838196286</Value>
+						</RTPCValue>
+					</RTPCValueList>
+					<CurrentStateList ShowAll="true"/>
+					<CurrentSwitchList ShowAll="true">
+						<CurrentSwitchRef Name="Madera" ID="{B8ED5A52-7BA9-4AB3-9D61-4153B89AE612}"/>
+					</CurrentSwitchList>
+				</SoundcasterSession>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundcasterSessions>
+</WwiseDocument>

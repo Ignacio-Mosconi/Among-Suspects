@@ -1,0 +1,558 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 807d0faee68d5aa42b46a14a324043c1, type: 3}
+  m_Name: AkWwiseProjectData
+  m_EditorClassIdentifier: 
+  AcousticTextureWwu:
+  - PhysicalPath: Virtual Acoustics\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: 02efc5d81dcf4f4d87dea76bed621ab1
+    GuidInternal: 
+    m_lastTime: -8586251070974775808
+    List: []
+  AuxBusWwu:
+  - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: 5d49b2772d8e8644b19271aa1f50c5bd
+    GuidInternal: 
+    m_lastTime: -8586250863884775808
+    List: []
+  BankWwu:
+  - PhysicalPath: SoundBanks\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: f50e0282f80f5847b952cd24d9e3db15
+    GuidInternal: 
+    m_lastTime: -8586250752627570422
+    List:
+    - name: Main
+      guid: 8428bb6713edf24e9b5b600bb56aeb26
+      id: 3161908922
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Main
+        ObjectType: 7
+      Path: Default Work Unit\Main
+  EventWwu:
+  - PhysicalPath: Events\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: 4716c27aff4e60428334dc6ea489892f
+    GuidInternal: 
+    m_lastTime: -8586250668062651409
+    List:
+    - name: Clock_Tick
+      guid: b11bc1eb82c7824a9ad4ae1379e2e591
+      id: 2719257531
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Clock_Tick
+        ObjectType: 3
+      Path: Default Work Unit\Clock_Tick
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Crash
+      guid: ebba866ae530b742bb5cbc31ae496a3c
+      id: 3048106310
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Crash
+        ObjectType: 3
+      Path: Default Work Unit\Crash
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Debate_Correct
+      guid: 6365c3fba5c98249a2707f130a016a16
+      id: 1056271621
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Debate_Correct
+        ObjectType: 3
+      Path: Default Work Unit\Debate_Correct
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Debate_Incorrect
+      guid: 6865389ffe51a047bb4a6b8e408479be
+      id: 4056022922
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Debate_Incorrect
+        ObjectType: 3
+      Path: Default Work Unit\Debate_Incorrect
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Descubrir_Cadaver
+      guid: a149342b428aa141bddf741e53d782ae
+      id: 400260727
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Descubrir_Cadaver
+        ObjectType: 3
+      Path: Default Work Unit\Descubrir_Cadaver
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Dialogo_Click
+      guid: b13fb5508bca5d4b9cbd4ca814981f1a
+      id: 3651722785
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Dialogo_Click
+        ObjectType: 3
+      Path: Default Work Unit\Dialogo_Click
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Dialogo_Escrito
+      guid: 641276b6044744459369736e2a077007
+      id: 3787813138
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Dialogo_Escrito
+        ObjectType: 3
+      Path: Default Work Unit\Dialogo_Escrito
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Dialogo_Interrupcion
+      guid: 6dbda347aff19045ac14a85322acef43
+      id: 1091239307
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Dialogo_Interrupcion
+        ObjectType: 3
+      Path: Default Work Unit\Dialogo_Interrupcion
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Dialogo_Tension
+      guid: 50275196060060449298b93321088589
+      id: 4205540299
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Dialogo_Tension
+        ObjectType: 3
+      Path: Default Work Unit\Dialogo_Tension
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Elemento_Inspeccionar
+      guid: 551bb82fcd241f45a9916ad114adc51f
+      id: 1308502195
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Elemento_Inspeccionar
+        ObjectType: 3
+      Path: Default Work Unit\Elemento_Inspeccionar
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Elemento_Seleccionar
+      guid: 6f661c6b5673ad4884fc3f3e4b5d84fb
+      id: 2151818505
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Elemento_Seleccionar
+        ObjectType: 3
+      Path: Default Work Unit\Elemento_Seleccionar
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Gary_Molesto
+      guid: 676f383601be2a4b86a1042ed669bc7a
+      id: 2732666420
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Gary_Molesto
+        ObjectType: 3
+      Path: Default Work Unit\Gary_Molesto
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Gary_Risa
+      guid: 1441ac9ec0c0f342b0746f7987f735e9
+      id: 1022029070
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Gary_Risa
+        ObjectType: 3
+      Path: Default Work Unit\Gary_Risa
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Gary_Sorprendido
+      guid: f80682b56b39fb45bc13e2bb4a427614
+      id: 940340950
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Gary_Sorprendido
+        ObjectType: 3
+      Path: Default Work Unit\Gary_Sorprendido
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Inicio_Juego
+      guid: 42652a770e295b4ea6b20f206106d767
+      id: 1460932951
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Inicio_Juego
+        ObjectType: 3
+      Path: Default Work Unit\Inicio_Juego
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Inicio_MenuPrincipal
+      guid: 46c0ef91fb113841bac380f62fec07ec
+      id: 29438508
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Inicio_MenuPrincipal
+        ObjectType: 3
+      Path: Default Work Unit\Inicio_MenuPrincipal
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: James_Grito
+      guid: f16cd2e2bbe55346a09dd8fd16cc296b
+      id: 3473875781
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: James_Grito
+        ObjectType: 3
+      Path: Default Work Unit\James_Grito
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: James_Hum
+      guid: c334792b5dad7c43b82258b7f341893a
+      id: 161203580
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: James_Hum
+        ObjectType: 3
+      Path: Default Work Unit\James_Hum
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: James_Sorprendido
+      guid: 3afbef3f32f900498449c99799c34adf
+      id: 1886364347
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: James_Sorprendido
+        ObjectType: 3
+      Path: Default Work Unit\James_Sorprendido
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Lluvia_Interior
+      guid: d86e3d11ebc0a4418c6dc62abcaa8791
+      id: 892313105
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Lluvia_Interior
+        ObjectType: 3
+      Path: Default Work Unit\Lluvia_Interior
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Menu_Posicionar_Cursor
+      guid: cad93c35a732a648acdb9ce423c9f2e2
+      id: 139446499
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Menu_Posicionar_Cursor
+        ObjectType: 3
+      Path: Default Work Unit\Menu_Posicionar_Cursor
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Menu_Seleccionar
+      guid: 1de11dfb1d937b47ab41b61434d01b88
+      id: 3759145687
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Menu_Seleccionar
+        ObjectType: 3
+      Path: Default Work Unit\Menu_Seleccionar
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Monica_Risa
+      guid: 213ec423f98ce94291386afdb53db104
+      id: 3058447822
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Monica_Risa
+        ObjectType: 3
+      Path: Default Work Unit\Monica_Risa
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Monica_Sorprendida
+      guid: f6074ee924a3fb41aeba55d10f5359e8
+      id: 949432216
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Monica_Sorprendida
+        ObjectType: 3
+      Path: Default Work Unit\Monica_Sorprendida
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Pase_Modo_Debate
+      guid: c700463e10c0f94eab62f33d720b8c40
+      id: 3226861596
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Pase_Modo_Debate
+        ObjectType: 3
+      Path: Default Work Unit\Pase_Modo_Debate
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Pasos
+      guid: 7c3c2a524b81d946b7c20f113b0c9823
+      id: 3026462669
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Pasos
+        ObjectType: 3
+      Path: Default Work Unit\Pasos
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Pausa_Off
+      guid: 953839c461d29c478dc09b8959b56e78
+      id: 2659475283
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Pausa_Off
+        ObjectType: 3
+      Path: Default Work Unit\Pausa_Off
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Pausa_On
+      guid: 67c4b1da7bbcd2449f844e4bdd9d3a0b
+      id: 549173535
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Pausa_On
+        ObjectType: 3
+      Path: Default Work Unit\Pausa_On
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Pista_Descubierta
+      guid: 3e62b7cd6137ee47940829dda92683bd
+      id: 1347929384
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Pista_Descubierta
+        ObjectType: 3
+      Path: Default Work Unit\Pista_Descubierta
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Puerta_Abrir
+      guid: 93903c4335381749b7120048f514217d
+      id: 3450889081
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Puerta_Abrir
+        ObjectType: 3
+      Path: Default Work Unit\Puerta_Abrir
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Puerta_Cerrar
+      guid: ce50bdc39cf0634cae665cf7d22ef28e
+      id: 2293563430
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Puerta_Cerrar
+        ObjectType: 3
+      Path: Default Work Unit\Puerta_Cerrar
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Puerta_Destrabada
+      guid: 96ea9112717f024db8a48fd31bc1db61
+      id: 3464282726
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Puerta_Destrabada
+        ObjectType: 3
+      Path: Default Work Unit\Puerta_Destrabada
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Puerta_Trabada
+      guid: ddde110b2c5d57409eef6d50b0283b4d
+      id: 2472654544
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Puerta_Trabada
+        ObjectType: 3
+      Path: Default Work Unit\Puerta_Trabada
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: William_Enojado
+      guid: ca6485feb3158a429b27f5f060858786
+      id: 2963025741
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: William_Enojado
+        ObjectType: 3
+      Path: Default Work Unit\William_Enojado
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: William_Sorprendido
+      guid: 26b40689cadcd647abc805d0814700fd
+      id: 3518668104
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: William_Sorprendido
+        ObjectType: 3
+      Path: Default Work Unit\William_Sorprendido
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+  RtpcWwu:
+  - PhysicalPath: Game Parameters\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: 0b7e743b24e0464198265c7cffd7224c
+    GuidInternal: 
+    m_lastTime: -8586250874704775808
+    List:
+    - name: Music
+      guid: 59b5e7909d405d49815bf3ad9e50ab29
+      id: 3991942870
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Music
+        ObjectType: 13
+      Path: Default Work Unit\Music
+    - name: SFX
+      guid: c76ab6fe577c6146a8a5a69d26c6271d
+      id: 393239870
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX
+        ObjectType: 13
+      Path: Default Work Unit\SFX
+  StateWwu:
+  - PhysicalPath: States\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: 9663778c22716147b511c5893dd3b004
+    GuidInternal: 
+    m_lastTime: -8586251070974775808
+    List: []
+  SwitchWwu:
+  - PhysicalPath: Switches\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: 028fbed2b75d9b49ae8fa8c8effa41b5
+    GuidInternal: 
+    m_lastTime: -8586251070974775808
+    List:
+    - name: Pasos
+      guid: 3aa217081551704a958deb666b579d6e
+      id: 3026462669
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Pasos
+        ObjectType: 11
+      Path: Default Work Unit\Pasos
+      values:
+      - name: Alfombra
+        guid: 980374deb63fba4d916d3970be57e1c2
+        id: 4060358137
+        PathAndIcons:
+        - ElementName: Alfombra
+          ObjectType: 10
+      - name: Cemento
+        guid: d60111928d55f44d9b55c2f136581f89
+        id: 1137103080
+        PathAndIcons:
+        - ElementName: Cemento
+          ObjectType: 10
+      - name: Madera
+        guid: 525aedb8a97bb34a9d614153b89ae612
+        id: 2306462273
+        PathAndIcons:
+        - ElementName: Madera
+          ObjectType: 10
+      - name: Piedra
+        guid: 87b38e00f4ebe4448692e8df98fae85d
+        id: 1926317228
+        PathAndIcons:
+        - ElementName: Piedra
+          ObjectType: 10
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
+  TriggerWwu:
+  - PhysicalPath: Triggers\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: bcf2824d47eb384db40246d68821b790
+    GuidInternal: 
+    m_lastTime: -8586251070974775808
+    List: []
+  ExpandedItems:
+  - /Among-Suspects_WwiseProject
+  autoPopulateEnabled: 1
+  CurrentPluginConfig: 

@@ -1,0 +1,748 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{7AC21647-4EFF-4260-8334-DC6EA489892F}" SchemaVersion="89">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{7AC21647-4EFF-4260-8334-DC6EA489892F}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Pasos" ID="{522A3C7C-814B-46D9-B7C2-0F113B0C9823}">
+					<ChildrenList>
+						<Action Name="" ID="{DCF788CD-8EDF-43C4-9CB5-FB59DCFC02A9}" ShortID="890101664">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Pasos" ID="{3B4F080B-1581-4D1A-8B58-9061B8ABAE5C}" WorkUnitID="{39FEEEEC-3732-4B7B-A50D-CE52F4EC3EFB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Puerta_Abrir" ID="{433C9093-3835-4917-B712-0048F514217D}">
+					<ChildrenList>
+						<Action Name="" ID="{CF46D0A2-570F-494E-9675-924E9618319E}" ShortID="939766673">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Puerta_Abrir" ID="{521140D1-2461-477A-9827-2FEA405FAA13}" WorkUnitID="{39FEEEEC-3732-4B7B-A50D-CE52F4EC3EFB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Puerta_Cerrar" ID="{C3BD50CE-F09C-4C63-AE66-5CF7D22EF28E}">
+					<ChildrenList>
+						<Action Name="" ID="{00F35B52-1F62-4B96-9195-4E0BCB002343}" ShortID="895807996">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Puerta_Cerrar" ID="{D5AFF734-9C47-4509-A61E-26356840ED99}" WorkUnitID="{39FEEEEC-3732-4B7B-A50D-CE52F4EC3EFB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Menu_Posicionar_Cursor" ID="{353CD9CA-32A7-48A6-ACDB-9CE423C9F2E2}">
+					<ChildrenList>
+						<Action Name="" ID="{00F71F7E-DE7E-411D-AC1D-5410B517EC0A}" ShortID="352742831">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Menu_Posicionar_Cursor" ID="{FCA5EA72-7F9E-4B88-BB2D-49F484FA3BE6}" WorkUnitID="{39FEEEEC-3732-4B7B-A50D-CE52F4EC3EFB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Puerta_Trabada" ID="{0B11DEDD-5D2C-4057-9EEF-6D50B0283B4D}">
+					<ChildrenList>
+						<Action Name="" ID="{8592DFCA-C1F7-4539-9C61-B237DA0DAD61}" ShortID="468966895">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Puerta_Trabada" ID="{DCEB42C4-7C45-42F0-B3DF-49D82565014C}" WorkUnitID="{39FEEEEC-3732-4B7B-A50D-CE52F4EC3EFB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Puerta_Destrabada" ID="{1291EA96-7F71-4D02-B8A4-8FD31BC1DB61}">
+					<ChildrenList>
+						<Action Name="" ID="{B256B674-1A30-4EDB-9133-9A208FCDC96B}" ShortID="11598950">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Puerta_Destrabada" ID="{FDA9FBCC-788F-48EE-9227-0E653E8DE325}" WorkUnitID="{39FEEEEC-3732-4B7B-A50D-CE52F4EC3EFB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Menu_Seleccionar" ID="{FB1DE11D-931D-477B-AB41-B61434D01B88}">
+					<ChildrenList>
+						<Action Name="" ID="{FF5F2831-EE13-406C-811A-140DB0EDBCC4}" ShortID="220283129">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Menu_Seleccionar" ID="{E5E7D03F-7652-4E59-94C5-9AEB5EF44CBC}" WorkUnitID="{39FEEEEC-3732-4B7B-A50D-CE52F4EC3EFB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Dialogo_Click" ID="{50B53FB1-CA8B-4B5D-9CBD-4CA814981F1A}">
+					<ChildrenList>
+						<Action Name="" ID="{93026E33-B00E-4328-9F95-903E866F2E7B}" ShortID="807965920">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Dialogo_Click" ID="{9EAD6891-D95C-4C24-8127-27B965B9B8BA}" WorkUnitID="{39FEEEEC-3732-4B7B-A50D-CE52F4EC3EFB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Dialogo_Escrito" ID="{B6761264-4704-4544-9369-736E2A077007}">
+					<ChildrenList>
+						<Action Name="" ID="{259FC2B5-E7F6-4B97-84E9-CC62944B760F}" ShortID="322451258">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Dialogo_Escrito" ID="{BD352FF4-326B-4C9B-9360-E324DF50B183}" WorkUnitID="{39FEEEEC-3732-4B7B-A50D-CE52F4EC3EFB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Dialogo_Interrupcion" ID="{47A3BD6D-F1AF-4590-AC14-A85322ACEF43}">
+					<ChildrenList>
+						<Action Name="" ID="{FBEF2CA2-C0E7-40D8-887C-02467B86AB34}" ShortID="521085420">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="34"/>
+								<Property Name="Volume" Type="Real64" Value="-96"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Dialogo_Escrito" ID="{BD352FF4-326B-4C9B-9360-E324DF50B183}" WorkUnitID="{39FEEEEC-3732-4B7B-A50D-CE52F4EC3EFB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Pausa_On" ID="{DAB1C467-BC7B-44D2-9F84-4E4BDD9D3A0B}">
+					<ChildrenList>
+						<Action Name="" ID="{692EC8C9-A882-408D-A205-B8FA276A6BA4}" ShortID="705959480">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Menu Pop In" ID="{626D56B9-D04F-47E3-A0B8-F1C07E3006F1}" WorkUnitID="{39FEEEEC-3732-4B7B-A50D-CE52F4EC3EFB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{ECD46DA9-3C8A-4B84-863D-74FC9E50393F}" ShortID="598125624">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="26"/>
+								<Property Name="FadeTime" Type="Real64" Value="2.5"/>
+								<Property Name="Lowpass" Type="int16" Value="71"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Menu Principal" ID="{FBE9C86A-6256-440E-B747-6734CEE88858}" WorkUnitID="{BD7BACF2-2911-4479-B090-D46A859348FE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{730DBFFB-58C6-496D-9878-551008C4CF5F}" ShortID="117657496">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="26"/>
+								<Property Name="FadeTime" Type="Real64" Value="2.5"/>
+								<Property Name="Lowpass" Type="int16" Value="71"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Tema Debate" ID="{2540AAC7-CE30-480A-A6B9-0133A5FEC4E5}" WorkUnitID="{BD7BACF2-2911-4479-B090-D46A859348FE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{CE643B30-D02D-4E4A-954A-15B1CBE6B886}" ShortID="886936009">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="26"/>
+								<Property Name="FadeTime" Type="Real64" Value="2.5"/>
+								<Property Name="Lowpass" Type="int16" Value="71"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Tema Exploración" ID="{5041B18B-2CE5-4F09-A02F-170BF9EA792D}" WorkUnitID="{BD7BACF2-2911-4479-B090-D46A859348FE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{3A0206CB-7CAF-4EFF-8759-1C4943C3C6EE}" ShortID="160057677">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="26"/>
+								<Property Name="FadeTime" Type="Real64" Value="2.5"/>
+								<Property Name="Lowpass" Type="int16" Value="71"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Tema Investigar" ID="{9DE944AE-244D-4254-9A26-ADB3AB3A1D99}" WorkUnitID="{BD7BACF2-2911-4479-B090-D46A859348FE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Pausa_Off" ID="{C4393895-D261-479C-8DC0-9B8959B56E78}">
+					<ChildrenList>
+						<Action Name="" ID="{D0C3809F-9F01-42C8-A743-1FDBAF3BC229}" ShortID="314248158">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Menu Pop Out" ID="{C96B44AE-1EE3-48B6-9A2D-2D2CF1AFF800}" WorkUnitID="{39FEEEEC-3732-4B7B-A50D-CE52F4EC3EFB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{8A291132-67F2-4333-8514-543E11B8580E}" ShortID="612131665">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="27"/>
+								<Property Name="FadeTime" Type="Real64" Value="2.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Menu Principal" ID="{FBE9C86A-6256-440E-B747-6734CEE88858}" WorkUnitID="{BD7BACF2-2911-4479-B090-D46A859348FE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{3308FF81-0712-46D9-A722-747623B5B7EB}" ShortID="628440027">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="27"/>
+								<Property Name="FadeTime" Type="Real64" Value="2.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Tema Debate" ID="{2540AAC7-CE30-480A-A6B9-0133A5FEC4E5}" WorkUnitID="{BD7BACF2-2911-4479-B090-D46A859348FE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{AC35B17D-2D1D-4141-84DF-B63186BEDBCE}" ShortID="184601228">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="27"/>
+								<Property Name="FadeTime" Type="Real64" Value="2.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Tema Exploración" ID="{5041B18B-2CE5-4F09-A02F-170BF9EA792D}" WorkUnitID="{BD7BACF2-2911-4479-B090-D46A859348FE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{22A18269-9C23-4D74-B9C6-490A29DD5672}" ShortID="670996329">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="27"/>
+								<Property Name="FadeTime" Type="Real64" Value="2.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Tema Investigar" ID="{9DE944AE-244D-4254-9A26-ADB3AB3A1D99}" WorkUnitID="{BD7BACF2-2911-4479-B090-D46A859348FE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Elemento_Inspeccionar" ID="{2FB81B55-24CD-451F-A991-6AD114ADC51F}">
+					<ChildrenList>
+						<Action Name="" ID="{39BCC662-612B-4B43-95BA-49AD100304C6}" ShortID="682478922">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Elemento_Inspeccionar" ID="{5F0AD2A8-5840-4101-9174-3FA36DB79FCB}" WorkUnitID="{39FEEEEC-3732-4B7B-A50D-CE52F4EC3EFB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Elemento_Seleccionar" ID="{6B1C666F-7356-48AD-84FC-3F3E4B5D84FB}">
+					<ChildrenList>
+						<Action Name="" ID="{3CFBC550-3CF2-414B-B728-0090B850CC08}" ShortID="318476794">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Elemento_Seleccionar" ID="{FC1FAAED-B25A-47C5-A718-45889937B4A5}" WorkUnitID="{39FEEEEC-3732-4B7B-A50D-CE52F4EC3EFB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Descubrir_Cadaver" ID="{2B3449A1-8A42-41A1-BDDF-741E53D782AE}">
+					<ChildrenList>
+						<Action Name="" ID="{C98BA58A-2429-4E13-B63D-66249A8BFC9B}" ShortID="8826539">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="1.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Menu Principal" ID="{FBE9C86A-6256-440E-B747-6734CEE88858}" WorkUnitID="{BD7BACF2-2911-4479-B090-D46A859348FE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{A4F4D246-0159-48D9-9FA9-E76DCD47B444}" ShortID="570239017">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="1.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Tema Debate" ID="{2540AAC7-CE30-480A-A6B9-0133A5FEC4E5}" WorkUnitID="{BD7BACF2-2911-4479-B090-D46A859348FE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{839F89EC-64E9-4968-B705-0670E5F63F42}" ShortID="816967930">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="1.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Tema Exploración" ID="{5041B18B-2CE5-4F09-A02F-170BF9EA792D}" WorkUnitID="{BD7BACF2-2911-4479-B090-D46A859348FE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{E6431FD9-05E8-4E3B-93EB-E8A4E5A3428E}" ShortID="264458496">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Dialogue Tension" ID="{CE00077F-8D54-4BA2-81F6-A32F620071AA}" WorkUnitID="{39FEEEEC-3732-4B7B-A50D-CE52F4EC3EFB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{8E56246C-309B-4A20-B450-F1C7C01450FF}" ShortID="865820417">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Tema Investigar" ID="{9DE944AE-244D-4254-9A26-ADB3AB3A1D99}" WorkUnitID="{BD7BACF2-2911-4479-B090-D46A859348FE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Monica_Risa" ID="{23C43E21-8CF9-42E9-9138-6AFDB53DB104}">
+					<ChildrenList>
+						<Action Name="" ID="{4E0DBB6F-8410-4A6B-84C0-3EA30C9D7332}" ShortID="370257474">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Monica Giggle" ID="{D82AF17E-3B5F-463D-8825-F5BB93522096}" WorkUnitID="{39FEEEEC-3732-4B7B-A50D-CE52F4EC3EFB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Monica_Sorprendida" ID="{E94E07F6-A324-41FB-AEBA-55D10F5359E8}">
+					<ChildrenList>
+						<Action Name="" ID="{5D8B21F0-4284-4BD9-865D-F1C02E9FC53E}" ShortID="825540748">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Monica Shocked" ID="{E4E006B5-A0C2-445C-881C-CF81131D4E20}" WorkUnitID="{39FEEEEC-3732-4B7B-A50D-CE52F4EC3EFB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Gary_Sorprendido" ID="{B58206F8-396B-45FB-BC13-E2BB4A427614}">
+					<ChildrenList>
+						<Action Name="" ID="{098E38DD-92A3-4A52-B701-708DCDF9AA88}" ShortID="810635296">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Gary Indifferent" ID="{8CE06447-A7AF-493B-9EAC-05C6264108E9}" WorkUnitID="{39FEEEEC-3732-4B7B-A50D-CE52F4EC3EFB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Gary_Molesto" ID="{36386F67-BE01-4B2A-86A1-042ED669BC7A}">
+					<ChildrenList>
+						<Action Name="" ID="{DB26EDB8-5896-4740-8012-5B034ACC7F81}" ShortID="592123812">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Gary Indifferent" ID="{8CE06447-A7AF-493B-9EAC-05C6264108E9}" WorkUnitID="{39FEEEEC-3732-4B7B-A50D-CE52F4EC3EFB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Gary_Risa" ID="{9EAC4114-C0C0-42F3-B074-6F7987F735E9}">
+					<ChildrenList>
+						<Action Name="" ID="{CC61F4C5-7E49-47C5-93AF-D312539DD331}" ShortID="447875622">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Gary Laugh" ID="{B754B34C-9C43-4A07-B76B-15E3860BF548}" WorkUnitID="{39FEEEEC-3732-4B7B-A50D-CE52F4EC3EFB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="William_Sorprendido" ID="{8906B426-DCCA-47D6-ABC8-05D0814700FD}">
+					<ChildrenList>
+						<Action Name="" ID="{95E69BC0-D269-4E15-9F05-502369EDD7D7}" ShortID="411909092">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="William Shocked" ID="{9988D8BB-BF3D-4650-8CDD-BC9A2F3E7D8B}" WorkUnitID="{39FEEEEC-3732-4B7B-A50D-CE52F4EC3EFB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="William_Enojado" ID="{FE8564CA-15B3-428A-9B27-F5F060858786}">
+					<ChildrenList>
+						<Action Name="" ID="{6F801733-0B61-412E-9C6B-52F65F20DD92}" ShortID="894344903">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="William Grunt" ID="{04DCC5DE-6AF5-4451-865A-9F7C0B0DFDD9}" WorkUnitID="{39FEEEEC-3732-4B7B-A50D-CE52F4EC3EFB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="James_Hum" ID="{2B7934C3-AD5D-437C-B822-58B7F341893A}">
+					<ChildrenList>
+						<Action Name="" ID="{77CDC2DF-C8AE-486D-AFBE-5F9167DBC9E9}" ShortID="585870192">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="James Thought" ID="{8CF9AE94-A170-49B8-9F40-212F3996B02A}" WorkUnitID="{39FEEEEC-3732-4B7B-A50D-CE52F4EC3EFB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="James_Grito" ID="{E2D26CF1-E5BB-4653-A09D-D8FD16CC296B}">
+					<ChildrenList>
+						<Action Name="" ID="{387A4E63-D3DE-4949-898D-C2FD1915929B}" ShortID="14772047">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="James Scream" ID="{E6DC358F-683A-4395-8A28-55E1D42CD4A1}" WorkUnitID="{39FEEEEC-3732-4B7B-A50D-CE52F4EC3EFB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Dialogo_Tension" ID="{96512750-0006-4460-9298-B93321088589}">
+					<ChildrenList>
+						<Action Name="" ID="{ADF37F2E-587C-495B-B23D-2C69B9676E3B}" ShortID="496516496">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Dialogue Tension" ID="{CE00077F-8D54-4BA2-81F6-A32F620071AA}" WorkUnitID="{39FEEEEC-3732-4B7B-A50D-CE52F4EC3EFB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Crash" ID="{6A86BAEB-30E5-42B7-BB5C-BC31AE496A3C}">
+					<ChildrenList>
+						<Action Name="" ID="{5A35D2C4-5E9D-4164-A86E-A2DECA43B4F9}" ShortID="1046680225">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Break" ID="{5F090B0A-D684-4E43-AD29-175893D7158A}" WorkUnitID="{39FEEEEC-3732-4B7B-A50D-CE52F4EC3EFB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Debate_Correct" ID="{FBC36563-C9A5-4982-A270-7F130A016A16}">
+					<ChildrenList>
+						<Action Name="" ID="{9372E3FD-C9EF-447B-923E-5C502E41325B}" ShortID="936271543">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Debate Correct" ID="{95514A4A-FDF4-4AF9-A405-0878C7C4E57F}" WorkUnitID="{39FEEEEC-3732-4B7B-A50D-CE52F4EC3EFB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Debate_Incorrect" ID="{9F386568-51FE-47A0-BB4A-6B8E408479BE}">
+					<ChildrenList>
+						<Action Name="" ID="{5E5B1F73-0593-40BD-B82C-6C474AEEDB87}" ShortID="404841457">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Debate Incorrect" ID="{314034E1-34B9-4602-BDD8-4A4D2F76A075}" WorkUnitID="{39FEEEEC-3732-4B7B-A50D-CE52F4EC3EFB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Clock_Tick" ID="{EBC11BB1-C782-4A82-9AD4-AE1379E2E591}">
+					<ChildrenList>
+						<Action Name="" ID="{3375C282-8B2D-4D92-9992-01DA73264095}" ShortID="247877562">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Clock Tick" ID="{5906319F-09C9-4767-AC1D-8D27040B9A80}" WorkUnitID="{39FEEEEC-3732-4B7B-A50D-CE52F4EC3EFB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Lluvia_Interior" ID="{113D6ED8-C0EB-41A4-8C6D-C62ABCAA8791}">
+					<ChildrenList>
+						<Action Name="" ID="{447405CD-96BE-44B7-9E45-3DCB33095A46}" ShortID="732910958">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Lluvia_Interior" ID="{4509322C-5A2D-452B-93DB-2A944170B1E5}" WorkUnitID="{39FEEEEC-3732-4B7B-A50D-CE52F4EC3EFB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="James_Sorprendido" ID="{3FEFFB3A-F932-4900-8449-C99799C34ADF}">
+					<ChildrenList>
+						<Action Name="" ID="{E309DFC6-F991-430D-99DA-55B12E48C405}" ShortID="187037227">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="James Surprised" ID="{4DA2DF67-187B-4DD7-A10A-6BDDD31D67F5}" WorkUnitID="{39FEEEEC-3732-4B7B-A50D-CE52F4EC3EFB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Pista_Descubierta" ID="{CDB7623E-3761-47EE-9408-29DDA92683BD}">
+					<ChildrenList>
+						<Action Name="" ID="{ED3A1092-58BA-454B-A757-17DDFF3D220C}" ShortID="498635347">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Discovery" ID="{7FE87B54-9E27-428E-B596-39E9326198FC}" WorkUnitID="{39FEEEEC-3732-4B7B-A50D-CE52F4EC3EFB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Inicio_MenuPrincipal" ID="{91EFC046-11FB-4138-BAC3-80F62FEC07EC}">
+					<ChildrenList>
+						<Action Name="" ID="{0FEE0BBA-0DB9-4CFD-B6EB-A024C68FCF46}" ShortID="92334294">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="1.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Tema Debate" ID="{2540AAC7-CE30-480A-A6B9-0133A5FEC4E5}" WorkUnitID="{BD7BACF2-2911-4479-B090-D46A859348FE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{016D2300-7007-41D5-89DE-4AB4926514DF}" ShortID="203342535">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="1.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Tema Exploración" ID="{5041B18B-2CE5-4F09-A02F-170BF9EA792D}" WorkUnitID="{BD7BACF2-2911-4479-B090-D46A859348FE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{D85A0871-9435-4C16-A73E-CDD1614DD62D}" ShortID="132887548">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="1.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Tema Investigar" ID="{9DE944AE-244D-4254-9A26-ADB3AB3A1D99}" WorkUnitID="{BD7BACF2-2911-4479-B090-D46A859348FE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{7AF4E827-7A71-4B81-A239-6E810EBCA56A}" ShortID="874485330">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="1.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Lluvia_Interior" ID="{4509322C-5A2D-452B-93DB-2A944170B1E5}" WorkUnitID="{39FEEEEC-3732-4B7B-A50D-CE52F4EC3EFB}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{0F3C39AC-E9AD-4ED7-B1B9-FC1C3118D80E}" ShortID="990031591">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+								<Property Name="FadeTime" Type="Real64" Value="1.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Menu Principal" ID="{FBE9C86A-6256-440E-B747-6734CEE88858}" WorkUnitID="{BD7BACF2-2911-4479-B090-D46A859348FE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Pase_Modo_Debate" ID="{3E4600C7-C010-4EF9-AB62-F33D720B8C40}">
+					<ChildrenList>
+						<Action Name="" ID="{A66A4F30-23D6-45B1-B815-E66E10B96143}" ShortID="254844353">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="1.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Menu Principal" ID="{FBE9C86A-6256-440E-B747-6734CEE88858}" WorkUnitID="{BD7BACF2-2911-4479-B090-D46A859348FE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{B659CA97-6952-45CA-987D-F84CD34E69E7}" ShortID="45034184">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="1.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Tema Exploración" ID="{5041B18B-2CE5-4F09-A02F-170BF9EA792D}" WorkUnitID="{BD7BACF2-2911-4479-B090-D46A859348FE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{CB3B4295-45ED-403D-8560-24BEDEB57E05}" ShortID="757372582">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="1.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Tema Investigar" ID="{9DE944AE-244D-4254-9A26-ADB3AB3A1D99}" WorkUnitID="{BD7BACF2-2911-4479-B090-D46A859348FE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{2CD8AF35-ACF2-4DDA-BA5E-06807C31C840}" ShortID="205400635">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+								<Property Name="FadeTime" Type="Real64" Value="1.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Tema Debate" ID="{2540AAC7-CE30-480A-A6B9-0133A5FEC4E5}" WorkUnitID="{BD7BACF2-2911-4479-B090-D46A859348FE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Inicio_Juego" ID="{772A6542-290E-4E5B-A6B2-0F206106D767}">
+					<ChildrenList>
+						<Action Name="" ID="{3F7C366E-0EC9-40A2-A56A-5578909252D2}" ShortID="819030192">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="1.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Menu Principal" ID="{FBE9C86A-6256-440E-B747-6734CEE88858}" WorkUnitID="{BD7BACF2-2911-4479-B090-D46A859348FE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{25449C59-E227-49F3-9D65-984049869B5F}" ShortID="38338390">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="1.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Tema Debate" ID="{2540AAC7-CE30-480A-A6B9-0133A5FEC4E5}" WorkUnitID="{BD7BACF2-2911-4479-B090-D46A859348FE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{5058AB46-2CE0-4558-BDA3-E7B01CBBC8B0}" ShortID="755915059">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="1.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Tema Investigar" ID="{9DE944AE-244D-4254-9A26-ADB3AB3A1D99}" WorkUnitID="{BD7BACF2-2911-4479-B090-D46A859348FE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{323C0AB0-AC80-4FE5-8982-64C8B3E7522A}" ShortID="89192961">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+								<Property Name="FadeTime" Type="Real64" Value="1.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Tema Exploración" ID="{5041B18B-2CE5-4F09-A02F-170BF9EA792D}" WorkUnitID="{BD7BACF2-2911-4479-B090-D46A859348FE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>
