@@ -222,8 +222,7 @@ public class SettingsScreen : MonoBehaviour
         sfxAudioIcon.sprite = (volume != 0f) ? audioIconsSprites[0] : audioIconsSprites[1];
         sfxVolumeValueText.text = ((int)volume).ToString();
         GameManager.Instance.SetSfxVolume(volume);
-        if (!AudioManager.Instance.IsPlayingEvent("Menu_Seleccionar"))
-            AudioManager.Instance.PostEvent("Menu_Seleccionar");
+        AudioManager.Instance.PostEvent("Menu_Seleccionar");
     }
 
     public void SetSfxMute()

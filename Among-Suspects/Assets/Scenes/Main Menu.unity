@@ -334,7 +334,7 @@ VideoPlayer:
   m_AspectRatio: 2
   m_DataSource: 0
   m_PlaybackSpeed: 1
-  m_AudioOutputMode: 2
+  m_AudioOutputMode: 0
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
@@ -3728,6 +3728,11 @@ PrefabInstance:
     - target: {fileID: 7772999100225489265, guid: 32d3291450ff1b640afef002eb0dde4a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517363423544069520, guid: 32d3291450ff1b640afef002eb0dde4a,
+        type: 3}
+      propertyPath: unloadTriggerList.Array.size
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

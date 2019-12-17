@@ -180,6 +180,7 @@ public class ChapterManager : MonoBehaviour
         Time.timeScale = 1f;
         GameManager gameManager = GameManager.Instance;
         string mainMenuSceneName = gameManager.GetMainMenuSceneName();
+        AudioManager.Instance.PostEvent("Pausa_Off");
         gameManager.TransitionToScene(mainMenuSceneName);
     }
 

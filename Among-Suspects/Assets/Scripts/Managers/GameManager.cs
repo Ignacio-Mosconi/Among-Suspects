@@ -165,8 +165,7 @@ public class GameManager : MonoBehaviour
         if (button && button.image.sprite != button.spriteState.disabledSprite)
         {
             Cursor.SetCursor(normalCursor.texture, normalCursor.hotspot, CursorMode.Auto);
-            if (!AudioManager.Instance.IsPlayingEvent("Menu_Seleccionar"))
-                AudioManager.Instance.PostEvent("Menu_Seleccionar");
+            AudioManager.Instance.PostEvent("Menu_Seleccionar");
         }      
     }
 

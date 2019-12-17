@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum MixerType
@@ -41,43 +40,9 @@ public class AudioManager : MonoBehaviour
 
     #endregion
 
-    Dictionary<string, Action<float>> activeEventCallbacks = new Dictionary<string, Action<float>>();
-
-    void ProcessEventCallback(object cookie, AkCallbackType type, object info)
-    {
-        string eventName = (string)cookie;
-
-        switch (type)
-        {
-            case AkCallbackType.AK_EndOfEvent:
-                if (activeEventCallbacks.ContainsKey(eventName))
-                    activeEventCallbacks.Remove(eventName);
-                break;
-
-            case AkCallbackType.AK_Duration:
-                AkDurationCallbackInfo callbackInfo = (AkDurationCallbackInfo)info;
-
-                if (activeEventCallbacks.ContainsKey(eventName) && activeEventCallbacks[eventName] != null)
-                    activeEventCallbacks[eventName].Invoke(callbackInfo.fDuration);
-                break;
-
-            default:
-                break;
-        }  
-    }
-
     public void PostEvent(string eventName, GameObject go = null, Action<float> durationCallback = null)
     {
-        if (activeEventCallbacks.ContainsKey(eventName))
-            activeEventCallbacks.Remove(eventName);
-
-        activeEventCallbacks.Add(eventName, durationCallback);
-
-        AkSoundEngine.PostEvent(eventName, 
-                                go ? go : gameObject, 
-                                (uint)(AkCallbackType.AK_EndOfEvent | AkCallbackType.AK_Duration),
-                                ProcessEventCallback, 
-                                eventName);
+        AkSoundEngine.PostEvent(eventName, go ? go : gameObject);
     }
 
     public void PostEventDelayed(string eventName, float delay, GameObject go = null, Action<float> durationCallback = null)
@@ -103,10 +68,5 @@ public class AudioManager : MonoBehaviour
     public void SetMixerVolume(MixerType mixerType, float value)
     {
         SetRTPCValue(Enum.GetName(typeof(MixerType), mixerType), value);
-    }
-
-    public bool IsPlayingEvent(string eventName)
-    {
-        return activeEventCallbacks.ContainsKey(eventName);
     }
 }

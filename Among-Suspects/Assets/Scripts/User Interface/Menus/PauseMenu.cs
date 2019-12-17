@@ -31,15 +31,9 @@ public class PauseMenu : Menu
         if (Input.GetButtonDown("Pause"))
         {
             if (!isPaused)
-            {
-                AudioManager.Instance.PostEvent("Pausa_On");
                 Pause();
-            }
             else
-            {
-                AudioManager.Instance.PostEvent("Pausa_Off");
                 Resume();
-            }
         }
     }
 
@@ -86,6 +80,8 @@ public class PauseMenu : Menu
         Time.timeScale = 0f;
         menuArea.SetActive(true);
 
+        AudioManager.Instance.PostEvent("Pausa_On");
+
         playerMovementEnabledAtPause = CharacterManager.Instance.PlayerController.IsMovementEnabled();
         cursorEnabledAtPause = GameManager.Instance.IsCursorEnabled();
 
@@ -104,6 +100,7 @@ public class PauseMenu : Menu
         menuArea.SetActive(false);
 
         ResetMenuState();
+        AudioManager.Instance.PostEvent("Pausa_Off");
 
         if (playerMovementEnabledAtPause)
             CharacterManager.Instance.PlayerController.Enable();
